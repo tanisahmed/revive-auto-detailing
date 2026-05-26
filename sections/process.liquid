@@ -1,0 +1,145 @@
+<style>
+  .process-section {
+    padding: 5rem 0;
+    background: var(--color-secondary);
+  }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    position: relative;
+  }
+
+  /* Connector line between cards */
+  .process-grid::after {
+    content: '';
+    position: absolute;
+    top: 2.5rem;
+    left: calc(12.5% + 1.5rem);
+    right: calc(12.5% + 1.5rem);
+    height: 2px;
+    background: repeating-linear-gradient(
+      to right,
+      var(--color-primary) 0px,
+      var(--color-primary) 8px,
+      transparent 8px,
+      transparent 16px
+    );
+    z-index: 0;
+  }
+
+  .process-card {
+    background: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    position: relative;
+    z-index: 1;
+  }
+  .process-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+  }
+
+  .process-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .process-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .process-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .process-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .process-grid { 
+      grid-template-columns: repeat(2, 1fr); 
+    }
+    .process-grid::after { display: none; }
+  }
+  @media (max-width: 640px) {
+    .process-section { padding: 3.5rem 0; }
+    .process-grid { 
+      grid-template-columns: 1fr; 
+      gap: 1rem;
+    }
+  }
+</style>
+
+<section class="process-section">
+  <div class="container">
+    <h2 class="section-title">{{ section.settings.title | default: 'Our 4-Step Process' }}</h2>
+    <p class="section-subtitle">Simple, transparent, and stress-free from start to finish</p>
+
+    <div class="process-grid">
+      <div class="process-card">
+        <span class="process-number">1</span>
+        <span class="process-icon">📅</span>
+        <h3 class="process-title">Book Your Appointment</h3>
+        <p class="process-desc">Schedule at your convenience online, by phone, or via WhatsApp</p>
+      </div>
+
+      <div class="process-card">
+        <span class="process-number">2</span>
+        <span class="process-icon">🚗</span>
+        <h3 class="process-title">Drop-off</h3>
+        <p class="process-desc">Bring your car to our facility in Karachi — we'll take it from here</p>
+      </div>
+
+      <div class="process-card">
+        <span class="process-number">3</span>
+        <span class="process-icon">🔧</span>
+        <h3 class="process-title">We Work Our Magic</h3>
+        <p class="process-desc">Our expert technicians apply premium products with precision</p>
+      </div>
+
+      <div class="process-card">
+        <span class="process-number">4</span>
+        <span class="process-icon">✨</span>
+        <h3 class="process-title">Enjoy the Results</h3>
+        <p class="process-desc">Pick up your pristine vehicle — looking better than ever</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Process",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Our 4-Step Process"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Process"
+    }
+  ]
+}
+{% endschema %}
