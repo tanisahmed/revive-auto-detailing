@@ -19,7 +19,37 @@
         "type": "header",
         "settings": {
           "logo": "shopify://shop_images/white_logo-02.png",
-          "logo_text": "Revive Auto Detailing"
+          "logo_text": "Revive Auto Detailing",
+          "phone": "+923037231111",
+          "phone_display": "+92 303 7231111",
+          "nav_label_1": "Home",
+          "nav_url_1": "",
+          "nav_label_2": "About Us",
+          "nav_url_2": "",
+          "nav_label_3": "Services",
+          "nav_has_dropdown_3": true,
+          "nav3_sub_label_1": "Paint Protection Film (PPF)",
+          "nav3_sub_url_1": "",
+          "nav3_sub_label_2": "Ceramic Coating",
+          "nav3_sub_url_2": "",
+          "nav3_sub_label_3": "Exterior & Interior Detailing",
+          "nav3_sub_url_3": "",
+          "nav3_sub_label_4": "Anti-Rust Undercoating",
+          "nav3_sub_url_4": "",
+          "nav3_sub_label_5": "",
+          "nav3_sub_url_5": "",
+          "nav_label_4": "Contact",
+          "nav_url_4": "",
+          "nav_label_5": "More",
+          "nav_has_dropdown_5": true,
+          "nav5_sub_label_1": "Book Appointment",
+          "nav5_sub_url_1": "",
+          "nav5_sub_label_2": "FAQ",
+          "nav5_sub_url_2": "",
+          "nav5_sub_label_3": "",
+          "nav5_sub_url_3": "",
+          "nav5_sub_label_4": "",
+          "nav5_sub_url_4": ""
         }
       },
       "hero": {
@@ -30,7 +60,12 @@
       },
       "services": {
         "type": "services",
-        "settings": {}
+        "settings": {
+          "img_ppf": "shopify://shop_images/SaveVid.Net_706483316_17966723517078672_7661059615161583245_n.jpg",
+          "img_ceramic": "shopify://shop_images/b0be0cc3-4fb4-4775-9c60-a7b1f64b7050.png",
+          "img_detailing": "shopify://shop_images/IMG20231101172719.jpg",
+          "img_antirust": "shopify://shop_images/RAD_undercoat_website_optimized.jpg"
+        }
       },
       "why-choose": {
         "type": "why-choose",
