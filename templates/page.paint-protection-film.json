@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "ppf-hero": {
+      "type": "ppf-hero",
+      "settings": {}
+    },
+    "ppf-benefits": {
+      "type": "ppf-benefits",
+      "settings": {}
+    },
+    "ppf-packages": {
+      "type": "ppf-packages",
+      "settings": {}
+    },
+    "ppf-gallery": {
+      "type": "ppf-gallery",
+      "settings": {}
+    },
+    "ppf-faq": {
+      "type": "ppf-faq",
+      "settings": {}
+    },
+    "ppf-cta": {
+      "type": "ppf-cta",
+      "settings": {}
+    }
+  },
+  "order": [
+    "ppf-hero",
+    "ppf-benefits",
+    "ppf-packages",
+    "ppf-gallery",
+    "ppf-faq",
+    "ppf-cta"
+  ]
+}
