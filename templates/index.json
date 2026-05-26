@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {}
+    },
+    "services": {
+      "type": "services",
+      "settings": {}
+    },
+    "why-choose": {
+      "type": "why-choose",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "reviews",
+      "settings": {}
+    },
+    "process": {
+      "type": "process",
+      "settings": {}
+    },
+    "lead-form": {
+      "type": "lead-form",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "services",
+    "why-choose",
+    "reviews",
+    "process",
+    "lead-form"
+  ]
+}
