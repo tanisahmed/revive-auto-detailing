@@ -528,20 +528,51 @@
     var ref='RAD-'+Date.now().toString(36).toUpperCase().slice(-6);
     var ds=bd.dt?new Date(bd.dt+'T12:00:00').toLocaleDateString('en-PK',{weekday:'short',year:'numeric',month:'short',day:'numeric'}):'';
 
-    // 1. Shopify Contact Form → Inbox
+    // 1. Shopify Contact Form → Email + Inbox
     try {
-      fetch('/contact',{
-        method:'POST',
-        headers:{'Content-Type':'application/x-www-form-urlencoded'},
-        body:new URLSearchParams({
-          'form_type':'contact','utf8':'✓',
-          'contact[name]':(bd.fn||'')+' '+(bd.ln||''),
-          'contact[email]':bd.em||'noreply@rad.pk',
-          'contact[phone]':bd.ph||'',
-          'contact[body]':'🔔 NEW PPF BOOKING\n\nRef: '+ref+'\nName: '+(bd.fn||'')+' '+(bd.ln||'')+'\nWhatsApp: '+(bd.ph||'')+'\nEmail: '+(bd.em||'')+'\n\nVehicle: '+(bd.mk||'')+' '+(bd.mo||'')+' ('+(bd.yr||'')+')\nColor: '+(bd.cl||'N/A')+'\nType: '+(vtLabels[bd.vt]||'')+'\n\nPackage: '+(bd.pkLabel||'')+'\nDate: '+ds+' at '+(bd.tm||'')+'\nDuration: '+(bd.dur||'')+'\nTotal: PKR '+(bd.price?bd.price.toLocaleString():'')+'\n\nPlease confirm via WhatsApp: '+(bd.ph||'')
-        })
-      }).catch(function(){});
-    } catch(e){}
+      var bookingBody = 
+        '🔔 NEW PPF SLOT BOOKING\r\n' +
+        '================================\r\n\r\n' +
+        'Booking Ref: ' + ref + '\r\n' +
+        'Submitted: ' + new Date().toLocaleString('en-PK',{timeZone:'Asia/Karachi'}) + '\r\n\r\n' +
+        '--- CUSTOMER ---\r\n' +
+        'Name: ' + (bd.fn||'') + ' ' + (bd.ln||'') + '\r\n' +
+        'WhatsApp: ' + (bd.ph||'') + '\r\n' +
+        'Email: ' + (bd.em||'') + '\r\n\r\n' +
+        '--- VEHICLE ---\r\n' +
+        'Make & Model: ' + (bd.mk||'') + ' ' + (bd.mo||'') + '\r\n' +
+        'Year: ' + (bd.yr||'') + '\r\n' +
+        'Color: ' + (bd.cl||'N/A') + '\r\n' +
+        'Vehicle Type: ' + (vtLabels[bd.vt]||'') + '\r\n\r\n' +
+        '--- APPOINTMENT ---\r\n' +
+        'Package: ' + (bd.pkLabel||'') + '\r\n' +
+        'Date: ' + ds + '\r\n' +
+        'Time: ' + (bd.tm||'') + '\r\n' +
+        'Duration: ' + (bd.dur||'') + '\r\n' +
+        'Total Price: PKR ' + (bd.price?bd.price.toLocaleString():'') + '\r\n\r\n' +
+        '================================\r\n' +
+        'Reply to customer WhatsApp: ' + (bd.ph||'');
+
+      // POST to Shopify contact form - sends email to store owner
+      var formData = new FormData();
+      formData.append('form_type', 'contact');
+      formData.append('utf8', '✓');
+      formData.append('contact[name]', (bd.fn||'') + ' ' + (bd.ln||''));
+      formData.append('contact[email]', bd.em || 'noreply@rad.pk');
+      formData.append('contact[phone]', bd.ph || '');
+      formData.append('contact[subject]', '🔔 New PPF Booking - ' + ref + ' - ' + (bd.fn||'') + ' ' + (bd.ln||''));
+      formData.append('contact[body]', bookingBody);
+
+      fetch('/contact', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: formData
+      }).then(function(res) {
+        console.log('Contact form status:', res.status);
+      }).catch(function(e) {
+        console.log('Contact form error:', e);
+      });
+    } catch(e) { console.log('Form error:', e); }
 
     // 2. WhatsApp notification to owner
     var msg=encodeURIComponent('🔔 *NEW BOOKING!*\n\n📋 Ref: '+ref+'\n👤 '+( bd.fn||'')+' '+(bd.ln||'')+'\n📞 '+(bd.ph||'')+'\n📧 '+(bd.em||'')+'\n\n🚗 '+(bd.mk||'')+' '+(bd.mo||'')+' '+(bd.yr||'')+'\n📦 '+(vtLabels[bd.vt]||'')+' | '+(bd.pkLabel||'')+'\n📅 '+ds+' at '+(bd.tm||'')+'\n💰 PKR '+(bd.price?bd.price.toLocaleString():'')+'\n\n✅ Please confirm!');
