@@ -23,7 +23,6 @@
 .rad-svc-img {
   height: 200px;
   overflow: hidden;
-  position: relative;
   background: #f3f4f6;
 }
 .rad-svc-img img {
@@ -54,9 +53,9 @@
 .rad-svc-desc { font-size: 0.875rem; color: #6b7280; line-height: 1.6; flex: 1; }
 .rad-svc-btn {
   display: block; text-align: center; padding: 0.7rem;
-  background: #1e3a8a; color: #fff; border-radius: 8px;
-  font-weight: 700; font-size: 0.9rem; text-decoration: none;
-  transition: background 0.2s; margin-top: auto;
+  background: #1e3a8a; color: #fff !important; border-radius: 8px;
+  font-weight: 700; font-size: 0.9rem; text-decoration: none !important;
+  transition: background 0.2s; margin-top: auto; cursor: pointer;
 }
 .rad-svc-btn:hover { background: #1e40af; }
 .rad-svc-btn-disabled {
@@ -82,95 +81,77 @@
 
 <section class="rad-services">
   <div class="container">
-    <h2 class="section-title">{{ section.settings.title | default: 'What We Offer' }}</h2>
-    <div class="divider-with-text"><span>{{ section.settings.subtitle | default: 'Premium Auto Care Services' }}</span></div>
+    <h2 class="section-title">What We Offer</h2>
+    <div class="divider-with-text"><span>Premium Auto Care Services</span></div>
     <div class="rad-services-grid">
 
-      <!-- Card 1 -->
+      <!-- Card 1: PPF — ACTIVE BUTTON -->
       <div class="rad-svc-card">
         <div class="rad-svc-img">
           {%- if section.settings.img_1 != blank -%}
-            <img src="{{ section.settings.img_1 | image_url: width: 600 }}" alt="{{ section.settings.name_1 }}" loading="lazy">
+            <img src="{{ section.settings.img_1 | image_url: width: 600 }}" alt="Paint Protection Film" loading="lazy">
           {%- else -%}
             <div class="rad-svc-img-fallback">&#128737;</div>
           {%- endif -%}
         </div>
         <div class="rad-svc-body">
-          <h3 class="rad-svc-name">{{ section.settings.name_1 | default: 'Paint Protection Film (PPF)' }}</h3>
-          <p class="rad-svc-desc">{{ section.settings.desc_1 | default: 'Our PPF keeps your car brand new by shielding it from scratches, chips, and UV damage.' }}</p>
-          {%- if section.settings.btn_active_1 -%}
-            <a href="{{ section.settings.btn_url_1 }}" class="rad-svc-btn">{{ section.settings.btn_label_1 | default: 'View Pricing' }}</a>
-          {%- else -%}
-            <span class="rad-svc-btn-disabled">{{ section.settings.btn_label_1 | default: 'Coming Soon' }}</span>
-          {%- endif -%}
+          <h3 class="rad-svc-name">Paint Protection Film (PPF)</h3>
+          <p class="rad-svc-desc">Our PPF keeps your car brand new by shielding it from scratches, chips, and UV damage.</p>
+          <a href="/pages/paint-protection-film" class="rad-svc-btn">View Pricing</a>
         </div>
       </div>
 
-      <!-- Card 2 -->
+      <!-- Card 2: Ceramic — COMING SOON -->
       <div class="rad-svc-card">
         <div class="rad-svc-img">
           {%- if section.settings.img_2 != blank -%}
-            <img src="{{ section.settings.img_2 | image_url: width: 600 }}" alt="{{ section.settings.name_2 }}" loading="lazy">
+            <img src="{{ section.settings.img_2 | image_url: width: 600 }}" alt="Ceramic Coating" loading="lazy">
           {%- else -%}
             <div class="rad-svc-img-fallback">&#10024;</div>
           {%- endif -%}
         </div>
         <div class="rad-svc-body">
-          <h3 class="rad-svc-name">{{ section.settings.name_2 | default: 'Ceramic Coating' }}</h3>
-          <p class="rad-svc-desc">{{ section.settings.desc_2 | default: 'Give long-lasting shine and protection. Defends your car from scratches, dirt, and UV rays!' }}</p>
-          {%- if section.settings.btn_active_2 -%}
-            <a href="{{ section.settings.btn_url_2 }}" class="rad-svc-btn">{{ section.settings.btn_label_2 | default: 'View Pricing' }}</a>
-          {%- else -%}
-            <span class="rad-svc-btn-disabled">{{ section.settings.btn_label_2 | default: 'Coming Soon' }}</span>
-          {%- endif -%}
+          <h3 class="rad-svc-name">Ceramic Coating</h3>
+          <p class="rad-svc-desc">Give long-lasting shine and protection. Defends your car from scratches, dirt, and UV rays!</p>
+          <span class="rad-svc-btn-disabled">Coming Soon</span>
         </div>
       </div>
 
-      <!-- Card 3 -->
+      <!-- Card 3: Detailing — COMING SOON -->
       <div class="rad-svc-card">
         <div class="rad-svc-img">
           {%- if section.settings.img_3 != blank -%}
-            <img src="{{ section.settings.img_3 | image_url: width: 600 }}" alt="{{ section.settings.name_3 }}" loading="lazy">
+            <img src="{{ section.settings.img_3 | image_url: width: 600 }}" alt="Exterior Interior Detailing" loading="lazy">
           {%- else -%}
             <div class="rad-svc-img-fallback">&#128663;</div>
           {%- endif -%}
         </div>
         <div class="rad-svc-body">
-          <h3 class="rad-svc-name">{{ section.settings.name_3 | default: 'Exterior & Interior Detailing' }}</h3>
-          <p class="rad-svc-desc">{{ section.settings.desc_3 | default: 'Full interior and exterior detailing to restore your car\'s showroom finish.' }}</p>
-          {%- if section.settings.btn_active_3 -%}
-            <a href="{{ section.settings.btn_url_3 }}" class="rad-svc-btn">{{ section.settings.btn_label_3 | default: 'View Pricing' }}</a>
-          {%- else -%}
-            <span class="rad-svc-btn-disabled">{{ section.settings.btn_label_3 | default: 'Coming Soon' }}</span>
-          {%- endif -%}
+          <h3 class="rad-svc-name">Exterior &amp; Interior Detailing</h3>
+          <p class="rad-svc-desc">Full interior and exterior detailing to restore your car's showroom finish.</p>
+          <span class="rad-svc-btn-disabled">Coming Soon</span>
         </div>
       </div>
 
-      <!-- Card 4 -->
+      <!-- Card 4: Anti-Rust — COMING SOON -->
       <div class="rad-svc-card">
         <div class="rad-svc-img">
           {%- if section.settings.img_4 != blank -%}
-            <img src="{{ section.settings.img_4 | image_url: width: 600 }}" alt="{{ section.settings.name_4 }}" loading="lazy">
+            <img src="{{ section.settings.img_4 | image_url: width: 600 }}" alt="Anti-Rust Undercoating" loading="lazy">
           {%- else -%}
             <div class="rad-svc-img-fallback">&#128274;</div>
           {%- endif -%}
         </div>
         <div class="rad-svc-body">
-          <h3 class="rad-svc-name">{{ section.settings.name_4 | default: 'Anti-Rust Undercoating' }}</h3>
-          <p class="rad-svc-desc">{{ section.settings.desc_4 | default: 'Guard your car against rust with our anti-rust undercoating for long-lasting protection.' }}</p>
-          {%- if section.settings.btn_active_4 -%}
-            <a href="{{ section.settings.btn_url_4 }}" class="rad-svc-btn">{{ section.settings.btn_label_4 | default: 'View Pricing' }}</a>
-          {%- else -%}
-            <span class="rad-svc-btn-disabled">{{ section.settings.btn_label_4 | default: 'Coming Soon' }}</span>
-          {%- endif -%}
+          <h3 class="rad-svc-name">Anti-Rust Undercoating</h3>
+          <p class="rad-svc-desc">Guard your car against rust with our anti-rust undercoating for long-lasting protection.</p>
+          <span class="rad-svc-btn-disabled">Coming Soon</span>
         </div>
       </div>
 
     </div>
     <div class="rad-services-cta">
-      <a href="{{ section.settings.cta_url | default: '/pages/paint-protection-film' }}" class="rad-btn-outline">
-        {{ section.settings.cta_label | default: 'View All Services' }}
-      </a>
+      <a href="/pages/paint-protection-film" class="rad-btn-outline">View All Services</a>
     </div>
   </div>
 </section>
@@ -180,183 +161,32 @@
   "name": "Services",
   "settings": [
     {
-      "type": "text",
-      "id": "title",
-      "label": "Section Title",
-      "default": "What We Offer"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Section Subtitle",
-      "default": "Premium Auto Care Services"
-    },
-    {
       "type": "header",
-      "content": "Card 1 — Paint Protection Film"
+      "content": "Service Card Images"
+    },
+    {
+      "type": "paragraph",
+      "content": "Upload images for each service. Recommended: 600x400px."
     },
     {
       "type": "image_picker",
       "id": "img_1",
-      "label": "Image"
-    },
-    {
-      "type": "text",
-      "id": "name_1",
-      "label": "Service Name",
-      "default": "Paint Protection Film (PPF)"
-    },
-    {
-      "type": "textarea",
-      "id": "desc_1",
-      "label": "Description",
-      "default": "Our PPF keeps your car brand new by shielding it from scratches, chips, and UV damage."
-    },
-    {
-      "type": "text",
-      "id": "btn_label_1",
-      "label": "Button Text",
-      "default": "View Pricing"
-    },
-    {
-      "type": "url",
-      "id": "btn_url_1",
-      "label": "Button Link"
-    },
-    {
-      "type": "checkbox",
-      "id": "btn_active_1",
-      "label": "Button Active? (uncheck = Coming Soon)",
-      "default": true
-    },
-    {
-      "type": "header",
-      "content": "Card 2 — Ceramic Coating"
+      "label": "PPF — Image"
     },
     {
       "type": "image_picker",
       "id": "img_2",
-      "label": "Image"
-    },
-    {
-      "type": "text",
-      "id": "name_2",
-      "label": "Service Name",
-      "default": "Ceramic Coating"
-    },
-    {
-      "type": "textarea",
-      "id": "desc_2",
-      "label": "Description",
-      "default": "Give long-lasting shine and protection. Defends your car from scratches, dirt, and UV rays!"
-    },
-    {
-      "type": "text",
-      "id": "btn_label_2",
-      "label": "Button Text",
-      "default": "Coming Soon"
-    },
-    {
-      "type": "url",
-      "id": "btn_url_2",
-      "label": "Button Link"
-    },
-    {
-      "type": "checkbox",
-      "id": "btn_active_2",
-      "label": "Button Active? (uncheck = Coming Soon)",
-      "default": false
-    },
-    {
-      "type": "header",
-      "content": "Card 3 — Exterior & Interior Detailing"
+      "label": "Ceramic Coating — Image"
     },
     {
       "type": "image_picker",
       "id": "img_3",
-      "label": "Image"
-    },
-    {
-      "type": "text",
-      "id": "name_3",
-      "label": "Service Name",
-      "default": "Exterior & Interior Detailing"
-    },
-    {
-      "type": "textarea",
-      "id": "desc_3",
-      "label": "Description",
-      "default": "Full interior and exterior detailing to restore your car's showroom finish."
-    },
-    {
-      "type": "text",
-      "id": "btn_label_3",
-      "label": "Button Text",
-      "default": "Coming Soon"
-    },
-    {
-      "type": "url",
-      "id": "btn_url_3",
-      "label": "Button Link"
-    },
-    {
-      "type": "checkbox",
-      "id": "btn_active_3",
-      "label": "Button Active? (uncheck = Coming Soon)",
-      "default": false
-    },
-    {
-      "type": "header",
-      "content": "Card 4 — Anti-Rust Undercoating"
+      "label": "Detailing — Image"
     },
     {
       "type": "image_picker",
       "id": "img_4",
-      "label": "Image"
-    },
-    {
-      "type": "text",
-      "id": "name_4",
-      "label": "Service Name",
-      "default": "Anti-Rust Undercoating"
-    },
-    {
-      "type": "textarea",
-      "id": "desc_4",
-      "label": "Description",
-      "default": "Guard your car against rust with our anti-rust undercoating for long-lasting protection."
-    },
-    {
-      "type": "text",
-      "id": "btn_label_4",
-      "label": "Button Text",
-      "default": "Coming Soon"
-    },
-    {
-      "type": "url",
-      "id": "btn_url_4",
-      "label": "Button Link"
-    },
-    {
-      "type": "checkbox",
-      "id": "btn_active_4",
-      "label": "Button Active? (uncheck = Coming Soon)",
-      "default": false
-    },
-    {
-      "type": "header",
-      "content": "Bottom CTA Button"
-    },
-    {
-      "type": "text",
-      "id": "cta_label",
-      "label": "Button Text",
-      "default": "View All Services"
-    },
-    {
-      "type": "url",
-      "id": "cta_url",
-      "label": "Button Link"
+      "label": "Anti-Rust — Image"
     }
   ],
   "presets": [{"name": "Services"}]
