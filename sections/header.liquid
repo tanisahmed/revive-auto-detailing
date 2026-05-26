@@ -7,7 +7,6 @@
     border-bottom: 1px solid #222;
     box-shadow: 0 1px 8px rgba(0,0,0,0.4);
   }
-
   .header-inner {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -15,216 +14,94 @@
     height: 4.5rem;
     gap: 1rem;
   }
+  .header-left { display: flex; align-items: center; justify-content: flex-start; }
+  .header-center { display: flex; justify-content: center; align-items: center; }
+  .header-right { display: flex; align-items: center; justify-content: flex-end; }
 
-  /* LEFT — Nav */
-  .header-nav {
-    display: flex;
-    align-items: center;
-    gap: 0.1rem;
-    justify-content: flex-start;
-  }
+  /* Logo */
+  .header-logo-link { display: flex; align-items: center; text-decoration: none; }
+  .header-logo-link img { height: 48px; width: auto; object-fit: contain; display: block; }
+  .header-logo-text { font-size: 1.75rem; font-weight: 800; color: #fff; letter-spacing: -0.5px; font-family: 'Nunito Sans', sans-serif; }
 
-  /* CENTER — Logo */
-  .header-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .header-logo a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-  }
-  .header-logo img {
-    height: 48px;
-    width: auto;
-    object-fit: contain;
-    display: block;
-  }
-  .header-logo-text {
-    font-size: 1.75rem;
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: -0.5px;
-    font-family: 'Nunito Sans', sans-serif;
-  }
-
-  /* RIGHT — Phone */
-  .header-right {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
-  .header-phone {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-weight: 700;
-    font-size: 0.875rem;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border: 2px solid #1e3a8a;
-    border-radius: 8px;
-    background: #1e3a8a;
-    white-space: nowrap;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-  .header-phone:hover { background: #1e40af; border-color: #1e40af; }
-
-  /* Nav items */
+  /* Nav */
+  .header-nav { display: flex; align-items: center; gap: 0.1rem; }
   .nav-item { position: relative; }
-
   .nav-link {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    padding: 0.5rem 0.75rem;
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: #d1d5db;
-    border-radius: 6px;
-    transition: all 0.2s;
-    cursor: pointer;
-    border: none;
-    background: none;
-    font-family: 'Nunito Sans', sans-serif;
-    text-decoration: none;
-    white-space: nowrap;
+    display: flex; align-items: center; gap: 0.25rem;
+    padding: 0.5rem 0.75rem; font-weight: 600; font-size: 0.9rem;
+    color: #d1d5db; border-radius: 6px; transition: all 0.2s;
+    cursor: pointer; border: none; background: none;
+    font-family: 'Nunito Sans', sans-serif; text-decoration: none; white-space: nowrap;
   }
   .nav-link:hover { background: #1a1a1a; color: #fff; }
-  .nav-link .nav-arrow { font-size: 0.6rem; color: #6b7280; }
-
+  .nav-arrow { font-size: 0.6rem; color: #6b7280; }
   .dropdown-menu {
-    position: absolute;
-    top: calc(100% + 0.5rem);
-    left: 0;
-    min-width: 210px;
-    background: #111;
-    border: 1px solid #333;
-    border-radius: 8px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-    padding: 0.5rem;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-8px);
-    transition: all 0.2s;
-    z-index: 200;
+    position: absolute; top: calc(100% + 0.5rem); left: 0;
+    min-width: 210px; background: #111; border: 1px solid #333;
+    border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    padding: 0.5rem; opacity: 0; visibility: hidden;
+    transform: translateY(-8px); transition: all 0.2s; z-index: 200;
   }
   .nav-item:hover .dropdown-menu,
-  .nav-item:focus-within .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
+  .nav-item:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
   .dropdown-link {
-    display: block;
-    padding: 0.6rem 0.85rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #d1d5db;
-    border-radius: 6px;
-    transition: all 0.2s;
-    text-decoration: none;
+    display: block; padding: 0.6rem 0.85rem; font-size: 0.875rem;
+    font-weight: 600; color: #d1d5db; border-radius: 6px;
+    transition: all 0.2s; text-decoration: none;
   }
   .dropdown-link:hover { background: #222; color: #fff; }
 
+  /* Phone */
+  .header-phone {
+    display: flex; align-items: center; gap: 0.4rem;
+    font-weight: 700; font-size: 0.875rem; color: #fff;
+    padding: 0.5rem 1rem; border: 2px solid #1e3a8a;
+    border-radius: 8px; background: #1e3a8a; white-space: nowrap;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .header-phone:hover { background: #1e40af; border-color: #1e40af; }
+
   /* Hamburger */
   .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 0.4rem;
-    border-radius: 6px;
+    display: none; flex-direction: column; gap: 5px;
+    cursor: pointer; background: none; border: none;
+    padding: 0.4rem; border-radius: 6px;
   }
   .hamburger:hover { background: #1a1a1a; }
-  .hamburger span {
-    display: block;
-    width: 24px;
-    height: 2.5px;
-    background: #fff;
-    border-radius: 2px;
-    transition: all 0.25s;
-  }
+  .hamburger span { display: block; width: 24px; height: 2.5px; background: #fff; border-radius: 2px; transition: all 0.25s; }
   .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
   .hamburger.open span:nth-child(2) { opacity: 0; }
   .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
   /* Mobile Menu */
   .mobile-menu {
-    display: none;
-    position: fixed;
-    top: 4.5rem;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #000;
-    z-index: 99;
-    padding: 1.5rem;
-    overflow-y: auto;
-    flex-direction: column;
-    gap: 0.25rem;
-    border-top: 1px solid #222;
+    display: none; position: fixed; top: 4.5rem; left: 0; right: 0; bottom: 0;
+    background: #000; z-index: 99; padding: 1.5rem; overflow-y: auto;
+    flex-direction: column; gap: 0.25rem; border-top: 1px solid #222;
   }
   .mobile-menu.open { display: flex; }
-
   .mobile-nav-link {
-    display: block;
-    padding: 0.85rem 1rem;
-    font-weight: 600;
-    font-size: 1rem;
-    color: #d1d5db;
-    border-radius: 8px;
-    border-bottom: 1px solid #1a1a1a;
-    text-decoration: none;
-    transition: all 0.2s;
+    display: block; padding: 0.85rem 1rem; font-weight: 600; font-size: 1rem;
+    color: #d1d5db; border-radius: 8px; border-bottom: 1px solid #1a1a1a;
+    text-decoration: none; transition: all 0.2s;
   }
   .mobile-nav-link:hover { background: #1a1a1a; color: #fff; }
-
-  .mob-toggle {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-  }
+  .mob-toggle { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
   .mob-toggle .arr { transition: transform 0.2s; color: #6b7280; font-size: 0.8rem; }
   .mob-toggle.expanded .arr { transform: rotate(180deg); }
   .mob-sub { display: none; padding-left: 1rem; }
   .mob-sub.open { display: block; }
-
   .mobile-phone {
-    margin-top: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.85rem;
-    background: #1e3a8a;
-    color: #fff;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 1rem;
-    text-decoration: none;
+    margin-top: 1rem; display: flex; align-items: center; justify-content: center;
+    gap: 0.5rem; padding: 0.85rem; background: #1e3a8a; color: #fff;
+    border-radius: 8px; font-weight: 700; font-size: 1rem; text-decoration: none;
   }
   .mobile-phone:hover { background: #1e40af; }
 
-  /* Mobile layout */
   @media (max-width: 900px) {
-    .header-inner {
-      grid-template-columns: 1fr auto 1fr;
-    }
     .header-nav { display: none; }
     .header-right { display: none; }
-    .hamburger {
-      display: flex;
-      justify-self: start;
-    }
-    .header-logo {
-      grid-column: 2;
-    }
+    .hamburger { display: flex; }
   }
   @media (min-width: 901px) {
     .mobile-menu { display: none !important; }
@@ -236,134 +113,104 @@
   <div class="container">
     <div class="header-inner">
 
-      <!-- LEFT: Hamburger (mobile) / Nav (desktop) -->
-      <div class="header-nav" role="navigation" aria-label="Main navigation">
-        {%- for i in (1..5) -%}
-          {%- assign label_key = 'nav_label_' | append: i -%}
-          {%- assign url_key   = 'nav_url_'   | append: i -%}
-          {%- assign has_drop_key = 'nav_has_dropdown_' | append: i -%}
-
-          {%- assign lbl = section.settings[label_key] -%}
-          {%- assign url = section.settings[url_key] -%}
-
-          {%- if lbl != blank -%}
-            {%- if section.settings[has_drop_key] and i == 3 -%}
-              <div class="nav-item">
-                <button class="nav-link" aria-haspopup="true">
-                  {{ lbl }} <span class="nav-arrow">&#9660;</span>
-                </button>
-                <div class="dropdown-menu" role="menu">
-                  {%- for j in (1..5) -%}
-                    {%- assign dl = 'nav3_sub_label_' | append: j -%}
-                    {%- assign du = 'nav3_sub_url_'   | append: j -%}
-                    {%- if section.settings[dl] != blank -%}
-                      <a class="dropdown-link" href="{{ section.settings[du] | default: '#' }}" role="menuitem">
-                        {{ section.settings[dl] }}
-                      </a>
-                    {%- endif -%}
-                  {%- endfor -%}
-                </div>
-              </div>
-            {%- elsif section.settings[has_drop_key] and i == 5 -%}
-              <div class="nav-item">
-                <button class="nav-link" aria-haspopup="true">
-                  {{ lbl }} <span class="nav-arrow">&#9660;</span>
-                </button>
-                <div class="dropdown-menu" role="menu">
-                  {%- for j in (1..4) -%}
-                    {%- assign dl = 'nav5_sub_label_' | append: j -%}
-                    {%- assign du = 'nav5_sub_url_'   | append: j -%}
-                    {%- if section.settings[dl] != blank -%}
-                      <a class="dropdown-link" href="{{ section.settings[du] | default: '#' }}" role="menuitem">
-                        {{ section.settings[dl] }}
-                      </a>
-                    {%- endif -%}
-                  {%- endfor -%}
-                </div>
-              </div>
-            {%- else -%}
-              <div class="nav-item">
-                <a class="nav-link" href="{{ url | default: '#' }}">{{ lbl }}</a>
-              </div>
-            {%- endif -%}
-          {%- endif -%}
-        {%- endfor -%}
+      <!-- LEFT: Nav (desktop) / Hamburger (mobile) -->
+      <div class="header-left">
+        <button class="hamburger" id="rad-hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="header-nav" role="navigation" aria-label="Main navigation">
+          <!-- Home -->
+          <div class="nav-item">
+            <a class="nav-link" href="{{ shop.url }}/">
+              {{ section.settings.nav_label_1 | default: 'Home' }}
+            </a>
+          </div>
+          <!-- About -->
+          <div class="nav-item">
+            <a class="nav-link" href="{{ shop.url }}/pages/about-us">
+              {{ section.settings.nav_label_2 | default: 'About Us' }}
+            </a>
+          </div>
+          <!-- Services Dropdown -->
+          <div class="nav-item">
+            <button class="nav-link" aria-haspopup="true">
+              {{ section.settings.nav_label_3 | default: 'Services' }}
+              <span class="nav-arrow">&#9660;</span>
+            </button>
+            <div class="dropdown-menu" role="menu">
+              <a class="dropdown-link" href="{{ shop.url }}/pages/paint-protection-film-ppf">Paint Protection Film (PPF)</a>
+              <a class="dropdown-link" href="#">Ceramic Coating</a>
+              <a class="dropdown-link" href="#">Exterior &amp; Interior Detailing</a>
+              <a class="dropdown-link" href="#">Anti-Rust Undercoating</a>
+            </div>
+          </div>
+          <!-- Contact -->
+          <div class="nav-item">
+            <a class="nav-link" href="{{ shop.url }}/pages/contact">
+              {{ section.settings.nav_label_4 | default: 'Contact' }}
+            </a>
+          </div>
+          <!-- More Dropdown -->
+          <div class="nav-item">
+            <button class="nav-link" aria-haspopup="true">
+              {{ section.settings.nav_label_5 | default: 'More' }}
+              <span class="nav-arrow">&#9660;</span>
+            </button>
+            <div class="dropdown-menu" role="menu">
+              <a class="dropdown-link" href="{{ shop.url }}/pages/ppf-booking">Book Appointment</a>
+              <a class="dropdown-link" href="{{ shop.url }}/pages/faq">FAQ</a>
+            </div>
+          </div>
+        </nav>
       </div>
 
       <!-- CENTER: Logo -->
-      <div class="header-logo">
-        <a href="/">
+      <div class="header-center">
+        <a href="{{ shop.url }}/" class="header-logo-link">
           {%- if section.settings.logo != blank -%}
             <img src="{{ section.settings.logo | image_url: height: 96 }}"
-                 alt="{{ shop.name }}"
-                 height="48"
-                 loading="eager">
+                 alt="{{ shop.name }}" height="48" loading="eager">
           {%- else -%}
-            <span class="header-logo-text">{{ section.settings.logo_text | default: 'RAD' }}</span>
+            <span class="header-logo-text">{{ section.settings.logo_text | default: shop.name }}</span>
           {%- endif -%}
         </a>
       </div>
 
-      <!-- RIGHT: Phone + Hamburger -->
+      <!-- RIGHT: Phone -->
       <div class="header-right">
         <a href="tel:{{ section.settings.phone | default: '+923037231111' }}" class="header-phone">
           &#128222; {{ section.settings.phone_display | default: '+92 303 7231111' }}
         </a>
       </div>
 
-      <button class="hamburger" id="rad-hamburger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-
     </div>
   </div>
 
   <!-- Mobile Menu -->
   <nav class="mobile-menu" id="rad-mobile-menu">
-    {%- for i in (1..5) -%}
-      {%- assign lbl = 'nav_label_' | append: i -%}
-      {%- assign url = 'nav_url_'   | append: i -%}
-      {%- assign has_drop_key = 'nav_has_dropdown_' | append: i -%}
-
-      {%- assign ml = section.settings[lbl] -%}
-      {%- assign mu = section.settings[url] -%}
-
-      {%- if ml != blank -%}
-        {%- if section.settings[has_drop_key] and i == 3 -%}
-          <div>
-            <div class="mobile-nav-link mob-toggle" id="mob-tog-3">
-              {{ ml }} <span class="arr">&#9660;</span>
-            </div>
-            <div class="mob-sub" id="mob-sub-3">
-              {%- for j in (1..5) -%}
-                {%- assign dl = 'nav3_sub_label_' | append: j -%}
-                {%- assign du = 'nav3_sub_url_'   | append: j -%}
-                {%- if section.settings[dl] != blank -%}
-                  <a class="mobile-nav-link" href="{{ section.settings[du] | default: '#' }}">{{ section.settings[dl] }}</a>
-                {%- endif -%}
-              {%- endfor -%}
-            </div>
-          </div>
-        {%- elsif section.settings[has_drop_key] and i == 5 -%}
-          <div>
-            <div class="mobile-nav-link mob-toggle" id="mob-tog-5">
-              {{ ml }} <span class="arr">&#9660;</span>
-            </div>
-            <div class="mob-sub" id="mob-sub-5">
-              {%- for j in (1..4) -%}
-                {%- assign dl = 'nav5_sub_label_' | append: j -%}
-                {%- assign du = 'nav5_sub_url_'   | append: j -%}
-                {%- if section.settings[dl] != blank -%}
-                  <a class="mobile-nav-link" href="{{ section.settings[du] | default: '#' }}">{{ section.settings[dl] }}</a>
-                {%- endif -%}
-              {%- endfor -%}
-            </div>
-          </div>
-        {%- else -%}
-          <a class="mobile-nav-link" href="{{ mu | default: '#' }}">{{ ml }}</a>
-        {%- endif -%}
-      {%- endif -%}
-    {%- endfor -%}
+    <a class="mobile-nav-link" href="{{ shop.url }}/">Home</a>
+    <a class="mobile-nav-link" href="{{ shop.url }}/pages/about-us">About Us</a>
+    <div>
+      <div class="mobile-nav-link mob-toggle" id="mob-tog-3">
+        Services <span class="arr">&#9660;</span>
+      </div>
+      <div class="mob-sub" id="mob-sub-3">
+        <a class="mobile-nav-link" href="{{ shop.url }}/pages/paint-protection-film-ppf">Paint Protection Film (PPF)</a>
+        <a class="mobile-nav-link" href="#">Ceramic Coating</a>
+        <a class="mobile-nav-link" href="#">Exterior &amp; Interior Detailing</a>
+        <a class="mobile-nav-link" href="#">Anti-Rust Undercoating</a>
+      </div>
+    </div>
+    <a class="mobile-nav-link" href="{{ shop.url }}/pages/contact">Contact</a>
+    <div>
+      <div class="mobile-nav-link mob-toggle" id="mob-tog-5">
+        More <span class="arr">&#9660;</span>
+      </div>
+      <div class="mob-sub" id="mob-sub-5">
+        <a class="mobile-nav-link" href="{{ shop.url }}/pages/ppf-booking">Book Appointment</a>
+        <a class="mobile-nav-link" href="{{ shop.url }}/pages/faq">FAQ</a>
+      </div>
+    </div>
     <a href="tel:{{ section.settings.phone | default: '+923037231111' }}" class="mobile-phone">
       &#128222; {{ section.settings.phone_display | default: '+92 303 7231111' }}
     </a>
@@ -378,8 +225,7 @@
   var s3   = document.getElementById('mob-sub-3');
   var t5   = document.getElementById('mob-tog-5');
   var s5   = document.getElementById('mob-sub-5');
-
-  ham.addEventListener('click', function(){
+  if(ham) ham.addEventListener('click', function(){
     var o = menu.classList.toggle('open');
     ham.classList.toggle('open', o);
     ham.setAttribute('aria-expanded', o);
@@ -388,7 +234,11 @@
   if(t3) t3.addEventListener('click', function(){ var o=s3.classList.toggle('open'); t3.classList.toggle('expanded',o); });
   if(t5) t5.addEventListener('click', function(){ var o=s5.classList.toggle('open'); t5.classList.toggle('expanded',o); });
   window.addEventListener('resize', function(){
-    if(window.innerWidth>900){ menu.classList.remove('open'); ham.classList.remove('open'); document.body.style.overflow=''; }
+    if(window.innerWidth>900 && menu){
+      menu.classList.remove('open');
+      if(ham) ham.classList.remove('open');
+      document.body.style.overflow='';
+    }
   });
 })();
 </script>
@@ -405,12 +255,12 @@
       "type": "image_picker",
       "id": "logo",
       "label": "Logo Image",
-      "info": "PNG with transparent background recommended. Height: 48-60px."
+      "info": "PNG transparent background. Height: 48px."
     },
     {
       "type": "text",
       "id": "logo_text",
-      "label": "Logo Text (if no image)",
+      "label": "Logo Text (agar image nahi)",
       "default": "RAD"
     },
     {
@@ -420,7 +270,7 @@
     {
       "type": "text",
       "id": "phone",
-      "label": "Phone Number (tel link)",
+      "label": "Phone Number",
       "default": "+923037231111"
     },
     {
@@ -431,176 +281,37 @@
     },
     {
       "type": "header",
-      "content": "Menu Item 1"
+      "content": "Menu Labels"
     },
     {
       "type": "text",
       "id": "nav_label_1",
-      "label": "Label",
+      "label": "Menu Item 1",
       "default": "Home"
-    },
-    {
-      "type": "url",
-      "id": "nav_url_1",
-      "label": "URL"
-    },
-    {
-      "type": "header",
-      "content": "Menu Item 2"
     },
     {
       "type": "text",
       "id": "nav_label_2",
-      "label": "Label",
+      "label": "Menu Item 2",
       "default": "About Us"
-    },
-    {
-      "type": "url",
-      "id": "nav_url_2",
-      "label": "URL"
-    },
-    {
-      "type": "header",
-      "content": "Menu Item 3 (with Dropdown)"
     },
     {
       "type": "text",
       "id": "nav_label_3",
-      "label": "Label",
+      "label": "Menu Item 3 (Services)",
       "default": "Services"
-    },
-    {
-      "type": "checkbox",
-      "id": "nav_has_dropdown_3",
-      "label": "Has Dropdown?",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "nav3_sub_label_1",
-      "label": "Sub Item 1 Label",
-      "default": "Paint Protection Film (PPF)"
-    },
-    {
-      "type": "url",
-      "id": "nav3_sub_url_1",
-      "label": "Sub Item 1 URL"
-    },
-    {
-      "type": "text",
-      "id": "nav3_sub_label_2",
-      "label": "Sub Item 2 Label",
-      "default": "Ceramic Coating"
-    },
-    {
-      "type": "url",
-      "id": "nav3_sub_url_2",
-      "label": "Sub Item 2 URL"
-    },
-    {
-      "type": "text",
-      "id": "nav3_sub_label_3",
-      "label": "Sub Item 3 Label",
-      "default": "Exterior & Interior Detailing"
-    },
-    {
-      "type": "url",
-      "id": "nav3_sub_url_3",
-      "label": "Sub Item 3 URL"
-    },
-    {
-      "type": "text",
-      "id": "nav3_sub_label_4",
-      "label": "Sub Item 4 Label",
-      "default": "Anti-Rust Undercoating"
-    },
-    {
-      "type": "url",
-      "id": "nav3_sub_url_4",
-      "label": "Sub Item 4 URL"
-    },
-    {
-      "type": "text",
-      "id": "nav3_sub_label_5",
-      "label": "Sub Item 5 Label"
-    },
-    {
-      "type": "url",
-      "id": "nav3_sub_url_5",
-      "label": "Sub Item 5 URL"
-    },
-    {
-      "type": "header",
-      "content": "Menu Item 4"
     },
     {
       "type": "text",
       "id": "nav_label_4",
-      "label": "Label",
+      "label": "Menu Item 4",
       "default": "Contact"
-    },
-    {
-      "type": "url",
-      "id": "nav_url_4",
-      "label": "URL"
-    },
-    {
-      "type": "header",
-      "content": "Menu Item 5 (with Dropdown)"
     },
     {
       "type": "text",
       "id": "nav_label_5",
-      "label": "Label",
+      "label": "Menu Item 5 (More)",
       "default": "More"
-    },
-    {
-      "type": "checkbox",
-      "id": "nav_has_dropdown_5",
-      "label": "Has Dropdown?",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "nav5_sub_label_1",
-      "label": "Sub Item 1 Label",
-      "default": "Book Appointment"
-    },
-    {
-      "type": "url",
-      "id": "nav5_sub_url_1",
-      "label": "Sub Item 1 URL"
-    },
-    {
-      "type": "text",
-      "id": "nav5_sub_label_2",
-      "label": "Sub Item 2 Label",
-      "default": "FAQ"
-    },
-    {
-      "type": "url",
-      "id": "nav5_sub_url_2",
-      "label": "Sub Item 2 URL"
-    },
-    {
-      "type": "text",
-      "id": "nav5_sub_label_3",
-      "label": "Sub Item 3 Label"
-    },
-    {
-      "type": "url",
-      "id": "nav5_sub_url_3",
-      "label": "Sub Item 3 URL"
-    },
-    {
-      "type": "text",
-      "id": "nav5_sub_label_4",
-      "label": "Sub Item 4 Label"
-    },
-    {
-      "type": "url",
-      "id": "nav5_sub_url_4",
-      "label": "Sub Item 4 URL"
     }
   ]
 }
