@@ -1,0 +1,81 @@
+<style>
+.rad-marquee {
+  background: #000;
+  color: #fff;
+  padding: 0.75rem 0;
+  overflow: hidden;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+}
+.rad-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: rad-marquee 25s linear infinite;
+}
+.rad-marquee:hover .rad-marquee-track { animation-play-state: paused; }
+.rad-marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 2.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  white-space: nowrap;
+  font-family: 'Nunito Sans', sans-serif;
+  letter-spacing: 0.03em;
+}
+.rad-marquee-dot {
+  color: #60a5fa;
+  font-size: 1.2rem;
+}
+@keyframes rad-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+</style>
+
+<div class="rad-marquee">
+  <div class="rad-marquee-track" id="rad-mq-track">
+    {%- assign items = section.settings.items | default: '✓ Premium PPF Installation,✓ NAR Certified Film,✓ Self-Healing Technology,✓ 10 Year Warranty,✓ Karachi #1 Detailing,✓ 500+ Happy Customers,✓ 10% Off This Month' -%}
+    {%- assign item_arr = items | split: ',' -%}
+    <!-- First copy -->
+    {%- for item in item_arr -%}
+      <div class="rad-marquee-item">
+        <span class="rad-marquee-dot">◆</span>
+        {{ item | strip }}
+      </div>
+    {%- endfor -%}
+    <!-- Second copy for seamless loop -->
+    {%- for item in item_arr -%}
+      <div class="rad-marquee-item">
+        <span class="rad-marquee-dot">◆</span>
+        {{ item | strip }}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Marquee Ticker",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "items",
+      "label": "Ticker Items (comma separated)",
+      "default": "✓ Premium PPF Installation,✓ NAR Certified Film,✓ Self-Healing Technology,✓ 10 Year Warranty,✓ Karachi #1 Detailing,✓ 500+ Happy Customers,✓ 10% Off This Month"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "s",
+      "label": "Animation Speed",
+      "default": 25
+    }
+  ],
+  "presets": [{"name": "Marquee Ticker"}]
+}
+{% endschema %}
