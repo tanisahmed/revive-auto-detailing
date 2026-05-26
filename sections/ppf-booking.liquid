@@ -144,7 +144,7 @@
       </div>
 
       <!-- FORM -->
-      <div class="rad-bform" id="rad-bform">
+      <div class="rad-bform" id="rad-bform" data-ejs-service="{{ section.settings.ejs_service }}" data-ejs-template="{{ section.settings.ejs_template }}" data-ejs-key="{{ section.settings.ejs_key }}">
 
         <!-- STEP 1 -->
         <div class="rad-bstep active" id="rs1">
@@ -597,19 +597,43 @@
 })();
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  (function(){
+    var k = document.getElementById('rad-bform') ? document.getElementById('rad-bform').dataset.ejsKey : '';
+    if(k) { emailjs.init({ publicKey: k }); }
+  })();
+</script>
+
 {% schema %}
 {
   "name": "PPF Booking Form",
   "settings": [
     {
       "type": "header",
-      "content": "Lead Settings"
+      "content": "EmailJS Settings — emailjs.com pe free account banao"
+    },
+    {
+      "type": "paragraph",
+      "content": "EmailJS se har booking confirm hone pe info@reviveautodetailing.pk pe email aayegi. emailjs.com pe free account banao phir yahan details paste karein."
     },
     {
       "type": "text",
-      "id": "google_sheets_url",
-      "label": "Google Sheets Script URL (optional)",
-      "placeholder": "https://script.google.com/macros/s/YOUR_ID/exec"
+      "id": "ejs_service",
+      "label": "EmailJS Service ID",
+      "placeholder": "service_xxxxxxx"
+    },
+    {
+      "type": "text",
+      "id": "ejs_template",
+      "label": "EmailJS Template ID",
+      "placeholder": "template_xxxxxxx"
+    },
+    {
+      "type": "text",
+      "id": "ejs_key",
+      "label": "EmailJS Public Key",
+      "placeholder": "xxxxxxxxxxxxxxxxxxxx"
     }
   ],
   "presets": [{"name": "PPF Booking Form"}]
