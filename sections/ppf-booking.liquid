@@ -944,7 +944,68 @@
      }, 1500);
 
      // =============================================
-     // 3. SHOW SUCCESS SCREEN
+     // 3. SHOPIFY INBOX — Send booking as chat message
+     // =============================================
+     try {
+       // Trigger Shopify Inbox chat with booking details
+       var inboxMsg = '📋 New Booking Request\n\n' +
+         'Ref: ' + ref + '\n' +
+         'Name: ' + (bookingData.firstName||'') + ' ' + (bookingData.lastName||'') + '\n' +
+         'Phone: ' + (bookingData.phone||'') + '\n' +
+         'Email: ' + (bookingData.email||'') + '\n' +
+         'Vehicle: ' + (bookingData.make||'') + ' ' + (bookingData.model||'') + ' ' + (bookingData.year||'') + '\n' +
+         'Type: ' + (vehicleTypeLabels[bookingData.vehicleType]||'') + '\n' +
+         'Package: ' + (bookingData.packageLabel||'') + '\n' +
+         'Date: ' + dateStr + ' at ' + (bookingData.time||'') + '\n' +
+         'Price: PKR ' + (bookingData.price ? bookingData.price.toLocaleString() : '');
+
+       // Shopify Inbox API
+       if (window.ShopifyChat && window.ShopifyChat.open) {
+         window.ShopifyChat.open();
+         setTimeout(function() {
+           var chatInput = document.querySelector('#chat-textarea, .chat-input textarea, [data-chat-input]');
+           if (chatInput) {
+             chatInput.value = inboxMsg;
+             chatInput.dispatchEvent(new Event('input', { bubbles: true }));
+           }
+         }, 1000);
+       }
+
+       // Also send via Shopify Inbox contact endpoint
+       fetch('/contact', {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+         body: new URLSearchParams({
+           'form_type': 'contact',
+           'utf8': '✓',
+           'contact[name]': (bookingData.firstName||'') + ' ' + (bookingData.lastName||''),
+           'contact[email]': bookingData.email || 'noemail@rad.pk',
+           'contact[phone]': bookingData.phone || '',
+           'contact[body]': '🔔 NEW SLOT BOOKING\n\n' +
+             'Booking Ref: ' + ref + '\n' +
+             'Name: ' + (bookingData.firstName||'') + ' ' + (bookingData.lastName||'') + '\n' +
+             'WhatsApp: ' + (bookingData.phone||'') + '\n' +
+             'Email: ' + (bookingData.email||'') + '\n\n' +
+             'Vehicle: ' + (bookingData.make||'') + ' ' + (bookingData.model||'') + ' (' + (bookingData.year||'') + ')\n' +
+             'Color: ' + (bookingData.color||'N/A') + '\n' +
+             'Vehicle Type: ' + (vehicleTypeLabels[bookingData.vehicleType]||'') + '\n\n' +
+             'Package: ' + (bookingData.packageLabel||'') + '\n' +
+             'Appointment: ' + dateStr + ' at ' + (bookingData.time||'') + '\n' +
+             'Duration: ' + (bookingData.duration||'') + '\n' +
+             'Total Price: PKR ' + (bookingData.price ? bookingData.price.toLocaleString() : '') + '\n\n' +
+             'Please confirm this booking via WhatsApp: ' + (bookingData.phone||'')
+         })
+       }).then(function(res) {
+         console.log('Shopify contact form sent:', res.status);
+       }).catch(function(e) {
+         console.log('Contact form error:', e);
+       });
+     } catch(e) {
+       console.log('Inbox error:', e);
+     }
+
+     // =============================================
+     // 4. SHOW SUCCESS SCREEN
      // =============================================
      document.getElementById('booking-form-container').style.display = 'none';
      document.querySelector('.booking-progress').style.display = 'none';
