@@ -77,7 +77,73 @@
     "variant_button_border_width": 1,
     "variant_button_radius": 14,
     "variant_button_width": "equal-width-buttons",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo_text": "RAD",
+          "phone": "+923037231111",
+          "phone_display": "+92 303 7231111",
+          "nav_label_1": "Home",
+          "nav_label_2": "About Us",
+          "nav_label_3": "Services",
+          "nav_label_4": "Contact",
+          "nav_label_5": "More"
+        }
+      },
+      "hero": {
+        "type": "hero",
+        "settings": {}
+      },
+      "services": {
+        "type": "services",
+        "settings": {}
+      },
+      "why-us": {
+        "type": "why-us",
+        "settings": {
+          "title": "Why Choose RAD For Your Car Detailing?"
+        }
+      },
+      "reviews": {
+        "type": "reviews",
+        "settings": {}
+      },
+      "process": {
+        "type": "process",
+        "settings": {}
+      },
+      "contactform": {
+        "type": "contactform",
+        "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "phone": "+923037231111",
+          "phone_display": "+92 303 7231111",
+          "email": "info@reviveautodetailing.pk",
+          "address": "A-65, Main Shahrah-e-Qaideen, Central Jacob Lines Block 1, Khudadad Colony, Karachi, Sindh 74800"
+        }
+      }
+    },
     "content_for_index": [],
+    "blocks": {
+      "15683396631634586217": {
+        "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
+        "disabled": false,
+        "settings": {
+          "button_color": "#000000",
+          "secondary_color": "#FFFFFF",
+          "ternary_color": "#6A6A6A",
+          "button_icon": "chat_bubble",
+          "button_text": "chat_with_us",
+          "button_horizontal_position": "bottom_right",
+          "button_vertical_position": "lowest",
+          "greeting_message": ""
+        }
+      }
+    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
