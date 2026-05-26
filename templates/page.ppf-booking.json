@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "ppf_booking": {
+      "type": "ppf_booking",
+      "settings": {}
+    }
+  },
+  "order": ["ppf_booking"]
+}
