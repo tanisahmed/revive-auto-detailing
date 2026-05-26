@@ -1,10 +1,67 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "color_primary": "#1e3a8a",
     "color_secondary": "#f3f4f6",
     "color_text": "#1f2937",
     "color_success": "#10b981",
-    "social_whatsapp": "923037231111"
+    "social_whatsapp": "923037231111",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo_text": "RAD"
+        }
+      },
+      "hero": {
+        "type": "hero",
+        "settings": {
+          "bg_image": "shopify://shop_images/b0be0cc3-4fb4-4775-9c60-a7b1f64b7050.png"
+        }
+      },
+      "services": {
+        "type": "services",
+        "settings": {}
+      },
+      "why-choose": {
+        "type": "why-choose",
+        "settings": {}
+      },
+      "reviews": {
+        "type": "reviews",
+        "settings": {}
+      },
+      "process": {
+        "type": "process",
+        "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "phone": "+923037231111",
+          "phone_display": "+92 303 7231111",
+          "email": "info@reviveautodetailing.pk",
+          "address": "A-65, Main Shahrah-e-Qaideen, Central Jacob Lines Block 1, Khudadad Colony, Karachi, Sindh 74800"
+        }
+      }
+    },
+    "content_for_index": []
   },
-  "presets": {}
+  "presets": {
+    "RAD Theme": {
+      "color_primary": "#1e3a8a",
+      "color_secondary": "#f3f4f6",
+      "color_text": "#1f2937",
+      "color_success": "#10b981",
+      "social_whatsapp": "923037231111"
+    }
+  }
 }
