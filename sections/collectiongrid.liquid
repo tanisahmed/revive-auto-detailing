@@ -1,0 +1,147 @@
+<style>
+.rad-colls { padding: 2rem 0; background: #fff; }
+.rad-colls.bg-gray { background: #f3f4f6; }
+.rad-colls-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.rad-coll-card {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 4/3;
+  background: #1e3a8a;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+}
+.rad-coll-card:hover .rad-coll-img { transform: scale(1.05); }
+.rad-coll-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s;
+}
+.rad-coll-fallback {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4rem;
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+}
+.rad-coll-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 60%);
+}
+.rad-coll-info {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1.25rem;
+  color: #fff;
+}
+.rad-coll-name {
+  font-size: 1.1rem; font-weight: 800;
+  margin-bottom: 0.25rem;
+  font-family: 'Nunito Sans', sans-serif;
+}
+.rad-coll-count { font-size: 0.8rem; opacity: 0.8; font-weight: 600; }
+.rad-coll-arrow {
+  position: absolute; top: 1rem; right: 1rem;
+  width: 2rem; height: 2rem;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; color: #fff;
+  transition: background 0.2s;
+}
+.rad-coll-card:hover .rad-coll-arrow { background: #1e3a8a; }
+@media (max-width: 900px) { .rad-colls-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 480px) { .rad-colls-grid { grid-template-columns: 1fr; } }
+</style>
+
+<section class="rad-colls {% if section.settings.bg_gray %}bg-gray{% endif %}">
+  <div class="container">
+    <h2 class="section-title">{{ section.settings.title | default: 'Browse Our Services' }}</h2>
+    <p class="section-subtitle">{{ section.settings.subtitle | default: 'Find the right service for your car' }}</p>
+
+    <div class="rad-colls-grid">
+      {%- for i in (1..6) -%}
+        {%- assign name_key  = 'coll_name_'  | append: i -%}
+        {%- assign url_key   = 'coll_url_'   | append: i -%}
+        {%- assign img_key   = 'coll_img_'   | append: i -%}
+        {%- assign count_key = 'coll_count_' | append: i -%}
+        {%- assign icon_key  = 'coll_icon_'  | append: i -%}
+
+        {%- assign cname = section.settings[name_key] -%}
+        {%- if cname != blank -%}
+          <a href="{{ section.settings[url_key] | default: '#' }}" class="rad-coll-card">
+            {%- if section.settings[img_key] != blank -%}
+              <img class="rad-coll-img"
+                   src="{{ section.settings[img_key] | image_url: width: 600 }}"
+                   alt="{{ cname }}" loading="lazy">
+            {%- else -%}
+              <div class="rad-coll-fallback">{{ section.settings[icon_key] | default: '🚗' }}</div>
+            {%- endif -%}
+            <div class="rad-coll-overlay"></div>
+            <div class="rad-coll-info">
+              <div class="rad-coll-name">{{ cname }}</div>
+              {%- if section.settings[count_key] != blank -%}
+                <div class="rad-coll-count">{{ section.settings[count_key] }}</div>
+              {%- endif -%}
+            </div>
+            <div class="rad-coll-arrow">&#8594;</div>
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Grid",
+  "settings": [
+    {"type": "text", "id": "title", "label": "Title", "default": "Browse Our Services"},
+    {"type": "text", "id": "subtitle", "label": "Subtitle", "default": "Find the right service for your car"},
+    {"type": "header", "content": "Card 1"},
+    {"type": "text", "id": "coll_name_1", "label": "Name", "default": "Paint Protection Film"},
+    {"type": "url", "id": "coll_url_1", "label": "Link"},
+    {"type": "image_picker", "id": "coll_img_1", "label": "Image"},
+    {"type": "text", "id": "coll_icon_1", "label": "Icon (if no image)", "default": "🛡️"},
+    {"type": "text", "id": "coll_count_1", "label": "Sub-text", "default": "2 Packages Available"},
+    {"type": "header", "content": "Card 2"},
+    {"type": "text", "id": "coll_name_2", "label": "Name", "default": "Ceramic Coating"},
+    {"type": "url", "id": "coll_url_2", "label": "Link"},
+    {"type": "image_picker", "id": "coll_img_2", "label": "Image"},
+    {"type": "text", "id": "coll_icon_2", "label": "Icon (if no image)", "default": "✨"},
+    {"type": "text", "id": "coll_count_2", "label": "Sub-text", "default": "Coming Soon"},
+    {"type": "header", "content": "Card 3"},
+    {"type": "text", "id": "coll_name_3", "label": "Name", "default": "Exterior & Interior Detailing"},
+    {"type": "url", "id": "coll_url_3", "label": "Link"},
+    {"type": "image_picker", "id": "coll_img_3", "label": "Image"},
+    {"type": "text", "id": "coll_icon_3", "label": "Icon (if no image)", "default": "🚗"},
+    {"type": "text", "id": "coll_count_3", "label": "Sub-text", "default": "Coming Soon"},
+    {"type": "header", "content": "Card 4"},
+    {"type": "text", "id": "coll_name_4", "label": "Name"},
+    {"type": "url", "id": "coll_url_4", "label": "Link"},
+    {"type": "image_picker", "id": "coll_img_4", "label": "Image"},
+    {"type": "text", "id": "coll_icon_4", "label": "Icon", "default": "🔒"},
+    {"type": "text", "id": "coll_count_4", "label": "Sub-text"},
+    {"type": "header", "content": "Card 5"},
+    {"type": "text", "id": "coll_name_5", "label": "Name"},
+    {"type": "url", "id": "coll_url_5", "label": "Link"},
+    {"type": "image_picker", "id": "coll_img_5", "label": "Image"},
+    {"type": "text", "id": "coll_icon_5", "label": "Icon", "default": "⭐"},
+    {"type": "text", "id": "coll_count_5", "label": "Sub-text"},
+    {"type": "header", "content": "Card 6"},
+    {"type": "text", "id": "coll_name_6", "label": "Name"},
+    {"type": "url", "id": "coll_url_6", "label": "Link"},
+    {"type": "image_picker", "id": "coll_img_6", "label": "Image"},
+    {"type": "text", "id": "coll_icon_6", "label": "Icon", "default": "🏆"},
+    {"type": "text", "id": "coll_count_6", "label": "Sub-text"},
+    {"type": "checkbox", "id": "bg_gray", "label": "Gray Background?", "default": false}
+  ],
+  "presets": [{"name": "Collection Grid"}]
+}
+{% endschema %}
