@@ -1,36 +1,49 @@
 <!doctype html>
-<html lang="{{ request.locale.iso_code }}">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#1e3a8a">
+<html
+  {% if request.design_mode %}
+    class="shopify-design-mode"
+  {% endif %}
+  lang="{{ request.locale.iso_code }}"
+>
+  <head>
+    {%- if settings.favicon != blank -%}
+      <link
+        rel="icon"
+        type="image/png"
+        href="{{ settings.favicon | image_url: width: 32, height: 32 }}"
+      >
+    {%- endif -%}
 
-  {%- if page_description -%}
-    <meta name="description" content="{{ page_description | escape }}">
-  {%- endif -%}
+    {% # theme-check-disable RemoteAsset %}
+    {% comment %} This a way to wait for main content to load when navigating to a new page so that the view transitions can work consistently {% endcomment %}
+    {% if settings.transition_to_main_product or settings.page_transition_enabled %}
+      <link
+        rel="expect"
+        href="#MainContent"
+        blocking="render"
+        id="view-transition-render-blocker"
+      >
+    {% endif %}
 
-  <link rel="canonical" href="{{ canonical_url }}">
+    {%- render 'meta-tags' -%}
+    {%- render 'stylesheets' -%}
+    {%- render 'fonts' -%}
+    {%- render 'scripts' -%}
+    {%- render 'theme-styles-variables' -%}
+    {%- render 'color-schemes' -%}
 
-  {%- if settings.favicon != blank -%}
-    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
-  {%- endif -%}
+    {% if request.design_mode %}
+      {%- render 'theme-editor' -%}
+    {% endif %}
 
-  <title>
-    {{ page_title }}
-    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
-  </title>
-
+    {{ content_for_header }}
+    {% # theme-check-enable RemoteAsset %}
+  
+  <!-- RAD Custom Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800&display=swap" rel="stylesheet">
-
-  {{ content_for_header }}
-
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --color-primary: #1e3a8a;
       --color-primary-hover: #1e40af;
@@ -52,74 +65,132 @@
       --container-max: 1200px;
       --container-pad: 1.5rem;
     }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font-primary);
-      color: var(--color-text);
-      background: var(--color-white);
-      line-height: 1.6;
-      font-size: 16px;
-      -webkit-font-smoothing: antialiased;
-    }
-    img { max-width: 100%; height: auto; display: block; }
-    a { color: inherit; text-decoration: none; }
-    button, input, select, textarea { font-family: inherit; }
-    ul { list-style: none; }
+    body { font-family: var(--font-primary); }
     .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-pad); }
     .section-title { font-size: 2.25rem; font-weight: 800; color: var(--color-text); text-align: center; margin-bottom: 0.5rem; line-height: 1.2; }
     .section-subtitle { text-align: center; color: var(--color-text-light); font-size: 1.1rem; margin-bottom: 3rem; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1.75rem; border-radius: var(--border-radius); font-weight: 700; font-size: 1rem; cursor: pointer; transition: var(--transition); border: 2px solid transparent; text-decoration: none; }
-    .btn-primary { background: var(--color-primary); color: var(--color-white); border-color: var(--color-primary); }
-    .btn-primary:hover { background: var(--color-primary-hover); border-color: var(--color-primary-hover); transform: translateY(-1px); box-shadow: var(--shadow-md); }
-    .btn-secondary { background: var(--color-white); color: var(--color-primary); border-color: var(--color-white); }
-    .btn-secondary:hover { background: var(--color-secondary); transform: translateY(-1px); }
-    .btn-outline { background: transparent; color: var(--color-primary); border-color: var(--color-primary); }
-    .btn-outline:hover { background: var(--color-primary); color: var(--color-white); }
-    .btn-full { width: 100%; }
-    .btn:disabled, .btn[disabled] { background: var(--color-border); border-color: var(--color-border); color: var(--color-text-light); cursor: not-allowed; transform: none; box-shadow: none; }
     .divider-with-text { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem; justify-content: center; }
     .divider-with-text::before, .divider-with-text::after { content: ''; flex: 1; max-width: 120px; height: 2px; background: var(--color-border); }
     .divider-with-text span { font-weight: 700; color: var(--color-text-light); font-size: 0.95rem; white-space: nowrap; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1.75rem; border-radius: var(--border-radius); font-weight: 700; font-size: 1rem; cursor: pointer; transition: var(--transition); border: 2px solid transparent; text-decoration: none; }
+    .btn-primary { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+    .btn-primary:hover { background: var(--color-primary-hover); }
+    .btn-outline { background: transparent; color: var(--color-primary); border-color: var(--color-primary); }
+    .btn-outline:hover { background: var(--color-primary); color: #fff; }
     .form-group { margin-bottom: 1.25rem; }
     .form-label { display: block; font-weight: 600; margin-bottom: 0.4rem; font-size: 0.95rem; color: var(--color-text); }
-    .form-label .required { color: var(--color-error); margin-left: 2px; }
-    .form-input { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--color-border); border-radius: var(--border-radius); font-size: 1rem; font-family: var(--font-primary); color: var(--color-text); background: var(--color-white); transition: var(--transition); outline: none; }
+    .form-input { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--color-border); border-radius: var(--border-radius); font-size: 1rem; font-family: var(--font-primary); color: var(--color-text); background: #fff; outline: none; transition: border 0.2s; }
     .form-input:focus { border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(30,58,138,0.12); }
-    .form-input.error { border-color: var(--color-error); }
-    .form-error { color: var(--color-error); font-size: 0.8rem; margin-top: 0.3rem; display: none; }
-    .form-error.visible { display: block; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .text-center { text-align: center; }
-    .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
-    @media (max-width: 768px) { .section-title { font-size: 1.75rem; } }
-    @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } .section-title { font-size: 1.5rem; } :root { --container-pad: 1rem; } }
+    @media (max-width: 640px) { .section-title { font-size: 1.5rem; } .form-row { grid-template-columns: 1fr; } :root { --container-pad: 1rem; } }
+    /* WhatsApp Float */
+    .whatsapp-float { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 3.25rem; height: 3.25rem; background: var(--color-success); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(16,185,129,0.4); z-index: 999; transition: var(--transition); }
+    .whatsapp-float:hover { background: #059669; transform: scale(1.1); }
   </style>
+
 </head>
 
-<body>
-  <a href="#main-content" class="visually-hidden">Skip to main content</a>
+  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
+    {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
+    <div id="header-group">
+      {% sections 'header-group' %}
+    </div>
 
-  {% section 'header' %}
+    <script>
+      // Inline header height and menu style calculations to prevent layout shift
+      // Note: Updates in calculateHeaderGroupHeight(), updateTransparentHeaderOffset() and setHeaderMenuStyle() utilities.js should be kept in sync with this function
+      (function setHeaderHeighCustomProperties() {
+        /*
+         * Header calculation functions for maintaining CSS variables
+         * Mimic calculateHeaderGroupHeight() in utilities.js
+         */
+        const header = document.querySelector('header-component');
+        const headerGroup = document.querySelector('#header-group');
+        const hasHeaderSection = headerGroup?.querySelector('.header-section');
 
-  <main id="main-content" tabindex="-1">
-    {{ content_for_layout }}
-  </main>
+        if (!header || !headerGroup) return;
 
-  {% section 'footer' %}
+        const headerTopRow = header.querySelector('.header__row--top');
+        const headerHeight = header.offsetHeight;
 
-  <a href="https://wa.me/923037231111"
-     class="whatsapp-float"
-     target="_blank"
-     rel="noopener noreferrer"
-     aria-label="Chat on WhatsApp">
+        // Calculate the total height of the header group
+        let headerGroupHeight = 0;
+        const children = headerGroup.children;
+        for (let i = 0; i < children.length; i++) {
+          const element = children[i];
+          if (element === header || !(element instanceof HTMLElement)) continue;
+          headerGroupHeight += element.offsetHeight;
+        }
+
+        // Check for transparent header special case
+        if (header.hasAttribute('transparent') && header.parentElement?.nextElementSibling) {
+          headerGroupHeight += headerHeight;
+        }
+
+        // Set CSS variables
+        document.body.style.setProperty('--header-height', `${headerHeight}px`);
+        document.body.style.setProperty('--header-group-height', `${headerGroupHeight}px`);
+
+        if (headerTopRow) {
+          window.requestAnimationFrame(function () {
+            document.body.style.setProperty('--top-row-height', `${headerTopRow.offsetHeight}px`);
+          });
+        }
+
+        /**
+         * Updates CSS custom properties for transparent header offset calculation
+         * Mimic updateTransparentHeaderOffset() in utilities.js
+         */
+
+        if (!hasHeaderSection || !header?.hasAttribute('transparent')) {
+          document.body.style.setProperty('--transparent-header-offset-boolean', '0');
+          return;
+        }
+
+        const hasImmediateSection = hasHeaderSection.nextElementSibling?.classList.contains('shopify-section');
+
+        const shouldApplyOffset = !hasImmediateSection ? '1' : '0';
+        document.body.style.setProperty('--transparent-header-offset-boolean', shouldApplyOffset);
+      })();
+
+      (function setHeaderMenuStyle() {
+        const headerComponent = document.querySelector('#header-component');
+        if (headerComponent) {
+          const isTouchDevice = 'ontouchstart' in window && navigator.maxTouchPoints > 0;
+          const overflowList = headerComponent?.querySelector('overflow-list');
+          const hasReachedMinimum = overflowList && overflowList.hasAttribute('minimum-reached');
+          headerComponent.dataset.menuStyle = isTouchDevice || hasReachedMinimum ? 'drawer' : 'menu';
+        }
+      })();
+    </script>
+
+    <main
+      id="MainContent"
+      class="content-for-layout"
+      role="main"
+      data-page-transition-enabled="{{ settings.page_transition_enabled }}"
+      data-product-transition="{{ settings.transition_to_main_product }}"
+      data-template="{{ template }}"
+    >
+      {{ content_for_layout }}
+    </main>
+
+    <footer>
+      {% sections 'footer-group' %}
+    </footer>
+
+    {% render 'search-modal' %}
+
+    {% if settings.quick_add or settings.mobile_quick_add %}
+      {% render 'quick-add-modal' %}
+    {% endif %}
+  
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/923037231111" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="28" height="28">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
     </svg>
   </a>
 
-  <style>
-    .whatsapp-float { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 3.25rem; height: 3.25rem; background: var(--color-success); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(16,185,129,0.4); z-index: 999; transition: var(--transition); }
-    .whatsapp-float:hover { background: #059669; transform: scale(1.1); box-shadow: 0 6px 20px rgba(16,185,129,0.5); }
-  </style>
 </body>
 </html>
