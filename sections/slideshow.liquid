@@ -1,0 +1,298 @@
+<style>
+.rad-slideshow {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  min-height: 500px;
+}
+.rad-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  display: flex;
+  align-items: center;
+}
+.rad-slide.active { opacity: 1; position: relative; }
+.rad-slide-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.rad-slide-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.rad-slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 100%);
+  z-index: 1;
+}
+.rad-slide-content {
+  position: relative;
+  z-index: 2;
+  padding: 5rem 0;
+  max-width: 600px;
+  color: #fff;
+}
+.rad-slide-tag {
+  display: inline-block;
+  background: rgba(30,58,138,0.5);
+  border: 1px solid rgba(96,165,250,0.4);
+  padding: 0.3rem 0.85rem;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #93c5fd;
+  margin-bottom: 1rem;
+}
+.rad-slide-title {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  font-family: 'Nunito Sans', sans-serif;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.rad-slide-title span { color: #60a5fa; }
+.rad-slide-desc {
+  font-size: 1.1rem;
+  color: #e5e7eb;
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+}
+.rad-slide-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.rad-sl-btn-blue {
+  display: inline-flex; align-items: center;
+  padding: 0.875rem 1.75rem;
+  background: #1e3a8a; color: #fff;
+  border-radius: 8px; font-weight: 700;
+  text-decoration: none; transition: all 0.2s;
+  border: 2px solid #1e3a8a;
+}
+.rad-sl-btn-blue:hover { background: #1e40af; }
+.rad-sl-btn-white {
+  display: inline-flex; align-items: center;
+  padding: 0.875rem 1.75rem;
+  background: rgba(255,255,255,0.15);
+  color: #fff; border-radius: 8px;
+  font-weight: 700; text-decoration: none;
+  border: 2px solid rgba(255,255,255,0.5);
+  transition: all 0.2s; backdrop-filter: blur(4px);
+}
+.rad-sl-btn-white:hover { background: rgba(255,255,255,0.25); }
+
+/* Arrows */
+.rad-sl-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(0,0,0,0.5);
+  border: 2px solid rgba(255,255,255,0.3);
+  color: #fff;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 1.1rem;
+}
+.rad-sl-arrow:hover { background: rgba(30,58,138,0.8); border-color: #1e3a8a; }
+.rad-sl-prev { left: 1.5rem; }
+.rad-sl-next { right: 1.5rem; }
+
+/* Dots */
+.rad-sl-dots {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+.rad-sl-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+.rad-sl-dot.active { background: #fff; width: 24px; border-radius: 4px; }
+
+@media (max-width: 768px) {
+  .rad-slideshow { min-height: 400px; }
+  .rad-slide-title { font-size: 2rem; }
+  .rad-sl-arrow { display: none; }
+}
+@media (max-width: 480px) {
+  .rad-slide-title { font-size: 1.6rem; }
+  .rad-slide-content { padding: 3rem 0; }
+  .rad-slide-btns { flex-direction: column; }
+}
+</style>
+
+<div class="rad-slideshow" id="rad-slideshow">
+
+  <!-- Slide 1 -->
+  {%- if section.settings.slide1_title != blank -%}
+  <div class="rad-slide active" data-slide="0">
+    <div class="rad-slide-bg">
+      {%- if section.settings.slide1_img != blank -%}
+        <img src="{{ section.settings.slide1_img | image_url: width: 1800 }}" alt="{{ section.settings.slide1_title }}" loading="eager">
+      {%- endif -%}
+    </div>
+    <div class="rad-slide-overlay"></div>
+    <div class="container">
+      <div class="rad-slide-content">
+        {%- if section.settings.slide1_tag != blank -%}<span class="rad-slide-tag">{{ section.settings.slide1_tag }}</span>{%- endif -%}
+        <h2 class="rad-slide-title">{{ section.settings.slide1_title }}</h2>
+        {%- if section.settings.slide1_desc != blank -%}<p class="rad-slide-desc">{{ section.settings.slide1_desc }}</p>{%- endif -%}
+        <div class="rad-slide-btns">
+          {%- if section.settings.slide1_btn1_text != blank -%}
+            <a href="{{ section.settings.slide1_btn1_url | default: '#' }}" class="rad-sl-btn-blue">{{ section.settings.slide1_btn1_text }}</a>
+          {%- endif -%}
+          {%- if section.settings.slide1_btn2_text != blank -%}
+            <a href="{{ section.settings.slide1_btn2_url | default: '#' }}" class="rad-sl-btn-white">{{ section.settings.slide1_btn2_text }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+  {%- endif -%}
+
+  <!-- Slide 2 -->
+  {%- if section.settings.slide2_title != blank -%}
+  <div class="rad-slide" data-slide="1">
+    <div class="rad-slide-bg">
+      {%- if section.settings.slide2_img != blank -%}
+        <img src="{{ section.settings.slide2_img | image_url: width: 1800 }}" alt="{{ section.settings.slide2_title }}" loading="lazy">
+      {%- endif -%}
+    </div>
+    <div class="rad-slide-overlay"></div>
+    <div class="container">
+      <div class="rad-slide-content">
+        {%- if section.settings.slide2_tag != blank -%}<span class="rad-slide-tag">{{ section.settings.slide2_tag }}</span>{%- endif -%}
+        <h2 class="rad-slide-title">{{ section.settings.slide2_title }}</h2>
+        {%- if section.settings.slide2_desc != blank -%}<p class="rad-slide-desc">{{ section.settings.slide2_desc }}</p>{%- endif -%}
+        <div class="rad-slide-btns">
+          {%- if section.settings.slide2_btn1_text != blank -%}
+            <a href="{{ section.settings.slide2_btn1_url | default: '#' }}" class="rad-sl-btn-blue">{{ section.settings.slide2_btn1_text }}</a>
+          {%- endif -%}
+          {%- if section.settings.slide2_btn2_text != blank -%}
+            <a href="{{ section.settings.slide2_btn2_url | default: '#' }}" class="rad-sl-btn-white">{{ section.settings.slide2_btn2_text }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+  {%- endif -%}
+
+  <!-- Slide 3 -->
+  {%- if section.settings.slide3_title != blank -%}
+  <div class="rad-slide" data-slide="2">
+    <div class="rad-slide-bg">
+      {%- if section.settings.slide3_img != blank -%}
+        <img src="{{ section.settings.slide3_img | image_url: width: 1800 }}" alt="{{ section.settings.slide3_title }}" loading="lazy">
+      {%- endif -%}
+    </div>
+    <div class="rad-slide-overlay"></div>
+    <div class="container">
+      <div class="rad-slide-content">
+        {%- if section.settings.slide3_tag != blank -%}<span class="rad-slide-tag">{{ section.settings.slide3_tag }}</span>{%- endif -%}
+        <h2 class="rad-slide-title">{{ section.settings.slide3_title }}</h2>
+        {%- if section.settings.slide3_desc != blank -%}<p class="rad-slide-desc">{{ section.settings.slide3_desc }}</p>{%- endif -%}
+        <div class="rad-slide-btns">
+          {%- if section.settings.slide3_btn1_text != blank -%}
+            <a href="{{ section.settings.slide3_btn1_url | default: '#' }}" class="rad-sl-btn-blue">{{ section.settings.slide3_btn1_text }}</a>
+          {%- endif -%}
+          {%- if section.settings.slide3_btn2_text != blank -%}
+            <a href="{{ section.settings.slide3_btn2_url | default: '#' }}" class="rad-sl-btn-white">{{ section.settings.slide3_btn2_text }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+  {%- endif -%}
+
+  <!-- Arrows & Dots -->
+  <button class="rad-sl-arrow rad-sl-prev" onclick="radSlidePrev()" aria-label="Previous">&#8592;</button>
+  <button class="rad-sl-arrow rad-sl-next" onclick="radSlideNext()" aria-label="Next">&#8594;</button>
+  <div class="rad-sl-dots" id="rad-sl-dots"></div>
+</div>
+
+<script>
+(function(){
+  var slides = document.querySelectorAll('#rad-slideshow .rad-slide');
+  if(!slides.length) return;
+  var current = 0;
+  var dotsContainer = document.getElementById('rad-sl-dots');
+  var autoplay;
+
+  // Build dots
+  slides.forEach(function(_, i){
+    var dot = document.createElement('button');
+    dot.className = 'rad-sl-dot' + (i===0?' active':'');
+    dot.setAttribute('aria-label', 'Slide ' + (i+1));
+    dot.addEventListener('click', function(){ goTo(i); });
+    dotsContainer.appendChild(dot);
+  });
+
+  function goTo(n){
+    slides[current].classList.remove('active');
+    dotsContainer.children[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dotsContainer.children[current].classList.add('active');
+  }
+
+  window.radSlideNext = function(){ goTo(current + 1); resetAuto(); };
+  window.radSlidePrev = function(){ goTo(current - 1); resetAuto(); };
+
+  function resetAuto(){
+    clearInterval(autoplay);
+    autoplay = setInterval(function(){ goTo(current + 1); }, 5000);
+  }
+
+  if(slides.length > 1) resetAuto();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Slideshow",
+  "settings": [
+    {"type": "header", "content": "Slide 1"},
+    {"type": "image_picker", "id": "slide1_img", "label": "Slide 1 Image"},
+    {"type": "text", "id": "slide1_tag", "label": "Slide 1 Tag", "default": "🛡️ PPF Service"},
+    {"type": "text", "id": "slide1_title", "label": "Slide 1 Title", "default": "Ultimate Paint Protection for Your Car"},
+    {"type": "textarea", "id": "slide1_desc", "label": "Slide 1 Description", "default": "Premium NAR PPF film installed by certified professionals in Karachi."},
+    {"type": "text", "id": "slide1_btn1_text", "label": "Button 1 Text", "default": "View Pricing"},
+    {"type": "url", "id": "slide1_btn1_url", "label": "Button 1 URL"},
+    {"type": "text", "id": "slide1_btn2_text", "label": "Button 2 Text", "default": "📞 Call Now"},
+    {"type": "url", "id": "slide1_btn2_url", "label": "Button 2 URL"},
+    {"type": "header", "content": "Slide 2"},
+    {"type": "image_picker", "id": "slide2_img", "label": "Slide 2 Image"},
+    {"type": "text", "id": "slide2_tag", "label": "Slide 2 Tag"},
+    {"type": "text", "id": "slide2_title", "label": "Slide 2 Title"},
+    {"type": "textarea", "id": "slide2_desc", "label": "Slide 2 Description"},
+    {"type": "text", "id": "slide2_btn1_text", "label": "Button 1 Text"},
+    {"type": "url", "id": "slide2_btn1_url", "label": "Button 1 URL"},
+    {"type": "text", "id": "slide2_btn2_text", "label": "Button 2 Text"},
+    {"type": "url", "id": "slide2_btn2_url", "label": "Button 2 URL"},
+    {"type": "header", "content": "Slide 3"},
+    {"type": "image_picker", "id": "slide3_img", "label": "Slide 3 Image"},
+    {"type": "text", "id": "slide3_tag", "label": "Slide 3 Tag"},
+    {"type": "text", "id": "slide3_title", "label": "Slide 3 Title"},
+    {"type": "textarea", "id": "slide3_desc", "label": "Slide 3 Description"},
+    {"type": "text", "id": "slide3_btn1_text", "label": "Button 1 Text"},
+    {"type": "url", "id": "slide3_btn1_url", "label": "Button 1 URL"},
+    {"type": "text", "id": "slide3_btn2_text", "label": "Button 2 Text"},
+    {"type": "url", "id": "slide3_btn2_url", "label": "Button 2 URL"}
+  ],
+  "presets": [{"name": "Slideshow"}]
+}
+{% endschema %}
