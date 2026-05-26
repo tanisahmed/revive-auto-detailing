@@ -1,9 +1,47 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "404",
+      "disabled": true,
       "settings": {}
+    },
+    "announcement_UGVk4L": {
+      "type": "announcement",
+      "name": "Announcement Bar",
+      "settings": {
+        "text": "🎉 Special Offer: Get 10% Off PPF Service This Month!",
+        "link_text": "Book Now →",
+        "link_url": "",
+        "bg_color": "#1e3a8a"
+      }
+    },
+    "productlist_PyXHwg": {
+      "type": "productlist",
+      "name": "Product List",
+      "settings": {
+        "title": "Our Services & Packages",
+        "subtitle": "Choose the right protection for your vehicle",
+        "collection": "",
+        "product_count": 4,
+        "btn_text": "View Details",
+        "cta_text": "View All Packages →",
+        "cta_url": "",
+        "bg_gray": false
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main",
+    "announcement_UGVk4L",
+    "productlist_PyXHwg"
+  ]
 }
