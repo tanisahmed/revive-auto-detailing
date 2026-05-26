@@ -360,7 +360,7 @@
 
 <section class="booking-section">
   <div class="container">
-    <div class="booking-wrapper">
+    <div class="booking-wrapper" id="rad-booking-form" data-sheets-url="{{ section.settings.google_sheets_url }}">
 
       <!-- Header -->
       <div style="text-align:center;margin-bottom:2rem;">
@@ -857,41 +857,131 @@
   };
 
   // ---- Confirm ----
-  window.confirmBooking = function() {
-    var termsCheck = document.getElementById('terms-agree');
-    var termsErr = document.getElementById('err-terms');
-    if (!termsCheck.checked) {
-      termsErr.classList.add('visible');
-      return;
-    }
-    termsErr.classList.remove('visible');
+   window.confirmBooking = function() {
+     var termsCheck = document.getElementById('terms-agree');
+     var termsErr = document.getElementById('err-terms');
+     if (!termsCheck.checked) {
+       termsErr.classList.add('visible');
+       return;
+     }
+     termsErr.classList.remove('visible');
 
-    // Generate reference
-    var ref = 'RAD-' + Date.now().toString(36).toUpperCase().slice(-6);
+     // Generate reference
+     var ref = 'RAD-' + Date.now().toString(36).toUpperCase().slice(-6);
+     var dateStr = bookingData.date ? new Date(bookingData.date + 'T12:00:00').toLocaleDateString('en-PK', { weekday:'short', year:'numeric', month:'short', day:'numeric' }) : '';
 
-    // Show success
-    document.getElementById('booking-form-container').style.display = 'none';
-    document.querySelector('.booking-progress').style.display = 'none';
-    document.querySelector('.step-indicators').style.display = 'none';
+     // =============================================
+     // 1. SEND TO GOOGLE SHEETS (via Google Apps Script)
+     // =============================================
+     var sheetsUrl = document.getElementById('rad-booking-form') ? document.getElementById('rad-booking-form').dataset.sheetsUrl : '';
+     if (sheetsUrl && sheetsUrl !== 'YOUR_GOOGLE_SCRIPT_URL') {
+       var payload = {
+         ref: ref,
+         timestamp: new Date().toLocaleString('en-PK', {timeZone: 'Asia/Karachi'}),
+         firstName: bookingData.firstName || '',
+         lastName: bookingData.lastName || '',
+         phone: bookingData.phone || '',
+         email: bookingData.email || '',
+         make: bookingData.make || '',
+         model: bookingData.model || '',
+         year: bookingData.year || '',
+         color: bookingData.color || '',
+         date: dateStr,
+         time: bookingData.time || '',
+         vehicleType: vehicleTypeLabels[bookingData.vehicleType] || '',
+         package: bookingData.packageLabel || '',
+         price: bookingData.price ? 'PKR ' + bookingData.price.toLocaleString() : '',
+         duration: bookingData.duration || ''
+       };
+       fetch(sheetsUrl, {
+         method: 'POST',
+         mode: 'no-cors',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify(payload)
+       }).catch(function(e) { console.log('Sheets error:', e); });
+     }
 
-    var success = document.getElementById('booking-success');
-    success.classList.add('visible');
+     // =============================================
+     // 2. SEND WHATSAPP NOTIFICATION TO OWNER
+     // =============================================
+     var ownerPhone = '923037231111';
+     var waMsg = encodeURIComponent(
+       '🔔 *NEW BOOKING ALERT!*
 
-    document.getElementById('success-ref-id').textContent = ref;
-    var dateStr = bookingData.date ? new Date(bookingData.date + 'T12:00:00').toLocaleDateString('en-PK', { weekday:'short', year:'numeric', month:'short', day:'numeric' }) : '—';
-    document.getElementById('success-ref-datetime').textContent = dateStr + ' at ' + (bookingData.time || '—');
-    document.getElementById('success-ref-package').textContent = (bookingData.packageLabel || '—') + ' · ' + (vehicleTypeLabels[bookingData.vehicleType] || '');
-    document.getElementById('success-ref-price').textContent = bookingData.price ? 'PKR ' + bookingData.price.toLocaleString() : '—';
+' +
+       '📋 *Ref:* ' + ref + '
+' +
+       '👤 *Customer:* ' + (bookingData.firstName || '') + ' ' + (bookingData.lastName || '') + '
+' +
+       '📞 *WhatsApp:* ' + (bookingData.phone || '') + '
+' +
+       '📧 *Email:* ' + (bookingData.email || '') + '
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+' +
+       '🚗 *Vehicle:* ' + (bookingData.make || '') + ' ' + (bookingData.model || '') + ' ' + (bookingData.year || '') + '
+' +
+       '🎨 *Color:* ' + (bookingData.color || 'N/A') + '
+' +
+       '📦 *Type:* ' + (vehicleTypeLabels[bookingData.vehicleType] || '') + '
+
+' +
+       '✨ *Package:* ' + (bookingData.packageLabel || '') + '
+' +
+       '📅 *Date:* ' + dateStr + '
+' +
+       '⏰ *Time:* ' + (bookingData.time || '') + '
+' +
+       '⏱ *Duration:* ' + (bookingData.duration || '') + '
+' +
+       '💰 *Price:* ' + (bookingData.price ? 'PKR ' + bookingData.price.toLocaleString() : '') + '
+
+' +
+       '✅ Please confirm this booking!'
+     );
+     // Open WhatsApp in background after 1 second
+     setTimeout(function() {
+       window.open('https://wa.me/' + ownerPhone + '?text=' + waMsg, '_blank');
+     }, 1500);
+
+     // =============================================
+     // 3. SHOW SUCCESS SCREEN
+     // =============================================
+     document.getElementById('booking-form-container').style.display = 'none';
+     document.querySelector('.booking-progress').style.display = 'none';
+     document.querySelector('.step-indicators').style.display = 'none';
+
+     var success = document.getElementById('booking-success');
+     success.classList.add('visible');
+
+     document.getElementById('success-ref-id').textContent = ref;
+     document.getElementById('success-ref-datetime').textContent = dateStr + ' at ' + (bookingData.time || '');
+     document.getElementById('success-ref-package').textContent = (bookingData.packageLabel || '') + ' · ' + (vehicleTypeLabels[bookingData.vehicleType] || '');
+     document.getElementById('success-ref-price').textContent = bookingData.price ? 'PKR ' + bookingData.price.toLocaleString() : '';
+
+     window.scrollTo({ top: 0, behavior: 'smooth' });
+   };
 })();
 </script>
 
 {% schema %}
 {
   "name": "PPF Booking Form",
-  "settings": [],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Lead Capture Settings"
+    },
+    {
+      "type": "paragraph",
+      "content": "Paste your Google Apps Script URL here to save bookings to Google Sheets automatically."
+    },
+    {
+      "type": "text",
+      "id": "google_sheets_url",
+      "label": "Google Sheets Script URL",
+      "placeholder": "https://script.google.com/macros/s/YOUR_ID/exec"
+    }
+  ],
   "presets": [
     {
       "name": "PPF Booking Form"
