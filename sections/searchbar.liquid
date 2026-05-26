@@ -1,0 +1,42 @@
+<style>
+.rad-search { padding: 1.5rem 0; background: #f3f4f6; border-bottom: 1px solid #d1d5db; }
+.rad-search-form { max-width: 600px; margin: 0 auto; position: relative; }
+.rad-search-input {
+  width: 100%; padding: 0.875rem 3.5rem 0.875rem 1.25rem;
+  border: 2px solid #d1d5db; border-radius: 8px;
+  font-size: 1rem; font-family: 'Nunito Sans', sans-serif;
+  color: #1f2937; background: #fff; outline: none;
+  transition: border 0.2s;
+}
+.rad-search-input:focus { border-color: #1e3a8a; }
+.rad-search-btn {
+  position: absolute; right: 0.75rem; top: 50%;
+  transform: translateY(-50%);
+  background: none; border: none; cursor: pointer;
+  color: #6b7280; font-size: 1.1rem;
+  transition: color 0.2s;
+}
+.rad-search-btn:hover { color: #1e3a8a; }
+</style>
+
+<div class="rad-search">
+  <div class="container">
+    <form action="/search" method="get" class="rad-search-form" role="search">
+      <input type="hidden" name="type" value="page,article,product">
+      <input type="search" name="q" class="rad-search-input"
+             placeholder="{{ section.settings.placeholder | default: 'Search services, articles...' }}"
+             aria-label="Search">
+      <button type="submit" class="rad-search-btn" aria-label="Submit search">&#128269;</button>
+    </form>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Search Bar",
+  "settings": [
+    {"type": "text", "id": "placeholder", "label": "Placeholder Text", "default": "Search services, articles..."}
+  ],
+  "presets": [{"name": "Search Bar"}]
+}
+{% endschema %}
