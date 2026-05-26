@@ -1,0 +1,210 @@
+<style>
+.rad-products { padding: 2rem 0; background: #fff; }
+.rad-products.bg-gray { background: #f3f4f6; }
+.rad-products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.rad-prod-card {
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  transition: all 0.25s;
+  display: flex;
+  flex-direction: column;
+}
+.rad-prod-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  transform: translateY(-4px);
+  border-color: #1e3a8a;
+}
+.rad-prod-img {
+  height: 200px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1e3a8a, #1e40af);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3.5rem;
+  position: relative;
+}
+.rad-prod-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+.rad-prod-card:hover .rad-prod-img img { transform: scale(1.05); }
+.rad-prod-badge {
+  position: absolute;
+  top: 0.75rem; left: 0.75rem;
+  background: #1e3a8a; color: #fff;
+  font-size: 0.7rem; font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+  letter-spacing: 0.03em;
+}
+.rad-prod-body { padding: 1.25rem; display: flex; flex-direction: column; flex: 1; gap: 0.5rem; }
+.rad-prod-name { font-size: 1rem; font-weight: 700; color: #1f2937; line-height: 1.3; }
+.rad-prod-desc { font-size: 0.85rem; color: #6b7280; line-height: 1.5; flex: 1; }
+.rad-prod-price { font-size: 1.2rem; font-weight: 800; color: #1e3a8a; }
+.rad-prod-price-old { font-size: 0.875rem; color: #9ca3af; text-decoration: line-through; margin-left: 0.4rem; font-weight: 400; }
+.rad-prod-btn {
+  display: block; text-align: center; padding: 0.7rem;
+  background: #1e3a8a; color: #fff; border-radius: 8px;
+  font-weight: 700; font-size: 0.9rem; text-decoration: none;
+  transition: background 0.2s; margin-top: auto;
+}
+.rad-prod-btn:hover { background: #1e40af; }
+.rad-products-cta { text-align: center; margin-top: 2rem; }
+.rad-btn-outline {
+  display: inline-flex; align-items: center; padding: 0.875rem 1.75rem;
+  background: transparent; color: #1e3a8a; border: 2px solid #1e3a8a;
+  border-radius: 8px; font-weight: 700; font-size: 1rem; text-decoration: none;
+  transition: all 0.2s;
+}
+.rad-btn-outline:hover { background: #1e3a8a; color: #fff; }
+@media (max-width: 1024px) { .rad-products-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) {
+  .rad-products { padding: 1.5rem 0; }
+  .rad-products-grid { grid-template-columns: 1fr; gap: 1rem; }
+}
+</style>
+
+<section class="rad-products {% if section.settings.bg_gray %}bg-gray{% endif %}">
+  <div class="container">
+    <h2 class="section-title">{{ section.settings.title | default: 'Our Services & Packages' }}</h2>
+    <p class="section-subtitle">{{ section.settings.subtitle | default: 'Choose the right protection for your vehicle' }}</p>
+
+    <div class="rad-products-grid">
+      {%- if section.settings.collection != blank -%}
+        {%- for product in collections[section.settings.collection].products limit: section.settings.product_count -%}
+          <div class="rad-prod-card">
+            <div class="rad-prod-img">
+              {%- if product.featured_image -%}
+                <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}" loading="lazy">
+              {%- else -%}
+                &#128663;
+              {%- endif -%}
+              {%- if product.compare_at_price > product.price -%}
+                <span class="rad-prod-badge">Sale</span>
+              {%- endif -%}
+            </div>
+            <div class="rad-prod-body">
+              <h3 class="rad-prod-name">{{ product.title }}</h3>
+              <p class="rad-prod-desc">{{ product.description | strip_html | truncate: 80 }}</p>
+              <div>
+                <span class="rad-prod-price">{{ product.price | money }}</span>
+                {%- if product.compare_at_price > product.price -%}
+                  <span class="rad-prod-price-old">{{ product.compare_at_price | money }}</span>
+                {%- endif -%}
+              </div>
+              <a href="{{ product.url }}" class="rad-prod-btn">{{ section.settings.btn_text | default: 'View Details' }}</a>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        <!-- Fallback cards when no collection selected -->
+        <div class="rad-prod-card">
+          <div class="rad-prod-img"><span class="rad-prod-badge">Popular</span>&#128737;</div>
+          <div class="rad-prod-body">
+            <h3 class="rad-prod-name">NAR Classic PPF — Sedan</h3>
+            <p class="rad-prod-desc">8.0mil self-healing film, 8 year warranty, full exterior coverage.</p>
+            <div><span class="rad-prod-price">PKR 300,000</span></div>
+            <a href="/pages/paint-protection-film-ppf" class="rad-prod-btn">View Details</a>
+          </div>
+        </div>
+        <div class="rad-prod-card">
+          <div class="rad-prod-img">&#128737;</div>
+          <div class="rad-prod-body">
+            <h3 class="rad-prod-name">NAR Premium PPF — Sedan</h3>
+            <p class="rad-prod-desc">8.5mil enhanced film, 10 year warranty, hydrophobic coating.</p>
+            <div><span class="rad-prod-price">PKR 330,000</span></div>
+            <a href="/pages/paint-protection-film-ppf" class="rad-prod-btn">View Details</a>
+          </div>
+        </div>
+        <div class="rad-prod-card">
+          <div class="rad-prod-img">&#128663;</div>
+          <div class="rad-prod-body">
+            <h3 class="rad-prod-name">NAR Classic PPF — SUV</h3>
+            <p class="rad-prod-desc">8.0mil self-healing film for SUVs, 8 year warranty.</p>
+            <div><span class="rad-prod-price">PKR 330,000</span></div>
+            <a href="/pages/paint-protection-film-ppf" class="rad-prod-btn">View Details</a>
+          </div>
+        </div>
+        <div class="rad-prod-card">
+          <div class="rad-prod-img">&#128666;</div>
+          <div class="rad-prod-body">
+            <h3 class="rad-prod-name">NAR Premium PPF — SUV</h3>
+            <p class="rad-prod-desc">8.5mil premium film for SUVs, 10 year warranty.</p>
+            <div><span class="rad-prod-price">PKR 380,000</span></div>
+            <a href="/pages/paint-protection-film-ppf" class="rad-prod-btn">View Details</a>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.cta_text != blank -%}
+      <div class="rad-products-cta">
+        <a href="{{ section.settings.cta_url | default: '/pages/paint-protection-film-ppf' }}" class="rad-btn-outline">
+          {{ section.settings.cta_text }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product List",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Our Services & Packages"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Choose the right protection for your vehicle"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection (optional)",
+      "info": "Select a Shopify collection. If empty, default PPF packages will show."
+    },
+    {
+      "type": "range",
+      "id": "product_count",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "label": "Number of Products",
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Card Button Text",
+      "default": "View Details"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Bottom Button Text",
+      "default": "View All Packages →"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Bottom Button URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "bg_gray",
+      "label": "Gray Background?",
+      "default": false
+    }
+  ],
+  "presets": [{"name": "Product List"}]
+}
+{% endschema %}
