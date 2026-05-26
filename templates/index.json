@@ -8,8 +8,8 @@
       "type": "services",
       "settings": {}
     },
-    "why-choose": {
-      "type": "why-choose",
+    "why-us": {
+      "type": "why-us",
       "settings": {}
     },
     "reviews": {
@@ -20,17 +20,17 @@
       "type": "process",
       "settings": {}
     },
-    "lead-form": {
-      "type": "lead-form",
+    "leadform": {
+      "type": "leadform",
       "settings": {}
     }
   },
   "order": [
     "hero",
     "services",
-    "why-choose",
+    "why-us",
     "reviews",
     "process",
-    "lead-form"
+    "leadform"
   ]
 }
