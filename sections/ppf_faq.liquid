@@ -1,0 +1,179 @@
+<style>
+  .ppf-faq-section {
+    padding: 5rem 0;
+    background: var(--color-white);
+  }
+
+  .faq-list {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .faq-item {
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    transition: var(--transition);
+  }
+  .faq-item.open { border-color: var(--color-primary); }
+
+  .faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text);
+    text-align: left;
+    transition: var(--transition);
+  }
+  .faq-item.open .faq-question { color: var(--color-primary); }
+  .faq-question:hover { background: var(--color-secondary); }
+
+  .faq-icon {
+    font-size: 1.25rem;
+    font-weight: 400;
+    flex-shrink: 0;
+    transition: var(--transition);
+    line-height: 1;
+    color: var(--color-primary);
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    padding: 0 1.5rem;
+  }
+  .faq-item.open .faq-answer {
+    max-height: 400px;
+    padding: 0 1.5rem 1.25rem;
+  }
+  .faq-answer p {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    line-height: 1.75;
+  }
+
+  @media (max-width: 640px) {
+    .ppf-faq-section { padding: 3.5rem 0; }
+    .faq-question { padding: 1rem 1.25rem; font-size: 0.95rem; }
+  }
+</style>
+
+<section class="ppf-faq-section">
+  <div class="container">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-subtitle">Everything you need to know about PPF</p>
+
+    <div class="faq-list" id="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How long does PPF installation take?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p>Installation time varies by vehicle size and package. For a hatchback or sedan, expect 8–10 hours. SUVs typically take 9–11 hours, and XL SUVs 10–12 hours. We recommend dropping off your car in the morning and picking it up in the evening.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How long does PPF last?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p>Our NAR Classic PPF carries an 8-year manufacturer warranty, while the NAR Premium PPF comes with a 10-year warranty. With proper care and maintenance, the film will maintain its protective properties and appearance throughout this period.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Does PPF affect paint color?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p>No. Our PPF is optically clear and virtually invisible once applied. It does not change the color or appearance of your paint. In fact, the high-gloss finish can enhance the depth and richness of your car's color.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Is PPF visible on the car?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p>When professionally installed, PPF is nearly invisible to the naked eye. You may notice very slight edge lines at panel boundaries if you look very closely, but from a normal viewing distance, the film is completely undetectable.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can PPF be removed?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p>Yes, PPF can be safely removed by a professional without damaging the underlying paint. This is especially useful if the film becomes worn after many years and needs replacing. We recommend professional removal only — do not attempt to remove it yourself.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How do I maintain PPF?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p>PPF is very low-maintenance. Wash your car normally with pH-neutral soap and water. Avoid pressure washing directly at film edges. Do not use abrasive cleaners or clay bars. For the self-healing property to activate, park in direct sunlight or use a heat gun (professional recommended) on affected areas.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = btn.closest('.faq-item');
+        var isOpen = item.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(function(i) {
+          i.classList.remove('open');
+          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+
+        // Open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "PPF FAQ",
+  "settings": [],
+  "presets": [
+    {
+      "name": "PPF FAQ"
+    }
+  ]
+}
+{% endschema %}
