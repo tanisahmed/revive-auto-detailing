@@ -1,0 +1,196 @@
+<style>
+.rad-cer-pkg { padding: 2rem 0; background: #f3f4f6; }
+.rad-cer-pkg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+.rad-cer-pkg-card {
+  background: #fff; border: 2px solid #e5e7eb; border-radius: 16px;
+  overflow: hidden; transition: all 0.25s; position: relative;
+  display: flex; flex-direction: column;
+}
+.rad-cer-pkg-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.12); transform: translateY(-4px); border-color: #1e3a8a; }
+.rad-cer-pkg-card.featured { border-color: #1e3a8a; box-shadow: 0 4px 20px rgba(30,58,138,0.2); }
+.rad-cer-pkg-popular {
+  position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+  background: #1e3a8a; color: #fff; font-size: 0.7rem; font-weight: 700;
+  padding: 0.25rem 1rem; border-radius: 0 0 8px 8px; letter-spacing: 0.05em;
+  text-transform: uppercase; white-space: nowrap;
+}
+.rad-cer-pkg-header {
+  padding: 1.75rem 1.5rem 1.25rem;
+  text-align: center;
+  background: linear-gradient(135deg, #f8faff 0%, #eff6ff 100%);
+  border-bottom: 1px solid #e5e7eb;
+}
+.rad-cer-pkg-name { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: #6b7280; margin-bottom: 0.25rem; }
+.rad-cer-pkg-package { font-size: 1.5rem; font-weight: 800; color: #1e3a8a; margin-bottom: 0.75rem; }
+.rad-cer-pkg-gyeon { font-size: 0.7rem; color: #9ca3af; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+.rad-cer-pkg-durability {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: rgba(30,58,138,0.08); color: #1e3a8a;
+  padding: 0.3rem 0.75rem; border-radius: 100px;
+  font-size: 0.75rem; font-weight: 700;
+}
+.rad-cer-pkg-body { padding: 1.25rem 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 1rem; }
+.rad-cer-pkg-applied-title { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #6b7280; margin-bottom: 0.5rem; }
+.rad-cer-pkg-features { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 0.5rem; }
+.rad-cer-pkg-feat { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: #1f2937; }
+.rad-cer-pkg-feat::before { content: '✓'; color: #10b981; font-weight: 800; flex-shrink: 0; }
+.rad-cer-pkg-free {
+  background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px;
+  padding: 0.6rem 0.85rem; font-size: 0.8rem; font-weight: 700; color: #15803d;
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.rad-cer-pkg-pricing { border-top: 1px solid #e5e7eb; padding-top: 1rem; }
+.rad-cer-pkg-pricing-title { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #6b7280; margin-bottom: 0.75rem; }
+.rad-cer-pkg-price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1.25rem; }
+.rad-cer-pkg-price-item { background: #f9fafb; border-radius: 8px; padding: 0.6rem 0.75rem; }
+.rad-cer-pkg-price-vehicle { font-size: 0.75rem; color: #6b7280; font-weight: 600; margin-bottom: 0.15rem; }
+.rad-cer-pkg-price-amount { font-size: 1rem; font-weight: 800; color: #1e3a8a; }
+.rad-cer-pkg-btns { display: flex; flex-direction: column; gap: 0.6rem; margin-top: auto; }
+.rad-cer-pkg-btn {
+  display: block; text-align: center; padding: 0.75rem;
+  background: #1e3a8a; color: #fff; border-radius: 8px;
+  font-weight: 700; font-size: 0.9rem; text-decoration: none; transition: all 0.2s;
+}
+.rad-cer-pkg-btn:hover { background: #1e40af; }
+.rad-cer-pkg-btn-wa {
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  padding: 0.65rem; background: #10b981; color: #fff; border-radius: 8px;
+  font-weight: 700; font-size: 0.875rem; text-decoration: none; transition: all 0.2s;
+}
+.rad-cer-pkg-btn-wa:hover { background: #059669; }
+@media (max-width: 900px) { .rad-cer-pkg-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; } }
+</style>
+
+<section class="rad-cer-pkg">
+  <div class="container">
+    <h2 class="section-title">Ceramic Coating Packages &amp; Pricing</h2>
+    <p class="section-subtitle">GYEON certified ceramic coating — choose your protection level</p>
+
+    <div class="rad-cer-pkg-grid">
+
+      <!-- GOLD Package -->
+      <div class="rad-cer-pkg-card">
+        <div class="rad-cer-pkg-header">
+          <div class="rad-cer-pkg-gyeon">GYEON CERTIFIED</div>
+          <div class="rad-cer-pkg-name">Package</div>
+          <div class="rad-cer-pkg-package">&#127881; Gold</div>
+          <div class="rad-cer-pkg-durability">&#128197; 1 Year Durability &amp; Warranty</div>
+        </div>
+        <div class="rad-cer-pkg-body">
+          <div>
+            <div class="rad-cer-pkg-applied-title">Applied On</div>
+            <div class="rad-cer-pkg-features">
+              <div class="rad-cer-pkg-feat">All Painted Parts</div>
+              <div class="rad-cer-pkg-feat">All Tires</div>
+              <div class="rad-cer-pkg-feat">All Alloys</div>
+            </div>
+          </div>
+          <div class="rad-cer-pkg-free">&#127873; FREE: 1x Microfiber Towel</div>
+          <div class="rad-cer-pkg-pricing">
+            <div class="rad-cer-pkg-pricing-title">Pricing by Vehicle</div>
+            <div class="rad-cer-pkg-price-grid">
+              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">Hatchback</div><div class="rad-cer-pkg-price-amount">Rs. 40,000</div></div>
+              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">Sedan</div><div class="rad-cer-pkg-price-amount">Rs. 45,000</div></div>
+              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">SUV</div><div class="rad-cer-pkg-price-amount">Rs. 50,000</div></div>
+              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">XL SUV</div><div class="rad-cer-pkg-price-amount">Rs. 55,000</div></div>
+            </div>
+          </div>
+          <div class="rad-cer-pkg-btns">
+            <a href="/pages/ppf-booking" class="rad-cer-pkg-btn">Book My Slot</a>
+            <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20to%20book%20Gold%20Ceramic%20Coating" target="_blank" class="rad-cer-pkg-btn-wa">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLATINUM Package -->
+      <div class="rad-cer-pkg-card featured">
+        <div class="rad-cer-pkg-popular">Most Popular</div>
+        <div class="rad-cer-pkg-header">
+          <div class="rad-cer-pkg-gyeon">GYEON CERTIFIED</div>
+          <div class="rad-cer-pkg-name">Package</div>
+          <div class="rad-cer-pkg-package">&#128142; Platinum</div>
+          <div class="rad-cer-pkg-durability">&#128197; 1 Year Durability &amp; Warranty</div>
+        </div>
+        <div class="rad-cer-pkg-body">
+          <div>
+            <div class="rad-cer-pkg-applied-title">Applied On</div>
+            <div class="rad-cer-pkg-features">
+              <div class="rad-cer-pkg-feat">All Painted Parts</div>
+              <div class="rad-cer-pkg-feat">All Exterior Trims</div>
+              <div class="rad-cer-pkg-feat">All Tires</div>
+              <div class="rad-cer-pkg-feat">All Alloys</div>
+            </div>
+          </div>
+          <div class="rad-cer-pkg-free">&#127873; FREE: 1x Microfiber Towel</div>
+          <div class="rad-cer-pkg-pricing">
+            <div class="rad-cer-pkg-pricing-title">Pricing by Vehicle</div>
+            <div class="rad-cer-pkg-price-grid">
+              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">Hatchback</div><div class="rad-cer-pkg-price-amount">Rs. 45,000</div></div>
+              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">Sedan</div><div class="rad-cer-pkg-price-amount">Rs. 50,000</div></div>
+              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">SUV</div><div class="rad-cer-pkg-price-amount">Rs. 55,000</div></div>
+              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">XL SUV</div><div class="rad-cer-pkg-price-amount">Rs. 60,000</div></div>
+            </div>
+          </div>
+          <div class="rad-cer-pkg-btns">
+            <a href="/pages/ppf-booking" class="rad-cer-pkg-btn">Book My Slot</a>
+            <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20to%20book%20Platinum%20Ceramic%20Coating" target="_blank" class="rad-cer-pkg-btn-wa">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ULTIMATE Package -->
+      <div class="rad-cer-pkg-card">
+        <div class="rad-cer-pkg-header">
+          <div class="rad-cer-pkg-gyeon">GYEON CERTIFIED</div>
+          <div class="rad-cer-pkg-name">Package</div>
+          <div class="rad-cer-pkg-package">&#127775; Ultimate</div>
+          <div class="rad-cer-pkg-durability">&#128197; 1 Year Durability &amp; Warranty</div>
+        </div>
+        <div class="rad-cer-pkg-body">
+          <div>
+            <div class="rad-cer-pkg-applied-title">Applied On</div>
+            <div class="rad-cer-pkg-features">
+              <div class="rad-cer-pkg-feat">All Painted Parts</div>
+              <div class="rad-cer-pkg-feat">All Exterior Trims</div>
+              <div class="rad-cer-pkg-feat">All Alloys &amp; All Tires</div>
+              <div class="rad-cer-pkg-feat">Front &amp; Gear Glass</div>
+              <div class="rad-cer-pkg-feat">Interior Trims</div>
+            </div>
+          </div>
+          <div class="rad-cer-pkg-free">&#127873; FREE: 1x Microfiber Towel</div>
+          <div class="rad-cer-pkg-pricing">
+            <div class="rad-cer-pkg-pricing-title">Pricing by Vehicle</div>
+            <div class="rad-cer-pkg-price-grid">
+              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">Hatchback</div><div class="rad-cer-pkg-price-amount">Rs. 60,000</div></div>
+              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">Sedan</div><div class="rad-cer-pkg-price-amount">Rs. 65,000</div></div>
+              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">SUV</div><div class="rad-cer-pkg-price-amount">Rs. 70,000</div></div>
+              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">XL SUV</div><div class="rad-cer-pkg-price-amount">Rs. 75,000</div></div>
+            </div>
+          </div>
+          <div class="rad-cer-pkg-btns">
+            <a href="/pages/ppf-booking" class="rad-cer-pkg-btn">Book My Slot</a>
+            <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20to%20book%20Ultimate%20Ceramic%20Coating" target="_blank" class="rad-cer-pkg-btn-wa">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ceramic Packages",
+  "settings": [],
+  "presets": [{"name": "Ceramic Packages"}]
+}
+{% endschema %}
