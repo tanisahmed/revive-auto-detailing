@@ -3,41 +3,48 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: var(--color-white);
-    border-bottom: 1px solid var(--color-border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    background: #000;
+    border-bottom: 1px solid #222;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.4);
   }
 
   .header-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 4rem;
+    height: 4.5rem;
     gap: 1rem;
   }
 
   /* Logo */
   .header-logo a {
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: var(--color-primary);
-    letter-spacing: -0.5px;
-    text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 0.4rem;
+    text-decoration: none;
   }
-  .header-logo a::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    background: var(--color-primary);
-    border-radius: 50%;
-    display: inline-block;
+  .header-logo img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+  .header-logo-text {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.5px;
+    font-family: 'Nunito Sans', sans-serif;
+  }
+  .header-logo-text span {
+    color: #60a5fa;
   }
 
   /* Desktop Nav */
-  .header-nav { display: flex; align-items: center; gap: 0.25rem; }
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
 
   .nav-item { position: relative; }
 
@@ -46,43 +53,42 @@
     padding: 0.5rem 0.85rem;
     font-weight: 600;
     font-size: 0.95rem;
-    color: var(--color-text);
-    border-radius: var(--border-radius);
-    transition: var(--transition);
+    color: #d1d5db;
+    border-radius: 6px;
+    transition: all 0.2s;
     cursor: pointer;
     border: none;
     background: none;
+    font-family: 'Nunito Sans', sans-serif;
+    text-decoration: none;
   }
-  .nav-link:hover, .nav-link:focus { 
-    background: var(--color-secondary); 
-    color: var(--color-primary); 
-  }
+  .nav-link:hover { background: #1a1a1a; color: #fff; }
 
-  /* Dropdown */
-  .nav-dropdown {
+  .nav-dropdown-toggle {
     display: flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0.3rem;
   }
   .nav-dropdown-toggle::after {
     content: '▾';
     font-size: 0.7rem;
+    color: #6b7280;
   }
 
   .dropdown-menu {
     position: absolute;
     top: calc(100% + 0.5rem);
     left: 0;
-    min-width: 200px;
-    background: var(--color-white);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-md);
+    min-width: 210px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
     padding: 0.5rem;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-8px);
-    transition: var(--transition);
+    transition: all 0.2s;
     z-index: 200;
   }
   .nav-item:hover .dropdown-menu,
@@ -97,14 +103,12 @@
     padding: 0.6rem 0.85rem;
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--color-text);
+    color: #d1d5db;
     border-radius: 6px;
-    transition: var(--transition);
+    transition: all 0.2s;
+    text-decoration: none;
   }
-  .dropdown-link:hover {
-    background: var(--color-secondary);
-    color: var(--color-primary);
-  }
+  .dropdown-link:hover { background: #222; color: #fff; }
 
   /* Phone */
   .header-phone {
@@ -113,16 +117,18 @@
     gap: 0.4rem;
     font-weight: 700;
     font-size: 0.9rem;
-    color: var(--color-primary);
-    padding: 0.4rem 0.75rem;
-    border: 2px solid var(--color-primary);
-    border-radius: var(--border-radius);
-    transition: var(--transition);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: 2px solid #1e3a8a;
+    border-radius: 8px;
+    transition: all 0.2s;
     white-space: nowrap;
+    text-decoration: none;
+    background: #1e3a8a;
   }
   .header-phone:hover {
-    background: var(--color-primary);
-    color: var(--color-white);
+    background: #1e40af;
+    border-color: #1e40af;
   }
 
   /* Hamburger */
@@ -136,14 +142,14 @@
     padding: 0.4rem;
     border-radius: 6px;
   }
-  .hamburger:hover { background: var(--color-secondary); }
+  .hamburger:hover { background: #1a1a1a; }
   .hamburger span {
     display: block;
     width: 24px;
     height: 2.5px;
-    background: var(--color-text);
+    background: #fff;
     border-radius: 2px;
-    transition: var(--transition);
+    transition: all 0.25s;
   }
   .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
   .hamburger.open span:nth-child(2) { opacity: 0; }
@@ -153,17 +159,17 @@
   .mobile-menu {
     display: none;
     position: fixed;
-    top: 4rem;
+    top: 4.5rem;
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--color-white);
+    background: #000;
     z-index: 99;
     padding: 1.5rem;
     overflow-y: auto;
     flex-direction: column;
     gap: 0.25rem;
-    border-top: 1px solid var(--color-border);
+    border-top: 1px solid #222;
   }
   .mobile-menu.open { display: flex; }
 
@@ -172,12 +178,13 @@
     padding: 0.85rem 1rem;
     font-weight: 600;
     font-size: 1rem;
-    color: var(--color-text);
-    border-radius: var(--border-radius);
-    transition: var(--transition);
-    border-bottom: 1px solid var(--color-secondary);
+    color: #d1d5db;
+    border-radius: 8px;
+    transition: all 0.2s;
+    border-bottom: 1px solid #1a1a1a;
+    text-decoration: none;
   }
-  .mobile-nav-link:hover { background: var(--color-secondary); color: var(--color-primary); }
+  .mobile-nav-link:hover { background: #1a1a1a; color: #fff; }
 
   .mobile-dropdown-toggle {
     display: flex;
@@ -185,13 +192,10 @@
     align-items: center;
     cursor: pointer;
   }
-  .mobile-dropdown-toggle .arrow { transition: var(--transition); }
+  .mobile-dropdown-toggle .arrow { transition: transform 0.2s; color: #6b7280; }
   .mobile-dropdown-toggle.expanded .arrow { transform: rotate(180deg); }
 
-  .mobile-submenu {
-    display: none;
-    padding-left: 1rem;
-  }
+  .mobile-submenu { display: none; padding-left: 1rem; }
   .mobile-submenu.open { display: block; }
 
   .mobile-phone {
@@ -201,12 +205,14 @@
     justify-content: center;
     gap: 0.5rem;
     padding: 0.85rem;
-    background: var(--color-primary);
-    color: var(--color-white);
-    border-radius: var(--border-radius);
+    background: #1e3a8a;
+    color: #fff;
+    border-radius: 8px;
     font-weight: 700;
     font-size: 1rem;
+    text-decoration: none;
   }
+  .mobile-phone:hover { background: #1e40af; }
 
   @media (max-width: 900px) {
     .header-nav { display: none; }
@@ -225,11 +231,20 @@
       <!-- Logo -->
       <div class="header-logo">
         <a href="/">
-          {{ section.settings.logo_text | default: 'RAD' }}
+          {%- if section.settings.logo != blank -%}
+            <img src="{{ section.settings.logo | image_url: height: 96 }}"
+                 alt="{{ shop.name }}"
+                 height="48"
+                 loading="eager">
+          {%- else -%}
+            <span class="header-logo-text">
+              {{ section.settings.logo_text | default: 'RAD' }}
+            </span>
+          {%- endif -%}
         </a>
       </div>
 
-      <!-- Desktop Navigation -->
+      <!-- Desktop Nav -->
       <nav class="header-nav" role="navigation" aria-label="Main navigation">
         <div class="nav-item">
           <a class="nav-link" href="/">Home</a>
@@ -237,39 +252,34 @@
         <div class="nav-item">
           <a class="nav-link" href="/pages/about-us">About Us</a>
         </div>
-        <div class="nav-item nav-dropdown">
-          <button class="nav-link nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-            Services
-          </button>
+        <div class="nav-item">
+          <button class="nav-link nav-dropdown-toggle" aria-haspopup="true">Services</button>
           <div class="dropdown-menu" role="menu">
-            <a class="dropdown-link" href="/pages/paint-protection-film" role="menuitem">Paint Protection Film (PPF)</a>
-            <a class="dropdown-link" href="#" role="menuitem">Ceramic Coating</a>
-            <a class="dropdown-link" href="#" role="menuitem">Exterior & Interior Detailing</a>
-            <a class="dropdown-link" href="#" role="menuitem">Anti-Rust Undercoating</a>
+            <a class="dropdown-link" href="/pages/paint-protection-film">Paint Protection Film (PPF)</a>
+            <a class="dropdown-link" href="#">Ceramic Coating</a>
+            <a class="dropdown-link" href="#">Exterior &amp; Interior Detailing</a>
+            <a class="dropdown-link" href="#">Anti-Rust Undercoating</a>
           </div>
         </div>
         <div class="nav-item">
           <a class="nav-link" href="/pages/contact">Contact</a>
         </div>
-        <div class="nav-item nav-dropdown">
-          <button class="nav-link nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-            More
-          </button>
+        <div class="nav-item">
+          <button class="nav-link nav-dropdown-toggle" aria-haspopup="true">More</button>
           <div class="dropdown-menu" role="menu">
-            <a class="dropdown-link" href="/pages/ppf-booking" role="menuitem">Book Appointment</a>
-            <a class="dropdown-link" href="/blogs/news" role="menuitem">Blog</a>
-            <a class="dropdown-link" href="/pages/faq" role="menuitem">FAQ</a>
+            <a class="dropdown-link" href="/pages/ppf-booking">Book Appointment</a>
+            <a class="dropdown-link" href="/pages/faq">FAQ</a>
           </div>
         </div>
       </nav>
 
-      <!-- Phone (Desktop) -->
-      <a href="tel:{{ section.settings.phone | default: '+923037231111' }}" class="header-phone">
-        📞 {{ section.settings.phone_display | default: '+92 303 7231111' }}
+      <!-- Phone -->
+      <a href="tel:+923037231111" class="header-phone">
+        &#128222; +92 303 7231111
       </a>
 
-      <!-- Hamburger (Mobile) -->
-      <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation" aria-expanded="false">
+      <!-- Hamburger -->
+      <button class="hamburger" id="rad-hamburger" aria-label="Toggle navigation" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
@@ -279,76 +289,65 @@
   </div>
 
   <!-- Mobile Menu -->
-  <nav class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+  <nav class="mobile-menu" id="rad-mobile-menu" role="navigation">
     <a class="mobile-nav-link" href="/">Home</a>
     <a class="mobile-nav-link" href="/pages/about-us">About Us</a>
-
     <div>
-      <div class="mobile-nav-link mobile-dropdown-toggle" id="services-toggle">
-        Services <span class="arrow">▾</span>
+      <div class="mobile-nav-link mobile-dropdown-toggle" id="rad-svc-toggle">
+        Services <span class="arrow">&#9660;</span>
       </div>
-      <div class="mobile-submenu" id="services-submenu">
+      <div class="mobile-submenu" id="rad-svc-sub">
         <a class="mobile-nav-link" href="/pages/paint-protection-film">Paint Protection Film</a>
         <a class="mobile-nav-link" href="#">Ceramic Coating</a>
-        <a class="mobile-nav-link" href="#">Exterior & Interior Detailing</a>
+        <a class="mobile-nav-link" href="#">Exterior &amp; Interior Detailing</a>
         <a class="mobile-nav-link" href="#">Anti-Rust Undercoating</a>
       </div>
     </div>
-
     <a class="mobile-nav-link" href="/pages/contact">Contact</a>
-
     <div>
-      <div class="mobile-nav-link mobile-dropdown-toggle" id="more-toggle">
-        More <span class="arrow">▾</span>
+      <div class="mobile-nav-link mobile-dropdown-toggle" id="rad-more-toggle">
+        More <span class="arrow">&#9660;</span>
       </div>
-      <div class="mobile-submenu" id="more-submenu">
+      <div class="mobile-submenu" id="rad-more-sub">
         <a class="mobile-nav-link" href="/pages/ppf-booking">Book Appointment</a>
-        <a class="mobile-nav-link" href="/blogs/news">Blog</a>
         <a class="mobile-nav-link" href="/pages/faq">FAQ</a>
       </div>
     </div>
-
-    <a href="tel:{{ section.settings.phone | default: '+923037231111' }}" class="mobile-phone">
-      📞 {{ section.settings.phone_display | default: '+92 303 7231111' }}
-    </a>
+    <a href="tel:+923037231111" class="mobile-phone">&#128222; +92 303 7231111</a>
   </nav>
 </header>
 
 <script>
-  (function() {
-    var hamburger = document.getElementById('hamburger-btn');
-    var mobileMenu = document.getElementById('mobile-menu');
-    var servicesToggle = document.getElementById('services-toggle');
-    var servicesSubmenu = document.getElementById('services-submenu');
-    var moreToggle = document.getElementById('more-toggle');
-    var moreSubmenu = document.getElementById('more-submenu');
+(function(){
+  var ham = document.getElementById('rad-hamburger');
+  var menu = document.getElementById('rad-mobile-menu');
+  var svcT = document.getElementById('rad-svc-toggle');
+  var svcS = document.getElementById('rad-svc-sub');
+  var morT = document.getElementById('rad-more-toggle');
+  var morS = document.getElementById('rad-more-sub');
 
-    hamburger.addEventListener('click', function() {
-      var isOpen = mobileMenu.classList.toggle('open');
-      hamburger.classList.toggle('open', isOpen);
-      hamburger.setAttribute('aria-expanded', isOpen);
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-    });
-
-    servicesToggle.addEventListener('click', function() {
-      var isOpen = servicesSubmenu.classList.toggle('open');
-      servicesToggle.classList.toggle('expanded', isOpen);
-    });
-
-    moreToggle.addEventListener('click', function() {
-      var isOpen = moreSubmenu.classList.toggle('open');
-      moreToggle.classList.toggle('expanded', isOpen);
-    });
-
-    // Close mobile menu on resize
-    window.addEventListener('resize', function() {
-      if (window.innerWidth > 900) {
-        mobileMenu.classList.remove('open');
-        hamburger.classList.remove('open');
-        document.body.style.overflow = '';
-      }
-    });
-  })();
+  ham.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    ham.classList.toggle('open', open);
+    ham.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  svcT.addEventListener('click', function(){
+    var o = svcS.classList.toggle('open');
+    svcT.classList.toggle('expanded', o);
+  });
+  morT.addEventListener('click', function(){
+    var o = morS.classList.toggle('open');
+    morT.classList.toggle('expanded', o);
+  });
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 900){
+      menu.classList.remove('open');
+      ham.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+})();
 </script>
 
 {% schema %}
@@ -356,22 +355,16 @@
   "name": "Header",
   "settings": [
     {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image",
+      "info": "Recommended height: 48-60px. PNG with transparent background works best on dark header."
+    },
+    {
       "type": "text",
       "id": "logo_text",
-      "label": "Logo Text",
+      "label": "Logo Text (if no image)",
       "default": "RAD"
-    },
-    {
-      "type": "text",
-      "id": "phone",
-      "label": "Phone Number (tel link)",
-      "default": "+923037231111"
-    },
-    {
-      "type": "text",
-      "id": "phone_display",
-      "label": "Phone Display Text",
-      "default": "+92 303 7231111"
     }
   ]
 }
