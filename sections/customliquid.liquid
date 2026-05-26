@@ -1,0 +1,31 @@
+<style>
+.rad-custom-liquid { padding: var(--rad-cl-pad, 0); }
+</style>
+
+<div class="rad-custom-liquid" style="--rad-cl-pad: {{ section.settings.padding }}px 0;">
+  {{ section.settings.custom_liquid }}
+</div>
+
+{% schema %}
+{
+  "name": "Custom Liquid",
+  "settings": [
+    {
+      "type": "liquid",
+      "id": "custom_liquid",
+      "label": "Custom Liquid / HTML Code"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "min": 0,
+      "max": 80,
+      "step": 8,
+      "unit": "px",
+      "label": "Vertical Padding",
+      "default": 0
+    }
+  ],
+  "presets": [{"name": "Custom Liquid"}]
+}
+{% endschema %}
