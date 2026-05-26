@@ -1,0 +1,61 @@
+<style>
+.rad-divider { padding: var(--rad-div-pad, 1rem) 0; background: var(--rad-div-bg, transparent); }
+.rad-divider-line { border: none; border-top: var(--rad-div-thick, 1px) solid var(--rad-div-color, #d1d5db); margin: 0; }
+.rad-divider.style-dots { text-align: center; line-height: 0; }
+.rad-divider.style-dots span { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #d1d5db; margin: 0 4px; }
+</style>
+
+<div class="rad-divider {% if section.settings.style == 'dots' %}style-dots{% endif %}"
+     style="--rad-div-pad: {{ section.settings.spacing }}px; --rad-div-color: {{ section.settings.color }}; --rad-div-thick: {{ section.settings.thickness }}px;">
+  {%- if section.settings.style == 'line' -%}
+    <hr class="rad-divider-line">
+  {%- elsif section.settings.style == 'dots' -%}
+    <span></span><span></span><span></span>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Divider",
+  "settings": [
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Style",
+      "options": [
+        {"value": "space", "label": "Space Only"},
+        {"value": "line", "label": "Line"},
+        {"value": "dots", "label": "Dots"}
+      ],
+      "default": "line"
+    },
+    {
+      "type": "range",
+      "id": "spacing",
+      "min": 10,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Spacing",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Line Color",
+      "default": "#d1d5db"
+    },
+    {
+      "type": "range",
+      "id": "thickness",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Line Thickness",
+      "default": 1
+    }
+  ],
+  "presets": [{"name": "Divider"}]
+}
+{% endschema %}
