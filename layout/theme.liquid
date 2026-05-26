@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#1e3a8a">
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+  {%- endif -%}
+
+  <title>
+    {{ page_title }}
+    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  </title>
+
+  <!-- Google Fonts: Nunito Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  {{ content_for_header }}
+
+  <style>
+    /* =============================================
+       GLOBAL RESET & BASE STYLES
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-primary: #1e3a8a;
+      --color-primary-hover: #1e40af;
+      --color-secondary: #f3f4f6;
+      --color-text: #1f2937;
+      --color-text-light: #6b7280;
+      --color-border: #d1d5db;
+      --color-white: #ffffff;
+      --color-black: #000000;
+      --color-success: #10b981;
+      --color-error: #ef4444;
+      --color-warning: #f59e0b;
+      --font-primary: 'Nunito Sans', sans-serif;
+      --border-radius: 8px;
+      --border-radius-lg: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
+      --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+      --transition: all 0.25s ease;
+      --container-max: 1200px;
+      --container-pad: 1.5rem;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-primary);
+      color: var(--color-text);
+      background: var(--color-white);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font-family: inherit; }
+    ul { list-style: none; }
+
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--container-pad);
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--color-text);
+      text-align: center;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--color-text-light);
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.75rem;
+      border-radius: var(--border-radius);
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 2px solid transparent;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: var(--color-white);
+      border-color: var(--color-primary);
+    }
+    .btn-primary:hover {
+      background: var(--color-primary-hover);
+      border-color: var(--color-primary-hover);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-secondary {
+      background: var(--color-white);
+      color: var(--color-primary);
+      border-color: var(--color-white);
+    }
+    .btn-secondary:hover {
+      background: var(--color-secondary);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+    .btn-outline:hover {
+      background: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    .btn-full { width: 100%; }
+
+    .btn:disabled, .btn[disabled] {
+      background: var(--color-border);
+      border-color: var(--color-border);
+      color: var(--color-text-light);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .divider-with-text {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      justify-content: center;
+    }
+    .divider-with-text::before,
+    .divider-with-text::after {
+      content: '';
+      flex: 1;
+      max-width: 120px;
+      height: 2px;
+      background: var(--color-border);
+    }
+    .divider-with-text span {
+      font-weight: 700;
+      color: var(--color-text-light);
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+
+    /* Form Styles */
+    .form-group { margin-bottom: 1.25rem; }
+    .form-label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+      color: var(--color-text);
+    }
+    .form-label .required { color: var(--color-error); margin-left: 2px; }
+    .form-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      font-family: var(--font-primary);
+      color: var(--color-text);
+      background: var(--color-white);
+      transition: var(--transition);
+      outline: none;
+    }
+    .form-input:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(30,58,138,0.12);
+    }
+    .form-input.error { border-color: var(--color-error); }
+    .form-error {
+      color: var(--color-error);
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
+      display: none;
+    }
+    .form-error.visible { display: block; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 640px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* Utility */
+    .text-center { text-align: center; }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .section-title { font-size: 1.75rem; }
+    }
+    @media (max-width: 480px) {
+      .section-title { font-size: 1.5rem; }
+      :root { --container-pad: 1rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main-content" class="visually-hidden">Skip to main content</a>
+
+  {%- sections 'header' -%}
+
+  <main id="main-content" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+
+  {%- sections 'footer' -%}
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/923037231111" 
+     class="whatsapp-float" 
+     target="_blank" 
+     rel="noopener noreferrer"
+     aria-label="Chat on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="28" height="28">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <style>
+    .whatsapp-float {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 3.25rem;
+      height: 3.25rem;
+      background: var(--color-success);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(16,185,129,0.4);
+      z-index: 999;
+      transition: var(--transition);
+    }
+    .whatsapp-float:hover {
+      background: #059669;
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(16,185,129,0.5);
+    }
+  </style>
+</body>
+</html>
