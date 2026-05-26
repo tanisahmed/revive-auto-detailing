@@ -1,0 +1,112 @@
+<style>
+.rad-blog { padding: 2rem 0; background: #fff; }
+.rad-blog.bg-gray { background: #f3f4f6; }
+.rad-blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.rad-blog-card {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  transition: all 0.25s;
+}
+.rad-blog-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.12); transform: translateY(-3px); }
+.rad-blog-img {
+  height: 200px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1e3a8a, #1e40af);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3rem;
+}
+.rad-blog-img img { width: 100%; height: 100%; object-fit: cover; }
+.rad-blog-body { padding: 1.25rem; }
+.rad-blog-meta { font-size: 0.75rem; color: #9ca3af; margin-bottom: 0.5rem; font-weight: 600; }
+.rad-blog-title { font-size: 1rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem; line-height: 1.4; }
+.rad-blog-excerpt { font-size: 0.875rem; color: #6b7280; line-height: 1.6; margin-bottom: 1rem; }
+.rad-blog-link { font-size: 0.875rem; font-weight: 700; color: #1e3a8a; text-decoration: none; }
+.rad-blog-link:hover { text-decoration: underline; }
+.rad-blog-cta { text-align: center; margin-top: 2rem; }
+@media (max-width: 900px) { .rad-blog-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 600px) { .rad-blog-grid { grid-template-columns: 1fr; } }
+</style>
+
+<section class="rad-blog {% if section.settings.bg_gray %}bg-gray{% endif %}">
+  <div class="container">
+    <h2 class="section-title">{{ section.settings.title | default: 'Car Care Tips & News' }}</h2>
+    <p class="section-subtitle">{{ section.settings.subtitle | default: 'Expert advice for your vehicle' }}</p>
+
+    {%- if blog != blank -%}
+      <div class="rad-blog-grid">
+        {%- for article in blogs[section.settings.blog].articles limit: section.settings.post_count -%}
+          <div class="rad-blog-card">
+            <div class="rad-blog-img">
+              {%- if article.image -%}
+                <img src="{{ article.image | image_url: width: 600 }}" alt="{{ article.title }}" loading="lazy">
+              {%- else -%}
+                &#128663;
+              {%- endif -%}
+            </div>
+            <div class="rad-blog-body">
+              <div class="rad-blog-meta">{{ article.published_at | date: '%B %d, %Y' }}</div>
+              <h3 class="rad-blog-title">{{ article.title }}</h3>
+              <p class="rad-blog-excerpt">{{ article.excerpt | strip_html | truncate: 100 }}</p>
+              <a href="{{ article.url }}" class="rad-blog-link">Read More →</a>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <div class="rad-blog-grid">
+        <div class="rad-blog-card">
+          <div class="rad-blog-img">&#128663;</div>
+          <div class="rad-blog-body">
+            <div class="rad-blog-meta">May 2025</div>
+            <h3 class="rad-blog-title">Why PPF is Essential for Cars in Karachi</h3>
+            <p class="rad-blog-excerpt">Karachi's harsh climate makes paint protection critical. Here's why PPF is the best investment...</p>
+            <a href="/blogs/news" class="rad-blog-link">Read More →</a>
+          </div>
+        </div>
+        <div class="rad-blog-card">
+          <div class="rad-blog-img">&#128295;</div>
+          <div class="rad-blog-body">
+            <div class="rad-blog-meta">April 2025</div>
+            <h3 class="rad-blog-title">PPF vs Ceramic Coating: Which is Better?</h3>
+            <p class="rad-blog-excerpt">Both offer great protection but in different ways. Learn which option suits your needs...</p>
+            <a href="/blogs/news" class="rad-blog-link">Read More →</a>
+          </div>
+        </div>
+        <div class="rad-blog-card">
+          <div class="rad-blog-img">&#10024;</div>
+          <div class="rad-blog-body">
+            <div class="rad-blog-meta">March 2025</div>
+            <h3 class="rad-blog-title">How to Maintain Your PPF Film</h3>
+            <p class="rad-blog-excerpt">Simple tips to keep your PPF looking crystal clear and performing at its best...</p>
+            <a href="/blogs/news" class="rad-blog-link">Read More →</a>
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+
+    <div class="rad-blog-cta">
+      <a href="/blogs/news" class="btn btn-outline">View All Articles →</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Blog Posts",
+  "settings": [
+    {"type": "text", "id": "title", "label": "Title", "default": "Car Care Tips & News"},
+    {"type": "text", "id": "subtitle", "label": "Subtitle", "default": "Expert advice for your vehicle"},
+    {"type": "blog", "id": "blog", "label": "Blog"},
+    {"type": "range", "id": "post_count", "min": 1, "max": 6, "step": 1, "label": "Number of Posts", "default": 3},
+    {"type": "checkbox", "id": "bg_gray", "label": "Gray Background?", "default": false}
+  ],
+  "presets": [{"name": "Blog Posts"}]
+}
+{% endschema %}
