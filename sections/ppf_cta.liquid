@@ -1,0 +1,84 @@
+<style>
+  .ppf-cta-section {
+    padding: 5rem 0;
+    background: var(--color-primary);
+    color: var(--color-white);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .ppf-cta-section::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+  }
+  .ppf-cta-section::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -50px;
+    width: 300px;
+    height: 300px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+  }
+
+  .ppf-cta-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .ppf-cta-emoji { font-size: 3.5rem; display: block; margin-bottom: 1rem; }
+  .ppf-cta-headline { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.75rem; }
+  .ppf-cta-subheading { font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+  .ppf-cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 640px) {
+    .ppf-cta-section { padding: 3.5rem 0; }
+    .ppf-cta-headline { font-size: 1.85rem; }
+    .ppf-cta-buttons { flex-direction: column; align-items: center; }
+  }
+</style>
+
+<section class="ppf-cta-section">
+  <div class="container">
+    <div class="ppf-cta-inner">
+      <span class="ppf-cta-emoji">🛡️</span>
+      <h2 class="ppf-cta-headline">Ready to Protect Your Car?</h2>
+      <p class="ppf-cta-subheading">Book your PPF installation today and give your car the protection it deserves</p>
+      <div class="ppf-cta-buttons">
+        <a href="/pages/ppf-booking" class="btn btn-secondary" style="font-size:1.05rem;padding:1rem 2rem;">
+          Book My Slot →
+        </a>
+        <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20to%20book%20a%20PPF%20installation." 
+           target="_blank" rel="noopener"
+           class="btn" style="background:rgba(255,255,255,0.15);color:white;border-color:rgba(255,255,255,0.3);font-size:1.05rem;padding:1rem 2rem;">
+          💬 WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PPF CTA",
+  "settings": [],
+  "presets": [
+    {
+      "name": "PPF CTA"
+    }
+  ]
+}
+{% endschema %}
