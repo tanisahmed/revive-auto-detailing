@@ -1,0 +1,59 @@
+<style>
+.rad-cer-detail { padding: 2rem 0; background: #fff; }
+.rad-cer-detail-title { font-size: 1.75rem; font-weight: 800; color: #1f2937; text-align: center; margin-bottom: 0.5rem; }
+.rad-cer-detail-sub { text-align: center; color: #6b7280; margin-bottom: 2rem; font-size: 1rem; }
+.rad-cer-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 860px; margin: 0 auto; }
+.rad-cer-detail-card {
+  background: #f3f4f6; border-radius: 12px; padding: 1.5rem;
+  border-left: 4px solid #1e3a8a;
+}
+.rad-cer-detail-card-title {
+  font-size: 1rem; font-weight: 800; color: #1e3a8a;
+  margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;
+  text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.875rem;
+}
+.rad-cer-detail-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.rad-cer-detail-item {
+  display: flex; align-items: flex-start; gap: 0.5rem;
+  font-size: 0.875rem; color: #1f2937; line-height: 1.5;
+}
+.rad-cer-detail-item::before { content: '✓'; color: #10b981; font-weight: 800; flex-shrink: 0; }
+@media (max-width: 640px) { .rad-cer-detail-grid { grid-template-columns: 1fr; } }
+</style>
+
+<section class="rad-cer-detail">
+  <div class="container">
+    <h2 class="rad-cer-detail-title">Complete Detailing Included</h2>
+    <p class="rad-cer-detail-sub">Every ceramic coating package includes full interior & exterior detailing</p>
+    <div class="rad-cer-detail-grid">
+      <div class="rad-cer-detail-card">
+        <div class="rad-cer-detail-card-title">&#127968; Interior Detailing</div>
+        <div class="rad-cer-detail-list">
+          <div class="rad-cer-detail-item">Interior Vacuum / Carpet and Seats Treatment</div>
+          <div class="rad-cer-detail-item">All-Purpose Cleaning Process</div>
+          <div class="rad-cer-detail-item">Interior Dressing (All Plastic &amp; Leather surfaces)</div>
+          <div class="rad-cer-detail-item">De-odorization</div>
+          <div class="rad-cer-detail-item">All Windows and Mirrors cleaned with Glass Cleaner</div>
+        </div>
+      </div>
+      <div class="rad-cer-detail-card">
+        <div class="rad-cer-detail-card-title">&#128663; Exterior Detailing</div>
+        <div class="rad-cer-detail-list">
+          <div class="rad-cer-detail-item">Foam Wash</div>
+          <div class="rad-cer-detail-item">Claying Process</div>
+          <div class="rad-cer-detail-item">Professional Compounding / Polishing</div>
+          <div class="rad-cer-detail-item">Paint Correction / Scratch Removal</div>
+          <div class="rad-cer-detail-item">Undercarriage / Engine Bay Degreasing</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ceramic Detailing Included",
+  "settings": [],
+  "presets": [{"name": "Ceramic Detailing Included"}]
+}
+{% endschema %}
