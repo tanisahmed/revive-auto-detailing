@@ -1,187 +1,110 @@
 <style>
-  .lead-form-section {
-    padding: 5rem 0;
-    background: var(--color-white);
-  }
-
-  .lead-form-wrapper {
-    max-width: 42rem;
-    margin: 0 auto;
-    background: var(--color-secondary);
-    border-radius: var(--border-radius-lg);
-    padding: 2.5rem;
-  }
-
-  .lead-form-success {
-    display: none;
-    text-align: center;
-    padding: 2rem;
-  }
-  .lead-form-success.visible { display: block; }
-  .lead-form-success .success-icon { font-size: 3rem; margin-bottom: 1rem; }
-  .lead-form-success h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem; }
-  .lead-form-success p { color: var(--color-text-light); }
-
-  @media (max-width: 640px) {
-    .lead-form-section { padding: 3.5rem 0; }
-    .lead-form-wrapper { padding: 1.5rem 1.25rem; }
-  }
+.rad-leadform { padding: 5rem 0; background: #fff; }
+.rad-leadform-wrap { max-width: 42rem; margin: 0 auto; background: #f3f4f6; border-radius: 12px; padding: 2.5rem; }
+.rad-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.rad-form-group { margin-bottom: 1.25rem; }
+.rad-form-label { display: block; font-weight: 600; margin-bottom: 0.4rem; font-size: 0.95rem; color: #1f2937; }
+.rad-form-label span { color: #ef4444; }
+.rad-form-input { width: 100%; padding: 0.75rem 1rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem; font-family: 'Nunito Sans', sans-serif; color: #1f2937; background: #fff; outline: none; transition: border 0.2s; }
+.rad-form-input:focus { border-color: #1e3a8a; box-shadow: 0 0 0 3px rgba(30,58,138,0.12); }
+.rad-form-error { color: #ef4444; font-size: 0.8rem; margin-top: 0.3rem; display: none; }
+.rad-form-error.show { display: block; }
+.rad-submit-btn { width: 100%; padding: 0.875rem; background: #1e3a8a; color: #fff; border: none; border-radius: 8px; font-family: 'Nunito Sans', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+.rad-submit-btn:hover { background: #1e40af; }
+.rad-form-success { display: none; text-align: center; padding: 2rem; }
+.rad-form-success.show { display: block; }
+@media (max-width: 640px) { .rad-leadform { padding: 3rem 0; } .rad-form-row { grid-template-columns: 1fr; } .rad-leadform-wrap { padding: 1.5rem 1.25rem; } }
 </style>
 
-<section class="lead-form-section">
+<section class="rad-leadform">
   <div class="container">
-    <h2 class="section-title">{{ section.settings.title | default: 'Get Your Free Estimate' }}</h2>
-    <p class="section-subtitle">{{ section.settings.subtitle | default: 'Fill out the form below and we\'ll get back to you with a personalized quote.' }}</p>
-
-    <div class="lead-form-wrapper">
-      <form class="lead-form" id="lead-form" novalidate>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="lead-first-name">
-              First Name <span class="required">*</span>
-            </label>
-            <input type="text" id="lead-first-name" name="first_name" class="form-input" 
-                   placeholder="e.g. Ahmed" required autocomplete="given-name">
-            <div class="form-error" id="error-first-name">Please enter your first name</div>
+    <h2 class="section-title">Get Your Free Estimate</h2>
+    <p class="section-subtitle">Fill out the form below and we'll get back to you with a personalized quote.</p>
+    <div class="rad-leadform-wrap">
+      <form id="rad-lead-form" novalidate>
+        <div class="rad-form-row">
+          <div class="rad-form-group">
+            <label class="rad-form-label" for="rlf-fname">First Name <span>*</span></label>
+            <input type="text" id="rlf-fname" class="rad-form-input" placeholder="Ahmed" required>
+            <div class="rad-form-error" id="rlf-err-fname">Enter your first name</div>
           </div>
-          <div class="form-group">
-            <label class="form-label" for="lead-last-name">
-              Last Name <span class="required">*</span>
-            </label>
-            <input type="text" id="lead-last-name" name="last_name" class="form-input" 
-                   placeholder="e.g. Khan" required autocomplete="family-name">
-            <div class="form-error" id="error-last-name">Please enter your last name</div>
+          <div class="rad-form-group">
+            <label class="rad-form-label" for="rlf-lname">Last Name <span>*</span></label>
+            <input type="text" id="rlf-lname" class="rad-form-input" placeholder="Khan" required>
+            <div class="rad-form-error" id="rlf-err-lname">Enter your last name</div>
           </div>
         </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="lead-phone">
-              WhatsApp Number <span class="required">*</span>
-            </label>
-            <input type="tel" id="lead-phone" name="phone" class="form-input" 
-                   placeholder="+92 3XX XXXXXXX" required autocomplete="tel">
-            <div class="form-error" id="error-phone">Please enter a valid phone number</div>
+        <div class="rad-form-row">
+          <div class="rad-form-group">
+            <label class="rad-form-label" for="rlf-phone">WhatsApp Number <span>*</span></label>
+            <input type="tel" id="rlf-phone" class="rad-form-input" placeholder="+92 3XX XXXXXXX" required>
+            <div class="rad-form-error" id="rlf-err-phone">Enter a valid phone number</div>
           </div>
-          <div class="form-group">
-            <label class="form-label" for="lead-email">
-              Email Address <span class="required">*</span>
-            </label>
-            <input type="email" id="lead-email" name="email" class="form-input" 
-                   placeholder="you@example.com" required autocomplete="email">
-            <div class="form-error" id="error-email">Please enter a valid email address</div>
+          <div class="rad-form-group">
+            <label class="rad-form-label" for="rlf-email">Email Address <span>*</span></label>
+            <input type="email" id="rlf-email" class="rad-form-input" placeholder="you@example.com" required>
+            <div class="rad-form-error" id="rlf-err-email">Enter a valid email</div>
           </div>
         </div>
-
-        <div class="form-group">
-          <label class="form-label" for="lead-vehicle">
-            Vehicle Make & Model <span class="required">*</span>
-          </label>
-          <input type="text" id="lead-vehicle" name="vehicle" class="form-input" 
-                 placeholder="e.g. Toyota Corolla 2022" required>
-          <div class="form-error" id="error-vehicle">Please enter your vehicle make & model</div>
+        <div class="rad-form-group">
+          <label class="rad-form-label" for="rlf-vehicle">Vehicle Make &amp; Model <span>*</span></label>
+          <input type="text" id="rlf-vehicle" class="rad-form-input" placeholder="e.g. Toyota Corolla 2022" required>
+          <div class="rad-form-error" id="rlf-err-vehicle">Enter your vehicle</div>
         </div>
-
-        <div class="form-group">
-          <label class="form-label" for="lead-service">
-            Service Package <span class="required">*</span>
-          </label>
-          <select id="lead-service" name="service" class="form-input" required>
+        <div class="rad-form-group">
+          <label class="rad-form-label" for="rlf-service">Service Package <span>*</span></label>
+          <select id="rlf-service" class="rad-form-input" required>
             <option value="" disabled selected>Select a service...</option>
             <option value="ppf">Paint Protection Film (PPF)</option>
             <option value="ceramic">Ceramic Coating</option>
-            <option value="detailing">Exterior & Interior Detailing</option>
+            <option value="detailing">Exterior &amp; Interior Detailing</option>
             <option value="antirust">Anti-Rust Undercoating</option>
           </select>
-          <div class="form-error" id="error-service">Please select a service package</div>
+          <div class="rad-form-error" id="rlf-err-service">Select a service</div>
         </div>
-
-        <button type="submit" class="btn btn-primary btn-full" id="lead-submit-btn">
-          Calculate My Car Estimate
-        </button>
+        <button type="submit" class="rad-submit-btn">Calculate My Car Estimate</button>
       </form>
-
-      <div class="lead-form-success" id="lead-form-success">
-        <div class="success-icon">✅</div>
-        <h3>Request Received!</h3>
-        <p>Thank you! We'll get back to you on WhatsApp within a few hours with your personalized quote.</p>
+      <div class="rad-form-success" id="rlf-success">
+        <div style="font-size:3rem;margin-bottom:1rem;">&#9989;</div>
+        <h3 style="font-size:1.5rem;font-weight:800;margin-bottom:0.5rem;">Request Received!</h3>
+        <p style="color:#6b7280;">We'll get back to you on WhatsApp within a few hours with your personalized quote.</p>
       </div>
     </div>
   </div>
 </section>
 
 <script>
-  (function() {
-    var form = document.getElementById('lead-form');
-    var successDiv = document.getElementById('lead-form-success');
-    var submitBtn = document.getElementById('lead-submit-btn');
-
-    function validateField(id, errorId, validationFn) {
-      var input = document.getElementById(id);
-      var error = document.getElementById(errorId);
-      if (!input || !error) return true;
-      var valid = validationFn(input.value.trim());
-      input.classList.toggle('error', !valid);
-      error.classList.toggle('visible', !valid);
-      return valid;
+(function(){
+  var form = document.getElementById('rad-lead-form');
+  if(!form) return;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var ok = true;
+    function chk(id, errId, fn){
+      var el=document.getElementById(id), err=document.getElementById(errId);
+      var v=fn(el.value.trim());
+      el.style.borderColor=v?'#d1d5db':'#ef4444';
+      err.classList.toggle('show',!v);
+      if(!v) ok=false;
     }
-
-    function isNotEmpty(v) { return v.length > 0; }
-    function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
-    function isPhone(v) { return v.replace(/\D/g, '').length >= 10; }
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      var v1 = validateField('lead-first-name', 'error-first-name', isNotEmpty);
-      var v2 = validateField('lead-last-name', 'error-last-name', isNotEmpty);
-      var v3 = validateField('lead-phone', 'error-phone', isPhone);
-      var v4 = validateField('lead-email', 'error-email', isEmail);
-      var v5 = validateField('lead-vehicle', 'error-vehicle', isNotEmpty);
-      var v6 = validateField('lead-service', 'error-service', isNotEmpty);
-
-      if (v1 && v2 && v3 && v4 && v5 && v6) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
-        // Simulate submission
-        setTimeout(function() {
-          form.style.display = 'none';
-          successDiv.classList.add('visible');
-        }, 800);
-      }
-    });
-
-    // Live validation on blur
-    ['lead-first-name', 'lead-last-name'].forEach(function(id) {
-      var el = document.getElementById(id);
-      if (el) el.addEventListener('blur', function() {
-        validateField(id, 'error-' + id.replace('lead-', ''), isNotEmpty);
-      });
-    });
-  })();
+    chk('rlf-fname','rlf-err-fname',function(v){return v.length>0;});
+    chk('rlf-lname','rlf-err-lname',function(v){return v.length>0;});
+    chk('rlf-phone','rlf-err-phone',function(v){return v.replace(/\D/g,'').length>=10;});
+    chk('rlf-email','rlf-err-email',function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);});
+    chk('rlf-vehicle','rlf-err-vehicle',function(v){return v.length>0;});
+    chk('rlf-service','rlf-err-service',function(v){return v.length>0;});
+    if(ok){
+      form.style.display='none';
+      document.getElementById('rlf-success').classList.add('show');
+    }
+  });
+})();
 </script>
 
 {% schema %}
 {
   "name": "Lead Form",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Section Title",
-      "default": "Get Your Free Estimate"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Subtitle",
-      "default": "Fill out the form below and we'll get back to you with a personalized quote."
-    }
-  ],
-  "presets": [
-    {
-      "name": "Lead Form"
-    }
-  ]
+  "settings": [],
+  "presets": [{"name": "Lead Form"}]
 }
 {% endschema %}
