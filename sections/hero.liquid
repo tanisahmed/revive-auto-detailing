@@ -1,0 +1,238 @@
+<style>
+  .hero-section {
+    background: var(--color-black);
+    color: var(--color-white);
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 60% 50%, rgba(30,58,138,0.3) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(30,58,138,0.4);
+    border: 1px solid rgba(96,165,250,0.3);
+    padding: 0.35rem 1rem;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #93c5fd;
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-headline {
+    font-size: 3.75rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+    letter-spacing: -1px;
+  }
+
+  .hero-headline span { color: #60a5fa; }
+
+  .hero-subheading {
+    font-size: 1.15rem;
+    color: #d1d5db;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 480px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .hero-stat-number {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #60a5fa;
+    display: block;
+  }
+  .hero-stat-label {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    display: block;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* Right side */
+  .hero-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .hero-car-emoji {
+    font-size: 10rem;
+    line-height: 1;
+    filter: drop-shadow(0 20px 60px rgba(30,58,138,0.5));
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(30,58,138,0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @media (max-width: 900px) {
+    .hero-section { padding: 3.5rem 0; }
+    .hero-headline { font-size: 2.75rem; }
+    .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-visual { display: none; }
+    .hero-stats { gap: 1.5rem; }
+  }
+
+  @media (max-width: 640px) {
+    .hero-section { padding: 3rem 0; }
+    .hero-headline { font-size: 2rem; letter-spacing: -0.5px; }
+    .hero-subheading { font-size: 1rem; }
+    .hero-buttons { flex-direction: column; }
+    .hero-buttons .btn { width: 100%; justify-content: center; }
+    .hero-stats { flex-wrap: wrap; gap: 1rem; }
+  }
+</style>
+
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-grid">
+      <!-- Left Content -->
+      <div class="hero-content">
+        <div class="hero-badge">
+          ⭐ Karachi's Premium Auto Detailing
+        </div>
+        <h1 class="hero-headline">
+          {{ section.settings.headline | default: 'Transform Your Car\'s Look with' }} 
+          <span>{{ section.settings.headline_accent | default: 'Revive Auto Detailing' }}</span>
+        </h1>
+        <p class="hero-subheading">
+          {{ section.settings.subheading | default: 'Professional car detailing, ceramic coating, and paint protection services to keep your vehicle looking pristine.' }}
+        </p>
+        <div class="hero-buttons">
+          <a href="{{ section.settings.primary_btn_link | default: '/pages/paint-protection-film' }}" 
+             class="btn btn-primary">
+            {{ section.settings.primary_btn_text | default: 'Get Free Quote' }}
+          </a>
+          <a href="tel:{{ section.settings.phone | default: '+923037231111' }}" 
+             class="btn btn-secondary">
+            📞 {{ section.settings.secondary_btn_text | default: 'Call Now' }}
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-number">500+</span>
+            <span class="hero-stat-label">Cars Detailed</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number">4.9★</span>
+            <span class="hero-stat-label">Google Rating</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number">10yr</span>
+            <span class="hero-stat-label">PPF Warranty</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Visual -->
+      <div class="hero-visual">
+        <div class="hero-glow"></div>
+        <div class="hero-car-emoji">🚗</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Transform Your Car's Look with"
+    },
+    {
+      "type": "text",
+      "id": "headline_accent",
+      "label": "Headline Accent (Blue)",
+      "default": "Revive Auto Detailing"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Professional car detailing, ceramic coating, and paint protection services to keep your vehicle looking pristine."
+    },
+    {
+      "type": "text",
+      "id": "primary_btn_text",
+      "label": "Primary Button Text",
+      "default": "Get Free Quote"
+    },
+    {
+      "type": "url",
+      "id": "primary_btn_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_btn_text",
+      "label": "Secondary Button Text",
+      "default": "Call Now"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone Number",
+      "default": "+923037231111"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}
