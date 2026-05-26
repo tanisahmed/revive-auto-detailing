@@ -1,173 +1,38 @@
 <style>
-  .why-section {
-    padding: 5rem 0;
-    background: var(--color-secondary);
-  }
-
-  .benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-    margin-bottom: 2rem;
-  }
-
-  .benefit-card {
-    background: var(--color-white);
-    border-radius: var(--border-radius-lg);
-    padding: 1.5rem;
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition);
-  }
-  .benefit-card:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
-  }
-
-  .benefit-check {
-    width: 2.25rem;
-    height: 2.25rem;
-    background: rgba(30,58,138,0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    color: var(--color-primary);
-    font-weight: 800;
-    font-size: 1rem;
-  }
-
-  .benefit-content {}
-  .benefit-name {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--color-text);
-    margin-bottom: 0.25rem;
-  }
-  .benefit-desc {
-    font-size: 0.875rem;
-    color: var(--color-text-light);
-    line-height: 1.5;
-  }
-
-  .special-offer-banner {
-    background: var(--color-primary);
-    color: var(--color-white);
-    border-radius: var(--border-radius-lg);
-    padding: 2rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .special-offer-banner::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 300px;
-    height: 300px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 50%;
-  }
-  .special-offer-banner::after {
-    content: '';
-    position: absolute;
-    bottom: -50%;
-    left: -5%;
-    width: 200px;
-    height: 200px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 50%;
-  }
-
-  .special-offer-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(255,255,255,0.15);
-    padding: 0.3rem 0.85rem;
-    border-radius: 100px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-  }
-
-  .special-offer-title {
-    font-size: 1.75rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
-    position: relative;
-    z-index: 1;
-  }
-  .special-offer-text {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    margin-bottom: 1.25rem;
-    position: relative;
-    z-index: 1;
-  }
-  .special-offer-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--color-white);
-    color: var(--color-primary);
-    padding: 0.75rem 1.75rem;
-    border-radius: var(--border-radius);
-    font-weight: 700;
-    font-size: 1rem;
-    transition: var(--transition);
-    position: relative;
-    z-index: 1;
-  }
-  .special-offer-btn:hover {
-    background: var(--color-secondary);
-    transform: translateY(-1px);
-  }
-
-  @media (max-width: 900px) {
-    .benefits-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 640px) {
-    .why-section { padding: 3.5rem 0; }
-    .benefits-grid { grid-template-columns: 1fr; }
-  }
+.rad-why { padding: 5rem 0; background: #f3f4f6; }
+.rad-why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-bottom: 2rem; }
+.rad-why-card { background: #fff; border-radius: 12px; padding: 1.5rem; display: flex; align-items: flex-start; gap: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: all 0.25s; }
+.rad-why-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.12); transform: translateY(-2px); }
+.rad-why-icon { width: 2.25rem; height: 2.25rem; background: rgba(30,58,138,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; }
+.rad-why-name { font-size: 1rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem; }
+.rad-why-desc { font-size: 0.875rem; color: #6b7280; line-height: 1.5; }
+.rad-offer-banner { background: #1e3a8a; color: #fff; border-radius: 12px; padding: 2rem; text-align: center; position: relative; overflow: hidden; }
+.rad-offer-badge { display: inline-block; background: rgba(255,255,255,0.15); padding: 0.3rem 0.85rem; border-radius: 100px; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.75rem; }
+.rad-offer-title { font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem; }
+.rad-offer-text { font-size: 1.1rem; opacity: 0.9; margin-bottom: 1.25rem; }
+.rad-offer-btn { display: inline-flex; align-items: center; background: #fff; color: #1e3a8a; padding: 0.75rem 1.75rem; border-radius: 8px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: background 0.2s; }
+.rad-offer-btn:hover { background: #f3f4f6; }
+@media (max-width: 900px) { .rad-why-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 640px) { .rad-why { padding: 3rem 0; } .rad-why-grid { grid-template-columns: 1fr; } }
 </style>
 
-<section class="why-section">
+<section class="rad-why">
   <div class="container">
-    <h2 class="section-title">{{ section.settings.title | default: 'Why Choose RAD For Your Car Detailing?' }}</h2>
+    <h2 class="section-title">Why Choose RAD For Your Car Detailing?</h2>
     <p class="section-subtitle">Experience the difference that professional expertise makes</p>
-
-    <div class="benefits-grid">
-      {% assign benefits = 'Expert Technicians,Premium Products,Affordable Pricing,Fast Turnaround,Satisfaction Guaranteed,10% Off PPF Service' | split: ',' %}
-      {% assign benefit_icons = '👨‍🔧,⭐,💰,⚡,✅,🎁' | split: ',' %}
-      {% assign benefit_descs = 'Trained & certified professionals,Only top-grade materials used,Competitive rates guaranteed,Minimal wait time for results,We stand behind our work,Limited time savings for you' | split: ',' %}
-
-      {% for benefit in benefits %}
-        <div class="benefit-card">
-          <div class="benefit-check">{{ benefit_icons[forloop.index0] }}</div>
-          <div class="benefit-content">
-            <p class="benefit-name">{{ benefit }}</p>
-            <p class="benefit-desc">{{ benefit_descs[forloop.index0] }}</p>
-          </div>
-        </div>
-      {% endfor %}
+    <div class="rad-why-grid">
+      <div class="rad-why-card"><div class="rad-why-icon">&#128295;</div><div><p class="rad-why-name">Expert Technicians</p><p class="rad-why-desc">Trained and certified professionals</p></div></div>
+      <div class="rad-why-card"><div class="rad-why-icon">&#11088;</div><div><p class="rad-why-name">Premium Products</p><p class="rad-why-desc">Only top-grade materials used</p></div></div>
+      <div class="rad-why-card"><div class="rad-why-icon">&#128176;</div><div><p class="rad-why-name">Affordable Pricing</p><p class="rad-why-desc">Competitive rates guaranteed</p></div></div>
+      <div class="rad-why-card"><div class="rad-why-icon">&#9889;</div><div><p class="rad-why-name">Fast Turnaround</p><p class="rad-why-desc">Minimal wait time for results</p></div></div>
+      <div class="rad-why-card"><div class="rad-why-icon">&#9989;</div><div><p class="rad-why-name">Satisfaction Guaranteed</p><p class="rad-why-desc">We stand behind our work</p></div></div>
+      <div class="rad-why-card"><div class="rad-why-icon">&#127873;</div><div><p class="rad-why-name">10% Off PPF Service</p><p class="rad-why-desc">Limited time offer this month</p></div></div>
     </div>
-
-    <!-- Special Offer Banner -->
-    <div class="special-offer-banner">
-      <div class="special-offer-badge">🎉 Limited Time</div>
-      <h3 class="special-offer-title">Special Offer!</h3>
-      <p class="special-offer-text">Get 10% Off PPF Service This Month!</p>
-      <a href="/pages/ppf-booking" class="special-offer-btn">
-        Book Now & Save →
-      </a>
+    <div class="rad-offer-banner">
+      <div class="rad-offer-badge">&#127881; Limited Time</div>
+      <h3 class="rad-offer-title">Special Offer!</h3>
+      <p class="rad-offer-text">Get 10% Off PPF Service This Month!</p>
+      <a href="/pages/ppf-booking" class="rad-offer-btn">Book Now &amp; Save</a>
     </div>
   </div>
 </section>
@@ -175,18 +40,7 @@
 {% schema %}
 {
   "name": "Why Choose Us",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Section Title",
-      "default": "Why Choose RAD For Your Car Detailing?"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Why Choose Us"
-    }
-  ]
+  "settings": [],
+  "presets": [{"name": "Why Choose Us"}]
 }
 {% endschema %}
