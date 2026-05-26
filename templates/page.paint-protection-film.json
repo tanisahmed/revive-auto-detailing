@@ -1,36 +1,36 @@
 {
   "sections": {
-    "ppf-hero": {
-      "type": "ppf-hero",
+    "ppf_hero": {
+      "type": "ppf_hero",
       "settings": {}
     },
-    "ppf-benefits": {
-      "type": "ppf-benefits",
+    "ppf_benefits": {
+      "type": "ppf_benefits",
       "settings": {}
     },
-    "ppf-packages": {
-      "type": "ppf-packages",
+    "ppf_packages": {
+      "type": "ppf_packages",
       "settings": {}
     },
-    "ppf-gallery": {
-      "type": "ppf-gallery",
+    "ppf_gallery": {
+      "type": "ppf_gallery",
       "settings": {}
     },
-    "ppf-faq": {
-      "type": "ppf-faq",
+    "ppf_faq": {
+      "type": "ppf_faq",
       "settings": {}
     },
-    "ppf-cta": {
-      "type": "ppf-cta",
+    "ppf_cta": {
+      "type": "ppf_cta",
       "settings": {}
     }
   },
   "order": [
-    "ppf-hero",
-    "ppf-benefits",
-    "ppf-packages",
-    "ppf-gallery",
-    "ppf-faq",
-    "ppf-cta"
+    "ppf_hero",
+    "ppf_benefits",
+    "ppf_packages",
+    "ppf_gallery",
+    "ppf_faq",
+    "ppf_cta"
   ]
 }
