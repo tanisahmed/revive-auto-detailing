@@ -574,9 +574,7 @@
       });
     } catch(e) { console.log('Form error:', e); }
 
-    // 2. WhatsApp notification to owner
-    var msg=encodeURIComponent('🔔 *NEW BOOKING!*\n\n📋 Ref: '+ref+'\n👤 '+( bd.fn||'')+' '+(bd.ln||'')+'\n📞 '+(bd.ph||'')+'\n📧 '+(bd.em||'')+'\n\n🚗 '+(bd.mk||'')+' '+(bd.mo||'')+' '+(bd.yr||'')+'\n📦 '+(vtLabels[bd.vt]||'')+' | '+(bd.pkLabel||'')+'\n📅 '+ds+' at '+(bd.tm||'')+'\n💰 PKR '+(bd.price?bd.price.toLocaleString():'')+'\n\n✅ Please confirm!');
-    setTimeout(function(){ window.open('https://wa.me/923037231111?text='+msg,'_blank'); },1500);
+    // WhatsApp notification removed
 
     // 3. Show success
     document.getElementById('rad-bform').style.display='none';
