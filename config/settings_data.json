@@ -18,7 +18,8 @@
       "header": {
         "type": "header",
         "settings": {
-          "logo_text": "RAD"
+          "logo": "shopify://shop_images/white_logo-02.png",
+          "logo_text": "Revive Auto Detailing"
         }
       },
       "hero": {
