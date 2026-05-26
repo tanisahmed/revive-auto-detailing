@@ -23,19 +23,14 @@
     {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
   </title>
 
-  <!-- Google Fonts: Nunito Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800&display=swap" rel="stylesheet">
 
   {{ content_for_header }}
 
   <style>
-    /* =============================================
-       GLOBAL RESET & BASE STYLES
-    ============================================= */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --color-primary: #1e3a8a;
       --color-primary-hover: #1e40af;
@@ -47,7 +42,6 @@
       --color-black: #000000;
       --color-success: #10b981;
       --color-error: #ef4444;
-      --color-warning: #f59e0b;
       --font-primary: 'Nunito Sans', sans-serif;
       --border-radius: 8px;
       --border-radius-lg: 12px;
@@ -58,9 +52,7 @@
       --container-max: 1200px;
       --container-pad: 1.5rem;
     }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: var(--font-primary);
       color: var(--color-text);
@@ -69,194 +61,55 @@
       font-size: 16px;
       -webkit-font-smoothing: antialiased;
     }
-
     img { max-width: 100%; height: auto; display: block; }
     a { color: inherit; text-decoration: none; }
     button, input, select, textarea { font-family: inherit; }
     ul { list-style: none; }
-
-    .container {
-      max-width: var(--container-max);
-      margin: 0 auto;
-      padding: 0 var(--container-pad);
-    }
-
-    .section-title {
-      font-size: 2.25rem;
-      font-weight: 800;
-      color: var(--color-text);
-      text-align: center;
-      margin-bottom: 0.5rem;
-      line-height: 1.2;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      color: var(--color-text-light);
-      font-size: 1.1rem;
-      margin-bottom: 3rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.875rem 1.75rem;
-      border-radius: var(--border-radius);
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: var(--transition);
-      border: 2px solid transparent;
-      text-decoration: none;
-    }
-
-    .btn-primary {
-      background: var(--color-primary);
-      color: var(--color-white);
-      border-color: var(--color-primary);
-    }
-    .btn-primary:hover {
-      background: var(--color-primary-hover);
-      border-color: var(--color-primary-hover);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .btn-secondary {
-      background: var(--color-white);
-      color: var(--color-primary);
-      border-color: var(--color-white);
-    }
-    .btn-secondary:hover {
-      background: var(--color-secondary);
-      transform: translateY(-1px);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--color-primary);
-      border-color: var(--color-primary);
-    }
-    .btn-outline:hover {
-      background: var(--color-primary);
-      color: var(--color-white);
-    }
-
+    .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-pad); }
+    .section-title { font-size: 2.25rem; font-weight: 800; color: var(--color-text); text-align: center; margin-bottom: 0.5rem; line-height: 1.2; }
+    .section-subtitle { text-align: center; color: var(--color-text-light); font-size: 1.1rem; margin-bottom: 3rem; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1.75rem; border-radius: var(--border-radius); font-weight: 700; font-size: 1rem; cursor: pointer; transition: var(--transition); border: 2px solid transparent; text-decoration: none; }
+    .btn-primary { background: var(--color-primary); color: var(--color-white); border-color: var(--color-primary); }
+    .btn-primary:hover { background: var(--color-primary-hover); border-color: var(--color-primary-hover); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .btn-secondary { background: var(--color-white); color: var(--color-primary); border-color: var(--color-white); }
+    .btn-secondary:hover { background: var(--color-secondary); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--color-primary); border-color: var(--color-primary); }
+    .btn-outline:hover { background: var(--color-primary); color: var(--color-white); }
     .btn-full { width: 100%; }
-
-    .btn:disabled, .btn[disabled] {
-      background: var(--color-border);
-      border-color: var(--color-border);
-      color: var(--color-text-light);
-      cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
-    }
-
-    .divider-with-text {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 2.5rem;
-      justify-content: center;
-    }
-    .divider-with-text::before,
-    .divider-with-text::after {
-      content: '';
-      flex: 1;
-      max-width: 120px;
-      height: 2px;
-      background: var(--color-border);
-    }
-    .divider-with-text span {
-      font-weight: 700;
-      color: var(--color-text-light);
-      font-size: 0.95rem;
-      white-space: nowrap;
-    }
-
-    /* Form Styles */
+    .btn:disabled, .btn[disabled] { background: var(--color-border); border-color: var(--color-border); color: var(--color-text-light); cursor: not-allowed; transform: none; box-shadow: none; }
+    .divider-with-text { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem; justify-content: center; }
+    .divider-with-text::before, .divider-with-text::after { content: ''; flex: 1; max-width: 120px; height: 2px; background: var(--color-border); }
+    .divider-with-text span { font-weight: 700; color: var(--color-text-light); font-size: 0.95rem; white-space: nowrap; }
     .form-group { margin-bottom: 1.25rem; }
-    .form-label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-      font-size: 0.95rem;
-      color: var(--color-text);
-    }
+    .form-label { display: block; font-weight: 600; margin-bottom: 0.4rem; font-size: 0.95rem; color: var(--color-text); }
     .form-label .required { color: var(--color-error); margin-left: 2px; }
-    .form-input {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border: 1px solid var(--color-border);
-      border-radius: var(--border-radius);
-      font-size: 1rem;
-      font-family: var(--font-primary);
-      color: var(--color-text);
-      background: var(--color-white);
-      transition: var(--transition);
-      outline: none;
-    }
-    .form-input:focus {
-      border-color: var(--color-primary);
-      box-shadow: 0 0 0 3px rgba(30,58,138,0.12);
-    }
+    .form-input { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--color-border); border-radius: var(--border-radius); font-size: 1rem; font-family: var(--font-primary); color: var(--color-text); background: var(--color-white); transition: var(--transition); outline: none; }
+    .form-input:focus { border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(30,58,138,0.12); }
     .form-input.error { border-color: var(--color-error); }
-    .form-error {
-      color: var(--color-error);
-      font-size: 0.8rem;
-      margin-top: 0.3rem;
-      display: none;
-    }
+    .form-error { color: var(--color-error); font-size: 0.8rem; margin-top: 0.3rem; display: none; }
     .form-error.visible { display: block; }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-    @media (max-width: 640px) {
-      .form-row { grid-template-columns: 1fr; }
-    }
-
-    /* Utility */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .text-center { text-align: center; }
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      clip: rect(0,0,0,0);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .section-title { font-size: 1.75rem; }
-    }
-    @media (max-width: 480px) {
-      .section-title { font-size: 1.5rem; }
-      :root { --container-pad: 1rem; }
-    }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+    @media (max-width: 768px) { .section-title { font-size: 1.75rem; } }
+    @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } .section-title { font-size: 1.5rem; } :root { --container-pad: 1rem; } }
   </style>
 </head>
 
 <body>
   <a href="#main-content" class="visually-hidden">Skip to main content</a>
 
-  {%- sections 'header' -%}
+  {% section 'header' %}
 
   <main id="main-content" tabindex="-1">
     {{ content_for_layout }}
   </main>
 
-  {%- sections 'footer' -%}
+  {% section 'footer' %}
 
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/923037231111" 
-     class="whatsapp-float" 
-     target="_blank" 
+  <a href="https://wa.me/923037231111"
+     class="whatsapp-float"
+     target="_blank"
      rel="noopener noreferrer"
      aria-label="Chat on WhatsApp">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="28" height="28">
@@ -265,26 +118,8 @@
   </a>
 
   <style>
-    .whatsapp-float {
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      width: 3.25rem;
-      height: 3.25rem;
-      background: var(--color-success);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 16px rgba(16,185,129,0.4);
-      z-index: 999;
-      transition: var(--transition);
-    }
-    .whatsapp-float:hover {
-      background: #059669;
-      transform: scale(1.1);
-      box-shadow: 0 6px 20px rgba(16,185,129,0.5);
-    }
+    .whatsapp-float { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 3.25rem; height: 3.25rem; background: var(--color-success); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(16,185,129,0.4); z-index: 999; transition: var(--transition); }
+    .whatsapp-float:hover { background: #059669; transform: scale(1.1); box-shadow: 0 6px 20px rgba(16,185,129,0.5); }
   </style>
 </body>
 </html>
