@@ -1,12 +1,10 @@
 {
-  "current": "RAD Theme",
-  "presets": {
-    "RAD Theme": {
-      "color_primary": "#1e3a8a",
-      "color_secondary": "#f3f4f6",
-      "color_text": "#1f2937",
-      "color_success": "#10b981",
-      "social_whatsapp": "923037231111"
-    }
-  }
+  "current": {
+    "color_primary": "#1e3a8a",
+    "color_secondary": "#f3f4f6",
+    "color_text": "#1f2937",
+    "color_success": "#10b981",
+    "social_whatsapp": "923037231111"
+  },
+  "presets": {}
 }
