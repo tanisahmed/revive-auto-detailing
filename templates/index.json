@@ -12,7 +12,6 @@
         "name_1": "Paint Protection Film (PPF)",
         "desc_1": "Our PPF keeps your car brand new by shielding it from scratches, chips, and UV damage.",
         "btn_label_1": "View Pricing",
-        "btn_url_1": "/pages/paint-protection-film",
         "btn_active_1": true,
         "name_2": "Ceramic Coating",
         "desc_2": "Give long-lasting shine and protection. Defends your car from scratches, dirt, and UV rays!",
@@ -26,12 +25,11 @@
         "desc_4": "Guard your car against rust with our anti-rust undercoating for long-lasting protection.",
         "btn_label_4": "Coming Soon",
         "btn_active_4": false,
-        "cta_label": "View All Services",
-        "cta_url": "/pages/paint-protection-film"
+        "cta_label": "View All Services"
       }
     },
-    "why-choose": {
-      "type": "why-choose",
+    "whyus": {
+      "type": "why-us",
       "settings": {}
     },
     "reviews": {
@@ -42,17 +40,17 @@
       "type": "process",
       "settings": {}
     },
-    "lead-form": {
-      "type": "lead-form",
+    "leadform": {
+      "type": "leadform",
       "settings": {}
     }
   },
   "order": [
     "hero",
     "services",
-    "why-choose",
+    "whyus",
     "reviews",
     "process",
-    "lead-form"
+    "leadform"
   ]
 }
