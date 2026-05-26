@@ -28,9 +28,9 @@
       "type": "productlist",
       "name": "Product List",
       "settings": {
-        "title": "Our Services & Packages",
+        "title": "Our Products",
         "subtitle": "Choose the right protection for your vehicle",
-        "collection": "",
+        "collection": "car-care-kit",
         "product_count": 4,
         "btn_text": "View Details",
         "cta_text": "View All Packages →",
