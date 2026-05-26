@@ -15,33 +15,108 @@
   display: flex;
   flex-direction: column;
 }
-.rad-svc-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.15); transform: translateY(-4px); border-color: #1e3a8a; }
-.rad-svc-icon { height: 160px; background: #f3f4f6; display: flex; align-items: center; justify-content: center; font-size: 4rem; }
-.rad-svc-body { padding: 1.25rem; display: flex; flex-direction: column; flex: 1; gap: 0.75rem; }
-.rad-svc-name { font-size: 1rem; font-weight: 700; color: #1f2937; }
-.rad-svc-desc { font-size: 0.875rem; color: #6b7280; line-height: 1.6; flex: 1; }
+.rad-svc-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  transform: translateY(-4px);
+  border-color: #1e3a8a;
+}
+
+/* Image area */
+.rad-svc-img {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  background: #f3f4f6;
+}
+.rad-svc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.rad-svc-card:hover .rad-svc-img img {
+  transform: scale(1.05);
+}
+/* Fallback if no image */
+.rad-svc-img-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+  font-size: 3.5rem;
+}
+
+.rad-svc-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.75rem;
+}
+.rad-svc-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1.3;
+}
+.rad-svc-desc {
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.6;
+  flex: 1;
+}
 .rad-svc-btn {
-  display: block; text-align: center; padding: 0.7rem;
-  background: #1e3a8a; color: #fff; border-radius: 8px;
-  font-weight: 700; font-size: 0.9rem; text-decoration: none;
-  transition: background 0.2s; margin-top: auto;
+  display: block;
+  text-align: center;
+  padding: 0.7rem;
+  background: #1e3a8a;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background 0.2s;
+  margin-top: auto;
 }
 .rad-svc-btn:hover { background: #1e40af; }
 .rad-svc-btn-disabled {
-  display: block; text-align: center; padding: 0.7rem;
-  background: #d1d5db; color: #6b7280; border-radius: 8px;
-  font-weight: 700; font-size: 0.9rem; cursor: not-allowed; margin-top: auto;
+  display: block;
+  text-align: center;
+  padding: 0.7rem;
+  background: #d1d5db;
+  color: #6b7280;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: not-allowed;
+  margin-top: auto;
 }
 .rad-services-cta { text-align: center; }
 .rad-btn-outline {
-  display: inline-flex; align-items: center; padding: 0.875rem 1.75rem;
-  background: transparent; color: #1e3a8a; border: 2px solid #1e3a8a;
-  border-radius: 8px; font-weight: 700; font-size: 1rem; text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.875rem 1.75rem;
+  background: transparent;
+  color: #1e3a8a;
+  border: 2px solid #1e3a8a;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
   transition: all 0.2s;
 }
 .rad-btn-outline:hover { background: #1e3a8a; color: #fff; }
+
 @media (max-width: 1024px) { .rad-services-grid { grid-template-columns: repeat(2,1fr); } }
-@media (max-width: 640px) { .rad-services { padding: 3rem 0; } .rad-services-grid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) {
+  .rad-services { padding: 3rem 0; }
+  .rad-services-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .rad-svc-img { height: 180px; }
+}
 </style>
 
 <section class="rad-services">
@@ -49,38 +124,79 @@
     <h2 class="section-title">What We Offer</h2>
     <div class="divider-with-text"><span>Premium Auto Care Services</span></div>
     <div class="rad-services-grid">
+
+      <!-- Card 1: PPF -->
       <div class="rad-svc-card">
-        <div class="rad-svc-icon">&#128737;</div>
+        <div class="rad-svc-img">
+          {%- if section.settings.img_ppf != blank -%}
+            <img src="{{ section.settings.img_ppf | image_url: width: 600 }}"
+                 alt="Paint Protection Film"
+                 loading="lazy">
+          {%- else -%}
+            <div class="rad-svc-img-fallback">&#128737;</div>
+          {%- endif -%}
+        </div>
         <div class="rad-svc-body">
           <h3 class="rad-svc-name">Paint Protection Film (PPF)</h3>
           <p class="rad-svc-desc">Our PPF keeps your car brand new by shielding it from scratches, chips, and UV damage.</p>
           <a href="/pages/paint-protection-film" class="rad-svc-btn">View Pricing</a>
         </div>
       </div>
+
+      <!-- Card 2: Ceramic -->
       <div class="rad-svc-card">
-        <div class="rad-svc-icon">&#10024;</div>
+        <div class="rad-svc-img">
+          {%- if section.settings.img_ceramic != blank -%}
+            <img src="{{ section.settings.img_ceramic | image_url: width: 600 }}"
+                 alt="Ceramic Coating"
+                 loading="lazy">
+          {%- else -%}
+            <div class="rad-svc-img-fallback">&#10024;</div>
+          {%- endif -%}
+        </div>
         <div class="rad-svc-body">
           <h3 class="rad-svc-name">Ceramic Coating</h3>
           <p class="rad-svc-desc">Give long-lasting shine and protection. Defends your car from scratches, dirt, and UV rays!</p>
           <span class="rad-svc-btn-disabled">Coming Soon</span>
         </div>
       </div>
+
+      <!-- Card 3: Detailing -->
       <div class="rad-svc-card">
-        <div class="rad-svc-icon">&#128663;</div>
+        <div class="rad-svc-img">
+          {%- if section.settings.img_detailing != blank -%}
+            <img src="{{ section.settings.img_detailing | image_url: width: 600 }}"
+                 alt="Exterior & Interior Detailing"
+                 loading="lazy">
+          {%- else -%}
+            <div class="rad-svc-img-fallback">&#128663;</div>
+          {%- endif -%}
+        </div>
         <div class="rad-svc-body">
           <h3 class="rad-svc-name">Exterior &amp; Interior Detailing</h3>
           <p class="rad-svc-desc">Full interior and exterior detailing to restore your car's showroom finish.</p>
           <span class="rad-svc-btn-disabled">Coming Soon</span>
         </div>
       </div>
+
+      <!-- Card 4: Anti-Rust -->
       <div class="rad-svc-card">
-        <div class="rad-svc-icon">&#128274;</div>
+        <div class="rad-svc-img">
+          {%- if section.settings.img_antirust != blank -%}
+            <img src="{{ section.settings.img_antirust | image_url: width: 600 }}"
+                 alt="Anti-Rust Undercoating"
+                 loading="lazy">
+          {%- else -%}
+            <div class="rad-svc-img-fallback">&#128274;</div>
+          {%- endif -%}
+        </div>
         <div class="rad-svc-body">
           <h3 class="rad-svc-name">Anti-Rust Undercoating</h3>
           <p class="rad-svc-desc">Guard your car against rust with our anti-rust undercoating for long-lasting protection.</p>
           <span class="rad-svc-btn-disabled">Coming Soon</span>
         </div>
       </div>
+
     </div>
     <div class="rad-services-cta">
       <a href="/pages/paint-protection-film" class="rad-btn-outline">View All Services</a>
@@ -91,7 +207,36 @@
 {% schema %}
 {
   "name": "Services",
-  "settings": [],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Service Images"
+    },
+    {
+      "type": "paragraph",
+      "content": "Upload images for each service card. Recommended size: 600x400px."
+    },
+    {
+      "type": "image_picker",
+      "id": "img_ppf",
+      "label": "Paint Protection Film — Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_ceramic",
+      "label": "Ceramic Coating — Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_detailing",
+      "label": "Exterior & Interior Detailing — Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_antirust",
+      "label": "Anti-Rust Undercoating — Image"
+    }
+  ],
   "presets": [{"name": "Services"}]
 }
 {% endschema %}
