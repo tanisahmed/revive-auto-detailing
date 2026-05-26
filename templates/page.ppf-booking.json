@@ -9,10 +9,15 @@
  */
 {
   "sections": {
-    "ppf_booking": {
-      "type": "ppf_booking",
-      "settings": {}
+    "ppf_booking_iGPhLi": {
+      "type": "ppf-booking",
+      "name": "PPF Booking Form",
+      "settings": {
+        "google_sheets_url": ""
+      }
     }
   },
-  "order": ["ppf_booking"]
+  "order": [
+    "ppf_booking_iGPhLi"
+  ]
 }
