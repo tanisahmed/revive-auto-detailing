@@ -1,0 +1,225 @@
+<style>
+.rad-det-pricing { padding: 2rem 0; background: #f3f4f6; }
+
+.rad-det-pkg-tabs {
+  display: flex; gap: 0.5rem; justify-content: center;
+  margin-bottom: 2rem; flex-wrap: wrap;
+}
+.rad-det-pkg-tab {
+  padding: 0.6rem 1.5rem; border-radius: 8px; font-weight: 700;
+  font-size: 0.95rem; cursor: pointer; border: 2px solid #d1d5db;
+  background: #fff; color: #6b7280; font-family: 'Nunito Sans', sans-serif;
+  transition: all 0.2s;
+}
+.rad-det-pkg-tab:hover { border-color: #1e3a8a; color: #1e3a8a; }
+.rad-det-pkg-tab.active { background: #1e3a8a; border-color: #1e3a8a; color: #fff; }
+
+/* Pricing Grid */
+.rad-det-pkg-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem; max-width: 1000px; margin: 0 auto;
+}
+
+.rad-det-pkg-card {
+  background: #fff; border: 2px solid #e5e7eb;
+  border-radius: 12px; overflow: hidden;
+  transition: all 0.25s; display: flex; flex-direction: column;
+}
+.rad-det-pkg-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.12); transform: translateY(-4px); border-color: #1e3a8a; }
+.rad-det-pkg-card.featured { border-color: #1e3a8a; box-shadow: 0 4px 20px rgba(30,58,138,0.15); }
+
+.rad-det-pkg-header {
+  background: #1e3a8a; color: #fff; padding: 1.25rem 1.5rem; text-align: center;
+}
+.rad-det-pkg-header.interior { background: #0f172a; }
+.rad-det-pkg-header.exterior { background: #1e3a8a; }
+.rad-det-pkg-header.complete { background: linear-gradient(135deg, #0f172a, #1e3a8a); }
+
+.rad-det-pkg-icon { font-size: 2rem; display: block; margin-bottom: 0.4rem; }
+.rad-det-pkg-name { font-size: 1.1rem; font-weight: 800; letter-spacing: 0.03em; }
+.rad-det-pkg-tagline { font-size: 0.8rem; opacity: 0.8; margin-top: 0.25rem; }
+
+.rad-det-pkg-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.75rem; }
+
+/* Price rows */
+.rad-det-prices { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 0.75rem; }
+.rad-det-price-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.5rem 0.75rem; border-radius: 6px; background: #f9fafb;
+  font-size: 0.875rem;
+}
+.rad-det-price-row .vtype { color: #6b7280; font-weight: 600; }
+.rad-det-price-row .vprice { font-weight: 800; color: #1e3a8a; }
+.rad-det-price-row .vprice-old { font-size: 0.75rem; color: #9ca3af; text-decoration: line-through; margin-right: 0.4rem; font-weight: 400; }
+.rad-det-price-row.highlight { background: rgba(30,58,138,0.06); }
+
+/* Features */
+.rad-det-features-title {
+  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;
+  color: #6b7280; font-weight: 800; padding-top: 0.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+.rad-det-features { display: flex; flex-direction: column; gap: 0.35rem; }
+.rad-det-feature { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.8rem; color: #1f2937; line-height: 1.4; }
+.rad-det-feature::before { content: '✓'; color: #10b981; font-weight: 800; flex-shrink: 0; }
+
+.rad-det-book-btn {
+  display: block; text-align: center; padding: 0.75rem;
+  background: #1e3a8a; color: #fff; border-radius: 8px;
+  font-weight: 700; font-size: 0.9rem; text-decoration: none;
+  transition: background 0.2s; margin-top: auto;
+}
+.rad-det-book-btn:hover { background: #1e40af; }
+
+.rad-det-note {
+  text-align: center; margin-top: 1.5rem;
+  font-size: 0.875rem; color: #6b7280;
+  background: #fff; border-radius: 8px;
+  padding: 1rem; border: 1px solid #e5e7eb;
+  max-width: 1000px; margin-left: auto; margin-right: auto;
+}
+.rad-det-note strong { color: #ef4444; }
+
+@media (max-width: 900px) { .rad-det-pkg-grid { grid-template-columns: 1fr; max-width: 480px; } }
+</style>
+
+<section class="rad-det-pricing" id="detailing-pricing">
+  <div class="container">
+    <h2 class="section-title">Exterior &amp; Interior Car Detailing Price</h2>
+    <p class="section-subtitle">Professional detailing packages for all vehicle types</p>
+
+    <div class="rad-det-pkg-grid">
+
+      <!-- INTERIOR DETAILING -->
+      <div class="rad-det-pkg-card">
+        <div class="rad-det-pkg-header interior">
+          <span class="rad-det-pkg-icon">🪑</span>
+          <div class="rad-det-pkg-name">Interior Detailing</div>
+          <div class="rad-det-pkg-tagline">Deep clean from inside</div>
+        </div>
+        <div class="rad-det-pkg-body">
+          <div class="rad-det-prices">
+            <div class="rad-det-price-row highlight">
+              <span class="vtype">Hatchback</span>
+              <span class="vprice">PKR 10,000</span>
+            </div>
+            <div class="rad-det-price-row">
+              <span class="vtype">Sedan</span>
+              <span class="vprice">PKR 12,000</span>
+            </div>
+            <div class="rad-det-price-row">
+              <span class="vtype">Crossover</span>
+              <span class="vprice">PKR 14,000</span>
+            </div>
+            <div class="rad-det-price-row">
+              <span class="vtype">SUV</span>
+              <span class="vprice">PKR 16,000</span>
+            </div>
+          </div>
+          <div class="rad-det-features-title">What's Included</div>
+          <div class="rad-det-features">
+            <div class="rad-det-feature">Carpet Vacuum / Removal Wash</div>
+            <div class="rad-det-feature">Seats Deep Cleaning</div>
+            <div class="rad-det-feature">Interior Dressing — All Plastic &amp; Leather Surfaces</div>
+            <div class="rad-det-feature">All Windows &amp; Mirrors Cleaned</div>
+            <div class="rad-det-feature">De-odorization</div>
+            <div class="rad-det-feature">Engine Grease Clearing / Air Filter Cleaning</div>
+          </div>
+          <a href="/pages/ppf-booking" class="rad-det-book-btn">Book My Slot</a>
+        </div>
+      </div>
+
+      <!-- EXTERIOR DETAILING -->
+      <div class="rad-det-pkg-card">
+        <div class="rad-det-pkg-header exterior">
+          <span class="rad-det-pkg-icon">✨</span>
+          <div class="rad-det-pkg-name">Exterior Detailing</div>
+          <div class="rad-det-pkg-tagline">Showroom shine outside</div>
+        </div>
+        <div class="rad-det-pkg-body">
+          <div class="rad-det-prices">
+            <div class="rad-det-price-row highlight">
+              <span class="vtype">Hatchback</span>
+              <span class="vprice">PKR 12,000</span>
+            </div>
+            <div class="rad-det-price-row">
+              <span class="vtype">Sedan</span>
+              <span class="vprice">PKR 14,000</span>
+            </div>
+            <div class="rad-det-price-row">
+              <span class="vtype">Crossover</span>
+              <span class="vprice">PKR 16,000</span>
+            </div>
+            <div class="rad-det-price-row">
+              <span class="vtype">SUV</span>
+              <span class="vprice">PKR 18,000</span>
+            </div>
+          </div>
+          <div class="rad-det-features-title">What's Included</div>
+          <div class="rad-det-features">
+            <div class="rad-det-feature">Foam Wash — Removing All Grime &amp; Dirt</div>
+            <div class="rad-det-feature">Professional Compounding / Wax</div>
+            <div class="rad-det-feature">Scratch Removal &amp; Paint Correction</div>
+            <div class="rad-det-feature">Exterior Protectant Coating</div>
+            <div class="rad-det-feature">Rim / Tire Dressing</div>
+            <div class="rad-det-feature">Undercarriage Degreasing</div>
+          </div>
+          <a href="/pages/ppf-booking" class="rad-det-book-btn">Book My Slot</a>
+        </div>
+      </div>
+
+      <!-- COMPLETE DETAILING -->
+      <div class="rad-det-pkg-card featured">
+        <div class="rad-det-pkg-header complete">
+          <span class="rad-det-pkg-icon">🏆</span>
+          <div class="rad-det-pkg-name">Complete Detailing</div>
+          <div class="rad-det-pkg-tagline">Interior + Exterior — Best Value!</div>
+        </div>
+        <div class="rad-det-pkg-body">
+          <div class="rad-det-prices">
+            <div class="rad-det-price-row highlight">
+              <span class="vtype">Hatchback</span>
+              <span class="vprice"><span class="vprice-old">PKR 22,000</span>PKR 18,000</span>
+            </div>
+            <div class="rad-det-price-row">
+              <span class="vtype">Sedan</span>
+              <span class="vprice"><span class="vprice-old">PKR 26,000</span>PKR 22,000</span>
+            </div>
+            <div class="rad-det-price-row">
+              <span class="vtype">Crossover</span>
+              <span class="vprice"><span class="vprice-old">PKR 30,000</span>PKR 24,000</span>
+            </div>
+            <div class="rad-det-price-row">
+              <span class="vtype">SUV</span>
+              <span class="vprice"><span class="vprice-old">PKR 34,000</span>PKR 27,000</span>
+            </div>
+          </div>
+          <div class="rad-det-features-title">Everything Included</div>
+          <div class="rad-det-features">
+            <div class="rad-det-feature">Full Interior Detailing</div>
+            <div class="rad-det-feature">Full Exterior Detailing</div>
+            <div class="rad-det-feature">Foam Wash + Compounding</div>
+            <div class="rad-det-feature">Scratch Removal + Paint Correction</div>
+            <div class="rad-det-feature">Rim / Tire Dressing</div>
+            <div class="rad-det-feature">Engine Bay Cleaning</div>
+            <div class="rad-det-feature">De-odorization</div>
+          </div>
+          <a href="/pages/ppf-booking" class="rad-det-book-btn">Book My Slot</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="rad-det-note">
+      📅 Book your car detailing slot online now. <strong>Don't miss this chance to make your car look like new again!</strong>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Detailing Pricing",
+  "settings": [],
+  "presets": [{"name": "Detailing Pricing"}]
+}
+{% endschema %}
