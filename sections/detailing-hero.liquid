@@ -1,0 +1,89 @@
+<style>
+.rad-det-hero {
+  position: relative; color: #fff; padding: 5rem 0;
+  overflow: hidden; min-height: 560px; display: flex; align-items: center;
+}
+.rad-det-hero-bg { position: absolute; inset: 0; z-index: 0; }
+.rad-det-hero-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.rad-det-hero-fallback { position: absolute; inset: 0; background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #0f172a 100%); }
+.rad-det-hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to right, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.35) 100%); }
+.rad-det-hero-inner { position: relative; z-index: 2; width: 100%; }
+.rad-det-hero-content { max-width: 640px; }
+.rad-det-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(30,58,138,0.5); border: 1px solid rgba(96,165,250,0.4);
+  padding: 0.35rem 1rem; border-radius: 100px;
+  font-size: 0.8rem; font-weight: 700; color: #93c5fd;
+  margin-bottom: 1.25rem; letter-spacing: 0.05em; text-transform: uppercase;
+}
+.rad-det-hero-title {
+  font-size: 3.25rem; font-weight: 800; line-height: 1.1;
+  margin-bottom: 0.75rem; letter-spacing: -1px;
+  font-family: 'Nunito Sans', sans-serif;
+}
+.rad-det-hero-title span { color: #60a5fa; }
+.rad-det-hero-sub { font-size: 1.1rem; color: #d1d5db; line-height: 1.7; margin-bottom: 2rem; }
+.rad-det-hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.rad-det-btn-blue {
+  display: inline-flex; align-items: center; padding: 0.875rem 1.75rem;
+  background: #1e3a8a; color: #fff; border-radius: 8px; font-weight: 700;
+  font-size: 1rem; text-decoration: none; border: 2px solid #1e3a8a; transition: all 0.2s;
+}
+.rad-det-btn-blue:hover { background: #1e40af; transform: translateY(-1px); }
+.rad-det-btn-wa {
+  display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.75rem;
+  background: #10b981; color: #fff; border-radius: 8px; font-weight: 700;
+  font-size: 1rem; text-decoration: none; border: 2px solid #10b981; transition: all 0.2s;
+}
+.rad-det-btn-wa:hover { background: #059669; transform: translateY(-1px); }
+.rad-det-hero-stats { display: flex; gap: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.15); flex-wrap: wrap; }
+.rad-det-stat-num { font-size: 1.75rem; font-weight: 800; color: #60a5fa; display: block; }
+.rad-det-stat-lbl { font-size: 0.75rem; color: #9ca3af; display: block; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+@media (max-width: 900px) { .rad-det-hero { padding: 3.5rem 0; min-height: 450px; } .rad-det-hero-title { font-size: 2.25rem; } }
+@media (max-width: 640px) { .rad-det-hero { padding: 3rem 0; } .rad-det-hero-title { font-size: 1.85rem; } .rad-det-hero-btns { flex-direction: column; } }
+</style>
+
+<section class="rad-det-hero">
+  {%- if section.settings.bg_image != blank -%}
+    <div class="rad-det-hero-bg">
+      <img src="{{ section.settings.bg_image | image_url: width: 1800 }}" alt="Car Detailing Karachi" loading="eager">
+    </div>
+  {%- else -%}
+    <div class="rad-det-hero-fallback"></div>
+  {%- endif -%}
+  <div class="rad-det-hero-overlay"></div>
+  <div class="container rad-det-hero-inner">
+    <div class="rad-det-hero-content">
+      <div class="rad-det-tag">🚗 Karachi's Best Car Detailing</div>
+      <h1 class="rad-det-hero-title">
+        Exterior &amp; Interior<br>
+        <span>Car Detailing Karachi</span>
+      </h1>
+      <p class="rad-det-hero-sub">
+        Are you looking for premium car detailing in Karachi? RAD provides professional interior &amp; exterior services to keep your car looking brand new with long-lasting shine!
+      </p>
+      <div class="rad-det-hero-btns">
+        <a href="#detailing-pricing" class="rad-det-btn-blue">View Pricing</a>
+        <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20to%20know%20about%20Car%20Detailing" target="_blank" class="rad-det-btn-wa">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+      <div class="rad-det-hero-stats">
+        <div><span class="rad-det-stat-num">800+</span><span class="rad-det-stat-lbl">Cars Detailed</span></div>
+        <div><span class="rad-det-stat-num">4.9 ⭐</span><span class="rad-det-stat-lbl">Google Reviews</span></div>
+        <div><span class="rad-det-stat-num">2+</span><span class="rad-det-stat-lbl">Years Experience</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Detailing Hero",
+  "settings": [
+    { "type": "image_picker", "id": "bg_image", "label": "Background Image", "info": "Recommended: 1800x900px car detailing photo" }
+  ],
+  "presets": [{"name": "Detailing Hero"}]
+}
+{% endschema %}
