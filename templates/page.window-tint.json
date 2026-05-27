@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "tint_hero": {
+      "type": "tint-hero",
+      "settings": {}
+    },
+    "tint_specs": {
+      "type": "tint-specs",
+      "settings": {}
+    },
+    "tint_pricing": {
+      "type": "tint-pricing",
+      "settings": {}
+    },
+    "tint_why": {
+      "type": "tint-why",
+      "settings": {}
+    },
+    "contactform": {
+      "type": "contactform",
+      "settings": {}
+    }
+  },
+  "order": [
+    "tint_hero",
+    "tint_specs",
+    "tint_pricing",
+    "tint_why",
+    "contactform"
+  ]
+}
