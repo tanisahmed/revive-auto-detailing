@@ -529,38 +529,39 @@
     var ds=bd.dt?new Date(bd.dt+'T12:00:00').toLocaleDateString('en-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'}):'';
     var cleanPhone=(bd.ph||'').replace(/[^0-9]/g,'');
 
-    var body=
-      'BOOKING REF: '+ref+'\n'+
-      'SUBMITTED: '+new Date().toLocaleString('en-PK',{timeZone:'Asia/Karachi'})+'\n\n'+
-      '=== CUSTOMER ===\n'+
-      'Name: '+(bd.fn||'')+' '+(bd.ln||'')+'\n'+
-      'WhatsApp: '+(bd.ph||'')+'\n'+
-      'Email: '+(bd.em||'')+'\n\n'+
-      '=== VEHICLE ===\n'+
-      'Car: '+(bd.mk||'')+' '+(bd.mo||'')+' '+(bd.yr||'')+'\n'+
-      'Color: '+(bd.cl||'N/A')+'\n'+
-      'Type: '+(vtLabels[bd.vt]||'')+'\n\n'+
-      '=== APPOINTMENT ===\n'+
-      'Package: '+(bd.pkLabel||'')+'\n'+
-      'Date: '+ds+'\n'+
-      'Time: '+(bd.tm||'')+'\n'+
-      'Duration: '+(bd.dur||'')+'\n'+
-      'Price: PKR '+(bd.price?bd.price.toLocaleString():'')+'\n\n'+
-      'WhatsApp Link: https://wa.me/'+cleanPhone;
+    // === SEND EMAIL VIA FORMSPREE ===
+    // Formspree directly emails info@reviveautodetailing.pk
+    var formspreeId = document.getElementById('rad-bform').dataset.formspree || '';
 
-    var fd=new FormData();
-    fd.append('form_type','contact');
-    fd.append('utf8','check');
-    fd.append('contact[name]',(bd.fn||'')+' '+(bd.ln||''));
-    fd.append('contact[email]',bd.em||'booking@rad.pk');
-    fd.append('contact[phone]',bd.ph||'');
-    fd.append('contact[subject]','New PPF Booking: '+ref+' - '+(bd.fn||'')+' '+(bd.ln||''));
-    fd.append('contact[body]',body);
+    if(formspreeId) {
+      fetch('https://formspree.io/f/' + formspreeId, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: 'New PPF Booking: ' + ref + ' - ' + (bd.fn||'') + ' ' + (bd.ln||''),
+          booking_ref: ref,
+          submitted: new Date().toLocaleString('en-PK',{timeZone:'Asia/Karachi'}),
+          customer_name: (bd.fn||'') + ' ' + (bd.ln||''),
+          whatsapp: bd.ph || '',
+          email: bd.em || '',
+          vehicle: (bd.mk||'') + ' ' + (bd.mo||'') + ' ' + (bd.yr||''),
+          color: bd.cl || 'N/A',
+          vehicle_type: vtLabels[bd.vt] || '',
+          package: bd.pkLabel || '',
+          date: ds,
+          time: bd.tm || '',
+          duration: bd.dur || '',
+          total_price: 'PKR ' + (bd.price ? bd.price.toLocaleString() : ''),
+          whatsapp_link: 'https://wa.me/' + cleanPhone
+        })
+      }).then(function(res){
+        console.log('Email sent via Formspree:', res.status);
+      }).catch(function(e){
+        console.log('Formspree error:', e);
+      });
+    }
 
-    fetch('/contact',{method:'POST',headers:{'Accept':'application/json'},body:fd})
-    .then(function(res){console.log('Lead sent:',res.status);})
-    .catch(function(e){console.log('Error:',e);});
-
+    // === SHOW SUCCESS ===
     document.getElementById('rad-bform').style.display='none';
     document.querySelector('.rad-prog').style.display='none';
     document.querySelector('.rad-steps').style.display='none';
@@ -586,7 +587,22 @@
 {% schema %}
 {
   "name": "PPF Booking Form",
-  "settings": [],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Email Settings"
+    },
+    {
+      "type": "paragraph",
+      "content": "Formspree se booking email aayegi info@reviveautodetailing.pk pe. formspree.io pe free account banao aur Form ID yahan paste karein."
+    },
+    {
+      "type": "text",
+      "id": "formspree_id",
+      "label": "Formspree Form ID",
+      "placeholder": "abcdefgh"
+    }
+  ],
   "presets": [{"name": "PPF Booking Form"}]
 }
 {% endschema %}
