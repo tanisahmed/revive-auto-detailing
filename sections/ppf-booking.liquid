@@ -529,55 +529,42 @@
     var ds=bd.dt?new Date(bd.dt+'T12:00:00').toLocaleDateString('en-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'}):'';
     var cleanPhone=(bd.ph||'').replace(/[^0-9]/g,'');
 
-    // === SEND EMAIL VIA FORMSPREE ===
-    var formDiv = document.getElementById('rad-bform');
-    var formspreeId = formDiv ? (formDiv.dataset.formspree || '') : '';
-
-    console.log('=== RAD BOOKING DEBUG ===');
-    console.log('Formspree ID:', formspreeId);
-    console.log('Form div found:', !!formDiv);
-    console.log('Dataset:', formDiv ? JSON.stringify(formDiv.dataset) : 'null');
-
-    if(!formspreeId) {
-      console.error('ERROR: Formspree ID missing! Set it in Shopify Theme Editor -> PPF Booking Form -> Formspree Form ID');
-    } else {
-      console.log('Sending to: https://formspree.io/f/' + formspreeId);
-      
-      fetch('https://formspree.io/f/' + formspreeId, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          _subject: 'New PPF Booking: ' + ref + ' - ' + (bd.fn||'') + ' ' + (bd.ln||''),
-          _replyto: bd.em || '',
-          booking_ref: ref,
-          submitted: new Date().toLocaleString('en-PK',{timeZone:'Asia/Karachi'}),
-          customer_name: (bd.fn||'') + ' ' + (bd.ln||''),
-          whatsapp: bd.ph || '',
-          customer_email: bd.em || '',
-          vehicle: (bd.mk||'') + ' ' + (bd.mo||'') + ' ' + (bd.yr||''),
-          color: bd.cl || 'N/A',
-          vehicle_type: vtLabels[bd.vt] || '',
-          package: bd.pkLabel || '',
-          date: ds,
-          time: bd.tm || '',
-          duration: bd.dur || '',
-          total_price: 'PKR ' + (bd.price ? bd.price.toLocaleString() : ''),
-          whatsapp_link: 'https://wa.me/' + cleanPhone
-        })
-      }).then(function(res){
-        return res.json().then(function(data){
-          console.log('Formspree response status:', res.status);
-          console.log('Formspree response:', JSON.stringify(data));
-          if(res.ok){
-            console.log('SUCCESS: Email sent to info@reviveautodetailing.pk');
-          } else {
-            console.error('FAILED:', data.error || JSON.stringify(data));
-          }
-        });
-      }).catch(function(e){
-        console.error('Formspree fetch error:', e);
+    // === SEND EMAIL VIA FORMSPREE (xgoqpjvk) ===
+    fetch('https://formspree.io/f/xgoqpjvk', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        _subject: 'New PPF Booking: ' + ref + ' - ' + (bd.fn||'') + ' ' + (bd.ln||''),
+        _replyto: bd.em || '',
+        booking_ref: ref,
+        submitted: new Date().toLocaleString('en-PK',{timeZone:'Asia/Karachi'}),
+        customer_name: (bd.fn||'') + ' ' + (bd.ln||''),
+        whatsapp: bd.ph || '',
+        customer_email: bd.em || '',
+        vehicle: (bd.mk||'') + ' ' + (bd.mo||'') + ' ' + (bd.yr||''),
+        color: bd.cl || 'N/A',
+        vehicle_type: vtLabels[bd.vt] || '',
+        package: bd.pkLabel || '',
+        date: ds,
+        time: bd.tm || '',
+        duration: bd.dur || '',
+        total_price: 'PKR ' + (bd.price ? bd.price.toLocaleString() : ''),
+        whatsapp_link: 'https://wa.me/' + cleanPhone
+      })
+    }).then(function(res){
+      return res.json().then(function(data){
+        if(res.ok){
+          console.log('Email sent successfully!');
+        } else {
+          console.error('Formspree error:', data.error);
+        }
       });
-    }
+    }).catch(function(e){
+      console.error('Network error:', e);
+    });
 
     // === SHOW SUCCESS ===
     document.getElementById('rad-bform').style.display='none';
