@@ -530,20 +530,30 @@
     var cleanPhone=(bd.ph||'').replace(/[^0-9]/g,'');
 
     // === SEND EMAIL VIA FORMSPREE ===
-    // Formspree directly emails info@reviveautodetailing.pk
-    var formspreeId = document.getElementById('rad-bform').dataset.formspree || '';
+    var formDiv = document.getElementById('rad-bform');
+    var formspreeId = formDiv ? (formDiv.dataset.formspree || '') : '';
 
-    if(formspreeId) {
+    console.log('=== RAD BOOKING DEBUG ===');
+    console.log('Formspree ID:', formspreeId);
+    console.log('Form div found:', !!formDiv);
+    console.log('Dataset:', formDiv ? JSON.stringify(formDiv.dataset) : 'null');
+
+    if(!formspreeId) {
+      console.error('ERROR: Formspree ID missing! Set it in Shopify Theme Editor -> PPF Booking Form -> Formspree Form ID');
+    } else {
+      console.log('Sending to: https://formspree.io/f/' + formspreeId);
+      
       fetch('https://formspree.io/f/' + formspreeId, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           _subject: 'New PPF Booking: ' + ref + ' - ' + (bd.fn||'') + ' ' + (bd.ln||''),
+          _replyto: bd.em || '',
           booking_ref: ref,
           submitted: new Date().toLocaleString('en-PK',{timeZone:'Asia/Karachi'}),
           customer_name: (bd.fn||'') + ' ' + (bd.ln||''),
           whatsapp: bd.ph || '',
-          email: bd.em || '',
+          customer_email: bd.em || '',
           vehicle: (bd.mk||'') + ' ' + (bd.mo||'') + ' ' + (bd.yr||''),
           color: bd.cl || 'N/A',
           vehicle_type: vtLabels[bd.vt] || '',
@@ -555,9 +565,17 @@
           whatsapp_link: 'https://wa.me/' + cleanPhone
         })
       }).then(function(res){
-        console.log('Email sent via Formspree:', res.status);
+        return res.json().then(function(data){
+          console.log('Formspree response status:', res.status);
+          console.log('Formspree response:', JSON.stringify(data));
+          if(res.ok){
+            console.log('SUCCESS: Email sent to info@reviveautodetailing.pk');
+          } else {
+            console.error('FAILED:', data.error || JSON.stringify(data));
+          }
+        });
       }).catch(function(e){
-        console.log('Formspree error:', e);
+        console.error('Formspree fetch error:', e);
       });
     }
 
