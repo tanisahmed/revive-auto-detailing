@@ -125,6 +125,27 @@
           "email": "info@reviveautodetailing.pk",
           "address": "A-65, Main Shahrah-e-Qaideen, Central Jacob Lines Block 1, Khudadad Colony, Karachi, Sindh 74800"
         }
+      },
+      "tint-hero": {
+        "type": "tint-hero",
+        "settings": {}
+      },
+      "tint-specs": {
+        "type": "tint-specs",
+        "settings": {}
+      },
+      "tint-pricing": {
+        "type": "tint-pricing",
+        "settings": {
+          "img_hatchback": "shopify://shop_images/Yaris_Hatchback.png",
+          "img_sedan": "shopify://shop_images/Civic-06.png",
+          "img_suv": "shopify://shop_images/Haval-06.png",
+          "img_xlsuv": "shopify://shop_images/LC_300-06.png"
+        }
+      },
+      "tint-why": {
+        "type": "tint-why",
+        "settings": {}
       }
     },
     "content_for_index": [],
