@@ -121,13 +121,13 @@
         <nav class="header-nav" role="navigation" aria-label="Main navigation">
           <!-- Home -->
           <div class="nav-item">
-            <a class="nav-link" href="{{ shop.url }}/">
+            <a class="nav-link" href="/">
               {{ section.settings.nav_label_1 | default: 'Home' }}
             </a>
           </div>
           <!-- About -->
           <div class="nav-item">
-            <a class="nav-link" href="{{ shop.url }}/pages/about-us">
+            <a class="nav-link" href="/pages/about-us">
               {{ section.settings.nav_label_2 | default: 'About Us' }}
             </a>
           </div>
@@ -138,20 +138,20 @@
               <span class="nav-arrow">&#9660;</span>
             </button>
             <div class="dropdown-menu" role="menu">
-              <a class="dropdown-link" href="{{ shop.url }}/pages/paint-protection-film-ppf">Paint Protection Film (PPF)</a>
-              <a class="dropdown-link" href="{{ shop.url }}/pages/ceramic-coating">Ceramic Coating</a>
-              <a class="dropdown-link" href="{{ shop.url }}/pages/car-window-tints">Car Window Tint</a>
-              <a class="dropdown-link" href="{{ shop.url }}/pages/car-detailing">Exterior &amp; Interior Detailing</a>
+              <a class="dropdown-link" href="/pages/paint-protection-film-ppf">Paint Protection Film (PPF)</a>
+              <a class="dropdown-link" href="/pages/ceramic-coating">Ceramic Coating</a>
+              <a class="dropdown-link" href="/pages/car-window-tints">Car Window Tint</a>
+              <a class="dropdown-link" href="/pages/car-detailing">Exterior &amp; Interior Detailing</a>
               <a class="dropdown-link" href="#">Anti-Rust Undercoating</a>
             </div>
           </div>
           <!-- Store -->
           <div class="nav-item">
-            <a class="nav-link" href="{{ shop.url }}/pages/store">Store</a>
+            <a class="nav-link" href="/pages/store">Store</a>
           </div>
           <!-- Contact -->
           <div class="nav-item">
-            <a class="nav-link" href="{{ shop.url }}/pages/contact">
+            <a class="nav-link" href="/pages/contact">
               {{ section.settings.nav_label_4 | default: 'Contact' }}
             </a>
           </div>
@@ -162,8 +162,8 @@
               <span class="nav-arrow">&#9660;</span>
             </button>
             <div class="dropdown-menu" role="menu">
-              <a class="dropdown-link" href="{{ shop.url }}/pages/ppf-booking">Book Appointment</a>
-              <a class="dropdown-link" href="{{ shop.url }}/pages/faq">FAQ</a>
+              <a class="dropdown-link" href="/pages/ppf-booking">Book Appointment</a>
+              <a class="dropdown-link" href="/pages/faq">FAQ</a>
             </div>
           </div>
         </nav>
@@ -171,7 +171,7 @@
 
       <!-- CENTER: Logo -->
       <div class="header-center">
-        <a href="{{ shop.url }}/" class="header-logo-link">
+        <a href="/" class="header-logo-link">
           {%- if section.settings.logo != blank -%}
             <img src="{{ section.settings.logo | image_url: height: 96 }}"
                  alt="{{ shop.name }}" height="48" loading="eager">
@@ -193,29 +193,29 @@
 
   <!-- Mobile Menu -->
   <nav class="mobile-menu" id="rad-mobile-menu">
-    <a class="mobile-nav-link" href="{{ shop.url }}/">Home</a>
-    <a class="mobile-nav-link" href="{{ shop.url }}/pages/about-us">About Us</a>
+    <a class="mobile-nav-link" href="/">Home</a>
+    <a class="mobile-nav-link" href="/pages/about-us">About Us</a>
     <div>
       <div class="mobile-nav-link mob-toggle" id="mob-tog-3">
         Services <span class="arr">&#9660;</span>
       </div>
       <div class="mob-sub" id="mob-sub-3">
-        <a class="mobile-nav-link" href="{{ shop.url }}/pages/paint-protection-film-ppf">Paint Protection Film (PPF)</a>
-        <a class="mobile-nav-link" href="{{ shop.url }}/pages/ceramic-coating">Ceramic Coating</a>
-        <a class="mobile-nav-link" href="{{ shop.url }}/pages/car-window-tints">Car Window Tint</a>
-        <a class="mobile-nav-link" href="{{ shop.url }}/pages/car-detailing">Exterior &amp; Interior Detailing</a>
+        <a class="mobile-nav-link" href="/pages/paint-protection-film-ppf">Paint Protection Film (PPF)</a>
+        <a class="mobile-nav-link" href="/pages/ceramic-coating">Ceramic Coating</a>
+        <a class="mobile-nav-link" href="/pages/car-window-tints">Car Window Tint</a>
+        <a class="mobile-nav-link" href="/pages/car-detailing">Exterior &amp; Interior Detailing</a>
         <a class="mobile-nav-link" href="#">Anti-Rust Undercoating</a>
       </div>
     </div>
-    <a class="mobile-nav-link" href="{{ shop.url }}/pages/store">Store</a>
-    <a class="mobile-nav-link" href="{{ shop.url }}/pages/contact">Contact</a>
+    <a class="mobile-nav-link" href="/pages/store">Store</a>
+    <a class="mobile-nav-link" href="/pages/contact">Contact</a>
     <div>
       <div class="mobile-nav-link mob-toggle" id="mob-tog-5">
         More <span class="arr">&#9660;</span>
       </div>
       <div class="mob-sub" id="mob-sub-5">
-        <a class="mobile-nav-link" href="{{ shop.url }}/pages/ppf-booking">Book Appointment</a>
-        <a class="mobile-nav-link" href="{{ shop.url }}/pages/faq">FAQ</a>
+        <a class="mobile-nav-link" href="/pages/ppf-booking">Book Appointment</a>
+        <a class="mobile-nav-link" href="/pages/faq">FAQ</a>
       </div>
     </div>
     <a href="tel:{{ section.settings.phone | default: '+923037231111' }}" class="mobile-phone">
