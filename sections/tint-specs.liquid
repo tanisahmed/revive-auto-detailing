@@ -1,0 +1,91 @@
+<style>
+.rad-tint-specs { padding: 2rem 0; background: #fff; }
+.rad-tint-specs-inner { max-width: 860px; margin: 0 auto; }
+.rad-tint-specs-title { font-size: 1.75rem; font-weight: 800; text-align: center; margin-bottom: 0.5rem; font-family: 'Nunito Sans', sans-serif; }
+.rad-tint-specs-sub { text-align: center; color: #6b7280; margin-bottom: 2rem; }
+.rad-tint-specs-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem;
+}
+.rad-tint-spec-card {
+  background: #f3f4f6; border-radius: 10px; padding: 1.25rem;
+  text-align: center; border-top: 3px solid #1e3a8a;
+}
+.rad-tint-spec-icon { font-size: 1.75rem; margin-bottom: 0.5rem; display: block; }
+.rad-tint-spec-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: #6b7280; font-weight: 700; margin-bottom: 0.25rem; }
+.rad-tint-spec-value { font-size: 1.1rem; font-weight: 800; color: #1e3a8a; }
+/* Shades row */
+.rad-tint-shades {
+  background: #1e3a8a; border-radius: 10px; padding: 1.25rem 1.5rem;
+  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+}
+.rad-tint-shades-label { color: #93c5fd; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap; }
+.rad-tint-shades-list { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.rad-tint-shade {
+  display: flex; flex-direction: column; align-items: center; gap: 0.35rem;
+}
+.rad-tint-shade-dot {
+  width: 2rem; height: 2rem; border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+.rad-tint-shade-name { font-size: 0.7rem; color: #d1d5db; font-weight: 600; }
+@media (max-width: 640px) {
+  .rad-tint-specs-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+<section class="rad-tint-specs">
+  <div class="container">
+    <div class="rad-tint-specs-inner">
+      <h2 class="rad-tint-specs-title">Heat Control Window Film Specs</h2>
+      <p class="rad-tint-specs-sub">NAR Window Film — Premium Grade Heat & UV Protection</p>
+
+      <div class="rad-tint-specs-grid">
+        <div class="rad-tint-spec-card">
+          <span class="rad-tint-spec-icon">🔥</span>
+          <div class="rad-tint-spec-label">Infrared Rejection (IR)</div>
+          <div class="rad-tint-spec-value">Up to 90%</div>
+        </div>
+        <div class="rad-tint-spec-card">
+          <span class="rad-tint-spec-icon">☀️</span>
+          <div class="rad-tint-spec-label">UV Rejection (UVR)</div>
+          <div class="rad-tint-spec-value">Up to 99%</div>
+        </div>
+        <div class="rad-tint-spec-card">
+          <span class="rad-tint-spec-icon">🌡️</span>
+          <div class="rad-tint-spec-label">Total Solar Energy (TSER)</div>
+          <div class="rad-tint-spec-value">Up to 65%</div>
+        </div>
+      </div>
+
+      <div class="rad-tint-shades">
+        <span class="rad-tint-shades-label">Available Shades:</span>
+        <div class="rad-tint-shades-list">
+          <div class="rad-tint-shade">
+            <div class="rad-tint-shade-dot" style="background:rgba(255,255,255,0.15);"></div>
+            <span class="rad-tint-shade-name">Light</span>
+          </div>
+          <div class="rad-tint-shade">
+            <div class="rad-tint-shade-dot" style="background:rgba(255,255,255,0.08);"></div>
+            <span class="rad-tint-shade-name">Medium</span>
+          </div>
+          <div class="rad-tint-shade">
+            <div class="rad-tint-shade-dot" style="background:rgba(0,0,0,0.4);"></div>
+            <span class="rad-tint-shade-name">Dark</span>
+          </div>
+          <div class="rad-tint-shade">
+            <div class="rad-tint-shade-dot" style="background:rgba(0,0,0,0.75);"></div>
+            <span class="rad-tint-shade-name">Super Dark</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Tint Specs",
+  "settings": [],
+  "presets": [{"name": "Tint Specs"}]
+}
+{% endschema %}
