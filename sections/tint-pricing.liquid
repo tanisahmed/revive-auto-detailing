@@ -1,0 +1,170 @@
+<style>
+.rad-tint-pricing { padding: 2rem 0; background: #f3f4f6; }
+.rad-tint-pricing-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2rem;
+}
+.rad-tint-card {
+  background: #fff; border-radius: 12px; overflow: hidden;
+  border: 2px solid #e5e7eb; transition: all 0.25s; display: flex; flex-direction: column;
+}
+.rad-tint-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.12); transform: translateY(-4px); border-color: #1e3a8a; }
+.rad-tint-card-img {
+  height: 160px; background: #f3f4f6; display: flex; align-items: center;
+  justify-content: center; overflow: hidden; position: relative;
+}
+.rad-tint-card-img img { width: 100%; height: 100%; object-fit: contain; padding: 1rem; }
+.rad-tint-card-img-fallback { font-size: 4rem; }
+.rad-tint-card-header {
+  background: #1e3a8a; color: #fff; text-align: center;
+  padding: 0.75rem; font-size: 1rem; font-weight: 800;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  font-family: 'Nunito Sans', sans-serif;
+}
+.rad-tint-card-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+.rad-tint-price-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.5rem 0; border-bottom: 1px solid #f3f4f6; font-size: 0.875rem;
+}
+.rad-tint-price-row:last-of-type { border-bottom: none; }
+.rad-tint-price-row .label { color: #6b7280; font-weight: 600; }
+.rad-tint-price-row .amount { font-weight: 800; color: #1e3a8a; font-size: 0.95rem; }
+.rad-tint-price-row.full-car { background: rgba(30,58,138,0.05); border-radius: 6px; padding: 0.5rem 0.6rem; margin-bottom: 0.25rem; }
+.rad-tint-price-row.full-car .label { color: #1e3a8a; font-weight: 700; }
+.rad-tint-price-row.full-car .amount { font-size: 1.1rem; color: #1e3a8a; }
+.rad-tint-book-btn {
+  display: block; text-align: center; padding: 0.75rem;
+  background: #1e3a8a; color: #fff; border-radius: 8px;
+  font-weight: 700; font-size: 0.9rem; text-decoration: none;
+  transition: background 0.2s; margin-top: auto;
+}
+.rad-tint-book-btn:hover { background: #1e40af; }
+.rad-tint-note {
+  text-align: center; margin-top: 1.5rem;
+  font-size: 0.875rem; color: #6b7280;
+  background: #fff; border-radius: 8px; padding: 0.85rem;
+  border: 1px solid #e5e7eb;
+}
+.rad-tint-note strong { color: #ef4444; }
+@media (max-width: 1024px) { .rad-tint-pricing-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 480px) { .rad-tint-pricing-grid { grid-template-columns: 1fr; } }
+</style>
+
+<section class="rad-tint-pricing" id="tint-pricing">
+  <div class="container">
+    <h2 class="section-title">Heat Control Window Film Price</h2>
+    <p class="section-subtitle">NAR Window Film — Transparent pricing for all vehicle types</p>
+
+    <div class="rad-tint-pricing-grid">
+
+      <!-- HATCHBACK -->
+      <div class="rad-tint-card">
+        <div class="rad-tint-card-img">
+          {%- if section.settings.img_hatchback != blank -%}
+            <img src="{{ section.settings.img_hatchback | image_url: width: 400 }}" alt="Hatchback Window Tint">
+          {%- else -%}
+            <span class="rad-tint-card-img-fallback">🚘</span>
+          {%- endif -%}
+        </div>
+        <div class="rad-tint-card-header">Hatchback</div>
+        <div class="rad-tint-card-body">
+          <div class="rad-tint-price-row full-car">
+            <span class="label">Full Car</span>
+            <span class="amount">PKR 18,500</span>
+          </div>
+          <div class="rad-tint-price-row"><span class="label">Windscreen</span><span class="amount">PKR 7,500</span></div>
+          <div class="rad-tint-price-row"><span class="label">Backscreen</span><span class="amount">PKR 3,000</span></div>
+          <div class="rad-tint-price-row"><span class="label">Front Doors</span><span class="amount">PKR 5,000</span></div>
+          <div class="rad-tint-price-row"><span class="label">Back Doors</span><span class="amount">PKR 4,500</span></div>
+          <a href="/pages/ppf-booking" class="rad-tint-book-btn">Book My Slot</a>
+        </div>
+      </div>
+
+      <!-- SEDAN -->
+      <div class="rad-tint-card">
+        <div class="rad-tint-card-img">
+          {%- if section.settings.img_sedan != blank -%}
+            <img src="{{ section.settings.img_sedan | image_url: width: 400 }}" alt="Sedan Window Tint">
+          {%- else -%}
+            <span class="rad-tint-card-img-fallback">🚗</span>
+          {%- endif -%}
+        </div>
+        <div class="rad-tint-card-header">Sedan</div>
+        <div class="rad-tint-card-body">
+          <div class="rad-tint-price-row full-car">
+            <span class="label">Full Car</span>
+            <span class="amount">PKR 25,000</span>
+          </div>
+          <div class="rad-tint-price-row"><span class="label">Windscreen</span><span class="amount">PKR 8,500</span></div>
+          <div class="rad-tint-price-row"><span class="label">Backscreen</span><span class="amount">PKR 7,000</span></div>
+          <div class="rad-tint-price-row"><span class="label">Front Doors</span><span class="amount">PKR 5,500</span></div>
+          <div class="rad-tint-price-row"><span class="label">Back Doors</span><span class="amount">PKR 6,000</span></div>
+          <a href="/pages/ppf-booking" class="rad-tint-book-btn">Book My Slot</a>
+        </div>
+      </div>
+
+      <!-- SUV -->
+      <div class="rad-tint-card">
+        <div class="rad-tint-card-img">
+          {%- if section.settings.img_suv != blank -%}
+            <img src="{{ section.settings.img_suv | image_url: width: 400 }}" alt="SUV Window Tint">
+          {%- else -%}
+            <span class="rad-tint-card-img-fallback">🚙</span>
+          {%- endif -%}
+        </div>
+        <div class="rad-tint-card-header">SUV</div>
+        <div class="rad-tint-card-body">
+          <div class="rad-tint-price-row full-car">
+            <span class="label">Full Car</span>
+            <span class="amount">PKR 27,000</span>
+          </div>
+          <div class="rad-tint-price-row"><span class="label">Windscreen</span><span class="amount">PKR 10,000</span></div>
+          <div class="rad-tint-price-row"><span class="label">Backscreen</span><span class="amount">PKR 7,000</span></div>
+          <div class="rad-tint-price-row"><span class="label">Front Doors</span><span class="amount">PKR 6,000</span></div>
+          <div class="rad-tint-price-row"><span class="label">Back Doors</span><span class="amount">PKR 7,000</span></div>
+          <a href="/pages/ppf-booking" class="rad-tint-book-btn">Book My Slot</a>
+        </div>
+      </div>
+
+      <!-- XL SUV -->
+      <div class="rad-tint-card">
+        <div class="rad-tint-card-img">
+          {%- if section.settings.img_xlsuv != blank -%}
+            <img src="{{ section.settings.img_xlsuv | image_url: width: 400 }}" alt="XL SUV Window Tint">
+          {%- else -%}
+            <span class="rad-tint-card-img-fallback">🛻</span>
+          {%- endif -%}
+        </div>
+        <div class="rad-tint-card-header">XL SUV</div>
+        <div class="rad-tint-card-body">
+          <div class="rad-tint-price-row full-car">
+            <span class="label">Full Car</span>
+            <span class="amount">PKR 29,500</span>
+          </div>
+          <div class="rad-tint-price-row"><span class="label">Windscreen</span><span class="amount">PKR 12,000</span></div>
+          <div class="rad-tint-price-row"><span class="label">Backscreen</span><span class="amount">PKR 7,000</span></div>
+          <div class="rad-tint-price-row"><span class="label">Front Doors</span><span class="amount">PKR 6,000</span></div>
+          <div class="rad-tint-price-row"><span class="label">Back Doors</span><span class="amount">PKR 8,500</span></div>
+          <a href="/pages/ppf-booking" class="rad-tint-book-btn">Book My Slot</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="rad-tint-note">
+      📅 Book your slot online now. <strong>Limited Slots Available!</strong>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Tint Pricing",
+  "settings": [
+    { "type": "image_picker", "id": "img_hatchback", "label": "Hatchback Image" },
+    { "type": "image_picker", "id": "img_sedan", "label": "Sedan Image" },
+    { "type": "image_picker", "id": "img_suv", "label": "SUV Image" },
+    { "type": "image_picker", "id": "img_xlsuv", "label": "XL SUV Image" }
+  ],
+  "presets": [{"name": "Tint Pricing"}]
+}
+{% endschema %}
