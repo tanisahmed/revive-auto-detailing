@@ -526,63 +526,41 @@
     te.classList.remove('show');
 
     var ref='RAD-'+Date.now().toString(36).toUpperCase().slice(-6);
-    var ds=bd.dt?new Date(bd.dt+'T12:00:00').toLocaleDateString('en-PK',{weekday:'short',year:'numeric',month:'short',day:'numeric'}):'';
+    var ds=bd.dt?new Date(bd.dt+'T12:00:00').toLocaleDateString('en-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'}):'';
+    var cleanPhone=(bd.ph||'').replace(/[^0-9]/g,'');
 
-    // 1. Send Email via EmailJS
-    try {
-      var serviceId  = document.getElementById('rad-bform').dataset.ejsService  || '';
-      var templateId = document.getElementById('rad-bform').dataset.ejsTemplate || '';
-      var publicKey  = document.getElementById('rad-bform').dataset.ejsKey      || '';
+    var body=
+      'BOOKING REF: '+ref+'\n'+
+      'SUBMITTED: '+new Date().toLocaleString('en-PK',{timeZone:'Asia/Karachi'})+'\n\n'+
+      '=== CUSTOMER ===\n'+
+      'Name: '+(bd.fn||'')+' '+(bd.ln||'')+'\n'+
+      'WhatsApp: '+(bd.ph||'')+'\n'+
+      'Email: '+(bd.em||'')+'\n\n'+
+      '=== VEHICLE ===\n'+
+      'Car: '+(bd.mk||'')+' '+(bd.mo||'')+' '+(bd.yr||'')+'\n'+
+      'Color: '+(bd.cl||'N/A')+'\n'+
+      'Type: '+(vtLabels[bd.vt]||'')+'\n\n'+
+      '=== APPOINTMENT ===\n'+
+      'Package: '+(bd.pkLabel||'')+'\n'+
+      'Date: '+ds+'\n'+
+      'Time: '+(bd.tm||'')+'\n'+
+      'Duration: '+(bd.dur||'')+'\n'+
+      'Price: PKR '+(bd.price?bd.price.toLocaleString():'')+'\n\n'+
+      'WhatsApp Link: https://wa.me/'+cleanPhone;
 
-      if(serviceId && templateId && publicKey) {
-        // EmailJS is loaded in head
-        emailjs.send(serviceId, templateId, {
-          booking_ref:    ref,
-          submitted_at:   new Date().toLocaleString('en-PK',{timeZone:'Asia/Karachi'}),
-          customer_name:  (bd.fn||'') + ' ' + (bd.ln||''),
-          customer_phone: bd.ph || '',
-          customer_email: bd.em || '',
-          vehicle:        (bd.mk||'') + ' ' + (bd.mo||'') + ' ' + (bd.yr||''),
-          vehicle_color:  bd.cl || 'N/A',
-          vehicle_type:   vtLabels[bd.vt] || '',
-          package:        bd.pkLabel || '',
-          date:           ds,
-          time:           bd.tm || '',
-          duration:       bd.dur || '',
-          total_price:    bd.price ? 'PKR ' + bd.price.toLocaleString() : '',
-          to_email:       'info@reviveautodetailing.pk'
-        }, publicKey).then(function(){
-          console.log('Email sent successfully!');
-        }, function(error){
-          console.log('EmailJS error:', error);
-        });
-      } else {
-        // Fallback: Shopify contact form
-        var formData = new FormData();
-        formData.append('form_type', 'contact');
-        formData.append('utf8', '✓');
-        formData.append('contact[name]', (bd.fn||'') + ' ' + (bd.ln||''));
-        formData.append('contact[email]', bd.em || 'noreply@rad.pk');
-        formData.append('contact[phone]', bd.ph || '');
-        formData.append('contact[subject]', '🔔 New PPF Booking - ' + ref);
-        formData.append('contact[body]',
-          'BOOKING REF: ' + ref + '\n' +
-          'Name: ' + (bd.fn||'') + ' ' + (bd.ln||'') + '\n' +
-          'WhatsApp: ' + (bd.ph||'') + '\n' +
-          'Email: ' + (bd.em||'') + '\n' +
-          'Vehicle: ' + (bd.mk||'') + ' ' + (bd.mo||'') + ' ' + (bd.yr||'') + '\n' +
-          'Type: ' + (vtLabels[bd.vt]||'') + '\n' +
-          'Package: ' + (bd.pkLabel||'') + '\n' +
-          'Date: ' + ds + ' at ' + (bd.tm||'') + '\n' +
-          'Total: PKR ' + (bd.price ? bd.price.toLocaleString() : '')
-        );
-        fetch('/contact',{ method:'POST', headers:{'Accept':'application/json'}, body:formData }).catch(function(){});
-      }
-    } catch(e) { console.log('Email error:', e); }
+    var fd=new FormData();
+    fd.append('form_type','contact');
+    fd.append('utf8','check');
+    fd.append('contact[name]',(bd.fn||'')+' '+(bd.ln||''));
+    fd.append('contact[email]',bd.em||'booking@rad.pk');
+    fd.append('contact[phone]',bd.ph||'');
+    fd.append('contact[subject]','New PPF Booking: '+ref+' - '+(bd.fn||'')+' '+(bd.ln||''));
+    fd.append('contact[body]',body);
 
-    // WhatsApp notification removed
+    fetch('/contact',{method:'POST',headers:{'Accept':'application/json'},body:fd})
+    .then(function(res){console.log('Lead sent:',res.status);})
+    .catch(function(e){console.log('Error:',e);});
 
-    // 3. Show success
     document.getElementById('rad-bform').style.display='none';
     document.querySelector('.rad-prog').style.display='none';
     document.querySelector('.rad-steps').style.display='none';
@@ -590,8 +568,8 @@
     s.classList.add('show');
     document.getElementById('ss-ref').textContent=ref;
     document.getElementById('ss-dt').textContent=ds+' at '+(bd.tm||'');
-    document.getElementById('ss-pkg').textContent=(bd.pkLabel||'')+(bd.vt?' · '+vtLabels[bd.vt]:'');
-    document.getElementById('ss-price').textContent=bd.price?'PKR '+bd.price.toLocaleString():'—';
+    document.getElementById('ss-pkg').textContent=(bd.pkLabel||'')+(bd.vt?' - '+vtLabels[bd.vt]:'');
+    document.getElementById('ss-price').textContent=bd.price?'PKR '+bd.price.toLocaleString():'--';
     window.scrollTo({top:0,behavior:'smooth'});
   };
 })();
@@ -608,34 +586,7 @@
 {% schema %}
 {
   "name": "PPF Booking Form",
-  "settings": [
-    {
-      "type": "header",
-      "content": "EmailJS Settings — emailjs.com pe free account banao"
-    },
-    {
-      "type": "paragraph",
-      "content": "EmailJS se har booking confirm hone pe info@reviveautodetailing.pk pe email aayegi. emailjs.com pe free account banao phir yahan details paste karein."
-    },
-    {
-      "type": "text",
-      "id": "ejs_service",
-      "label": "EmailJS Service ID",
-      "placeholder": "service_xxxxxxx"
-    },
-    {
-      "type": "text",
-      "id": "ejs_template",
-      "label": "EmailJS Template ID",
-      "placeholder": "template_xxxxxxx"
-    },
-    {
-      "type": "text",
-      "id": "ejs_key",
-      "label": "EmailJS Public Key",
-      "placeholder": "xxxxxxxxxxxxxxxxxxxx"
-    }
-  ],
+  "settings": [],
   "presets": [{"name": "PPF Booking Form"}]
 }
 {% endschema %}
