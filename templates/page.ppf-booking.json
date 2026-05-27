@@ -13,7 +13,7 @@
       "type": "ppf-booking",
       "name": "PPF Booking Form",
       "settings": {
-        "google_sheets_url": ""
+        "formspree_id": "https://formspree.io/f/xgoqpjvk"
       }
     }
   },
