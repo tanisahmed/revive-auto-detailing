@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "det_hero": {
+      "type": "detailing-hero",
+      "settings": {}
+    },
+    "det_pricing": {
+      "type": "detailing-pricing",
+      "settings": {}
+    },
+    "det_why": {
+      "type": "detailing-why",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "reviews",
+      "settings": {}
+    },
+    "contactform": {
+      "type": "contactform",
+      "settings": {}
+    }
+  },
+  "order": [
+    "det_hero",
+    "det_pricing",
+    "det_why",
+    "reviews",
+    "contactform"
+  ]
+}
