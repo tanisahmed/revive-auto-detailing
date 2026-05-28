@@ -74,8 +74,8 @@
 
 <section class="ppf-faq-section">
   <div class="container">
-    <h2 class="section-title">Frequently Asked Questions</h2>
-    <p class="section-subtitle">Everything you need to know about PPF</p>
+    <h2 class="section-title">{{ section.settings.title | default: "Frequently Asked Questions" }}</h2>
+    <p class="section-subtitle">{{ section.settings.subtitle | default: "Everything you need to know about PPF" }}</p>
 
     <div class="faq-list" id="faq-list">
 
