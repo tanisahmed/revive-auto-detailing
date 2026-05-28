@@ -12,9 +12,43 @@
     "main": {
       "type": "main-page",
       "settings": {}
+    },
+    "antirust_hero_ApKGj8": {
+      "type": "antirust-hero",
+      "name": "Anti-Rust Hero",
+      "settings": {
+        "badge": "🔒 MIPA Certified — Germany's #1 Undercoating",
+        "tag": "🛡️ Anti-Rust Protection Karachi",
+        "title": "Anti-Rust Undercoating",
+        "title_accent": "Protect Your Car's Chassis",
+        "subtitle": "Protect your car with MIPA Rubberized anti-rust undercoating service in Karachi. Starting from Rs. 22,000/-",
+        "stat1_num": "100+",
+        "stat1_lbl": "Cars Undercoated",
+        "stat2_num": "4 Years",
+        "stat2_lbl": "Durability",
+        "stat3_num": "2 Years",
+        "stat3_lbl": "Warranty"
+      }
+    },
+    "antirust_pricing_Kdtz6H": {
+      "type": "antirust-pricing",
+      "name": "Anti-Rust Pricing",
+      "settings": {
+        "title": "MIPA Anti-Rust Undercoat Price",
+        "subtitle": "Germany's #1 rubberized undercoating — professional application in Karachi",
+        "price_hatchback": "Rs. 22,000",
+        "price_sedan": "Rs. 25,000",
+        "price_suv": "Rs. 30,000",
+        "price_xlsuv": "Rs. 33,000",
+        "durability": "4 Years",
+        "warranty": "2 Years",
+        "free_gift": "1x Exterior Wash"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "antirust_hero_ApKGj8",
+    "antirust_pricing_Kdtz6H"
   ]
 }
