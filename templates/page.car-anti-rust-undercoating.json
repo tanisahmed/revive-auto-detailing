@@ -8,10 +8,6 @@
       "type": "antirust-pricing",
       "settings": {}
     },
-    "reviews": {
-      "type": "reviews",
-      "settings": {}
-    },
     "contactform": {
       "type": "contactform",
       "settings": {}
@@ -20,7 +16,6 @@
   "order": [
     "ar_hero",
     "ar_pricing",
-    "reviews",
     "contactform"
   ]
 }
