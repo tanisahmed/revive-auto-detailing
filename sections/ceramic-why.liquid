@@ -40,8 +40,8 @@
         {%- endif -%}
       </div>
       <div>
-        <span class="rad-cer-why-tag">Why Ceramic Coating?</span>
-        <h2 class="rad-cer-why-title">It keeps your car paint protected &amp; shiny while saving money on maintenance!</h2>
+        <span class="rad-cer-why-tag">{{ section.settings.tag | default: 'Why Ceramic Coating?' }}</span>
+        <h2 class="rad-cer-why-title">{{ section.settings.title | default: 'It keeps your car paint protected & shiny while saving money on maintenance!' }}</h2>
         <p class="rad-cer-why-sub">The smartest investment for your car in Karachi's harsh climate</p>
         <ul class="rad-cer-why-list">
           <li class="rad-cer-why-item">Gives your car a glossy, showroom look</li>
@@ -66,8 +66,8 @@
         <h3>Protect Your Investment with Ceramic Coating</h3>
         <p>Limited time offer — book now and save!</p>
       </div>
-      <div class="rad-cer-offer-badge">10% Off!</div>
-      <a href="/pages/ppf-booking" class="rad-cer-offer-btn">Get Offer →</a>
+      <div class="rad-cer-offer-badge">{{ section.settings.offer_badge | default: "10% Off!" }}</div>
+      <a href="{{ section.settings.offer_url | default: "/pages/ppf-booking" }}" class="rad-cer-offer-btn">Get Offer →</a>
     </div>
   </div>
 </section>
