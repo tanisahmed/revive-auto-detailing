@@ -141,7 +141,7 @@
 
 <section class="why-section">
   <div class="container">
-    <h2 class="section-title">{{ section.settings.title | default: 'Why Choose RAD For Your Car Detailing?' }}</h2>
+    <h2 class="section-title">{{ section.settings.title }}</h2>
     <p class="section-subtitle">Experience the difference that professional expertise makes</p>
 
     <div class="benefits-grid">
@@ -163,8 +163,8 @@
     <!-- Special Offer Banner -->
     <div class="special-offer-banner">
       <div class="special-offer-badge">🎉 Limited Time</div>
-      <h3 class="special-offer-title">{{ section.settings.offer_title | default: "Special Offer!" }}</h3>
-      <p class="special-offer-text">{{ section.settings.offer_text | default: "Get 10% Off PPF Service This Month!" }}</p>
+      <h3 class="special-offer-title">{{ section.settings.offer_title }}</h3>
+      <p class="special-offer-text">{{ section.settings.offer_text }}</p>
       <a href="/pages/ppf-booking" class="special-offer-btn">
         Book Now & Save →
       </a>
