@@ -1,27 +1,27 @@
 {
   "sections": {
     "ppf_hero": {
-      "type": "ppf_hero",
+      "type": "ppf-hero",
       "settings": {}
     },
     "ppf_benefits": {
-      "type": "ppf_benefits",
+      "type": "ppf-benefits",
       "settings": {}
     },
     "ppf_packages": {
-      "type": "ppf_packages",
+      "type": "ppf-packages",
       "settings": {}
     },
     "ppf_gallery": {
-      "type": "ppf_gallery",
+      "type": "ppf-gallery",
       "settings": {}
     },
     "ppf_faq": {
-      "type": "ppf_faq",
+      "type": "ppf-faq",
       "settings": {}
     },
     "ppf_cta": {
-      "type": "ppf_cta",
+      "type": "ppf-cta",
       "settings": {}
     }
   },
