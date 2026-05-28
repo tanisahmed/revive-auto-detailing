@@ -99,19 +99,19 @@
           <div class="rad-det-prices">
             <div class="rad-det-price-row highlight">
               <span class="vtype">Hatchback</span>
-              <span class="vprice">PKR 10,000</span>
+              <span class="vprice">{{ section.settings.int_hatch | default: "PKR 10,000" }}</span>
             </div>
             <div class="rad-det-price-row">
               <span class="vtype">Sedan</span>
-              <span class="vprice">PKR 12,000</span>
+              <span class="vprice">{{ section.settings.int_sedan | default: "{{ section.settings.ext_hatch | default: "PKR 12,000" }}" }}</span>
             </div>
             <div class="rad-det-price-row">
               <span class="vtype">Crossover</span>
-              <span class="vprice">PKR 14,000</span>
+              <span class="vprice">{{ section.settings.int_cross | default: "{{ section.settings.ext_sedan | default: "PKR 14,000" }}" }}</span>
             </div>
             <div class="rad-det-price-row">
               <span class="vtype">SUV</span>
-              <span class="vprice">PKR 16,000</span>
+              <span class="vprice">{{ section.settings.int_suv | default: "{{ section.settings.ext_cross | default: "PKR 16,000" }}" }}</span>
             </div>
           </div>
           <div class="rad-det-features-title">What's Included</div>
@@ -149,7 +149,7 @@
             </div>
             <div class="rad-det-price-row">
               <span class="vtype">SUV</span>
-              <span class="vprice">PKR 18,000</span>
+              <span class="vprice">{{ section.settings.ext_suv | default: "{{ section.settings.com_hatch | default: "PKR 18,000" }}" }}</span>
             </div>
           </div>
           <div class="rad-det-features-title">What's Included</div>
@@ -175,7 +175,7 @@
           <div class="rad-det-prices">
             <div class="rad-det-price-row highlight">
               <span class="vtype">Hatchback</span>
-              <span class="vprice"><span class="vprice-old">PKR 22,000</span>PKR 18,000</span>
+              <span class="vprice"><span class="vprice-old">{{ section.settings.com_sedan | default: "PKR 22,000" }}</span>PKR 18,000</span>
             </div>
             <div class="rad-det-price-row">
               <span class="vtype">Sedan</span>
@@ -183,11 +183,11 @@
             </div>
             <div class="rad-det-price-row">
               <span class="vtype">Crossover</span>
-              <span class="vprice"><span class="vprice-old">PKR 30,000</span>PKR 24,000</span>
+              <span class="vprice"><span class="vprice-old">PKR 30,000</span>{{ section.settings.com_cross | default: "PKR 24,000" }}</span>
             </div>
             <div class="rad-det-price-row">
               <span class="vtype">SUV</span>
-              <span class="vprice"><span class="vprice-old">PKR 34,000</span>PKR 27,000</span>
+              <span class="vprice"><span class="vprice-old">PKR 34,000</span>{{ section.settings.com_suv | default: "PKR 27,000" }}</span>
             </div>
           </div>
           <div class="rad-det-features-title">Everything Included</div>
@@ -215,7 +215,108 @@
 {% schema %}
 {
   "name": "Detailing Pricing",
-  "settings": [],
-  "presets": [{"name": "Detailing Pricing"}]
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Exterior & Interior Car Detailing Price"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Professional detailing packages for all vehicle types"
+    },
+    {
+      "type": "header",
+      "content": "Interior Detailing Prices"
+    },
+    {
+      "type": "text",
+      "id": "int_hatch",
+      "label": "Hatchback",
+      "default": "PKR 10,000"
+    },
+    {
+      "type": "text",
+      "id": "int_sedan",
+      "label": "Sedan",
+      "default": "PKR 12,000"
+    },
+    {
+      "type": "text",
+      "id": "int_cross",
+      "label": "Crossover",
+      "default": "PKR 14,000"
+    },
+    {
+      "type": "text",
+      "id": "int_suv",
+      "label": "SUV",
+      "default": "PKR 16,000"
+    },
+    {
+      "type": "header",
+      "content": "Exterior Detailing Prices"
+    },
+    {
+      "type": "text",
+      "id": "ext_hatch",
+      "label": "Hatchback",
+      "default": "PKR 12,000"
+    },
+    {
+      "type": "text",
+      "id": "ext_sedan",
+      "label": "Sedan",
+      "default": "PKR 14,000"
+    },
+    {
+      "type": "text",
+      "id": "ext_cross",
+      "label": "Crossover",
+      "default": "PKR 16,000"
+    },
+    {
+      "type": "text",
+      "id": "ext_suv",
+      "label": "SUV",
+      "default": "PKR 18,000"
+    },
+    {
+      "type": "header",
+      "content": "Complete Detailing Prices"
+    },
+    {
+      "type": "text",
+      "id": "com_hatch",
+      "label": "Hatchback",
+      "default": "PKR 18,000"
+    },
+    {
+      "type": "text",
+      "id": "com_sedan",
+      "label": "Sedan",
+      "default": "PKR 22,000"
+    },
+    {
+      "type": "text",
+      "id": "com_cross",
+      "label": "Crossover",
+      "default": "PKR 24,000"
+    },
+    {
+      "type": "text",
+      "id": "com_suv",
+      "label": "SUV",
+      "default": "PKR 27,000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Detailing Pricing"
+    }
+  ]
 }
 {% endschema %}
