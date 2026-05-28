@@ -38,12 +38,38 @@
       "type": "ppf-packages",
       "name": "PPF Pricing",
       "settings": {}
+    },
+    "process_3VXAYN": {
+      "type": "process",
+      "name": "Process",
+      "settings": {
+        "title": "Our 4-Step Process",
+        "subtitle": "Simple, transparent, and stress-free from start to finish",
+        "step1_title": "Book Your Appointment",
+        "step1_desc": "Schedule at your convenience online, by phone, or via WhatsApp",
+        "step2_title": "Drop-off",
+        "step2_desc": "Bring your car to our facility in Karachi",
+        "step3_title": "We Work Our Magic",
+        "step3_desc": "Our expert technicians apply premium products with precision",
+        "step4_title": "Enjoy the Results",
+        "step4_desc": "Pick up your pristine vehicle looking better than ever"
+      }
+    },
+    "ppf_faq_rcfYWK": {
+      "type": "ppf-faq",
+      "name": "PPF FAQ",
+      "settings": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Everything you need to know about PPF"
+      }
     }
   },
   "order": [
     "main",
     "ppf_hero_EDQVn7",
     "ppf_benefits_fjiLPD",
-    "ppf_packages_UJLGPt"
+    "ppf_packages_UJLGPt",
+    "process_3VXAYN",
+    "ppf_faq_rcfYWK"
   ]
 }

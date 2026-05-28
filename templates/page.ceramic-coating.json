@@ -14,78 +14,68 @@
       "disabled": true,
       "settings": {}
     },
-    "tint_hero_JDTzPX": {
-      "type": "tint-hero",
-      "name": "Tint Hero",
+    "ceramic_hero_4DtGYd": {
+      "type": "ceramic-hero",
+      "name": "Ceramic Hero",
       "settings": {
-        "badge": "NAR Window Film — Authorized Installer",
-        "tag": "🌑 Karachi's Premium UV Tinting",
-        "title": "Premium Car Window Tint",
-        "title_accent": "Heat Control Film Karachi",
-        "subtitle": "Get high-quality car window tinting in Karachi. Our NAR window films protect from heat, UV rays, and offer privacy.",
-        "stat1_num": "500+",
-        "stat1_lbl": "Cars Tinted",
-        "stat2_num": "NAR",
-        "stat2_lbl": "Certified Film",
-        "stat3_num": "4.9 ⭐",
-        "stat3_lbl": "Google Rating"
+        "badge": "✨ GYEON Certified Ceramic Coating",
+        "tag": "✨ Karachi's Premium Detailing",
+        "title": "Ceramic Coating",
+        "title_accent": "Karachi's Best",
+        "subtitle": "Ceramic coating adds a glossy, mirror-like finish to your car, protecting it from dirt, scratches, and UV rays.",
+        "stat1_num": "3",
+        "stat1_lbl": "Packages",
+        "stat2_num": "GYEON",
+        "stat2_lbl": "Certified Brand",
+        "stat3_num": "10%",
+        "stat3_lbl": "Off This Month"
       }
     },
-    "tint_specs_mmgc6A": {
-      "type": "tint-specs",
-      "name": "Tint Specs",
+    "ceramic_packages_4gRhxA": {
+      "type": "ceramic-packages",
+      "name": "Ceramic Packages",
       "settings": {
-        "title": "Heat Control Window Film Specs",
-        "subtitle": "NAR Window Film — Premium Grade Heat & UV Protection",
-        "ir": "Up to 90%",
-        "uv": "Up to 99%",
-        "tser": "Up to 65%"
+        "title": "Ceramic Coating Packages & Pricing",
+        "gold_hatch": "Rs. 40,000",
+        "gold_sedan": "Rs. 45,000",
+        "gold_suv": "Rs. 50,000",
+        "gold_xlsuv": "Rs. 55,000",
+        "plat_hatch": "Rs. 45,000",
+        "plat_sedan": "Rs. 50,000",
+        "plat_suv": "Rs. 55,000",
+        "plat_xlsuv": "Rs. 60,000",
+        "ult_hatch": "Rs. 60,000",
+        "ult_sedan": "Rs. 65,000",
+        "ult_suv": "Rs. 70,000",
+        "ult_xlsuv": "Rs. 75,000"
       }
     },
-    "tint_pricing_HfJBhj": {
-      "type": "tint-pricing",
-      "name": "Tint Pricing",
+    "ceramic_why_m4xRQ9": {
+      "type": "ceramic-why",
+      "name": "Ceramic Why Section",
       "settings": {
-        "title": "Heat Control Window Film Price",
-        "subtitle": "NAR Window Film — Transparent pricing for all vehicle types",
-        "hatch_full": "PKR 18,500",
-        "hatch_wind": "PKR 7,500",
-        "hatch_back": "PKR 3,000",
-        "hatch_front": "PKR 5,000",
-        "hatch_back_doors": "PKR 4,500",
-        "sedan_full": "PKR 25,000",
-        "sedan_wind": "PKR 8,500",
-        "sedan_back": "PKR 7,000",
-        "sedan_front": "PKR 5,500",
-        "sedan_back_doors": "PKR 6,000",
-        "suv_full": "PKR 27,000",
-        "suv_wind": "PKR 10,000",
-        "suv_back": "PKR 7,000",
-        "suv_front": "PKR 6,000",
-        "suv_back_doors": "PKR 7,000",
-        "xlsuv_full": "PKR 29,500",
-        "xlsuv_wind": "PKR 12,000",
-        "xlsuv_back": "PKR 7,000",
-        "xlsuv_front": "PKR 6,000",
-        "xlsuv_back_doors": "PKR 8,500"
+        "tag": "Why Ceramic Coating?",
+        "title": "It keeps your car paint protected & shiny while saving money on maintenance!",
+        "offer_title": "Protect Your Investment with Ceramic Coating",
+        "offer_text": "Limited time offer — book now and save!",
+        "offer_badge": "10% Off!",
+        "offer_url": ""
       }
     },
-    "tint_why_8xhNWb": {
-      "type": "tint-why",
-      "name": "Tint Why Section",
+    "ceramic_gallery_JwPDec": {
+      "type": "ceramic-gallery",
+      "name": "Ceramic Gallery",
       "settings": {
-        "tag": "Why Window Tinting?",
-        "title": "Block Heat, Protect Your Car & Stay Cool in Karachi's Harsh Summers",
-        "btn1_text": "Book Your Slot",
-        "btn1_url": ""
+        "title": "Our Work",
+        "subtitle": "Real results from real cars we've detailed in Karachi"
       }
     }
   },
   "order": [
     "main",
-    "tint_hero_JDTzPX",
-    "tint_specs_mmgc6A",
-    "tint_pricing_HfJBhj",
-    "tint_why_8xhNWb"
+    "ceramic_hero_4DtGYd",
+    "ceramic_packages_4gRhxA",
+    "ceramic_why_m4xRQ9",
+    "ceramic_gallery_JwPDec"
   ]
 }

@@ -11,10 +11,75 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {}
+    },
+    "hero_kXVUEH": {
+      "type": "hero",
+      "name": "Hero",
+      "settings": {
+        "bg_image": "shopify://shop_images/b0be0cc3-4fb4-4775-9c60-a7b1f64b7050.png",
+        "badge": "Karachi's Premium Auto Detailing",
+        "title": "Transform Your Car's Look with",
+        "title_accent": "RAD -Revive Auto Detailing",
+        "subtitle": "Professional car detailing, ceramic coating, and paint protection services to keep your vehicle looking pristine.",
+        "btn1_text": "Get Free Quote",
+        "btn1_url": ""
+      }
+    },
+    "services_dbjXcx": {
+      "type": "services",
+      "name": "Services",
+      "settings": {
+        "img_1": "shopify://shop_images/SaveVid.Net_706483316_17966723517078672_7661059615161583245_n.jpg",
+        "img_2": "shopify://shop_images/400094796_206546052473770_6622437520898617435_n_edited.jpg",
+        "img_3": "shopify://shop_images/IMG20231101172719.jpg",
+        "img_4": "shopify://shop_images/RAD_undercoat_website_optimized.jpg"
+      }
+    },
+    "why_us_n7pjiN": {
+      "type": "why-us",
+      "name": "Why Choose Us",
+      "settings": {
+        "title": "Why Choose RAD For Your Car?",
+        "offer_title": "Special Offer!",
+        "offer_text": "Get 10% Off PPF Service This Month!",
+        "offer_btn": "Book Now & Save",
+        "offer_url": ""
+      }
+    },
+    "process_DhMqQc": {
+      "type": "process",
+      "name": "Process",
+      "settings": {
+        "title": "Our 4-Step Process",
+        "subtitle": "Simple, transparent, and stress-free from start to finish",
+        "step1_title": "Book Your Appointment",
+        "step1_desc": "Schedule at your convenience online, by phone, or via WhatsApp",
+        "step2_title": "Drop-off",
+        "step2_desc": "Bring your car to our facility in Karachi",
+        "step3_title": "We Work Our Magic",
+        "step3_desc": "Our expert technicians apply premium products with precision",
+        "step4_title": "Enjoy the Results",
+        "step4_desc": "Pick up your pristine vehicle looking better than ever"
+      }
+    },
+    "contactform_6cY7tm": {
+      "type": "contactform",
+      "name": "Contact Form",
+      "settings": {
+        "title": "Get Your Free Estimate",
+        "subtitle": "Fill out the form below and we'll get back to you with a personalized quote.",
+        "btn_text": "Calculate My Car Estimate"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "hero_kXVUEH",
+    "services_dbjXcx",
+    "why_us_n7pjiN",
+    "process_DhMqQc",
+    "contactform_6cY7tm"
   ]
 }
