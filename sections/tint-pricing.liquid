@@ -81,10 +81,10 @@
             <span class="label">Full Car</span>
             <span class="amount">PKR 18,500</span>
           </div>
-          <div class="rad-tint-price-row"><span class="label">Windscreen</span><span class="amount">PKR 7,500</span></div>
-          <div class="rad-tint-price-row"><span class="label">Backscreen</span><span class="amount">PKR 3,000</span></div>
-          <div class="rad-tint-price-row"><span class="label">Front Doors</span><span class="amount">PKR 5,000</span></div>
-          <div class="rad-tint-price-row"><span class="label">Back Doors</span><span class="amount">PKR 4,500</span></div>
+          <div class="rad-tint-price-row"><span class="label">Windscreen</span><span class="amount">{{ section.settings.hatch_wind | default: "PKR 7,500" }}</span></div>
+          <div class="rad-tint-price-row"><span class="label">Backscreen</span><span class="amount">{{ section.settings.hatch_back | default: "PKR 3,000" }}</span></div>
+          <div class="rad-tint-price-row"><span class="label">Front Doors</span><span class="amount">{{ section.settings.hatch_front | default: "PKR 5,000" }}</span></div>
+          <div class="rad-tint-price-row"><span class="label">Back Doors</span><span class="amount">{{ section.settings.hatch_back_doors | default: "PKR 4,500" }}</span></div>
           <a href="/pages/ppf-booking" class="rad-tint-book-btn">Book My Slot</a>
         </div>
       </div>
@@ -104,10 +104,10 @@
             <span class="label">Full Car</span>
             <span class="amount">PKR 25,000</span>
           </div>
-          <div class="rad-tint-price-row"><span class="label">Windscreen</span><span class="amount">PKR 8,500</span></div>
-          <div class="rad-tint-price-row"><span class="label">Backscreen</span><span class="amount">PKR 7,000</span></div>
-          <div class="rad-tint-price-row"><span class="label">Front Doors</span><span class="amount">PKR 5,500</span></div>
-          <div class="rad-tint-price-row"><span class="label">Back Doors</span><span class="amount">PKR 6,000</span></div>
+          <div class="rad-tint-price-row"><span class="label">Windscreen</span><span class="amount">{{ section.settings.sedan_wind | default: "PKR 8,500" }}</span></div>
+          <div class="rad-tint-price-row"><span class="label">Backscreen</span><span class="amount">{{ section.settings.sedan_back | default: "PKR 7,000" }}</span></div>
+          <div class="rad-tint-price-row"><span class="label">Front Doors</span><span class="amount">{{ section.settings.sedan_front | default: "PKR 5,500" }}</span></div>
+          <div class="rad-tint-price-row"><span class="label">Back Doors</span><span class="amount">{{ section.settings.sedan_back_doors | default: "PKR 6,000" }}</span></div>
           <a href="/pages/ppf-booking" class="rad-tint-book-btn">Book My Slot</a>
         </div>
       </div>
@@ -127,10 +127,10 @@
             <span class="label">Full Car</span>
             <span class="amount">PKR 27,000</span>
           </div>
-          <div class="rad-tint-price-row"><span class="label">Windscreen</span><span class="amount">PKR 10,000</span></div>
-          <div class="rad-tint-price-row"><span class="label">Backscreen</span><span class="amount">PKR 7,000</span></div>
-          <div class="rad-tint-price-row"><span class="label">Front Doors</span><span class="amount">PKR 6,000</span></div>
-          <div class="rad-tint-price-row"><span class="label">Back Doors</span><span class="amount">PKR 7,000</span></div>
+          <div class="rad-tint-price-row"><span class="label">Windscreen</span><span class="amount">{{ section.settings.suv_wind | default: "PKR 10,000" }}</span></div>
+          <div class="rad-tint-price-row"><span class="label">Backscreen</span><span class="amount">{{ section.settings.sedan_back | default: "PKR 7,000" }}</span></div>
+          <div class="rad-tint-price-row"><span class="label">Front Doors</span><span class="amount">{{ section.settings.suv_front | default: "PKR 6,000" }}</span></div>
+          <div class="rad-tint-price-row"><span class="label">Back Doors</span><span class="amount">{{ section.settings.suv_back_doors | default: "PKR 7,000" }}</span></div>
           <a href="/pages/ppf-booking" class="rad-tint-book-btn">Book My Slot</a>
         </div>
       </div>
@@ -150,10 +150,10 @@
             <span class="label">Full Car</span>
             <span class="amount">PKR 29,500</span>
           </div>
-          <div class="rad-tint-price-row"><span class="label">Windscreen</span><span class="amount">PKR 12,000</span></div>
-          <div class="rad-tint-price-row"><span class="label">Backscreen</span><span class="amount">PKR 7,000</span></div>
-          <div class="rad-tint-price-row"><span class="label">Front Doors</span><span class="amount">PKR 6,000</span></div>
-          <div class="rad-tint-price-row"><span class="label">Back Doors</span><span class="amount">PKR 8,500</span></div>
+          <div class="rad-tint-price-row"><span class="label">Windscreen</span><span class="amount">{{ section.settings.xlsuv_wind | default: "PKR 12,000" }}</span></div>
+          <div class="rad-tint-price-row"><span class="label">Backscreen</span><span class="amount">{{ section.settings.sedan_back | default: "PKR 7,000" }}</span></div>
+          <div class="rad-tint-price-row"><span class="label">Front Doors</span><span class="amount">{{ section.settings.suv_front | default: "PKR 6,000" }}</span></div>
+          <div class="rad-tint-price-row"><span class="label">Back Doors</span><span class="amount">{{ section.settings.xlsuv_back_doors | default: "PKR 8,500" }}</span></div>
           <a href="/pages/ppf-booking" class="rad-tint-book-btn">Book My Slot</a>
         </div>
       </div>
@@ -170,11 +170,159 @@
 {
   "name": "Tint Pricing",
   "settings": [
-    { "type": "image_picker", "id": "img_hatchback", "label": "Hatchback Image" },
-    { "type": "image_picker", "id": "img_sedan", "label": "Sedan Image" },
-    { "type": "image_picker", "id": "img_suv", "label": "SUV Image" },
-    { "type": "image_picker", "id": "img_xlsuv", "label": "XL SUV Image" }
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Heat Control Window Film Price"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "NAR Window Film — Transparent pricing for all vehicle types"
+    },
+    {
+      "type": "header",
+      "content": "Hatchback Prices"
+    },
+    {
+      "type": "text",
+      "id": "hatch_full",
+      "label": "Full Car",
+      "default": "PKR 18,500"
+    },
+    {
+      "type": "text",
+      "id": "hatch_wind",
+      "label": "Windscreen",
+      "default": "PKR 7,500"
+    },
+    {
+      "type": "text",
+      "id": "hatch_back",
+      "label": "Backscreen",
+      "default": "PKR 3,000"
+    },
+    {
+      "type": "text",
+      "id": "hatch_front",
+      "label": "Front Doors",
+      "default": "PKR 5,000"
+    },
+    {
+      "type": "text",
+      "id": "hatch_back_doors",
+      "label": "Back Doors",
+      "default": "PKR 4,500"
+    },
+    {
+      "type": "header",
+      "content": "Sedan Prices"
+    },
+    {
+      "type": "text",
+      "id": "sedan_full",
+      "label": "Full Car",
+      "default": "PKR 25,000"
+    },
+    {
+      "type": "text",
+      "id": "sedan_wind",
+      "label": "Windscreen",
+      "default": "PKR 8,500"
+    },
+    {
+      "type": "text",
+      "id": "sedan_back",
+      "label": "Backscreen",
+      "default": "PKR 7,000"
+    },
+    {
+      "type": "text",
+      "id": "sedan_front",
+      "label": "Front Doors",
+      "default": "PKR 5,500"
+    },
+    {
+      "type": "text",
+      "id": "sedan_back_doors",
+      "label": "Back Doors",
+      "default": "PKR 6,000"
+    },
+    {
+      "type": "header",
+      "content": "SUV Prices"
+    },
+    {
+      "type": "text",
+      "id": "suv_full",
+      "label": "Full Car",
+      "default": "PKR 27,000"
+    },
+    {
+      "type": "text",
+      "id": "suv_wind",
+      "label": "Windscreen",
+      "default": "PKR 10,000"
+    },
+    {
+      "type": "text",
+      "id": "suv_back",
+      "label": "Backscreen",
+      "default": "PKR 7,000"
+    },
+    {
+      "type": "text",
+      "id": "suv_front",
+      "label": "Front Doors",
+      "default": "PKR 6,000"
+    },
+    {
+      "type": "text",
+      "id": "suv_back_doors",
+      "label": "Back Doors",
+      "default": "PKR 7,000"
+    },
+    {
+      "type": "header",
+      "content": "XL SUV Prices"
+    },
+    {
+      "type": "text",
+      "id": "xlsuv_full",
+      "label": "Full Car",
+      "default": "PKR 29,500"
+    },
+    {
+      "type": "text",
+      "id": "xlsuv_wind",
+      "label": "Windscreen",
+      "default": "PKR 12,000"
+    },
+    {
+      "type": "text",
+      "id": "xlsuv_back",
+      "label": "Backscreen",
+      "default": "PKR 7,000"
+    },
+    {
+      "type": "text",
+      "id": "xlsuv_front",
+      "label": "Front Doors",
+      "default": "PKR 6,000"
+    },
+    {
+      "type": "text",
+      "id": "xlsuv_back_doors",
+      "label": "Back Doors",
+      "default": "PKR 8,500"
+    }
   ],
-  "presets": [{"name": "Tint Pricing"}]
+  "presets": [
+    {
+      "name": "Tint Pricing"
+    }
+  ]
 }
 {% endschema %}
