@@ -1,0 +1,376 @@
+<style>
+/* Reuse ppf booking styles with cer prefix */
+.rad-cer-booking { padding: 4rem 0 6rem; background: #fff; }
+.rad-cer-booking-wrapper { max-width: 600px; margin: 0 auto; }
+.rad-cer-prog { margin-bottom: 2rem; }
+.rad-cer-prog-bar-track { height: 6px; background: #e5e7eb; border-radius: 100px; overflow: hidden; margin-bottom: 0.5rem; }
+.rad-cer-prog-bar-fill { height: 100%; background: #1e3a8a; border-radius: 100px; transition: width 0.4s ease; }
+.rad-cer-prog-labels { display: flex; justify-content: space-between; font-size: 0.8rem; color: #6b7280; font-weight: 600; }
+.rad-cer-prog-labels span.active { color: #1e3a8a; font-weight: 800; }
+.rad-cer-steps { display: flex; justify-content: center; gap: 0; margin-bottom: 2rem; position: relative; }
+.rad-cer-steps::before { content:''; position:absolute; top:1.1rem; left:10%; right:10%; height:2px; background:#e5e7eb; z-index:0; }
+.rad-cer-step { display:flex; flex-direction:column; align-items:center; gap:0.4rem; flex:1; position:relative; z-index:1; }
+.rad-cer-step-dot { width:2.25rem; height:2.25rem; border-radius:50%; border:2px solid #e5e7eb; background:#fff; display:flex; align-items:center; justify-content:center; font-size:0.875rem; font-weight:800; color:#9ca3af; transition:all 0.3s; }
+.rad-cer-step.active .rad-cer-step-dot { background:#1e3a8a; border-color:#1e3a8a; color:#fff; }
+.rad-cer-step.done .rad-cer-step-dot { background:#10b981; border-color:#10b981; color:#fff; }
+.rad-cer-step-lbl { font-size:0.7rem; font-weight:700; color:#9ca3af; text-align:center; }
+.rad-cer-step.active .rad-cer-step-lbl { color:#1e3a8a; }
+.rad-cer-step.done .rad-cer-step-lbl { color:#10b981; }
+.rad-cer-bform { background:#f3f4f6; border-radius:12px; padding:2rem; }
+.rad-cer-bstep { display:none; }
+.rad-cer-bstep.active { display:block; }
+.rad-cer-bstep-title { font-size:1.4rem; font-weight:800; color:#1f2937; margin-bottom:0.25rem; font-family:'Nunito Sans',sans-serif; }
+.rad-cer-bstep-desc { font-size:0.875rem; color:#6b7280; margin-bottom:1.5rem; }
+.rad-cer-fg { margin-bottom:1rem; }
+.rad-cer-fl { display:block; font-weight:600; font-size:0.9rem; color:#1f2937; margin-bottom:0.35rem; }
+.rad-cer-fl em { color:#ef4444; font-style:normal; }
+.rad-cer-fi { width:100%; padding:0.75rem 1rem; border:2px solid #e5e7eb; border-radius:8px; font-size:1rem; font-family:'Nunito Sans',sans-serif; color:#1f2937; background:#fff; outline:none; transition:border 0.2s; box-sizing:border-box; }
+.rad-cer-fi:focus { border-color:#1e3a8a; box-shadow:0 0 0 3px rgba(30,58,138,0.1); }
+.rad-cer-fi.rad-err { border-color:#ef4444; }
+.rad-cer-ferr { color:#ef4444; font-size:0.78rem; margin-top:0.25rem; display:none; }
+.rad-cer-ferr.show { display:block; }
+.rad-cer-frow { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.rad-cer-times { display:grid; grid-template-columns:repeat(4,1fr); gap:0.6rem; margin-top:0.35rem; }
+.rad-cer-time { padding:0.6rem 0.5rem; border:2px solid #e5e7eb; border-radius:8px; text-align:center; font-weight:700; font-size:0.875rem; cursor:pointer; background:#fff; transition:all 0.2s; color:#1f2937; font-family:'Nunito Sans',sans-serif; }
+.rad-cer-time:hover { border-color:#1e3a8a; color:#1e3a8a; }
+.rad-cer-time.sel { background:#1e3a8a; border-color:#1e3a8a; color:#fff; }
+.rad-cer-pkgs { display:flex; flex-direction:column; gap:0.75rem; margin-top:0.35rem; }
+.rad-cer-pkg { display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem; background:#fff; border:2px solid #e5e7eb; border-radius:8px; cursor:pointer; transition:all 0.2s; }
+.rad-cer-pkg:hover { border-color:#1e3a8a; }
+.rad-cer-pkg.sel { border-color:#1e3a8a; background:rgba(30,58,138,0.04); }
+.rad-cer-pkg-radio { width:1.25rem; height:1.25rem; border:2px solid #e5e7eb; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:all 0.2s; }
+.rad-cer-pkg.sel .rad-cer-pkg-radio { border-color:#1e3a8a; background:#1e3a8a; }
+.rad-cer-pkg.sel .rad-cer-pkg-radio::after { content:''; width:6px; height:6px; background:#fff; border-radius:50%; display:block; }
+.rad-cer-pkg-name { font-weight:700; font-size:0.95rem; color:#1f2937; }
+.rad-cer-pkg-price { font-size:0.875rem; color:#1e3a8a; font-weight:700; }
+.rad-cer-price-show { background:rgba(30,58,138,0.08); border:1px solid rgba(30,58,138,0.2); border-radius:8px; padding:0.85rem 1.25rem; margin-top:1rem; display:none; justify-content:space-between; align-items:center; }
+.rad-cer-price-show.show { display:flex; }
+.rad-cer-price-lbl { font-size:0.875rem; color:#6b7280; font-weight:600; }
+.rad-cer-price-val { font-size:1.35rem; font-weight:800; color:#1e3a8a; }
+.rad-cer-rev-block { background:#fff; border-radius:8px; padding:1.25rem; margin-bottom:0.75rem; }
+.rad-cer-rev-hdr { display:flex; justify-content:space-between; align-items:center; padding-bottom:0.6rem; border-bottom:1px solid #e5e7eb; margin-bottom:0.75rem; }
+.rad-cer-rev-title { font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:#6b7280; }
+.rad-cer-rev-edit { font-size:0.8rem; font-weight:700; color:#1e3a8a; cursor:pointer; background:none; border:none; font-family:'Nunito Sans',sans-serif; }
+.rad-cer-rev-row { display:flex; justify-content:space-between; gap:1rem; font-size:0.875rem; padding:0.25rem 0; }
+.rad-cer-rev-row .rl { color:#6b7280; }
+.rad-cer-rev-row .rv { font-weight:600; color:#1f2937; text-align:right; }
+.rad-cer-rev-total { background:#1e3a8a; color:#fff; border-radius:8px; padding:1rem 1.25rem; display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; }
+.rad-cer-rev-total-lbl { font-weight:700; }
+.rad-cer-rev-total-price { font-size:1.5rem; font-weight:800; }
+.rad-cer-terms { display:flex; align-items:flex-start; gap:0.75rem; margin-bottom:1.25rem; cursor:pointer; }
+.rad-cer-terms input { width:1.1rem; height:1.1rem; margin-top:2px; cursor:pointer; flex-shrink:0; accent-color:#1e3a8a; }
+.rad-cer-terms span { font-size:0.85rem; color:#6b7280; line-height:1.5; }
+.rad-cer-bnav { display:flex; gap:0.75rem; margin-top:1.5rem; }
+.rad-cer-bbtn-back { flex:0.4; padding:0.875rem; background:#fff; border:2px solid #d1d5db; border-radius:8px; font-family:'Nunito Sans',sans-serif; font-weight:700; font-size:1rem; color:#6b7280; cursor:pointer; transition:all 0.2s; }
+.rad-cer-bbtn-back:hover:not(:disabled) { border-color:#1e3a8a; color:#1e3a8a; }
+.rad-cer-bbtn-back:disabled { opacity:0.4; cursor:not-allowed; }
+.rad-cer-bbtn-next { flex:1; padding:0.875rem; background:#1e3a8a; border:none; border-radius:8px; font-family:'Nunito Sans',sans-serif; font-weight:700; font-size:1rem; color:#fff; cursor:pointer; transition:all 0.2s; }
+.rad-cer-bbtn-next:hover { background:#1e40af; }
+.rad-cer-bsuccess { display:none; background:#f3f4f6; border-radius:12px; padding:2.5rem; text-align:center; }
+.rad-cer-bsuccess.show { display:block; }
+.rad-cer-srow { display:flex; justify-content:space-between; padding:0.35rem 0; border-bottom:1px solid #f3f4f6; font-size:0.875rem; }
+.rad-cer-srow:last-child { border-bottom:none; }
+.rad-cer-srow .sl { color:#6b7280; }
+.rad-cer-srow .sv { font-weight:700; color:#1f2937; }
+.rad-cer-srow .sp { font-weight:800; color:#1e3a8a; font-size:1.05rem; }
+.rad-cer-sactions { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.5rem; }
+.rad-cer-sbtn { display:inline-flex; align-items:center; padding:0.875rem 1.75rem; background:#1e3a8a; color:#fff; border-radius:8px; font-weight:700; font-size:1rem; text-decoration:none; transition:all 0.2s; }
+.rad-cer-sbtn:hover { background:#1e40af; }
+.rad-cer-sbtn.outline { background:transparent; color:#1e3a8a; border:2px solid #1e3a8a; }
+@media (max-width:640px) {
+  .rad-cer-booking { padding:2.5rem 0 4rem; }
+  .rad-cer-bform { padding:1.5rem 1rem; }
+  .rad-cer-frow { grid-template-columns:1fr; }
+  .rad-cer-times { grid-template-columns:repeat(2,1fr); }
+  .rad-cer-bnav { flex-direction:column-reverse; }
+  .rad-cer-step-lbl { display:none; }
+}
+</style>
+
+<section class="rad-cer-booking">
+  <div class="container">
+    <div class="rad-cer-booking-wrapper">
+      <div style="text-align:center;margin-bottom:2rem;">
+        <h1 style="font-size:2rem;font-weight:800;margin-bottom:0.4rem;font-family:'Nunito Sans',sans-serif;">Book Your Car Detailing</h1>
+        <p style="color:#6b7280;">Fill the form below to reserve your slot</p>
+      </div>
+
+      <!-- Progress -->
+      <div class="rad-cer-prog">
+        <div class="rad-cer-prog-bar-track"><div class="rad-cer-prog-bar-fill" id="cpb" style="width:25%"></div></div>
+        <div class="rad-cer-prog-labels"><span id="cps">Step 1 of 4</span><span id="cpn" style="color:#1e3a8a;font-weight:800;">Personal Info</span></div>
+      </div>
+
+      <!-- Steps -->
+      <div class="rad-cer-steps">
+        <div class="rad-cer-step active" id="csi-1"><div class="rad-cer-step-dot">1</div><span class="rad-cer-step-lbl">Personal</span></div>
+        <div class="rad-cer-step" id="csi-2"><div class="rad-cer-step-dot">2</div><span class="rad-cer-step-lbl">Vehicle</span></div>
+        <div class="rad-cer-step" id="csi-3"><div class="rad-cer-step-dot">3</div><span class="rad-cer-step-lbl">Appointment</span></div>
+        <div class="rad-cer-step" id="csi-4"><div class="rad-cer-step-dot">4</div><span class="rad-cer-step-lbl">Confirm</span></div>
+      </div>
+
+      <!-- FORM -->
+      <div class="rad-cer-bform" id="cer-bform">
+
+        <!-- STEP 1 -->
+        <div class="rad-cer-bstep active" id="cs1">
+          <h2 class="rad-cer-bstep-title">Your Details</h2>
+          <p class="rad-cer-bstep-desc">We'll confirm your booking via WhatsApp and email.</p>
+          <div class="rad-cer-frow">
+            <div class="rad-cer-fg"><label class="rad-cer-fl" for="cf-fn">First Name <em>*</em></label><input type="text" id="cf-fn" class="rad-cer-fi" placeholder="Ahmed" autocomplete="given-name"><div class="rad-cer-ferr" id="ce-fn">Enter your first name</div></div>
+            <div class="rad-cer-fg"><label class="rad-cer-fl" for="cf-ln">Last Name <em>*</em></label><input type="text" id="cf-ln" class="rad-cer-fi" placeholder="Khan" autocomplete="family-name"><div class="rad-cer-ferr" id="ce-ln">Enter your last name</div></div>
+          </div>
+          <div class="rad-cer-fg"><label class="rad-cer-fl" for="cf-ph">WhatsApp Number <em>*</em></label><input type="tel" id="cf-ph" class="rad-cer-fi" placeholder="+92 3XX XXXXXXX" autocomplete="tel"><div class="rad-cer-ferr" id="ce-ph">Enter a valid phone number</div></div>
+          <div class="rad-cer-fg"><label class="rad-cer-fl" for="cf-em">Email Address <em>*</em></label><input type="email" id="cf-em" class="rad-cer-fi" placeholder="you@example.com" autocomplete="email"><div class="rad-cer-ferr" id="ce-em">Enter a valid email</div></div>
+          <div class="rad-cer-bnav"><button class="rad-cer-bbtn-back" disabled>← Back</button><button class="rad-cer-bbtn-next" onclick="cbNext(1)">Next: Vehicle Details →</button></div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="rad-cer-bstep" id="cs2">
+          <h2 class="rad-cer-bstep-title">Your Vehicle</h2>
+          <p class="rad-cer-bstep-desc">Tell us about the car we'll be coating.</p>
+          <div class="rad-cer-frow">
+            <div class="rad-cer-fg"><label class="rad-cer-fl" for="cf-mk">Vehicle Make <em>*</em></label><input type="text" id="cf-mk" class="rad-cer-fi" placeholder="e.g. Toyota"><div class="rad-cer-ferr" id="ce-mk">Enter vehicle make</div></div>
+            <div class="rad-cer-fg"><label class="rad-cer-fl" for="cf-mo">Vehicle Model <em>*</em></label><input type="text" id="cf-mo" class="rad-cer-fi" placeholder="e.g. Corolla"><div class="rad-cer-ferr" id="ce-mo">Enter vehicle model</div></div>
+          </div>
+          <div class="rad-cer-frow">
+            <div class="rad-cer-fg"><label class="rad-cer-fl" for="cf-yr">Year <em>*</em></label><select id="cf-yr" class="rad-cer-fi"><option value="" disabled>Select year</option></select><div class="rad-cer-ferr" id="ce-yr">Select vehicle year</div></div>
+            <div class="rad-cer-fg"><label class="rad-cer-fl" for="cf-cl">Color <span style="color:#9ca3af;font-weight:400;">(Optional)</span></label><input type="text" id="cf-cl" class="rad-cer-fi" placeholder="e.g. Pearl White"></div>
+          </div>
+          <div class="rad-cer-bnav"><button class="rad-cer-bbtn-back" onclick="cbPrev(2)">← Back</button><button class="rad-cer-bbtn-next" onclick="cbNext(2)">Next: Appointment →</button></div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="rad-cer-bstep" id="cs3">
+          <h2 class="rad-cer-bstep-title">Choose Appointment</h2>
+          <p class="rad-cer-bstep-desc">Pick a date, time, vehicle type and package.</p>
+          <div class="rad-cer-frow">
+            <div class="rad-cer-fg"><label class="rad-cer-fl" for="cf-dt">Preferred Date <em>*</em></label><input type="date" id="cf-dt" class="rad-cer-fi"><div class="rad-cer-ferr" id="ce-dt">Select a date</div></div>
+            <div class="rad-cer-fg"><label class="rad-cer-fl" for="cf-vt">Vehicle Type <em>*</em></label>
+              <select id="cf-vt" class="rad-cer-fi" onchange="cbUpdatePrice()">
+                <option value="" disabled selected>Select type</option>
+                <option value="hatchback">Hatchback</option>
+                <option value="sedan">Sedan</option>
+                <option value="suv">SUV</option>
+                <option value="xl-suv">XL SUV</option>
+              </select>
+              <div class="rad-cer-ferr" id="ce-vt">Select vehicle type</div>
+            </div>
+          </div>
+          <div class="rad-cer-fg">
+            <label class="rad-cer-fl">Preferred Time <em>*</em></label>
+            <div class="rad-cer-times">
+              <button type="button" class="rad-cer-time sel" onclick="cbSelTime(this,'9:00 AM')">9:00 AM</button>
+              <button type="button" class="rad-cer-time" onclick="cbSelTime(this,'11:00 AM')">11:00 AM</button>
+              <button type="button" class="rad-cer-time" onclick="cbSelTime(this,'2:00 PM')">2:00 PM</button>
+              <button type="button" class="rad-cer-time" onclick="cbSelTime(this,'4:00 PM')">4:00 PM</button>
+            </div>
+            <div class="rad-cer-ferr" id="ce-tm">Select a time slot</div>
+          </div>
+          <div class="rad-cer-fg">
+            <label class="rad-cer-fl">Detailing Package <em>*</em></label>
+            <div class="rad-cer-pkgs">
+              <div class="rad-cer-pkg" onclick="cbSelPkg(this,'interior')"><div class="rad-cer-pkg-radio"></div><div><div class="rad-cer-pkg-name">Interior Detailing</div><div class="rad-cer-pkg-price" id="cpp-gold">Select vehicle type to see price</div></div></div>
+              <div class="rad-cer-pkg" onclick="cbSelPkg(this,'exterior')"><div class="rad-cer-pkg-radio"></div><div><div class="rad-cer-pkg-name">Exterior Detailing</div><div class="rad-cer-pkg-price" id="cpp-plat">Select vehicle type to see price</div></div></div>
+              <div class="rad-cer-pkg" onclick="cbSelPkg(this,'complete')"><div class="rad-cer-pkg-radio"></div><div><div class="rad-cer-pkg-name">Complete Detailing (Interior + Exterior)</div><div class="rad-cer-pkg-price" id="cpp-ult">Select vehicle type to see price</div></div></div>
+            </div>
+            <div class="rad-cer-ferr" id="ce-pk">Select a package</div>
+          </div>
+          <div class="rad-cer-price-show" id="cprice">
+            <span class="rad-cer-price-lbl" id="cprice-lbl">Total</span>
+            <span class="rad-cer-price-val" id="cprice-val">PKR 0</span>
+          </div>
+          <div class="rad-cer-bnav"><button class="rad-cer-bbtn-back" onclick="cbPrev(3)">← Back</button><button class="rad-cer-bbtn-next" onclick="cbNext(3)">Review Booking →</button></div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="rad-cer-bstep" id="cs4">
+          <h2 class="rad-cer-bstep-title">Confirm Your Booking</h2>
+          <p class="rad-cer-bstep-desc">Please review before confirming.</p>
+          <div class="rad-cer-rev-block"><div class="rad-cer-rev-hdr"><span class="rad-cer-rev-title">Personal Info</span><button class="rad-cer-rev-edit" onclick="cbGo(1)">Edit</button></div><div class="rad-cer-rev-row"><span class="rl">Name</span><span class="rv" id="crv-name">—</span></div><div class="rad-cer-rev-row"><span class="rl">Phone</span><span class="rv" id="crv-phone">—</span></div><div class="rad-cer-rev-row"><span class="rl">Email</span><span class="rv" id="crv-email">—</span></div></div>
+          <div class="rad-cer-rev-block"><div class="rad-cer-rev-hdr"><span class="rad-cer-rev-title">Vehicle</span><button class="rad-cer-rev-edit" onclick="cbGo(2)">Edit</button></div><div class="rad-cer-rev-row"><span class="rl">Make & Model</span><span class="rv" id="crv-car">—</span></div><div class="rad-cer-rev-row"><span class="rl">Year</span><span class="rv" id="crv-yr">—</span></div><div class="rad-cer-rev-row"><span class="rl">Color</span><span class="rv" id="crv-cl">—</span></div></div>
+          <div class="rad-cer-rev-block"><div class="rad-cer-rev-hdr"><span class="rad-cer-rev-title">Appointment</span><button class="rad-cer-rev-edit" onclick="cbGo(3)">Edit</button></div><div class="rad-cer-rev-row"><span class="rl">Date</span><span class="rv" id="crv-dt">—</span></div><div class="rad-cer-rev-row"><span class="rl">Time</span><span class="rv" id="crv-tm">—</span></div><div class="rad-cer-rev-row"><span class="rl">Vehicle Type</span><span class="rv" id="crv-vt">—</span></div><div class="rad-cer-rev-row"><span class="rl">Package</span><span class="rv" id="crv-pk">—</span></div></div>
+          <div class="rad-cer-rev-total"><span class="rad-cer-rev-total-lbl">Total Amount</span><span class="rad-cer-rev-total-price" id="crv-total">PKR —</span></div>
+          <label class="rad-cer-terms"><input type="checkbox" id="cf-terms"><span>I agree to the <a href="/policies/terms-of-service" target="_blank">Terms & Conditions</a> and consent to RAD contacting me.</span></label>
+          <div class="rad-cer-ferr" id="ce-terms">Please agree to the terms</div>
+          <div class="rad-cer-bnav"><button class="rad-cer-bbtn-back" onclick="cbPrev(4)">← Back</button><button class="rad-cer-bbtn-next" onclick="cbConfirm()">Confirm Booking ✓</button></div>
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="rad-cer-bsuccess" id="cer-bsuccess">
+        <span style="font-size:4rem;display:block;margin-bottom:1rem;">✅</span>
+        <h2 style="font-size:2rem;font-weight:800;margin-bottom:0.5rem;font-family:'Nunito Sans',sans-serif;">Booking Confirmed!</h2>
+        <p style="color:#6b7280;margin-bottom:1.5rem;">Our team will confirm your detailing appointment via WhatsApp.</p>
+        <div style="background:#fff;border-radius:8px;padding:1.25rem;text-align:left;margin-bottom:1.5rem;">
+          <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;color:#6b7280;font-weight:800;margin-bottom:0.75rem;">Booking Summary</div>
+          <div class="rad-cer-srow"><span class="sl">Ref</span><span class="sv" id="cs-ref">—</span></div>
+          <div class="rad-cer-srow"><span class="sl">Date & Time</span><span class="sv" id="cs-dt">—</span></div>
+          <div class="rad-cer-srow"><span class="sl">Package</span><span class="sv" id="cs-pkg">—</span></div>
+          <div class="rad-cer-srow"><span class="sl">Total</span><span class="sp" id="cs-price">—</span></div>
+        </div>
+        <div class="rad-cer-sactions">
+          <a href="/" class="rad-cer-sbtn">Return to Home</a>
+          <a href="tel:+923037231111" class="rad-cer-sbtn outline">📞 Call Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var cur=1;
+  var cSelTime='9:00 AM';
+  var cSelPkg='';
+  var cbd={};
+  var vtLabels={hatchback:'Hatchback',sedan:'Sedan',suv:'SUV','xl-suv':'XL SUV'};
+  var stepNames=['','Personal Info','Vehicle Details','Appointment','Confirm Booking'];
+  var pricing={
+    hatchback:{interior:{price:10000,dur:'4-5 Hours'},exterior:{price:12000,dur:'4-5 Hours'},complete:{price:18000,dur:'8-10 Hours'}},
+    sedan:    {interior:{price:12000,dur:'4-5 Hours'},exterior:{price:14000,dur:'4-5 Hours'},complete:{price:22000,dur:'8-10 Hours'}},
+    suv:      {interior:{price:14000,dur:'5-6 Hours'},exterior:{price:16000,dur:'5-6 Hours'},complete:{price:24000,dur:'10-12 Hours'}},
+    'xl-suv': {interior:{price:16000,dur:'5-6 Hours'},exterior:{price:18000,dur:'5-6 Hours'},complete:{price:27000,dur:'10-12 Hours'}}
+  };
+  var pkgLabels={interior:'Interior Detailing',exterior:'Exterior Detailing',complete:'Complete Detailing'};
+
+  // Year dropdown
+  var yrSel=document.getElementById('cf-yr');
+  var cy=new Date().getFullYear();
+  for(var y=cy;y>=2000;y--){var o=document.createElement('option');o.value=y;o.textContent=y;if(y===cy)o.selected=true;yrSel.appendChild(o);}
+
+  // Date default today
+  var dtInput=document.getElementById('cf-dt');
+  var today=new Date();
+  dtInput.min=today.toISOString().split('T')[0];
+  dtInput.value=today.toISOString().split('T')[0];
+
+  // Vehicle from sessionStorage
+  (function(){
+    var sv=sessionStorage.getItem('rad_selected_vtype');
+    if(sv){var vt=document.getElementById('cf-vt');if(vt){vt.value=sv;cbUpdatePrice();}}
+  })();
+
+  function chk(id,eid,fn){var el=document.getElementById(id);var er=document.getElementById(eid);if(!el||!er)return true;var ok=fn(el.value.trim());el.classList.toggle('rad-err',!ok);er.classList.toggle('show',!ok);return ok;}
+  var ne=function(v){return v.length>0;};
+  var isEmail=function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);};
+  var isPhone=function(v){return v.replace(/\D/g,'').length>=10;};
+
+  function validate(step){
+    var ok=true;
+    if(step===1){if(!chk('cf-fn','ce-fn',ne))ok=false;if(!chk('cf-ln','ce-ln',ne))ok=false;if(!chk('cf-ph','ce-ph',isPhone))ok=false;if(!chk('cf-em','ce-em',isEmail))ok=false;}
+    if(step===2){if(!chk('cf-mk','ce-mk',ne))ok=false;if(!chk('cf-mo','ce-mo',ne))ok=false;if(!chk('cf-yr','ce-yr',ne))ok=false;}
+    if(step===3){if(!chk('cf-dt','ce-dt',ne))ok=false;if(!chk('cf-vt','ce-vt',ne))ok=false;var ter=document.getElementById('ce-tm');if(!cSelTime){ter.classList.add('show');ok=false;}else{ter.classList.remove('show');}var per=document.getElementById('ce-pk');if(!cSelPkg){per.classList.add('show');ok=false;}else{per.classList.remove('show');}}
+    return ok;
+  }
+
+  function save(step){
+    if(step===1){cbd.fn=document.getElementById('cf-fn').value.trim();cbd.ln=document.getElementById('cf-ln').value.trim();cbd.ph=document.getElementById('cf-ph').value.trim();cbd.em=document.getElementById('cf-em').value.trim();}
+    if(step===2){cbd.mk=document.getElementById('cf-mk').value.trim();cbd.mo=document.getElementById('cf-mo').value.trim();cbd.yr=document.getElementById('cf-yr').value;cbd.cl=document.getElementById('cf-cl').value.trim()||'N/A';}
+    if(step===3){cbd.dt=document.getElementById('cf-dt').value;cbd.tm=cSelTime;cbd.vt=document.getElementById('cf-vt').value;cbd.pk=cSelPkg;if(cbd.vt&&cbd.pk&&pricing[cbd.vt]){cbd.price=pricing[cbd.vt][cbd.pk].price;cbd.dur=pricing[cbd.vt][cbd.pk].dur;cbd.pkLabel=pkgLabels[cbd.pk];}}
+  }
+
+  window.cbGo=function(to){
+    document.getElementById('cs'+cur).classList.remove('active');
+    for(var i=1;i<=4;i++){var ind=document.getElementById('csi-'+i);ind.classList.remove('active','done');var dot=ind.querySelector('.rad-cer-step-dot');if(i<to){ind.classList.add('done');dot.textContent='✓';}else if(i===to){ind.classList.add('active');dot.textContent=i;}else{dot.textContent=i;}}
+    cur=to;
+    document.getElementById('cs'+cur).classList.add('active');
+    document.getElementById('cpb').style.width=(cur/4*100)+'%';
+    document.getElementById('cps').textContent='Step '+cur+' of 4';
+    document.getElementById('cpn').textContent=stepNames[cur];
+    if(to===4)fillReview();
+    window.scrollTo({top:0,behavior:'smooth'});
+  };
+
+  window.cbNext=function(from){if(!validate(from))return;save(from);cbGo(from+1);};
+  window.cbPrev=function(from){cbGo(from-1);};
+
+  window.cbSelTime=function(el,t){
+    document.querySelectorAll('.rad-cer-time').forEach(function(b){b.classList.remove('sel');});
+    el.classList.add('sel');cSelTime=t;
+    document.getElementById('ce-tm').classList.remove('show');
+  };
+
+  window.cbSelPkg=function(el,pkg){
+    document.querySelectorAll('.rad-cer-pkg').forEach(function(p){p.classList.remove('sel');});
+    el.classList.add('sel');cSelPkg=pkg;
+    document.getElementById('ce-pk').classList.remove('show');
+    cbUpdatePrice();
+  };
+
+  window.cbUpdatePrice=function(){
+    var vt=document.getElementById('cf-vt').value;
+    if(!vt||!pricing[vt]){
+      document.getElementById('cpp-gold').textContent='Select vehicle type to see price';
+      document.getElementById('cpp-plat').textContent='Select vehicle type to see price';
+      document.getElementById('cpp-ult').textContent='Select vehicle type to see price';
+      document.getElementById('cprice').classList.remove('show');return;
+    }
+    document.getElementById('cpp-gold').textContent='PKR '+pricing[vt].interior.price.toLocaleString();
+    document.getElementById('cpp-plat').textContent='PKR '+pricing[vt].exterior.price.toLocaleString();
+    document.getElementById('cpp-ult').textContent='PKR '+pricing[vt].complete.price.toLocaleString();
+    if(cSelPkg&&pricing[vt][cSelPkg]){
+      document.getElementById('cprice').classList.add('show');
+      document.getElementById('cprice-lbl').textContent=pkgLabels[cSelPkg]+' – '+vtLabels[vt];
+      document.getElementById('cprice-val').textContent='PKR '+pricing[vt][cSelPkg].price.toLocaleString();
+    }else{document.getElementById('cprice').classList.remove('show');}
+  };
+
+  function fillReview(){
+    document.getElementById('crv-name').textContent=(cbd.fn||'')+' '+(cbd.ln||'');
+    document.getElementById('crv-phone').textContent=cbd.ph||'—';
+    document.getElementById('crv-email').textContent=cbd.em||'—';
+    document.getElementById('crv-car').textContent=(cbd.mk||'')+' '+(cbd.mo||'');
+    document.getElementById('crv-yr').textContent=cbd.yr||'—';
+    document.getElementById('crv-cl').textContent=cbd.cl||'—';
+    var ds=cbd.dt?new Date(cbd.dt+'T12:00:00').toLocaleDateString('en-PK',{weekday:'short',year:'numeric',month:'short',day:'numeric'}):'—';
+    document.getElementById('crv-dt').textContent=ds;
+    document.getElementById('crv-tm').textContent=cbd.tm||'—';
+    document.getElementById('crv-vt').textContent=vtLabels[cbd.vt]||'—';
+    document.getElementById('crv-pk').textContent=cbd.pkLabel||'—';
+    document.getElementById('crv-total').textContent=cbd.price?'PKR '+cbd.price.toLocaleString():'—';
+  }
+
+  window.cbConfirm=function(){
+    var tc=document.getElementById('cf-terms');var te=document.getElementById('ce-terms');
+    if(!tc.checked){te.classList.add('show');return;}te.classList.remove('show');
+    var ref='RAD-DET-'+Date.now().toString(36).toUpperCase().slice(-6);
+    var ds=cbd.dt?new Date(cbd.dt+'T12:00:00').toLocaleDateString('en-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'}):'';
+    var cleanPhone=(cbd.ph||'').replace(/[^0-9]/g,'');
+    fetch('https://formspree.io/f/xgoqpjvk',{
+      method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        _subject:'New Car Detailing Booking: '+ref+' - '+(cbd.fn||'')+' '+(cbd.ln||''),
+        _replyto:cbd.em||'',
+        service:'Car Detailing',
+        booking_ref:ref,
+        submitted:new Date().toLocaleString('en-PK',{timeZone:'Asia/Karachi'}),
+        customer_name:(cbd.fn||'')+' '+(cbd.ln||''),
+        whatsapp:cbd.ph||'',customer_email:cbd.em||'',
+        vehicle:(cbd.mk||'')+' '+(cbd.mo||'')+' '+(cbd.yr||''),
+        color:cbd.cl||'N/A',vehicle_type:vtLabels[cbd.vt]||'',
+        package:cbd.pkLabel||'',date:ds,time:cbd.tm||'',
+        total_price:'PKR '+(cbd.price?cbd.price.toLocaleString():''),
+        whatsapp_link:'https://wa.me/'+cleanPhone
+      })
+    }).catch(function(){});
+    document.getElementById('cer-bform').style.display='none';
+    document.querySelector('.rad-cer-prog').style.display='none';
+    document.querySelector('.rad-cer-steps').style.display='none';
+    var s=document.getElementById('cer-bsuccess');s.classList.add('show');
+    document.getElementById('cs-ref').textContent=ref;
+    document.getElementById('cs-dt').textContent=ds+' at '+(cbd.tm||'');
+    document.getElementById('cs-pkg').textContent=(cbd.pkLabel||'')+(cbd.vt?' - '+vtLabels[cbd.vt]:'');
+    document.getElementById('cs-price').textContent=cbd.price?'PKR '+cbd.price.toLocaleString():'—';
+    window.scrollTo({top:0,behavior:'smooth'});
+  };
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Detailing Booking Form",
+  "settings": [],
+  "presets": [{"name": "Detailing Booking Form"}]
+}
+{% endschema %}
