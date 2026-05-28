@@ -1,68 +1,97 @@
 <style>
-.rad-ar-pricing { padding: 2rem 0; background: #f3f4f6; }
-.rad-ar-pricing-inner { max-width: 860px; margin: 0 auto; }
+.rad-ar-pricing { padding: 3rem 0; background: #f3f4f6; }
 
-/* Main card */
-.rad-ar-main-card {
-  background: #fff; border-radius: 16px; overflow: hidden;
-  border: 2px solid #e5e7eb; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+/* Top info bar */
+.rad-ar-info-bar {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+  margin-bottom: 2.5rem;
 }
-.rad-ar-card-header {
-  background: linear-gradient(135deg, #1a0a00 0%, #7c2d12 100%);
-  color: #fff; padding: 2rem; text-align: center; position: relative; overflow: hidden;
+.rad-ar-info-item {
+  background: #fff; border-radius: 12px; padding: 1.25rem;
+  text-align: center; border-top: 3px solid #1e3a8a;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
-.rad-ar-card-header::before { content: ''; position: absolute; top: -50%; right: -10%; width: 300px; height: 300px; background: rgba(255,255,255,0.05); border-radius: 50%; }
-.rad-ar-card-brand { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: #fed7aa; margin-bottom: 0.4rem; }
-.rad-ar-card-title { font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem; font-family: 'Nunito Sans', sans-serif; }
-.rad-ar-card-sub { font-size: 0.9rem; opacity: 0.8; }
+.rad-ar-info-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+.rad-ar-info-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: #6b7280; font-weight: 700; margin-bottom: 0.25rem; }
+.rad-ar-info-value { font-size: 1rem; font-weight: 800; color: #1e3a8a; }
 
-.rad-ar-card-body { padding: 2rem; }
+/* Main layout - 2 col */
+.rad-ar-main { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem; align-items: start; }
 
-/* Applied on + specs */
-.rad-ar-specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.75rem; }
-.rad-ar-spec-block { }
-.rad-ar-spec-title { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #6b7280; margin-bottom: 0.75rem; }
-.rad-ar-applied-list { display: flex; flex-direction: column; gap: 0.4rem; }
-.rad-ar-applied-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: #1f2937; font-weight: 600; }
-.rad-ar-applied-item::before { content: '✓'; color: #10b981; font-weight: 800; }
-.rad-ar-spec-badges { display: flex; flex-direction: column; gap: 0.5rem; }
-.rad-ar-spec-badge {
+/* Left - Applied on + Benefits */
+.rad-ar-left-card {
+  background: #fff; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+.rad-ar-left-header {
+  background: linear-gradient(135deg, #1a0a00, #7c2d12);
+  color: #fff; padding: 1.5rem; text-align: center;
+}
+.rad-ar-left-header-title { font-size: 1.25rem; font-weight: 800; font-family: 'Nunito Sans', sans-serif; }
+.rad-ar-left-header-sub { font-size: 0.85rem; opacity: 0.85; margin-top: 0.25rem; }
+.rad-ar-left-body { padding: 1.5rem; }
+
+.rad-ar-section-label {
+  font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.1em; color: #6b7280; margin-bottom: 0.85rem;
   display: flex; align-items: center; gap: 0.5rem;
-  background: #f3f4f6; border-radius: 8px; padding: 0.6rem 0.85rem;
+}
+.rad-ar-section-label::after { content: ''; flex: 1; height: 1px; background: #e5e7eb; }
+
+.rad-ar-applied-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-bottom: 1.5rem; }
+.rad-ar-applied-item {
+  background: #f9fafb; border-radius: 8px; padding: 0.75rem;
+  display: flex; align-items: center; gap: 0.5rem;
   font-size: 0.875rem; font-weight: 700; color: #1f2937;
+  border-left: 3px solid #7c2d12;
 }
-.rad-ar-spec-badge span { font-size: 1rem; }
-.rad-ar-free-badge {
-  display: flex; align-items: center; gap: 0.5rem;
-  background: #f0fdf4; border: 1px solid #bbf7d0;
-  border-radius: 8px; padding: 0.6rem 0.85rem;
+.rad-ar-applied-item span { font-size: 1.1rem; }
+
+.rad-ar-benefits-list { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+.rad-ar-benefit-item {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-size: 0.875rem; color: #1f2937; padding: 0.4rem 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+.rad-ar-benefit-item:last-child { border-bottom: none; }
+.rad-ar-benefit-item::before { content: '✓'; color: #10b981; font-weight: 800; flex-shrink: 0; font-size: 0.9rem; }
+
+.rad-ar-free-tag {
+  background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px;
+  padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.5rem;
   font-size: 0.875rem; font-weight: 700; color: #15803d;
 }
 
-/* Benefits */
-.rad-ar-benefits-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.6rem; margin-bottom: 1.75rem; }
-.rad-ar-benefit {
-  background: #f9fafb; border-radius: 8px; padding: 0.75rem;
-  font-size: 0.8rem; color: #1f2937; font-weight: 600;
-  display: flex; align-items: flex-start; gap: 0.4rem; line-height: 1.4;
+/* Right - Pricing */
+.rad-ar-right-card {
+  background: #fff; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
-.rad-ar-benefit::before { content: '✓'; color: #10b981; font-weight: 800; flex-shrink: 0; }
-
-/* Pricing table */
-.rad-ar-price-title { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #6b7280; margin-bottom: 0.75rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; }
-.rad-ar-price-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0.75rem; margin-bottom: 1.5rem; }
-.rad-ar-price-item {
-  background: #f9fafb; border-radius: 10px; padding: 1rem 0.75rem;
-  text-align: center; border: 2px solid #e5e7eb; transition: all 0.2s;
+.rad-ar-right-header {
+  background: #1e3a8a; color: #fff;
+  padding: 1.5rem; text-align: center;
 }
-.rad-ar-price-item:hover { border-color: #7c2d12; box-shadow: 0 4px 12px rgba(124,45,18,0.1); }
-.rad-ar-price-vehicle { font-size: 0.75rem; color: #6b7280; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
-.rad-ar-price-amount { font-size: 1.15rem; font-weight: 800; color: #7c2d12; }
+.rad-ar-right-header-title { font-size: 1.25rem; font-weight: 800; font-family: 'Nunito Sans', sans-serif; }
+.rad-ar-right-header-sub { font-size: 0.85rem; opacity: 0.85; margin-top: 0.25rem; }
+.rad-ar-right-body { padding: 1.5rem; }
 
-.rad-ar-book-btns { display: flex; gap: 1rem; }
+.rad-ar-price-cards { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; }
+.rad-ar-price-card {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 1.25rem; background: #f9fafb; border-radius: 10px;
+  border: 2px solid #e5e7eb; transition: all 0.2s; gap: 1rem;
+}
+.rad-ar-price-card:hover { border-color: #7c2d12; background: #fff; box-shadow: 0 4px 12px rgba(124,45,18,0.1); }
+.rad-ar-price-car-info { display: flex; align-items: center; gap: 0.75rem; }
+.rad-ar-price-car-icon { font-size: 2rem; }
+.rad-ar-price-car-name { font-size: 1rem; font-weight: 800; color: #1f2937; }
+.rad-ar-price-car-desc { font-size: 0.75rem; color: #6b7280; }
+.rad-ar-price-amount { font-size: 1.35rem; font-weight: 800; color: #7c2d12; white-space: nowrap; }
+
+.rad-ar-book-btns { display: flex; gap: 0.75rem; }
 .rad-ar-book-btn {
-  flex: 1; display: block; text-align: center; padding: 0.875rem;
-  background: #1e3a8a; color: #fff; border-radius: 8px;
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  padding: 0.875rem; background: #1e3a8a; color: #fff; border-radius: 8px;
   font-weight: 700; font-size: 1rem; text-decoration: none; transition: all 0.2s;
 }
 .rad-ar-book-btn:hover { background: #1e40af; }
@@ -73,10 +102,13 @@
 }
 .rad-ar-book-btn-wa:hover { background: #059669; }
 
-@media (max-width: 640px) {
-  .rad-ar-specs-grid { grid-template-columns: 1fr; }
-  .rad-ar-benefits-grid { grid-template-columns: 1fr 1fr; }
-  .rad-ar-price-grid { grid-template-columns: repeat(2,1fr); }
+@media (max-width: 900px) {
+  .rad-ar-info-bar { grid-template-columns: repeat(2, 1fr); }
+  .rad-ar-main { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .rad-ar-info-bar { grid-template-columns: repeat(2, 1fr); }
+  .rad-ar-applied-grid { grid-template-columns: 1fr; }
   .rad-ar-book-btns { flex-direction: column; }
 }
 </style>
@@ -84,68 +116,117 @@
 <section class="rad-ar-pricing" id="antirust-pricing">
   <div class="container">
     <h2 class="section-title">MIPA Anti-Rust Undercoat Price</h2>
-    <p class="section-subtitle">Germany's #1 rubberized undercoating — guaranteed protection</p>
+    <p class="section-subtitle">Germany's #1 rubberized undercoating — professional application in Karachi</p>
 
-    <div class="rad-ar-pricing-inner">
-      <div class="rad-ar-main-card">
+    <!-- Top Info Bar -->
+    <div class="rad-ar-info-bar">
+      <div class="rad-ar-info-item">
+        <span class="rad-ar-info-icon">🇩🇪</span>
+        <div class="rad-ar-info-label">Brand</div>
+        <div class="rad-ar-info-value">MIPA Germany</div>
+      </div>
+      <div class="rad-ar-info-item">
+        <span class="rad-ar-info-icon">📅</span>
+        <div class="rad-ar-info-label">Durability</div>
+        <div class="rad-ar-info-value">4 Years</div>
+      </div>
+      <div class="rad-ar-info-item">
+        <span class="rad-ar-info-icon">🛡️</span>
+        <div class="rad-ar-info-label">Warranty</div>
+        <div class="rad-ar-info-value">2 Years</div>
+      </div>
+      <div class="rad-ar-info-item">
+        <span class="rad-ar-info-icon">🎁</span>
+        <div class="rad-ar-info-label">Free Gift</div>
+        <div class="rad-ar-info-value">1x Exterior Wash</div>
+      </div>
+    </div>
 
-        <div class="rad-ar-card-header">
-          <div class="rad-ar-card-brand">🇩🇪 MIPA — Made in Germany</div>
-          <div class="rad-ar-card-title">Rubberized Anti-Rust Undercoating</div>
-          <div class="rad-ar-card-sub">Professional application by certified technicians in Karachi</div>
+    <!-- Main 2 col layout -->
+    <div class="rad-ar-main">
+
+      <!-- LEFT: Applied on + Benefits -->
+      <div class="rad-ar-left-card">
+        <div class="rad-ar-left-header">
+          <div class="rad-ar-left-header-title">What Gets Protected</div>
+          <div class="rad-ar-left-header-sub">Complete undercarriage coverage</div>
         </div>
+        <div class="rad-ar-left-body">
 
-        <div class="rad-ar-card-body">
-          <div class="rad-ar-specs-grid">
-            <!-- Applied On -->
-            <div class="rad-ar-spec-block">
-              <div class="rad-ar-spec-title">Applied On</div>
-              <div class="rad-ar-applied-list">
-                <div class="rad-ar-applied-item">Brakes</div>
-                <div class="rad-ar-applied-item">Chassis</div>
-                <div class="rad-ar-applied-item">Undercarriage</div>
-                <div class="rad-ar-applied-item">Suspension</div>
-              </div>
-            </div>
-            <!-- Specs & Warranty -->
-            <div class="rad-ar-spec-block">
-              <div class="rad-ar-spec-title">Coverage &amp; Warranty</div>
-              <div class="rad-ar-spec-badges">
-                <div class="rad-ar-spec-badge"><span>📅</span> Durability: 4 Years</div>
-                <div class="rad-ar-spec-badge"><span>🛡️</span> Warranty: 2 Years</div>
-                <div class="rad-ar-free-badge"><span>🎁</span> FREE: 1x Exterior Wash</div>
-              </div>
-            </div>
+          <div class="rad-ar-section-label">Applied On</div>
+          <div class="rad-ar-applied-grid">
+            <div class="rad-ar-applied-item"><span>🔧</span> Brakes</div>
+            <div class="rad-ar-applied-item"><span>🏗️</span> Chassis</div>
+            <div class="rad-ar-applied-item"><span>⚙️</span> Undercarriage</div>
+            <div class="rad-ar-applied-item"><span>🔩</span> Suspension</div>
           </div>
 
-          <!-- Benefits -->
-          <div class="rad-ar-spec-title">Benefits</div>
-          <div class="rad-ar-benefits-grid">
-            <div class="rad-ar-benefit">Minimizes Road Noise</div>
-            <div class="rad-ar-benefit">Prevents Rust &amp; Corrosion</div>
-            <div class="rad-ar-benefit">Offers Heat Resistance</div>
-            <div class="rad-ar-benefit">Provides Moisture Resistance</div>
-            <div class="rad-ar-benefit">Protects Against Stone Chips</div>
-            <div class="rad-ar-benefit">Extends Vehicle Lifespan</div>
+          <div class="rad-ar-section-label">Benefits</div>
+          <div class="rad-ar-benefits-list">
+            <div class="rad-ar-benefit-item">Minimizes Road Noise</div>
+            <div class="rad-ar-benefit-item">Prevents Rust &amp; Corrosion</div>
+            <div class="rad-ar-benefit-item">Offers Heat Resistance</div>
+            <div class="rad-ar-benefit-item">Provides Moisture Resistance</div>
+            <div class="rad-ar-benefit-item">Protects Against Stone Chips &amp; Dampness</div>
+            <div class="rad-ar-benefit-item">Extends the Lifespan of Your Vehicle</div>
           </div>
 
-          <!-- Pricing -->
-          <div class="rad-ar-price-title">Pricing by Vehicle Type</div>
-          <div class="rad-ar-price-grid">
-            <div class="rad-ar-price-item">
-              <div class="rad-ar-price-vehicle">Hatchback</div>
+          <div class="rad-ar-free-tag">
+            🎁 FREE with every booking: 1x Professional Exterior Wash
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Pricing -->
+      <div class="rad-ar-right-card">
+        <div class="rad-ar-right-header">
+          <div class="rad-ar-right-header-title">Select Your Vehicle</div>
+          <div class="rad-ar-right-header-sub">Transparent pricing — no hidden charges</div>
+        </div>
+        <div class="rad-ar-right-body">
+
+          <div class="rad-ar-price-cards">
+            <div class="rad-ar-price-card">
+              <div class="rad-ar-price-car-info">
+                <span class="rad-ar-price-car-icon">🚘</span>
+                <div>
+                  <div class="rad-ar-price-car-name">Hatchback</div>
+                  <div class="rad-ar-price-car-desc">Alto, Cultus, Yaris etc.</div>
+                </div>
+              </div>
               <div class="rad-ar-price-amount">Rs. 22,000</div>
             </div>
-            <div class="rad-ar-price-item">
-              <div class="rad-ar-price-vehicle">Sedan</div>
+
+            <div class="rad-ar-price-card">
+              <div class="rad-ar-price-car-info">
+                <span class="rad-ar-price-car-icon">🚗</span>
+                <div>
+                  <div class="rad-ar-price-car-name">Sedan</div>
+                  <div class="rad-ar-price-car-desc">Civic, Corolla, City etc.</div>
+                </div>
+              </div>
               <div class="rad-ar-price-amount">Rs. 25,000</div>
             </div>
-            <div class="rad-ar-price-item">
-              <div class="rad-ar-price-vehicle">SUV</div>
+
+            <div class="rad-ar-price-card">
+              <div class="rad-ar-price-car-info">
+                <span class="rad-ar-price-car-icon">🚙</span>
+                <div>
+                  <div class="rad-ar-price-car-name">SUV</div>
+                  <div class="rad-ar-price-car-desc">Sportage, Tucson, Haval etc.</div>
+                </div>
+              </div>
               <div class="rad-ar-price-amount">Rs. 30,000</div>
             </div>
-            <div class="rad-ar-price-item">
-              <div class="rad-ar-price-vehicle">XL SUV</div>
+
+            <div class="rad-ar-price-card">
+              <div class="rad-ar-price-car-info">
+                <span class="rad-ar-price-car-icon">🛻</span>
+                <div>
+                  <div class="rad-ar-price-car-name">XL SUV</div>
+                  <div class="rad-ar-price-car-desc">Prado, Land Cruiser, Fortuner etc.</div>
+                </div>
+              </div>
               <div class="rad-ar-price-amount">Rs. 33,000</div>
             </div>
           </div>
@@ -159,6 +240,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
