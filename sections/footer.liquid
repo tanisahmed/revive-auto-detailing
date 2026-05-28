@@ -100,14 +100,14 @@
         <h3 class="footer-col-title">Contact Us</h3>
         <div class="footer-info-item">
           <span class="icon">📞</span>
-          <a href="tel:{{ section.settings.phone | default: '+923037231111' }}">
-            {{ section.settings.phone_display | default: '+92 303 7231111' }}
+          <a href="tel:{{ section.settings.phone }}">
+            {{ section.settings.phone_display }}
           </a>
         </div>
         <div class="footer-info-item">
           <span class="icon">📧</span>
-          <a href="mailto:{{ section.settings.email | default: 'info@reviveautodetailing.pk' }}">
-            {{ section.settings.email | default: 'info@reviveautodetailing.pk' }}
+          <a href="mailto:{{ section.settings.email }}">
+            {{ section.settings.email }}
           </a>
         </div>
         <div class="footer-info-item" style="margin-top:1rem;">
@@ -135,7 +135,7 @@
       <div class="footer-col">
         <h3 class="footer-col-title">Location</h3>
         <p class="footer-address">
-          📍 {{ section.settings.address | default: 'A-65, Main Shahrah-e-Qaideen, Central Jacob Lines Block 1, Khudadad Colony, Karachi, Sindh 74800' }}
+          📍 {{ section.settings.address }}
         </p>
         <a href="https://maps.google.com/?q=Revive+Auto+Detailing+Karachi" 
            target="_blank" rel="noopener" class="footer-map-link">
