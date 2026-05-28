@@ -32,10 +32,6 @@
       "type": "why-us",
       "settings": {}
     },
-    "reviews": {
-      "type": "reviews",
-      "settings": {}
-    },
     "process": {
       "type": "process",
       "settings": {}
@@ -49,7 +45,6 @@
     "hero",
     "services",
     "whyus",
-    "reviews",
     "process",
     "leadform"
   ]
