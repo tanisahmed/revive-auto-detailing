@@ -53,7 +53,24 @@
 {% schema %}
 {
   "name": "Ceramic Detailing Included",
-  "settings": [],
-  "presets": [{"name": "Ceramic Detailing Included"}]
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Complete Detailing Included"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Every ceramic coating package includes full interior & exterior detailing"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ceramic Detailing Included"
+    }
+  ]
 }
 {% endschema %}
