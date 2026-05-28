@@ -89,10 +89,10 @@
           <div class="rad-cer-pkg-pricing">
             <div class="rad-cer-pkg-pricing-title">Pricing by Vehicle</div>
             <div class="rad-cer-pkg-price-grid">
-              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">Hatchback</div><div class="rad-cer-pkg-price-amount">Rs. 40,000</div></div>
-              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">Sedan</div><div class="rad-cer-pkg-price-amount">Rs. 45,000</div></div>
-              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">SUV</div><div class="rad-cer-pkg-price-amount">Rs. 50,000</div></div>
-              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">XL SUV</div><div class="rad-cer-pkg-price-amount">Rs. 55,000</div></div>
+              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">Hatchback</div><div class="rad-cer-pkg-price-amount">{{ section.settings.gold_hatch | default: "Rs. 40,000" }}</div></div>
+              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">Sedan</div><div class="rad-cer-pkg-price-amount">{{ section.settings.gold_sedan | default: "{{ section.settings.plat_hatch | default: "Rs. 45,000" }}" }}</div></div>
+              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">SUV</div><div class="rad-cer-pkg-price-amount">{{ section.settings.gold_suv | default: "{{ section.settings.plat_sedan | default: "Rs. 50,000" }}" }}</div></div>
+              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">XL SUV</div><div class="rad-cer-pkg-price-amount">{{ section.settings.gold_xlsuv | default: "{{ section.settings.plat_suv | default: "Rs. 55,000" }}" }}</div></div>
             </div>
           </div>
           <div class="rad-cer-pkg-btns">
@@ -131,7 +131,7 @@
               <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">Hatchback</div><div class="rad-cer-pkg-price-amount">Rs. 45,000</div></div>
               <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">Sedan</div><div class="rad-cer-pkg-price-amount">Rs. 50,000</div></div>
               <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">SUV</div><div class="rad-cer-pkg-price-amount">Rs. 55,000</div></div>
-              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">XL SUV</div><div class="rad-cer-pkg-price-amount">Rs. 60,000</div></div>
+              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">XL SUV</div><div class="rad-cer-pkg-price-amount">{{ section.settings.plat_xlsuv | default: "{{ section.settings.ult_hatch | default: "Rs. 60,000" }}" }}</div></div>
             </div>
           </div>
           <div class="rad-cer-pkg-btns">
@@ -168,9 +168,9 @@
             <div class="rad-cer-pkg-pricing-title">Pricing by Vehicle</div>
             <div class="rad-cer-pkg-price-grid">
               <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">Hatchback</div><div class="rad-cer-pkg-price-amount">Rs. 60,000</div></div>
-              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">Sedan</div><div class="rad-cer-pkg-price-amount">Rs. 65,000</div></div>
-              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">SUV</div><div class="rad-cer-pkg-price-amount">Rs. 70,000</div></div>
-              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">XL SUV</div><div class="rad-cer-pkg-price-amount">Rs. 75,000</div></div>
+              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">Sedan</div><div class="rad-cer-pkg-price-amount">{{ section.settings.ult_sedan | default: "Rs. 65,000" }}</div></div>
+              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">SUV</div><div class="rad-cer-pkg-price-amount">{{ section.settings.ult_suv | default: "Rs. 70,000" }}</div></div>
+              <div class="rad-cer-pkg-price-item"><div class="rad-cer-pkg-price-vehicle">XL SUV</div><div class="rad-cer-pkg-price-amount">{{ section.settings.ult_xlsuv | default: "Rs. 75,000" }}</div></div>
             </div>
           </div>
           <div class="rad-cer-pkg-btns">
@@ -190,7 +190,102 @@
 {% schema %}
 {
   "name": "Ceramic Packages",
-  "settings": [],
-  "presets": [{"name": "Ceramic Packages"}]
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Ceramic Coating Packages & Pricing"
+    },
+    {
+      "type": "header",
+      "content": "Gold Package Prices"
+    },
+    {
+      "type": "text",
+      "id": "gold_hatch",
+      "label": "Hatchback",
+      "default": "Rs. 40,000"
+    },
+    {
+      "type": "text",
+      "id": "gold_sedan",
+      "label": "Sedan",
+      "default": "Rs. 45,000"
+    },
+    {
+      "type": "text",
+      "id": "gold_suv",
+      "label": "SUV",
+      "default": "Rs. 50,000"
+    },
+    {
+      "type": "text",
+      "id": "gold_xlsuv",
+      "label": "XL SUV",
+      "default": "Rs. 55,000"
+    },
+    {
+      "type": "header",
+      "content": "Platinum Package Prices"
+    },
+    {
+      "type": "text",
+      "id": "plat_hatch",
+      "label": "Hatchback",
+      "default": "Rs. 45,000"
+    },
+    {
+      "type": "text",
+      "id": "plat_sedan",
+      "label": "Sedan",
+      "default": "Rs. 50,000"
+    },
+    {
+      "type": "text",
+      "id": "plat_suv",
+      "label": "SUV",
+      "default": "Rs. 55,000"
+    },
+    {
+      "type": "text",
+      "id": "plat_xlsuv",
+      "label": "XL SUV",
+      "default": "Rs. 60,000"
+    },
+    {
+      "type": "header",
+      "content": "Ultimate Package Prices"
+    },
+    {
+      "type": "text",
+      "id": "ult_hatch",
+      "label": "Hatchback",
+      "default": "Rs. 60,000"
+    },
+    {
+      "type": "text",
+      "id": "ult_sedan",
+      "label": "Sedan",
+      "default": "Rs. 65,000"
+    },
+    {
+      "type": "text",
+      "id": "ult_suv",
+      "label": "SUV",
+      "default": "Rs. 70,000"
+    },
+    {
+      "type": "text",
+      "id": "ult_xlsuv",
+      "label": "XL SUV",
+      "default": "Rs. 75,000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ceramic Packages"
+    }
+  ]
 }
 {% endschema %}
