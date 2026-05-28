@@ -34,12 +34,32 @@
     "detailing_pricing_jGfDeW": {
       "type": "detailing-pricing",
       "name": "Detailing Pricing",
-      "settings": {}
+      "settings": {
+        "title": "Exterior & Interior Car Detailing Price",
+        "subtitle": "Professional detailing packages for all vehicle types",
+        "int_hatch": "PKR 10,000",
+        "int_sedan": "PKR 12,000",
+        "int_cross": "PKR 14,000",
+        "int_suv": "PKR 16,000",
+        "ext_hatch": "PKR 12,000",
+        "ext_sedan": "PKR 14,000",
+        "ext_cross": "PKR 16,000",
+        "ext_suv": "PKR 18,000",
+        "com_hatch": "PKR 18,000",
+        "com_sedan": "PKR 22,000",
+        "com_cross": "PKR 24,000",
+        "com_suv": "PKR 27,000"
+      }
     },
     "detailing_why_dmP8dF": {
       "type": "detailing-why",
       "name": "Detailing Why Section",
-      "settings": {}
+      "settings": {
+        "tag": "Why Professional Detailing?",
+        "title": "Make Your Car Look Brand New — Inside & Outside!",
+        "btn1_text": "Book Your Slot",
+        "btn1_url": ""
+      }
     }
   },
   "order": [
