@@ -99,8 +99,8 @@
         {%- if section.settings.tag != blank -%}
           <span class="rad-mwt-tag">{{ section.settings.tag }}</span>
         {%- endif -%}
-        <h2 class="rad-mwt-title">{{ section.settings.title | default: 'Why Our PPF is the Best' }}</h2>
-        <p class="rad-mwt-text">{{ section.settings.text | default: 'We use only premium NAR certified PPF film that offers unmatched protection and clarity for your vehicle.' }}</p>
+        <h2 class="rad-mwt-title">{{ section.settings.title }}</h2>
+        <p class="rad-mwt-text">{{ section.settings.text }}</p>
 
         {%- assign points = section.settings.bullet_points | split: ',' -%}
         {%- if points.size > 0 and section.settings.bullet_points != blank -%}
@@ -112,7 +112,7 @@
         {%- endif -%}
 
         {%- if section.settings.btn_text != blank -%}
-          <a href="{{ section.settings.btn_url | default: '#' }}"
+          <a href="{{ section.settings.btn_url }}"
              class="rad-mwt-btn {% if section.settings.btn_outline %}outline{% endif %}">
             {{ section.settings.btn_text }}
           </a>
