@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "ar_booking": {
+      "type": "antirust-booking",
+      "settings": {}
+    }
+  },
+  "order": [
+    "ar_booking"
+  ]
+}
