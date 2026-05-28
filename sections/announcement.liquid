@@ -34,7 +34,7 @@
 </style>
 
 <div class="rad-announcement" id="rad-ann-bar">
-  {{ section.settings.text }}
+  {{ section.settings.text | default: '🎉 Special Offer: Get 10% Off PPF Service This Month!' }}
   {%- if section.settings.link_text != blank and section.settings.link_url != blank -%}
     <a href="{{ section.settings.link_url }}">{{ section.settings.link_text }}</a>
   {%- endif -%}

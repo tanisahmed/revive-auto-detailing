@@ -45,7 +45,30 @@
     "tint_pricing_HfJBhj": {
       "type": "tint-pricing",
       "name": "Tint Pricing",
-      "settings": {}
+      "settings": {
+        "title": "Heat Control Window Film Price",
+        "subtitle": "NAR Window Film — Transparent pricing for all vehicle types",
+        "hatch_full": "PKR 19,500",
+        "hatch_wind": "PKR 7,500",
+        "hatch_back": "PKR 3,000",
+        "hatch_front": "PKR 5,000",
+        "hatch_back_doors": "PKR 4,500",
+        "sedan_full": "PKR 25,000",
+        "sedan_wind": "PKR 8,500",
+        "sedan_back": "PKR 7,000",
+        "sedan_front": "PKR 5,500",
+        "sedan_back_doors": "PKR 6,000",
+        "suv_full": "PKR 27,000",
+        "suv_wind": "PKR 10,000",
+        "suv_back": "PKR 7,000",
+        "suv_front": "PKR 6,000",
+        "suv_back_doors": "PKR 7,000",
+        "xlsuv_full": "PKR 29,500",
+        "xlsuv_wind": "PKR 12,000",
+        "xlsuv_back": "PKR 7,000",
+        "xlsuv_front": "PKR 6,000",
+        "xlsuv_back_doors": "PKR 8,500"
+      }
     },
     "tint_why_8xhNWb": {
       "type": "tint-why",
