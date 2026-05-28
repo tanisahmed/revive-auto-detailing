@@ -12,10 +12,6 @@
       "type": "detailing-why",
       "settings": {}
     },
-    "reviews": {
-      "type": "reviews",
-      "settings": {}
-    },
     "contactform": {
       "type": "contactform",
       "settings": {}
@@ -25,7 +21,6 @@
     "det_hero",
     "det_pricing",
     "det_why",
-    "reviews",
     "contactform"
   ]
 }
