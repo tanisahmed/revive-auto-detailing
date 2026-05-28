@@ -1,91 +1,111 @@
 <style>
-  .ppf-benefits-section {
-    padding: 5rem 0;
-    background: var(--color-white);
-  }
+.rad-ppf-benefits { padding: 2.5rem 0; background: #fff; }
 
-  .ppf-benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
+.rad-ppf-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
 
-  .ppf-benefit-card {
-    padding: 2rem 1.5rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius-lg);
-    transition: var(--transition);
-    text-align: center;
-  }
-  .ppf-benefit-card:hover {
-    box-shadow: var(--shadow-md);
-    border-color: var(--color-primary);
-    transform: translateY(-3px);
-  }
+.rad-ppf-benefit-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1.25rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+  transition: all 0.2s;
+}
+.rad-ppf-benefit-card:hover {
+  border-color: #1e3a8a;
+  box-shadow: 0 4px 12px rgba(30,58,138,0.1);
+  transform: translateY(-2px);
+}
 
-  .ppf-benefit-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    display: block;
-  }
+.rad-ppf-benefit-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: rgba(30,58,138,0.08);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
 
-  .ppf-benefit-name {
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--color-text);
-    margin-bottom: 0.5rem;
-  }
+.rad-ppf-benefit-content {}
+.rad-ppf-benefit-name {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 0.2rem;
+  line-height: 1.3;
+}
+.rad-ppf-benefit-desc {
+  font-size: 0.8rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
 
-  .ppf-benefit-desc {
-    font-size: 0.875rem;
-    color: var(--color-text-light);
-    line-height: 1.6;
-  }
-
-  @media (max-width: 900px) {
-    .ppf-benefits-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 480px) {
-    .ppf-benefits-section { padding: 3.5rem 0; }
-    .ppf-benefits-grid { grid-template-columns: 1fr; }
-  }
+@media (max-width: 900px) {
+  .rad-ppf-benefits-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .rad-ppf-benefits { padding: 2rem 0; }
+  .rad-ppf-benefits-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+}
 </style>
 
-<section class="ppf-benefits-section">
+<section class="rad-ppf-benefits">
   <div class="container">
-    <h2 class="section-title">Why PPF?</h2>
-    <p class="section-subtitle">The most comprehensive paint protection available for your vehicle</p>
+    <h2 class="section-title">{{ section.settings.title | default: 'Why PPF?' }}</h2>
+    <p class="section-subtitle">{{ section.settings.subtitle | default: 'The most comprehensive paint protection available for your vehicle' }}</p>
 
-    <div class="ppf-benefits-grid">
-      <div class="ppf-benefit-card">
-        <span class="ppf-benefit-icon">🪨</span>
-        <h3 class="ppf-benefit-name">Protects Against Rock Chips</h3>
-        <p class="ppf-benefit-desc">Absorbs impacts from flying debris and road stones that would otherwise chip your paintwork.</p>
+    <div class="rad-ppf-benefits-grid">
+      <div class="rad-ppf-benefit-card">
+        <div class="rad-ppf-benefit-icon">🪨</div>
+        <div class="rad-ppf-benefit-content">
+          <div class="rad-ppf-benefit-name">Protects Against Rock Chips</div>
+          <div class="rad-ppf-benefit-desc">Absorbs impacts from flying debris and road stones</div>
+        </div>
       </div>
-      <div class="ppf-benefit-card">
-        <span class="ppf-benefit-icon">☀️</span>
-        <h3 class="ppf-benefit-name">UV Protection</h3>
-        <p class="ppf-benefit-desc">Blocks harmful UV rays that cause paint fading and oxidation — especially critical in Karachi's intense sun.</p>
+      <div class="rad-ppf-benefit-card">
+        <div class="rad-ppf-benefit-icon">☀️</div>
+        <div class="rad-ppf-benefit-content">
+          <div class="rad-ppf-benefit-name">UV Protection</div>
+          <div class="rad-ppf-benefit-desc">Blocks UV rays that cause paint fading in Karachi's intense sun</div>
+        </div>
       </div>
-      <div class="ppf-benefit-card">
-        <span class="ppf-benefit-icon">✨</span>
-        <h3 class="ppf-benefit-name">Self-Healing Technology</h3>
-        <p class="ppf-benefit-desc">Light scratches and swirl marks disappear on their own when exposed to heat — the film heals itself.</p>
+      <div class="rad-ppf-benefit-card">
+        <div class="rad-ppf-benefit-icon">✨</div>
+        <div class="rad-ppf-benefit-content">
+          <div class="rad-ppf-benefit-name">Self-Healing Technology</div>
+          <div class="rad-ppf-benefit-desc">Light scratches disappear on their own when exposed to heat</div>
+        </div>
       </div>
-      <div class="ppf-benefit-card">
-        <span class="ppf-benefit-icon">📅</span>
-        <h3 class="ppf-benefit-name">Long-Lasting (Up to 10 Years)</h3>
-        <p class="ppf-benefit-desc">Premium NAR PPF film is engineered to last a decade with proper care and maintenance.</p>
+      <div class="rad-ppf-benefit-card">
+        <div class="rad-ppf-benefit-icon">📅</div>
+        <div class="rad-ppf-benefit-content">
+          <div class="rad-ppf-benefit-name">Long-Lasting (Up to 10 Years)</div>
+          <div class="rad-ppf-benefit-desc">NAR PPF film engineered to last a decade with proper care</div>
+        </div>
       </div>
-      <div class="ppf-benefit-card">
-        <span class="ppf-benefit-icon">💎</span>
-        <h3 class="ppf-benefit-name">Maintains Paint Shine</h3>
-        <p class="ppf-benefit-desc">High-gloss finish maintains and even enhances your original paint's brilliance and depth.</p>
+      <div class="rad-ppf-benefit-card">
+        <div class="rad-ppf-benefit-icon">💎</div>
+        <div class="rad-ppf-benefit-content">
+          <div class="rad-ppf-benefit-name">Maintains Paint Shine</div>
+          <div class="rad-ppf-benefit-desc">High-gloss finish enhances your original paint's brilliance</div>
+        </div>
       </div>
-      <div class="ppf-benefit-card">
-        <span class="ppf-benefit-icon">📈</span>
-        <h3 class="ppf-benefit-name">Increases Resale Value</h3>
-        <p class="ppf-benefit-desc">Pristine paint condition commands higher resale prices. PPF is an investment that pays for itself.</p>
+      <div class="rad-ppf-benefit-card">
+        <div class="rad-ppf-benefit-icon">📈</div>
+        <div class="rad-ppf-benefit-content">
+          <div class="rad-ppf-benefit-name">Increases Resale Value</div>
+          <div class="rad-ppf-benefit-desc">Pristine paint condition commands higher resale prices</div>
+        </div>
       </div>
     </div>
   </div>
@@ -108,10 +128,6 @@
       "default": "The most comprehensive paint protection available for your vehicle"
     }
   ],
-  "presets": [
-    {
-      "name": "PPF Benefits"
-    }
-  ]
+  "presets": [{"name": "PPF Benefits"}]
 }
 {% endschema %}
