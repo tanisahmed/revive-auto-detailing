@@ -85,7 +85,42 @@
 {% schema %}
 {
   "name": "Tint Specs",
-  "settings": [],
-  "presets": [{"name": "Tint Specs"}]
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Heat Control Window Film Specs"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "NAR Window Film — Premium Grade Heat & UV Protection"
+    },
+    {
+      "type": "text",
+      "id": "ir",
+      "label": "IR Rejection %",
+      "default": "Up to 90%"
+    },
+    {
+      "type": "text",
+      "id": "uv",
+      "label": "UV Rejection %",
+      "default": "Up to 99%"
+    },
+    {
+      "type": "text",
+      "id": "tser",
+      "label": "Total Solar Energy %",
+      "default": "Up to 65%"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tint Specs"
+    }
+  ]
 }
 {% endschema %}
