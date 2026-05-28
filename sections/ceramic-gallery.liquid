@@ -11,7 +11,7 @@
 
 <section class="rad-cer-gallery">
   <div class="container">
-    <h2 class="section-title">{{ section.settings.title | default: "Our Work" }}</h2>
+    <h2 class="section-title">{{ section.settings.title }}</h2>
     <p class="section-subtitle">{{ section.settings.subtitle | default: "Real results from real cars we've detailed in Karachi" }}</p>
     <div class="rad-cer-gallery-grid">
       {%- for i in (1..4) -%}
