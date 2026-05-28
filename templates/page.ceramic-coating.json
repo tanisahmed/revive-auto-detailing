@@ -36,6 +36,9 @@
       "name": "Ceramic Packages",
       "settings": {
         "title": "Ceramic Coating Packages & Pricing",
+        "img_gold": "shopify://shop_images/Ceramic_Coating_Gold_PACKAGE-05.png",
+        "img_plat": "shopify://shop_images/Ceramic_Coating_PACKAGE-05.png",
+        "img_ult": "shopify://shop_images/Ceramic_Coating_Platinum_PACKAGE-05.png",
         "gold_hatch": "Rs. 40,000",
         "gold_sedan": "Rs. 45,000",
         "gold_suv": "Rs. 50,000",
