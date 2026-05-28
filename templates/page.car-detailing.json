@@ -1,26 +1,51 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "det_hero": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "detailing_hero_Vnhqwq": {
       "type": "detailing-hero",
-      "settings": {}
+      "name": "Detailing Hero",
+      "settings": {
+        "tag": "🚗 Karachi's Best Car Detailing",
+        "title": "Exterior & Interior",
+        "title_accent": "Car Detailing Karachi",
+        "subtitle": "Are you looking for premium car detailing in Karachi? RAD provides professional interior & exterior services to keep your car looking brand new with long-lasting shine!",
+        "btn1_text": "View Pricing",
+        "stat1_num": "800+",
+        "stat1_lbl": "Cars Detailed",
+        "stat2_num": "4.9 ⭐",
+        "stat2_lbl": "Google Reviews",
+        "stat3_num": "2+",
+        "stat3_lbl": "Years Experience"
+      }
     },
-    "det_pricing": {
+    "detailing_pricing_jGfDeW": {
       "type": "detailing-pricing",
+      "name": "Detailing Pricing",
       "settings": {}
     },
-    "det_why": {
+    "detailing_why_dmP8dF": {
       "type": "detailing-why",
-      "settings": {}
-    },
-    "contactform": {
-      "type": "contactform",
+      "name": "Detailing Why Section",
       "settings": {}
     }
   },
   "order": [
-    "det_hero",
-    "det_pricing",
-    "det_why",
-    "contactform"
+    "main",
+    "detailing_hero_Vnhqwq",
+    "detailing_pricing_jGfDeW",
+    "detailing_why_dmP8dF"
   ]
 }
