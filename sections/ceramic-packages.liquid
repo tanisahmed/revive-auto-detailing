@@ -4,7 +4,7 @@
 /* Vehicle Selector Tabs */
 .rad-cer-tabs {
   display: flex; justify-content: center; gap: 0.5rem;
-  margin-bottom: 2rem; flex-wrap: wrap;
+  margin-bottom: 1rem; flex-wrap: wrap;
 }
 .rad-cer-tab {
   padding: 0.6rem 1.5rem; border-radius: 8px; font-weight: 700;
@@ -120,15 +120,15 @@
 
       <!-- GOLD -->
       <div class="rad-cer-card">
-        {%- if section.settings.img_gold != blank -%}
-          <div style="height:180px;overflow:hidden;background:#f3f4f6;">
-            <img src="{{ section.settings.img_gold | image_url: width: 500 }}" alt="Gold Ceramic" style="width:100%;height:100%;object-fit:contain;padding:0.5rem;">
-          </div>
-        {%- endif -%}
         <div class="rad-cer-card-hdr gold-hdr">
           <div class="rad-cer-pkg-name">Gold Package</div>
           <div class="rad-cer-pkg-tagline" style="color:#92400e;">Entry level protection</div>
         </div>
+        {%- if section.settings.img_gold != blank -%}
+          <div style="height:200px;overflow:hidden;background:#f9fafb;border-bottom:1px solid #e5e7eb;">
+            <img src="{{ section.settings.img_gold | image_url: width: 600 }}" alt="Gold Ceramic" style="width:100%;height:100%;object-fit:contain;display:block;">
+          </div>
+        {%- endif -%}
         <div class="rad-cer-price-display">
           <div class="rad-cer-price-amount" id="gold-price">{{ section.settings.gold_hatch }}</div>
           <div class="rad-cer-price-note">Car Detailing Included in This Price</div>
@@ -155,15 +155,15 @@
       <!-- PLATINUM -->
       <div class="rad-cer-card popular">
         <div class="rad-cer-popular-badge">⭐ Most Popular</div>
-        {%- if section.settings.img_plat != blank -%}
-          <div style="height:180px;overflow:hidden;background:#f3f4f6;">
-            <img src="{{ section.settings.img_plat | image_url: width: 500 }}" alt="Platinum Ceramic" style="width:100%;height:100%;object-fit:contain;padding:0.5rem;">
-          </div>
-        {%- endif -%}
         <div class="rad-cer-card-hdr plat-hdr">
           <div class="rad-cer-pkg-name">Platinum Package</div>
           <div class="rad-cer-pkg-tagline" style="color:#075985;">Best value choice</div>
         </div>
+        {%- if section.settings.img_plat != blank -%}
+          <div style="height:200px;overflow:hidden;background:#f9fafb;border-bottom:1px solid #e5e7eb;">
+            <img src="{{ section.settings.img_plat | image_url: width: 600 }}" alt="Platinum Ceramic" style="width:100%;height:100%;object-fit:contain;display:block;">
+          </div>
+        {%- endif -%}
         <div class="rad-cer-price-display">
           <div class="rad-cer-price-amount" id="plat-price">{{ section.settings.plat_hatch }}</div>
           <div class="rad-cer-price-note">Car Detailing Included in This Price</div>
@@ -190,15 +190,15 @@
 
       <!-- ULTIMATE -->
       <div class="rad-cer-card">
-        {%- if section.settings.img_ult != blank -%}
-          <div style="height:180px;overflow:hidden;background:#f3f4f6;">
-            <img src="{{ section.settings.img_ult | image_url: width: 500 }}" alt="Ultimate Ceramic" style="width:100%;height:100%;object-fit:contain;padding:0.5rem;">
-          </div>
-        {%- endif -%}
         <div class="rad-cer-card-hdr ult-hdr">
           <div class="rad-cer-pkg-name" style="color:#fff;">Ultimate Package</div>
           <div class="rad-cer-pkg-tagline" style="color:#93c5fd;">Maximum protection</div>
         </div>
+        {%- if section.settings.img_ult != blank -%}
+          <div style="height:200px;overflow:hidden;background:#f9fafb;border-bottom:1px solid #e5e7eb;">
+            <img src="{{ section.settings.img_ult | image_url: width: 600 }}" alt="Ultimate Ceramic" style="width:100%;height:100%;object-fit:contain;display:block;">
+          </div>
+        {%- endif -%}
         <div class="rad-cer-price-display">
           <div class="rad-cer-price-amount" id="ult-price">{{ section.settings.ult_hatch }}</div>
           <div class="rad-cer-price-note">Car Detailing Included in This Price</div>
