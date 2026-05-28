@@ -1,11 +1,11 @@
 {
   "sections": {
-    "det_booking": {
+    "detailing_booking": {
       "type": "detailing-booking",
       "settings": {}
     }
   },
   "order": [
-    "det_booking"
+    "detailing_booking"
   ]
 }
