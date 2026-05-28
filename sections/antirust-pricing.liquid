@@ -243,7 +243,74 @@
 {% schema %}
 {
   "name": "Anti-Rust Pricing",
-  "settings": [],
-  "presets": [{"name": "Anti-Rust Pricing"}]
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "MIPA Anti-Rust Undercoat Price"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Germany's #1 rubberized undercoating — professional application in Karachi"
+    },
+    {
+      "type": "header",
+      "content": "Pricing"
+    },
+    {
+      "type": "text",
+      "id": "price_hatchback",
+      "label": "Hatchback Price",
+      "default": "Rs. 22,000"
+    },
+    {
+      "type": "text",
+      "id": "price_sedan",
+      "label": "Sedan Price",
+      "default": "Rs. 25,000"
+    },
+    {
+      "type": "text",
+      "id": "price_suv",
+      "label": "SUV Price",
+      "default": "Rs. 30,000"
+    },
+    {
+      "type": "text",
+      "id": "price_xlsuv",
+      "label": "XL SUV Price",
+      "default": "Rs. 33,000"
+    },
+    {
+      "type": "header",
+      "content": "Specs"
+    },
+    {
+      "type": "text",
+      "id": "durability",
+      "label": "Durability",
+      "default": "4 Years"
+    },
+    {
+      "type": "text",
+      "id": "warranty",
+      "label": "Warranty",
+      "default": "2 Years"
+    },
+    {
+      "type": "text",
+      "id": "free_gift",
+      "label": "Free Gift",
+      "default": "1x Exterior Wash"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Anti-Rust Pricing"
+    }
+  ]
 }
 {% endschema %}
