@@ -101,7 +101,30 @@
 {% schema %}
 {
   "name": "Contact Form",
-  "settings": [],
-  "presets": [{"name": "Contact Form"}]
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Get Your Free Estimate"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Fill out the form below and we'll get back to you with a personalized quote."
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Submit Button Text",
+      "default": "Calculate My Car Estimate"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Form"
+    }
+  ]
 }
 {% endschema %}
