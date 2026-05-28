@@ -183,16 +183,16 @@
 
   <div class="container rad-hero-inner">
     <div class="rad-hero-content">
-      <div class="rad-hero-badge">&#11088; Karachi's Premium Auto Detailing</div>
+      <div class="rad-hero-badge">{{ section.settings.badge | default: "⭐ Karachi's Premium Auto Detailing" }}</div>
       <h1 class="rad-hero-headline">
-        Transform Your Car's Look with
-        <span>Revive Auto Detailing</span>
+        {{ section.settings.title | default: "Transform Your Car's Look with" }}
+        <span>{{ section.settings.title_accent | default: "Revive Auto Detailing" }}</span>
       </h1>
       <p class="rad-hero-sub">
-        Professional car detailing, ceramic coating, and paint protection services to keep your vehicle looking pristine.
+        {{ section.settings.subtitle | default: 'Professional car detailing, ceramic coating, and paint protection services to keep your vehicle looking pristine.' }}
       </p>
       <div class="rad-hero-btns">
-        <a href="/pages/paint-protection-film" class="rad-btn-blue">Get Free Quote</a>
+        <a href="{{ section.settings.btn1_url | default: "/pages/paint-protection-film-ppf" }}" class="rad-btn-blue">{{ section.settings.btn1_text | default: "Get Free Quote" }}</a>
         <a href="tel:+923037231111" class="rad-btn-white">&#128222; Call Now</a>
       </div>
       <div class="rad-hero-stats">
@@ -212,10 +212,56 @@
     {
       "type": "image_picker",
       "id": "bg_image",
-      "label": "Background Image",
-      "info": "Recommended size: 1800x900px. A dark car photo works best."
+      "label": "Background Image"
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge Text",
+      "default": "⭐ Karachi's Premium Auto Detailing"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Headline",
+      "default": "Transform Your Car's Look with"
+    },
+    {
+      "type": "text",
+      "id": "title_accent",
+      "label": "Headline Accent (blue)",
+      "default": "Revive Auto Detailing"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Professional car detailing, ceramic coating, and paint protection services to keep your vehicle looking pristine."
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "btn1_text",
+      "label": "Button Text",
+      "default": "Get Free Quote"
+    },
+    {
+      "type": "url",
+      "id": "btn1_url",
+      "label": "Button Link"
     }
   ],
-  "presets": [{"name": "Hero"}]
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
 }
 {% endschema %}
