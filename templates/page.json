@@ -23,7 +23,6 @@
         "title_accent": "Car Detailing Karachi",
         "subtitle": "Are you looking for premium car detailing in Karachi? RAD provides professional interior & exterior services to keep your car looking brand new with long-lasting shine!",
         "btn1_text": "View Pricing",
-        "btn1_url": "",
         "stat1_num": "800+",
         "stat1_lbl": "Cars Detailed",
         "stat2_num": "4.9 ⭐",
@@ -31,10 +30,16 @@
         "stat3_num": "2+",
         "stat3_lbl": "Years Experience"
       }
+    },
+    "detailing_pricing_jGfDeW": {
+      "type": "detailing-pricing",
+      "name": "Detailing Pricing",
+      "settings": {}
     }
   },
   "order": [
     "main",
-    "detailing_hero_Vnhqwq"
+    "detailing_hero_Vnhqwq",
+    "detailing_pricing_jGfDeW"
   ]
 }
