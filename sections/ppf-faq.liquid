@@ -169,7 +169,20 @@
 {% schema %}
 {
   "name": "PPF FAQ",
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Everything you need to know about PPF"
+    }
+  ],
   "presets": [
     {
       "name": "PPF FAQ"
