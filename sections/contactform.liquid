@@ -18,7 +18,7 @@
 
 <section class="rad-cform">
   <div class="container">
-    <h2 class="section-title">{{ section.settings.title | default: "Get Your Free Estimate" }}</h2>
+    <h2 class="section-title">{{ section.settings.title }}</h2>
     <p class="section-subtitle">{{ section.settings.subtitle | default: "Fill out the form below and we'll get back to you with a personalized quote." }}</p>
     <div class="rad-cform-wrap">
       <form id="rad-cf" novalidate>
@@ -62,7 +62,7 @@
           </select>
           <div class="rad-cform-error" id="cf-err-service">Select a service</div>
         </div>
-        <button type="submit" class="rad-cform-btn">{{ section.settings.btn_text | default: "Calculate My Car Estimate" }}</button>
+        <button type="submit" class="rad-cform-btn">{{ section.settings.btn_text }}</button>
       </form>
       <div class="rad-cform-success" id="cf-success">
         <div style="font-size:3rem;margin-bottom:1rem;">&#9989;</div>
