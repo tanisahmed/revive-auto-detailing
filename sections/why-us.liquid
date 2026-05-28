@@ -163,8 +163,8 @@
     <!-- Special Offer Banner -->
     <div class="special-offer-banner">
       <div class="special-offer-badge">🎉 Limited Time</div>
-      <h3 class="special-offer-title">Special Offer!</h3>
-      <p class="special-offer-text">Get 10% Off PPF Service This Month!</p>
+      <h3 class="special-offer-title">{{ section.settings.offer_title | default: "Special Offer!" }}</h3>
+      <p class="special-offer-text">{{ section.settings.offer_text | default: "Get 10% Off PPF Service This Month!" }}</p>
       <a href="/pages/ppf-booking" class="special-offer-btn">
         Book Now & Save →
       </a>
