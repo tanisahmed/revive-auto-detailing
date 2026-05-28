@@ -109,12 +109,18 @@
 
     <p class="section-subtitle" style="margin-bottom:1rem;">Select your vehicle type to see pricing</p>
 
-    <!-- Vehicle Tabs -->
-    <div class="rad-cer-tabs">
-      <button class="rad-cer-tab active" onclick="cerTab(this,'hatchback')">Hatchback</button>
-      <button class="rad-cer-tab" onclick="cerTab(this,'sedan')">Sedan</button>
-      <button class="rad-cer-tab" onclick="cerTab(this,'suv')">SUV</button>
-      <button class="rad-cer-tab" onclick="cerTab(this,'xlsuv')">XL SUV</button>
+    <!-- Vehicle Selector -->
+    <div class="rad-cer-selector-wrap">
+      <div class="rad-cer-selector-label">
+        <div class="pulse-dot"></div>
+        👇 Select Your Car Type:
+      </div>
+      <div class="rad-cer-tabs">
+        <button class="rad-cer-tab active" onclick="cerTab(this,'hatchback')"><span class="rad-cer-tab-icon">🚘</span> Hatchback</button>
+        <button class="rad-cer-tab" onclick="cerTab(this,'sedan')"><span class="rad-cer-tab-icon">🚗</span> Sedan</button>
+        <button class="rad-cer-tab" onclick="cerTab(this,'suv')"><span class="rad-cer-tab-icon">🚙</span> SUV</button>
+        <button class="rad-cer-tab" onclick="cerTab(this,'xlsuv')"><span class="rad-cer-tab-icon">🛻</span> XL SUV</button>
+      </div>
     </div>
 
     <!-- Pricing Cards -->
