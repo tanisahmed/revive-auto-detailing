@@ -12,20 +12,20 @@
         "name_1": "Paint Protection Film (PPF)",
         "desc_1": "Our PPF keeps your car brand new by shielding it from scratches, chips, and UV damage.",
         "btn_label_1": "View Pricing",
+        "btn_url_1": "/pages/paint-protection-film-ppf",
         "btn_active_1": true,
         "name_2": "Ceramic Coating",
-        "desc_2": "Give long-lasting shine and protection. Defends your car from scratches, dirt, and UV rays!",
+        "desc_2": "Give long-lasting shine and protection.",
         "btn_label_2": "Coming Soon",
         "btn_active_2": false,
         "name_3": "Exterior & Interior Detailing",
-        "desc_3": "Full interior and exterior detailing to restore your car's showroom finish.",
+        "desc_3": "Full interior and exterior detailing.",
         "btn_label_3": "Coming Soon",
         "btn_active_3": false,
         "name_4": "Anti-Rust Undercoating",
-        "desc_4": "Guard your car against rust with our anti-rust undercoating for long-lasting protection.",
+        "desc_4": "Guard your car against rust.",
         "btn_label_4": "Coming Soon",
-        "btn_active_4": false,
-        "cta_label": "View All Services"
+        "btn_active_4": false
       }
     },
     "whyus": {
