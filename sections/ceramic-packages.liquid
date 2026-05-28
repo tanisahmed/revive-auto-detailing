@@ -49,6 +49,12 @@
 .rad-cer-pkg-tagline { font-size: 0.8rem; opacity: 0.75; font-weight: 600; }
 
 /* Price display */
+.rad-cer-vehicle-label {
+  font-size: 0.8rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.1em; color: #1e3a8a; margin-bottom: 0.25rem;
+  background: rgba(30,58,138,0.08); display: inline-block;
+  padding: 0.2rem 0.75rem; border-radius: 100px;
+}
 .rad-cer-price-display {
   padding: 1.25rem 1.5rem; text-align: center;
   border-bottom: 1px solid #f3f4f6;
@@ -111,15 +117,11 @@
 
     <!-- Vehicle Selector -->
     <div class="rad-cer-selector-wrap">
-      <div class="rad-cer-selector-label">
-        <div class="pulse-dot"></div>
-        👇 Select Your Car Type:
-      </div>
       <div class="rad-cer-tabs">
-        <button class="rad-cer-tab active" onclick="cerTab(this,'hatchback')"><span class="rad-cer-tab-icon">🚘</span> Hatchback</button>
-        <button class="rad-cer-tab" onclick="cerTab(this,'sedan')"><span class="rad-cer-tab-icon">🚗</span> Sedan</button>
-        <button class="rad-cer-tab" onclick="cerTab(this,'suv')"><span class="rad-cer-tab-icon">🚙</span> SUV</button>
-        <button class="rad-cer-tab" onclick="cerTab(this,'xlsuv')"><span class="rad-cer-tab-icon">🛻</span> XL SUV</button>
+        <button class="rad-cer-tab active" onclick="cerTab(this,'hatchback')">Hatchback</button>
+        <button class="rad-cer-tab" onclick="cerTab(this,'sedan')">Sedan</button>
+        <button class="rad-cer-tab" onclick="cerTab(this,'suv')">SUV</button>
+        <button class="rad-cer-tab" onclick="cerTab(this,'xlsuv')">XL SUV</button>
       </div>
     </div>
 
@@ -138,6 +140,7 @@
           </div>
         {%- endif -%}
         <div class="rad-cer-price-display">
+          <div class="rad-cer-vehicle-label" id="gold-vehicle">Hatchback</div>
           <div class="rad-cer-price-amount" id="gold-price">{{ section.settings.gold_hatch }}</div>
           <div class="rad-cer-price-note">Car Detailing Included in This Price</div>
         </div>
@@ -162,7 +165,7 @@
 
       <!-- PLATINUM -->
       <div class="rad-cer-card popular">
-        <div class="rad-cer-popular-badge">⭐ Most Popular</div>
+        <div class="rad-cer-popular-badge">Most Popular</div>
         <div class="rad-cer-card-hdr plat-hdr">
           <div class="rad-cer-pkg-name" style="color:#fff;">Platinum Package</div>
           <div class="rad-cer-pkg-tagline" style="color:#fce7f3;">Best value choice</div>
@@ -173,6 +176,7 @@
           </div>
         {%- endif -%}
         <div class="rad-cer-price-display">
+          <div class="rad-cer-vehicle-label" id="plat-vehicle">Hatchback</div>
           <div class="rad-cer-price-amount" id="plat-price">{{ section.settings.plat_hatch }}</div>
           <div class="rad-cer-price-note">Car Detailing Included in This Price</div>
         </div>
@@ -208,6 +212,7 @@
           </div>
         {%- endif -%}
         <div class="rad-cer-price-display">
+          <div class="rad-cer-vehicle-label" id="ult-vehicle">Hatchback</div>
           <div class="rad-cer-price-amount" id="ult-price">{{ section.settings.ult_hatch }}</div>
           <div class="rad-cer-price-note">Car Detailing Included in This Price</div>
         </div>
@@ -254,9 +259,14 @@
     el.classList.add('active');
     var p = prices[vtype];
     if(p) {
-      document.getElementById('gold-price').textContent = p.gold;
+  document.getElementById('gold-price').textContent = p.gold;
       document.getElementById('plat-price').textContent = p.plat;
       document.getElementById('ult-price').textContent  = p.ult;
+      var labels = {'hatchback':'Hatchback','sedan':'Sedan','suv':'SUV','xlsuv':'XL SUV'};
+      var lbl = labels[vtype] || vtype;
+      document.getElementById('gold-vehicle').textContent = lbl;
+      document.getElementById('plat-vehicle').textContent = lbl;
+      document.getElementById('ult-vehicle').textContent  = lbl;
     }
   };
 })();
