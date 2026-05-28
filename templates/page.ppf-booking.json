@@ -1,11 +1,23 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "ppf_booking": {
+    "ppf_booking_iGPhLi": {
       "type": "ppf-booking",
-      "settings": {}
+      "name": "PPF Booking Form",
+      "settings": {
+        "formspree_id": "https://formspree.io/f/xgoqpjvk"
+      }
     }
   },
   "order": [
-    "ppf_booking"
+    "ppf_booking_iGPhLi"
   ]
 }
