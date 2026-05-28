@@ -225,7 +225,7 @@
             </div>
             <div class="rad-fg">
               <label class="rad-fl" for="rf-vt">Vehicle Type <em>*</em></label>
-              <select id="rf-vt" class="rad-fi" onchange="rbUpdatePrice()">
+              <select id="rf-vt" class="rad-fi" onchange="rbUpdatePrice(); try{sessionStorage.setItem('rad_selected_vtype', this.value);}catch(e){}">
                 <option value="" disabled selected>Select type</option>
                 <option value="hatchback">Hatchback</option>
                 <option value="sedan">Sedan</option>
