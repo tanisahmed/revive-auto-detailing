@@ -35,11 +35,17 @@
       "type": "detailing-pricing",
       "name": "Detailing Pricing",
       "settings": {}
+    },
+    "detailing_why_dmP8dF": {
+      "type": "detailing-why",
+      "name": "Detailing Why Section",
+      "settings": {}
     }
   },
   "order": [
     "main",
     "detailing_hero_Vnhqwq",
-    "detailing_pricing_jGfDeW"
+    "detailing_pricing_jGfDeW",
+    "detailing_why_dmP8dF"
   ]
 }
