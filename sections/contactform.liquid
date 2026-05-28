@@ -19,7 +19,7 @@
 <section class="rad-cform">
   <div class="container">
     <h2 class="section-title">{{ section.settings.title }}</h2>
-    <p class="section-subtitle">{{ section.settings.subtitle | default: "Fill out the form below and we'll get back to you with a personalized quote." }}</p>
+    <p class="section-subtitle">{{ section.settings.subtitle | default: "{{ section.settings.subtitle }}" }}</p>
     <div class="rad-cform-wrap">
       <form id="rad-cf" novalidate>
         <div class="rad-cform-row">
@@ -112,7 +112,7 @@
       "type": "text",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "Fill out the form below and we'll get back to you with a personalized quote."
+      "default": "{{ section.settings.subtitle }}"
     },
     {
       "type": "text",
