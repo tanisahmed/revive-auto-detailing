@@ -1,11 +1,36 @@
 {
   "sections": {
-    "ceramic_hero": { "type": "ceramic-hero", "settings": {} },
-    "ceramic_detailing": { "type": "ceramic-detailing", "settings": {} },
-    "ceramic_packages": { "type": "ceramic-packages", "settings": {} },
-    "ceramic_why": { "type": "ceramic-why", "settings": {} },
-    "ceramic_gallery": { "type": "ceramic-gallery", "settings": {} },
-    "contactform": { "type": "contactform", "settings": {} }
+    "ceramic_hero": {
+      "type": "ceramic-hero",
+      "settings": {}
+    },
+    "ceramic_detailing": {
+      "type": "ceramic-detailing",
+      "settings": {}
+    },
+    "ceramic_packages": {
+      "type": "ceramic-packages",
+      "settings": {}
+    },
+    "ceramic_why": {
+      "type": "ceramic-why",
+      "settings": {}
+    },
+    "ceramic_gallery": {
+      "type": "ceramic-gallery",
+      "settings": {}
+    },
+    "contactform": {
+      "type": "contactform",
+      "settings": {}
+    }
   },
-  "order": ["ceramic_hero","ceramic_detailing","ceramic_packages","ceramic_why","ceramic_gallery","contactform"]
+  "order": [
+    "ceramic_hero",
+    "ceramic_detailing",
+    "ceramic_packages",
+    "ceramic_why",
+    "ceramic_gallery",
+    "contactform"
+  ]
 }
