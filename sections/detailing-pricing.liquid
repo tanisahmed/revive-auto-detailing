@@ -99,19 +99,19 @@
           <div class="rad-det-prices">
             <div class="rad-det-price-row highlight">
               <span class="vtype">Hatchback</span>
-              <span class="vprice">{{ section.settings.int_hatch | default: "PKR 10,000" }}</span>
+              <span class="vprice">{{ section.settings.int_hatch }}</span>
             </div>
             <div class="rad-det-price-row">
               <span class="vtype">Sedan</span>
-              <span class="vprice">{{ section.settings.int_sedan | default: "{{ section.settings.ext_hatch | default: "PKR 12,000" }}" }}</span>
+              <span class="vprice">{{ section.settings.int_sedan | default: "{{ section.settings.ext_hatch }}" }}</span>
             </div>
             <div class="rad-det-price-row">
               <span class="vtype">Crossover</span>
-              <span class="vprice">{{ section.settings.int_cross | default: "{{ section.settings.ext_sedan | default: "PKR 14,000" }}" }}</span>
+              <span class="vprice">{{ section.settings.int_cross | default: "{{ section.settings.ext_sedan }}" }}</span>
             </div>
             <div class="rad-det-price-row">
               <span class="vtype">SUV</span>
-              <span class="vprice">{{ section.settings.int_suv | default: "{{ section.settings.ext_cross | default: "PKR 16,000" }}" }}</span>
+              <span class="vprice">{{ section.settings.int_suv | default: "{{ section.settings.ext_cross }}" }}</span>
             </div>
           </div>
           <div class="rad-det-features-title">What's Included</div>
@@ -149,7 +149,7 @@
             </div>
             <div class="rad-det-price-row">
               <span class="vtype">SUV</span>
-              <span class="vprice">{{ section.settings.ext_suv | default: "{{ section.settings.com_hatch | default: "PKR 18,000" }}" }}</span>
+              <span class="vprice">{{ section.settings.ext_suv | default: "{{ section.settings.com_hatch }}" }}</span>
             </div>
           </div>
           <div class="rad-det-features-title">What's Included</div>
@@ -175,7 +175,7 @@
           <div class="rad-det-prices">
             <div class="rad-det-price-row highlight">
               <span class="vtype">Hatchback</span>
-              <span class="vprice"><span class="vprice-old">{{ section.settings.com_sedan | default: "PKR 22,000" }}</span>PKR 18,000</span>
+              <span class="vprice"><span class="vprice-old">{{ section.settings.com_sedan }}</span>PKR 18,000</span>
             </div>
             <div class="rad-det-price-row">
               <span class="vtype">Sedan</span>
@@ -183,11 +183,11 @@
             </div>
             <div class="rad-det-price-row">
               <span class="vtype">Crossover</span>
-              <span class="vprice"><span class="vprice-old">PKR 30,000</span>{{ section.settings.com_cross | default: "PKR 24,000" }}</span>
+              <span class="vprice"><span class="vprice-old">PKR 30,000</span>{{ section.settings.com_cross }}</span>
             </div>
             <div class="rad-det-price-row">
               <span class="vtype">SUV</span>
-              <span class="vprice"><span class="vprice-old">PKR 34,000</span>{{ section.settings.com_suv | default: "PKR 27,000" }}</span>
+              <span class="vprice"><span class="vprice-old">PKR 34,000</span>{{ section.settings.com_suv }}</span>
             </div>
           </div>
           <div class="rad-det-features-title">Everything Included</div>
