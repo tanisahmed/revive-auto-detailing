@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "tint_booking": {
+      "type": "tint-booking",
+      "settings": {}
+    }
+  },
+  "order": [
+    "tint_booking"
+  ]
+}
