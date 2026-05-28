@@ -61,8 +61,8 @@
 
 <section class="rad-tint-pricing" id="tint-pricing">
   <div class="container">
-    <h2 class="section-title">Heat Control Window Film Price</h2>
-    <p class="section-subtitle">NAR Window Film — Transparent pricing for all vehicle types</p>
+    <h2 class="section-title">{{ section.settings.title }}</h2>
+    <p class="section-subtitle">{{ section.settings.subtitle }}</p>
 
     <div class="rad-tint-pricing-grid">
 
@@ -79,7 +79,7 @@
         <div class="rad-tint-card-body">
           <div class="rad-tint-price-row full-car">
             <span class="label">Full Car</span>
-            <span class="amount">PKR 18,500</span>
+            <span class="amount">{{ section.settings.hatch_full }}</span>
           </div>
           <div class="rad-tint-price-row"><span class="label">Windscreen</span><span class="amount">{{ section.settings.hatch_wind }}</span></div>
           <div class="rad-tint-price-row"><span class="label">Backscreen</span><span class="amount">{{ section.settings.hatch_back }}</span></div>
@@ -102,7 +102,7 @@
         <div class="rad-tint-card-body">
           <div class="rad-tint-price-row full-car">
             <span class="label">Full Car</span>
-            <span class="amount">PKR 25,000</span>
+            <span class="amount">{{ section.settings.sedan_full }}</span>
           </div>
           <div class="rad-tint-price-row"><span class="label">Windscreen</span><span class="amount">{{ section.settings.sedan_wind }}</span></div>
           <div class="rad-tint-price-row"><span class="label">Backscreen</span><span class="amount">{{ section.settings.sedan_back }}</span></div>
@@ -125,7 +125,7 @@
         <div class="rad-tint-card-body">
           <div class="rad-tint-price-row full-car">
             <span class="label">Full Car</span>
-            <span class="amount">PKR 27,000</span>
+            <span class="amount">{{ section.settings.suv_full }}</span>
           </div>
           <div class="rad-tint-price-row"><span class="label">Windscreen</span><span class="amount">{{ section.settings.suv_wind }}</span></div>
           <div class="rad-tint-price-row"><span class="label">Backscreen</span><span class="amount">{{ section.settings.sedan_back }}</span></div>
@@ -148,7 +148,7 @@
         <div class="rad-tint-card-body">
           <div class="rad-tint-price-row full-car">
             <span class="label">Full Car</span>
-            <span class="amount">PKR 29,500</span>
+            <span class="amount">{{ section.settings.xlsuv_full }}</span>
           </div>
           <div class="rad-tint-price-row"><span class="label">Windscreen</span><span class="amount">{{ section.settings.xlsuv_wind }}</span></div>
           <div class="rad-tint-price-row"><span class="label">Backscreen</span><span class="amount">{{ section.settings.sedan_back }}</span></div>
