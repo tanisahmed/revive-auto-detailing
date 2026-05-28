@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "cer_booking": {
+      "type": "ceramic-booking",
+      "settings": {}
+    }
+  },
+  "order": [
+    "cer_booking"
+  ]
+}
