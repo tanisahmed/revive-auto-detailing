@@ -138,7 +138,57 @@
 {% schema %}
 {
   "name": "PPF Hero",
-  "settings": [],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Tag",
+      "default": "🛡️ PPF Service"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Headline",
+      "default": "Paint Protection Film (PPF)"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheadline",
+      "default": "Ultimate Protection for Your Car's Paint"
+    },
+    {
+      "type": "textarea",
+      "id": "desc",
+      "label": "Description",
+      "default": "Invisible shield technology that protects against scratches, chips, UV damage, and environmental contaminants."
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "btn1_text",
+      "label": "Button 1 Text",
+      "default": "View Pricing"
+    },
+    {
+      "type": "text",
+      "id": "btn2_text",
+      "label": "Button 2 Text",
+      "default": "Book Now"
+    }
+  ],
   "presets": [
     {
       "name": "PPF Hero"
