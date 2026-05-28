@@ -14,38 +14,33 @@
       "disabled": true,
       "settings": {}
     },
-    "detailing_hero_Vnhqwq": {
-      "type": "detailing-hero",
-      "name": "Detailing Hero",
+    "ppf_hero_EDQVn7": {
+      "type": "ppf-hero",
+      "name": "PPF Hero",
       "settings": {
-        "tag": "🚗 Karachi's Best Car Detailing",
-        "title": "Exterior & Interior",
-        "title_accent": "Car Detailing Karachi",
-        "subtitle": "Are you looking for premium car detailing in Karachi? RAD provides professional interior & exterior services to keep your car looking brand new with long-lasting shine!",
+        "tag": "🛡️ PPF Service",
+        "title": "Paint Protection Film (PPF)",
+        "subtitle": "Ultimate Protection for Your Car's Paint",
+        "desc": "Invisible shield technology that protects against scratches, chips, UV damage, and environmental contaminants.",
         "btn1_text": "View Pricing",
-        "stat1_num": "800+",
-        "stat1_lbl": "Cars Detailed",
-        "stat2_num": "4.9 ⭐",
-        "stat2_lbl": "Google Reviews",
-        "stat3_num": "2+",
-        "stat3_lbl": "Years Experience"
+        "btn2_text": "Book Now"
       }
     },
-    "detailing_pricing_jGfDeW": {
-      "type": "detailing-pricing",
-      "name": "Detailing Pricing",
+    "ppf_packages_UJLGPt": {
+      "type": "ppf-packages",
+      "name": "PPF Pricing",
       "settings": {}
     },
-    "detailing_why_dmP8dF": {
-      "type": "detailing-why",
-      "name": "Detailing Why Section",
+    "ppf_benefits_fjiLPD": {
+      "type": "ppf-benefits",
+      "name": "PPF Benefits",
       "settings": {}
     }
   },
   "order": [
     "main",
-    "detailing_hero_Vnhqwq",
-    "detailing_pricing_jGfDeW",
-    "detailing_why_dmP8dF"
+    "ppf_hero_EDQVn7",
+    "ppf_packages_UJLGPt",
+    "ppf_benefits_fjiLPD"
   ]
 }

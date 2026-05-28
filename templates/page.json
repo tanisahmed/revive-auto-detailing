@@ -11,41 +11,10 @@
   "sections": {
     "main": {
       "type": "main-page",
-      "disabled": true,
-      "settings": {}
-    },
-    "detailing_hero_Vnhqwq": {
-      "type": "detailing-hero",
-      "name": "Detailing Hero",
-      "settings": {
-        "tag": "🚗 Karachi's Best Car Detailing",
-        "title": "Exterior & Interior",
-        "title_accent": "Car Detailing Karachi",
-        "subtitle": "Are you looking for premium car detailing in Karachi? RAD provides professional interior & exterior services to keep your car looking brand new with long-lasting shine!",
-        "btn1_text": "View Pricing",
-        "stat1_num": "800+",
-        "stat1_lbl": "Cars Detailed",
-        "stat2_num": "4.9 ⭐",
-        "stat2_lbl": "Google Reviews",
-        "stat3_num": "2+",
-        "stat3_lbl": "Years Experience"
-      }
-    },
-    "detailing_pricing_jGfDeW": {
-      "type": "detailing-pricing",
-      "name": "Detailing Pricing",
-      "settings": {}
-    },
-    "detailing_why_dmP8dF": {
-      "type": "detailing-why",
-      "name": "Detailing Why Section",
       "settings": {}
     }
   },
   "order": [
-    "main",
-    "detailing_hero_Vnhqwq",
-    "detailing_pricing_jGfDeW",
-    "detailing_why_dmP8dF"
+    "main"
   ]
 }
