@@ -81,6 +81,7 @@
       "header": {
         "type": "header",
         "settings": {
+          "logo": "shopify://shop_images/white_logo-02.png",
           "logo_text": "RAD",
           "phone": "+923037231111",
           "phone_display": "+92 303 7231111",

@@ -26,21 +26,24 @@
         "btn2_text": "Book Now"
       }
     },
-    "ppf_packages_UJLGPt": {
-      "type": "ppf-packages",
-      "name": "PPF Pricing",
-      "settings": {}
-    },
     "ppf_benefits_fjiLPD": {
       "type": "ppf-benefits",
       "name": "PPF Benefits",
+      "settings": {
+        "title": "Why PPF?",
+        "subtitle": "The most comprehensive paint protection available for your vehicle"
+      }
+    },
+    "ppf_packages_UJLGPt": {
+      "type": "ppf-packages",
+      "name": "PPF Pricing",
       "settings": {}
     }
   },
   "order": [
     "main",
     "ppf_hero_EDQVn7",
-    "ppf_packages_UJLGPt",
-    "ppf_benefits_fjiLPD"
+    "ppf_benefits_fjiLPD",
+    "ppf_packages_UJLGPt"
   ]
 }
