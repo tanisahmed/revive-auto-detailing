@@ -203,7 +203,7 @@
               <div class="rad-ferr" id="re-yr">Select vehicle year</div>
             </div>
             <div class="rad-fg">
-              <label class="rad-fl" for="rf-cl">Color</label>
+              <label class="rad-fl" for="rf-cl">Color <span style="color:#9ca3af;font-weight:400;">(Optional)</span></label>
               <input type="text" id="rf-cl" class="rad-fi" placeholder="e.g. Pearl White">
             </div>
           </div>
@@ -238,7 +238,7 @@
           <div class="rad-fg">
             <label class="rad-fl">Preferred Time <em>*</em></label>
             <div class="rad-times">
-              <button type="button" class="rad-time" onclick="rbSelTime(this,'9:00 AM')">9:00 AM</button>
+              <button type="button" class="rad-time sel" onclick="rbSelTime(this,'9:00 AM')">9:00 AM</button>
               <button type="button" class="rad-time" onclick="rbSelTime(this,'11:00 AM')">11:00 AM</button>
               <button type="button" class="rad-time" onclick="rbSelTime(this,'2:00 PM')">2:00 PM</button>
               <button type="button" class="rad-time" onclick="rbSelTime(this,'4:00 PM')">4:00 PM</button>
@@ -350,8 +350,20 @@
 <script>
 (function(){
   var cur = 1;
-  var selTime = '';
+  var selTime = '9:00 AM';
   var selPkg = '';
+
+  // Auto-select vehicle type from PPF pricing page selection
+  (function(){
+    var savedVtype = sessionStorage.getItem('rad_selected_vtype');
+    if(savedVtype){
+      var vtSel = document.getElementById('rf-vt');
+      if(vtSel){
+        vtSel.value = savedVtype;
+        rbUpdatePrice();
+      }
+    }
+  })();
   var bd = {};
   var vtLabels = {hatchback:'Hatchback',sedan:'Sedan',suv:'SUV','xl-suv':'XL SUV'};
   var stepNames = ['','Personal Info','Vehicle Details','Appointment','Confirm Booking'];
@@ -366,13 +378,17 @@
   var yrSel = document.getElementById('rf-yr');
   var cy = new Date().getFullYear();
   for(var y=cy; y>=2000; y--){
-    var o=document.createElement('option'); o.value=y; o.textContent=y; yrSel.appendChild(o);
+    var o=document.createElement('option'); o.value=y; o.textContent=y;
+    if(y===cy) o.selected=true;
+    yrSel.appendChild(o);
   }
 
-  // Set min date to tomorrow
+  // Set min date to today, default to today
   var dtInput = document.getElementById('rf-dt');
-  var tom = new Date(); tom.setDate(tom.getDate()+1);
-  dtInput.min = tom.toISOString().split('T')[0];
+  var today = new Date();
+  var todayStr = today.toISOString().split('T')[0];
+  dtInput.min = todayStr;
+  dtInput.value = todayStr;
 
   // Validate a single field
   function chk(id, eid, fn) {
