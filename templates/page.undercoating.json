@@ -11,13 +11,14 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {}
     },
     "antirust_hero_ApKGj8": {
       "type": "antirust-hero",
       "name": "Anti-Rust Hero",
       "settings": {
-        "badge": "🔒 MIPA Certified — Germany's #1 Undercoating",
+        "badge": "MIPA Undercoat — GermanyBrand",
         "tag": "🛡️ Anti-Rust Protection Karachi",
         "title": "Anti-Rust Undercoating",
         "title_accent": "Protect Your Car's Chassis",
