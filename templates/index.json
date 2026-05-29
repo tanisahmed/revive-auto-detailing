@@ -1,16 +1,26 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "hero",
       "settings": {
-        "badge": "\u2b50 Karachi's Premium Auto Detailing",
+        "badge": "Karachi's Premium Auto Detailing",
         "title": "Transform Your Car's Look with",
         "title_accent": "Revive Auto Detailing",
         "subtitle": "Professional PPF, Ceramic Coating, Detailing & Window Tinting in Karachi. Premium quality, guaranteed results.",
         "btn1_text": "Explore Our Services",
+        "btn1_url": "",
         "stat1_num": "500+",
         "stat1_lbl": "Cars Serviced",
-        "stat2_num": "4.9 \u2b50",
+        "stat2_num": "4.9 ⭐",
         "stat2_lbl": "Google Rating",
         "stat3_num": "2+",
         "stat3_lbl": "Years Experience"
@@ -23,29 +33,46 @@
         "subtitle": "Premium auto care services in Karachi",
         "name_1": "Paint Protection Film (PPF)",
         "desc_1": "Invisible shield that protects your car's paint from scratches, chips and UV damage.",
-        "url_1": "/pages/paint-protection-film-ppf",
+        "url_1": "shopify://pages/paint-protection-film-ppf",
         "btn_1": "View Pricing",
         "name_2": "Ceramic Coating",
         "desc_2": "Long-lasting glossy finish that repels dirt, UV rays and minor scratches.",
-        "url_2": "/pages/ceramic-coating",
+        "url_2": "",
         "btn_2": "View Pricing",
         "name_3": "Exterior & Interior Detailing",
         "desc_3": "Full interior and exterior detailing to restore your car's showroom finish.",
-        "url_3": "/pages/car-detailing",
+        "url_3": "",
         "btn_3": "View Pricing",
         "name_4": "Car Window Tinting",
-        "desc_4": "NAR certified heat control window film \u2014 blocks UV rays and keeps your car cool.",
-        "url_4": "/pages/car-window-tints",
+        "desc_4": "NAR certified heat control window film — blocks UV rays and keeps your car cool.",
+        "url_4": "",
         "btn_4": "View Pricing"
       }
     },
     "whyus": {
       "type": "why-us",
-      "settings": {}
+      "settings": {
+        "title": "Why Choose RAD For Your Car Detailing?",
+        "offer_title": "Special Offer!",
+        "offer_text": "Get 10% Off PPF Service This Month!",
+        "offer_btn": "Book Now & Save",
+        "offer_url": ""
+      }
     },
     "process": {
       "type": "process",
-      "settings": {}
+      "settings": {
+        "title": "Our 4-Step Process",
+        "subtitle": "Simple, transparent, and stress-free from start to finish",
+        "step1_title": "Book Your Appointment",
+        "step1_desc": "Schedule at your convenience online, by phone, or via WhatsApp",
+        "step2_title": "Drop-off",
+        "step2_desc": "Bring your car to our facility in Karachi",
+        "step3_title": "We Work Our Magic",
+        "step3_desc": "Our expert technicians apply premium products with precision",
+        "step4_title": "Enjoy the Results",
+        "step4_desc": "Pick up your pristine vehicle looking better than ever"
+      }
     },
     "leadform": {
       "type": "leadform",
