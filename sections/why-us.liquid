@@ -26,20 +26,6 @@
     transform: translateY(-2px);
   }
 
-  .benefit-check {
-    width: 2.25rem;
-    height: 2.25rem;
-    background: rgba(30,58,138,0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    color: var(--color-primary);
-    font-weight: 800;
-    font-size: 1rem;
-  }
-
   .benefit-content {}
   .benefit-name {
     font-size: 1rem;
@@ -146,12 +132,10 @@
 
     <div class="benefits-grid">
       {% assign benefits = 'Expert Technicians,Premium Products,Affordable Pricing,Fast Turnaround,Satisfaction Guaranteed,5% Off PPF Service' | split: ',' %}
-      {% assign benefit_icons = '👨‍🔧,⭐,💰,⚡,✅,🎁' | split: ',' %}
       {% assign benefit_descs = 'Trained & certified professionals,Only top-grade materials used,Competitive rates guaranteed,Minimal wait time for results,We stand behind our work,Limited time savings for you' | split: ',' %}
 
       {% for benefit in benefits %}
         <div class="benefit-card">
-          <div class="benefit-check">{{ benefit_icons[forloop.index0] }}</div>
           <div class="benefit-content">
             <p class="benefit-name">{{ benefit }}</p>
             <p class="benefit-desc">{{ benefit_descs[forloop.index0] }}</p>
