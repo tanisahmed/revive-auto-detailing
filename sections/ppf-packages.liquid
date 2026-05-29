@@ -173,6 +173,14 @@
 </style>
 
 <section class="ppf-pricing-section" id="ppf-pricing">
+  <!-- Liquid data passed to JS -->
+  <div id="ppf-data"
+    data-ex-hatchback="{{ section.settings.ex_hatchback }}"
+    data-ex-sedan="{{ section.settings.ex_sedan }}"
+    data-ex-suv="{{ section.settings.ex_suv }}"
+    data-ex-xlsuv="{{ section.settings.ex_xlsuv }}"
+    style="display:none;">
+  </div>
   <div class="container">
     <h2 class="section-title">Choose Your Vehicle Type</h2>
     <p class="section-subtitle">Select your vehicle to see accurate pricing</p>
@@ -254,11 +262,12 @@
       var label = document.getElementById('vehicle-label');
       label.textContent = data.label;
       // Update car examples
+      var ppfData = document.getElementById('ppf-data');
       var carExamples = {
-        'hatchback': '{{ section.settings.ex_hatchback }}',
-        'sedan':     '{{ section.settings.ex_sedan }}',
-        'suv':       '{{ section.settings.ex_suv }}',
-        'xl-suv':    '{{ section.settings.ex_xlsuv }}'
+        'hatchback': ppfData ? ppfData.dataset.exHatchback : 'Alto, Cultus, Yaris',
+        'sedan':     ppfData ? ppfData.dataset.exSedan     : 'Civic, Corolla, City',
+        'suv':       ppfData ? ppfData.dataset.exSuv       : 'Sportage, Tucson, Haval',
+        'xl-suv':    ppfData ? ppfData.dataset.exXlsuv     : 'Prado, Land Cruiser, Fortuner'
       };
       var exEl = document.getElementById('vehicle-examples');
       if(exEl) exEl.textContent = '(' + (carExamples[vehicle] || '') + ')';
