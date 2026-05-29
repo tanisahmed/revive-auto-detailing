@@ -205,23 +205,23 @@
     var pricing = {
       hatchback: {
         label: 'Hatchback',
-        classic: { price: {{ section.settings.p_hatchback_classic | default: 260000 }}, duration: '{{ section.settings.dur_hatchback  }}' },
-        premium: { price: {{ section.settings.p_hatchback_premium | default: 290000 }}, duration: '{{ section.settings.dur_hatchback  }}' }
+        classic: { price: {{ section.settings.p_hatchback_classic }}, duration: '{{ section.settings.dur_hatchback  }}' },
+        premium: { price: {{ section.settings.p_hatchback_premium }}, duration: '{{ section.settings.dur_hatchback  }}' }
       },
       sedan: {
         label: 'Sedan',
-        classic: { price: {{ section.settings.p_sedan_classic | default: 300000 }}, duration: '{{ section.settings.dur_sedan  }}' },
-        premium: { price: {{ section.settings.p_sedan_premium | default: 330000 }}, duration: '{{ section.settings.dur_sedan  }}' }
+        classic: { price: {{ section.settings.p_sedan_classic }}, duration: '{{ section.settings.dur_sedan  }}' },
+        premium: { price: {{ section.settings.p_sedan_premium }}, duration: '{{ section.settings.dur_sedan  }}' }
       },
       suv: {
         label: 'SUV',
-        classic: { price: {{ section.settings.p_suv_classic | default: 330000 }}, duration: '{{ section.settings.dur_suv  }}' },
-        premium: { price: {{ section.settings.p_suv_premium | default: 380000 }}, duration: '{{ section.settings.dur_suv  }}' }
+        classic: { price: {{ section.settings.p_suv_classic }}, duration: '{{ section.settings.dur_suv  }}' },
+        premium: { price: {{ section.settings.p_suv_premium }}, duration: '{{ section.settings.dur_suv  }}' }
       },
       'xl-suv': {
         label: 'XL SUV',
-        classic: { price: {{ section.settings.p_xlsuv_classic | default: 370000 }}, duration: '{{ section.settings.dur_xlsuv  }}' },
-        premium: { price: {{ section.settings.p_xlsuv_premium | default: 420000 }}, duration: '{{ section.settings.dur_xlsuv  }}' }
+        classic: { price: {{ section.settings.p_xlsuv_classic }}, duration: '{{ section.settings.dur_xlsuv  }}' },
+        premium: { price: {{ section.settings.p_xlsuv_premium }}, duration: '{{ section.settings.dur_xlsuv  }}' }
       }
     };
 
