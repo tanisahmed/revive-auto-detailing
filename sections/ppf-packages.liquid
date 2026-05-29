@@ -1,6 +1,6 @@
 <style>
   .ppf-pricing-section {
-    padding: 2.5rem 0;
+    padding: 5rem 0;
     background: var(--color-secondary);
   }
 
@@ -10,14 +10,15 @@
     gap: 0.75rem;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 1.5rem;
+    margin-bottom: 3rem;
   }
 
   .vehicle-btn {
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 0.75rem 1.75rem;
+    gap: 0.35rem;
+    padding: 0.85rem 1.5rem;
     background: var(--color-white);
     border: 2px solid var(--color-border);
     border-radius: var(--border-radius);
@@ -26,21 +27,20 @@
     font-size: 0.95rem;
     color: var(--color-text);
     cursor: pointer;
-    transition: all 0.25s ease;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    transition: var(--transition);
+    min-width: 120px;
   }
+  .vehicle-btn .v-icon { font-size: 1.75rem; }
   .vehicle-btn:hover {
     border-color: var(--color-primary);
     color: var(--color-primary);
-    transform: translateY(-4px) scale(1.04);
-    box-shadow: 0 8px 20px rgba(30,58,138,0.15);
+    box-shadow: var(--shadow-sm);
   }
   .vehicle-btn.active {
     background: var(--color-primary);
     border-color: var(--color-primary);
     color: var(--color-white);
-    transform: translateY(-4px) scale(1.04);
-    box-shadow: 0 8px 20px rgba(30,58,138,0.3);
+    box-shadow: var(--shadow-md);
   }
 
   /* Packages */
@@ -177,10 +177,22 @@
 
     <!-- Vehicle Selector Buttons -->
     <div class="vehicle-selector" role="group" aria-label="Vehicle type selector">
-      <button class="vehicle-btn" data-vehicle="hatchback">Hatchback</button>
-      <button class="vehicle-btn active" data-vehicle="sedan">Sedan</button>
-      <button class="vehicle-btn" data-vehicle="suv">SUV</button>
-      <button class="vehicle-btn" data-vehicle="xl-suv">XL SUV</button>
+      <button class="vehicle-btn" data-vehicle="hatchback">
+        <span class="v-icon">🚘</span>
+        Hatchback
+      </button>
+      <button class="vehicle-btn active" data-vehicle="sedan">
+        <span class="v-icon">🚗</span>
+        Sedan
+      </button>
+      <button class="vehicle-btn" data-vehicle="suv">
+        <span class="v-icon">🚙</span>
+        SUV
+      </button>
+      <button class="vehicle-btn" data-vehicle="xl-suv">
+        <span class="v-icon">🛻</span>
+        XL SUV
+      </button>
     </div>
 
     <h3 class="packages-title" id="packages-label">Select Your Package — <span id="vehicle-label">Sedan</span></h3>
@@ -203,23 +215,23 @@
     var pricing = {
       hatchback: {
         label: 'Hatchback',
-        classic: { price: {{ section.settings.p_hatchback_classic }}, duration: '{{ section.settings.dur_hatchback }}' },
-        premium: { price: {{ section.settings.p_hatchback_premium }}, duration: '{{ section.settings.dur_hatchback }}' }
+        classic: { price: 260000, duration: '8-10 hours' },
+        premium: { price: 290000, duration: '8-10 hours' }
       },
       sedan: {
         label: 'Sedan',
-        classic: { price: {{ section.settings.p_sedan_classic }}, duration: '{{ section.settings.dur_sedan }}' },
-        premium: { price: {{ section.settings.p_sedan_premium }}, duration: '{{ section.settings.dur_sedan }}' }
+        classic: { price: 300000, duration: '8-10 hours' },
+        premium: { price: 330000, duration: '8-10 hours' }
       },
       suv: {
         label: 'SUV',
-        classic: { price: {{ section.settings.p_suv_classic }}, duration: '{{ section.settings.dur_suv }}' },
-        premium: { price: {{ section.settings.p_suv_premium }}, duration: '{{ section.settings.dur_suv }}' }
+        classic: { price: 330000, duration: '9-11 hours' },
+        premium: { price: 380000, duration: '9-11 hours' }
       },
       'xl-suv': {
         label: 'XL SUV',
-        classic: { price: {{ section.settings.p_xlsuv_classic }}, duration: '{{ section.settings.dur_xlsuv }}' },
-        premium: { price: {{ section.settings.p_xlsuv_premium }}, duration: '{{ section.settings.dur_xlsuv }}' }
+        classic: { price: 370000, duration: '10-12 hours' },
+        premium: { price: 420000, duration: '10-12 hours' }
       }
     };
 
@@ -319,96 +331,7 @@
 {% schema %}
 {
   "name": "PPF Pricing",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Hatchback Prices (PKR)"
-    },
-    {
-      "type": "number",
-      "id": "p_hatchback_classic",
-      "label": "Classic PPF",
-      "default": 260000
-    },
-    {
-      "type": "number",
-      "id": "p_hatchback_premium",
-      "label": "Premium PPF",
-      "default": 290000
-    },
-    {
-      "type": "text",
-      "id": "dur_hatchback",
-      "label": "Duration",
-      "default": "8-10 hours"
-    },
-    {
-      "type": "header",
-      "content": "Sedan Prices (PKR)"
-    },
-    {
-      "type": "number",
-      "id": "p_sedan_classic",
-      "label": "Classic PPF",
-      "default": 300000
-    },
-    {
-      "type": "number",
-      "id": "p_sedan_premium",
-      "label": "Premium PPF",
-      "default": 330000
-    },
-    {
-      "type": "text",
-      "id": "dur_sedan",
-      "label": "Duration",
-      "default": "8-10 hours"
-    },
-    {
-      "type": "header",
-      "content": "SUV Prices (PKR)"
-    },
-    {
-      "type": "number",
-      "id": "p_suv_classic",
-      "label": "Classic PPF",
-      "default": 330000
-    },
-    {
-      "type": "number",
-      "id": "p_suv_premium",
-      "label": "Premium PPF",
-      "default": 380000
-    },
-    {
-      "type": "text",
-      "id": "dur_suv",
-      "label": "Duration",
-      "default": "9-11 hours"
-    },
-    {
-      "type": "header",
-      "content": "XL SUV Prices (PKR)"
-    },
-    {
-      "type": "number",
-      "id": "p_xlsuv_classic",
-      "label": "Classic PPF",
-      "default": 370000
-    },
-    {
-      "type": "number",
-      "id": "p_xlsuv_premium",
-      "label": "Premium PPF",
-      "default": 420000
-    },
-    {
-      "type": "text",
-      "id": "dur_xlsuv",
-      "label": "Duration",
-      "default": "10-12 hours"
-    }
-  ],
+  "settings": [],
   "presets": [
     {
       "name": "PPF Pricing"
