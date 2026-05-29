@@ -81,7 +81,8 @@
   padding: 1rem 1.25rem; background: #f9fafb; border-radius: 10px;
   border: 2px solid #e5e7eb; transition: all 0.2s; gap: 1rem;
 }
-.rad-ar-price-card:hover { border-color: #7c2d12; background: #fff; box-shadow: 0 4px 12px rgba(124,45,18,0.1); }
+.rad-ar-price-card { cursor: pointer; }
+.rad-ar-price-card:hover { border-color: #7c2d12; background: #fff; box-shadow: 0 8px 20px rgba(124,45,18,0.15); transform: translateY(-3px) scale(1.02); }
 .rad-ar-price-car-info { display: flex; align-items: center; gap: 0.75rem; }
 .rad-ar-price-car-name { font-size: 1rem; font-weight: 800; color: #1f2937; }
 .rad-ar-price-car-desc { font-size: 0.75rem; color: #6b7280; }
@@ -185,45 +186,57 @@
         <div class="rad-ar-right-body">
 
           <div class="rad-ar-price-cards">
-            <div class="rad-ar-price-card">
+            <a href="/pages/antirust-booking" class="rad-ar-price-card" style="text-decoration:none;">
               <div class="rad-ar-price-car-info">
                 <div>
                   <div class="rad-ar-price-car-name">Hatchback</div>
                   <div class="rad-ar-price-car-desc">Alto, Cultus, Yaris etc.</div>
                 </div>
               </div>
-              <div class="rad-ar-price-amount">{{ section.settings.price_hatchback }}</div>
-            </div>
+              <div style="display:flex;align-items:center;gap:0.75rem;">
+                <div class="rad-ar-price-amount">{{ section.settings.price_hatchback }}</div>
+                <span style="color:#7c2d12;font-weight:800;font-size:0.85rem;">Book →</span>
+              </div>
+            </a>
 
-            <div class="rad-ar-price-card">
+            <a href="/pages/antirust-booking" class="rad-ar-price-card" style="text-decoration:none;">
               <div class="rad-ar-price-car-info">
                 <div>
                   <div class="rad-ar-price-car-name">Sedan</div>
                   <div class="rad-ar-price-car-desc">Civic, Corolla, City etc.</div>
                 </div>
               </div>
-              <div class="rad-ar-price-amount">{{ section.settings.price_sedan }}</div>
-            </div>
+              <div style="display:flex;align-items:center;gap:0.75rem;">
+                <div class="rad-ar-price-amount">{{ section.settings.price_sedan }}</div>
+                <span style="color:#7c2d12;font-weight:800;font-size:0.85rem;">Book →</span>
+              </div>
+            </a>
 
-            <div class="rad-ar-price-card">
+            <a href="/pages/antirust-booking" class="rad-ar-price-card" style="text-decoration:none;">
               <div class="rad-ar-price-car-info">
                 <div>
                   <div class="rad-ar-price-car-name">SUV</div>
                   <div class="rad-ar-price-car-desc">Sportage, Tucson, Haval etc.</div>
                 </div>
               </div>
-              <div class="rad-ar-price-amount">{{ section.settings.price_suv }}</div>
-            </div>
+              <div style="display:flex;align-items:center;gap:0.75rem;">
+                <div class="rad-ar-price-amount">{{ section.settings.price_suv }}</div>
+                <span style="color:#7c2d12;font-weight:800;font-size:0.85rem;">Book →</span>
+              </div>
+            </a>
 
-            <div class="rad-ar-price-card">
+            <a href="/pages/antirust-booking" class="rad-ar-price-card" style="text-decoration:none;">
               <div class="rad-ar-price-car-info">
                 <div>
                   <div class="rad-ar-price-car-name">XL SUV</div>
                   <div class="rad-ar-price-car-desc">Prado, Land Cruiser, Fortuner etc.</div>
                 </div>
               </div>
-              <div class="rad-ar-price-amount">{{ section.settings.price_xlsuv }}</div>
-            </div>
+              <div style="display:flex;align-items:center;gap:0.75rem;">
+                <div class="rad-ar-price-amount">{{ section.settings.price_xlsuv }}</div>
+                <span style="color:#7c2d12;font-weight:800;font-size:0.85rem;">Book →</span>
+              </div>
+            </a>
           </div>
 
           <div class="rad-ar-book-btns">
