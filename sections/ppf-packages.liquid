@@ -60,6 +60,10 @@
     margin: 0 auto;
   }
 
+  .package-card h3, .package-card .package-name { font-size: 15px !important; font-weight: 500 !important; }
+  .package-card .package-price { font-size: 22px !important; font-weight: 500 !important; }
+  .package-card .package-duration { font-size: 12px !important; }
+  .ppf-badge { font-size: 11px !important; }
   .package-card {
     background: var(--color-white);
     border: 2px solid var(--color-border);
@@ -168,8 +172,8 @@
 
 <section class="ppf-pricing-section" id="ppf-pricing">
   <div class="container">
-    <h2 class="section-title">Choose Your Vehicle Type</h2>
-    <p class="section-subtitle">Select your vehicle to see accurate pricing</p>
+    <h2 class="section-title">{{ section.settings.title }}</h2>
+    <p class="section-subtitle">{{ section.settings.subtitle }}</p>
 
     <!-- Vehicle Selector Buttons -->
     <div class="vehicle-selector" role="group" aria-label="Vehicle type selector">
@@ -372,7 +376,168 @@
 {% schema %}
 {
   "name": "PPF Pricing",
-  "settings": [],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Text"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Choose Your Vehicle Type"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Select your vehicle to see accurate pricing"
+    },
+    {
+      "type": "header",
+      "content": "Classic Package Text"
+    },
+    {
+      "type": "text",
+      "id": "classic_name",
+      "label": "Package Name",
+      "default": "NAR Classic PPF"
+    },
+    {
+      "type": "text",
+      "id": "classic_mil",
+      "label": "Thickness",
+      "default": "8.0 mil thickness"
+    },
+    {
+      "type": "text",
+      "id": "classic_warranty",
+      "label": "Warranty",
+      "default": "5 Years Warranty"
+    },
+    {
+      "type": "text",
+      "id": "classic_days",
+      "label": "Duration",
+      "default": "3 Working Days"
+    },
+    {
+      "type": "header",
+      "content": "Premium Package Text"
+    },
+    {
+      "type": "text",
+      "id": "premium_name",
+      "label": "Package Name",
+      "default": "NAR Premium PPF"
+    },
+    {
+      "type": "text",
+      "id": "premium_mil",
+      "label": "Thickness",
+      "default": "8.5 mil thickness"
+    },
+    {
+      "type": "text",
+      "id": "premium_warranty",
+      "label": "Warranty",
+      "default": "7 Years Warranty"
+    },
+    {
+      "type": "text",
+      "id": "premium_days",
+      "label": "Duration",
+      "default": "3 Working Days"
+    },
+    {
+      "type": "header",
+      "content": "Hatchback Prices (PKR)"
+    },
+    {
+      "type": "number",
+      "id": "p_hatchback_classic",
+      "label": "Classic PPF",
+      "default": 260000
+    },
+    {
+      "type": "number",
+      "id": "p_hatchback_premium",
+      "label": "Premium PPF",
+      "default": 290000
+    },
+    {
+      "type": "text",
+      "id": "dur_hatchback",
+      "label": "Duration",
+      "default": "3 Working Days"
+    },
+    {
+      "type": "header",
+      "content": "Sedan Prices (PKR)"
+    },
+    {
+      "type": "number",
+      "id": "p_sedan_classic",
+      "label": "Classic PPF",
+      "default": 300000
+    },
+    {
+      "type": "number",
+      "id": "p_sedan_premium",
+      "label": "Premium PPF",
+      "default": 330000
+    },
+    {
+      "type": "text",
+      "id": "dur_sedan",
+      "label": "Duration",
+      "default": "3 Working Days"
+    },
+    {
+      "type": "header",
+      "content": "SUV Prices (PKR)"
+    },
+    {
+      "type": "number",
+      "id": "p_suv_classic",
+      "label": "Classic PPF",
+      "default": 330000
+    },
+    {
+      "type": "number",
+      "id": "p_suv_premium",
+      "label": "Premium PPF",
+      "default": 380000
+    },
+    {
+      "type": "text",
+      "id": "dur_suv",
+      "label": "Duration",
+      "default": "3 Working Days"
+    },
+    {
+      "type": "header",
+      "content": "XL SUV Prices (PKR)"
+    },
+    {
+      "type": "number",
+      "id": "p_xlsuv_classic",
+      "label": "Classic PPF",
+      "default": 370000
+    },
+    {
+      "type": "number",
+      "id": "p_xlsuv_premium",
+      "label": "Premium PPF",
+      "default": 420000
+    },
+    {
+      "type": "text",
+      "id": "dur_xlsuv",
+      "label": "Duration",
+      "default": "3 Working Days"
+    }
+  ],
   "presets": [
     {
       "name": "PPF Pricing"
