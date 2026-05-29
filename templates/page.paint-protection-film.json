@@ -51,7 +51,11 @@
         "dur_suv": "3 Working Days",
         "p_xlsuv_classic": 370000,
         "p_xlsuv_premium": 420000,
-        "dur_xlsuv": "3 Working Days"
+        "dur_xlsuv": "3 Working Days",
+        "ex_hatchback": "Swift, Mira, Yaris",
+        "ex_sedan": "Civic, Corolla, City",
+        "ex_suv": "Sportage, Tucson, Haval",
+        "ex_xlsuv": "Prado, Land Cruiser, Fortuner"
       }
     },
     "process_3VXAYN": {
