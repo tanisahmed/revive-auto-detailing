@@ -203,23 +203,23 @@
     var pricing = {
       hatchback: {
         label: 'Hatchback',
-        classic: { price: 260000, duration: '8-10 hours' },
-        premium: { price: 290000, duration: '8-10 hours' }
+        classic: { price: {{ section.settings.p_hatchback_classic }}, duration: '{{ section.settings.dur_hatchback }}' },
+        premium: { price: {{ section.settings.p_hatchback_premium }}, duration: '{{ section.settings.dur_hatchback }}' }
       },
       sedan: {
         label: 'Sedan',
-        classic: { price: 300000, duration: '8-10 hours' },
-        premium: { price: 330000, duration: '8-10 hours' }
+        classic: { price: {{ section.settings.p_sedan_classic }}, duration: '{{ section.settings.dur_sedan }}' },
+        premium: { price: {{ section.settings.p_sedan_premium }}, duration: '{{ section.settings.dur_sedan }}' }
       },
       suv: {
         label: 'SUV',
-        classic: { price: 330000, duration: '9-11 hours' },
-        premium: { price: 380000, duration: '9-11 hours' }
+        classic: { price: {{ section.settings.p_suv_classic }}, duration: '{{ section.settings.dur_suv }}' },
+        premium: { price: {{ section.settings.p_suv_premium }}, duration: '{{ section.settings.dur_suv }}' }
       },
       'xl-suv': {
         label: 'XL SUV',
-        classic: { price: 370000, duration: '10-12 hours' },
-        premium: { price: 420000, duration: '10-12 hours' }
+        classic: { price: {{ section.settings.p_xlsuv_classic }}, duration: '{{ section.settings.dur_xlsuv }}' },
+        premium: { price: {{ section.settings.p_xlsuv_premium }}, duration: '{{ section.settings.dur_xlsuv }}' }
       }
     };
 
@@ -295,13 +295,13 @@
         '<div class="package-card" data-pkg="classic" onclick="selectPackage(this)">' +
           '<div class="package-badge">Most Popular</div>' +
           '<div style="margin-bottom:10px;">' +
-            '<div style="font-size:15px;font-weight:600;color:#1f2937;margin-bottom:7px;padding-top:4px;">{{ section.settings.classic_name }}</div>' +
+            '<div style="font-size:18px;font-weight:600;color:#1f2937;margin-bottom:8px;padding-top:4px;">{{ section.settings.classic_name }}</div>' +
             '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">' +
               '<span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:100px;background:#f3f4f6;color:#6b7280;">8.0 mil thickness</span>' +
               '<span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:100px;background:#dbeafe;color:#1e3a8a;">&#9733; 5 Years Warranty</span>' +
             '</div>' +
-            '<div style="font-size:24px;font-weight:700;color:#1e3a8a;margin-bottom:3px;">' + formatPrice(data.classic.price) + '</div>' +
-            '<div style="font-size:12px;color:#6b7280;display:flex;align-items:center;gap:4px;">&#9201; ' + data.classic.duration + '</div>' +
+            '<div style="font-size:26px;font-weight:700;color:#1e3a8a;margin-bottom:3px;">' + formatPrice(data.classic.price) + '</div>' +
+            '<div style="font-size:13px;color:#6b7280;display:flex;align-items:center;gap:4px;margin-top:4px;">&#9201; ' + data.classic.duration + '</div>' +
           '</div>' +
           featBlock() +
           '<button class="package-select-btn" onclick="handleSelectPkg(event, \'classic\', \'' + vehicleKey + '\')">Select Package</button>' +
@@ -309,13 +309,13 @@
 
         '<div class="package-card" data-pkg="premium" onclick="selectPackage(this)">' +
           '<div style="margin-bottom:10px;">' +
-            '<div style="font-size:15px;font-weight:600;color:#1f2937;margin-bottom:7px;">{{ section.settings.premium_name }}</div>' +
+            '<div style="font-size:18px;font-weight:600;color:#1f2937;margin-bottom:8px;">{{ section.settings.premium_name }}</div>' +
             '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">' +
               '<span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:100px;background:#f3f4f6;color:#6b7280;">8.5 mil thickness</span>' +
               '<span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:100px;background:#1f2937;color:#f9fafb;">&#9733; 7 Years Warranty</span>' +
             '</div>' +
-            '<div style="font-size:24px;font-weight:700;color:#1e3a8a;margin-bottom:3px;">' + formatPrice(data.premium.price) + '</div>' +
-            '<div style="font-size:12px;color:#6b7280;display:flex;align-items:center;gap:4px;">&#9201; ' + data.premium.duration + '</div>' +
+            '<div style="font-size:26px;font-weight:700;color:#1e3a8a;margin-bottom:3px;">' + formatPrice(data.premium.price) + '</div>' +
+            '<div style="font-size:13px;color:#6b7280;display:flex;align-items:center;gap:4px;margin-top:4px;">&#9201; ' + data.premium.duration + '</div>' +
           '</div>' +
           featBlock() +
           '<button class="package-select-btn" onclick="handleSelectPkg(event, \'premium\', \'' + vehicleKey + '\')">Select Package</button>' +
@@ -367,23 +367,7 @@
   "settings": [
     {
       "type": "header",
-      "content": "Section Text"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Section Title",
-      "default": "Choose Your Vehicle Type"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Subtitle",
-      "default": "Select your vehicle to see accurate pricing"
-    },
-    {
-      "type": "header",
-      "content": "Classic Package Text"
+      "content": "Classic Package"
     },
     {
       "type": "text",
@@ -393,25 +377,19 @@
     },
     {
       "type": "text",
+      "id": "classic_warranty",
+      "label": "Warranty Text",
+      "default": "5 Years Warranty"
+    },
+    {
+      "type": "text",
       "id": "classic_mil",
       "label": "Thickness",
       "default": "8.0 mil thickness"
     },
     {
-      "type": "text",
-      "id": "classic_warranty",
-      "label": "Warranty",
-      "default": "5 Years Warranty"
-    },
-    {
-      "type": "text",
-      "id": "classic_days",
-      "label": "Duration",
-      "default": "3 Working Days"
-    },
-    {
       "type": "header",
-      "content": "Premium Package Text"
+      "content": "Premium Package"
     },
     {
       "type": "text",
@@ -421,21 +399,15 @@
     },
     {
       "type": "text",
-      "id": "premium_mil",
-      "label": "Thickness",
-      "default": "8.5 mil thickness"
-    },
-    {
-      "type": "text",
       "id": "premium_warranty",
-      "label": "Warranty",
+      "label": "Warranty Text",
       "default": "7 Years Warranty"
     },
     {
       "type": "text",
-      "id": "premium_days",
-      "label": "Duration",
-      "default": "3 Working Days"
+      "id": "premium_mil",
+      "label": "Thickness",
+      "default": "8.5 mil thickness"
     },
     {
       "type": "header",
