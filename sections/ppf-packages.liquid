@@ -183,7 +183,7 @@
       <button class="vehicle-btn" data-vehicle="xl-suv">XL SUV</button>
     </div>
 
-    <h3 class="packages-title" id="packages-label">Select Your Package For - <span id="vehicle-label">Sedan</span> <span id="vehicle-examples" style="font-size:0.85rem;color:#6b7280;font-weight:400;">(Civic, Corolla, City)</span></h3>
+    <h3 class="packages-title" id="packages-label">Select Your Package — <span id="vehicle-label">Sedan</span></h3>
 
     <!-- Package Cards -->
     <div class="packages-grid" id="packages-grid">
@@ -203,23 +203,23 @@
     var pricing = {
       hatchback: {
         label: 'Hatchback',
-        classic: { price: {{ section.settings.p_hatchback_classic }}, duration: '{{ section.settings.dur_hatchback }}' },
-        premium: { price: {{ section.settings.p_hatchback_premium }}, duration: '{{ section.settings.dur_hatchback }}' }
+        classic: { price: 260000, duration: '8-10 hours' },
+        premium: { price: 290000, duration: '8-10 hours' }
       },
       sedan: {
         label: 'Sedan',
-        classic: { price: {{ section.settings.p_sedan_classic }}, duration: '{{ section.settings.dur_sedan }}' },
-        premium: { price: {{ section.settings.p_sedan_premium }}, duration: '{{ section.settings.dur_sedan }}' }
+        classic: { price: 300000, duration: '8-10 hours' },
+        premium: { price: 330000, duration: '8-10 hours' }
       },
       suv: {
         label: 'SUV',
-        classic: { price: {{ section.settings.p_suv_classic }}, duration: '{{ section.settings.dur_suv }}' },
-        premium: { price: {{ section.settings.p_suv_premium }}, duration: '{{ section.settings.dur_suv }}' }
+        classic: { price: 330000, duration: '9-11 hours' },
+        premium: { price: 380000, duration: '9-11 hours' }
       },
       'xl-suv': {
         label: 'XL SUV',
-        classic: { price: {{ section.settings.p_xlsuv_classic }}, duration: '{{ section.settings.dur_xlsuv }}' },
-        premium: { price: {{ section.settings.p_xlsuv_premium }}, duration: '{{ section.settings.dur_xlsuv }}' }
+        classic: { price: 370000, duration: '10-12 hours' },
+        premium: { price: 420000, duration: '10-12 hours' }
       }
     };
 
@@ -251,9 +251,6 @@
       var grid = document.getElementById('packages-grid');
       var label = document.getElementById('vehicle-label');
       label.textContent = data.label;
-      var exMap = {'hatchback':'{{ section.settings.ex_hatchback }}','sedan':'{{ section.settings.ex_sedan }}','suv':'{{ section.settings.ex_suv }}','xl-suv':'{{ section.settings.ex_xlsuv }}'};
-      var exEl = document.getElementById('vehicle-examples');
-      if(exEl && exMap[vehicle]) exEl.textContent = '(' + exMap[vehicle] + ')';
 
       grid.innerHTML = 
         '<div class="package-card" data-pkg="classic" onclick="selectPackage(this)">' +
@@ -322,124 +319,7 @@
 {% schema %}
 {
   "name": "PPF Pricing",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Pricing — Hatchback (PKR)"
-    },
-    {
-      "type": "number",
-      "id": "p_hatchback_classic",
-      "label": "Classic PPF",
-      "default": 260000
-    },
-    {
-      "type": "number",
-      "id": "p_hatchback_premium",
-      "label": "Premium PPF",
-      "default": 290000
-    },
-    {
-      "type": "text",
-      "id": "dur_hatchback",
-      "label": "Duration",
-      "default": "8-10 hours"
-    },
-    {
-      "type": "header",
-      "content": "Pricing — Sedan (PKR)"
-    },
-    {
-      "type": "number",
-      "id": "p_sedan_classic",
-      "label": "Classic PPF",
-      "default": 300000
-    },
-    {
-      "type": "number",
-      "id": "p_sedan_premium",
-      "label": "Premium PPF",
-      "default": 330000
-    },
-    {
-      "type": "text",
-      "id": "dur_sedan",
-      "label": "Duration",
-      "default": "8-10 hours"
-    },
-    {
-      "type": "header",
-      "content": "Pricing — SUV (PKR)"
-    },
-    {
-      "type": "number",
-      "id": "p_suv_classic",
-      "label": "Classic PPF",
-      "default": 330000
-    },
-    {
-      "type": "number",
-      "id": "p_suv_premium",
-      "label": "Premium PPF",
-      "default": 380000
-    },
-    {
-      "type": "text",
-      "id": "dur_suv",
-      "label": "Duration",
-      "default": "9-11 hours"
-    },
-    {
-      "type": "header",
-      "content": "Pricing — XL SUV (PKR)"
-    },
-    {
-      "type": "number",
-      "id": "p_xlsuv_classic",
-      "label": "Classic PPF",
-      "default": 370000
-    },
-    {
-      "type": "number",
-      "id": "p_xlsuv_premium",
-      "label": "Premium PPF",
-      "default": 420000
-    },
-    {
-      "type": "text",
-      "id": "dur_xlsuv",
-      "label": "Duration",
-      "default": "10-12 hours"
-    },
-    {
-      "type": "header",
-      "content": "Car Name Examples"
-    },
-    {
-      "type": "text",
-      "id": "ex_hatchback",
-      "label": "Hatchback Cars",
-      "default": "Alto, Cultus, Yaris"
-    },
-    {
-      "type": "text",
-      "id": "ex_sedan",
-      "label": "Sedan Cars",
-      "default": "Civic, Corolla, City"
-    },
-    {
-      "type": "text",
-      "id": "ex_suv",
-      "label": "SUV Cars",
-      "default": "Sportage, Tucson, Haval"
-    },
-    {
-      "type": "text",
-      "id": "ex_xlsuv",
-      "label": "XL SUV Cars",
-      "default": "Prado, Land Cruiser, Fortuner"
-    }
-  ],
+  "settings": [],
   "presets": [
     {
       "name": "PPF Pricing"
