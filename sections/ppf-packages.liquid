@@ -253,7 +253,7 @@
       label.textContent = data.label;
 
       var panels = ['Bonnet','Front Fenders','Rear Fenders','Pillars','Front Bumper','All Doors','Trunk','Headlights','Roof','Back Bumper'];
-      var comp   = ['Int/Ext Detailing','Ceramic Coatings','GYEON Q² View','GYEON Q² Rims & Tire','GYEON Q² Leather Shield','GYEON Q² Interior Trims'];
+      var comp   = ['Int/Ext Detailing','GYEON Q² View','GYEON Q² Rims & Tire','GYEON Q² Interior Trims','Ceramic Coatings','GYEON Q² Leather Shield'];
 
       function twoColRows(items, dot) {
         var half = Math.ceil(items.length / 2);
@@ -264,12 +264,12 @@
         for (var i = 0; i < half; i++) {
           var left  = items[i];
           var right = items[i + half] || '';
-          html += '<div style="display:table;width:100%;margin-bottom:4px;">' +
-            '<div style="display:table-cell;width:50%;vertical-align:middle;font-size:13px;color:#374151;padding-right:4px;">' +
-              icon + left +
+          html += '<div style="display:flex;width:100%;margin-bottom:4px;align-items:flex-start;">' +
+            '<div style="flex:0 0 50%;min-width:0;font-size:13px;color:#374151;padding-right:6px;line-height:1.4;display:flex;align-items:flex-start;gap:4px;">' +
+              icon + '<span>' + left + '</span>' +
             '</div>' +
-            '<div style="display:table-cell;width:50%;vertical-align:middle;font-size:13px;color:#374151;">' +
-              (right ? icon + right : '') +
+            '<div style="flex:0 0 50%;min-width:0;font-size:13px;color:#374151;line-height:1.4;display:flex;align-items:flex-start;gap:4px;">' +
+              (right ? icon + '<span>' + right + '</span>' : '') +
             '</div>' +
           '</div>';
         }
