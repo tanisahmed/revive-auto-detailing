@@ -2,34 +2,41 @@
   "sections": {
     "hero": {
       "type": "hero",
-      "settings": {}
+      "settings": {
+        "badge": "\u2b50 Karachi's Premium Auto Detailing",
+        "title": "Transform Your Car's Look with",
+        "title_accent": "Revive Auto Detailing",
+        "subtitle": "Professional PPF, Ceramic Coating, Detailing & Window Tinting in Karachi. Premium quality, guaranteed results.",
+        "btn1_text": "Explore Our Services",
+        "stat1_num": "500+",
+        "stat1_lbl": "Cars Serviced",
+        "stat2_num": "4.9 \u2b50",
+        "stat2_lbl": "Google Rating",
+        "stat3_num": "2+",
+        "stat3_lbl": "Years Experience"
+      }
     },
     "services": {
       "type": "services",
       "settings": {
-        "title": "What We Offer",
-        "subtitle": "Premium Auto Care Services",
+        "title": "Our Services",
+        "subtitle": "Premium auto care services in Karachi",
         "name_1": "Paint Protection Film (PPF)",
-        "desc_1": "Our PPF keeps your car brand new by shielding it from scratches, chips, and UV damage.",
-        "btn_label_1": "View Pricing",
-        "btn_url_1": "/pages/paint-protection-film-ppf",
-        "btn_active_1": true,
+        "desc_1": "Invisible shield that protects your car's paint from scratches, chips and UV damage.",
+        "url_1": "/pages/paint-protection-film-ppf",
+        "btn_1": "View Pricing",
         "name_2": "Ceramic Coating",
-        "desc_2": "Give long-lasting shine and protection. Defends your car from scratches, dirt, and UV rays!",
-        "btn_label_2": "View Pricing",
-        "btn_url_2": "/pages/ceramic-coating",
-        "btn_active_2": true,
+        "desc_2": "Long-lasting glossy finish that repels dirt, UV rays and minor scratches.",
+        "url_2": "/pages/ceramic-coating",
+        "btn_2": "View Pricing",
         "name_3": "Exterior & Interior Detailing",
         "desc_3": "Full interior and exterior detailing to restore your car's showroom finish.",
-        "btn_label_3": "View Pricing",
-        "btn_url_3": "/pages/car-detailing",
-        "btn_active_3": true,
-        "name_4": "Anti-Rust Undercoating",
-        "desc_4": "Guard your car against rust with our anti-rust undercoating for long-lasting protection.",
-        "btn_label_4": "View Pricing",
-        "btn_url_4": "/pages/car-anti-rust-undercoating",
-        "btn_active_4": true,
-        "cta_label": "View All Services"
+        "url_3": "/pages/car-detailing",
+        "btn_3": "View Pricing",
+        "name_4": "Car Window Tinting",
+        "desc_4": "NAR certified heat control window film \u2014 blocks UV rays and keeps your car cool.",
+        "url_4": "/pages/car-window-tints",
+        "btn_4": "View Pricing"
       }
     },
     "whyus": {
@@ -42,7 +49,11 @@
     },
     "leadform": {
       "type": "leadform",
-      "settings": {}
+      "settings": {
+        "title": "Get Your Free Estimate",
+        "subtitle": "Tell us about your car and we'll get back to you with a personalized quote.",
+        "btn_text": "Get Free Estimate"
+      }
     }
   },
   "order": [
