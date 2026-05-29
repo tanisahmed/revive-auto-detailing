@@ -170,18 +170,14 @@
   }
 
   .package-select-btn {
-    width: 100%;
-    padding: 0.75rem;
-    background: var(--color-primary);
-    color: var(--color-white);
-    border: 2px solid var(--color-primary);
-    border-radius: var(--border-radius);
+    display: block; width: 100%; margin-top: 14px;
+    padding: 10px; border-radius: 8px;
     font-family: var(--font-primary);
-    font-weight: 700;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: var(--transition);
+    font-size: 0.9rem; font-weight: 700;
+    background: #1e3a8a; color: #fff;
+    border: none; cursor: pointer; transition: background 0.2s;
   }
+  .package-select-btn:hover { background: #1e40af; }
   .package-select-btn:hover { background: var(--color-primary-hover); }
   .package-select-btn.selected-state {
     background: var(--color-success);
@@ -263,65 +259,53 @@
       var label = document.getElementById('vehicle-label');
       label.textContent = data.label;
 
-      function buildPanelsGrid(panels) {
-        var half = Math.ceil(panels.length / 2);
-        var col1 = panels.slice(0, half);
-        var col2 = panels.slice(half);
-        var rows = '';
-        for(var i=0; i<col1.length; i++) {
-          rows += '<div class="ppf-panel-row">' +
-            '<span class="ppf-dot"></span><span>' + col1[i] + '</span>' +
-            (col2[i] ? '<span class="ppf-dot"></span><span>' + col2[i] + '</span>' : '<span></span><span></span>') +
-          '</div>';
-        }
-        return rows;
+      var panels = ['Bonnet','Front Fenders','Rear Fenders','Pillars','Front Bumper','All Doors','Trunk','Headlights','Roof','Back Bumper'];
+      var comp = ['Int/Ext Detailing','GYEON Q² View','GYEON Q² Leather Shield','Ceramic Coatings','GYEON Q² Rims & Tire','GYEON Q² Interior Trims'];
+
+      function panelItems() {
+        return panels.map(function(p){ return '<div class="ppf-panel-item"><span class="ppf-panel-dot"></span>' + p + '</div>'; }).join('');
+      }
+      function compItems() {
+        return comp.map(function(c){ return '<div class="ppf-comp-item"><span class="ppf-comp-tick">&#10003;</span>' + c + '</div>'; }).join('');
       }
 
-      function buildCompGrid(items) {
-        var half = Math.ceil(items.length / 2);
-        var col1 = items.slice(0, half);
-        var col2 = items.slice(half);
-        var rows = '';
-        for(var i=0; i<col1.length; i++) {
-          rows += '<div class="ppf-comp-row">' +
-            '<span class="ppf-tick">✓</span><span>' + col1[i] + '</span>' +
-            (col2[i] ? '<span class="ppf-tick">✓</span><span>' + col2[i] + '</span>' : '<span></span><span></span>') +
-          '</div>';
-        }
-        return rows;
-      }
-
-      var featBlock =
-        '<div class="ppf-feat-block">' +
-          '<div class="ppf-feat-hdr ppf-hdr-red">PANELS COVERED</div>' +
-          '<div class="ppf-panels-grid">' + buildPanelsGrid(panelsCovered) + '</div>' +
+      var featHtml =
+        '<div class="ppf-feat-section">' +
+          '<div class="ppf-feat-label">Panels Covered</div>' +
+          '<div class="ppf-two-col">' + panelItems() + '</div>' +
         '</div>' +
-        '<div class="ppf-feat-block ppf-comp-block">' +
-          '<div class="ppf-feat-hdr ppf-hdr-blue">COMPLEMENTARY</div>' +
-          '<div class="ppf-comp-grid">' + buildCompGrid(complementary) + '</div>' +
+        '<div class="ppf-feat-section">' +
+          '<div class="ppf-feat-label">Complementary</div>' +
+          '<div class="ppf-two-col">' + compItems() + '</div>' +
         '</div>';
 
       grid.innerHTML =
         '<div class="package-card" data-pkg="classic" onclick="selectPackage(this)">' +
           '<div class="package-badge">Most Popular</div>' +
           '<div class="ppf-card-top">' +
-            '<div class="package-name">NAR Classic PPF</div>' +
-            '<span class="package-mil">8.0 mil thickness</span>' +
+            '<div class="ppf-pkg-name">NAR Classic PPF</div>' +
+            '<div class="ppf-badges">' +
+              '<span class="ppf-badge ppf-badge-gray">8.0 mil thickness</span>' +
+              '<span class="ppf-badge ppf-badge-blue">&#9733; 5 Years Warranty</span>' +
+            '</div>' +
             '<div class="package-price">' + formatPrice(data.classic.price) + '</div>' +
-            '<div class="package-duration">⏱ ' + data.classic.duration + ' installation</div>' +
+            '<div class="package-duration">&#9201; ' + data.classic.duration + '</div>' +
           '</div>' +
-          featBlock +
+          featHtml +
           '<button class="package-select-btn" onclick="handleSelectPkg(event, \'classic\', \'' + vehicleKey + '\')">Select Package</button>' +
         '</div>' +
 
         '<div class="package-card" data-pkg="premium" onclick="selectPackage(this)">' +
           '<div class="ppf-card-top">' +
-            '<div class="package-name">NAR Premium PPF</div>' +
-            '<span class="package-mil">8.5 mil thickness</span>' +
+            '<div class="ppf-pkg-name">NAR Premium PPF</div>' +
+            '<div class="ppf-badges">' +
+              '<span class="ppf-badge ppf-badge-gray">8.5 mil thickness</span>' +
+              '<span class="ppf-badge ppf-badge-dark">&#9733; 7 Years Warranty</span>' +
+            '</div>' +
             '<div class="package-price">' + formatPrice(data.premium.price) + '</div>' +
-            '<div class="package-duration">⏱ ' + data.premium.duration + ' installation</div>' +
+            '<div class="package-duration">&#9201; ' + data.premium.duration + '</div>' +
           '</div>' +
-          featBlock +
+          featHtml +
           '<button class="package-select-btn" onclick="handleSelectPkg(event, \'premium\', \'' + vehicleKey + '\')">Select Package</button>' +
         '</div>';
     }
