@@ -123,7 +123,7 @@
             <div class="rad-det-feature">De-odorization</div>
             <div class="rad-det-feature">Engine Grease Clearing / Air Filter Cleaning</div>
           </div>
-          <a href="/pages/detailing-booking" class="rad-det-book-btn">Book My Slot</a>
+          <a href="{{ section.settings.book_url }}" class="rad-det-book-btn">Book My Slot</a>
         </div>
       </div>
 
@@ -161,7 +161,7 @@
             <div class="rad-det-feature">Rim / Tire Dressing</div>
             <div class="rad-det-feature">Undercarriage Degreasing</div>
           </div>
-          <a href="/pages/detailing-booking" class="rad-det-book-btn">Book My Slot</a>
+          <a href="{{ section.settings.book_url }}" class="rad-det-book-btn">Book My Slot</a>
         </div>
       </div>
 
@@ -200,7 +200,7 @@
             <div class="rad-det-feature">Engine Bay Cleaning</div>
             <div class="rad-det-feature">De-odorization</div>
           </div>
-          <a href="/pages/detailing-booking" class="rad-det-book-btn">Book My Slot</a>
+          <a href="{{ section.settings.book_url }}" class="rad-det-book-btn">Book My Slot</a>
         </div>
       </div>
 
@@ -216,6 +216,15 @@
 {
   "name": "Detailing Pricing",
   "settings": [
+    {
+      "type": "header",
+      "content": "Button Link"
+    },
+    {
+      "type": "url",
+      "id": "book_url",
+      "label": "Book My Slot URL"
+    },
     {
       "type": "text",
       "id": "title",
