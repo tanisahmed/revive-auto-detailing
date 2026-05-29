@@ -1,6 +1,6 @@
 <style>
   .ppf-pricing-section {
-    padding: 5rem 0;
+    padding: 2rem 0 3rem;
     background: var(--color-secondary);
   }
 
@@ -10,37 +10,37 @@
     gap: 0.75rem;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
   }
 
   .vehicle-btn {
-    display: flex;
-    flex-direction: column;
+    display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
-    padding: 0.85rem 1.5rem;
-    background: var(--color-white);
-    border: 2px solid var(--color-border);
-    border-radius: var(--border-radius);
+    justify-content: center;
+    padding: 0.7rem 1.75rem;
+    background: #fff;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
     font-family: var(--font-primary);
     font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--color-text);
+    font-size: 0.9rem;
+    color: #374151;
     cursor: pointer;
-    transition: var(--transition);
-    min-width: 120px;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
   }
-  .vehicle-btn .v-icon { font-size: 1.75rem; }
   .vehicle-btn:hover {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-    box-shadow: var(--shadow-sm);
+    border-color: #1e3a8a;
+    color: #1e3a8a;
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 8px 20px rgba(30,58,138,0.15);
   }
   .vehicle-btn.active {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-    color: var(--color-white);
-    box-shadow: var(--shadow-md);
+    background: #1e3a8a;
+    border-color: #1e3a8a;
+    color: #fff;
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 8px 20px rgba(30,58,138,0.3);
   }
 
   /* Packages */
@@ -177,22 +177,10 @@
 
     <!-- Vehicle Selector Buttons -->
     <div class="vehicle-selector" role="group" aria-label="Vehicle type selector">
-      <button class="vehicle-btn" data-vehicle="hatchback">
-        <span class="v-icon">🚘</span>
-        Hatchback
-      </button>
-      <button class="vehicle-btn active" data-vehicle="sedan">
-        <span class="v-icon">🚗</span>
-        Sedan
-      </button>
-      <button class="vehicle-btn" data-vehicle="suv">
-        <span class="v-icon">🚙</span>
-        SUV
-      </button>
-      <button class="vehicle-btn" data-vehicle="xl-suv">
-        <span class="v-icon">🛻</span>
-        XL SUV
-      </button>
+      <button class="vehicle-btn" data-vehicle="hatchback">Hatchback</button>
+      <button class="vehicle-btn active" data-vehicle="sedan">Sedan</button>
+      <button class="vehicle-btn" data-vehicle="suv">SUV</button>
+      <button class="vehicle-btn" data-vehicle="xl-suv">XL SUV</button>
     </div>
 
     <h3 class="packages-title" id="packages-label">Select Your Package — <span id="vehicle-label">Sedan</span></h3>
@@ -307,12 +295,12 @@
         '<div class="package-card" data-pkg="classic" onclick="selectPackage(this)">' +
           '<div class="package-badge">Most Popular</div>' +
           '<div style="margin-bottom:10px;">' +
-            '<div style="font-size:14px;font-weight:500;color:#1f2937;margin-bottom:7px;padding-top:4px;">NAR Classic PPF</div>' +
+            '<div style="font-size:15px;font-weight:600;color:#1f2937;margin-bottom:7px;padding-top:4px;">{{ section.settings.classic_name }}</div>' +
             '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">' +
               '<span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:100px;background:#f3f4f6;color:#6b7280;">8.0 mil thickness</span>' +
               '<span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:100px;background:#dbeafe;color:#1e3a8a;">&#9733; 5 Years Warranty</span>' +
             '</div>' +
-            '<div style="font-size:22px;font-weight:500;color:#1f2937;margin-bottom:3px;">' + formatPrice(data.classic.price) + '</div>' +
+            '<div style="font-size:24px;font-weight:700;color:#1e3a8a;margin-bottom:3px;">' + formatPrice(data.classic.price) + '</div>' +
             '<div style="font-size:12px;color:#6b7280;display:flex;align-items:center;gap:4px;">&#9201; ' + data.classic.duration + '</div>' +
           '</div>' +
           featBlock() +
@@ -321,12 +309,12 @@
 
         '<div class="package-card" data-pkg="premium" onclick="selectPackage(this)">' +
           '<div style="margin-bottom:10px;">' +
-            '<div style="font-size:14px;font-weight:500;color:#1f2937;margin-bottom:7px;">NAR Premium PPF</div>' +
+            '<div style="font-size:15px;font-weight:600;color:#1f2937;margin-bottom:7px;">{{ section.settings.premium_name }}</div>' +
             '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">' +
               '<span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:100px;background:#f3f4f6;color:#6b7280;">8.5 mil thickness</span>' +
               '<span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:100px;background:#1f2937;color:#f9fafb;">&#9733; 7 Years Warranty</span>' +
             '</div>' +
-            '<div style="font-size:22px;font-weight:500;color:#1f2937;margin-bottom:3px;">' + formatPrice(data.premium.price) + '</div>' +
+            '<div style="font-size:24px;font-weight:700;color:#1e3a8a;margin-bottom:3px;">' + formatPrice(data.premium.price) + '</div>' +
             '<div style="font-size:12px;color:#6b7280;display:flex;align-items:center;gap:4px;">&#9201; ' + data.premium.duration + '</div>' +
           '</div>' +
           featBlock() +
