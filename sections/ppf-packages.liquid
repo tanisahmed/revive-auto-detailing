@@ -174,8 +174,8 @@
 
 <section class="ppf-pricing-section" id="ppf-pricing">
   <div class="container">
-    <h2 class="section-title">{{ section.settings.title }}</h2>
-    <p class="section-subtitle">{{ section.settings.subtitle }}</p>
+    <h2 class="section-title">{{ section.settings.title | default: "Choose Your Vehicle Type" }}</h2>
+    <p class="section-subtitle" style="margin-bottom:0.75rem;">{{ section.settings.subtitle | default: "Select your vehicle to see accurate pricing" }}</p>
 
     <!-- Vehicle Selector Buttons -->
     <div class="vehicle-selector" role="group" aria-label="Vehicle type selector">
@@ -363,6 +363,22 @@
 {
   "name": "PPF Pricing",
   "settings": [
+    {
+      "type": "header",
+      "content": "Section Heading"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Choose Your Vehicle Type"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Select your vehicle to see accurate pricing"
+    },
     {
       "type": "header",
       "content": "Classic Package"
