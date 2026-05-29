@@ -263,22 +263,29 @@
       var comp = ['Int/Ext Detailing','GYEON Q² View','GYEON Q² Leather Shield','Ceramic Coatings','GYEON Q² Rims & Tire','GYEON Q² Interior Trims'];
 
       function panelItems() {
-        return panels.map(function(p){ return '<div class="ppf-panel-item"><span class="ppf-panel-dot"></span>' + p + '</div>'; }).join('');
+        var panels = ['Bonnet','Front Fenders','Rear Fenders','Pillars','Front Bumper','All Doors','Trunk','Headlights','Roof','Back Bumper'];
+        var half = Math.ceil(panels.length/2);
+        var html = '';
+        for(var i=0;i<half;i++){
+          html += '<div style="display:flex;gap:6px;margin-bottom:3px;">' +
+            '<div style="flex:1;display:flex;align-items:center;gap:5px;font-size:12px;color:#4b5563;"><span style="width:4px;height:4px;background:#1e3a8a;border-radius:50%;flex-shrink:0;display:inline-block;"></span>' + panels[i] + '</div>' +
+            (panels[i+half] ? '<div style="flex:1;display:flex;align-items:center;gap:5px;font-size:12px;color:#4b5563;"><span style="width:4px;height:4px;background:#1e3a8a;border-radius:50%;flex-shrink:0;display:inline-block;"></span>' + panels[i+half] + '</div>' : '<div style="flex:1;"></div>') +
+          '</div>';
+        }
+        return html;
       }
       function compItems() {
-        return comp.map(function(c){ return '<div class="ppf-comp-item"><span class="ppf-comp-tick">&#10003;</span>' + c + '</div>'; }).join('');
+        var comp = ['Int/Ext Detailing','GYEON Q² View','GYEON Q² Leather Shield','Ceramic Coatings','GYEON Q² Rims & Tire','GYEON Q² Interior Trims'];
+        var half = Math.ceil(comp.length/2);
+        var html = '';
+        for(var i=0;i<half;i++){
+          html += '<div style="display:flex;gap:6px;margin-bottom:3px;">' +
+            '<div style="flex:1;display:flex;align-items:center;gap:5px;font-size:12px;color:#4b5563;"><span style="color:#1e3a8a;font-weight:700;font-size:11px;">✓</span>' + comp[i] + '</div>' +
+            (comp[i+half] ? '<div style="flex:1;display:flex;align-items:center;gap:5px;font-size:12px;color:#4b5563;"><span style="color:#1e3a8a;font-weight:700;font-size:11px;">✓</span>' + comp[i+half] + '</div>' : '<div style="flex:1;"></div>') +
+          '</div>';
+        }
+        return html;
       }
-
-      var featHtml =
-        '<div class="ppf-feat-section">' +
-          '<div class="ppf-feat-label">Panels Covered</div>' +
-          '<div class="ppf-two-col">' + panelItems() + '</div>' +
-        '</div>' +
-        '<div class="ppf-feat-section">' +
-          '<div class="ppf-feat-label">Complementary</div>' +
-          '<div class="ppf-two-col">' + compItems() + '</div>' +
-        '</div>';
-
       grid.innerHTML =
         '<div class="package-card" data-pkg="classic" onclick="selectPackage(this)">' +
           '<div class="package-badge">Most Popular</div>' +
