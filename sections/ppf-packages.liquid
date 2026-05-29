@@ -203,23 +203,23 @@
     var pricing = {
       hatchback: {
         label: 'Hatchback',
-        classic: { price: 260000, duration: '8-10 hours' },
-        premium: { price: 290000, duration: '8-10 hours' }
+        classic: { price: {{ section.settings.p_hatchback_classic }}, duration: '{{ section.settings.dur_hatchback }}' },
+        premium: { price: {{ section.settings.p_hatchback_premium }}, duration: '{{ section.settings.dur_hatchback }}' }
       },
       sedan: {
         label: 'Sedan',
-        classic: { price: 300000, duration: '8-10 hours' },
-        premium: { price: 330000, duration: '8-10 hours' }
+        classic: { price: {{ section.settings.p_sedan_classic }}, duration: '{{ section.settings.dur_sedan }}' },
+        premium: { price: {{ section.settings.p_sedan_premium }}, duration: '{{ section.settings.dur_sedan }}' }
       },
       suv: {
         label: 'SUV',
-        classic: { price: 330000, duration: '9-11 hours' },
-        premium: { price: 380000, duration: '9-11 hours' }
+        classic: { price: {{ section.settings.p_suv_classic }}, duration: '{{ section.settings.dur_suv }}' },
+        premium: { price: {{ section.settings.p_suv_premium }}, duration: '{{ section.settings.dur_suv }}' }
       },
       'xl-suv': {
         label: 'XL SUV',
-        classic: { price: 370000, duration: '10-12 hours' },
-        premium: { price: 420000, duration: '10-12 hours' }
+        classic: { price: {{ section.settings.p_xlsuv_classic }}, duration: '{{ section.settings.dur_xlsuv }}' },
+        premium: { price: {{ section.settings.p_xlsuv_premium }}, duration: '{{ section.settings.dur_xlsuv }}' }
       }
     };
 
@@ -319,7 +319,96 @@
 {% schema %}
 {
   "name": "PPF Pricing",
-  "settings": [],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hatchback Prices (PKR)"
+    },
+    {
+      "type": "number",
+      "id": "p_hatchback_classic",
+      "label": "Classic PPF",
+      "default": 260000
+    },
+    {
+      "type": "number",
+      "id": "p_hatchback_premium",
+      "label": "Premium PPF",
+      "default": 290000
+    },
+    {
+      "type": "text",
+      "id": "dur_hatchback",
+      "label": "Duration",
+      "default": "8-10 hours"
+    },
+    {
+      "type": "header",
+      "content": "Sedan Prices (PKR)"
+    },
+    {
+      "type": "number",
+      "id": "p_sedan_classic",
+      "label": "Classic PPF",
+      "default": 300000
+    },
+    {
+      "type": "number",
+      "id": "p_sedan_premium",
+      "label": "Premium PPF",
+      "default": 330000
+    },
+    {
+      "type": "text",
+      "id": "dur_sedan",
+      "label": "Duration",
+      "default": "8-10 hours"
+    },
+    {
+      "type": "header",
+      "content": "SUV Prices (PKR)"
+    },
+    {
+      "type": "number",
+      "id": "p_suv_classic",
+      "label": "Classic PPF",
+      "default": 330000
+    },
+    {
+      "type": "number",
+      "id": "p_suv_premium",
+      "label": "Premium PPF",
+      "default": 380000
+    },
+    {
+      "type": "text",
+      "id": "dur_suv",
+      "label": "Duration",
+      "default": "9-11 hours"
+    },
+    {
+      "type": "header",
+      "content": "XL SUV Prices (PKR)"
+    },
+    {
+      "type": "number",
+      "id": "p_xlsuv_classic",
+      "label": "Classic PPF",
+      "default": 370000
+    },
+    {
+      "type": "number",
+      "id": "p_xlsuv_premium",
+      "label": "Premium PPF",
+      "default": 420000
+    },
+    {
+      "type": "text",
+      "id": "dur_xlsuv",
+      "label": "Duration",
+      "default": "10-12 hours"
+    }
+  ],
   "presets": [
     {
       "name": "PPF Pricing"
