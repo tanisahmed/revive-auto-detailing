@@ -258,23 +258,19 @@
       function twoColRows(items, dot) {
         var half = Math.ceil(items.length / 2);
         var html = '';
+        var icon = dot
+          ? '<span style="width:5px;height:5px;background:#1e3a8a;border-radius:50%;flex-shrink:0;display:inline-block;margin-right:5px;"></span>'
+          : '<span style="color:#1e3a8a;font-weight:700;font-size:12px;flex-shrink:0;margin-right:4px;">&#10003;</span>';
         for (var i = 0; i < half; i++) {
           var left  = items[i];
           var right = items[i + half] || '';
-          html += '<div style="display:flex;gap:0;">' +
-            '<div style="flex:1;display:flex;align-items:center;gap:5px;font-size:12px;color:#4b5563;padding:2px 0;">' +
-              (dot ? '<span style="width:4px;height:4px;background:#1e3a8a;border-radius:50%;flex-shrink:0;display:inline-block;"></span>' :
-                     '<span style="color:#1e3a8a;font-weight:700;font-size:11px;flex-shrink:0;">&#10003;</span>') +
-              left +
+          html += '<div style="display:table;width:100%;margin-bottom:4px;">' +
+            '<div style="display:table-cell;width:50%;vertical-align:middle;font-size:13px;color:#374151;padding-right:4px;">' +
+              icon + left +
             '</div>' +
-            (right ?
-              '<div style="flex:1;display:flex;align-items:center;gap:5px;font-size:12px;color:#4b5563;padding:2px 0;">' +
-                (dot ? '<span style="width:4px;height:4px;background:#1e3a8a;border-radius:50%;flex-shrink:0;display:inline-block;"></span>' :
-                       '<span style="color:#1e3a8a;font-weight:700;font-size:11px;flex-shrink:0;">&#10003;</span>') +
-                right +
-              '</div>' :
-              '<div style="flex:1;"></div>'
-            ) +
+            '<div style="display:table-cell;width:50%;vertical-align:middle;font-size:13px;color:#374151;">' +
+              (right ? icon + right : '') +
+            '</div>' +
           '</div>';
         }
         return html;
