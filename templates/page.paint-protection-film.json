@@ -37,7 +37,22 @@
     "ppf_packages_UJLGPt": {
       "type": "ppf-packages",
       "name": "PPF Pricing",
-      "settings": {}
+      "settings": {
+        "title": "Choose Your Vehicle Type",
+        "subtitle": "Select your vehicle to see accurate pricing",
+        "p_hatchback_classic": 260000,
+        "p_hatchback_premium": 290000,
+        "dur_hatchback": "3 Working Days",
+        "p_sedan_classic": 300000,
+        "p_sedan_premium": 330000,
+        "dur_sedan": "3 Working Days",
+        "p_suv_classic": 330000,
+        "p_suv_premium": 380000,
+        "dur_suv": "3 Working Days",
+        "p_xlsuv_classic": 370000,
+        "p_xlsuv_premium": 420000,
+        "dur_xlsuv": "3 Working Days"
+      }
     },
     "process_3VXAYN": {
       "type": "process",
