@@ -253,6 +253,15 @@
       var grid = document.getElementById('packages-grid');
       var label = document.getElementById('vehicle-label');
       label.textContent = data.label;
+      // Update car examples
+      var carExamples = {
+        'hatchback': '{{ section.settings.ex_hatchback }}',
+        'sedan':     '{{ section.settings.ex_sedan }}',
+        'suv':       '{{ section.settings.ex_suv }}',
+        'xl-suv':    '{{ section.settings.ex_xlsuv }}'
+      };
+      var exEl = document.getElementById('vehicle-examples');
+      if(exEl) exEl.textContent = '(' + (carExamples[vehicle] || '') + ')';
 
       grid.innerHTML = 
         '<div class="package-card" data-pkg="classic" onclick="selectPackage(this)">' +
