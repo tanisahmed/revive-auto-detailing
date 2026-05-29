@@ -129,7 +129,25 @@
     padding-top: 1.25rem;
     margin-bottom: 1.5rem;
   }
-  .pkg-section-hdr {
+  .ppf-card-top { margin-bottom: 1rem; }
+  .ppf-feat-block { margin-bottom: 0.75rem; }
+  .ppf-comp-block { background: rgba(30,58,138,0.04); border-radius: 8px; padding: 0.5rem 0.6rem; }
+  .ppf-feat-hdr {
+    font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 0.5rem; padding: 0.25rem 0.5rem;
+    border-radius: 4px; display: inline-block;
+  }
+  .ppf-hdr-red { background: #fef2f2; color: #dc2626; }
+  .ppf-hdr-blue { background: rgba(30,58,138,0.1); color: #1e3a8a; }
+  .ppf-panels-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.2rem; }
+  .ppf-panel-row { display: contents; }
+  .ppf-panel-row > span { font-size: 0.8rem; color: #374151; padding: 0.15rem 0; display: flex; align-items: center; gap: 0.3rem; }
+  .ppf-dot { width: 6px; height: 6px; background: #dc2626; border-radius: 50%; flex-shrink: 0; }
+  .ppf-comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.2rem; }
+  .ppf-comp-row { display: contents; }
+  .ppf-comp-row > span { font-size: 0.8rem; color: #374151; padding: 0.15rem 0; display: flex; align-items: center; gap: 0.3rem; }
+  .ppf-tick { color: #1e3a8a; font-weight: 800; font-size: 0.85rem; flex-shrink: 0; }
+  .ppf-feat-hdr.pkg-section-hdr {
     font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
     letter-spacing: 0.12em; color: #1e3a8a;
     background: rgba(30,58,138,0.08); border-radius: 4px;
@@ -230,29 +248,10 @@
       }
     };
 
-    var classicFeatures = [
-      'PANELS COVERED',
-      'Bonnet | Front Fenders | Rear Fenders',
-      'Pillars | Front Bumper | All Doors',
-      'Trunk | Headlights | Roof | Back Bumper',
-      'COMPLEMENTARY',
-      'Interior / Exterior Detailing',
-      'Q² View | Q² Leather Shield',
-      'Interior Ceramic Coatings',
-      'Q² Rims & Tire | Q² Interior Trims'
-    ];
+    var panelsCovered = ['Bonnet','Front Fenders','Rear Fenders','Pillars','Front Bumper','All Doors','Trunk','Headlights','Roof','Back Bumper'];
+    var complementary = ['Interior / Exterior Detailing','Q² View','Q² Leather Shield','Interior Ceramic Coatings','Q² Rims & Tire','Q² Interior Trims'];
 
-    var premiumFeatures = [
-      'PANELS COVERED',
-      'Bonnet | Front Fenders | Rear Fenders',
-      'Pillars | Front Bumper | All Doors',
-      'Trunk | Headlights | Roof | Back Bumper',
-      'COMPLEMENTARY',
-      'Interior / Exterior Detailing',
-      'Q² View | Q² Leather Shield',
-      'Interior Ceramic Coatings',
-      'Q² Rims & Tire | Q² Interior Trims'
-    ];
+
 
     function formatPrice(n) {
       return 'PKR ' + n.toLocaleString();
@@ -264,37 +263,65 @@
       var label = document.getElementById('vehicle-label');
       label.textContent = data.label;
 
-      grid.innerHTML = 
+      function buildPanelsGrid(panels) {
+        var half = Math.ceil(panels.length / 2);
+        var col1 = panels.slice(0, half);
+        var col2 = panels.slice(half);
+        var rows = '';
+        for(var i=0; i<col1.length; i++) {
+          rows += '<div class="ppf-panel-row">' +
+            '<span class="ppf-dot"></span><span>' + col1[i] + '</span>' +
+            (col2[i] ? '<span class="ppf-dot"></span><span>' + col2[i] + '</span>' : '<span></span><span></span>') +
+          '</div>';
+        }
+        return rows;
+      }
+
+      function buildCompGrid(items) {
+        var half = Math.ceil(items.length / 2);
+        var col1 = items.slice(0, half);
+        var col2 = items.slice(half);
+        var rows = '';
+        for(var i=0; i<col1.length; i++) {
+          rows += '<div class="ppf-comp-row">' +
+            '<span class="ppf-tick">✓</span><span>' + col1[i] + '</span>' +
+            (col2[i] ? '<span class="ppf-tick">✓</span><span>' + col2[i] + '</span>' : '<span></span><span></span>') +
+          '</div>';
+        }
+        return rows;
+      }
+
+      var featBlock =
+        '<div class="ppf-feat-block">' +
+          '<div class="ppf-feat-hdr ppf-hdr-red">PANELS COVERED</div>' +
+          '<div class="ppf-panels-grid">' + buildPanelsGrid(panelsCovered) + '</div>' +
+        '</div>' +
+        '<div class="ppf-feat-block ppf-comp-block">' +
+          '<div class="ppf-feat-hdr ppf-hdr-blue">COMPLEMENTARY</div>' +
+          '<div class="ppf-comp-grid">' + buildCompGrid(complementary) + '</div>' +
+        '</div>';
+
+      grid.innerHTML =
         '<div class="package-card" data-pkg="classic" onclick="selectPackage(this)">' +
           '<div class="package-badge">Most Popular</div>' +
-          '<div class="package-name">NAR Classic PPF</div>' +
-          '<span class="package-mil">8.0 mil thickness</span>' +
-          '<div class="package-price">' + formatPrice(data.classic.price) + '</div>' +
-          '<div class="package-duration">⏱ ' + data.classic.duration + ' installation</div>' +
-          '<div class="package-features">' +
-            classicFeatures.map(function(f) {
-            if(f === 'PANELS COVERED' || f === 'COMPLEMENTARY') {
-              return '<div class="pkg-section-hdr">' + f + '</div>';
-            }
-            return '<div class="package-feature"><span class="pkg-check">✓</span>' + f + '</div>';
-          }).join('') +
+          '<div class="ppf-card-top">' +
+            '<div class="package-name">NAR Classic PPF</div>' +
+            '<span class="package-mil">8.0 mil thickness</span>' +
+            '<div class="package-price">' + formatPrice(data.classic.price) + '</div>' +
+            '<div class="package-duration">⏱ ' + data.classic.duration + ' installation</div>' +
           '</div>' +
+          featBlock +
           '<button class="package-select-btn" onclick="handleSelectPkg(event, \'classic\', \'' + vehicleKey + '\')">Select Package</button>' +
         '</div>' +
 
         '<div class="package-card" data-pkg="premium" onclick="selectPackage(this)">' +
-          '<div class="package-name">NAR Premium PPF</div>' +
-          '<span class="package-mil">8.5 mil thickness</span>' +
-          '<div class="package-price">' + formatPrice(data.premium.price) + '</div>' +
-          '<div class="package-duration">⏱ ' + data.premium.duration + ' installation</div>' +
-          '<div class="package-features">' +
-            premiumFeatures.map(function(f) {
-            if(f === 'PANELS COVERED' || f === 'COMPLEMENTARY') {
-              return '<div class="pkg-section-hdr">' + f + '</div>';
-            }
-            return '<div class="package-feature"><span class="pkg-check">✓</span>' + f + '</div>';
-          }).join('') +
+          '<div class="ppf-card-top">' +
+            '<div class="package-name">NAR Premium PPF</div>' +
+            '<span class="package-mil">8.5 mil thickness</span>' +
+            '<div class="package-price">' + formatPrice(data.premium.price) + '</div>' +
+            '<div class="package-duration">⏱ ' + data.premium.duration + ' installation</div>' +
           '</div>' +
+          featBlock +
           '<button class="package-select-btn" onclick="handleSelectPkg(event, \'premium\', \'' + vehicleKey + '\')">Select Package</button>' +
         '</div>';
     }
