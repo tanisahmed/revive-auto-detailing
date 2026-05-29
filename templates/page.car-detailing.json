@@ -35,6 +35,7 @@
       "type": "detailing-pricing",
       "name": "Detailing Pricing",
       "settings": {
+        "book_url": "shopify://pages/detailing-booking",
         "title": "Exterior & Interior Car Detailing Price",
         "subtitle": "Professional detailing packages for all vehicle types",
         "int_hatch": "PKR 10,000",
