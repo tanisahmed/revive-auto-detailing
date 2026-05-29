@@ -12,6 +12,7 @@
     "hero": {
       "type": "hero",
       "settings": {
+        "bg_image": "shopify://shop_images/b0be0cc3-4fb4-4775-9c60-a7b1f64b7050.png",
         "badge": "Karachi's Premium Auto Detailing",
         "title": "Transform Your Car's Look with",
         "title_accent": "Revive Auto Detailing",
@@ -58,7 +59,7 @@
       "settings": {
         "title": "Why Choose RAD For Your Car Detailing?",
         "offer_title": "Special Offer!",
-        "offer_text": "Get 10% Off PPF Service This Month!",
+        "offer_text": "Get 5% Off PPF Service This Month!",
         "offer_btn": "Book Now & Save",
         "offer_url": ""
       }
