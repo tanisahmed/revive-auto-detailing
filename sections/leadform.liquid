@@ -1,0 +1,143 @@
+<style>
+.rad-leadform { padding: 3rem 0; background: #f3f4f6; }
+.rad-leadform-inner {
+  max-width: 700px; margin: 0 auto;
+  background: #fff; border-radius: 14px;
+  padding: 2.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.rad-leadform-title { font-size: 2rem; font-weight: 800; color: #1f2937; margin-bottom: 0.4rem; font-family: 'Nunito Sans', sans-serif; text-align: center; }
+.rad-leadform-sub { text-align: center; color: #6b7280; margin-bottom: 2rem; }
+.rad-lf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.rad-lf-group { margin-bottom: 1rem; }
+.rad-lf-label { display: block; font-weight: 600; font-size: 0.9rem; color: #1f2937; margin-bottom: 0.35rem; }
+.rad-lf-input, .rad-lf-select, .rad-lf-textarea {
+  width: 100%; padding: 0.75rem 1rem; border: 2px solid #e5e7eb;
+  border-radius: 8px; font-size: 1rem; font-family: 'Nunito Sans', sans-serif;
+  color: #1f2937; background: #fff; outline: none;
+  transition: border 0.2s; box-sizing: border-box;
+}
+.rad-lf-input:focus, .rad-lf-select:focus, .rad-lf-textarea:focus {
+  border-color: #1e3a8a; box-shadow: 0 0 0 3px rgba(30,58,138,0.1);
+}
+.rad-lf-textarea { resize: vertical; min-height: 100px; }
+.rad-lf-btn {
+  width: 100%; padding: 1rem; background: #1e3a8a; color: #fff;
+  border: none; border-radius: 8px; font-family: 'Nunito Sans', sans-serif;
+  font-weight: 800; font-size: 1.05rem; cursor: pointer; transition: all 0.2s;
+  margin-top: 0.5rem;
+}
+.rad-lf-btn:hover { background: #1e40af; }
+.rad-lf-success { display: none; text-align: center; padding: 2rem; }
+.rad-lf-success.show { display: block; }
+.rad-lf-success-icon { font-size: 3.5rem; display: block; margin-bottom: 1rem; }
+.rad-lf-success h3 { font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-bottom: 0.5rem; font-family: 'Nunito Sans', sans-serif; }
+.rad-lf-success p { color: #6b7280; }
+@media (max-width: 640px) {
+  .rad-leadform-inner { padding: 1.5rem; }
+  .rad-lf-row { grid-template-columns: 1fr; }
+}
+</style>
+
+<section class="rad-leadform" id="estimate">
+  <div class="container">
+    <div class="rad-leadform-inner">
+      <h2 class="rad-leadform-title">{{ section.settings.title }}</h2>
+      <p class="rad-leadform-sub">{{ section.settings.subtitle }}</p>
+
+      <div id="rad-lf-form">
+        <div class="rad-lf-row">
+          <div class="rad-lf-group">
+            <label class="rad-lf-label" for="lf-name">Your Name *</label>
+            <input type="text" id="lf-name" class="rad-lf-input" placeholder="Ahmed Khan">
+          </div>
+          <div class="rad-lf-group">
+            <label class="rad-lf-label" for="lf-phone">WhatsApp Number *</label>
+            <input type="tel" id="lf-phone" class="rad-lf-input" placeholder="+92 3XX XXXXXXX">
+          </div>
+        </div>
+        <div class="rad-lf-row">
+          <div class="rad-lf-group">
+            <label class="rad-lf-label" for="lf-email">Email</label>
+            <input type="email" id="lf-email" class="rad-lf-input" placeholder="you@example.com">
+          </div>
+          <div class="rad-lf-group">
+            <label class="rad-lf-label" for="lf-service">Service *</label>
+            <select id="lf-service" class="rad-lf-select">
+              <option value="" disabled selected>Select service</option>
+              <option>Paint Protection Film (PPF)</option>
+              <option>Ceramic Coating</option>
+              <option>Exterior & Interior Detailing</option>
+              <option>Car Window Tinting</option>
+              <option>Anti-Rust Undercoating</option>
+            </select>
+          </div>
+        </div>
+        <div class="rad-lf-row">
+          <div class="rad-lf-group">
+            <label class="rad-lf-label" for="lf-car">Car Make & Model</label>
+            <input type="text" id="lf-car" class="rad-lf-input" placeholder="e.g. Toyota Corolla 2022">
+          </div>
+          <div class="rad-lf-group">
+            <label class="rad-lf-label" for="lf-vtype">Vehicle Type</label>
+            <select id="lf-vtype" class="rad-lf-select">
+              <option value="" disabled selected>Select type</option>
+              <option>Hatchback</option>
+              <option>Sedan</option>
+              <option>SUV</option>
+              <option>XL SUV</option>
+            </select>
+          </div>
+        </div>
+        <button class="rad-lf-btn" onclick="lfSubmit()">{{ section.settings.btn_text }} →</button>
+      </div>
+
+      <div class="rad-lf-success" id="rad-lf-success">
+        <span class="rad-lf-success-icon">✅</span>
+        <h3>We've received your request!</h3>
+        <p>Our team will contact you on WhatsApp within a few hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function lfSubmit() {
+  var name = document.getElementById('lf-name').value.trim();
+  var phone = document.getElementById('lf-phone').value.trim();
+  var service = document.getElementById('lf-service').value;
+
+  if(!name || !phone || !service) {
+    alert('Please fill in Name, Phone and Service fields.');
+    return;
+  }
+
+  fetch('https://formspree.io/f/xgoqpjvk', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+    body: JSON.stringify({
+      _subject: 'New Estimate Request - ' + name,
+      name: name,
+      phone: phone,
+      email: document.getElementById('lf-email').value,
+      service: service,
+      car: document.getElementById('lf-car').value,
+      vehicle_type: document.getElementById('lf-vtype').value
+    })
+  }).catch(function(){});
+
+  document.getElementById('rad-lf-form').style.display = 'none';
+  document.getElementById('rad-lf-success').classList.add('show');
+}
+</script>
+
+{% schema %}
+{
+  "name": "Lead Form",
+  "settings": [
+    {"type": "text", "id": "title", "label": "Title", "default": "Get Your Free Estimate"},
+    {"type": "text", "id": "subtitle", "label": "Subtitle", "default": "Tell us about your car and we'll get back to you with a personalized quote."},
+    {"type": "text", "id": "btn_text", "label": "Button Text", "default": "Get Free Estimate"}
+  ],
+  "presets": [{"name": "Lead Form"}]
+}
+{% endschema %}
