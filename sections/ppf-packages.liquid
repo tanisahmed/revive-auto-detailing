@@ -259,68 +259,71 @@
       label.textContent = data.label;
 
       var panels = ['Bonnet','Front Fenders','Rear Fenders','Pillars','Front Bumper','All Doors','Trunk','Headlights','Roof','Back Bumper'];
-      var comp   = ['Int/Ext Detailing','GYEON Q² View','GYEON Q² Rims & Tire','GYEON Q² Interior Trims','Ceramic Coatings','GYEON Q² Leather Shield'];
+      var comp   = ['Int/Ext Detailing','Ceramic Coatings','GYEON Q² View','GYEON Q² Rims & Tire','GYEON Q² Leather Shield','GYEON Q² Interior Trims'];
 
-      function twoColRows(items, dot) {
-        var half = Math.ceil(items.length / 2);
+      function makeGrid(items, isDot) {
         var html = '';
-        var icon = dot
-          ? '<span style="width:5px;height:5px;background:#1e3a8a;border-radius:50%;flex-shrink:0;display:inline-block;margin-right:5px;"></span>'
-          : '<span style="color:#1e3a8a;font-weight:700;font-size:12px;flex-shrink:0;margin-right:4px;">&#10003;</span>';
-        for (var i = 0; i < half; i++) {
-          var left  = items[i];
-          var right = items[i + half] || '';
-          html += '<div style="display:flex;width:100%;margin-bottom:4px;align-items:flex-start;">' +
-            '<div style="flex:0 0 50%;min-width:0;font-size:13px;color:#374151;padding-right:6px;line-height:1.4;display:flex;align-items:flex-start;gap:4px;">' +
-              icon + '<span>' + left + '</span>' +
-            '</div>' +
-            '<div style="flex:0 0 50%;min-width:0;font-size:13px;color:#374151;line-height:1.4;display:flex;align-items:flex-start;gap:4px;">' +
-              (right ? icon + '<span>' + right + '</span>' : '') +
-            '</div>' +
-          '</div>';
+        for (var i = 0; i < items.length; i++) {
+          var icon = isDot
+            ? '<span style="width:4px;height:4px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>'
+            : '<span style="color:#0C447C;font-weight:600;font-size:11px;flex-shrink:0;line-height:1;">✓</span>';
+          html += '<div style="display:flex;align-items:center;gap:5px;font-size:12px;color:#4b5563;padding:2px 0;">' + icon + items[i] + '</div>';
         }
-        return html;
+        return '<div style="display:grid;grid-template-columns:1fr 1fr;row-gap:2px;column-gap:6px;">' + html + '</div>';
       }
 
-      function featBlock() {
-        return '<div style="margin-bottom:8px;">' +
-            '<div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#6b7280;margin-bottom:5px;padding-bottom:4px;border-bottom:1px solid #e5e7eb;">Panels Covered</div>' +
-            twoColRows(panels, true) +
-          '</div>' +
-          '<div style="background:#eff6ff;border-radius:8px;padding:8px 10px;">' +
-            '<div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#1e3a8a;margin-bottom:5px;">Complementary</div>' +
-            twoColRows(comp, false) +
-          '</div>';
-      }
+      var sectionLbl = 'font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#6b7280;margin-bottom:6px;display:flex;align-items:center;gap:6px;';
+      var lblLine = '<span style="flex:1;height:0.5px;background:#e5e7eb;display:inline-block;"></span>';
+
+      var cardBody =
+        '<div style="padding:1rem 1.25rem 1rem;flex:1;display:flex;flex-direction:column;">' +
+          '<div style="font-size:24px;font-weight:500;color:#1f2937;text-align:center;margin-bottom:2px;">{PRICE}</div>' +
+          '<div style="font-size:11px;color:#6b7280;text-align:center;margin-bottom:12px;">Complete PPF from bumper to bumper</div>' +
+          '<div style="' + sectionLbl + '">Panels Covered' + lblLine + '</div>' +
+          makeGrid(panels, true) +
+          '<div style="' + sectionLbl + 'margin-top:10px;">Complementary' + lblLine + '</div>' +
+          makeGrid(comp, false) +
+          '<div style="flex:1;"></div>' +
+          '<div style="font-size:12px;color:#6b7280;text-align:center;margin-top:12px;margin-bottom:8px;">⏱ Process: {DUR}</div>' +
+          '<button style="display:block;width:100%;padding:10px;border-radius:8px;font-size:13px;font-weight:600;background:#0C447C;color:#fff;border:none;cursor:pointer;font-family:var(--font-primary);" onclick="handleSelectPkg(event, \'{PKG}\', \'' + vehicleKey + '\')">Select Package</button>' +
+        '</div>';
+
+      var classicBody = cardBody
+        .replace('{PRICE}', formatPrice(data.classic.price))
+        .replace('{DUR}', data.classic.duration)
+        .replace('{PKG}', 'classic');
+
+      var premiumBody = cardBody
+        .replace('{PRICE}', formatPrice(data.premium.price))
+        .replace('{DUR}', data.premium.duration)
+        .replace('{PKG}', 'premium');
 
       grid.innerHTML =
-        '<div class="package-card" data-pkg="classic" onclick="selectPackage(this)">' +
-          '<div class="package-badge">Most Popular</div>' +
-          '<div style="margin-bottom:10px;">' +
-            '<div style="font-size:18px;font-weight:600;color:#1f2937;margin-bottom:8px;padding-top:4px;">{{ section.settings.classic_name }}</div>' +
-            '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">' +
-              '<span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:100px;background:#f3f4f6;color:#6b7280;">8.0 mil thickness</span>' +
-              '<span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:100px;background:#dbeafe;color:#1e3a8a;">&#9733; 5 Years Warranty</span>' +
+        '<div style="position:relative;padding-top:14px;">' +
+          '<div style="position:absolute;top:0;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;font-size:11px;font-weight:600;padding:4px 14px;border-radius:100px;white-space:nowrap;letter-spacing:0.05em;z-index:2;">MOST POPULAR</div>' +
+          '<div class="package-card" data-pkg="classic" onclick="selectPackage(this)" style="border:2px solid #0C447C;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;">' +
+            '<div style="background:#0C447C;padding:1.25rem 1.25rem 1rem;text-align:center;">' +
+              '<div style="font-size:16px;font-weight:500;color:#fff;margin-bottom:8px;margin-top:8px;">{{ section.settings.classic_name }}</div>' +
+              '<div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;">' +
+                '<span style="font-size:11px;font-weight:500;padding:2px 9px;border-radius:100px;background:rgba(255,255,255,0.15);color:#fff;">{{ section.settings.classic_mil }}</span>' +
+                '<span style="font-size:11px;font-weight:500;padding:2px 9px;border-radius:100px;background:rgba(255,255,255,0.9);color:#0C447C;">★ {{ section.settings.classic_warranty }}</span>' +
+              '</div>' +
             '</div>' +
-            '<div style="font-size:26px;font-weight:700;color:#1e3a8a;margin-bottom:3px;">' + formatPrice(data.classic.price) + '</div>' +
-            '<div style="font-size:13px;color:#6b7280;display:flex;align-items:center;gap:4px;margin-top:4px;">&#9201; ' + data.classic.duration + '</div>' +
+            classicBody +
           '</div>' +
-          featBlock() +
-          '<button class="package-select-btn" onclick="handleSelectPkg(event, \'classic\', \'' + vehicleKey + '\')">Select Package</button>' +
         '</div>' +
 
-        '<div class="package-card" data-pkg="premium" onclick="selectPackage(this)">' +
-          '<div style="margin-bottom:10px;">' +
-            '<div style="font-size:18px;font-weight:600;color:#1f2937;margin-bottom:8px;">{{ section.settings.premium_name }}</div>' +
-            '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">' +
-              '<span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:100px;background:#f3f4f6;color:#6b7280;">8.5 mil thickness</span>' +
-              '<span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:100px;background:#1f2937;color:#f9fafb;">&#9733; 7 Years Warranty</span>' +
+        '<div style="position:relative;">' +
+          '<div class="package-card" data-pkg="premium" onclick="selectPackage(this)" style="border:1.5px solid #e5e7eb;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;">' +
+            '<div style="background:#2C2C2A;padding:1.25rem 1.25rem 1rem;text-align:center;">' +
+              '<div style="font-size:16px;font-weight:500;color:#fff;margin-bottom:8px;margin-top:4px;">{{ section.settings.premium_name }}</div>' +
+              '<div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;">' +
+                '<span style="font-size:11px;font-weight:500;padding:2px 9px;border-radius:100px;background:rgba(255,255,255,0.15);color:#fff;">{{ section.settings.premium_mil }}</span>' +
+                '<span style="font-size:11px;font-weight:500;padding:2px 9px;border-radius:100px;background:rgba(255,255,255,0.9);color:#2C2C2A;">★ {{ section.settings.premium_warranty }}</span>' +
+              '</div>' +
             '</div>' +
-            '<div style="font-size:26px;font-weight:700;color:#1e3a8a;margin-bottom:3px;">' + formatPrice(data.premium.price) + '</div>' +
-            '<div style="font-size:13px;color:#6b7280;display:flex;align-items:center;gap:4px;margin-top:4px;">&#9201; ' + data.premium.duration + '</div>' +
+            premiumBody +
           '</div>' +
-          featBlock() +
-          '<button class="package-select-btn" onclick="handleSelectPkg(event, \'premium\', \'' + vehicleKey + '\')">Select Package</button>' +
         '</div>';
     }
 
@@ -395,15 +398,15 @@
     },
     {
       "type": "text",
-      "id": "classic_warranty",
-      "label": "Warranty Text",
-      "default": "5 Years Warranty"
-    },
-    {
-      "type": "text",
       "id": "classic_mil",
       "label": "Thickness",
       "default": "8.0 mil thickness"
+    },
+    {
+      "type": "text",
+      "id": "classic_warranty",
+      "label": "Warranty",
+      "default": "5 Years Warranty"
     },
     {
       "type": "header",
@@ -417,15 +420,15 @@
     },
     {
       "type": "text",
-      "id": "premium_warranty",
-      "label": "Warranty Text",
-      "default": "7 Years Warranty"
-    },
-    {
-      "type": "text",
       "id": "premium_mil",
       "label": "Thickness",
       "default": "8.5 mil thickness"
+    },
+    {
+      "type": "text",
+      "id": "premium_warranty",
+      "label": "Warranty",
+      "default": "7 Years Warranty"
     },
     {
       "type": "header",
