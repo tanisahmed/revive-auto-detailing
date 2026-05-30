@@ -193,168 +193,94 @@
     <h3 class="packages-title" id="packages-label">Select Your Package — <span id="vehicle-label">Sedan</span></h3>
 
     <!-- Package Cards -->
-    <div class="packages-grid" id="packages-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:900px;margin:1.75rem auto 0;align-items:start;">
+    <div class="packages-grid" id="packages-grid">
 
       <!-- CLASSIC CARD -->
-      <div class="package-card" data-pkg="classic" onclick="selectPackage(this)" style="border:2px solid #0C447C;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;position:relative;background:#fff;box-shadow:0 2px 12px rgba(12,68,124,0.10);">
-        <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;font-size:11px;font-weight:700;padding:4px 18px;border-radius:100px;white-space:nowrap;z-index:2;box-shadow:0 2px 8px rgba(16,185,129,0.35);letter-spacing:0.06em;">MOST POPULAR</div>
-        <div style="background:#0C447C;padding:1.5rem 1.5rem 1.1rem;text-align:center;">
-          <div style="font-size:18px;font-weight:500;color:#fff;margin-bottom:10px;margin-top:12px;letter-spacing:0.01em;">{ section.settings.classic_name }</div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
-            <span style="font-size:12px;font-weight:500;padding:3px 12px;border-radius:100px;background:rgba(255,255,255,0.18);color:#fff;">{ section.settings.classic_mil }</span>
-            <span style="font-size:12px;font-weight:500;padding:3px 12px;border-radius:100px;background:rgba(255,255,255,0.92);color:#0C447C;">&#9733; { section.settings.classic_warranty }</span>
+      <div class="package-card" data-pkg="classic" onclick="selectPackage(this)" style="border:2px solid #0C447C;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;position:relative;">
+        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;font-size:11px;font-weight:600;padding:4px 16px;border-radius:100px;white-space:nowrap;z-index:2;box-shadow:0 2px 8px rgba(16,185,129,0.4);">MOST POPULAR</div>
+        <!-- Header -->
+        <div style="background:#0C447C;padding:1.4rem 1.25rem 1rem;text-align:center;">
+          <div style="font-size:17px;font-weight:500;color:#fff;margin-bottom:8px;margin-top:10px;">{{ section.settings.classic_name }}</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;">
+            <span style="font-size:11px;font-weight:500;padding:2px 10px;border-radius:100px;background:rgba(255,255,255,0.15);color:#fff;">{{ section.settings.classic_mil }}</span>
+            <span style="font-size:11px;font-weight:500;padding:2px 10px;border-radius:100px;background:rgba(255,255,255,0.9);color:#0C447C;">&#9733; {{ section.settings.classic_warranty }}</span>
           </div>
         </div>
-        
-        <div style="padding:1.25rem 1.5rem;flex:1;display:flex;flex-direction:column;">
-          <div id="classic-price" style="font-size:32px;font-weight:400;color:#111827;text-align:center;margin-bottom:4px;letter-spacing:-0.5px;">PKR 300,000</div>
-          <div style="font-size:12px;color:#6b7280;text-align:center;margin-bottom:16px;">Complete PPF from bumper to bumper</div>
-          <div style="font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#6b7280;padding-bottom:6px;border-bottom:1.5px solid #e5e7eb;margin-bottom:8px;">Panels Covered</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;margin-bottom:12px;">
-            <div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="width:6px;height:6px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Bonnet
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="width:6px;height:6px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Front Fenders
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="width:6px;height:6px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Rear Fenders
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="width:6px;height:6px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Pillars
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="width:6px;height:6px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Front Bumper
-            </div>
-            </div>
-            <div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="width:6px;height:6px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>All Doors
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="width:6px;height:6px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Trunk
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="width:6px;height:6px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Headlights
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="width:6px;height:6px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Roof
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="width:6px;height:6px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Back Bumper
-            </div>
-            </div>
+        <!-- Body -->
+        <div style="padding:1rem 1.25rem;flex:1;display:flex;flex-direction:column;">
+          <div id="classic-price" style="font-size:26px;font-weight:500;color:#1f2937;text-align:center;margin-bottom:2px;">PKR 300,000</div>
+          <div style="font-size:11px;color:#6b7280;text-align:center;margin-bottom:12px;">Complete PPF from bumper to bumper</div>
+          <!-- Panels -->
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#6b7280;padding-bottom:5px;border-bottom:1px solid #e5e7eb;margin-bottom:7px;">Panels Covered</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;row-gap:3px;column-gap:8px;margin-bottom:10px;">
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="width:5px;height:5px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Bonnet</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="width:5px;height:5px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>All Doors</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="width:5px;height:5px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Front Fenders</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="width:5px;height:5px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Trunk</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="width:5px;height:5px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Rear Fenders</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="width:5px;height:5px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Headlights</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="width:5px;height:5px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Pillars</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="width:5px;height:5px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Roof</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="width:5px;height:5px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Front Bumper</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="width:5px;height:5px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Back Bumper</div>
           </div>
-          <div style="font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#6b7280;padding-bottom:6px;border-bottom:1.5px solid #e5e7eb;margin-bottom:8px;">Complementary</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;margin-bottom:0;">
-            <div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="color:#0C447C;font-weight:700;font-size:13px;flex-shrink:0;">&#10003;</span>Int/Ext Detailing
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="color:#0C447C;font-weight:700;font-size:13px;flex-shrink:0;">&#10003;</span>Ceramic Coatings
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="color:#0C447C;font-weight:700;font-size:13px;flex-shrink:0;">&#10003;</span>GYEON Q&#178; View
-            </div>
-            </div>
-            <div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="color:#0C447C;font-weight:700;font-size:13px;flex-shrink:0;">&#10003;</span>GYEON Q&#178; Rims &amp; Tire
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="color:#0C447C;font-weight:700;font-size:13px;flex-shrink:0;">&#10003;</span>GYEON Q&#178; Leather Shield
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="color:#0C447C;font-weight:700;font-size:13px;flex-shrink:0;">&#10003;</span>GYEON Q&#178; Interior Trims
-            </div>
-            </div>
+          <!-- Complementary -->
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#6b7280;padding-bottom:5px;border-bottom:1px solid #e5e7eb;margin-bottom:7px;">Complementary</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;row-gap:3px;column-gap:8px;">
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="color:#0C447C;font-weight:700;font-size:12px;">&#10003;</span>Int/Ext Detailing</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="color:#0C447C;font-weight:700;font-size:12px;">&#10003;</span>Ceramic Coatings</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="color:#0C447C;font-weight:700;font-size:12px;">&#10003;</span>GYEON Q&#178; View</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="color:#0C447C;font-weight:700;font-size:12px;">&#10003;</span>GYEON Q&#178; Rims &amp; Tire</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="color:#0C447C;font-weight:700;font-size:12px;">&#10003;</span>GYEON Q&#178; Leather Shield</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="color:#0C447C;font-weight:700;font-size:12px;">&#10003;</span>GYEON Q&#178; Interior Trims</div>
           </div>
-          <div style="flex:1;min-height:16px;"></div>
-          <div id="classic-dur" style="font-size:12px;color:#6b7280;text-align:center;margin-bottom:10px;">&#9201; Process: 3 Working Days</div>
-          <button style="display:block;width:100%;padding:13px;border-radius:8px;font-size:14px;font-weight:500;background:#0C447C;color:#fff;border:none;cursor:pointer;font-family:inherit;letter-spacing:0.01em;" onclick="handleSelectPkg(event,'classic',currentVehicle)">Select Package</button>
+          <div style="flex:1;min-height:12px;"></div>
+          <div id="classic-dur" style="font-size:12px;color:#6b7280;text-align:center;margin-top:12px;margin-bottom:8px;">&#9201; Process: 3 Working Days</div>
+          <button style="display:block;width:100%;padding:10px;border-radius:8px;font-size:13px;font-weight:600;background:#0C447C;color:#fff;border:none;cursor:pointer;font-family:inherit;" onclick="handleSelectPkg(event,'classic',currentVehicle)">Select Package</button>
         </div>
       </div>
 
       <!-- PREMIUM CARD -->
-      <div class="package-card" data-pkg="premium" onclick="selectPackage(this)" style="border:1.5px solid #d1d5db;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
-        <div style="background:#2C2C2A;padding:1.5rem 1.5rem 1.1rem;text-align:center;">
-          <div style="font-size:18px;font-weight:500;color:#fff;margin-bottom:10px;margin-top:4px;letter-spacing:0.01em;">{ section.settings.premium_name }</div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
-            <span style="font-size:12px;font-weight:500;padding:3px 12px;border-radius:100px;background:rgba(255,255,255,0.18);color:#fff;">{ section.settings.premium_mil }</span>
-            <span style="font-size:12px;font-weight:500;padding:3px 12px;border-radius:100px;background:rgba(255,255,255,0.92);color:#2C2C2A;">&#9733; { section.settings.premium_warranty }</span>
+      <div class="package-card" data-pkg="premium" onclick="selectPackage(this)" style="border:1.5px solid #e5e7eb;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;">
+        <!-- Header -->
+        <div style="background:#2C2C2A;padding:1.4rem 1.25rem 1rem;text-align:center;">
+          <div style="font-size:17px;font-weight:500;color:#fff;margin-bottom:8px;margin-top:4px;">{{ section.settings.premium_name }}</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;">
+            <span style="font-size:11px;font-weight:500;padding:2px 10px;border-radius:100px;background:rgba(255,255,255,0.15);color:#fff;">{{ section.settings.premium_mil }}</span>
+            <span style="font-size:11px;font-weight:500;padding:2px 10px;border-radius:100px;background:rgba(255,255,255,0.9);color:#2C2C2A;">&#9733; {{ section.settings.premium_warranty }}</span>
           </div>
         </div>
-        
-        <div style="padding:1.25rem 1.5rem;flex:1;display:flex;flex-direction:column;">
-          <div id="premium-price" style="font-size:32px;font-weight:400;color:#111827;text-align:center;margin-bottom:4px;letter-spacing:-0.5px;">PKR 300,000</div>
-          <div style="font-size:12px;color:#6b7280;text-align:center;margin-bottom:16px;">Complete PPF from bumper to bumper</div>
-          <div style="font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#6b7280;padding-bottom:6px;border-bottom:1.5px solid #e5e7eb;margin-bottom:8px;">Panels Covered</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;margin-bottom:12px;">
-            <div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="width:6px;height:6px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Bonnet
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="width:6px;height:6px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Front Fenders
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="width:6px;height:6px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Rear Fenders
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="width:6px;height:6px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Pillars
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="width:6px;height:6px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Front Bumper
-            </div>
-            </div>
-            <div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="width:6px;height:6px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>All Doors
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="width:6px;height:6px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Trunk
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="width:6px;height:6px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Headlights
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="width:6px;height:6px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Roof
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="width:6px;height:6px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Back Bumper
-            </div>
-            </div>
+        <!-- Body -->
+        <div style="padding:1rem 1.25rem;flex:1;display:flex;flex-direction:column;">
+          <div id="premium-price" style="font-size:26px;font-weight:500;color:#1f2937;text-align:center;margin-bottom:2px;">PKR 330,000</div>
+          <div style="font-size:11px;color:#6b7280;text-align:center;margin-bottom:12px;">Complete PPF from bumper to bumper</div>
+          <!-- Panels -->
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#6b7280;padding-bottom:5px;border-bottom:1px solid #e5e7eb;margin-bottom:7px;">Panels Covered</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;row-gap:3px;column-gap:8px;margin-bottom:10px;">
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="width:5px;height:5px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Bonnet</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="width:5px;height:5px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>All Doors</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="width:5px;height:5px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Front Fenders</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="width:5px;height:5px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Trunk</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="width:5px;height:5px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Rear Fenders</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="width:5px;height:5px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Headlights</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="width:5px;height:5px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Pillars</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="width:5px;height:5px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Roof</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="width:5px;height:5px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Front Bumper</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="width:5px;height:5px;background:#0C447C;border-radius:50%;flex-shrink:0;display:inline-block;"></span>Back Bumper</div>
           </div>
-          <div style="font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#6b7280;padding-bottom:6px;border-bottom:1.5px solid #e5e7eb;margin-bottom:8px;">Complementary</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;margin-bottom:0;">
-            <div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="color:#0C447C;font-weight:700;font-size:13px;flex-shrink:0;">&#10003;</span>Int/Ext Detailing
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="color:#0C447C;font-weight:700;font-size:13px;flex-shrink:0;">&#10003;</span>Ceramic Coatings
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="color:#0C447C;font-weight:700;font-size:13px;flex-shrink:0;">&#10003;</span>GYEON Q&#178; View
-            </div>
-            </div>
-            <div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="color:#0C447C;font-weight:700;font-size:13px;flex-shrink:0;">&#10003;</span>GYEON Q&#178; Rims &amp; Tire
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="color:#0C447C;font-weight:700;font-size:13px;flex-shrink:0;">&#10003;</span>GYEON Q&#178; Leather Shield
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;padding:2px 0;">
-              <span style="color:#0C447C;font-weight:700;font-size:13px;flex-shrink:0;">&#10003;</span>GYEON Q&#178; Interior Trims
-            </div>
-            </div>
+          <!-- Complementary -->
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#6b7280;padding-bottom:5px;border-bottom:1px solid #e5e7eb;margin-bottom:7px;">Complementary</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;row-gap:3px;column-gap:8px;">
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="color:#0C447C;font-weight:700;font-size:12px;">&#10003;</span>Int/Ext Detailing</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="color:#0C447C;font-weight:700;font-size:12px;">&#10003;</span>Ceramic Coatings</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="color:#0C447C;font-weight:700;font-size:12px;">&#10003;</span>GYEON Q&#178; View</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="color:#0C447C;font-weight:700;font-size:12px;">&#10003;</span>GYEON Q&#178; Rims &amp; Tire</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="color:#0C447C;font-weight:700;font-size:12px;">&#10003;</span>GYEON Q&#178; Leather Shield</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:13px;color:#374151;"><span style="color:#0C447C;font-weight:700;font-size:12px;">&#10003;</span>GYEON Q&#178; Interior Trims</div>
           </div>
-          <div style="flex:1;min-height:16px;"></div>
-          <div id="premium-dur" style="font-size:12px;color:#6b7280;text-align:center;margin-bottom:10px;">&#9201; Process: 3 Working Days</div>
-          <button style="display:block;width:100%;padding:13px;border-radius:8px;font-size:14px;font-weight:500;background:#0C447C;color:#fff;border:none;cursor:pointer;font-family:inherit;letter-spacing:0.01em;" onclick="handleSelectPkg(event,'premium',currentVehicle)">Select Package</button>
+          <div style="flex:1;min-height:12px;"></div>
+          <div id="premium-dur" style="font-size:12px;color:#6b7280;text-align:center;margin-top:12px;margin-bottom:8px;">&#9201; Process: 3 Working Days</div>
+          <button style="display:block;width:100%;padding:10px;border-radius:8px;font-size:13px;font-weight:600;background:#0C447C;color:#fff;border:none;cursor:pointer;font-family:inherit;" onclick="handleSelectPkg(event,'premium',currentVehicle)">Select Package</button>
         </div>
       </div>
 
@@ -421,6 +347,7 @@
       currentVehicle = vehicleKey;
       var label = document.getElementById('vehicle-label');
       if(label) label.textContent = data.label;
+      // Update prices only
       var cp = document.getElementById('classic-price');
       var pp = document.getElementById('premium-price');
       var cd = document.getElementById('classic-dur');
