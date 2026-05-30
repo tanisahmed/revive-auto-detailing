@@ -58,8 +58,8 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 900px;
+    margin: 1.5rem auto 0;
   }
 
   .package-card h3, .package-card .package-name { font-size: 15px !important; font-weight: 500 !important; }
@@ -299,31 +299,27 @@
         .replace('{PKG}', 'premium');
 
       grid.innerHTML =
-        '<div style="position:relative;padding-top:14px;">' +
-          '<div style="position:absolute;top:0;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;font-size:11px;font-weight:600;padding:4px 14px;border-radius:100px;white-space:nowrap;letter-spacing:0.05em;z-index:2;">MOST POPULAR</div>' +
-          '<div class="package-card" data-pkg="classic" onclick="selectPackage(this)" style="border:2px solid #0C447C;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;">' +
-            '<div style="background:#0C447C;padding:1.25rem 1.25rem 1rem;text-align:center;">' +
-              '<div style="font-size:16px;font-weight:500;color:#fff;margin-bottom:8px;margin-top:8px;">{{ section.settings.classic_name }}</div>' +
-              '<div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;">' +
-                '<span style="font-size:11px;font-weight:500;padding:2px 9px;border-radius:100px;background:rgba(255,255,255,0.15);color:#fff;">{{ section.settings.classic_mil }}</span>' +
-                '<span style="font-size:11px;font-weight:500;padding:2px 9px;border-radius:100px;background:rgba(255,255,255,0.9);color:#0C447C;">★ {{ section.settings.classic_warranty }}</span>' +
-              '</div>' +
+        '<div class="package-card" data-pkg="classic" onclick="selectPackage(this)" style="border:2px solid #0C447C;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;position:relative;">' +
+          '<div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;font-size:11px;font-weight:600;padding:4px 14px;border-radius:100px;white-space:nowrap;letter-spacing:0.05em;z-index:2;">MOST POPULAR</div>' +
+          '<div style="background:#0C447C;padding:1.4rem 1.25rem 1rem;text-align:center;">' +
+            '<div style="font-size:16px;font-weight:500;color:#fff;margin-bottom:8px;margin-top:10px;">{{ section.settings.classic_name }}</div>' +
+            '<div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;">' +
+              '<span style="font-size:11px;font-weight:500;padding:2px 9px;border-radius:100px;background:rgba(255,255,255,0.15);color:#fff;">{{ section.settings.classic_mil }}</span>' +
+              '<span style="font-size:11px;font-weight:500;padding:2px 9px;border-radius:100px;background:rgba(255,255,255,0.9);color:#0C447C;">★ {{ section.settings.classic_warranty }}</span>' +
             '</div>' +
-            classicBody +
           '</div>' +
+          classicBody +
         '</div>' +
 
-        '<div style="position:relative;">' +
-          '<div class="package-card" data-pkg="premium" onclick="selectPackage(this)" style="border:1.5px solid #e5e7eb;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;">' +
-            '<div style="background:#2C2C2A;padding:1.25rem 1.25rem 1rem;text-align:center;">' +
-              '<div style="font-size:16px;font-weight:500;color:#fff;margin-bottom:8px;margin-top:4px;">{{ section.settings.premium_name }}</div>' +
-              '<div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;">' +
-                '<span style="font-size:11px;font-weight:500;padding:2px 9px;border-radius:100px;background:rgba(255,255,255,0.15);color:#fff;">{{ section.settings.premium_mil }}</span>' +
-                '<span style="font-size:11px;font-weight:500;padding:2px 9px;border-radius:100px;background:rgba(255,255,255,0.9);color:#2C2C2A;">★ {{ section.settings.premium_warranty }}</span>' +
-              '</div>' +
+        '<div class="package-card" data-pkg="premium" onclick="selectPackage(this)" style="border:1.5px solid #e5e7eb;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;">' +
+          '<div style="background:#2C2C2A;padding:1.4rem 1.25rem 1rem;text-align:center;">' +
+            '<div style="font-size:16px;font-weight:500;color:#fff;margin-bottom:8px;margin-top:4px;">{{ section.settings.premium_name }}</div>' +
+            '<div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;">' +
+              '<span style="font-size:11px;font-weight:500;padding:2px 9px;border-radius:100px;background:rgba(255,255,255,0.15);color:#fff;">{{ section.settings.premium_mil }}</span>' +
+              '<span style="font-size:11px;font-weight:500;padding:2px 9px;border-radius:100px;background:rgba(255,255,255,0.9);color:#2C2C2A;">★ {{ section.settings.premium_warranty }}</span>' +
             '</div>' +
-            premiumBody +
           '</div>' +
+          premiumBody +
         '</div>';
     }
 
