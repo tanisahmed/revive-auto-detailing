@@ -59,8 +59,9 @@
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
     max-width: 900px;
-    margin: 1.75rem auto 0;
+    margin: 1rem auto 0;
     align-items: start;
+    padding-top: 1.25rem;
   }
 
   .package-card h3, .package-card .package-name { font-size: 15px !important; font-weight: 500 !important; }
@@ -71,10 +72,10 @@
     background: var(--color-white);
     border: 2px solid var(--color-border);
     border-radius: var(--border-radius-lg);
-    padding: 2rem;
     transition: var(--transition);
     position: relative;
     cursor: pointer;
+    overflow: visible;
   }
   .package-card:hover {
     box-shadow: var(--shadow-lg);
@@ -196,10 +197,10 @@
     <div class="packages-grid" id="packages-grid">
 
       <!-- CLASSIC CARD -->
-      <div class="package-card" data-pkg="classic" onclick="selectPackage(this)" style="border:2px solid #0C447C;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;position:relative;">
+      <div class="package-card" data-pkg="classic" onclick="selectPackage(this)" style="border:2px solid #0C447C;border-radius:12px;overflow:visible;display:flex;flex-direction:column;position:relative;">
         <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;font-size:11px;font-weight:600;padding:4px 16px;border-radius:100px;white-space:nowrap;z-index:2;box-shadow:0 2px 8px rgba(16,185,129,0.4);">MOST POPULAR</div>
         <!-- Header -->
-        <div style="background:#0C447C;padding:1.4rem 1.25rem 1rem;text-align:center;">
+        <div style="background:#0C447C;padding:1.4rem 1.25rem 1rem;text-align:center;border-radius:10px 10px 0 0;">
           <div style="font-size:17px;font-weight:500;color:#fff;margin-bottom:8px;margin-top:10px;">{{ section.settings.classic_name }}</div>
           <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;">
             <span style="font-size:11px;font-weight:500;padding:2px 10px;border-radius:100px;background:rgba(255,255,255,0.15);color:#fff;">{{ section.settings.classic_mil }}</span>
@@ -241,9 +242,9 @@
       </div>
 
       <!-- PREMIUM CARD -->
-      <div class="package-card" data-pkg="premium" onclick="selectPackage(this)" style="border:1.5px solid #e5e7eb;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;">
+      <div class="package-card" data-pkg="premium" onclick="selectPackage(this)" style="border:1.5px solid #e5e7eb;border-radius:12px;overflow:visible;display:flex;flex-direction:column;">
         <!-- Header -->
-        <div style="background:#2C2C2A;padding:1.4rem 1.25rem 1rem;text-align:center;">
+        <div style="background:#2C2C2A;padding:1.4rem 1.25rem 1rem;text-align:center;border-radius:10px 10px 0 0;">
           <div style="font-size:17px;font-weight:500;color:#fff;margin-bottom:8px;margin-top:4px;">{{ section.settings.premium_name }}</div>
           <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;">
             <span style="font-size:11px;font-weight:500;padding:2px 10px;border-radius:100px;background:rgba(255,255,255,0.15);color:#fff;">{{ section.settings.premium_mil }}</span>
