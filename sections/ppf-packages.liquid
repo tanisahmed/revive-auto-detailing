@@ -400,21 +400,17 @@
     };
 
     // Vehicle button listeners
-    document.querySelectorAll('.vehicle-btn').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        document.querySelectorAll('.vehicle-btn').forEach(function(b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-        renderPackages(btn.dataset.vehicle);
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.vehicle-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.vehicle-btn').forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          renderPackages(btn.dataset.vehicle);
+        });
       });
+      renderPackages('hatchback');
     });
-
-    // Initial render
-    renderPackages('hatchback');
-    // Init on page load
-  document.addEventListener('DOMContentLoaded', function() {
-    renderPackages('hatchback');
-  });
-})();
+  })();
 </script>
 
 {% schema %}
