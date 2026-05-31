@@ -1,0 +1,67 @@
+<style>
+.ppf2-proc { padding: 4rem 0; background: #0f172a; font-family: 'Nunito Sans', sans-serif; }
+.ppf2-proc-inner { max-width: 1060px; margin: 0 auto; padding: 0 1.5rem; }
+.ppf2-proc-hdr { text-align: center; margin-bottom: 3rem; }
+.ppf2-proc-hdr h2 { font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 0.4rem; }
+.ppf2-proc-hdr p { color: #64748b; font-size: 1rem; }
+
+.ppf2-proc-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; position: relative; }
+.ppf2-proc-steps::before { content: ''; position: absolute; top: 2.25rem; left: 10%; right: 10%; height: 1px; background: linear-gradient(to right, #1e3a8a, #3b82f6, #1e3a8a); z-index: 0; }
+.ppf2-proc-step { text-align: center; position: relative; z-index: 1; }
+.ppf2-proc-num {
+  width: 4.5rem; height: 4.5rem; border-radius: 50%;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb); color: #fff;
+  font-size: 1.35rem; font-weight: 800; display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.1rem; box-shadow: 0 4px 16px rgba(30,58,138,0.5);
+  border: 3px solid #1e293b; font-family: 'Nunito Sans', sans-serif;
+}
+.ppf2-proc-step h3 { font-size: 0.875rem; font-weight: 700; color: #e2e8f0; margin-bottom: 0.35rem; }
+.ppf2-proc-step p { font-size: 0.78rem; color: #64748b; line-height: 1.55; }
+
+.ppf2-proc-note { margin-top: 2.5rem; background: rgba(30,58,138,0.2); border: 1px solid rgba(59,130,246,0.25); border-radius: 12px; padding: 1.1rem 1.5rem; display: flex; align-items: center; gap: 1rem; }
+.ppf2-proc-note p { font-size: 0.875rem; color: #93c5fd; font-weight: 600; margin: 0; }
+.ppf2-proc-note span { color: #64748b; font-weight: 400; }
+
+@media (max-width: 768px) { .ppf2-proc-steps { grid-template-columns: repeat(2,1fr); } .ppf2-proc-steps::before { display: none; } }
+</style>
+
+<section class="ppf2-proc">
+  <div class="ppf2-proc-inner">
+    <div class="ppf2-proc-hdr">
+      <div style="display:inline-block;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#93c5fd;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);padding:0.3rem 1rem;border-radius:100px;margin-bottom:0.75rem;">{{ section.settings.tag | default: "How We Work" }}</div>
+      <h2>{{ section.settings.title | default: "Our Installation Process" }}</h2>
+      <p>{{ section.settings.subtitle | default: "Every car gets the same meticulous 5-step treatment" }}</p>
+    </div>
+    <div class="ppf2-proc-steps">
+      <div class="ppf2-proc-step"><div class="ppf2-proc-num">1</div><h3>{{ section.settings.s1_title | default: "Consultation" }}</h3><p>{{ section.settings.s1_desc | default: "We assess your car, recommend a package, and answer every question you have." }}</p></div>
+      <div class="ppf2-proc-step"><div class="ppf2-proc-num">2</div><h3>{{ section.settings.s2_title | default: "Decontamination" }}</h3><p>{{ section.settings.s2_desc | default: "Full wash, iron decontamination, and clay bar to remove all surface contaminants." }}</p></div>
+      <div class="ppf2-proc-step"><div class="ppf2-proc-num">3</div><h3>{{ section.settings.s3_title | default: "Precision Cutting" }}</h3><p>{{ section.settings.s3_desc | default: "Computer-cut panels sized exactly to your car model. No guesswork, no gaps." }}</p></div>
+      <div class="ppf2-proc-step"><div class="ppf2-proc-num">4</div><h3>{{ section.settings.s4_title | default: "Installation" }}</h3><p>{{ section.settings.s4_desc | default: "Applied in our dust-free bay by NAR-certified technicians using wet-install technique." }}</p></div>
+      <div class="ppf2-proc-step"><div class="ppf2-proc-num">5</div><h3>{{ section.settings.s5_title | default: "Quality Sign-Off" }}</h3><p>{{ section.settings.s5_desc | default: "Panel-by-panel inspection under studio lighting before we hand the car back to you." }}</p></div>
+    </div>
+    <div class="ppf2-proc-note">
+      <span style="font-size:1.5rem;">⏱</span>
+      <p>{{ section.settings.note | default: "Typical completion time:" }} <span>{{ section.settings.note_detail | default: "3 working days for full exterior. We'll update you at every stage." }}</span></p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PPF V2 Process",
+  "settings": [
+    {"type":"text","id":"tag","label":"Tag","default":"How We Work"},
+    {"type":"text","id":"title","label":"Title","default":"Our Installation Process"},
+    {"type":"text","id":"subtitle","label":"Subtitle","default":"Every car gets the same meticulous 5-step treatment"},
+    {"type":"header","content":"Step 1"},{"type":"text","id":"s1_title","label":"Title","default":"Consultation"},{"type":"textarea","id":"s1_desc","label":"Description","default":"We assess your car, recommend a package, and answer every question you have."},
+    {"type":"header","content":"Step 2"},{"type":"text","id":"s2_title","label":"Title","default":"Decontamination"},{"type":"textarea","id":"s2_desc","label":"Description","default":"Full wash, iron decontamination, and clay bar to remove all surface contaminants."},
+    {"type":"header","content":"Step 3"},{"type":"text","id":"s3_title","label":"Title","default":"Precision Cutting"},{"type":"textarea","id":"s3_desc","label":"Description","default":"Computer-cut panels sized exactly to your car model. No guesswork, no gaps."},
+    {"type":"header","content":"Step 4"},{"type":"text","id":"s4_title","label":"Title","default":"Installation"},{"type":"textarea","id":"s4_desc","label":"Description","default":"Applied in our dust-free bay by NAR-certified technicians using wet-install technique."},
+    {"type":"header","content":"Step 5"},{"type":"text","id":"s5_title","label":"Title","default":"Quality Sign-Off"},{"type":"textarea","id":"s5_desc","label":"Description","default":"Panel-by-panel inspection under studio lighting before we hand the car back to you."},
+    {"type":"header","content":"Duration Note"},
+    {"type":"text","id":"note","label":"Note Label","default":"Typical completion time:"},
+    {"type":"text","id":"note_detail","label":"Note Detail","default":"3 working days for full exterior. We'll update you at every stage."}
+  ],
+  "presets":[{"name":"PPF V2 Process"}]
+}
+{% endschema %}
