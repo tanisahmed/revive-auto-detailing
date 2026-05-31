@@ -64,9 +64,9 @@
           <th class="ppf-cmp-th ppf-cmp-th-red">
             <div class="ppf-cmp-th-inner">
               {%- if section.settings.logo1 != blank -%}
-                <div class="ppf-cmp-logo ppf-cmp-logo-cr"><img src="{{ section.settings.logo1 | image_url: width: 96 }}" alt="{{ section.settings.brand1 }}"></div>
+                <img src="{{ section.settings.logo1 | image_url: width: 96 }}" alt="{{ section.settings.brand1 }}" style="width:56px;height:40px;object-fit:contain;display:block;">
               {%- else -%}
-                <div class="ppf-cmp-logo ppf-cmp-logo-cr"><span class="ppf-cmp-logo-text" style="color:#A32D2D;">LOGO</span></div>
+                <div style="width:56px;height:40px;border-radius:8px;background:#fff0f0;border:1px solid #fca5a5;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#A32D2D;">LOGO</div>
               {%- endif -%}
               <span class="ppf-cmp-th-name">{{ section.settings.brand1 | default: "Crystalline PPF" }}</span>
             </div>
@@ -76,12 +76,11 @@
           <th class="ppf-cmp-th ppf-cmp-th-blue">
             <div class="ppf-cmp-th-inner">
               {%- if section.settings.logo2 != blank -%}
-                <div class="ppf-cmp-logo ppf-cmp-logo-cl"><img src="{{ section.settings.logo2 | image_url: width: 96 }}" alt="{{ section.settings.brand2 }}"></div>
+                <img src="{{ section.settings.logo2 | image_url: width: 96 }}" alt="{{ section.settings.brand2 }}" style="width:56px;height:40px;object-fit:contain;display:block;">
               {%- else -%}
-                <div class="ppf-cmp-logo ppf-cmp-logo-cl"><span class="ppf-cmp-logo-text ppf-cmp-logo-text-cl">NAR</span></div>
+                <div style="width:56px;height:40px;border-radius:8px;background:#0C447C;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;">NAR</div>
               {%- endif -%}
-              <span class="ppf-cmp-th-ppf ppf-cmp-th-ppf-blue">PPF</span>
-              <span class="ppf-cmp-th-name">{{ section.settings.brand2 | default: "NAR Classic" }}</span>
+              <span class="ppf-cmp-th-name">{{ section.settings.brand2 | default: "NAR Classic PPF" }}</span>
             </div>
           </th>
 
@@ -89,12 +88,11 @@
           <th class="ppf-cmp-th">
             <div class="ppf-cmp-th-inner">
               {%- if section.settings.logo3 != blank -%}
-                <div class="ppf-cmp-logo ppf-cmp-logo-pr"><img src="{{ section.settings.logo3 | image_url: width: 96 }}" alt="{{ section.settings.brand3 }}"></div>
+                <img src="{{ section.settings.logo3 | image_url: width: 96 }}" alt="{{ section.settings.brand3 }}" style="width:56px;height:40px;object-fit:contain;display:block;">
               {%- else -%}
-                <div class="ppf-cmp-logo ppf-cmp-logo-pr"><span class="ppf-cmp-logo-text ppf-cmp-logo-text-pr">NAR</span></div>
+                <div style="width:56px;height:40px;border-radius:8px;background:#2C2C2A;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#D3D1C7;">NAR</div>
               {%- endif -%}
-              <span class="ppf-cmp-th-ppf ppf-cmp-th-ppf-dark">PPF</span>
-              <span class="ppf-cmp-th-name">{{ section.settings.brand3 | default: "NAR Premium" }}</span>
+              <span class="ppf-cmp-th-name">{{ section.settings.brand3 | default: "NAR Premium PPF" }}</span>
             </div>
           </th>
         </tr>
@@ -242,10 +240,10 @@
     {"type":"text","id":"brand1","label":"Brand Name","default":"Crystalline PPF"},
     {"type":"header","content":"Brand 2 — NAR Classic (Blue)"},
     {"type":"image_picker","id":"logo2","label":"Brand 2 Logo"},
-    {"type":"text","id":"brand2","label":"Brand Name","default":"NAR Classic"},
+    {"type":"text","id":"brand2","label":"Brand Name","default":"NAR Classic PPF"},
     {"type":"header","content":"Brand 3 — NAR Premium (Dark)"},
     {"type":"image_picker","id":"logo3","label":"Brand 3 Logo"},
-    {"type":"text","id":"brand3","label":"Brand Name","default":"NAR Premium"},
+    {"type":"text","id":"brand3","label":"Brand Name","default":"NAR Premium PPF"},
     {"type":"header","content":"Film Type"},
     {"type":"text","id":"r1_b1","label":"Brand 1","default":"TPU"},
     {"type":"text","id":"r1_b2","label":"Brand 2","default":"TPU"},
