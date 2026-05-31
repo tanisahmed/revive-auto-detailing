@@ -1,0 +1,54 @@
+<style>
+.ppf2-compare { padding: 4rem 0; background: #f8fafc; font-family: 'Nunito Sans', sans-serif; }
+.ppf2-compare-inner { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
+.ppf2-compare-table { border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.ppf2-compare-hdr { display: grid; grid-template-columns: 2fr 1fr 1fr; background: #0f172a; color: #fff; padding: 1.1rem 1.5rem; gap: 1rem; }
+.ppf2-compare-hdr span:first-child { font-size: 0.8rem; font-weight: 600; color: #64748b; }
+.ppf2-compare-hdr span:not(:first-child) { text-align: center; font-size: 0.9rem; font-weight: 700; }
+.ppf2-compare-hdr .ppf2-col-highlight { background: #1e3a8a; border-radius: 8px 8px 0 0; padding: 0.4rem 0.75rem; font-size: 0.8rem; color: #93c5fd; text-align: center; }
+.ppf2-compare-row { display: grid; grid-template-columns: 2fr 1fr 1fr; padding: 0.9rem 1.5rem; border-bottom: 1px solid #f1f5f9; background: #fff; gap: 1rem; align-items: center; }
+.ppf2-compare-row:nth-child(even) { background: #f8fafc; }
+.ppf2-compare-row:last-child { border-bottom: none; }
+.ppf2-compare-row span:first-child { font-size: 0.9rem; font-weight: 600; color: #1e293b; }
+.ppf2-compare-row span:not(:first-child) { text-align: center; font-size: 0.875rem; }
+.ppf2-chk { color: #10b981; font-weight: 700; font-size: 1.1rem; }
+.ppf2-crs { color: #ef4444; font-size: 1rem; }
+.ppf2-cnd { color: #f59e0b; font-weight: 600; font-size: 0.85rem; }
+</style>
+
+<section class="ppf2-compare">
+  <div class="ppf2-compare-inner">
+    <div class="ppf2-sec-hdr" style="text-align:center;margin-bottom:2rem;">
+      <div class="ppf2-sec-tag" style="display:inline-block;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#1e3a8a;background:#dbeafe;padding:0.3rem 1rem;border-radius:100px;margin-bottom:0.75rem;">{{ section.settings.tag | default: "Comparison" }}</div>
+      <h2 style="font-size:2rem;font-weight:800;color:#0f172a;margin-bottom:0.4rem;font-family:'Nunito Sans',sans-serif;">{{ section.settings.title | default: "PPF vs Paint Correction vs Doing Nothing" }}</h2>
+      <p style="color:#64748b;font-size:1rem;">{{ section.settings.subtitle | default: "See why PPF is the only long-term solution for your car's paint" }}</p>
+    </div>
+    <div class="ppf2-compare-table">
+      <div class="ppf2-compare-hdr">
+        <span>Feature</span>
+        <span class="ppf2-col-highlight">PPF ✓</span>
+        <span>No Protection</span>
+      </div>
+      <div class="ppf2-compare-row"><span>Prevents stone chips & scratches</span><span class="ppf2-chk">✓</span><span class="ppf2-crs">✗</span></div>
+      <div class="ppf2-compare-row"><span>Self-healing from light scratches</span><span class="ppf2-chk">✓</span><span class="ppf2-crs">✗</span></div>
+      <div class="ppf2-compare-row"><span>Blocks UV rays & fading</span><span class="ppf2-chk">✓</span><span class="ppf2-crs">✗</span></div>
+      <div class="ppf2-compare-row"><span>Protects original factory paint</span><span class="ppf2-chk">✓</span><span class="ppf2-crs">✗</span></div>
+      <div class="ppf2-compare-row"><span>Maintains resale value</span><span class="ppf2-chk">✓</span><span class="ppf2-cnd">Partial</span></div>
+      <div class="ppf2-compare-row"><span>Hydrophobic — repels water & dirt</span><span class="ppf2-chk">✓</span><span class="ppf2-crs">✗</span></div>
+      <div class="ppf2-compare-row"><span>Chemical & acid rain resistance</span><span class="ppf2-chk">✓</span><span class="ppf2-crs">✗</span></div>
+      <div class="ppf2-compare-row"><span>Warranty coverage</span><span class="ppf2-chk">5–7 Years</span><span class="ppf2-crs">None</span></div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PPF V2 Comparison",
+  "settings": [
+    {"type":"text","id":"tag","label":"Tag","default":"Comparison"},
+    {"type":"text","id":"title","label":"Title","default":"PPF vs Paint Correction vs Doing Nothing"},
+    {"type":"text","id":"subtitle","label":"Subtitle","default":"See why PPF is the only long-term solution for your car's paint"}
+  ],
+  "presets":[{"name":"PPF V2 Comparison"}]
+}
+{% endschema %}
