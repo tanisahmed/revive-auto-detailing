@@ -50,6 +50,12 @@
   .ppf-grid2 { display: grid; grid-template-columns: 1fr 1fr; row-gap: 3px; column-gap: 8px; margin-bottom: 10px; }
   .ppf-item { display: flex; align-items: center; gap: 5px; font-size: 13px; color: #374151; padding: 1px 0; }
   .ppf-dot { width: 5px; height: 5px; background: #1e3a8a; border-radius: 50%; flex-shrink: 0; display: inline-block; }
+  .ppf-included-title { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6b7280; padding-bottom: 6px; border-bottom: 1px solid #e5e7eb; margin-bottom: 10px; }
+  .ppf-included-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+  .ppf-inc-row { display: flex; align-items: flex-start; gap: 8px; }
+  .ppf-inc-tick { color: #1e3a8a; font-weight: 800; font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+  .ppf-inc-name { font-size: 13px; font-weight: 700; color: #1f2937; line-height: 1.3; }
+  .ppf-inc-sub { font-size: 11.5px; color: #6b7280; line-height: 1.4; margin-top: 1px; }
   .ppf-tick { color: #1e3a8a; font-weight: 700; font-size: 12px; flex-shrink: 0; }
   .ppf-spacer { flex: 1; min-height: 12px; }
   .ppf-process { font-size: 12px; color: #6b7280; text-align: center; margin-bottom: 8px; }
@@ -105,27 +111,24 @@
         <div class="ppf-card-body">
           <div id="ppf-c-price" class="ppf-price">PKR 260,000</div>
           <div class="ppf-tagline">Complete PPF from bumper to bumper</div>
-          <div class="ppf-section-lbl">Panels Covered</div>
-          <div class="ppf-grid2">
-            <div class="ppf-item"><span class="ppf-dot"></span>Bonnet</div>
-            <div class="ppf-item"><span class="ppf-dot"></span>All Doors</div>
-            <div class="ppf-item"><span class="ppf-dot"></span>Front Fenders</div>
-            <div class="ppf-item"><span class="ppf-dot"></span>Trunk</div>
-            <div class="ppf-item"><span class="ppf-dot"></span>Rear Fenders</div>
-            <div class="ppf-item"><span class="ppf-dot"></span>Headlights</div>
-            <div class="ppf-item"><span class="ppf-dot"></span>Pillars</div>
-            <div class="ppf-item"><span class="ppf-dot"></span>Roof</div>
-            <div class="ppf-item"><span class="ppf-dot"></span>Front Bumper</div>
-            <div class="ppf-item"><span class="ppf-dot"></span>Back Bumper</div>
-          </div>
-          <div class="ppf-section-lbl">Complementary</div>
-          <div class="ppf-grid2">
-            <div class="ppf-item"><span class="ppf-tick">&#10003;</span>Int/Ext Detailing</div>
-            <div class="ppf-item"><span class="ppf-tick">&#10003;</span>Ceramic Coatings</div>
-            <div class="ppf-item"><span class="ppf-tick">&#10003;</span>GYEON Q&#178; View</div>
-            <div class="ppf-item"><span class="ppf-tick">&#10003;</span>GYEON Q&#178; Rims &amp; Tire</div>
-            <div class="ppf-item"><span class="ppf-tick">&#10003;</span>GYEON Q&#178; Leather Shield</div>
-            <div class="ppf-item"><span class="ppf-tick">&#10003;</span>GYEON Q&#178; Interior Trims</div>
+          <div class="ppf-included-title">What's included in PPF installation</div>
+          <div class="ppf-included-list">
+            <div class="ppf-inc-row">
+              <span class="ppf-inc-tick">&#10003;</span>
+              <div><div class="ppf-inc-name">Full Paint Coverage</div><div class="ppf-inc-sub">Bonnet, bumpers, fenders, doors, roof, pillars &amp; headlights</div></div>
+            </div>
+            <div class="ppf-inc-row">
+              <span class="ppf-inc-tick">&#10003;</span>
+              <div><div class="ppf-inc-name">Self-Healing Film</div><div class="ppf-inc-sub">Minor scratches disappear on their own with heat exposure</div></div>
+            </div>
+            <div class="ppf-inc-row">
+              <span class="ppf-inc-tick">&#10003;</span>
+              <div><div class="ppf-inc-name">UV &amp; Hydrophobic</div><div class="ppf-inc-sub">Blocks UV rays and repels water, dirt &amp; environmental fallout</div></div>
+            </div>
+            <div class="ppf-inc-row">
+              <span class="ppf-inc-tick">&#10003;</span>
+              <div><div class="ppf-inc-name">GYEON Coatings Included</div><div class="ppf-inc-sub">Ceramic top coat, rim, leather &amp; interior trim treatment</div></div>
+            </div>
           </div>
           <div class="ppf-spacer"></div>
           <div id="ppf-c-dur" class="ppf-process">&#9201; Process: 3 Working Days</div>
@@ -145,27 +148,24 @@
         <div class="ppf-card-body">
           <div id="ppf-p-price" class="ppf-price">PKR 290,000</div>
           <div class="ppf-tagline">Complete PPF from bumper to bumper</div>
-          <div class="ppf-section-lbl">Panels Covered</div>
-          <div class="ppf-grid2">
-            <div class="ppf-item"><span class="ppf-dot"></span>Bonnet</div>
-            <div class="ppf-item"><span class="ppf-dot"></span>All Doors</div>
-            <div class="ppf-item"><span class="ppf-dot"></span>Front Fenders</div>
-            <div class="ppf-item"><span class="ppf-dot"></span>Trunk</div>
-            <div class="ppf-item"><span class="ppf-dot"></span>Rear Fenders</div>
-            <div class="ppf-item"><span class="ppf-dot"></span>Headlights</div>
-            <div class="ppf-item"><span class="ppf-dot"></span>Pillars</div>
-            <div class="ppf-item"><span class="ppf-dot"></span>Roof</div>
-            <div class="ppf-item"><span class="ppf-dot"></span>Front Bumper</div>
-            <div class="ppf-item"><span class="ppf-dot"></span>Back Bumper</div>
-          </div>
-          <div class="ppf-section-lbl">Complementary</div>
-          <div class="ppf-grid2">
-            <div class="ppf-item"><span class="ppf-tick">&#10003;</span>Int/Ext Detailing</div>
-            <div class="ppf-item"><span class="ppf-tick">&#10003;</span>Ceramic Coatings</div>
-            <div class="ppf-item"><span class="ppf-tick">&#10003;</span>GYEON Q&#178; View</div>
-            <div class="ppf-item"><span class="ppf-tick">&#10003;</span>GYEON Q&#178; Rims &amp; Tire</div>
-            <div class="ppf-item"><span class="ppf-tick">&#10003;</span>GYEON Q&#178; Leather Shield</div>
-            <div class="ppf-item"><span class="ppf-tick">&#10003;</span>GYEON Q&#178; Interior Trims</div>
+          <div class="ppf-included-title">What's included in PPF installation</div>
+          <div class="ppf-included-list">
+            <div class="ppf-inc-row">
+              <span class="ppf-inc-tick">&#10003;</span>
+              <div><div class="ppf-inc-name">Full Paint Coverage</div><div class="ppf-inc-sub">Bonnet, bumpers, fenders, doors, roof, pillars &amp; headlights</div></div>
+            </div>
+            <div class="ppf-inc-row">
+              <span class="ppf-inc-tick">&#10003;</span>
+              <div><div class="ppf-inc-name">Self-Healing Film</div><div class="ppf-inc-sub">Minor scratches disappear on their own with heat exposure</div></div>
+            </div>
+            <div class="ppf-inc-row">
+              <span class="ppf-inc-tick">&#10003;</span>
+              <div><div class="ppf-inc-name">UV &amp; Hydrophobic</div><div class="ppf-inc-sub">Blocks UV rays and repels water, dirt &amp; environmental fallout</div></div>
+            </div>
+            <div class="ppf-inc-row">
+              <span class="ppf-inc-tick">&#10003;</span>
+              <div><div class="ppf-inc-name">GYEON Coatings Included</div><div class="ppf-inc-sub">Ceramic top coat, rim, leather &amp; interior trim treatment</div></div>
+            </div>
           </div>
           <div class="ppf-spacer"></div>
           <div id="ppf-p-dur" class="ppf-process">&#9201; Process: 3 Working Days</div>
