@@ -1,0 +1,41 @@
+{
+  "sections": {
+    "hero": {
+      "type": "ppf-v2-hero",
+      "settings": {}
+    },
+    "why": {
+      "type": "ppf-v2-why",
+      "settings": {}
+    },
+    "packages": {
+      "type": "ppf-packages",
+      "settings": {}
+    },
+    "compare": {
+      "type": "ppf-v2-compare",
+      "settings": {}
+    },
+    "process": {
+      "type": "ppf-v2-process",
+      "settings": {}
+    },
+    "faq": {
+      "type": "ppf-v2-faq",
+      "settings": {}
+    },
+    "cta": {
+      "type": "ppf-v2-cta",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "why",
+    "packages",
+    "compare",
+    "process",
+    "faq",
+    "cta"
+  ]
+}
