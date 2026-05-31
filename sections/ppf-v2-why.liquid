@@ -1,0 +1,80 @@
+<style>
+.ppf2-why { padding: 4rem 0; background: #fff; font-family: 'Nunito Sans', sans-serif; }
+.ppf2-why-inner { max-width: 1060px; margin: 0 auto; padding: 0 1.5rem; }
+.ppf2-sec-hdr { text-align: center; margin-bottom: 2.75rem; }
+.ppf2-sec-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1e3a8a; background: #dbeafe; padding: 0.3rem 1rem; border-radius: 100px; margin-bottom: 0.75rem; }
+.ppf2-sec-hdr h2 { font-size: 2rem; font-weight: 800; color: #0f172a; margin-bottom: 0.4rem; }
+.ppf2-sec-hdr p { color: #64748b; font-size: 1rem; max-width: 500px; margin: 0 auto; }
+
+.ppf2-why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+.ppf2-why-card {
+  padding: 1.75rem; border-radius: 14px; border: 1px solid #e2e8f0;
+  background: #f8fafc; transition: all 0.25s; cursor: default;
+}
+.ppf2-why-card:hover { border-color: #1e3a8a; background: #fff; box-shadow: 0 8px 24px rgba(30,58,138,0.08); transform: translateY(-3px); }
+.ppf2-why-icon { width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem; }
+.ppf2-why-card h3 { font-size: 1rem; font-weight: 700; color: #0f172a; margin-bottom: 0.4rem; }
+.ppf2-why-card p { font-size: 0.875rem; color: #64748b; line-height: 1.7; }
+
+@media (max-width: 768px) { .ppf2-why-grid { grid-template-columns: 1fr; } }
+</style>
+
+<section class="ppf2-why">
+  <div class="ppf2-why-inner">
+    <div class="ppf2-sec-hdr">
+      <div class="ppf2-sec-tag">{{ section.settings.tag | default: "Why PPF?" }}</div>
+      <h2>{{ section.settings.title | default: "Why Every Car Owner Needs PPF" }}</h2>
+      <p>{{ section.settings.subtitle | default: "Paint damage is permanent and expensive. PPF prevents it before it happens." }}</p>
+    </div>
+    <div class="ppf2-why-grid">
+      <div class="ppf2-why-card">
+        <div class="ppf2-why-icon" style="background:#dbeafe;">🪨</div>
+        <h3>{{ section.settings.c1_title | default: "Stone Chip Protection" }}</h3>
+        <p>{{ section.settings.c1_desc | default: "Karachi roads throw gravel and debris constantly. PPF absorbs impacts that would otherwise chip or crack your paint permanently." }}</p>
+      </div>
+      <div class="ppf2-why-card">
+        <div class="ppf2-why-icon" style="background:#dcfce7;">🔄</div>
+        <h3>{{ section.settings.c2_title | default: "Self-Healing Technology" }}</h3>
+        <p>{{ section.settings.c2_desc | default: "Light scratches and swirl marks heal on their own when exposed to heat. Your car always looks freshly polished without extra effort." }}</p>
+      </div>
+      <div class="ppf2-why-card">
+        <div class="ppf2-why-icon" style="background:#fef9c3;">☀️</div>
+        <h3>{{ section.settings.c3_title | default: "UV & Fading Protection" }}</h3>
+        <p>{{ section.settings.c3_desc | default: "Karachi's intense sun causes paint to fade and oxidize. PPF's UV blockers keep your color rich and vibrant for years." }}</p>
+      </div>
+      <div class="ppf2-why-card">
+        <div class="ppf2-why-icon" style="background:#fce7f3;">💰</div>
+        <h3>{{ section.settings.c4_title | default: "Preserves Resale Value" }}</h3>
+        <p>{{ section.settings.c4_desc | default: "A car with protected, undamaged paint sells for significantly more. PPF is an investment that pays back at resale time." }}</p>
+      </div>
+      <div class="ppf2-why-card">
+        <div class="ppf2-why-icon" style="background:#ede9fe;">💧</div>
+        <h3>{{ section.settings.c5_title | default: "Hydrophobic Surface" }}</h3>
+        <p>{{ section.settings.c5_desc | default: "Water, mud, bird droppings and tree sap slide right off the film. Your car stays cleaner longer and washes easier every time." }}</p>
+      </div>
+      <div class="ppf2-why-card">
+        <div class="ppf2-why-icon" style="background:#ffedd5;">🔬</div>
+        <h3>{{ section.settings.c6_title | default: "Chemical Resistance" }}</h3>
+        <p>{{ section.settings.c6_desc | default: "Acid rain, fuel spills, and industrial fallout are blocked by the film. Your original paint stays protected from chemical etching." }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PPF V2 Why PPF",
+  "settings": [
+    {"type":"text","id":"tag","label":"Tag","default":"Why PPF?"},
+    {"type":"text","id":"title","label":"Title","default":"Why Every Car Owner Needs PPF"},
+    {"type":"text","id":"subtitle","label":"Subtitle","default":"Paint damage is permanent and expensive. PPF prevents it before it happens."},
+    {"type":"header","content":"Card 1"},{"type":"text","id":"c1_title","label":"Title","default":"Stone Chip Protection"},{"type":"textarea","id":"c1_desc","label":"Description","default":"Karachi roads throw gravel and debris constantly. PPF absorbs impacts that would otherwise chip or crack your paint permanently."},
+    {"type":"header","content":"Card 2"},{"type":"text","id":"c2_title","label":"Title","default":"Self-Healing Technology"},{"type":"textarea","id":"c2_desc","label":"Description","default":"Light scratches and swirl marks heal on their own when exposed to heat. Your car always looks freshly polished without extra effort."},
+    {"type":"header","content":"Card 3"},{"type":"text","id":"c3_title","label":"Title","default":"UV & Fading Protection"},{"type":"textarea","id":"c3_desc","label":"Description","default":"Karachi's intense sun causes paint to fade and oxidize. PPF's UV blockers keep your color rich and vibrant for years."},
+    {"type":"header","content":"Card 4"},{"type":"text","id":"c4_title","label":"Title","default":"Preserves Resale Value"},{"type":"textarea","id":"c4_desc","label":"Description","default":"A car with protected, undamaged paint sells for significantly more. PPF is an investment that pays back at resale time."},
+    {"type":"header","content":"Card 5"},{"type":"text","id":"c5_title","label":"Title","default":"Hydrophobic Surface"},{"type":"textarea","id":"c5_desc","label":"Description","default":"Water, mud, bird droppings and tree sap slide right off the film. Your car stays cleaner longer and washes easier every time."},
+    {"type":"header","content":"Card 6"},{"type":"text","id":"c6_title","label":"Title","default":"Chemical Resistance"},{"type":"textarea","id":"c6_desc","label":"Description","default":"Acid rain, fuel spills, and industrial fallout are blocked by the film. Your original paint stays protected from chemical etching."}
+  ],
+  "presets":[{"name":"PPF V2 Why PPF"}]
+}
+{% endschema %}
