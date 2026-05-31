@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "services-page",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
