@@ -1,0 +1,302 @@
+<style>
+.rad-cppf { font-family: 'Nunito Sans', sans-serif; }
+
+/* Hero */
+.rad-cppf-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1e2e 50%, #1e3a8a 100%);
+  min-height: 580px; display: flex; align-items: center;
+  position: relative; overflow: hidden; color: #fff;
+}
+.rad-cppf-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 75% 50%, rgba(99,102,241,0.2) 0%, transparent 60%);
+}
+.rad-cppf-hero-inner { max-width: 960px; margin: 0 auto; padding: 4rem 1.5rem; position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+.rad-cppf-hero-badge { display: inline-block; background: rgba(99,102,241,0.3); border: 1px solid rgba(165,180,252,0.4); color: #a5b4fc; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.4rem 1.1rem; border-radius: 100px; margin-bottom: 1.25rem; }
+.rad-cppf-hero h1 { font-size: 2.75rem; font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
+.rad-cppf-hero h1 span { color: #818cf8; }
+.rad-cppf-hero p { font-size: 1rem; color: #cbd5e1; line-height: 1.75; margin-bottom: 2rem; }
+.rad-cppf-hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.rad-cppf-btn-primary { padding: 0.875rem 1.75rem; background: #6366f1; color: #fff; border-radius: 8px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+.rad-cppf-btn-primary:hover { background: #4f46e5; transform: translateY(-2px); }
+.rad-cppf-btn-wa { padding: 0.875rem 1.75rem; background: #10b981; color: #fff; border-radius: 8px; font-weight: 700; text-decoration: none; transition: all 0.2s; display: flex; align-items: center; gap: 0.5rem; }
+.rad-cppf-btn-wa:hover { background: #059669; }
+.rad-cppf-hero-visual { background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(30,58,138,0.4)); border-radius: 16px; padding: 2rem; border: 1px solid rgba(165,180,252,0.2); }
+.rad-cppf-hero-colors { display: grid; grid-template-columns: repeat(4,1fr); gap: 0.6rem; margin-bottom: 1rem; }
+.rad-color-swatch { height: 50px; border-radius: 8px; position: relative; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+.rad-color-swatch::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%); }
+.rad-cppf-hero-visual p { font-size: 0.8rem; color: #94a3b8; text-align: center; }
+
+/* Why Section */
+.rad-cppf-why { padding: 4rem 0; background: #fff; }
+.rad-cppf-why-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-cppf-section-hdr { text-align: center; margin-bottom: 2.5rem; }
+.rad-cppf-section-hdr h2 { font-size: 2rem; font-weight: 800; color: #1f2937; margin-bottom: 0.5rem; }
+.rad-cppf-section-hdr p { color: #6b7280; }
+.rad-cppf-why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+.rad-cppf-why-card { padding: 1.75rem; border-radius: 12px; border: 1px solid #e5e7eb; text-align: center; transition: all 0.2s; }
+.rad-cppf-why-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-3px); border-color: #6366f1; }
+.rad-cppf-why-icon { width: 56px; height: 56px; border-radius: 12px; background: linear-gradient(135deg, #ede9fe, #ddd6fe); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 1rem; }
+.rad-cppf-why-card h3 { font-size: 0.95rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem; }
+.rad-cppf-why-card p { font-size: 0.875rem; color: #6b7280; line-height: 1.65; }
+
+/* Colors Gallery */
+.rad-cppf-gallery { padding: 4rem 0; background: #0f172a; }
+.rad-cppf-gallery-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-cppf-gallery .rad-cppf-section-hdr h2 { color: #fff; }
+.rad-cppf-gallery .rad-cppf-section-hdr p { color: #94a3b8; }
+.rad-cppf-colors-grid { display: grid; grid-template-columns: repeat(6,1fr); gap: 1rem; }
+.rad-color-card { border-radius: 12px; overflow: hidden; cursor: pointer; transition: transform 0.2s; }
+.rad-color-card:hover { transform: scale(1.05); }
+.rad-color-card-swatch { height: 80px; }
+.rad-color-card-label { background: #1e293b; padding: 0.5rem; text-align: center; font-size: 0.7rem; color: #94a3b8; font-weight: 600; }
+
+/* Process */
+.rad-cppf-process { padding: 4rem 0; background: #f8fafc; }
+.rad-cppf-process-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-cppf-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; position: relative; }
+.rad-cppf-steps::before { content: ''; position: absolute; top: 2rem; left: 12%; right: 12%; height: 2px; background: linear-gradient(to right, #6366f1, #1e3a8a); z-index: 0; }
+.rad-cppf-step { text-align: center; position: relative; z-index: 1; }
+.rad-cppf-step-num { width: 4rem; height: 4rem; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff; font-size: 1.25rem; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: 0 4px 12px rgba(99,102,241,0.4); }
+.rad-cppf-step h3 { font-size: 0.9rem; font-weight: 700; color: #1f2937; margin-bottom: 0.4rem; }
+.rad-cppf-step p { font-size: 0.8rem; color: #6b7280; line-height: 1.55; }
+
+/* Comparison */
+.rad-cppf-vs { padding: 4rem 0; background: #fff; }
+.rad-cppf-vs-inner { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-cppf-vs-table { border-radius: 14px; overflow: hidden; border: 1px solid #e5e7eb; }
+.rad-cppf-vs-hdr { display: grid; grid-template-columns: 2fr 1fr 1fr; background: #1e3a8a; color: #fff; padding: 1rem 1.25rem; font-weight: 700; font-size: 0.9rem; }
+.rad-cppf-vs-row { display: grid; grid-template-columns: 2fr 1fr 1fr; padding: 0.85rem 1.25rem; border-bottom: 1px solid #f1f5f9; font-size: 0.875rem; align-items: center; }
+.rad-cppf-vs-row:last-child { border-bottom: none; }
+.rad-cppf-vs-row:nth-child(even) { background: #f8fafc; }
+.rad-cppf-vs-row span:first-child { color: #1f2937; font-weight: 600; }
+.rad-cppf-vs-row span:not(:first-child) { text-align: center; }
+.rad-check { color: #10b981; font-weight: 700; }
+.rad-cross { color: #ef4444; }
+
+/* Pricing */
+.rad-cppf-pricing { padding: 4rem 0; background: #f8fafc; }
+.rad-cppf-pricing-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-cppf-price-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem; }
+.rad-cppf-price-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 1.5rem; text-align: center; transition: all 0.2s; }
+.rad-cppf-price-card:hover { box-shadow: 0 8px 24px rgba(99,102,241,0.12); border-color: #6366f1; transform: translateY(-3px); }
+.rad-cppf-price-vtype { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #6366f1; margin-bottom: 0.5rem; }
+.rad-cppf-price-car { font-size: 0.8rem; color: #9ca3af; margin-bottom: 1rem; }
+.rad-cppf-price-amount { font-size: 1.75rem; font-weight: 800; color: #1f2937; margin-bottom: 0.25rem; }
+.rad-cppf-price-note { font-size: 0.75rem; color: #6b7280; margin-bottom: 1.25rem; }
+.rad-cppf-price-btn { display: block; padding: 0.65rem; background: #6366f1; color: #fff; border-radius: 8px; font-weight: 700; font-size: 0.85rem; text-decoration: none; transition: background 0.2s; }
+.rad-cppf-price-btn:hover { background: #4f46e5; }
+
+/* FAQ */
+.rad-cppf-faq { padding: 4rem 0; background: #fff; }
+.rad-cppf-faq-inner { max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-faq-item { border: 1px solid #e5e7eb; border-radius: 10px; margin-bottom: 0.75rem; overflow: hidden; }
+.rad-faq-q { padding: 1rem 1.25rem; font-weight: 700; font-size: 0.95rem; color: #1f2937; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.rad-faq-q:hover { background: #f8fafc; }
+.rad-faq-a { padding: 0 1.25rem 1rem; font-size: 0.875rem; color: #6b7280; line-height: 1.7; display: none; }
+.rad-faq-item.open .rad-faq-a { display: block; }
+.rad-faq-item.open .rad-faq-q { color: #6366f1; }
+.rad-faq-chevron { transition: transform 0.2s; }
+.rad-faq-item.open .rad-faq-chevron { transform: rotate(180deg); }
+
+/* CTA */
+.rad-cppf-cta { padding: 4rem 0; background: linear-gradient(135deg, #1e1e2e, #1e3a8a); text-align: center; color: #fff; }
+.rad-cppf-cta-inner { max-width: 600px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-cppf-cta h2 { font-size: 2rem; font-weight: 800; margin-bottom: 0.75rem; }
+.rad-cppf-cta p { color: #cbd5e1; margin-bottom: 2rem; }
+.rad-cppf-cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.rad-cppf-cta-btn1 { padding: 0.875rem 2rem; background: #6366f1; color: #fff; border-radius: 8px; font-weight: 700; text-decoration: none; }
+.rad-cppf-cta-btn1:hover { background: #4f46e5; }
+.rad-cppf-cta-btn2 { padding: 0.875rem 2rem; background: #10b981; color: #fff; border-radius: 8px; font-weight: 700; text-decoration: none; }
+
+@media (max-width: 768px) {
+  .rad-cppf-hero-inner { grid-template-columns: 1fr; }
+  .rad-cppf-hero-visual { display: none; }
+  .rad-cppf-hero h1 { font-size: 2rem; }
+  .rad-cppf-why-grid { grid-template-columns: 1fr; }
+  .rad-cppf-colors-grid { grid-template-columns: repeat(3,1fr); }
+  .rad-cppf-steps { grid-template-columns: repeat(2,1fr); }
+  .rad-cppf-steps::before { display: none; }
+  .rad-cppf-price-grid { grid-template-columns: repeat(2,1fr); }
+}
+</style>
+
+<div class="rad-cppf">
+
+  <!-- Hero -->
+  <div class="rad-cppf-hero">
+    <div class="rad-cppf-hero-inner">
+      <div>
+        <div class="rad-cppf-hero-badge">Color Paint Protection Film</div>
+        <h1>Protect Your Car in <span>Any Color</span> You Love</h1>
+        <p>Color PPF is the ultimate upgrade — premium paint protection film available in dozens of stunning colors. Change your car's look while protecting the original paint underneath. Permanent shine. Zero compromise.</p>
+        <div class="rad-cppf-hero-btns">
+          <a href="/pages/ppf-booking" class="rad-cppf-btn-primary">Book Consultation</a>
+          <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20to%20know%20about%20Color%20PPF" target="_blank" class="rad-cppf-btn-wa">💬 Ask on WhatsApp</a>
+        </div>
+      </div>
+      <div class="rad-cppf-hero-visual">
+        <div class="rad-cppf-hero-colors">
+          <div class="rad-color-swatch" style="background:linear-gradient(135deg,#1e1b4b,#312e81);"></div>
+          <div class="rad-color-swatch" style="background:linear-gradient(135deg,#7f1d1d,#991b1b);"></div>
+          <div class="rad-color-swatch" style="background:linear-gradient(135deg,#064e3b,#065f46);"></div>
+          <div class="rad-color-swatch" style="background:linear-gradient(135deg,#1e3a8a,#1d4ed8);"></div>
+          <div class="rad-color-swatch" style="background:linear-gradient(135deg,#18181b,#27272a);"></div>
+          <div class="rad-color-swatch" style="background:linear-gradient(135deg,#6b21a8,#7e22ce);"></div>
+          <div class="rad-color-swatch" style="background:linear-gradient(135deg,#c2410c,#ea580c);"></div>
+          <div class="rad-color-swatch" style="background:linear-gradient(135deg,#d4d4d8,#a1a1aa);"></div>
+        </div>
+        <p>50+ premium colors available — Matte, Gloss, Satin & Chrome</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why Color PPF -->
+  <div class="rad-cppf-why">
+    <div class="rad-cppf-why-inner">
+      <div class="rad-cppf-section-hdr">
+        <h2>Why Choose Color PPF?</h2>
+        <p>The smartest way to customize and protect your car simultaneously</p>
+      </div>
+      <div class="rad-cppf-why-grid">
+        <div class="rad-cppf-why-card"><div class="rad-cppf-why-icon">🎨</div><h3>Transform the Look</h3><p>Get any color or finish you've always dreamed of — without the commitment of a full respray. Fully reversible at any time.</p></div>
+        <div class="rad-cppf-why-card"><div class="rad-cppf-why-icon">🛡</div><h3>Protect Original Paint</h3><p>NAR Color PPF shields your factory paint from stone chips, scratches, UV rays, and environmental damage — all while looking stunning.</p></div>
+        <div class="rad-cppf-why-card"><div class="rad-cppf-why-icon">💎</div><h3>Self-Healing Technology</h3><p>Minor scratches disappear on their own with heat exposure. Your car always looks freshly detailed without constant maintenance.</p></div>
+        <div class="rad-cppf-why-card"><div class="rad-cppf-why-icon">📈</div><h3>Preserves Resale Value</h3><p>Unlike paint, Color PPF can be removed cleanly. Your original factory paint remains pristine, maximizing your car's future resale value.</p></div>
+        <div class="rad-cppf-why-card"><div class="rad-cppf-why-icon">⚡</div><h3>Faster Than a Respray</h3><p>Full Color PPF installation takes 3–5 days versus weeks for a quality paint job. Get back on the road faster with better results.</p></div>
+        <div class="rad-cppf-why-card"><div class="rad-cppf-why-icon">🌡</div><h3>Karachi Climate Ready</h3><p>Built to handle extreme heat, UV radiation, and the harsh conditions of Pakistan's roads and weather year-round.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Color Options -->
+  <div class="rad-cppf-gallery">
+    <div class="rad-cppf-gallery-inner">
+      <div class="rad-cppf-section-hdr">
+        <h2>Explore Our Color Range</h2>
+        <p>50+ premium finishes — Matte, Gloss, Satin, Metallic & Chrome</p>
+      </div>
+      <div class="rad-cppf-colors-grid">
+        <div class="rad-color-card"><div class="rad-color-card-swatch" style="background:linear-gradient(135deg,#18181b,#09090b);"></div><div class="rad-color-card-label">Stealth Black</div></div>
+        <div class="rad-color-card"><div class="rad-color-card-swatch" style="background:linear-gradient(135deg,#e2e8f0,#cbd5e1);"></div><div class="rad-color-card-label">Arctic White</div></div>
+        <div class="rad-color-card"><div class="rad-color-card-swatch" style="background:linear-gradient(135deg,#1e3a8a,#1d4ed8);"></div><div class="rad-color-card-label">Ocean Blue</div></div>
+        <div class="rad-color-card"><div class="rad-color-card-swatch" style="background:linear-gradient(135deg,#7f1d1d,#b91c1c);"></div><div class="rad-color-card-label">Crimson Red</div></div>
+        <div class="rad-color-card"><div class="rad-color-card-swatch" style="background:linear-gradient(135deg,#064e3b,#047857);"></div><div class="rad-color-card-label">Forest Green</div></div>
+        <div class="rad-color-card"><div class="rad-color-card-swatch" style="background:linear-gradient(135deg,#6b21a8,#9333ea);"></div><div class="rad-color-card-label">Royal Purple</div></div>
+        <div class="rad-color-card"><div class="rad-color-card-swatch" style="background:linear-gradient(135deg,#92400e,#b45309);"></div><div class="rad-color-card-label">Cognac Brown</div></div>
+        <div class="rad-color-card"><div class="rad-color-card-swatch" style="background:linear-gradient(135deg,#c2410c,#ea580c);"></div><div class="rad-color-card-label">Burnt Orange</div></div>
+        <div class="rad-color-card"><div class="rad-color-card-swatch" style="background:linear-gradient(135deg,#1e293b,#334155);"></div><div class="rad-color-card-label">Gunmetal Grey</div></div>
+        <div class="rad-color-card"><div class="rad-color-card-swatch" style="background:linear-gradient(135deg,#713f12,#92400e);"></div><div class="rad-color-card-label">Bronze Matte</div></div>
+        <div class="rad-color-card"><div class="rad-color-card-swatch" style="background:linear-gradient(135deg,#d4d4d8,#a1a1aa);"></div><div class="rad-color-card-label">Satin Silver</div></div>
+        <div class="rad-color-card"><div class="rad-color-card-swatch" style="background:linear-gradient(135deg,#1e1b4b,#4338ca);"></div><div class="rad-color-card-label">Midnight Navy</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Process -->
+  <div class="rad-cppf-process">
+    <div class="rad-cppf-process-inner">
+      <div class="rad-cppf-section-hdr">
+        <h2>Our Installation Process</h2>
+        <p>Professional, precise, and perfection-driven</p>
+      </div>
+      <div class="rad-cppf-steps">
+        <div class="rad-cppf-step"><div class="rad-cppf-step-num">1</div><h3>Consultation</h3><p>Choose your color, finish, and coverage. We advise on the best option for your car.</p></div>
+        <div class="rad-cppf-step"><div class="rad-cppf-step-num">2</div><h3>Paint Preparation</h3><p>Full surface decontamination and paint correction to ensure a perfect base.</p></div>
+        <div class="rad-cppf-step"><div class="rad-cppf-step-num">3</div><h3>PPF Installation</h3><p>Precision computer-cut panels installed by our certified technicians in a dust-free environment.</p></div>
+        <div class="rad-cppf-step"><div class="rad-cppf-step-num">4</div><h3>Quality Inspection</h3><p>Full panel-by-panel inspection before delivery. We don't hand over the car until it's perfect.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Color PPF vs Paint -->
+  <div class="rad-cppf-vs">
+    <div class="rad-cppf-vs-inner">
+      <div class="rad-cppf-section-hdr">
+        <h2>Color PPF vs Traditional Respray</h2>
+        <p>See why Color PPF is the smarter choice</p>
+      </div>
+      <div class="rad-cppf-vs-table">
+        <div class="rad-cppf-vs-hdr"><span>Feature</span><span style="text-align:center;">Color PPF</span><span style="text-align:center;">Paint Respray</span></div>
+        <div class="rad-cppf-vs-row"><span>Protects Original Paint</span><span class="rad-check">✓</span><span class="rad-cross">✗</span></div>
+        <div class="rad-cppf-vs-row"><span>Reversible / Removable</span><span class="rad-check">✓</span><span class="rad-cross">✗</span></div>
+        <div class="rad-cppf-vs-row"><span>Self-Healing Technology</span><span class="rad-check">✓</span><span class="rad-cross">✗</span></div>
+        <div class="rad-cppf-vs-row"><span>Preserves Resale Value</span><span class="rad-check">✓</span><span class="rad-cross">✗</span></div>
+        <div class="rad-cppf-vs-row"><span>50+ Color Options</span><span class="rad-check">✓</span><span class="rad-cross">✗</span></div>
+        <div class="rad-cppf-vs-row"><span>Faster Completion</span><span class="rad-check">3–5 Days</span><span style="text-align:center;color:#6b7280;">2–4 Weeks</span></div>
+        <div class="rad-cppf-vs-row"><span>Warranty</span><span class="rad-check">Up to 7 Years</span><span style="text-align:center;color:#6b7280;">Varies</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pricing -->
+  <div class="rad-cppf-pricing">
+    <div class="rad-cppf-pricing-inner">
+      <div class="rad-cppf-section-hdr">
+        <h2>Color PPF Pricing</h2>
+        <p>Starting prices for full exterior Color PPF installation</p>
+      </div>
+      <div class="rad-cppf-price-grid">
+        <div class="rad-cppf-price-card"><div class="rad-cppf-price-vtype">Hatchback</div><div class="rad-cppf-price-car">Swift, Mira, Cultus</div><div class="rad-cppf-price-amount">PKR 290K+</div><div class="rad-cppf-price-note">Starting price</div><a href="/pages/ppf-booking" class="rad-cppf-price-btn">Get Quote</a></div>
+        <div class="rad-cppf-price-card"><div class="rad-cppf-price-vtype">Sedan</div><div class="rad-cppf-price-car">Corolla, Civic, City</div><div class="rad-cppf-price-amount">PKR 330K+</div><div class="rad-cppf-price-note">Starting price</div><a href="/pages/ppf-booking" class="rad-cppf-price-btn">Get Quote</a></div>
+        <div class="rad-cppf-price-card"><div class="rad-cppf-price-vtype">SUV</div><div class="rad-cppf-price-car">Sportage, Tucson, Haval</div><div class="rad-cppf-price-amount">PKR 380K+</div><div class="rad-cppf-price-note">Starting price</div><a href="/pages/ppf-booking" class="rad-cppf-price-btn">Get Quote</a></div>
+        <div class="rad-cppf-price-card"><div class="rad-cppf-price-vtype">XL SUV</div><div class="rad-cppf-price-car">Prado, Fortuner, LC</div><div class="rad-cppf-price-amount">PKR 420K+</div><div class="rad-cppf-price-note">Starting price</div><a href="/pages/ppf-booking" class="rad-cppf-price-btn">Get Quote</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="rad-cppf-faq">
+    <div class="rad-cppf-faq-inner">
+      <div class="rad-cppf-section-hdr"><h2>Frequently Asked Questions</h2><p>Everything you need to know about Color PPF</p></div>
+      <div class="rad-faq-item">
+        <div class="rad-faq-q" onclick="toggleFaq(this)">How long does Color PPF last? <span class="rad-faq-chevron">▼</span></div>
+        <div class="rad-faq-a">NAR Color PPF comes with a manufacturer warranty of 5–7 years depending on the package. With proper care, it can last even longer. The film is UV-stabilized to prevent fading or yellowing.</div>
+      </div>
+      <div class="rad-faq-item">
+        <div class="rad-faq-q" onclick="toggleFaq(this)">Can I remove Color PPF later? <span class="rad-faq-chevron">▼</span></div>
+        <div class="rad-faq-a">Yes! Color PPF is completely removable without damaging your original factory paint. Many owners change colors every few years for a fresh look while keeping their original paint pristine.</div>
+      </div>
+      <div class="rad-faq-item">
+        <div class="rad-faq-q" onclick="toggleFaq(this)">How do I maintain Color PPF? <span class="rad-faq-chevron">▼</span></div>
+        <div class="rad-faq-a">Color PPF is very low maintenance. Regular hand washing or touchless car wash is recommended. Avoid high-pressure jets directly on the edges. We recommend a GYEON Ceramic top coat for added gloss and protection.</div>
+      </div>
+      <div class="rad-faq-item">
+        <div class="rad-faq-q" onclick="toggleFaq(this)">What finishes are available? <span class="rad-faq-chevron">▼</span></div>
+        <div class="rad-faq-a">We offer Gloss, Matte, Satin, Metallic, and specialized finishes. Each has a unique look — gloss gives a deep shine, matte gives a flat premium look, and satin sits beautifully in between.</div>
+      </div>
+      <div class="rad-faq-item">
+        <div class="rad-faq-q" onclick="toggleFaq(this)">How long does installation take? <span class="rad-faq-chevron">▼</span></div>
+        <div class="rad-faq-a">Full exterior Color PPF installation typically takes 3–5 working days depending on the vehicle size and coverage area. We keep you updated throughout the process.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="rad-cppf-cta">
+    <div class="rad-cppf-cta-inner">
+      <h2>Ready to Transform Your Car?</h2>
+      <p>Book a free consultation today. Tell us your dream color and we'll make it happen.</p>
+      <div class="rad-cppf-cta-btns">
+        <a href="/pages/ppf-booking" class="rad-cppf-cta-btn1">Book Free Consultation</a>
+        <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20to%20know%20about%20Color%20PPF" target="_blank" class="rad-cppf-cta-btn2">💬 WhatsApp Us</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function toggleFaq(el) {
+  var item = el.parentElement;
+  item.classList.toggle('open');
+}
+</script>
+
+{% schema %}
+{
+  "name": "Color PPF",
+  "settings": [],
+  "presets": [{"name": "Color PPF"}]
+}
+{% endschema %}
