@@ -1,41 +1,105 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "hero": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "ppf_v2_hero_n7R34x": {
       "type": "ppf-v2-hero",
-      "settings": {}
+      "name": "PPF V2 Hero",
+      "settings": {
+        "eyebrow": "Karachi's #1 PPF Studio",
+        "title": "Protect Your Car's Paint",
+        "title_blue": "For Years to Come",
+        "subtitle": "NAR certified Paint Protection Film — invisible, self-healing, and backed by a 5-7 year warranty. The smartest investment for your car.",
+        "btn1_text": "Book Free Consultation",
+        "btn1_url": "",
+        "stat1_num": "500+",
+        "stat1_lbl": "Cars Protected",
+        "stat2_num": "7 Yr",
+        "stat2_lbl": "Max Warranty",
+        "stat3_num": "4.9★",
+        "stat3_lbl": "Google Rating"
+      }
     },
-    "why": {
-      "type": "ppf-v2-why",
-      "settings": {}
-    },
-    "pricing": {
-      "type": "ppf-v2-pricing",
-      "settings": {}
-    },
-    "compare": {
+    "ppf_v2_compare_eVKAEQ": {
       "type": "ppf-v2-compare",
-      "settings": {}
+      "name": "PPF V2 Comparison",
+      "settings": {
+        "tag": "Comparison",
+        "title": "PPF vs Paint Correction vs Doing Nothing",
+        "subtitle": "See why PPF is the only long-term solution for your car's paint"
+      }
     },
-    "process": {
+    "ppf_v2_process_zzPard": {
       "type": "ppf-v2-process",
-      "settings": {}
+      "name": "PPF V2 Process",
+      "settings": {
+        "tag": "How We Work",
+        "title": "Our Installation Process",
+        "subtitle": "Every car gets the same meticulous 5-step treatment",
+        "s1_title": "Consultation",
+        "s1_desc": "We assess your car, recommend a package, and answer every question you have.",
+        "s2_title": "Decontamination",
+        "s2_desc": "Full wash, iron decontamination, and clay bar to remove all surface contaminants.",
+        "s3_title": "Precision Cutting",
+        "s3_desc": "Computer-cut panels sized exactly to your car model. No guesswork, no gaps.",
+        "s4_title": "Installation",
+        "s4_desc": "Applied in our dust-free bay by NAR-certified technicians using wet-install technique.",
+        "s5_title": "Quality Sign-Off",
+        "s5_desc": "Panel-by-panel inspection under studio lighting before we hand the car back to you.",
+        "note": "Typical completion time:",
+        "note_detail": "3 working days for full exterior. We'll update you at every stage."
+      }
     },
-    "faq": {
-      "type": "ppf-v2-faq",
-      "settings": {}
+    "ppf_v2_why_R49Lzn": {
+      "type": "ppf-v2-why",
+      "name": "PPF V2 Why PPF",
+      "settings": {
+        "tag": "Why PPF?",
+        "title": "Why Every Car Owner Needs PPF",
+        "subtitle": "Paint damage is permanent and expensive. PPF prevents it before it happens.",
+        "c1_title": "Stone Chip Protection",
+        "c1_desc": "Karachi roads throw gravel and debris constantly. PPF absorbs impacts that would otherwise chip or crack your paint permanently.",
+        "c2_title": "Self-Healing Technology",
+        "c2_desc": "Light scratches and swirl marks heal on their own when exposed to heat. Your car always looks freshly polished without extra effort.",
+        "c3_title": "UV & Fading Protection",
+        "c3_desc": "Karachi's intense sun causes paint to fade and oxidize. PPF's UV blockers keep your color rich and vibrant for years.",
+        "c4_title": "Preserves Resale Value",
+        "c4_desc": "A car with protected, undamaged paint sells for significantly more. PPF is an investment that pays back at resale time.",
+        "c5_title": "Hydrophobic Surface",
+        "c5_desc": "Water, mud, bird droppings and tree sap slide right off the film. Your car stays cleaner longer and washes easier every time.",
+        "c6_title": "Chemical Resistance",
+        "c6_desc": "Acid rain, fuel spills, and industrial fallout are blocked by the film. Your original paint stays protected from chemical etching."
+      }
     },
-    "cta": {
+    "ppf_v2_cta_Ty8KKG": {
       "type": "ppf-v2-cta",
-      "settings": {}
+      "name": "PPF V2 CTA",
+      "settings": {
+        "title": "Ready to Protect Your Car?",
+        "subtitle": "Book your free consultation today. Our team will walk you through the best package for your car and budget — with zero pressure.",
+        "btn1_text": "Book My Appointment",
+        "btn1_url": ""
+      }
     }
   },
   "order": [
-    "hero",
-    "why",
-    "pricing",
-    "compare",
-    "process",
-    "faq",
-    "cta"
+    "main",
+    "ppf_v2_hero_n7R34x",
+    "ppf_v2_compare_eVKAEQ",
+    "ppf_v2_process_zzPard",
+    "ppf_v2_why_R49Lzn",
+    "ppf_v2_cta_Ty8KKG"
   ]
 }
