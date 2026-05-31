@@ -18,12 +18,31 @@
       "type": "ppf-hero",
       "name": "PPF Hero",
       "settings": {
+        "bg_image": "shopify://shop_images/SaveVid.Net_465833634_902958794742584_1281674818462951030_n.jpg",
         "tag": "PPF Service in karachi",
         "title": "Paint Protection Film (PPF)",
-        "subtitle": "Ultimate Protection for Your Car's Paint",
-        "desc": "Invisible shield technology that protects against scratches, chips, UV damage, and environmental contaminants.",
+        "subtitle": "Protect for Your Car's Paint for Years",
+        "desc": "NAR PPF Paint Protection Film — invisible, self-healing, and backed by a 5-7 year warranty. The smartest investment for your car.",
         "btn1_text": "View Pricing",
         "btn2_text": "Book Now"
+      }
+    },
+    "ppf_v2_hero_3kL9By": {
+      "type": "ppf-v2-hero",
+      "name": "PPF V2 Hero",
+      "settings": {
+        "eyebrow": "Karachi's #1 PPF Studio",
+        "title": "Protect Your Car's Paint",
+        "title_blue": "For Years to Come",
+        "subtitle": "NAR certified Paint Protection Film — invisible, self-healing, and backed by a 5-7 year warranty. The smartest investment for your car.",
+        "btn1_text": "Book Free Consultation",
+        "btn1_url": "",
+        "stat1_num": "500+",
+        "stat1_lbl": "Cars Protected",
+        "stat2_num": "7 Yr",
+        "stat2_lbl": "Max Warranty",
+        "stat3_num": "4.9★",
+        "stat3_lbl": "Google Rating"
       }
     },
     "ppf_benefits_fjiLPD": {
@@ -40,6 +59,12 @@
       "settings": {
         "title": "Choose Your Vehicle Type",
         "subtitle": "Select your vehicle to see accurate pricing",
+        "classic_name": "NAR Classic PPF",
+        "classic_mil": "8.0 mil thickness",
+        "classic_warranty": "5 Years Warranty",
+        "premium_name": "NAR Premium PPF",
+        "premium_mil": "8.5 mil thickness",
+        "premium_warranty": "7 Years Warranty",
         "p_hatchback_classic": 260000,
         "p_hatchback_premium": 290000,
         "dur_hatchback": "3 Working Days",
@@ -86,6 +111,7 @@
   "order": [
     "main",
     "ppf_hero_EDQVn7",
+    "ppf_v2_hero_3kL9By",
     "ppf_benefits_fjiLPD",
     "ppf_packages_UJLGPt",
     "process_3VXAYN",
