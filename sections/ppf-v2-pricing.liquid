@@ -1,0 +1,314 @@
+<style>
+.ppf2-pricing { padding: 3rem 0 4rem; background: #f8fafc; font-family: 'Nunito Sans', sans-serif; }
+.ppf2-pricing-inner { max-width: 980px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* Header */
+.ppf2-pricing-hdr { text-align: center; margin-bottom: 2rem; }
+.ppf2-pricing-hdr h2 { font-size: 2rem; font-weight: 800; color: #0f172a; margin-bottom: 0.4rem; font-family: 'Nunito Sans', sans-serif; }
+.ppf2-pricing-hdr p { color: #64748b; font-size: 1rem; }
+
+/* Vehicle tabs */
+.ppf2-tabs-wrap { display: flex; justify-content: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+.ppf2-tab {
+  padding: 0.65rem 1.6rem; border-radius: 8px; font-weight: 700;
+  font-size: 0.9rem; cursor: pointer; border: 2px solid #e2e8f0;
+  background: #fff; color: #374151; font-family: 'Nunito Sans', sans-serif;
+  transition: all 0.22s ease; box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.ppf2-tab:hover { border-color: #1e3a8a; color: #1e3a8a; transform: translateY(-3px); box-shadow: 0 6px 16px rgba(30,58,138,0.12); }
+.ppf2-tab.active { background: #1e3a8a; border-color: #1e3a8a; color: #fff; transform: translateY(-3px); box-shadow: 0 6px 16px rgba(30,58,138,0.25); }
+
+/* Package label */
+.ppf2-pkg-label { text-align: center; margin-bottom: 1.25rem; }
+.ppf2-pkg-label h3 { font-size: 1.15rem; font-weight: 700; color: #1f2937; font-family: 'Nunito Sans', sans-serif; }
+.ppf2-pkg-label h3 span { color: #1e3a8a; }
+.ppf2-pkg-label em { font-size: 0.875rem; color: #94a3b8; font-weight: 400; font-style: italic; }
+
+/* Cards grid */
+.ppf2-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 0.5rem; }
+
+/* Card base */
+.ppf2-pkg-card { background: #fff; border-radius: 16px; overflow: visible; display: flex; flex-direction: column; box-shadow: 0 2px 10px rgba(0,0,0,0.06); transition: box-shadow 0.2s; border: 1.5px solid #e2e8f0; position: relative; }
+.ppf2-pkg-card:hover { box-shadow: 0 10px 28px rgba(0,0,0,0.10); }
+.ppf2-pkg-card-classic { border: 2px solid #0C447C; }
+
+/* Most popular badge */
+.ppf2-popular { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #10b981; color: #fff; font-size: 11px; font-weight: 700; padding: 4px 18px; border-radius: 100px; white-space: nowrap; letter-spacing: 0.06em; box-shadow: 0 3px 10px rgba(16,185,129,0.35); z-index: 2; }
+
+/* Card header */
+.ppf2-pkg-hdr { padding: 1.4rem 1.5rem 1.1rem; text-align: center; border-radius: 14px 14px 0 0; }
+.ppf2-pkg-hdr-blue { background: #0C447C; }
+.ppf2-pkg-hdr-dark { background: #2C2C2A; }
+.ppf2-pkg-name { font-size: 17px; font-weight: 800; color: #fff; margin-bottom: 9px; margin-top: 10px; font-family: 'Nunito Sans', sans-serif; }
+.ppf2-pkg-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+.ppf2-pkg-tag-dim { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 100px; background: rgba(255,255,255,0.15); color: #fff; }
+.ppf2-pkg-tag-wt-blue { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 100px; background: rgba(255,255,255,0.9); color: #0C447C; }
+.ppf2-pkg-tag-wt-dark { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 100px; background: rgba(255,255,255,0.9); color: #2C2C2A; }
+
+/* Card body */
+.ppf2-pkg-body { padding: 1.25rem 1.5rem 1.25rem; flex: 1; display: flex; flex-direction: column; }
+.ppf2-pkg-price { font-size: 28px; font-weight: 700; color: #111827; text-align: center; margin-bottom: 2px; }
+.ppf2-pkg-tagline { font-size: 12.5px; color: #6b7280; text-align: center; margin-bottom: 1.1rem; }
+
+.ppf2-feat-lbl { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b; padding-bottom: 5px; border-bottom: 1px solid #e5e7eb; margin-bottom: 8px; }
+.ppf2-feat-grid { display: grid; grid-template-columns: 1fr 1fr; row-gap: 3px; column-gap: 8px; margin-bottom: 10px; }
+.ppf2-feat-item { display: flex; align-items: center; gap: 5px; font-size: 13px; color: #374151; padding: 1px 0; }
+.ppf2-feat-dot { width: 5px; height: 5px; background: #1e3a8a; border-radius: 50%; flex-shrink: 0; display: inline-block; }
+.ppf2-feat-tick { color: #1e3a8a; font-weight: 700; font-size: 12px; flex-shrink: 0; }
+
+.ppf2-pkg-spacer { flex: 1; min-height: 12px; }
+.ppf2-pkg-process { font-size: 12px; color: #6b7280; text-align: center; margin-bottom: 10px; }
+.ppf2-pkg-btn {
+  display: block; width: 100%; padding: 11px; border-radius: 8px;
+  font-size: 14px; font-weight: 700; background: #1e3a8a; color: #fff;
+  border: none; cursor: pointer; font-family: 'Nunito Sans', sans-serif;
+  transition: background 0.2s; text-align: center;
+}
+.ppf2-pkg-btn:hover { background: #1e40af; }
+
+@media (max-width: 640px) {
+  .ppf2-cards-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<!-- Car examples data attrs -->
+<div id="ppf2-vex"
+  data-hatchback="{{ section.settings.ex_hatchback }}"
+  data-sedan="{{ section.settings.ex_sedan }}"
+  data-suv="{{ section.settings.ex_suv }}"
+  data-xlsuv="{{ section.settings.ex_xlsuv }}"
+  style="display:none;"></div>
+
+<section class="ppf2-pricing" id="ppf2-pricing">
+  <div class="ppf2-pricing-inner">
+
+    <div class="ppf2-pricing-hdr">
+      <div style="display:inline-block;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#1e3a8a;background:#dbeafe;padding:0.3rem 1rem;border-radius:100px;margin-bottom:0.75rem;">
+        {%- if section.settings.tag != blank -%}{{ section.settings.tag }}{%- else -%}Transparent Pricing{%- endif -%}
+      </div>
+      <h2>
+        {%- if section.settings.title != blank -%}{{ section.settings.title }}{%- else -%}Choose Your Package{%- endif -%}
+      </h2>
+      <p>
+        {%- if section.settings.subtitle != blank -%}{{ section.settings.subtitle }}{%- else -%}Select your vehicle type to see exact pricing for your car{%- endif -%}
+      </p>
+    </div>
+
+    <!-- Vehicle tabs -->
+    <div class="ppf2-tabs-wrap">
+      <button class="ppf2-tab active" data-v="hatchback">Hatchback</button>
+      <button class="ppf2-tab" data-v="sedan">Sedan</button>
+      <button class="ppf2-tab" data-v="suv">SUV</button>
+      <button class="ppf2-tab" data-v="xl-suv">XL SUV</button>
+    </div>
+
+    <!-- Package label -->
+    <div class="ppf2-pkg-label">
+      <h3>Select Your Package For — <span id="ppf2-vlabel">Hatchback</span></h3>
+      <em id="ppf2-vex-lbl"></em>
+    </div>
+
+    <!-- Cards -->
+    <div class="ppf2-cards-grid">
+
+      <!-- CLASSIC -->
+      <div class="ppf2-pkg-card ppf2-pkg-card-classic">
+        <div class="ppf2-popular">MOST POPULAR</div>
+        <div class="ppf2-pkg-hdr ppf2-pkg-hdr-blue">
+          <div class="ppf2-pkg-name">{{ section.settings.classic_name | default: "NAR Classic PPF" }}</div>
+          <div class="ppf2-pkg-tags">
+            <span class="ppf2-pkg-tag-dim">{{ section.settings.classic_mil | default: "8.0 mil thickness" }}</span>
+            <span class="ppf2-pkg-tag-wt-blue">&#9733; {{ section.settings.classic_warranty | default: "5 Years Warranty" }}</span>
+          </div>
+        </div>
+        <div class="ppf2-pkg-body">
+          <div id="ppf2-c-price" class="ppf2-pkg-price">PKR 260,000</div>
+          <div class="ppf2-pkg-tagline">{{ section.settings.tagline | default: "Complete PPF from bumper to bumper" }}</div>
+          <div class="ppf2-feat-lbl">Panels Covered</div>
+          <div class="ppf2-feat-grid">
+            <div class="ppf2-feat-item"><span class="ppf2-feat-dot"></span>Bonnet</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-dot"></span>All Doors</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-dot"></span>Front Fenders</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-dot"></span>Trunk</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-dot"></span>Rear Fenders</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-dot"></span>Headlights</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-dot"></span>Pillars</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-dot"></span>Roof</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-dot"></span>Front Bumper</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-dot"></span>Back Bumper</div>
+          </div>
+          <div class="ppf2-feat-lbl">Complementary</div>
+          <div class="ppf2-feat-grid">
+            <div class="ppf2-feat-item"><span class="ppf2-feat-tick">&#10003;</span>Int/Ext Detailing</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-tick">&#10003;</span>Ceramic Coatings</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-tick">&#10003;</span>GYEON Q&#178; View</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-tick">&#10003;</span>GYEON Q&#178; Rims &amp; Tire</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-tick">&#10003;</span>GYEON Q&#178; Leather Shield</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-tick">&#10003;</span>GYEON Q&#178; Interior Trims</div>
+          </div>
+          <div class="ppf2-pkg-spacer"></div>
+          <div id="ppf2-c-dur" class="ppf2-pkg-process">&#9201; Process: 3 Working Days</div>
+          <button class="ppf2-pkg-btn" id="ppf2-c-btn">Select Package</button>
+        </div>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="ppf2-pkg-card">
+        <div class="ppf2-pkg-hdr ppf2-pkg-hdr-dark">
+          <div class="ppf2-pkg-name">{{ section.settings.premium_name | default: "NAR Premium PPF" }}</div>
+          <div class="ppf2-pkg-tags">
+            <span class="ppf2-pkg-tag-dim">{{ section.settings.premium_mil | default: "8.5 mil thickness" }}</span>
+            <span class="ppf2-pkg-tag-wt-dark">&#9733; {{ section.settings.premium_warranty | default: "7 Years Warranty" }}</span>
+          </div>
+        </div>
+        <div class="ppf2-pkg-body">
+          <div id="ppf2-p-price" class="ppf2-pkg-price">PKR 290,000</div>
+          <div class="ppf2-pkg-tagline">{{ section.settings.tagline | default: "Complete PPF from bumper to bumper" }}</div>
+          <div class="ppf2-feat-lbl">Panels Covered</div>
+          <div class="ppf2-feat-grid">
+            <div class="ppf2-feat-item"><span class="ppf2-feat-dot"></span>Bonnet</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-dot"></span>All Doors</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-dot"></span>Front Fenders</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-dot"></span>Trunk</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-dot"></span>Rear Fenders</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-dot"></span>Headlights</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-dot"></span>Pillars</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-dot"></span>Roof</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-dot"></span>Front Bumper</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-dot"></span>Back Bumper</div>
+          </div>
+          <div class="ppf2-feat-lbl">Complementary</div>
+          <div class="ppf2-feat-grid">
+            <div class="ppf2-feat-item"><span class="ppf2-feat-tick">&#10003;</span>Int/Ext Detailing</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-tick">&#10003;</span>Ceramic Coatings</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-tick">&#10003;</span>GYEON Q&#178; View</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-tick">&#10003;</span>GYEON Q&#178; Rims &amp; Tire</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-tick">&#10003;</span>GYEON Q&#178; Leather Shield</div>
+            <div class="ppf2-feat-item"><span class="ppf2-feat-tick">&#10003;</span>GYEON Q&#178; Interior Trims</div>
+          </div>
+          <div class="ppf2-pkg-spacer"></div>
+          <div id="ppf2-p-dur" class="ppf2-pkg-process">&#9201; Process: 3 Working Days</div>
+          <button class="ppf2-pkg-btn" id="ppf2-p-btn">Select Package</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var pricing = {
+    'hatchback': {
+      label: 'Hatchback',
+      classic: { price: {{ section.settings.p_hatchback_classic | default: 260000 }}, dur: '{{ section.settings.dur_hatchback | default: "3 Working Days" }}' },
+      premium: { price: {{ section.settings.p_hatchback_premium | default: 290000 }}, dur: '{{ section.settings.dur_hatchback | default: "3 Working Days" }}' }
+    },
+    'sedan': {
+      label: 'Sedan',
+      classic: { price: {{ section.settings.p_sedan_classic | default: 300000 }}, dur: '{{ section.settings.dur_sedan | default: "3 Working Days" }}' },
+      premium: { price: {{ section.settings.p_sedan_premium | default: 330000 }}, dur: '{{ section.settings.dur_sedan | default: "3 Working Days" }}' }
+    },
+    'suv': {
+      label: 'SUV',
+      classic: { price: {{ section.settings.p_suv_classic | default: 330000 }}, dur: '{{ section.settings.dur_suv | default: "3 Working Days" }}' },
+      premium: { price: {{ section.settings.p_suv_premium | default: 380000 }}, dur: '{{ section.settings.dur_suv | default: "3 Working Days" }}' }
+    },
+    'xl-suv': {
+      label: 'XL SUV',
+      classic: { price: {{ section.settings.p_xlsuv_classic | default: 370000 }}, dur: '{{ section.settings.dur_xlsuv | default: "3 Working Days" }}' },
+      premium: { price: {{ section.settings.p_xlsuv_premium | default: 420000 }}, dur: '{{ section.settings.dur_xlsuv | default: "3 Working Days" }}' }
+    }
+  };
+
+  var vexEl = document.getElementById('ppf2-vex');
+  var carEx = {
+    'hatchback': (vexEl && vexEl.dataset.hatchback) ? vexEl.dataset.hatchback : '{{ section.settings.ex_hatchback | default: "Swift, Mira, Dayz" }}',
+    'sedan':     (vexEl && vexEl.dataset.sedan)     ? vexEl.dataset.sedan     : '{{ section.settings.ex_sedan | default: "Corolla, Civic, Sonata" }}',
+    'suv':       (vexEl && vexEl.dataset.suv)        ? vexEl.dataset.suv       : '{{ section.settings.ex_suv | default: "Sportage L, Tucson, Haval H6" }}',
+    'xl-suv':    (vexEl && vexEl.dataset.xlsuv)      ? vexEl.dataset.xlsuv     : '{{ section.settings.ex_xlsuv | default: "Fortuner, Land Cruiser, Prado" }}'
+  };
+
+  function fmt(n) { return 'PKR ' + Number(n).toLocaleString(); }
+
+  function switchV(vtype) {
+    var d = pricing[vtype];
+    if (!d) return;
+    var lbl = document.getElementById('ppf2-vlabel');
+    var exlbl = document.getElementById('ppf2-vex-lbl');
+    if (lbl) lbl.textContent = d.label;
+    if (exlbl) exlbl.textContent = carEx[vtype] ? '(' + carEx[vtype] + ')' : '';
+    var cp = document.getElementById('ppf2-c-price');
+    var pp = document.getElementById('ppf2-p-price');
+    var cd = document.getElementById('ppf2-c-dur');
+    var pd = document.getElementById('ppf2-p-dur');
+    if (cp) cp.textContent = fmt(d.classic.price);
+    if (pp) pp.textContent = fmt(d.premium.price);
+    if (cd) cd.innerHTML = '&#9201; Process: ' + d.classic.dur;
+    if (pd) pd.innerHTML = '&#9201; Process: ' + d.premium.dur;
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.ppf2-tab').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.ppf2-tab').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        switchV(btn.dataset.v);
+      });
+    });
+    var cb = document.getElementById('ppf2-c-btn');
+    var pb = document.getElementById('ppf2-p-btn');
+    if (cb) cb.addEventListener('click', function() {
+      this.style.background = '#10b981'; this.textContent = 'Selected ✓';
+      setTimeout(function() { window.location.href = '/pages/ppf-booking'; }, 380);
+    });
+    if (pb) pb.addEventListener('click', function() {
+      this.style.background = '#10b981'; this.textContent = 'Selected ✓';
+      setTimeout(function() { window.location.href = '/pages/ppf-booking'; }, 380);
+    });
+    switchV('hatchback');
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "PPF V2 Pricing",
+  "settings": [
+    {"type":"text","id":"tag","label":"Tag","default":"Transparent Pricing"},
+    {"type":"text","id":"title","label":"Section Title","default":"Choose Your Package"},
+    {"type":"text","id":"subtitle","label":"Subtitle","default":"Select your vehicle type to see exact pricing for your car"},
+    {"type":"text","id":"tagline","label":"Card Tagline","default":"Complete PPF from bumper to bumper"},
+    {"type":"header","content":"Classic Package"},
+    {"type":"text","id":"classic_name","label":"Name","default":"NAR Classic PPF"},
+    {"type":"text","id":"classic_mil","label":"Thickness","default":"8.0 mil thickness"},
+    {"type":"text","id":"classic_warranty","label":"Warranty","default":"5 Years Warranty"},
+    {"type":"header","content":"Premium Package"},
+    {"type":"text","id":"premium_name","label":"Name","default":"NAR Premium PPF"},
+    {"type":"text","id":"premium_mil","label":"Thickness","default":"8.5 mil thickness"},
+    {"type":"text","id":"premium_warranty","label":"Warranty","default":"7 Years Warranty"},
+    {"type":"header","content":"Hatchback Prices (PKR)"},
+    {"type":"number","id":"p_hatchback_classic","label":"Classic","default":260000},
+    {"type":"number","id":"p_hatchback_premium","label":"Premium","default":290000},
+    {"type":"text","id":"dur_hatchback","label":"Duration","default":"3 Working Days"},
+    {"type":"header","content":"Sedan Prices (PKR)"},
+    {"type":"number","id":"p_sedan_classic","label":"Classic","default":300000},
+    {"type":"number","id":"p_sedan_premium","label":"Premium","default":330000},
+    {"type":"text","id":"dur_sedan","label":"Duration","default":"3 Working Days"},
+    {"type":"header","content":"SUV Prices (PKR)"},
+    {"type":"number","id":"p_suv_classic","label":"Classic","default":330000},
+    {"type":"number","id":"p_suv_premium","label":"Premium","default":380000},
+    {"type":"text","id":"dur_suv","label":"Duration","default":"3 Working Days"},
+    {"type":"header","content":"XL SUV Prices (PKR)"},
+    {"type":"number","id":"p_xlsuv_classic","label":"Classic","default":370000},
+    {"type":"number","id":"p_xlsuv_premium","label":"Premium","default":420000},
+    {"type":"text","id":"dur_xlsuv","label":"Duration","default":"3 Working Days"},
+    {"type":"header","content":"Car Examples"},
+    {"type":"text","id":"ex_hatchback","label":"Hatchback Cars","default":"Swift, Mira, Dayz"},
+    {"type":"text","id":"ex_sedan","label":"Sedan Cars","default":"Corolla, Civic, Sonata"},
+    {"type":"text","id":"ex_suv","label":"SUV Cars","default":"Sportage L, Tucson, Haval H6"},
+    {"type":"text","id":"ex_xlsuv","label":"XL SUV Cars","default":"Fortuner, Land Cruiser, Prado"}
+  ],
+  "presets":[{"name":"PPF V2 Pricing"}]
+}
+{% endschema %}
