@@ -1,0 +1,118 @@
+<style>
+.ppf2-hero {
+  position: relative; min-height: 620px; display: flex; align-items: center;
+  background: linear-gradient(135deg, #050e1f 0%, #0c1e3f 40%, #1a3a6b 100%);
+  overflow: hidden; font-family: 'Nunito Sans', sans-serif;
+}
+.ppf2-hero::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 80% 50%, rgba(59,130,246,0.18) 0%, transparent 65%);
+}
+.ppf2-hero-grid {
+  position: relative; z-index: 2; max-width: 1060px; margin: 0 auto;
+  padding: 5rem 1.5rem; display: grid; grid-template-columns: 1fr 420px; gap: 3rem; align-items: center;
+}
+.ppf2-hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.35);
+  color: #93c5fd; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 1.25rem;
+}
+.ppf2-hero-eyebrow span { width: 6px; height: 6px; background: #3b82f6; border-radius: 50%; display: inline-block; animation: ppf2pulse 1.8s ease-in-out infinite; }
+@keyframes ppf2pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(1.5); } }
+.ppf2-hero h1 { font-size: 3.25rem; font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 1rem; letter-spacing: -1px; }
+.ppf2-hero h1 em { font-style: normal; color: #60a5fa; }
+.ppf2-hero-sub { font-size: 1.05rem; color: #94a3b8; line-height: 1.8; margin-bottom: 2rem; max-width: 500px; }
+.ppf2-hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.ppf2-btn-primary {
+  padding: 0.875rem 1.875rem; background: #1e3a8a; color: #fff;
+  border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none;
+  border: 2px solid #1e3a8a; transition: all 0.2s;
+}
+.ppf2-btn-primary:hover { background: #1d4ed8; border-color: #1d4ed8; transform: translateY(-2px); }
+.ppf2-btn-wa {
+  padding: 0.875rem 1.875rem; background: #10b981; color: #fff;
+  border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none;
+  transition: all 0.2s; display: flex; align-items: center; gap: 0.5rem;
+}
+.ppf2-btn-wa:hover { background: #059669; transform: translateY(-2px); }
+.ppf2-hero-stats { display: flex; gap: 1.75rem; padding-top: 1.75rem; border-top: 1px solid rgba(255,255,255,0.1); }
+.ppf2-stat-num { font-size: 1.6rem; font-weight: 800; color: #60a5fa; display: block; line-height: 1; }
+.ppf2-stat-lbl { font-size: 0.72rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.2rem; }
+
+/* Right panel */
+.ppf2-hero-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px); border-radius: 16px; padding: 1.75rem;
+}
+.ppf2-hero-card-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b; margin-bottom: 1.1rem; }
+.ppf2-feat-row { display: flex; align-items: flex-start; gap: 0.85rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.ppf2-feat-row:last-of-type { border-bottom: none; }
+.ppf2-feat-icon { width: 38px; height: 38px; border-radius: 8px; background: rgba(59,130,246,0.15); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+.ppf2-feat-text h4 { font-size: 0.875rem; font-weight: 700; color: #e2e8f0; margin-bottom: 0.15rem; }
+.ppf2-feat-text p { font-size: 0.78rem; color: #64748b; line-height: 1.4; }
+.ppf2-hero-card-badges { display: flex; gap: 0.5rem; margin-top: 1.1rem; flex-wrap: wrap; }
+.ppf2-card-badge { font-size: 0.7rem; font-weight: 600; padding: 3px 9px; border-radius: 100px; background: rgba(59,130,246,0.15); color: #93c5fd; border: 1px solid rgba(59,130,246,0.25); }
+
+@media (max-width: 860px) {
+  .ppf2-hero-grid { grid-template-columns: 1fr; }
+  .ppf2-hero-card { display: none; }
+  .ppf2-hero h1 { font-size: 2.25rem; }
+}
+</style>
+
+<section class="ppf2-hero">
+  <div class="ppf2-hero-grid">
+    <div>
+      <div class="ppf2-hero-eyebrow"><span></span>{{ section.settings.eyebrow | default: "Karachi's #1 PPF Studio" }}</div>
+      <h1>{{ section.settings.title | default: "Protect Your Car's Paint" }} <em>{{ section.settings.title_blue | default: "For Years to Come" }}</em></h1>
+      <p class="ppf2-hero-sub">{{ section.settings.subtitle | default: "NAR certified Paint Protection Film — invisible, self-healing, and backed by a 5-7 year warranty. The smartest investment for your car." }}</p>
+      <div class="ppf2-hero-btns">
+        <a href="{{ section.settings.btn1_url | default: '/pages/ppf-booking' }}" class="ppf2-btn-primary">{{ section.settings.btn1_text | default: "Book Free Consultation" }}</a>
+        <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20to%20know%20about%20PPF" target="_blank" class="ppf2-btn-wa">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+      <div class="ppf2-hero-stats">
+        <div><span class="ppf2-stat-num">{{ section.settings.stat1_num | default: "500+" }}</span><div class="ppf2-stat-lbl">{{ section.settings.stat1_lbl | default: "Cars Protected" }}</div></div>
+        <div><span class="ppf2-stat-num">{{ section.settings.stat2_num | default: "7 Yr" }}</span><div class="ppf2-stat-lbl">{{ section.settings.stat2_lbl | default: "Max Warranty" }}</div></div>
+        <div><span class="ppf2-stat-num">{{ section.settings.stat3_num | default: "4.9★" }}</span><div class="ppf2-stat-lbl">{{ section.settings.stat3_lbl | default: "Google Rating" }}</div></div>
+      </div>
+    </div>
+    <div class="ppf2-hero-card">
+      <div class="ppf2-hero-card-title">What's included in every PPF installation</div>
+      <div class="ppf2-feat-row"><div class="ppf2-feat-icon">🛡</div><div class="ppf2-feat-text"><h4>Full Paint Coverage</h4><p>Bonnet, bumpers, fenders, doors, roof, pillars & headlights</p></div></div>
+      <div class="ppf2-feat-row"><div class="ppf2-feat-icon">✨</div><div class="ppf2-feat-text"><h4>Self-Healing Film</h4><p>Minor scratches disappear on their own with heat exposure</p></div></div>
+      <div class="ppf2-feat-row"><div class="ppf2-feat-icon">🌡</div><div class="ppf2-feat-text"><h4>UV & Hydrophobic</h4><p>Blocks UV rays and repels water, dirt & environmental fallout</p></div></div>
+      <div class="ppf2-feat-row"><div class="ppf2-feat-icon">🎁</div><div class="ppf2-feat-text"><h4>GYEON Coatings Included</h4><p>Ceramic top coat, rim, leather & interior trim treatment</p></div></div>
+      <div class="ppf2-hero-card-badges">
+        <span class="ppf2-card-badge">NAR Certified</span>
+        <span class="ppf2-card-badge">GYEON Partner</span>
+        <span class="ppf2-card-badge">5–7 Yr Warranty</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PPF V2 Hero",
+  "settings": [
+    {"type":"text","id":"eyebrow","label":"Eyebrow Badge","default":"Karachi's #1 PPF Studio"},
+    {"type":"text","id":"title","label":"Headline","default":"Protect Your Car's Paint"},
+    {"type":"text","id":"title_blue","label":"Headline Blue Part","default":"For Years to Come"},
+    {"type":"textarea","id":"subtitle","label":"Subheading","default":"NAR certified Paint Protection Film — invisible, self-healing, and backed by a 5-7 year warranty. The smartest investment for your car."},
+    {"type":"text","id":"btn1_text","label":"Button Text","default":"Book Free Consultation"},
+    {"type":"url","id":"btn1_url","label":"Button Link"},
+    {"type":"header","content":"Stats"},
+    {"type":"text","id":"stat1_num","label":"Stat 1 Number","default":"500+"},
+    {"type":"text","id":"stat1_lbl","label":"Stat 1 Label","default":"Cars Protected"},
+    {"type":"text","id":"stat2_num","label":"Stat 2 Number","default":"7 Yr"},
+    {"type":"text","id":"stat2_lbl","label":"Stat 2 Label","default":"Max Warranty"},
+    {"type":"text","id":"stat3_num","label":"Stat 3 Number","default":"4.9★"},
+    {"type":"text","id":"stat3_lbl","label":"Stat 3 Label","default":"Google Rating"}
+  ],
+  "presets":[{"name":"PPF V2 Hero"}]
+}
+{% endschema %}
