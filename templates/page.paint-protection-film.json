@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -13,9 +22,45 @@
         "tag": "PPF Service in karachi",
         "title": "Paint Protection Film (PPF)",
         "subtitle": "Protect for Your Car's Paint for Years",
-        "desc": "NAR PPF Paint Protection Film \u2014 invisible, self-healing, and backed by a 5-7 year warranty. The smartest investment for your car.",
+        "desc": "NAR PPF Paint Protection Film — invisible, self-healing, and backed by a 5-7 year warranty. The smartest investment for your car.",
         "btn1_text": "View Pricing",
         "btn2_text": "Book Now"
+      }
+    },
+    "ppf_comparison_Hi8tbe": {
+      "type": "ppf-comparison",
+      "name": "PPF Comparison",
+      "settings": {
+        "title": "PPF Comparison",
+        "subtitle": "Compare film properties across all three options",
+        "brand1": "Crystalline PPF",
+        "logo2": "shopify://shop_images/NAR_CLASSIC_LOGO.png",
+        "brand2": "NAR Classic",
+        "brand3": "NAR Premium",
+        "r1_b1": "TPU",
+        "r1_b2": "TPU",
+        "r1_b3": "TPU",
+        "sh1": 3,
+        "sh2": 4,
+        "sh3": 4,
+        "thick1": "7.9 mil",
+        "thick2": "8.0 mil",
+        "thick3": "8.5 mil",
+        "dur1": "5 years",
+        "dur2": "10 years",
+        "dur3": "10 years",
+        "nyw1": "3 years",
+        "nyw2": "3 years",
+        "nyw3": "3 years",
+        "pw1": "3 years",
+        "pw2": "5 years",
+        "pw3": "7 years",
+        "sc1": 3,
+        "sc2": 3,
+        "sc3": 4,
+        "hy1": 3,
+        "hy2": 4,
+        "hy3": 4
       }
     },
     "ppf_v2_hero_3kL9By": {
@@ -25,14 +70,14 @@
         "eyebrow": "Karachi's #1 PPF Studio",
         "title": "Protect Your Car's Paint",
         "title_blue": "For Years to Come",
-        "subtitle": "NAR certified Paint Protection Film \u2014 invisible, self-healing, and backed by a 5-7 year warranty. The smartest investment for your car.",
+        "subtitle": "NAR certified Paint Protection Film — invisible, self-healing, and backed by a 5-7 year warranty. The smartest investment for your car.",
         "btn1_text": "Book Free Consultation",
         "btn1_url": "",
         "stat1_num": "500+",
         "stat1_lbl": "Cars Protected",
         "stat2_num": "7 Yr",
         "stat2_lbl": "Max Warranty",
-        "stat3_num": "4.9\u2605",
+        "stat3_num": "4.9★",
         "stat3_lbl": "Google Rating"
       }
     },
@@ -100,12 +145,43 @@
     },
     "ppf_comparison": {
       "type": "ppf-comparison",
-      "settings": {}
+      "settings": {
+        "title": "PPF Comparison",
+        "subtitle": "Compare film properties across all three options",
+        "brand1": "Crystalline PPF",
+        "brand2": "NAR Classic",
+        "brand3": "NAR Premium",
+        "r1_b1": "TPU",
+        "r1_b2": "TPU",
+        "r1_b3": "TPU",
+        "sh1": 3,
+        "sh2": 4,
+        "sh3": 4,
+        "thick1": "7.9 mil",
+        "thick2": "8.0 mil",
+        "thick3": "8.5 mil",
+        "dur1": "5 years",
+        "dur2": "10 years",
+        "dur3": "10 years",
+        "nyw1": "3 years",
+        "nyw2": "3 years",
+        "nyw3": "3 years",
+        "pw1": "3 years",
+        "pw2": "5 years",
+        "pw3": "7 years",
+        "sc1": 3,
+        "sc2": 3,
+        "sc3": 4,
+        "hy1": 3,
+        "hy2": 4,
+        "hy3": 4
+      }
     }
   },
   "order": [
     "main",
     "ppf_hero_EDQVn7",
+    "ppf_comparison_Hi8tbe",
     "ppf_v2_hero_3kL9By",
     "ppf_benefits_fjiLPD",
     "ppf_packages_UJLGPt",
