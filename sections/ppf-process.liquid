@@ -1,0 +1,124 @@
+<style>
+.rad-ppf-proc { padding: 4rem 0; background: #fff; font-family: 'Nunito Sans', sans-serif; }
+.rad-ppf-proc-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-ppf-proc-hdr { text-align: center; margin-bottom: 3rem; }
+.rad-ppf-proc-hdr h2 { font-size: 2rem; font-weight: 800; color: #1f2937; margin-bottom: 0.5rem; font-family: 'Nunito Sans', sans-serif; }
+.rad-ppf-proc-hdr p { color: #6b7280; font-size: 1rem; max-width: 520px; margin: 0 auto; }
+
+.rad-ppf-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; }
+.rad-ppf-steps::before {
+  content: ''; position: absolute; top: 2.25rem; left: 10%; right: 10%;
+  height: 2px; background: linear-gradient(to right, #1e3a8a, #3b82f6, #1e3a8a);
+  z-index: 0;
+}
+.rad-ppf-step { text-align: center; position: relative; z-index: 1; padding: 0 0.5rem; }
+.rad-ppf-step-circle {
+  width: 4.5rem; height: 4.5rem; border-radius: 50%;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: #fff; font-size: 1.4rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.25rem;
+  box-shadow: 0 4px 14px rgba(30,58,138,0.35);
+  border: 3px solid #fff;
+  font-family: 'Nunito Sans', sans-serif;
+}
+.rad-ppf-step h3 {
+  font-size: 0.9rem; font-weight: 700; color: #1f2937;
+  margin-bottom: 0.4rem; font-family: 'Nunito Sans', sans-serif;
+}
+.rad-ppf-step p { font-size: 0.8rem; color: #6b7280; line-height: 1.55; }
+
+.rad-ppf-proc-note {
+  margin-top: 2.5rem; background: #f0f7ff; border-radius: 12px;
+  padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 1rem;
+  border: 1px solid #bfdbfe;
+}
+.rad-ppf-proc-note-icon { font-size: 1.5rem; flex-shrink: 0; }
+.rad-ppf-proc-note p { font-size: 0.875rem; color: #1e3a8a; font-weight: 600; margin: 0; }
+.rad-ppf-proc-note span { font-weight: 400; color: #4b5563; }
+
+@media (max-width: 768px) {
+  .rad-ppf-steps { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .rad-ppf-steps::before { display: none; }
+}
+@media (max-width: 480px) {
+  .rad-ppf-steps { grid-template-columns: 1fr; }
+}
+</style>
+
+<section class="rad-ppf-proc">
+  <div class="rad-ppf-proc-inner">
+    <div class="rad-ppf-proc-hdr">
+      <h2>
+        {%- if section.settings.title != blank -%}{{ section.settings.title }}{%- else -%}Our Installation Process{%- endif -%}
+      </h2>
+      <p>
+        {%- if section.settings.subtitle != blank -%}{{ section.settings.subtitle }}{%- else -%}Precision-driven, clean, and certified — every time{%- endif -%}
+      </p>
+    </div>
+
+    <div class="rad-ppf-steps">
+      <div class="rad-ppf-step">
+        <div class="rad-ppf-step-circle">1</div>
+        <h3>{%- if section.settings.step1_title != blank -%}{{ section.settings.step1_title }}{%- else -%}Consultation{%- endif -%}</h3>
+        <p>{%- if section.settings.step1_desc != blank -%}{{ section.settings.step1_desc }}{%- else -%}We discuss your needs, show film samples, and recommend the right package for your car.{%- endif -%}</p>
+      </div>
+      <div class="rad-ppf-step">
+        <div class="rad-ppf-step-circle">2</div>
+        <h3>{%- if section.settings.step2_title != blank -%}{{ section.settings.step2_title }}{%- else -%}Deep Cleaning{%- endif -%}</h3>
+        <p>{%- if section.settings.step2_desc != blank -%}{{ section.settings.step2_desc }}{%- else -%}Full exterior wash, decontamination, and clay bar treatment to prepare a perfect surface.{%- endif -%}</p>
+      </div>
+      <div class="rad-ppf-step">
+        <div class="rad-ppf-step-circle">3</div>
+        <h3>{%- if section.settings.step3_title != blank -%}{{ section.settings.step3_title }}{%- else -%}Precision Cutting{%- endif -%}</h3>
+        <p>{%- if section.settings.step3_desc != blank -%}{{ section.settings.step3_desc }}{%- else -%}Computer-generated templates cut the film precisely to fit every panel of your specific car model.{%- endif -%}</p>
+      </div>
+      <div class="rad-ppf-step">
+        <div class="rad-ppf-step-circle">4</div>
+        <h3>{%- if section.settings.step4_title != blank -%}{{ section.settings.step4_title }}{%- else -%}PPF Installation{%- endif -%}</h3>
+        <p>{%- if section.settings.step4_desc != blank -%}{{ section.settings.step4_desc }}{%- else -%}Film applied in our dust-free bay by certified technicians using professional-grade tools.{%- endif -%}</p>
+      </div>
+      <div class="rad-ppf-step">
+        <div class="rad-ppf-step-circle">5</div>
+        <h3>{%- if section.settings.step5_title != blank -%}{{ section.settings.step5_title }}{%- else -%}Quality Check{%- endif -%}</h3>
+        <p>{%- if section.settings.step5_desc != blank -%}{{ section.settings.step5_desc }}{%- else -%}Panel-by-panel inspection under lighting. Your car only leaves when we're 100% satisfied.{%- endif -%}</p>
+      </div>
+    </div>
+
+    <div class="rad-ppf-proc-note">
+      <div class="rad-ppf-proc-note-icon">⏱</div>
+      <p>
+        {%- if section.settings.note != blank -%}{{ section.settings.note }}{%- else -%}Process Duration: <span>Full exterior PPF typically takes 3 working days. We'll keep you updated throughout.</span>{%- endif -%}
+      </p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PPF Installation Process",
+  "settings": [
+    {"type": "header", "content": "Section Heading"},
+    {"type": "text", "id": "title", "label": "Section Title", "default": "Our Installation Process"},
+    {"type": "text", "id": "subtitle", "label": "Subtitle", "default": "Precision-driven, clean, and certified — every time"},
+    {"type": "header", "content": "Step 1"},
+    {"type": "text", "id": "step1_title", "label": "Title", "default": "Consultation"},
+    {"type": "textarea", "id": "step1_desc", "label": "Description", "default": "We discuss your needs, show film samples, and recommend the right package for your car."},
+    {"type": "header", "content": "Step 2"},
+    {"type": "text", "id": "step2_title", "label": "Title", "default": "Deep Cleaning"},
+    {"type": "textarea", "id": "step2_desc", "label": "Description", "default": "Full exterior wash, decontamination, and clay bar treatment to prepare a perfect surface."},
+    {"type": "header", "content": "Step 3"},
+    {"type": "text", "id": "step3_title", "label": "Title", "default": "Precision Cutting"},
+    {"type": "textarea", "id": "step3_desc", "label": "Description", "default": "Computer-generated templates cut the film precisely to fit every panel of your specific car model."},
+    {"type": "header", "content": "Step 4"},
+    {"type": "text", "id": "step4_title", "label": "Title", "default": "PPF Installation"},
+    {"type": "textarea", "id": "step4_desc", "label": "Description", "default": "Film applied in our dust-free bay by certified technicians using professional-grade tools."},
+    {"type": "header", "content": "Step 5"},
+    {"type": "text", "id": "step5_title", "label": "Title", "default": "Quality Check"},
+    {"type": "textarea", "id": "step5_desc", "label": "Description", "default": "Panel-by-panel inspection under lighting. Your car only leaves when we're 100% satisfied."},
+    {"type": "header", "content": "Bottom Note"},
+    {"type": "text", "id": "note", "label": "Duration Note"}
+  ],
+  "presets": [{"name": "PPF Installation Process"}]
+}
+{% endschema %}
