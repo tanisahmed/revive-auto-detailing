@@ -1,0 +1,284 @@
+<style>
+.ppf-cmp { padding: 3.5rem 0; background: #fff; font-family: 'Nunito Sans', sans-serif; }
+.ppf-cmp-inner { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
+.ppf-cmp-hdr { text-align: center; margin-bottom: 2rem; }
+.ppf-cmp-hdr h2 { font-size: 2rem; font-weight: 800; color: #1f2937; font-family: 'Nunito Sans', sans-serif; margin-bottom: 0.4rem; }
+.ppf-cmp-hdr p { color: #6b7280; font-size: 1rem; }
+.ppf-cmp-table { width: 100%; border-collapse: collapse; border-radius: 14px; overflow: hidden; border: 1px solid #e5e7eb; table-layout: fixed; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.ppf-cmp-th-prop { width: 36%; padding: 1rem 1.25rem; font-size: 11px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.08em; text-align: left; border-bottom: 1px solid #e5e7eb; background: #f8fafc; }
+.ppf-cmp-th { width: 21.3%; padding: 1rem 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb; border-left: 1px solid #e5e7eb; background: #f8fafc; }
+.ppf-cmp-th-red { background: #fff5f5; }
+.ppf-cmp-th-blue { background: rgba(12,68,124,0.05); }
+.ppf-cmp-th-inner { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.ppf-cmp-logo { width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.ppf-cmp-logo img { width: 100%; height: 100%; object-fit: contain; }
+.ppf-cmp-logo-cr { background: #fff0f0; border: 1px solid #fca5a5; }
+.ppf-cmp-logo-cl { background: #0C447C; }
+.ppf-cmp-logo-pr { background: #2C2C2A; }
+.ppf-cmp-logo-text { font-size: 10px; font-weight: 700; }
+.ppf-cmp-logo-text-cl { color: #fff; }
+.ppf-cmp-logo-text-pr { color: #D3D1C7; }
+.ppf-cmp-th-ppf { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.ppf-cmp-th-ppf-blue { color: #185FA5; }
+.ppf-cmp-th-ppf-dark { color: #444441; }
+.ppf-cmp-th-name { font-size: 12px; font-weight: 600; color: #1f2937; text-align: center; line-height: 1.3; }
+.ppf-cmp-tr { border-bottom: 1px solid #f1f5f9; transition: background 0.15s; }
+.ppf-cmp-tr:last-child { border-bottom: none; }
+.ppf-cmp-tr:hover { background: #f8fafc; }
+.ppf-cmp-td-prop { padding: 0.85rem 1.25rem; font-size: 13px; font-weight: 600; color: #1f2937; }
+.ppf-cmp-td { padding: 0.85rem 0.75rem; text-align: center; font-size: 13px; border-left: 1px solid #f1f5f9; }
+.ppf-cmp-td-red { background: rgba(239,68,68,0.02); }
+.ppf-cmp-td-blue { background: rgba(12,68,124,0.02); }
+.ppf-chk-red { color: #E24B4A; font-size: 15px; font-weight: 700; }
+.ppf-chk-blue { color: #185FA5; font-size: 15px; font-weight: 700; }
+.ppf-chk-dark { color: #444441; font-size: 15px; font-weight: 700; }
+.ppf-bar { display: flex; gap: 2px; justify-content: center; align-items: center; }
+.ppf-bar-seg { width: 13px; height: 8px; border-radius: 2px; }
+.ppf-seg-red { background: #E24B4A; }
+.ppf-seg-blue { background: #185FA5; }
+.ppf-seg-dark { background: #444441; }
+.ppf-seg-off { background: #e5e7eb; }
+.ppf-val { font-size: 13px; font-weight: 600; }
+.ppf-val-red { color: #9f1239; }
+.ppf-val-blue { color: #1e3a8a; }
+.ppf-val-dark { color: #1f2937; }
+</style>
+
+<section class="ppf-cmp">
+  <div class="ppf-cmp-inner">
+    <div class="ppf-cmp-hdr">
+      <h2>
+        {%- if section.settings.title != blank -%}{{ section.settings.title }}{%- else -%}PPF Comparison{%- endif -%}
+      </h2>
+      <p>
+        {%- if section.settings.subtitle != blank -%}{{ section.settings.subtitle }}{%- else -%}Compare film properties across all three options{%- endif -%}
+      </p>
+    </div>
+
+    <table class="ppf-cmp-table">
+      <thead>
+        <tr>
+          <th class="ppf-cmp-th-prop">Properties</th>
+
+          <!-- Col 1 — Crystalline -->
+          <th class="ppf-cmp-th ppf-cmp-th-red">
+            <div class="ppf-cmp-th-inner">
+              {%- if section.settings.logo1 != blank -%}
+                <div class="ppf-cmp-logo ppf-cmp-logo-cr"><img src="{{ section.settings.logo1 | image_url: width: 96 }}" alt="{{ section.settings.brand1 }}"></div>
+              {%- else -%}
+                <div class="ppf-cmp-logo ppf-cmp-logo-cr"><span class="ppf-cmp-logo-text" style="color:#A32D2D;">LOGO</span></div>
+              {%- endif -%}
+              <span class="ppf-cmp-th-name">{{ section.settings.brand1 | default: "Crystalline PPF" }}</span>
+            </div>
+          </th>
+
+          <!-- Col 2 — NAR Classic -->
+          <th class="ppf-cmp-th ppf-cmp-th-blue">
+            <div class="ppf-cmp-th-inner">
+              {%- if section.settings.logo2 != blank -%}
+                <div class="ppf-cmp-logo ppf-cmp-logo-cl"><img src="{{ section.settings.logo2 | image_url: width: 96 }}" alt="{{ section.settings.brand2 }}"></div>
+              {%- else -%}
+                <div class="ppf-cmp-logo ppf-cmp-logo-cl"><span class="ppf-cmp-logo-text ppf-cmp-logo-text-cl">NAR</span></div>
+              {%- endif -%}
+              <span class="ppf-cmp-th-ppf ppf-cmp-th-ppf-blue">PPF</span>
+              <span class="ppf-cmp-th-name">{{ section.settings.brand2 | default: "NAR Classic" }}</span>
+            </div>
+          </th>
+
+          <!-- Col 3 — NAR Premium -->
+          <th class="ppf-cmp-th">
+            <div class="ppf-cmp-th-inner">
+              {%- if section.settings.logo3 != blank -%}
+                <div class="ppf-cmp-logo ppf-cmp-logo-pr"><img src="{{ section.settings.logo3 | image_url: width: 96 }}" alt="{{ section.settings.brand3 }}"></div>
+              {%- else -%}
+                <div class="ppf-cmp-logo ppf-cmp-logo-pr"><span class="ppf-cmp-logo-text ppf-cmp-logo-text-pr">NAR</span></div>
+              {%- endif -%}
+              <span class="ppf-cmp-th-ppf ppf-cmp-th-ppf-dark">PPF</span>
+              <span class="ppf-cmp-th-name">{{ section.settings.brand3 | default: "NAR Premium" }}</span>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- Film type -->
+        <tr class="ppf-cmp-tr">
+          <td class="ppf-cmp-td-prop">Film type</td>
+          <td class="ppf-cmp-td ppf-cmp-td-red">{{ section.settings.r1_b1 | default: "TPU" }}</td>
+          <td class="ppf-cmp-td ppf-cmp-td-blue"><span class="ppf-val ppf-val-blue">{{ section.settings.r1_b2 | default: "TPU" }}</span></td>
+          <td class="ppf-cmp-td"><span class="ppf-val ppf-val-dark">{{ section.settings.r1_b3 | default: "TPU" }}</span></td>
+        </tr>
+
+        <!-- Self-healing bar -->
+        <tr class="ppf-cmp-tr">
+          <td class="ppf-cmp-td-prop">Self-healing</td>
+          <td class="ppf-cmp-td ppf-cmp-td-red">
+            <div class="ppf-bar">
+              {%- assign sh1 = section.settings.sh1 | default: 3 -%}
+              {%- for i in (1..4) -%}<div class="ppf-bar-seg{% if i <= sh1 %} ppf-seg-red{% else %} ppf-seg-off{% endif %}"></div>{%- endfor -%}
+            </div>
+          </td>
+          <td class="ppf-cmp-td ppf-cmp-td-blue">
+            <div class="ppf-bar">
+              {%- assign sh2 = section.settings.sh2 | default: 4 -%}
+              {%- for i in (1..4) -%}<div class="ppf-bar-seg{% if i <= sh2 %} ppf-seg-blue{% else %} ppf-seg-off{% endif %}"></div>{%- endfor -%}
+            </div>
+          </td>
+          <td class="ppf-cmp-td">
+            <div class="ppf-bar">
+              {%- assign sh3 = section.settings.sh3 | default: 4 -%}
+              {%- for i in (1..4) -%}<div class="ppf-bar-seg{% if i <= sh3 %} ppf-seg-dark{% else %} ppf-seg-off{% endif %}"></div>{%- endfor -%}
+            </div>
+          </td>
+        </tr>
+
+        <!-- Pre-coated -->
+        <tr class="ppf-cmp-tr">
+          <td class="ppf-cmp-td-prop">Pre-coated</td>
+          <td class="ppf-cmp-td ppf-cmp-td-red"><span class="ppf-chk-red">&#10003;</span></td>
+          <td class="ppf-cmp-td ppf-cmp-td-blue"><span class="ppf-chk-blue">&#10003;</span></td>
+          <td class="ppf-cmp-td"><span class="ppf-chk-dark">&#10003;</span></td>
+        </tr>
+
+        <!-- Thickness -->
+        <tr class="ppf-cmp-tr">
+          <td class="ppf-cmp-td-prop">Thickness</td>
+          <td class="ppf-cmp-td ppf-cmp-td-red"><span class="ppf-val ppf-val-red">{{ section.settings.thick1 | default: "7.9 mil" }}</span></td>
+          <td class="ppf-cmp-td ppf-cmp-td-blue"><span class="ppf-val ppf-val-blue">{{ section.settings.thick2 | default: "8.0 mil" }}</span></td>
+          <td class="ppf-cmp-td"><span class="ppf-val ppf-val-dark">{{ section.settings.thick3 | default: "8.5 mil" }}</span></td>
+        </tr>
+
+        <!-- Chemical resistance -->
+        <tr class="ppf-cmp-tr">
+          <td class="ppf-cmp-td-prop">Chemical resistance</td>
+          <td class="ppf-cmp-td ppf-cmp-td-red"><span class="ppf-chk-red">&#10003;</span></td>
+          <td class="ppf-cmp-td ppf-cmp-td-blue"><span class="ppf-chk-blue">&#10003;</span></td>
+          <td class="ppf-cmp-td"><span class="ppf-chk-dark">&#10003;</span></td>
+        </tr>
+
+        <!-- Product durability -->
+        <tr class="ppf-cmp-tr">
+          <td class="ppf-cmp-td-prop">Product durability</td>
+          <td class="ppf-cmp-td ppf-cmp-td-red"><span class="ppf-val ppf-val-red">{{ section.settings.dur1 | default: "5 years" }}</span></td>
+          <td class="ppf-cmp-td ppf-cmp-td-blue"><span class="ppf-val ppf-val-blue">{{ section.settings.dur2 | default: "10 years" }}</span></td>
+          <td class="ppf-cmp-td"><span class="ppf-val ppf-val-dark">{{ section.settings.dur3 | default: "10 years" }}</span></td>
+        </tr>
+
+        <!-- Non-yellowing warranty -->
+        <tr class="ppf-cmp-tr">
+          <td class="ppf-cmp-td-prop">Non-yellowing warranty</td>
+          <td class="ppf-cmp-td ppf-cmp-td-red"><span class="ppf-val">{{ section.settings.nyw1 | default: "3 years" }}</span></td>
+          <td class="ppf-cmp-td ppf-cmp-td-blue"><span class="ppf-val ppf-val-blue">{{ section.settings.nyw2 | default: "3 years" }}</span></td>
+          <td class="ppf-cmp-td"><span class="ppf-val ppf-val-dark">{{ section.settings.nyw3 | default: "3 years" }}</span></td>
+        </tr>
+
+        <!-- Product warranty -->
+        <tr class="ppf-cmp-tr">
+          <td class="ppf-cmp-td-prop">Product warranty</td>
+          <td class="ppf-cmp-td ppf-cmp-td-red"><span class="ppf-val ppf-val-red">{{ section.settings.pw1 | default: "3 years" }}</span></td>
+          <td class="ppf-cmp-td ppf-cmp-td-blue"><span class="ppf-val ppf-val-blue">{{ section.settings.pw2 | default: "5 years" }}</span></td>
+          <td class="ppf-cmp-td"><span class="ppf-val ppf-val-dark">{{ section.settings.pw3 | default: "7 years" }}</span></td>
+        </tr>
+
+        <!-- Scratch resistance bar -->
+        <tr class="ppf-cmp-tr">
+          <td class="ppf-cmp-td-prop">Scratch resistance</td>
+          <td class="ppf-cmp-td ppf-cmp-td-red">
+            <div class="ppf-bar">
+              {%- assign sc1 = section.settings.sc1 | default: 3 -%}
+              {%- for i in (1..4) -%}<div class="ppf-bar-seg{% if i <= sc1 %} ppf-seg-red{% else %} ppf-seg-off{% endif %}"></div>{%- endfor -%}
+            </div>
+          </td>
+          <td class="ppf-cmp-td ppf-cmp-td-blue">
+            <div class="ppf-bar">
+              {%- assign sc2 = section.settings.sc2 | default: 3 -%}
+              {%- for i in (1..4) -%}<div class="ppf-bar-seg{% if i <= sc2 %} ppf-seg-blue{% else %} ppf-seg-off{% endif %}"></div>{%- endfor -%}
+            </div>
+          </td>
+          <td class="ppf-cmp-td">
+            <div class="ppf-bar">
+              {%- assign sc3 = section.settings.sc3 | default: 4 -%}
+              {%- for i in (1..4) -%}<div class="ppf-bar-seg{% if i <= sc3 %} ppf-seg-dark{% else %} ppf-seg-off{% endif %}"></div>{%- endfor -%}
+            </div>
+          </td>
+        </tr>
+
+        <!-- Hydrophobic bar -->
+        <tr class="ppf-cmp-tr">
+          <td class="ppf-cmp-td-prop">Hydrophobic</td>
+          <td class="ppf-cmp-td ppf-cmp-td-red">
+            <div class="ppf-bar">
+              {%- assign hy1 = section.settings.hy1 | default: 3 -%}
+              {%- for i in (1..4) -%}<div class="ppf-bar-seg{% if i <= hy1 %} ppf-seg-red{% else %} ppf-seg-off{% endif %}"></div>{%- endfor -%}
+            </div>
+          </td>
+          <td class="ppf-cmp-td ppf-cmp-td-blue">
+            <div class="ppf-bar">
+              {%- assign hy2 = section.settings.hy2 | default: 4 -%}
+              {%- for i in (1..4) -%}<div class="ppf-bar-seg{% if i <= hy2 %} ppf-seg-blue{% else %} ppf-seg-off{% endif %}"></div>{%- endfor -%}
+            </div>
+          </td>
+          <td class="ppf-cmp-td">
+            <div class="ppf-bar">
+              {%- assign hy3 = section.settings.hy3 | default: 4 -%}
+              {%- for i in (1..4) -%}<div class="ppf-bar-seg{% if i <= hy3 %} ppf-seg-dark{% else %} ppf-seg-off{% endif %}"></div>{%- endfor -%}
+            </div>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PPF Comparison",
+  "settings": [
+    {"type":"text","id":"title","label":"Section Title","default":"PPF Comparison"},
+    {"type":"text","id":"subtitle","label":"Subtitle","default":"Compare film properties across all three options"},
+    {"type":"header","content":"Brand 1 — Crystalline (Red)"},
+    {"type":"image_picker","id":"logo1","label":"Brand 1 Logo"},
+    {"type":"text","id":"brand1","label":"Brand Name","default":"Crystalline PPF"},
+    {"type":"header","content":"Brand 2 — NAR Classic (Blue)"},
+    {"type":"image_picker","id":"logo2","label":"Brand 2 Logo"},
+    {"type":"text","id":"brand2","label":"Brand Name","default":"NAR Classic"},
+    {"type":"header","content":"Brand 3 — NAR Premium (Dark)"},
+    {"type":"image_picker","id":"logo3","label":"Brand 3 Logo"},
+    {"type":"text","id":"brand3","label":"Brand Name","default":"NAR Premium"},
+    {"type":"header","content":"Film Type"},
+    {"type":"text","id":"r1_b1","label":"Brand 1","default":"TPU"},
+    {"type":"text","id":"r1_b2","label":"Brand 2","default":"TPU"},
+    {"type":"text","id":"r1_b3","label":"Brand 3","default":"TPU"},
+    {"type":"header","content":"Self-Healing Bars (1–4)"},
+    {"type":"number","id":"sh1","label":"Brand 1 Rating","default":3},
+    {"type":"number","id":"sh2","label":"Brand 2 Rating","default":4},
+    {"type":"number","id":"sh3","label":"Brand 3 Rating","default":4},
+    {"type":"header","content":"Thickness"},
+    {"type":"text","id":"thick1","label":"Brand 1","default":"7.9 mil"},
+    {"type":"text","id":"thick2","label":"Brand 2","default":"8.0 mil"},
+    {"type":"text","id":"thick3","label":"Brand 3","default":"8.5 mil"},
+    {"type":"header","content":"Product Durability"},
+    {"type":"text","id":"dur1","label":"Brand 1","default":"5 years"},
+    {"type":"text","id":"dur2","label":"Brand 2","default":"10 years"},
+    {"type":"text","id":"dur3","label":"Brand 3","default":"10 years"},
+    {"type":"header","content":"Non-Yellowing Warranty"},
+    {"type":"text","id":"nyw1","label":"Brand 1","default":"3 years"},
+    {"type":"text","id":"nyw2","label":"Brand 2","default":"3 years"},
+    {"type":"text","id":"nyw3","label":"Brand 3","default":"3 years"},
+    {"type":"header","content":"Product Warranty"},
+    {"type":"text","id":"pw1","label":"Brand 1","default":"3 years"},
+    {"type":"text","id":"pw2","label":"Brand 2","default":"5 years"},
+    {"type":"text","id":"pw3","label":"Brand 3","default":"7 years"},
+    {"type":"header","content":"Scratch Resistance Bars (1–4)"},
+    {"type":"number","id":"sc1","label":"Brand 1 Rating","default":3},
+    {"type":"number","id":"sc2","label":"Brand 2 Rating","default":3},
+    {"type":"number","id":"sc3","label":"Brand 3 Rating","default":4},
+    {"type":"header","content":"Hydrophobic Bars (1–4)"},
+    {"type":"number","id":"hy1","label":"Brand 1 Rating","default":3},
+    {"type":"number","id":"hy2","label":"Brand 2 Rating","default":4},
+    {"type":"number","id":"hy3","label":"Brand 3 Rating","default":4}
+  ],
+  "presets":[{"name":"PPF Comparison"}]
+}
+{% endschema %}
