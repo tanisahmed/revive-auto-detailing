@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "color_ppf": {
+      "type": "color-ppf",
+      "settings": {}
+    }
+  },
+  "order": [
+    "color_ppf"
+  ]
+}
