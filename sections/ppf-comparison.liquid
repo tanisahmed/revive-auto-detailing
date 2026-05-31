@@ -11,15 +11,15 @@
   border: 1px solid #0f172a;
   border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  box-shadow: none;
 }
 
 /* Logo header row */
 .ppf-h-empty {
   background: #fff;
   padding: 14px 14px 10px;
-  border-bottom: 1px solid #1e293b;
-  border-right: 1px solid #1e293b;
+  border-bottom: 1px solid #0f172a;
+  border-right: 1px solid #0f172a;
   display: flex; align-items: flex-end;
 }
 .ppf-h-empty span {
@@ -64,7 +64,7 @@
 .ppf-bn-cl {
   background: #0C447C;
   padding: 9px 8px; text-align: center;
-  border-right: 1px solid #1e293b; border-bottom: 2px solid #e2e8f0;
+  border-right: 1px solid #0f172a; border-bottom: 2px solid #e2e8f0;
 }
 .ppf-bn-pr {
   background: #2C2C2A;
@@ -81,16 +81,16 @@
   background: {{ section.settings.row_bg | default: "#fff" }};
   padding: 9px 8px 9px 14px;
   font-size: 13px; font-weight: 600; color: #1f2937;
-  border-right: 1px solid #1e293b; border-bottom: 1px solid #1e293b;
+  border-right: 1px solid #0f172a; border-bottom: 1px solid #0f172a;
 }
 .ppf-val {
   background: {{ section.settings.row_bg | default: "#fff" }};
   padding: 9px 8px; text-align: center;
-  font-size: 13px; border-right: 1px solid #1e293b;
+  font-size: 13px; border-right: 1px solid #0f172a;
   border-bottom: 1px solid #e5e7eb; color: #374151;
 }
 .ppf-val:last-child { border-right: none; }
-.ppf-val-feat { border-left: 1px solid #1e293b; border-right: 1px solid #1e293b; }
+.ppf-val-feat { border-left: 1px solid #0f172a; border-right: 1px solid #0f172a; }
 
 .ppf-lbl-last { border-bottom: none; }
 .ppf-val-last { border-bottom: none; }
@@ -107,8 +107,8 @@
 .ppf-bar { width: 14px; height: 6px; border-radius: 100px; }
 .ppf-br { background: #ef4444; }
 .ppf-bb { background: #1e3a8a; }
-.ppf-bg { background: #2C2C2A; }
-.ppf-bo { background: #d1d5db; }
+.ppf-bg { background: #0f172a; }
+.ppf-bo { background: #e2e8f0; }
 </style>
 
 <section class="ppf-cmp">
