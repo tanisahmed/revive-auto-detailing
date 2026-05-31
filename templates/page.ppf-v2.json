@@ -1,41 +1,20 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "hero": {
-      "type": "ppf-v2-hero",
-      "settings": {}
-    },
-    "why": {
-      "type": "ppf-v2-why",
-      "settings": {}
-    },
-    "packages": {
-      "type": "ppf-packages",
-      "settings": {}
-    },
-    "compare": {
-      "type": "ppf-v2-compare",
-      "settings": {}
-    },
-    "process": {
-      "type": "ppf-v2-process",
-      "settings": {}
-    },
-    "faq": {
-      "type": "ppf-v2-faq",
-      "settings": {}
-    },
-    "cta": {
-      "type": "ppf-v2-cta",
+    "main": {
+      "type": "main-page",
       "settings": {}
     }
   },
   "order": [
-    "hero",
-    "why",
-    "packages",
-    "compare",
-    "process",
-    "faq",
-    "cta"
+    "main"
   ]
 }
