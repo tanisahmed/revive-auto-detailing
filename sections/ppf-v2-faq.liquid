@@ -1,0 +1,65 @@
+<style>
+.ppf2-faq { padding: 4rem 0; background: #fff; font-family: 'Nunito Sans', sans-serif; }
+.ppf2-faq-inner { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+.ppf2-faq-item { border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 0.75rem; overflow: hidden; transition: box-shadow 0.2s; }
+.ppf2-faq-item.open { box-shadow: 0 4px 16px rgba(30,58,138,0.08); border-color: #bfdbfe; }
+.ppf2-faq-q { padding: 1.1rem 1.35rem; font-weight: 700; font-size: 0.95rem; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; user-select: none; }
+.ppf2-faq-item.open .ppf2-faq-q { color: #1e3a8a; background: #f0f7ff; }
+.ppf2-faq-chevron { font-size: 0.75rem; color: #94a3b8; transition: transform 0.2s; flex-shrink: 0; }
+.ppf2-faq-item.open .ppf2-faq-chevron { transform: rotate(180deg); color: #1e3a8a; }
+.ppf2-faq-a { padding: 0 1.35rem 1.1rem; font-size: 0.9rem; color: #64748b; line-height: 1.75; display: none; }
+.ppf2-faq-item.open .ppf2-faq-a { display: block; }
+</style>
+
+<section class="ppf2-faq">
+  <div class="ppf2-faq-inner">
+    <div style="text-align:center;margin-bottom:2.25rem;">
+      <div style="display:inline-block;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#1e3a8a;background:#dbeafe;padding:0.3rem 1rem;border-radius:100px;margin-bottom:0.75rem;">{{ section.settings.tag | default: "FAQ" }}</div>
+      <h2 style="font-size:2rem;font-weight:800;color:#0f172a;margin-bottom:0.4rem;font-family:'Nunito Sans',sans-serif;">{{ section.settings.title | default: "Frequently Asked Questions" }}</h2>
+      <p style="color:#64748b;">{{ section.settings.subtitle | default: "Everything you want to know about Paint Protection Film" }}</p>
+    </div>
+    <div>
+      {%- assign qs = "How long does PPF last?|Can PPF be removed without damaging paint?|Does PPF change how my car looks?|How do I care for my car after PPF installation?|Is PPF worth it for a new car?|What's the difference between NAR Classic and NAR Premium PPF?" | split: "|" -%}
+      {%- assign as = section.settings.a1 | default: "NAR PPF comes with a 5–7 year manufacturer warranty depending on the package you choose. With proper care, it regularly lasts beyond the warranty period. The film is UV-stabilised to resist yellowing and degradation." | append: "|||" | split: "|||" -%}
+      {%- for q in qs -%}
+        <div class="ppf2-faq-item">
+          <div class="ppf2-faq-q" onclick="this.parentElement.classList.toggle('open')">
+            {{ section.settings['q' | append: forloop.index] | default: q }}
+            <span class="ppf2-faq-chevron">▼</span>
+          </div>
+          <div class="ppf2-faq-a">{{ section.settings['a' | append: forloop.index] | default: "Please set this answer in the Theme Editor." }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PPF V2 FAQ",
+  "settings": [
+    {"type":"text","id":"tag","label":"Tag","default":"FAQ"},
+    {"type":"text","id":"title","label":"Title","default":"Frequently Asked Questions"},
+    {"type":"text","id":"subtitle","label":"Subtitle","default":"Everything you want to know about Paint Protection Film"},
+    {"type":"header","content":"Q&A 1"},
+    {"type":"text","id":"q1","label":"Question","default":"How long does PPF last?"},
+    {"type":"textarea","id":"a1","label":"Answer","default":"NAR PPF comes with a 5–7 year manufacturer warranty depending on the package. With proper care, it regularly lasts beyond the warranty period."},
+    {"type":"header","content":"Q&A 2"},
+    {"type":"text","id":"q2","label":"Question","default":"Can PPF be removed without damaging paint?"},
+    {"type":"textarea","id":"a2","label":"Answer","default":"Yes, absolutely. PPF can be professionally removed at any time without leaving adhesive residue or damaging your original factory paint."},
+    {"type":"header","content":"Q&A 3"},
+    {"type":"text","id":"q3","label":"Question","default":"Does PPF change how my car looks?"},
+    {"type":"textarea","id":"a3","label":"Answer","default":"Not at all. NAR PPF is completely clear and optically transparent. Your car's color and finish look exactly the same — or even better due to the added gloss."},
+    {"type":"header","content":"Q&A 4"},
+    {"type":"text","id":"q4","label":"Question","default":"How do I care for my car after PPF installation?"},
+    {"type":"textarea","id":"a4","label":"Answer","default":"Wait 48 hours before washing. Use pH-neutral car shampoo and avoid high-pressure jets directly on film edges. Avoid wax with petroleum distillates. We'll give you a full aftercare guide."},
+    {"type":"header","content":"Q&A 5"},
+    {"type":"text","id":"q5","label":"Question","default":"Is PPF worth it for a new car?"},
+    {"type":"textarea","id":"a5","label":"Answer","default":"Absolutely — in fact, a new car is the best time to apply PPF. You're protecting perfect factory paint from the very first drive, which gives you maximum long-term value."},
+    {"type":"header","content":"Q&A 6"},
+    {"type":"text","id":"q6","label":"Question","default":"What's the difference between NAR Classic and NAR Premium PPF?"},
+    {"type":"textarea","id":"a6","label":"Answer","default":"NAR Classic is 8.0 mil thickness with a 5-year warranty — excellent for everyday protection. NAR Premium is 8.5 mil with enhanced self-healing and a 7-year warranty, ideal for luxury or high-use vehicles."}
+  ],
+  "presets":[{"name":"PPF V2 FAQ"}]
+}
+{% endschema %}
