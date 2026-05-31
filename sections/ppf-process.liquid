@@ -38,11 +38,18 @@
 .rad-ppf-proc-note span { font-weight: 400; color: #4b5563; }
 
 @media (max-width: 768px) {
+  .rad-ppf-proc { padding: 2.5rem 0; }
+  .rad-ppf-proc-inner { padding: 0 1rem; }
+  .rad-ppf-proc-hdr h2 { font-size: 1.5rem; }
   .rad-ppf-steps { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .rad-ppf-steps::before { display: none; }
 }
 @media (max-width: 480px) {
   .rad-ppf-steps { grid-template-columns: 1fr; }
+  .rad-ppf-step-circle { width: 3.5rem; height: 3.5rem; font-size: 1.1rem; }
+  .rad-ppf-step h3 { font-size: 0.875rem; }
+  .rad-ppf-step p { font-size: 0.8rem; }
+  .rad-ppf-proc-note { flex-direction: column; text-align: center; }
 }
 </style>
 
