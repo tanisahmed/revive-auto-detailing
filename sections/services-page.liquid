@@ -1,0 +1,327 @@
+<style>
+.rad-svc-page { font-family: 'Nunito Sans', sans-serif; }
+
+/* Hero */
+.rad-svc-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+  padding: 5rem 0 4rem; text-align: center; color: #fff; position: relative; overflow: hidden;
+}
+.rad-svc-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 50%, rgba(96,165,250,0.15) 0%, transparent 60%); }
+.rad-svc-hero-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-svc-hero-tag { display: inline-block; background: rgba(96,165,250,0.2); border: 1px solid rgba(96,165,250,0.4); color: #93c5fd; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.4rem 1.1rem; border-radius: 100px; margin-bottom: 1.25rem; }
+.rad-svc-hero h1 { font-size: 3rem; font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
+.rad-svc-hero h1 span { color: #60a5fa; }
+.rad-svc-hero p { font-size: 1.05rem; color: #cbd5e1; line-height: 1.75; }
+
+/* Trust bar */
+.rad-svc-trust { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 1.25rem 0; }
+.rad-svc-trust-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+.rad-svc-trust-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; font-weight: 600; color: #374151; }
+.rad-svc-trust-item span:first-child { font-size: 1.25rem; }
+
+/* Services grid */
+.rad-svc-list { padding: 3.5rem 0 4rem; background: #f8fafc; }
+.rad-svc-list-inner { max-width: 1060px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; }
+
+/* Service card */
+.rad-svc-card {
+  background: #fff; border-radius: 16px; overflow: hidden;
+  border: 1px solid #e5e7eb; transition: all 0.25s;
+  display: flex; flex-direction: column;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.rad-svc-card:hover { box-shadow: 0 12px 32px rgba(0,0,0,0.10); transform: translateY(-4px); border-color: transparent; }
+.rad-svc-card-header { padding: 2rem 2rem 1.5rem; position: relative; }
+.rad-svc-card-icon { width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.1rem; }
+.rad-svc-card-tag { position: absolute; top: 1.25rem; right: 1.25rem; font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 100px; letter-spacing: 0.05em; }
+.rad-svc-card h2 { font-size: 1.3rem; font-weight: 800; color: #1f2937; margin-bottom: 0.5rem; }
+.rad-svc-card-desc { font-size: 0.9rem; color: #6b7280; line-height: 1.7; margin-bottom: 1.25rem; }
+.rad-svc-card-features { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.5rem; }
+.rad-svc-card-feat { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: #374151; }
+.rad-svc-card-feat-icon { width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; flex-shrink: 0; }
+
+.rad-svc-card-footer { padding: 0 2rem 2rem; margin-top: auto; }
+.rad-svc-card-price { font-size: 0.8rem; color: #6b7280; margin-bottom: 0.85rem; }
+.rad-svc-card-price strong { font-size: 1.1rem; color: #1f2937; font-weight: 700; }
+.rad-svc-card-btns { display: flex; gap: 0.6rem; }
+.rad-svc-card-btn-primary { flex: 1; display: block; text-align: center; padding: 0.75rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.875rem; text-decoration: none; transition: all 0.2s; }
+.rad-svc-card-btn-wa { display: flex; align-items: center; justify-content: center; padding: 0.75rem 0.875rem; background: #10b981; color: #fff; border-radius: 8px; font-size: 0.875rem; text-decoration: none; transition: background 0.2s; }
+.rad-svc-card-btn-wa:hover { background: #059669; }
+
+/* Color accents per service */
+.rad-svc-ppf .rad-svc-card-icon { background: #dbeafe; }
+.rad-svc-ppf .rad-svc-card-btn-primary { background: #1e3a8a; color: #fff; }
+.rad-svc-ppf .rad-svc-card-btn-primary:hover { background: #1e40af; }
+.rad-svc-ppf .rad-svc-card-feat-icon { background: #dbeafe; color: #1e3a8a; }
+.rad-svc-ppf .rad-svc-card-tag { background: #dbeafe; color: #1e3a8a; }
+
+.rad-svc-ceramic .rad-svc-card-icon { background: #fce7f3; }
+.rad-svc-ceramic .rad-svc-card-btn-primary { background: #be185d; color: #fff; }
+.rad-svc-ceramic .rad-svc-card-btn-primary:hover { background: #9d174d; }
+.rad-svc-ceramic .rad-svc-card-feat-icon { background: #fce7f3; color: #be185d; }
+.rad-svc-ceramic .rad-svc-card-tag { background: #fce7f3; color: #be185d; }
+
+.rad-svc-detailing .rad-svc-card-icon { background: #d1fae5; }
+.rad-svc-detailing .rad-svc-card-btn-primary { background: #065f46; color: #fff; }
+.rad-svc-detailing .rad-svc-card-btn-primary:hover { background: #064e3b; }
+.rad-svc-detailing .rad-svc-card-feat-icon { background: #d1fae5; color: #065f46; }
+.rad-svc-detailing .rad-svc-card-tag { background: #d1fae5; color: #065f46; }
+
+.rad-svc-tint .rad-svc-card-icon { background: #e0e7ff; }
+.rad-svc-tint .rad-svc-card-btn-primary { background: #4338ca; color: #fff; }
+.rad-svc-tint .rad-svc-card-btn-primary:hover { background: #3730a3; }
+.rad-svc-tint .rad-svc-card-feat-icon { background: #e0e7ff; color: #4338ca; }
+.rad-svc-tint .rad-svc-card-tag { background: #e0e7ff; color: #4338ca; }
+
+.rad-svc-antirust .rad-svc-card-icon { background: #fee2e2; }
+.rad-svc-antirust .rad-svc-card-btn-primary { background: #9f1239; color: #fff; }
+.rad-svc-antirust .rad-svc-card-btn-primary:hover { background: #881337; }
+.rad-svc-antirust .rad-svc-card-feat-icon { background: #fee2e2; color: #9f1239; }
+.rad-svc-antirust .rad-svc-card-tag { background: #fee2e2; color: #9f1239; }
+
+.rad-svc-colorppf .rad-svc-card-icon { background: #ede9fe; }
+.rad-svc-colorppf .rad-svc-card-btn-primary { background: #6d28d9; color: #fff; }
+.rad-svc-colorppf .rad-svc-card-btn-primary:hover { background: #5b21b6; }
+.rad-svc-colorppf .rad-svc-card-feat-icon { background: #ede9fe; color: #6d28d9; }
+.rad-svc-colorppf .rad-svc-card-tag { background: #ede9fe; color: #6d28d9; }
+
+/* Why RAD */
+.rad-svc-why { padding: 3.5rem 0; background: #fff; }
+.rad-svc-why-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-svc-why-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem; margin-top: 2rem; }
+.rad-svc-why-item { text-align: center; padding: 1.5rem 1rem; border-radius: 12px; background: #f8fafc; border: 1px solid #e5e7eb; }
+.rad-svc-why-item-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+.rad-svc-why-item h4 { font-size: 0.9rem; font-weight: 700; color: #1f2937; margin-bottom: 0.4rem; }
+.rad-svc-why-item p { font-size: 0.8rem; color: #6b7280; line-height: 1.55; }
+
+/* CTA */
+.rad-svc-cta { padding: 4rem 0; background: linear-gradient(135deg, #1e3a8a, #0f172a); text-align: center; color: #fff; }
+.rad-svc-cta-inner { max-width: 600px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-svc-cta h2 { font-size: 2rem; font-weight: 800; margin-bottom: 0.75rem; }
+.rad-svc-cta p { color: #cbd5e1; margin-bottom: 2rem; font-size: 1rem; }
+.rad-svc-cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.rad-svc-cta-btn1 { padding: 0.9rem 2.25rem; background: #fff; color: #1e3a8a; border-radius: 8px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+.rad-svc-cta-btn1:hover { background: #f1f5f9; }
+.rad-svc-cta-btn2 { padding: 0.9rem 2.25rem; background: #10b981; color: #fff; border-radius: 8px; font-weight: 700; text-decoration: none; transition: all 0.2s; display: flex; align-items: center; gap: 0.4rem; }
+.rad-svc-cta-btn2:hover { background: #059669; }
+
+.rad-sec-title { font-size: 2rem; font-weight: 800; color: #1f2937; margin-bottom: 0.4rem; text-align: center; }
+.rad-sec-sub { color: #6b7280; text-align: center; font-size: 1rem; }
+
+@media (max-width: 768px) {
+  .rad-svc-hero h1 { font-size: 2rem; }
+  .rad-svc-grid { grid-template-columns: 1fr; }
+  .rad-svc-why-grid { grid-template-columns: repeat(2,1fr); }
+  .rad-svc-trust-inner { gap: 1.25rem; }
+}
+</style>
+
+<div class="rad-svc-page">
+
+  <!-- Hero -->
+  <div class="rad-svc-hero">
+    <div class="rad-svc-hero-inner">
+      <div class="rad-svc-hero-tag">Professional Auto Care • Karachi</div>
+      <h1>Premium Car Care <span>Services</span> in Karachi</h1>
+      <p>From Paint Protection Film to Ceramic Coating — we offer everything your car needs to look stunning and stay protected for years.</p>
+    </div>
+  </div>
+
+  <!-- Trust bar -->
+  <div class="rad-svc-trust">
+    <div class="rad-svc-trust-inner">
+      <div class="rad-svc-trust-item"><span>⭐</span><span>4.9 Google Rating</span></div>
+      <div class="rad-svc-trust-item"><span>🛡</span><span>NAR & GYEON Certified</span></div>
+      <div class="rad-svc-trust-item"><span>🚗</span><span>500+ Cars Serviced</span></div>
+      <div class="rad-svc-trust-item"><span>✅</span><span>Up to 7 Year Warranty</span></div>
+      <div class="rad-svc-trust-item"><span>📍</span><span>Karachi, Pakistan</span></div>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <div class="rad-svc-list">
+    <div class="rad-svc-list-inner">
+      <div style="text-align:center;margin-bottom:2.5rem;">
+        <h2 class="rad-sec-title">Our Services</h2>
+        <p class="rad-sec-sub">Choose a service to learn more or book an appointment</p>
+      </div>
+      <div class="rad-svc-grid">
+
+        <!-- PPF -->
+        <div class="rad-svc-card rad-svc-ppf">
+          <div class="rad-svc-card-header">
+            <div class="rad-svc-card-icon">🛡</div>
+            <div class="rad-svc-card-tag">Most Popular</div>
+            <h2>Paint Protection Film (PPF)</h2>
+            <p class="rad-svc-card-desc">The ultimate paint protection — an invisible film that shields your car from stone chips, scratches, UV damage and environmental hazards.</p>
+            <div class="rad-svc-card-features">
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>Full bumper-to-bumper coverage</div>
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>NAR 8.0–8.5 mil self-healing film</div>
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>5–7 year manufacturer warranty</div>
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>GYEON complementary coatings included</div>
+            </div>
+          </div>
+          <div class="rad-svc-card-footer">
+            <div class="rad-svc-card-price">Starting from <strong>PKR 260,000</strong></div>
+            <div class="rad-svc-card-btns">
+              <a href="/pages/paint-protection-film-ppf" class="rad-svc-card-btn-primary">View Pricing →</a>
+              <a href="/pages/ppf-booking" class="rad-svc-card-btn-wa">Book Slot</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ceramic -->
+        <div class="rad-svc-card rad-svc-ceramic">
+          <div class="rad-svc-card-header">
+            <div class="rad-svc-card-icon">✨</div>
+            <div class="rad-svc-card-tag">Best Value</div>
+            <h2>Ceramic Coating</h2>
+            <p class="rad-svc-card-desc">A professional-grade liquid ceramic shield that bonds to your paint, creating a hydrophobic, scratch-resistant surface with a brilliant mirror gloss.</p>
+            <div class="rad-svc-card-features">
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>GYEON certified coating products</div>
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>Gold, Platinum & Ultimate packages</div>
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>Wheel & glass coating included</div>
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>1–3 year ceramic warranty</div>
+            </div>
+          </div>
+          <div class="rad-svc-card-footer">
+            <div class="rad-svc-card-price">Starting from <strong>PKR 40,000</strong></div>
+            <div class="rad-svc-card-btns">
+              <a href="/pages/ceramic-coating" class="rad-svc-card-btn-primary">View Pricing →</a>
+              <a href="/pages/ceramic-booking" class="rad-svc-card-btn-wa">Book Slot</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detailing -->
+        <div class="rad-svc-card rad-svc-detailing">
+          <div class="rad-svc-card-header">
+            <div class="rad-svc-card-icon">🚗</div>
+            <div class="rad-svc-card-tag">Showroom Finish</div>
+            <h2>Exterior & Interior Detailing</h2>
+            <p class="rad-svc-card-desc">Professional deep-cleaning and polishing inside and out. We restore your car to a showroom-fresh condition with meticulous attention to every detail.</p>
+            <div class="rad-svc-card-features">
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>Interior & exterior packages available</div>
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>Complete detailing + paint correction</div>
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>All vehicle types covered</div>
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>Premium products used throughout</div>
+            </div>
+          </div>
+          <div class="rad-svc-card-footer">
+            <div class="rad-svc-card-price">Starting from <strong>PKR 10,000</strong></div>
+            <div class="rad-svc-card-btns">
+              <a href="/pages/car-detailing" class="rad-svc-card-btn-primary">View Pricing →</a>
+              <a href="/pages/detailing-booking" class="rad-svc-card-btn-wa">Book Slot</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tint -->
+        <div class="rad-svc-card rad-svc-tint">
+          <div class="rad-svc-card-header">
+            <div class="rad-svc-card-icon">🌑</div>
+            <div class="rad-svc-card-tag">NAR Certified</div>
+            <h2>Car Window Tinting</h2>
+            <p class="rad-svc-card-desc">Premium NAR heat-control window film that blocks UV rays, reduces cabin heat, enhances privacy, and gives your car a sleek, finished look.</p>
+            <div class="rad-svc-card-features">
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>99% UV ray rejection</div>
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>Significant heat reduction</div>
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>Full car, windscreen & door options</div>
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>Scratch-resistant coating</div>
+            </div>
+          </div>
+          <div class="rad-svc-card-footer">
+            <div class="rad-svc-card-price">Starting from <strong>PKR 18,500</strong></div>
+            <div class="rad-svc-card-btns">
+              <a href="/pages/car-window-tints" class="rad-svc-card-btn-primary">View Pricing →</a>
+              <a href="/pages/tint-booking" class="rad-svc-card-btn-wa">Book Slot</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Anti-Rust -->
+        <div class="rad-svc-card rad-svc-antirust">
+          <div class="rad-svc-card-header">
+            <div class="rad-svc-card-icon">🔒</div>
+            <div class="rad-svc-card-tag">Long-Term Protection</div>
+            <h2>Anti-Rust Undercoating</h2>
+            <p class="rad-svc-card-desc">MIPA rubberized undercoating that protects your car's underbody from rust, corrosion, moisture, and road damage — essential for Karachi's climate.</p>
+            <div class="rad-svc-card-features">
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>MIPA rubberized coating</div>
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>Protection from moisture & salt</div>
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>Reduces road noise</div>
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>Multi-year durability warranty</div>
+            </div>
+          </div>
+          <div class="rad-svc-card-footer">
+            <div class="rad-svc-card-price">Starting from <strong>PKR 22,000</strong></div>
+            <div class="rad-svc-card-btns">
+              <a href="/pages/undercoating" class="rad-svc-card-btn-primary">View Pricing →</a>
+              <a href="/pages/antirust-booking" class="rad-svc-card-btn-wa">Book Slot</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Color PPF -->
+        <div class="rad-svc-card rad-svc-colorppf">
+          <div class="rad-svc-card-header">
+            <div class="rad-svc-card-icon">🎨</div>
+            <div class="rad-svc-card-tag">New Service</div>
+            <h2>Color Paint Protection Film</h2>
+            <p class="rad-svc-card-desc">Change your car's color while protecting the original paint underneath. 50+ premium colors available — matte, gloss, satin & metallic finishes.</p>
+            <div class="rad-svc-card-features">
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>50+ premium color options</div>
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>Fully reversible — no paint damage</div>
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>Self-healing technology</div>
+              <div class="rad-svc-card-feat"><div class="rad-svc-card-feat-icon">✓</div>5–7 year warranty</div>
+            </div>
+          </div>
+          <div class="rad-svc-card-footer">
+            <div class="rad-svc-card-price">Starting from <strong>PKR 290,000</strong></div>
+            <div class="rad-svc-card-btns">
+              <a href="/pages/color-paint-protection-ppf" class="rad-svc-card-btn-primary">Learn More →</a>
+              <a href="/pages/ppf-booking" class="rad-svc-card-btn-wa">Book Slot</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Why RAD -->
+  <div class="rad-svc-why">
+    <div class="rad-svc-why-inner">
+      <h2 class="rad-sec-title">Why Choose Revive Auto Detailing?</h2>
+      <p class="rad-sec-sub">We don't just do a job — we take pride in every car we touch</p>
+      <div class="rad-svc-why-grid">
+        <div class="rad-svc-why-item"><div class="rad-svc-why-item-icon">🏆</div><h4>Premium Products Only</h4><p>NAR & GYEON certified — the same brands used by top studios worldwide.</p></div>
+        <div class="rad-svc-why-item"><div class="rad-svc-why-item-icon">👨‍🔧</div><h4>Certified Technicians</h4><p>Professionally trained team with hands-on experience on 500+ vehicles.</p></div>
+        <div class="rad-svc-why-item"><div class="rad-svc-why-item-icon">📋</div><h4>Warranty Backed</h4><p>All services come with manufacturer-backed warranties up to 7 years.</p></div>
+        <div class="rad-svc-why-item"><div class="rad-svc-why-item-icon">⭐</div><h4>4.9 Google Rating</h4><p>Hundreds of satisfied customers who trust us with their prized vehicles.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="rad-svc-cta">
+    <div class="rad-svc-cta-inner">
+      <h2>Not Sure Which Service You Need?</h2>
+      <p>Chat with us on WhatsApp and we'll recommend the best option for your car and budget — for free.</p>
+      <div class="rad-svc-cta-btns">
+        <a href="/pages/ppf-booking" class="rad-svc-cta-btn1">Book an Appointment</a>
+        <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20to%20know%20which%20service%20is%20best%20for%20my%20car" target="_blank" class="rad-svc-cta-btn2">💬 Ask on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "Services Page",
+  "settings": [],
+  "presets": [{"name": "Services Page"}]
+}
+{% endschema %}
