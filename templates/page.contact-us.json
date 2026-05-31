@@ -1,11 +1,11 @@
 {
   "sections": {
-    "contact_page": {
+    "main": {
       "type": "contact-page",
       "settings": {}
     }
   },
   "order": [
-    "contact_page"
+    "main"
   ]
 }
