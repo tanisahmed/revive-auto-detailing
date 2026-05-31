@@ -42,12 +42,12 @@
         "r1_b1": "TPU",
         "r1_b2": "TPU",
         "r1_b3": "TPU",
-        "sh1": 3,
-        "sh2": 4,
-        "sh3": 4,
         "thick1": "7.9 mil",
         "thick2": "8.0 mil",
         "thick3": "8.5 mil",
+        "sh1": 3,
+        "sh2": 4,
+        "sh3": 4,
         "dur1": "5 years",
         "dur2": "10 years",
         "dur3": "10 years",
@@ -63,14 +63,6 @@
         "hy1": 3,
         "hy2": 4,
         "hy3": 4
-      }
-    },
-    "ppf_benefits_fjiLPD": {
-      "type": "ppf-benefits",
-      "name": "PPF Benefits",
-      "settings": {
-        "title": "Why PPF?",
-        "subtitle": "The most comprehensive paint protection available for your vehicle"
       }
     },
     "ppf_packages_UJLGPt": {
@@ -103,6 +95,14 @@
         "ex_xlsuv": "Prado, Land Cruiser, Fortuner"
       }
     },
+    "ppf_benefits_fjiLPD": {
+      "type": "ppf-benefits",
+      "name": "PPF Benefits",
+      "settings": {
+        "title": "Why PPF?",
+        "subtitle": "The most comprehensive paint protection available for your vehicle"
+      }
+    },
     "process_3VXAYN": {
       "type": "process",
       "name": "Process",
@@ -132,8 +132,8 @@
     "main",
     "ppf_hero_EDQVn7",
     "ppf_comparison_Hi8tbe",
-    "ppf_benefits_fjiLPD",
     "ppf_packages_UJLGPt",
+    "ppf_benefits_fjiLPD",
     "process_3VXAYN",
     "ppf_faq_rcfYWK"
   ]
