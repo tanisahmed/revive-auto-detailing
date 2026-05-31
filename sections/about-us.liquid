@@ -1,0 +1,191 @@
+<style>
+.rad-about { font-family: 'Nunito Sans', sans-serif; }
+
+/* Hero */
+.rad-about-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+  padding: 5rem 0 4rem; text-align: center; color: #fff; position: relative; overflow: hidden;
+}
+.rad-about-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(96,165,250,0.15) 0%, transparent 60%);
+}
+.rad-about-hero-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-about-tag { display: inline-block; background: rgba(96,165,250,0.2); border: 1px solid rgba(96,165,250,0.4); color: #93c5fd; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.4rem 1.1rem; border-radius: 100px; margin-bottom: 1.25rem; }
+.rad-about-hero h1 { font-size: 3rem; font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
+.rad-about-hero h1 span { color: #60a5fa; }
+.rad-about-hero p { font-size: 1.1rem; color: #cbd5e1; line-height: 1.7; }
+
+/* Stats */
+.rad-about-stats { background: #fff; padding: 2.5rem 0; border-bottom: 1px solid #e5e7eb; }
+.rad-about-stats-grid { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
+.rad-stat-box { text-align: center; padding: 1.25rem; border-radius: 12px; background: #f8fafc; border: 1px solid #e5e7eb; }
+.rad-stat-box-num { font-size: 2.25rem; font-weight: 800; color: #1e3a8a; display: block; }
+.rad-stat-box-lbl { font-size: 0.8rem; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* Story */
+.rad-about-story { padding: 4rem 0; background: #f8fafc; }
+.rad-about-story-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+.rad-about-story-tag { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1e3a8a; margin-bottom: 0.75rem; }
+.rad-about-story h2 { font-size: 2rem; font-weight: 800; color: #1f2937; margin-bottom: 1rem; line-height: 1.25; }
+.rad-about-story p { font-size: 0.95rem; color: #4b5563; line-height: 1.8; margin-bottom: 0.85rem; }
+.rad-story-img { background: linear-gradient(135deg, #1e3a8a, #0f172a); border-radius: 16px; height: 360px; display: flex; align-items: center; justify-content: center; font-size: 5rem; box-shadow: 0 20px 40px rgba(30,58,138,0.2); }
+
+/* Values */
+.rad-about-values { padding: 4rem 0; background: #fff; }
+.rad-about-values-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-section-hdr { text-align: center; margin-bottom: 2.5rem; }
+.rad-section-hdr h2 { font-size: 2rem; font-weight: 800; color: #1f2937; margin-bottom: 0.5rem; }
+.rad-section-hdr p { color: #6b7280; font-size: 1rem; }
+.rad-values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+.rad-value-card { padding: 1.75rem; border-radius: 12px; border: 1px solid #e5e7eb; background: #f8fafc; }
+.rad-value-icon { font-size: 2rem; margin-bottom: 1rem; }
+.rad-value-card h3 { font-size: 1rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem; }
+.rad-value-card p { font-size: 0.875rem; color: #6b7280; line-height: 1.65; }
+
+/* Team */
+.rad-about-team { padding: 4rem 0; background: #f8fafc; }
+.rad-about-team-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-team-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+.rad-team-card { background: #fff; border-radius: 14px; padding: 1.75rem; text-align: center; border: 1px solid #e5e7eb; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.rad-team-avatar { width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, #1e3a8a, #3b82f6); display: flex; align-items: center; justify-content: center; font-size: 1.75rem; margin: 0 auto 1rem; }
+.rad-team-name { font-size: 1rem; font-weight: 700; color: #1f2937; margin-bottom: 0.2rem; }
+.rad-team-role { font-size: 0.8rem; color: #1e3a8a; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+.rad-team-card p { font-size: 0.85rem; color: #6b7280; line-height: 1.6; }
+
+/* Certifications */
+.rad-about-certs { padding: 3.5rem 0; background: #fff; }
+.rad-about-certs-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-certs-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem; }
+.rad-cert-card { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 12px; padding: 1.25rem; text-align: center; }
+.rad-cert-icon { font-size: 2rem; margin-bottom: 0.6rem; }
+.rad-cert-card h4 { font-size: 0.85rem; font-weight: 700; color: #1f2937; margin-bottom: 0.2rem; }
+.rad-cert-card span { font-size: 0.75rem; color: #6b7280; }
+
+/* CTA */
+.rad-about-cta { padding: 4rem 0; background: linear-gradient(135deg, #1e3a8a, #0f172a); text-align: center; color: #fff; }
+.rad-about-cta-inner { max-width: 600px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-about-cta h2 { font-size: 2rem; font-weight: 800; margin-bottom: 0.75rem; }
+.rad-about-cta p { color: #cbd5e1; margin-bottom: 2rem; }
+.rad-about-cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.rad-cta-btn-primary { padding: 0.875rem 2rem; background: #fff; color: #1e3a8a; border-radius: 8px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+.rad-cta-btn-primary:hover { background: #f1f5f9; }
+.rad-cta-btn-wa { padding: 0.875rem 2rem; background: #10b981; color: #fff; border-radius: 8px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+.rad-cta-btn-wa:hover { background: #059669; }
+
+@media (max-width: 768px) {
+  .rad-about-hero h1 { font-size: 2rem; }
+  .rad-about-stats-grid { grid-template-columns: repeat(2,1fr); }
+  .rad-about-story-inner { grid-template-columns: 1fr; }
+  .rad-story-img { height: 220px; }
+  .rad-values-grid { grid-template-columns: 1fr; }
+  .rad-team-grid { grid-template-columns: 1fr 1fr; }
+  .rad-certs-grid { grid-template-columns: repeat(2,1fr); }
+}
+</style>
+
+<div class="rad-about">
+
+  <!-- Hero -->
+  <div class="rad-about-hero">
+    <div class="rad-about-hero-inner">
+      <div class="rad-about-tag">About Revive Auto Detailing</div>
+      <h1>Karachi's Most <span>Trusted</span> Auto Care Studio</h1>
+      <p>We are a team of passionate automotive professionals dedicated to giving your car the premium protection and shine it deserves — using only the best products and techniques.</p>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="rad-about-stats">
+    <div class="rad-about-stats-grid">
+      <div class="rad-stat-box"><span class="rad-stat-box-num">500+</span><span class="rad-stat-box-lbl">Cars Serviced</span></div>
+      <div class="rad-stat-box"><span class="rad-stat-box-num">4.9 ⭐</span><span class="rad-stat-box-lbl">Google Rating</span></div>
+      <div class="rad-stat-box"><span class="rad-stat-box-num">2+</span><span class="rad-stat-box-lbl">Years Experience</span></div>
+      <div class="rad-stat-box"><span class="rad-stat-box-num">100%</span><span class="rad-stat-box-lbl">Satisfaction Rate</span></div>
+    </div>
+  </div>
+
+  <!-- Story -->
+  <div class="rad-about-story">
+    <div class="rad-about-story-inner">
+      <div>
+        <div class="rad-about-story-tag">Our Story</div>
+        <h2>Born from a Passion for Perfection</h2>
+        <p>Revive Auto Detailing was founded with one simple belief — every car deserves world-class care. Based in Karachi, we started as a small team of automotive enthusiasts who were frustrated with the lack of premium detailing services available locally.</p>
+        <p>Today, we are proud to be one of Karachi's leading auto care studios, trusted by hundreds of car owners for Paint Protection Film (PPF), Ceramic Coating, Window Tinting, and professional detailing services.</p>
+        <p>We use only certified products from globally recognized brands like <strong>NAR</strong> and <strong>GYEON</strong>, ensuring your vehicle receives the best protection available in the market.</p>
+      </div>
+      <div class="rad-story-img">🚗</div>
+    </div>
+  </div>
+
+  <!-- Values -->
+  <div class="rad-about-values">
+    <div class="rad-about-values-inner">
+      <div class="rad-section-hdr">
+        <h2>Why We Do What We Do</h2>
+        <p>Our core values drive every service we deliver</p>
+      </div>
+      <div class="rad-values-grid">
+        <div class="rad-value-card"><div class="rad-value-icon">🎯</div><h3>Precision First</h3><p>We treat every vehicle with the same level of care and attention to detail, from a hatchback to a luxury SUV.</p></div>
+        <div class="rad-value-card"><div class="rad-value-icon">🏆</div><h3>Premium Products Only</h3><p>We never compromise on quality. All our products are certified, tested, and used by leading studios worldwide.</p></div>
+        <div class="rad-value-card"><div class="rad-value-icon">🤝</div><h3>Honest Service</h3><p>We give you transparent advice and pricing. No upselling, no surprises — just honest recommendations for your car.</p></div>
+        <div class="rad-value-card"><div class="rad-value-icon">⏱</div><h3>Respect for Your Time</h3><p>We commit to appointment schedules and keep you updated throughout the process so you always know what's happening.</p></div>
+        <div class="rad-value-card"><div class="rad-value-icon">🔬</div><h3>Certified Expertise</h3><p>Our team is trained and certified in the latest PPF and ceramic coating techniques from industry-leading programs.</p></div>
+        <div class="rad-value-card"><div class="rad-value-icon">💎</div><h3>Lasting Results</h3><p>We don't just make your car look great today — we protect it for years to come with long-lasting solutions.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Team -->
+  <div class="rad-about-team">
+    <div class="rad-about-team-inner">
+      <div class="rad-section-hdr">
+        <h2>Meet Our Team</h2>
+        <p>Skilled professionals who treat your car like their own</p>
+      </div>
+      <div class="rad-team-grid">
+        <div class="rad-team-card"><div class="rad-team-avatar">👨‍🔧</div><div class="rad-team-name">Lead PPF Technician</div><div class="rad-team-role">PPF Specialist</div><p>Certified NAR installer with hands-on experience on 300+ vehicles. Specializes in complex wraps and full-body PPF.</p></div>
+        <div class="rad-team-card"><div class="rad-team-avatar">🧪</div><div class="rad-team-name">Ceramic Coating Expert</div><div class="rad-team-role">Coatings Specialist</div><p>GYEON certified coating professional. Expert in multi-layer ceramic systems for maximum gloss and durability.</p></div>
+        <div class="rad-team-card"><div class="rad-team-avatar">✨</div><div class="rad-team-name">Detailing Specialist</div><div class="rad-team-role">Interior & Exterior</div><p>Skilled in paint correction, deep interior cleaning, and showroom-level detailing finishes.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Certifications -->
+  <div class="rad-about-certs">
+    <div class="rad-about-certs-inner">
+      <div class="rad-section-hdr">
+        <h2>Our Certifications & Partners</h2>
+        <p>We are proud to work with globally trusted brands</p>
+      </div>
+      <div class="rad-certs-grid">
+        <div class="rad-cert-card"><div class="rad-cert-icon">🛡</div><h4>NAR Certified</h4><span>PPF Installer</span></div>
+        <div class="rad-cert-card"><div class="rad-cert-icon">🌟</div><h4>GYEON Partner</h4><span>Ceramic Coatings</span></div>
+        <div class="rad-cert-card"><div class="rad-cert-icon">🏅</div><h4>Professional Detailer</h4><span>IDA Member</span></div>
+        <div class="rad-cert-card"><div class="rad-cert-icon">✅</div><h4>Warranty Backed</h4><span>Up to 7 Years</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="rad-about-cta">
+    <div class="rad-about-cta-inner">
+      <h2>Ready to Give Your Car the Best?</h2>
+      <p>Book your appointment today and experience the Revive difference.</p>
+      <div class="rad-about-cta-btns">
+        <a href="/pages/ppf-booking" class="rad-cta-btn-primary">Book My Slot</a>
+        <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20to%20know%20more%20about%20your%20services" target="_blank" class="rad-cta-btn-wa">💬 WhatsApp Us</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "About Us",
+  "settings": [],
+  "presets": [{"name": "About Us"}]
+}
+{% endschema %}
