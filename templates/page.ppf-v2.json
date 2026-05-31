@@ -92,6 +92,38 @@
         "btn1_text": "Book My Appointment",
         "btn1_url": ""
       }
+    },
+    "ppf_v2_pricing_y9A8Jw": {
+      "type": "ppf-v2-pricing",
+      "name": "PPF V2 Pricing",
+      "settings": {
+        "tag": "Transparent Pricing",
+        "title": "Choose Your Package",
+        "subtitle": "Select your vehicle type to see exact pricing for your car",
+        "tagline": "Complete PPF from bumper to bumper",
+        "classic_name": "NAR Classic PPF",
+        "classic_mil": "8.0 mil thickness",
+        "classic_warranty": "5 Years Warranty",
+        "premium_name": "NAR Premium PPF",
+        "premium_mil": "8.5 mil thickness",
+        "premium_warranty": "7 Years Warranty",
+        "p_hatchback_classic": 260000,
+        "p_hatchback_premium": 290000,
+        "dur_hatchback": "3 Working Days",
+        "p_sedan_classic": 300000,
+        "p_sedan_premium": 330000,
+        "dur_sedan": "3 Working Days",
+        "p_suv_classic": 330000,
+        "p_suv_premium": 380000,
+        "dur_suv": "3 Working Days",
+        "p_xlsuv_classic": 370000,
+        "p_xlsuv_premium": 420000,
+        "dur_xlsuv": "3 Working Days",
+        "ex_hatchback": "Swift, Mira, Dayz",
+        "ex_sedan": "Corolla, Civic, Sonata",
+        "ex_suv": "Sportage L, Tucson, Haval H6",
+        "ex_xlsuv": "Fortuner, Land Cruiser, Prado"
+      }
     }
   },
   "order": [
@@ -100,6 +132,7 @@
     "ppf_v2_compare_eVKAEQ",
     "ppf_v2_process_zzPard",
     "ppf_v2_why_R49Lzn",
-    "ppf_v2_cta_Ty8KKG"
+    "ppf_v2_cta_Ty8KKG",
+    "ppf_v2_pricing_y9A8Jw"
   ]
 }
