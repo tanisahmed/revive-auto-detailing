@@ -64,11 +64,10 @@
           <th class="ppf-cmp-th ppf-cmp-th-red">
             <div class="ppf-cmp-th-inner">
               {%- if section.settings.logo1 != blank -%}
-                <img src="{{ section.settings.logo1 | image_url: width: 96 }}" alt="{{ section.settings.brand1 }}" style="width:56px;height:40px;object-fit:contain;display:block;">
+                <img src="{{ section.settings.logo1 | image_url: width: 96 }}" alt="{{ section.settings.brand1 }}" style="width:100%;max-width:110px;height:56px;object-fit:contain;display:block;margin:0 auto;">
               {%- else -%}
-                <div style="width:56px;height:40px;border-radius:8px;background:#fff0f0;border:1px solid #fca5a5;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#A32D2D;">LOGO</div>
+                <div style="width:100%;max-width:110px;height:56px;border-radius:8px;background:#fff0f0;border:1px solid #fca5a5;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#A32D2D;margin:0 auto;">LOGO</div>
               {%- endif -%}
-              <span class="ppf-cmp-th-name">{{ section.settings.brand1 | default: "Crystalline PPF" }}</span>
             </div>
           </th>
 
@@ -76,11 +75,10 @@
           <th class="ppf-cmp-th ppf-cmp-th-blue">
             <div class="ppf-cmp-th-inner">
               {%- if section.settings.logo2 != blank -%}
-                <img src="{{ section.settings.logo2 | image_url: width: 96 }}" alt="{{ section.settings.brand2 }}" style="width:56px;height:40px;object-fit:contain;display:block;">
+                <img src="{{ section.settings.logo2 | image_url: width: 96 }}" alt="{{ section.settings.brand2 }}" style="width:100%;max-width:110px;height:56px;object-fit:contain;display:block;margin:0 auto;">
               {%- else -%}
-                <div style="width:56px;height:40px;border-radius:8px;background:#0C447C;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;">NAR</div>
+                <div style="width:100%;max-width:110px;height:56px;border-radius:8px;background:#0C447C;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;margin:0 auto;">NAR</div>
               {%- endif -%}
-              <span class="ppf-cmp-th-name">{{ section.settings.brand2 | default: "NAR Classic PPF" }}</span>
             </div>
           </th>
 
@@ -88,17 +86,23 @@
           <th class="ppf-cmp-th">
             <div class="ppf-cmp-th-inner">
               {%- if section.settings.logo3 != blank -%}
-                <img src="{{ section.settings.logo3 | image_url: width: 96 }}" alt="{{ section.settings.brand3 }}" style="width:56px;height:40px;object-fit:contain;display:block;">
+                <img src="{{ section.settings.logo3 | image_url: width: 96 }}" alt="{{ section.settings.brand3 }}" style="width:100%;max-width:110px;height:56px;object-fit:contain;display:block;margin:0 auto;">
               {%- else -%}
-                <div style="width:56px;height:40px;border-radius:8px;background:#2C2C2A;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#D3D1C7;">NAR</div>
+                <div style="width:100%;max-width:110px;height:56px;border-radius:8px;background:#2C2C2A;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#D3D1C7;margin:0 auto;">NAR</div>
               {%- endif -%}
-              <span class="ppf-cmp-th-name">{{ section.settings.brand3 | default: "NAR Premium PPF" }}</span>
             </div>
           </th>
         </tr>
       </thead>
       <tbody>
 
+        <!-- Brand name row -->
+        <tr class="ppf-cmp-tr">
+          <td class="ppf-cmp-td-prop" style="font-size:11px;color:#6b7280;">Brand</td>
+          <td class="ppf-cmp-td ppf-cmp-td-red"><span class="ppf-val ppf-val-red" style="font-size:13px;font-weight:700;">{{ section.settings.brand1 | default: "Crystalline PPF" }}</span></td>
+          <td class="ppf-cmp-td ppf-cmp-td-blue"><span class="ppf-val ppf-val-blue" style="font-size:13px;font-weight:700;">{{ section.settings.brand2 | default: "NAR Classic PPF" }}</span></td>
+          <td class="ppf-cmp-td"><span class="ppf-val ppf-val-dark" style="font-size:13px;font-weight:700;">{{ section.settings.brand3 | default: "NAR Premium PPF" }}</span></td>
+        </tr>
         <!-- Film type -->
         <tr class="ppf-cmp-tr">
           <td class="ppf-cmp-td-prop">Film type</td>
