@@ -1,12 +1,12 @@
 <style>
-.ppf-cmp { padding: 3.5rem 0; background: #fff; font-family: 'Nunito Sans', sans-serif; }
-.ppf-cmp-inner { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
-.ppf-cmp-hdr { text-align: center; margin-bottom: 2rem; }
-.ppf-cmp-hdr h2 { font-size: 2rem; font-weight: 800; color: #1f2937; font-family: 'Nunito Sans', sans-serif; margin-bottom: 0.4rem; }
-.ppf-cmp-hdr p { color: #6b7280; font-size: 1rem; }
-.ppf-cmp-table { width: 100%; border-collapse: collapse; border-radius: 14px; overflow: hidden; border: 1px solid #e5e7eb; table-layout: fixed; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-.ppf-cmp-th-prop { width: 36%; padding: 1rem 1.25rem; font-size: 11px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.08em; text-align: left; border-bottom: 1px solid #e5e7eb; background: #f8fafc; }
-.ppf-cmp-th { width: 21.3%; padding: 1rem 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb; border-left: 1px solid #e5e7eb; background: #f8fafc; }
+.ppf-cmp { padding: 2rem 0 2.5rem; background: #fff; font-family: 'Nunito Sans', sans-serif; }
+.ppf-cmp-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+.ppf-cmp-hdr { text-align: center; margin-bottom: 1.25rem; }
+.ppf-cmp-hdr h2 { font-size: 1.75rem; font-weight: 800; color: #1f2937; font-family: 'Nunito Sans', sans-serif; margin-bottom: 0.2rem; }
+.ppf-cmp-hdr p { color: #6b7280; font-size: 0.9rem; }
+.ppf-cmp-table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; border: 1px solid #e5e7eb; table-layout: fixed; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.ppf-cmp-th-prop { width: 36%; padding: 0.75rem 1rem; font-size: 10px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.08em; text-align: left; border-bottom: 1px solid #e5e7eb; background: #f8fafc; }
+.ppf-cmp-th { width: 21.3%; padding: 0.75rem 0.5rem; text-align: center; border-bottom: 1px solid #e5e7eb; border-left: 1px solid #e5e7eb; background: #f8fafc; }
 .ppf-cmp-th-red { background: #fff5f5; }
 .ppf-cmp-th-blue { background: rgba(12,68,124,0.05); }
 .ppf-cmp-th-inner { display: flex; flex-direction: column; align-items: center; gap: 4px; }
@@ -25,7 +25,7 @@
 .ppf-cmp-tr { border-bottom: 1px solid #f1f5f9; transition: background 0.15s; }
 .ppf-cmp-tr:last-child { border-bottom: none; }
 .ppf-cmp-tr:hover { background: #f8fafc; }
-.ppf-cmp-td-prop { padding: 0.85rem 1.25rem; font-size: 13px; font-weight: 600; color: #1f2937; }
+.ppf-cmp-td-prop { padding: 0.65rem 1rem; font-size: 12.5px; font-weight: 600; color: #1f2937; }
 .ppf-cmp-td { padding: 0.85rem 0.75rem; text-align: center; font-size: 13px; border-left: 1px solid #f1f5f9; }
 .ppf-cmp-td-red { background: rgba(239,68,68,0.02); }
 .ppf-cmp-td-blue { background: rgba(12,68,124,0.02); }
@@ -33,7 +33,7 @@
 .ppf-chk-blue { color: #185FA5; font-size: 15px; font-weight: 700; }
 .ppf-chk-dark { color: #444441; font-size: 15px; font-weight: 700; }
 .ppf-bar { display: flex; gap: 2px; justify-content: center; align-items: center; }
-.ppf-bar-seg { width: 13px; height: 8px; border-radius: 2px; }
+.ppf-bar-seg { width: 14px; height: 9px; border-radius: 3px; }
 .ppf-seg-red { background: #E24B4A; }
 .ppf-seg-blue { background: #185FA5; }
 .ppf-seg-dark { background: #444441; }
@@ -64,7 +64,7 @@
           <th class="ppf-cmp-th ppf-cmp-th-red">
             <div class="ppf-cmp-th-inner">
               {%- if section.settings.logo1 != blank -%}
-                <img src="{{ section.settings.logo1 | image_url: width: 400 }}" srcset="{{ section.settings.logo1 | image_url: width: 400 }} 1x, {{ section.settings.logo1 | image_url: width: 800 }} 2x" alt="{{ section.settings.brand1 }}" style="width:100%;max-width:130px;height:60px;object-fit:contain;display:block;margin:0 auto;">
+                <img src="{{ section.settings.logo1 | image_url: width: 400 }}" srcset="{{ section.settings.logo1 | image_url: width: 400 }} 1x, {{ section.settings.logo1 | image_url: width: 800 }} 2x" alt="{{ section.settings.brand1 }}" style="width:100%;max-width:140px;height:64px;object-fit:contain;display:block;margin:0 auto;">
               {%- else -%}
                 <div style="width:100%;max-width:110px;height:56px;border-radius:8px;background:#fff0f0;border:1px solid #fca5a5;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#A32D2D;margin:0 auto;">LOGO</div>
               {%- endif -%}
@@ -75,7 +75,7 @@
           <th class="ppf-cmp-th ppf-cmp-th-blue">
             <div class="ppf-cmp-th-inner">
               {%- if section.settings.logo2 != blank -%}
-                <img src="{{ section.settings.logo2 | image_url: width: 400 }}" srcset="{{ section.settings.logo2 | image_url: width: 400 }} 1x, {{ section.settings.logo2 | image_url: width: 800 }} 2x" alt="{{ section.settings.brand2 }}" style="width:100%;max-width:130px;height:60px;object-fit:contain;display:block;margin:0 auto;">
+                <img src="{{ section.settings.logo2 | image_url: width: 400 }}" srcset="{{ section.settings.logo2 | image_url: width: 400 }} 1x, {{ section.settings.logo2 | image_url: width: 800 }} 2x" alt="{{ section.settings.brand2 }}" style="width:100%;max-width:140px;height:64px;object-fit:contain;display:block;margin:0 auto;">
               {%- else -%}
                 <div style="width:100%;max-width:110px;height:56px;border-radius:8px;background:#0C447C;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;margin:0 auto;">NAR</div>
               {%- endif -%}
@@ -86,7 +86,7 @@
           <th class="ppf-cmp-th">
             <div class="ppf-cmp-th-inner">
               {%- if section.settings.logo3 != blank -%}
-                <img src="{{ section.settings.logo3 | image_url: width: 400 }}" srcset="{{ section.settings.logo3 | image_url: width: 400 }} 1x, {{ section.settings.logo3 | image_url: width: 800 }} 2x" alt="{{ section.settings.brand3 }}" style="width:100%;max-width:130px;height:60px;object-fit:contain;display:block;margin:0 auto;">
+                <img src="{{ section.settings.logo3 | image_url: width: 400 }}" srcset="{{ section.settings.logo3 | image_url: width: 400 }} 1x, {{ section.settings.logo3 | image_url: width: 800 }} 2x" alt="{{ section.settings.brand3 }}" style="width:100%;max-width:140px;height:64px;object-fit:contain;display:block;margin:0 auto;">
               {%- else -%}
                 <div style="width:100%;max-width:110px;height:56px;border-radius:8px;background:#2C2C2A;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#D3D1C7;margin:0 auto;">NAR</div>
               {%- endif -%}
