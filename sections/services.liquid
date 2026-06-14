@@ -97,7 +97,7 @@
     </div>
 
     <div class="rad-svc-cta">
-      <a href="/pages/all-services" class="rad-svc-cta-btn">View All Services →</a>
+      <a href="{{ section.settings.cta_url | default: '/pages/all-services' }}" class="rad-svc-cta-btn">{{ section.settings.cta_text | default: "View All Services →" }}</a>
     </div>
   </div>
 </section>
@@ -106,33 +106,166 @@
 {
   "name": "Services",
   "settings": [
-    {"type": "text", "id": "title", "label": "Section Title", "default": "Our Services"},
-    {"type": "text", "id": "subtitle", "label": "Subtitle", "default": "Premium auto care services in Karachi"},
-    {"type": "header", "content": "Service 1 — PPF"},
-    {"type": "image_picker", "id": "img_1", "label": "Image"},
-    {"type": "text", "id": "name_1", "label": "Name", "default": "Paint Protection Film (PPF)"},
-    {"type": "textarea", "id": "desc_1", "label": "Description", "default": "Invisible shield that protects your car's paint from scratches, chips and UV damage."},
-    {"type": "url", "id": "url_1", "label": "Link"},
-    {"type": "text", "id": "btn_1", "label": "Button Text", "default": "View Pricing"},
-    {"type": "header", "content": "Service 2 — Ceramic"},
-    {"type": "image_picker", "id": "img_2", "label": "Image"},
-    {"type": "text", "id": "name_2", "label": "Name", "default": "Ceramic Coating"},
-    {"type": "textarea", "id": "desc_2", "label": "Description", "default": "Long-lasting glossy finish that repels dirt, UV rays and minor scratches."},
-    {"type": "url", "id": "url_2", "label": "Link"},
-    {"type": "text", "id": "btn_2", "label": "Button Text", "default": "View Pricing"},
-    {"type": "header", "content": "Service 3 — Detailing"},
-    {"type": "image_picker", "id": "img_3", "label": "Image"},
-    {"type": "text", "id": "name_3", "label": "Name", "default": "Exterior & Interior Detailing"},
-    {"type": "textarea", "id": "desc_3", "label": "Description", "default": "Full interior and exterior detailing to restore your car's showroom finish."},
-    {"type": "url", "id": "url_3", "label": "Link"},
-    {"type": "text", "id": "btn_3", "label": "Button Text", "default": "View Pricing"},
-    {"type": "header", "content": "Service 4 — Window Tint"},
-    {"type": "image_picker", "id": "img_4", "label": "Image"},
-    {"type": "text", "id": "name_4", "label": "Name", "default": "Car Window Tinting"},
-    {"type": "textarea", "id": "desc_4", "label": "Description", "default": "NAR certified heat control window film — blocks UV rays and keeps your car cool."},
-    {"type": "url", "id": "url_4", "label": "Link"},
-    {"type": "text", "id": "btn_4", "label": "Button Text", "default": "View Pricing"}
+    {
+      "type": "header",
+      "content": "View All Services Button"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button Text",
+      "default": "View All Services →"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Our Services"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Premium auto care services in Karachi"
+    },
+    {
+      "type": "header",
+      "content": "Service 1 — PPF"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_1",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "name_1",
+      "label": "Name",
+      "default": "Paint Protection Film (PPF)"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_1",
+      "label": "Description",
+      "default": "Invisible shield that protects your car's paint from scratches, chips and UV damage."
+    },
+    {
+      "type": "url",
+      "id": "url_1",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "btn_1",
+      "label": "Button Text",
+      "default": "View Pricing"
+    },
+    {
+      "type": "header",
+      "content": "Service 2 — Ceramic"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_2",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "name_2",
+      "label": "Name",
+      "default": "Ceramic Coating"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_2",
+      "label": "Description",
+      "default": "Long-lasting glossy finish that repels dirt, UV rays and minor scratches."
+    },
+    {
+      "type": "url",
+      "id": "url_2",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "btn_2",
+      "label": "Button Text",
+      "default": "View Pricing"
+    },
+    {
+      "type": "header",
+      "content": "Service 3 — Detailing"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_3",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "name_3",
+      "label": "Name",
+      "default": "Exterior & Interior Detailing"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_3",
+      "label": "Description",
+      "default": "Full interior and exterior detailing to restore your car's showroom finish."
+    },
+    {
+      "type": "url",
+      "id": "url_3",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "btn_3",
+      "label": "Button Text",
+      "default": "View Pricing"
+    },
+    {
+      "type": "header",
+      "content": "Service 4 — Window Tint"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_4",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "name_4",
+      "label": "Name",
+      "default": "Car Window Tinting"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_4",
+      "label": "Description",
+      "default": "NAR certified heat control window film — blocks UV rays and keeps your car cool."
+    },
+    {
+      "type": "url",
+      "id": "url_4",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "btn_4",
+      "label": "Button Text",
+      "default": "View Pricing"
+    }
   ],
-  "presets": [{"name": "Services"}]
+  "presets": [
+    {
+      "name": "Services"
+    }
+  ]
 }
 {% endschema %}
