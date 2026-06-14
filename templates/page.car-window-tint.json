@@ -46,6 +46,10 @@
       "type": "tint-pricing",
       "name": "Tint Pricing",
       "settings": {
+        "img_hatchback": "shopify://shop_images/Yaris_Hatchback.png",
+        "img_sedan": "shopify://shop_images/Civic-06.png",
+        "img_suv": "shopify://shop_images/Haval-06.png",
+        "img_xlsuv": "shopify://shop_images/LC_300-06.png",
         "title": "Heat Control Window Film Price",
         "subtitle": "NAR Window Film — Transparent pricing for all vehicle types",
         "hatch_full": "PKR 18,500",
