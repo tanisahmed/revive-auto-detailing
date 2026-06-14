@@ -11,7 +11,34 @@
   "sections": {
     "main": {
       "type": "about-us",
-      "settings": {}
+      "settings": {
+        "show_stats": true,
+        "show_story": true,
+        "show_values": true,
+        "show_team": false,
+        "show_certs": false,
+        "show_cta": true,
+        "hero_tag": "About Revive Auto Detailing",
+        "hero_title": "Karachi's Most Trusted Auto Care Studio",
+        "hero_sub": "We are a team of passionate automotive professionals dedicated to giving your car the premium protection and shine it deserves.",
+        "stat1_num": "500+",
+        "stat1_lbl": "Cars Serviced",
+        "stat2_num": "4.9 ⭐",
+        "stat2_lbl": "Google Rating",
+        "stat3_num": "2+",
+        "stat3_lbl": "Years Experience",
+        "stat4_num": "100%",
+        "stat4_lbl": "Satisfaction Rate",
+        "story_title": "Born from a Passion for Perfection",
+        "story_p1": "Revive Auto Detailing was founded with one simple belief — every car deserves world-class care.",
+        "story_p2": "Today, we are proud to be one of Karachi's leading auto care studios.",
+        "story_p3": "We use only certified products from globally recognized brands like NAR and GYEON.",
+        "cta_title": "Ready to Give Your Car the Best?",
+        "cta_sub": "Book your appointment today and experience the Revive difference.",
+        "cta_btn1": "Book My Slot",
+        "cta_btn1_url": "",
+        "cta_btn2": "💬 WhatsApp Us"
+      }
     }
   },
   "order": [
