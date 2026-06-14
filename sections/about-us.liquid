@@ -89,28 +89,29 @@
   <!-- Hero -->
   <div class="rad-about-hero">
     <div class="rad-about-hero-inner">
-      <div class="rad-about-tag">About Revive Auto Detailing</div>
-      <h1>Karachi's Most <span>Trusted</span> Auto Care Studio</h1>
+      <div class="rad-about-tag">{{ section.settings.hero_tag | default: "About Revive Auto Detailing" }}</div>
+      <h1>{{ section.settings.hero_title | default: "Karachi's Most Trusted Auto Care Studio" }}</h1>
       <p>We are a team of passionate automotive professionals dedicated to giving your car the premium protection and shine it deserves — using only the best products and techniques.</p>
     </div>
   </div>
 
   <!-- Stats -->
-  <div class="rad-about-stats">
+  {% if section.settings.show_stats != false %}<div class="rad-about-stats">
     <div class="rad-about-stats-grid">
-      <div class="rad-stat-box"><span class="rad-stat-box-num">500+</span><span class="rad-stat-box-lbl">Cars Serviced</span></div>
-      <div class="rad-stat-box"><span class="rad-stat-box-num">4.9 ⭐</span><span class="rad-stat-box-lbl">Google Rating</span></div>
-      <div class="rad-stat-box"><span class="rad-stat-box-num">2+</span><span class="rad-stat-box-lbl">Years Experience</span></div>
-      <div class="rad-stat-box"><span class="rad-stat-box-num">100%</span><span class="rad-stat-box-lbl">Satisfaction Rate</span></div>
+      <div class="rad-stat-box"><span class="rad-stat-box-num">{{ section.settings.stat1_num | default: "500+" }}</span><span class="rad-stat-box-lbl">{{ section.settings.stat1_lbl | default: "Cars Serviced" }}</span></div>
+      <div class="rad-stat-box"><span class="rad-stat-box-num">{{ section.settings.stat2_num | default: "4.9 ⭐" }}</span><span class="rad-stat-box-lbl">{{ section.settings.stat2_lbl | default: "Google Rating" }}</span></div>
+      <div class="rad-stat-box"><span class="rad-stat-box-num">{{ section.settings.stat3_num | default: "2+" }}</span><span class="rad-stat-box-lbl">{{ section.settings.stat3_lbl | default: "Years Experience" }}</span></div>
+      <div class="rad-stat-box"><span class="rad-stat-box-num">{{ section.settings.stat4_num | default: "100%" }}</span><span class="rad-stat-box-lbl">{{ section.settings.stat4_lbl | default: "Satisfaction Rate" }}</span></div>
     </div>
   </div>
+{%- endif -%}
 
   <!-- Story -->
-  <div class="rad-about-story">
+  {% if section.settings.show_story != false %}<div class="rad-about-story">
     <div class="rad-about-story-inner">
       <div>
         <div class="rad-about-story-tag">Our Story</div>
-        <h2>Born from a Passion for Perfection</h2>
+        <h2>{{ section.settings.story_title | default: "Born from a Passion for Perfection" }}</h2>
         <p>Revive Auto Detailing was founded with one simple belief — every car deserves world-class care. Based in Karachi, we started as a small team of automotive enthusiasts who were frustrated with the lack of premium detailing services available locally.</p>
         <p>Today, we are proud to be one of Karachi's leading auto care studios, trusted by hundreds of car owners for Paint Protection Film (PPF), Ceramic Coating, Window Tinting, and professional detailing services.</p>
         <p>We use only certified products from globally recognized brands like <strong>NAR</strong> and <strong>GYEON</strong>, ensuring your vehicle receives the best protection available in the market.</p>
@@ -118,9 +119,10 @@
       <div class="rad-story-img">🚗</div>
     </div>
   </div>
+{%- endif -%}
 
   <!-- Values -->
-  <div class="rad-about-values">
+  {% if section.settings.show_values != false %}<div class="rad-about-values">
     <div class="rad-about-values-inner">
       <div class="rad-section-hdr">
         <h2>Why We Do What We Do</h2>
@@ -136,9 +138,10 @@
       </div>
     </div>
   </div>
+{%- endif -%}
 
   <!-- Team -->
-  <div class="rad-about-team">
+  {% if section.settings.show_team != false %}<div class="rad-about-team">
     <div class="rad-about-team-inner">
       <div class="rad-section-hdr">
         <h2>Meet Our Team</h2>
@@ -151,9 +154,10 @@
       </div>
     </div>
   </div>
+{%- endif -%}
 
   <!-- Certifications -->
-  <div class="rad-about-certs">
+  {% if section.settings.show_certs != false %}<div class="rad-about-certs">
     <div class="rad-about-certs-inner">
       <div class="rad-section-hdr">
         <h2>Our Certifications & Partners</h2>
@@ -167,25 +171,194 @@
       </div>
     </div>
   </div>
+{%- endif -%}
 
   <!-- CTA -->
-  <div class="rad-about-cta">
-    <div class="rad-about-cta-inner">
-      <h2>Ready to Give Your Car the Best?</h2>
-      <p>Book your appointment today and experience the Revive difference.</p>
-      <div class="rad-about-cta-btns">
-        <a href="/pages/ppf-booking" class="rad-cta-btn-primary">Book My Slot</a>
-        <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20to%20know%20more%20about%20your%20services" target="_blank" class="rad-cta-btn-wa">💬 WhatsApp Us</a>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-{% schema %}
+  {% if section.settings.show_cta != false %}<div class="rad-about-cta">
+    <div class{% schema %}
 {
   "name": "About Us",
-  "settings": [],
-  "presets": [{"name": "About Us"}]
+  "settings": [
+    {
+      "type": "header",
+      "content": "Show / Hide Sections"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stats",
+      "label": "Show Stats Section",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_story",
+      "label": "Show Story Section",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_values",
+      "label": "Show Values Section",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_team",
+      "label": "Show Team Section",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_certs",
+      "label": "Show Certifications Section",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show CTA Section",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "text",
+      "id": "hero_tag",
+      "label": "Badge Text",
+      "default": "About Revive Auto Detailing"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Heading",
+      "default": "Karachi's Most Trusted Auto Care Studio"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_sub",
+      "label": "Subheading",
+      "default": "We are a team of passionate automotive professionals dedicated to giving your car the premium protection and shine it deserves."
+    },
+    {
+      "type": "header",
+      "content": "Stats"
+    },
+    {
+      "type": "text",
+      "id": "stat1_num",
+      "label": "Stat 1 Number",
+      "default": "500+"
+    },
+    {
+      "type": "text",
+      "id": "stat1_lbl",
+      "label": "Stat 1 Label",
+      "default": "Cars Serviced"
+    },
+    {
+      "type": "text",
+      "id": "stat2_num",
+      "label": "Stat 2 Number",
+      "default": "4.9 ⭐"
+    },
+    {
+      "type": "text",
+      "id": "stat2_lbl",
+      "label": "Stat 2 Label",
+      "default": "Google Rating"
+    },
+    {
+      "type": "text",
+      "id": "stat3_num",
+      "label": "Stat 3 Number",
+      "default": "2+"
+    },
+    {
+      "type": "text",
+      "id": "stat3_lbl",
+      "label": "Stat 3 Label",
+      "default": "Years Experience"
+    },
+    {
+      "type": "text",
+      "id": "stat4_num",
+      "label": "Stat 4 Number",
+      "default": "100%"
+    },
+    {
+      "type": "text",
+      "id": "stat4_lbl",
+      "label": "Stat 4 Label",
+      "default": "Satisfaction Rate"
+    },
+    {
+      "type": "header",
+      "content": "Story"
+    },
+    {
+      "type": "text",
+      "id": "story_title",
+      "label": "Title",
+      "default": "Born from a Passion for Perfection"
+    },
+    {
+      "type": "textarea",
+      "id": "story_p1",
+      "label": "Paragraph 1",
+      "default": "Revive Auto Detailing was founded with one simple belief — every car deserves world-class care."
+    },
+    {
+      "type": "textarea",
+      "id": "story_p2",
+      "label": "Paragraph 2",
+      "default": "Today, we are proud to be one of Karachi's leading auto care studios."
+    },
+    {
+      "type": "textarea",
+      "id": "story_p3",
+      "label": "Paragraph 3",
+      "default": "We use only certified products from globally recognized brands like NAR and GYEON."
+    },
+    {
+      "type": "header",
+      "content": "CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "CTA Heading",
+      "default": "Ready to Give Your Car the Best?"
+    },
+    {
+      "type": "text",
+      "id": "cta_sub",
+      "label": "CTA Subtext",
+      "default": "Book your appointment today and experience the Revive difference."
+    },
+    {
+      "type": "text",
+      "id": "cta_btn1",
+      "label": "Button 1 Text",
+      "default": "Book My Slot"
+    },
+    {
+      "type": "url",
+      "id": "cta_btn1_url",
+      "label": "Button 1 Link"
+    },
+    {
+      "type": "text",
+      "id": "cta_btn2",
+      "label": "Button 2 Text",
+      "default": "💬 WhatsApp Us"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Us"
+    }
+  ]
 }
 {% endschema %}
