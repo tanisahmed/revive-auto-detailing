@@ -54,9 +54,20 @@
   border: 1px solid #e5e7eb;
 }
 .rad-tint-note strong { color: #ef4444; }
-@media (max-width: 1024px) { .rad-tint-pricing-grid { grid-template-columns: repeat(4, minmax(0,1fr)); } }
-@media (max-width: 768px) { .rad-tint-pricing-grid { grid-template-columns: repeat(4, minmax(0,1fr)); overflow-x: auto; } }
-@media (max-width: 640px) { .rad-tint-pricing-grid { grid-template-columns: repeat(4, minmax(160px,1fr)); overflow-x: auto; } }
+@media (max-width: 900px) {
+  .rad-tint-pricing-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+}
+@media (max-width: 520px) {
+  .rad-tint-pricing-grid { grid-template-columns: 1fr; max-width: 380px; margin-left: auto; margin-right: auto; }
+  .rad-tint-card-img { height: 200px; }
+  .rad-tint-card-header { font-size: 1rem; padding: 0.6rem; }
+  .rad-tint-price-row { padding: 0.5rem 0.75rem; }
+  .rad-tint-price-row .label { font-size: 0.8rem; }
+  .rad-tint-price-row .amount { font-size: 0.9rem; }
+  .rad-tint-card-body { padding: 0.5rem 0.75rem 0.75rem; }
+  .rad-tint-card-cta { padding: 0.75rem; }
+  .rad-tint-card-cta a { padding: 0.7rem 0.5rem; font-size: 0.85rem; }
+}
 </style>
 
 <section class="rad-tint-pricing" id="tint-pricing">
