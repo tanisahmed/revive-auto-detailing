@@ -57,8 +57,20 @@
   padding: 0.4rem 1rem; border-radius: 8px; margin-bottom: 1rem;
   font-size: 0.8rem; font-weight: 700; color: #fff; letter-spacing: 0.05em;
 }
-@media (max-width: 900px) { .rad-ceramic-hero { padding: 3.5rem 0; min-height: 450px; } .rad-ceramic-hero-title { font-size: 2.5rem; } }
-@media (max-width: 640px) { .rad-ceramic-hero { padding: 3rem 0; min-height: 400px; } .rad-ceramic-hero-title { font-size: 2rem; } .rad-ceramic-hero-btns { flex-direction: column; } }
+@media (max-width: 900px) {
+  .rad-ceramic-hero { padding: 3.5rem 0; min-height: 420px; }
+  .rad-ceramic-hero-title { font-size: 2.25rem; }
+}
+@media (max-width: 640px) {
+  .rad-ceramic-hero { padding: 2.5rem 0; min-height: auto; }
+  .rad-ceramic-hero-inner { padding: 0 1rem; }
+  .rad-ceramic-hero-title { font-size: 1.6rem; line-height: 1.2; }
+  .rad-ceramic-hero-sub { font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .rad-ceramic-hero-btns { flex-direction: column; gap: 0.65rem; margin-bottom: 1.75rem; }
+  .rad-ch-btn-blue, .rad-ch-btn-wa { width: 100%; justify-content: center; padding: 0.8rem 1rem; font-size: 0.9rem; }
+  .rad-ceramic-hero-badges { flex-wrap: wrap; gap: 0.4rem; justify-content: center; }
+  .rad-ceramic-hero-badge { font-size: 0.7rem; padding: 0.3rem 0.75rem; }
+}
 </style>
 
 <section class="rad-ceramic-hero">
