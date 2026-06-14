@@ -1,37 +1,23 @@
 <style>
 .rad-about { font-family: 'Nunito Sans', sans-serif; }
-
-/* Hero */
-.rad-about-hero {
-  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
-  padding: 5rem 0 4rem; text-align: center; color: #fff; position: relative; overflow: hidden;
-}
-.rad-about-hero::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 70% 50%, rgba(96,165,250,0.15) 0%, transparent 60%);
-}
+.rad-about-hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); padding: 5rem 0 4rem; text-align: center; color: #fff; position: relative; overflow: hidden; }
+.rad-about-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(96,165,250,0.15) 0%, transparent 60%); }
 .rad-about-hero-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; padding: 0 1.5rem; }
 .rad-about-tag { display: inline-block; background: rgba(96,165,250,0.2); border: 1px solid rgba(96,165,250,0.4); color: #93c5fd; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.4rem 1.1rem; border-radius: 100px; margin-bottom: 1.25rem; }
 .rad-about-hero h1 { font-size: 3rem; font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
 .rad-about-hero h1 span { color: #60a5fa; }
 .rad-about-hero p { font-size: 1.1rem; color: #cbd5e1; line-height: 1.7; }
-
-/* Stats */
 .rad-about-stats { background: #fff; padding: 2.5rem 0; border-bottom: 1px solid #e5e7eb; }
 .rad-about-stats-grid { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
 .rad-stat-box { text-align: center; padding: 1.25rem; border-radius: 12px; background: #f8fafc; border: 1px solid #e5e7eb; }
 .rad-stat-box-num { font-size: 2.25rem; font-weight: 800; color: #1e3a8a; display: block; }
 .rad-stat-box-lbl { font-size: 0.8rem; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; }
-
-/* Story */
 .rad-about-story { padding: 4rem 0; background: #f8fafc; }
 .rad-about-story-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
 .rad-about-story-tag { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1e3a8a; margin-bottom: 0.75rem; }
 .rad-about-story h2 { font-size: 2rem; font-weight: 800; color: #1f2937; margin-bottom: 1rem; line-height: 1.25; }
 .rad-about-story p { font-size: 0.95rem; color: #4b5563; line-height: 1.8; margin-bottom: 0.85rem; }
 .rad-story-img { background: linear-gradient(135deg, #1e3a8a, #0f172a); border-radius: 16px; height: 360px; display: flex; align-items: center; justify-content: center; font-size: 5rem; box-shadow: 0 20px 40px rgba(30,58,138,0.2); }
-
-/* Values */
 .rad-about-values { padding: 4rem 0; background: #fff; }
 .rad-about-values-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
 .rad-section-hdr { text-align: center; margin-bottom: 2.5rem; }
@@ -42,8 +28,6 @@
 .rad-value-icon { font-size: 2rem; margin-bottom: 1rem; }
 .rad-value-card h3 { font-size: 1rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem; }
 .rad-value-card p { font-size: 0.875rem; color: #6b7280; line-height: 1.65; }
-
-/* Team */
 .rad-about-team { padding: 4rem 0; background: #f8fafc; }
 .rad-about-team-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
 .rad-team-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
@@ -52,8 +36,6 @@
 .rad-team-name { font-size: 1rem; font-weight: 700; color: #1f2937; margin-bottom: 0.2rem; }
 .rad-team-role { font-size: 0.8rem; color: #1e3a8a; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
 .rad-team-card p { font-size: 0.85rem; color: #6b7280; line-height: 1.6; }
-
-/* Certifications */
 .rad-about-certs { padding: 3.5rem 0; background: #fff; }
 .rad-about-certs-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
 .rad-certs-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem; }
@@ -61,18 +43,13 @@
 .rad-cert-icon { font-size: 2rem; margin-bottom: 0.6rem; }
 .rad-cert-card h4 { font-size: 0.85rem; font-weight: 700; color: #1f2937; margin-bottom: 0.2rem; }
 .rad-cert-card span { font-size: 0.75rem; color: #6b7280; }
-
-/* CTA */
 .rad-about-cta { padding: 4rem 0; background: linear-gradient(135deg, #1e3a8a, #0f172a); text-align: center; color: #fff; }
 .rad-about-cta-inner { max-width: 600px; margin: 0 auto; padding: 0 1.5rem; }
 .rad-about-cta h2 { font-size: 2rem; font-weight: 800; margin-bottom: 0.75rem; }
 .rad-about-cta p { color: #cbd5e1; margin-bottom: 2rem; }
 .rad-about-cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-.rad-cta-btn-primary { padding: 0.875rem 2rem; background: #fff; color: #1e3a8a; border-radius: 8px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
-.rad-cta-btn-primary:hover { background: #f1f5f9; }
-.rad-cta-btn-wa { padding: 0.875rem 2rem; background: #10b981; color: #fff; border-radius: 8px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
-.rad-cta-btn-wa:hover { background: #059669; }
-
+.rad-cta-btn-primary { padding: 0.875rem 2rem; background: #fff; color: #1e3a8a; border-radius: 8px; font-weight: 700; text-decoration: none; }
+.rad-cta-btn-wa { padding: 0.875rem 2rem; background: #10b981; color: #fff; border-radius: 8px; font-weight: 700; text-decoration: none; }
 @media (max-width: 768px) {
   .rad-about-hero h1 { font-size: 2rem; }
   .rad-about-stats-grid { grid-template-columns: repeat(2,1fr); }
@@ -91,12 +68,13 @@
     <div class="rad-about-hero-inner">
       <div class="rad-about-tag">{{ section.settings.hero_tag | default: "About Revive Auto Detailing" }}</div>
       <h1>{{ section.settings.hero_title | default: "Karachi's Most Trusted Auto Care Studio" }}</h1>
-      <p>We are a team of passionate automotive professionals dedicated to giving your car the premium protection and shine it deserves — using only the best products and techniques.</p>
+      <p>{{ section.settings.hero_sub | default: "We are a team of passionate automotive professionals dedicated to giving your car the premium protection and shine it deserves." }}</p>
     </div>
   </div>
 
   <!-- Stats -->
-  {% if section.settings.show_stats != false %}<div class="rad-about-stats">
+  {% if section.settings.show_stats != false %}
+  <div class="rad-about-stats">
     <div class="rad-about-stats-grid">
       <div class="rad-stat-box"><span class="rad-stat-box-num">{{ section.settings.stat1_num | default: "500+" }}</span><span class="rad-stat-box-lbl">{{ section.settings.stat1_lbl | default: "Cars Serviced" }}</span></div>
       <div class="rad-stat-box"><span class="rad-stat-box-num">{{ section.settings.stat2_num | default: "4.9 ⭐" }}</span><span class="rad-stat-box-lbl">{{ section.settings.stat2_lbl | default: "Google Rating" }}</span></div>
@@ -104,25 +82,27 @@
       <div class="rad-stat-box"><span class="rad-stat-box-num">{{ section.settings.stat4_num | default: "100%" }}</span><span class="rad-stat-box-lbl">{{ section.settings.stat4_lbl | default: "Satisfaction Rate" }}</span></div>
     </div>
   </div>
-{%- endif -%}
+  {% endif %}
 
   <!-- Story -->
-  {% if section.settings.show_story != false %}<div class="rad-about-story">
+  {% if section.settings.show_story != false %}
+  <div class="rad-about-story">
     <div class="rad-about-story-inner">
       <div>
         <div class="rad-about-story-tag">Our Story</div>
         <h2>{{ section.settings.story_title | default: "Born from a Passion for Perfection" }}</h2>
-        <p>Revive Auto Detailing was founded with one simple belief — every car deserves world-class care. Based in Karachi, we started as a small team of automotive enthusiasts who were frustrated with the lack of premium detailing services available locally.</p>
-        <p>Today, we are proud to be one of Karachi's leading auto care studios, trusted by hundreds of car owners for Paint Protection Film (PPF), Ceramic Coating, Window Tinting, and professional detailing services.</p>
-        <p>We use only certified products from globally recognized brands like <strong>NAR</strong> and <strong>GYEON</strong>, ensuring your vehicle receives the best protection available in the market.</p>
+        <p>{{ section.settings.story_p1 | default: "Revive Auto Detailing was founded with one simple belief — every car deserves world-class care. Based in Karachi, we started as a small team of automotive enthusiasts who were frustrated with the lack of premium detailing services available locally." }}</p>
+        <p>{{ section.settings.story_p2 | default: "Today, we are proud to be one of Karachi's leading auto care studios, trusted by hundreds of car owners for Paint Protection Film (PPF), Ceramic Coating, Window Tinting, and professional detailing services." }}</p>
+        <p>{{ section.settings.story_p3 | default: "We use only certified products from globally recognized brands like NAR and GYEON, ensuring your vehicle receives the best protection available in the market." }}</p>
       </div>
       <div class="rad-story-img">🚗</div>
     </div>
   </div>
-{%- endif -%}
+  {% endif %}
 
   <!-- Values -->
-  {% if section.settings.show_values != false %}<div class="rad-about-values">
+  {% if section.settings.show_values != false %}
+  <div class="rad-about-values">
     <div class="rad-about-values-inner">
       <div class="rad-section-hdr">
         <h2>Why We Do What We Do</h2>
@@ -138,10 +118,11 @@
       </div>
     </div>
   </div>
-{%- endif -%}
+  {% endif %}
 
   <!-- Team -->
-  {% if section.settings.show_team != false %}<div class="rad-about-team">
+  {% if section.settings.show_team != false %}
+  <div class="rad-about-team">
     <div class="rad-about-team-inner">
       <div class="rad-section-hdr">
         <h2>Meet Our Team</h2>
@@ -154,10 +135,11 @@
       </div>
     </div>
   </div>
-{%- endif -%}
+  {% endif %}
 
   <!-- Certifications -->
-  {% if section.settings.show_certs != false %}<div class="rad-about-certs">
+  {% if section.settings.show_certs != false %}
+  <div class="rad-about-certs">
     <div class="rad-about-certs-inner">
       <div class="rad-section-hdr">
         <h2>Our Certifications & Partners</h2>
@@ -171,194 +153,60 @@
       </div>
     </div>
   </div>
-{%- endif -%}
+  {% endif %}
 
   <!-- CTA -->
-  {% if section.settings.show_cta != false %}<div class="rad-about-cta">
-    <div class{% schema %}
+  {% if section.settings.show_cta != false %}
+  <div class="rad-about-cta">
+    <div class="rad-about-cta-inner">
+      <h2>{{ section.settings.cta_title | default: "Ready to Give Your Car the Best?" }}</h2>
+      <p>{{ section.settings.cta_sub | default: "Book your appointment today and experience the Revive difference." }}</p>
+      <div class="rad-about-cta-btns">
+        <a href="{{ section.settings.cta_btn1_url | default: '/pages/ppf-booking' }}" class="rad-cta-btn-primary">{{ section.settings.cta_btn1 | default: "Book My Slot" }}</a>
+        <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20to%20know%20more%20about%20your%20services" target="_blank" class="rad-cta-btn-wa">{{ section.settings.cta_btn2 | default: "💬 WhatsApp Us" }}</a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+</div>
+
+{% schema %}
 {
   "name": "About Us",
   "settings": [
-    {
-      "type": "header",
-      "content": "Show / Hide Sections"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_stats",
-      "label": "Show Stats Section",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_story",
-      "label": "Show Story Section",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_values",
-      "label": "Show Values Section",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_team",
-      "label": "Show Team Section",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_certs",
-      "label": "Show Certifications Section",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_cta",
-      "label": "Show CTA Section",
-      "default": true
-    },
-    {
-      "type": "header",
-      "content": "Hero"
-    },
-    {
-      "type": "text",
-      "id": "hero_tag",
-      "label": "Badge Text",
-      "default": "About Revive Auto Detailing"
-    },
-    {
-      "type": "text",
-      "id": "hero_title",
-      "label": "Heading",
-      "default": "Karachi's Most Trusted Auto Care Studio"
-    },
-    {
-      "type": "textarea",
-      "id": "hero_sub",
-      "label": "Subheading",
-      "default": "We are a team of passionate automotive professionals dedicated to giving your car the premium protection and shine it deserves."
-    },
-    {
-      "type": "header",
-      "content": "Stats"
-    },
-    {
-      "type": "text",
-      "id": "stat1_num",
-      "label": "Stat 1 Number",
-      "default": "500+"
-    },
-    {
-      "type": "text",
-      "id": "stat1_lbl",
-      "label": "Stat 1 Label",
-      "default": "Cars Serviced"
-    },
-    {
-      "type": "text",
-      "id": "stat2_num",
-      "label": "Stat 2 Number",
-      "default": "4.9 ⭐"
-    },
-    {
-      "type": "text",
-      "id": "stat2_lbl",
-      "label": "Stat 2 Label",
-      "default": "Google Rating"
-    },
-    {
-      "type": "text",
-      "id": "stat3_num",
-      "label": "Stat 3 Number",
-      "default": "2+"
-    },
-    {
-      "type": "text",
-      "id": "stat3_lbl",
-      "label": "Stat 3 Label",
-      "default": "Years Experience"
-    },
-    {
-      "type": "text",
-      "id": "stat4_num",
-      "label": "Stat 4 Number",
-      "default": "100%"
-    },
-    {
-      "type": "text",
-      "id": "stat4_lbl",
-      "label": "Stat 4 Label",
-      "default": "Satisfaction Rate"
-    },
-    {
-      "type": "header",
-      "content": "Story"
-    },
-    {
-      "type": "text",
-      "id": "story_title",
-      "label": "Title",
-      "default": "Born from a Passion for Perfection"
-    },
-    {
-      "type": "textarea",
-      "id": "story_p1",
-      "label": "Paragraph 1",
-      "default": "Revive Auto Detailing was founded with one simple belief — every car deserves world-class care."
-    },
-    {
-      "type": "textarea",
-      "id": "story_p2",
-      "label": "Paragraph 2",
-      "default": "Today, we are proud to be one of Karachi's leading auto care studios."
-    },
-    {
-      "type": "textarea",
-      "id": "story_p3",
-      "label": "Paragraph 3",
-      "default": "We use only certified products from globally recognized brands like NAR and GYEON."
-    },
-    {
-      "type": "header",
-      "content": "CTA"
-    },
-    {
-      "type": "text",
-      "id": "cta_title",
-      "label": "CTA Heading",
-      "default": "Ready to Give Your Car the Best?"
-    },
-    {
-      "type": "text",
-      "id": "cta_sub",
-      "label": "CTA Subtext",
-      "default": "Book your appointment today and experience the Revive difference."
-    },
-    {
-      "type": "text",
-      "id": "cta_btn1",
-      "label": "Button 1 Text",
-      "default": "Book My Slot"
-    },
-    {
-      "type": "url",
-      "id": "cta_btn1_url",
-      "label": "Button 1 Link"
-    },
-    {
-      "type": "text",
-      "id": "cta_btn2",
-      "label": "Button 2 Text",
-      "default": "💬 WhatsApp Us"
-    }
+    {"type":"header","content":"Show / Hide Sections"},
+    {"type":"checkbox","id":"show_stats", "label":"Show Stats Section",          "default":true},
+    {"type":"checkbox","id":"show_story", "label":"Show Story Section",          "default":true},
+    {"type":"checkbox","id":"show_values","label":"Show Values Section",         "default":true},
+    {"type":"checkbox","id":"show_team",  "label":"Show Team Section",           "default":true},
+    {"type":"checkbox","id":"show_certs", "label":"Show Certifications Section", "default":true},
+    {"type":"checkbox","id":"show_cta",   "label":"Show CTA Section",            "default":true},
+    {"type":"header","content":"Hero"},
+    {"type":"text",    "id":"hero_tag",   "label":"Badge Text",  "default":"About Revive Auto Detailing"},
+    {"type":"text",    "id":"hero_title", "label":"Heading",     "default":"Karachi's Most Trusted Auto Care Studio"},
+    {"type":"textarea","id":"hero_sub",   "label":"Subheading",  "default":"We are a team of passionate automotive professionals dedicated to giving your car the premium protection and shine it deserves."},
+    {"type":"header","content":"Stats"},
+    {"type":"text","id":"stat1_num","label":"Stat 1 Number","default":"500+"},
+    {"type":"text","id":"stat1_lbl","label":"Stat 1 Label", "default":"Cars Serviced"},
+    {"type":"text","id":"stat2_num","label":"Stat 2 Number","default":"4.9 ⭐"},
+    {"type":"text","id":"stat2_lbl","label":"Stat 2 Label", "default":"Google Rating"},
+    {"type":"text","id":"stat3_num","label":"Stat 3 Number","default":"2+"},
+    {"type":"text","id":"stat3_lbl","label":"Stat 3 Label", "default":"Years Experience"},
+    {"type":"text","id":"stat4_num","label":"Stat 4 Number","default":"100%"},
+    {"type":"text","id":"stat4_lbl","label":"Stat 4 Label", "default":"Satisfaction Rate"},
+    {"type":"header","content":"Story"},
+    {"type":"text",    "id":"story_title","label":"Heading",     "default":"Born from a Passion for Perfection"},
+    {"type":"textarea","id":"story_p1",   "label":"Paragraph 1","default":"Revive Auto Detailing was founded with one simple belief — every car deserves world-class care."},
+    {"type":"textarea","id":"story_p2",   "label":"Paragraph 2","default":"Today, we are proud to be one of Karachi's leading auto care studios."},
+    {"type":"textarea","id":"story_p3",   "label":"Paragraph 3","default":"We use only certified products from globally recognized brands like NAR and GYEON."},
+    {"type":"header","content":"CTA"},
+    {"type":"text","id":"cta_title",   "label":"Heading",       "default":"Ready to Give Your Car the Best?"},
+    {"type":"text","id":"cta_sub",     "label":"Subtext",       "default":"Book your appointment today and experience the Revive difference."},
+    {"type":"text","id":"cta_btn1",    "label":"Button 1 Text", "default":"Book My Slot"},
+    {"type":"url", "id":"cta_btn1_url","label":"Button 1 Link"},
+    {"type":"text","id":"cta_btn2",    "label":"Button 2 Text", "default":"💬 WhatsApp Us"}
   ],
-  "presets": [
-    {
-      "name": "About Us"
-    }
-  ]
+  "presets":[{"name":"About Us"}]
 }
 {% endschema %}
