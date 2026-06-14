@@ -104,8 +104,23 @@
   max-width: 1100px; margin-left: auto; margin-right: auto;
 }
 
-@media (max-width: 900px) { .rad-cer-cards { grid-template-columns: 1fr; max-width: 420px; } }
-@media (max-width: 480px) { .rad-cer-tabs { gap: 0.35rem; } .rad-cer-tab { padding: 0.5rem 1rem; font-size: 0.8rem; } }
+@media (max-width: 900px) {
+  .rad-cer-cards { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+}
+@media (max-width: 640px) {
+  .rad-cer-pkg { padding: 2rem 0; }
+  .rad-cer-inner { padding: 0 1rem; }
+  .section-title { font-size: 1.5rem; }
+  .rad-cer-cards { max-width: 100%; }
+  .rad-cer-tabs { gap: 0.35rem; justify-content: center; }
+  .rad-cer-tab { padding: 0.5rem 0.75rem; font-size: 0.8rem; }
+  .rad-cer-card-hdr { padding: 1.1rem 1rem; }
+  .rad-cer-card-name { font-size: 1rem; }
+  .rad-cer-price { font-size: 1.75rem; }
+  .rad-cer-card-body { padding: 1rem; }
+  .rad-cer-card-btns { flex-direction: column; gap: 0.5rem; }
+  .rad-cer-card-btns a { width: 100%; text-align: center; padding: 0.75rem; }
+}
 </style>
 
 <section class="rad-cer-pkg" id="ceramic-pricing">
