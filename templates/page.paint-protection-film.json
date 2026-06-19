@@ -24,7 +24,7 @@
         "subtitle": "Protect for Your Car's Paint for Years",
         "desc": "NAR PPF Paint Protection Film — invisible, self-healing, and backed by a 5-7 year warranty. The smartest investment for your car.",
         "btn1_text": "View Pricing",
-        "btn2_text": "Book Now"
+        "btn2_text": "Book Slot Now"
       }
     },
     "ppf_comparison_Hi8tbe": {
@@ -33,6 +33,7 @@
       "settings": {
         "title": "PPF Comparison",
         "subtitle": "Compare film properties across all three options",
+        "row_bg": "#ffffff",
         "logo1": "shopify://shop_images/Crystalline_Logo-01.png",
         "brand1": "Crystalline PPF",
         "logo2": "shopify://shop_images/NAR_CLASSIC_LOGO.png",
