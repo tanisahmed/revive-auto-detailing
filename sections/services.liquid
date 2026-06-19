@@ -1,6 +1,6 @@
 <style>
 .rad-services { padding: 3rem 0; background: #fff; }
-.rad-services-title { font-size: 2.25rem; font-weight: 800; text-align: center; margin-bottom: 0.5rem; font-family: 'Nunito Sans', sans-serif; }
+.rad-services-title { font-size: 2.25rem; font-weight: 800; text-align: center; margin-bottom: 0.2rem; font-family: 'Nunito Sans', sans-serif; }
 .rad-services-sub { text-align: center; color: #6b7280; margin-bottom: 2.5rem; font-size: 1.05rem; }
 .rad-svc-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem; margin-bottom: 2.5rem; }
 .rad-svc-card {
@@ -33,6 +33,9 @@
 }
 .rad-svc-cta-btn:hover { background: #1e3a8a; color: #fff; }
 @media (max-width: 1024px) { .rad-svc-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 640px) {
+  .rad-services { padding: 1.75rem 0; }
+}
 @media (max-width: 480px) { .rad-svc-grid { grid-template-columns: 1fr; } .rad-services-title { font-size: 1.6rem; } }
 </style>
 
