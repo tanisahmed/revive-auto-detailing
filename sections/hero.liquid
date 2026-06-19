@@ -51,17 +51,18 @@
 @media (max-width: 768px) {
   .rad-hero { padding: 4rem 0; min-height: 480px; }
   .rad-hero-title { font-size: 2.25rem; }
-  .rad-hero-btns { flex-direction: column; }
 }
 @media (max-width: 640px) {
   .rad-hero { padding: 2.25rem 0; min-height: auto; }
   .rad-hero-inner { padding: 0 1rem; }
   .rad-hero-title { font-size: 1.6rem; line-height: 1.25; }
   .rad-hero-sub { font-size: 0.88rem; margin-bottom: 1.25rem; }
-  .rad-hero-btns { gap: 0.6rem; margin-bottom: 1.5rem; }
-  .rad-hero-btns a { width: 100%; justify-content: center; text-align: center; padding: 0.75rem 1rem; font-size: 0.88rem; }
-  .rad-hero-stats { gap: 1.1rem; padding-top: 1.1rem; justify-content: center; }
-  .rad-stat-num { font-size: 1.35rem; }
+  .rad-hero-btns { flex-direction: row; flex-wrap: nowrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .rad-hero-btns a { flex: 1; justify-content: center; text-align: center; padding: 0.65rem 0.5rem; font-size: 0.78rem; white-space: nowrap; }
+  .rad-hero-stats { display: flex; flex-wrap: nowrap; gap: 0.5rem; padding-top: 1.1rem; justify-content: space-between; }
+  .rad-hero-stats > div { flex: 1; min-width: 0; text-align: center; }
+  .rad-stat-num { font-size: 1.05rem; white-space: nowrap; }
+  .rad-stat-lbl { font-size: 0.62rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 }
 </style>
 
