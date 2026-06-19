@@ -7,7 +7,15 @@
 .rad-process-title { font-size: 1rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem; }
 .rad-process-desc { font-size: 0.875rem; color: #6b7280; line-height: 1.6; }
 @media (max-width: 900px) { .rad-process-grid { grid-template-columns: repeat(2,1fr); } }
-@media (max-width: 640px) { .rad-process { padding: 1.5rem 0; } .rad-process-grid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) {
+  .rad-process { padding: 1.5rem 0; }
+  .rad-process .section-title { font-size: 1.4rem; margin-bottom: 0.4rem; }
+  .rad-process .section-subtitle { font-size: 0.85rem; margin-bottom: 1.25rem; }
+  .rad-process-grid { grid-template-columns: 1fr; gap: 0.65rem; }
+  .rad-process-step { padding: 0.9rem 1rem; }
+  .rad-process-step h3 { font-size: 0.9rem; margin-bottom: 0.25rem; }
+  .rad-process-step p { font-size: 0.82rem; line-height: 1.4; }
+}
 </style>
 
 <section class="rad-process">
