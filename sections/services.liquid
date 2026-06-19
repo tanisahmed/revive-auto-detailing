@@ -33,7 +33,16 @@
 }
 .rad-svc-cta-btn:hover { background: #1e3a8a; color: #fff; }
 @media (max-width: 1024px) { .rad-svc-grid { grid-template-columns: repeat(2,1fr); } }
-@media (max-width: 480px) { .rad-svc-grid { grid-template-columns: 1fr; } .rad-services-title { font-size: 1.6rem; } }
+@media (max-width: 640px) {
+  .rad-services { padding: 2rem 0; }
+  .rad-svc-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .rad-services-title { font-size: 1.5rem; }
+  .rad-services-sub { font-size: 0.9rem; }
+  .rad-svc-card { padding: 1.25rem; }
+  .rad-svc-card h3 { font-size: 1rem; }
+  .rad-svc-card p { font-size: 0.85rem; }
+  .rad-svc-cta-btn { padding: 0.75rem 1.5rem; font-size: 0.9rem; }
+}
 </style>
 
 <section class="rad-services">
