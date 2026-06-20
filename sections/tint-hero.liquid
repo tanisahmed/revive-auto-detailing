@@ -23,6 +23,9 @@
 }
 .rad-tint-hero-title span { color: #60a5fa; }
 .rad-tint-hero-sub { font-size: 1.1rem; color: #d1d5db; line-height: 1.7; margin-bottom: 2rem; }
+.rad-tint-hero-badge { display: inline-block; margin-bottom: 0.75rem; }
+.rad-tint-hero-tag { display: block; margin-bottom: 1rem; }
+.rad-tint-hero-sub { font-size: 1.05rem; color: #d1d5db; line-height: 1.7; margin-bottom: 2rem; max-width: 540px; }
 .rad-tint-hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
 .rad-tint-btn-blue {
   display: inline-flex; align-items: center; padding: 0.875rem 1.75rem;
@@ -50,13 +53,17 @@
   .rad-tint-hero-title { font-size: 2rem; }
 }
 @media (max-width: 640px) {
-  .rad-tint-hero { padding: 2.5rem 0; min-height: auto; }
+  .rad-tint-hero { padding: 2.25rem 0; min-height: auto; }
   .rad-tint-hero-inner { padding: 0 1rem; }
-  .rad-tint-hero-title { font-size: 1.6rem; line-height: 1.2; }
-  .rad-tint-hero-sub { font-size: 0.9rem; margin-bottom: 1.5rem; }
-  .rad-tint-hero-btns { flex-direction: column; gap: 0.65rem; margin-bottom: 1.75rem; }
-  .rad-tint-hero-btns a { width: 100%; justify-content: center; padding: 0.8rem 1rem; font-size: 0.9rem; }
-  .rad-tint-hero-badges { flex-wrap: wrap; gap: 0.4rem; justify-content: center; }
+  .rad-tint-hero-title { font-size: 1.6rem; line-height: 1.25; }
+  .rad-tint-hero-sub { font-size: 0.95rem; margin-bottom: 1.25rem; }
+  .rad-tint-hero-badge, .rad-tint-hero-tag { font-size: 0.65rem; }
+  .rad-tint-hero-btns { flex-direction: row; flex-wrap: nowrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .rad-tint-hero-btns a { flex: 1; width: auto; justify-content: center; text-align: center; padding: 0.65rem 0.5rem; font-size: 0.78rem; white-space: nowrap; }
+  .rad-tint-hero-stats { display: flex; flex-wrap: nowrap; gap: 0.5rem; padding-top: 1.1rem; justify-content: space-between; }
+  .rad-tint-hero-stats > div { flex: 1; min-width: 0; text-align: center; }
+  .rad-tint-stat-num { font-size: 1.05rem; white-space: nowrap; }
+  .rad-tint-stat-lbl { font-size: 0.62rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 }
 </style>
 
@@ -72,13 +79,13 @@
 
   <div class="container rad-tint-hero-inner">
     <div class="rad-tint-hero-content">
-      {{ section.settings.badge }}
-      {{ section.settings.tag }}
+      <div class="rad-tint-hero-badge">{{ section.settings.badge }}</div>
+      <div class="rad-tint-hero-tag">{{ section.settings.tag }}</div>
       <h1 class="rad-tint-hero-title">
         Premium Car Window Tint<br>
         <span>Heat Control Film Karachi</span>
       </h1>
-      {{ section.settings.subtitle }}
+      <p class="rad-tint-hero-sub">{{ section.settings.subtitle }}</p>
       <div class="rad-tint-hero-btns">
         <a href="/pages/tint-booking" class="rad-tint-btn-blue">View Pricing</a>
         <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20to%20know%20about%20Car%20Window%20Tinting" target="_blank" class="rad-tint-btn-wa">
