@@ -40,7 +40,15 @@
 .rad-det-stat-num { font-size: 1.75rem; font-weight: 800; color: #60a5fa; display: block; }
 .rad-det-stat-lbl { font-size: 0.75rem; color: #9ca3af; display: block; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
 @media (max-width: 900px) { .rad-det-hero { padding: 3.5rem 0; min-height: 450px; } .rad-det-hero-title { font-size: 2.25rem; } }
-@media (max-width: 640px) { .rad-det-hero { padding: 3rem 0; } .rad-det-hero-title { font-size: 1.85rem; } .rad-det-hero-btns { flex-direction: column; } }
+@media (max-width: 640px) {
+  .rad-det-hero { padding: 2.25rem 0; min-height: auto; }
+  .rad-det-hero-inner { padding: 0 1rem; }
+  .rad-det-tag { font-size: 0.65rem; padding: 0.25rem 0.75rem; }
+  .rad-det-hero-title { font-size: 1.6rem; line-height: 1.25; margin-bottom: 0.4rem; }
+  .rad-det-hero-sub { font-size: 0.95rem; margin-bottom: 1.25rem; }
+  .rad-det-hero-btns { flex-direction: row; flex-wrap: nowrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .rad-det-btn-blue, .rad-det-btn-wa { flex: 1; width: auto; justify-content: center; text-align: center; padding: 0.65rem 0.5rem; font-size: 0.78rem; white-space: nowrap; }
+}
 </style>
 
 <section class="rad-det-hero">
