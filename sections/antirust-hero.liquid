@@ -29,6 +29,9 @@
 }
 .rad-ar-hero-title span { color: #fb923c; }
 .rad-ar-hero-sub { font-size: 1.1rem; color: #d1d5db; line-height: 1.7; margin-bottom: 2rem; }
+.rad-ar-hero-badge { display: inline-block; margin-bottom: 0.75rem; }
+.rad-ar-hero-tag { display: block; margin-bottom: 1rem; }
+.rad-ar-hero-sub { font-size: 1.05rem; color: #d1d5db; line-height: 1.7; margin-bottom: 2rem; max-width: 540px; }
 .rad-ar-hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
 .rad-ar-btn-primary {
   display: inline-flex; align-items: center; padding: 0.875rem 1.75rem;
@@ -46,7 +49,19 @@
 .rad-ar-stat-num { font-size: 1.75rem; font-weight: 800; color: #fb923c; display: block; }
 .rad-ar-stat-lbl { font-size: 0.75rem; color: #9ca3af; display: block; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
 @media (max-width: 900px) { .rad-ar-hero { padding: 3.5rem 0; min-height: 450px; } .rad-ar-hero-title { font-size: 2.25rem; } }
-@media (max-width: 640px) { .rad-ar-hero { padding: 3rem 0; } .rad-ar-hero-title { font-size: 1.85rem; } .rad-ar-hero-btns { flex-direction: column; } }
+@media (max-width: 640px) {
+  .rad-ar-hero { padding: 2.25rem 0; min-height: auto; }
+  .rad-ar-hero-inner { padding: 0 1rem; }
+  .rad-ar-hero-badge, .rad-ar-hero-tag { font-size: 0.65rem; }
+  .rad-ar-hero-title { font-size: 1.6rem; line-height: 1.25; margin-bottom: 0.4rem; }
+  .rad-ar-hero-sub { font-size: 0.95rem; margin-bottom: 1.25rem; }
+  .rad-ar-hero-btns { flex-direction: row; flex-wrap: nowrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .rad-ar-btn-primary, .rad-ar-btn-wa { flex: 1; width: auto; justify-content: center; text-align: center; padding: 0.65rem 0.5rem; font-size: 0.78rem; white-space: nowrap; }
+  .rad-ar-hero-stats { display: flex; flex-wrap: nowrap; gap: 0.5rem; padding-top: 1.1rem; justify-content: space-between; }
+  .rad-ar-hero-stats > div { flex: 1; min-width: 0; text-align: center; }
+  .rad-ar-stat-num { font-size: 1.05rem; white-space: nowrap; }
+  .rad-ar-stat-lbl { font-size: 0.62rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+}
 </style>
 
 <section class="rad-ar-hero">
@@ -60,13 +75,13 @@
   <div class="rad-ar-hero-overlay"></div>
   <div class="container rad-ar-hero-inner">
     <div class="rad-ar-hero-content">
-      {{ section.settings.badge }}
-      {{ section.settings.tag }}
+      <div class="rad-ar-hero-badge">{{ section.settings.badge }}</div>
+      <div class="rad-ar-hero-tag">{{ section.settings.tag }}</div>
       <h1 class="rad-ar-hero-title">
         Anti-Rust Undercoating<br>
         <span>Protect Your Car's Chassis</span>
       </h1>
-      {{ section.settings.subtitle }}
+      <p class="rad-ar-hero-sub">{{ section.settings.subtitle }}</p>
       <div class="rad-ar-hero-btns">
         <a href="/pages/antirust-booking" class="rad-ar-btn-primary">View Pricing</a>
         <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20to%20know%20about%20Anti-Rust%20Undercoating" target="_blank" class="rad-ar-btn-wa">
