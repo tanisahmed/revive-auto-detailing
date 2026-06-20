@@ -16,6 +16,10 @@
 .rad-det-why-btn-wa { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.75rem; background: transparent; color: #10b981; border: 2px solid #10b981; border-radius: 8px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: all 0.2s; }
 .rad-det-why-btn-wa:hover { background: #10b981; color: #fff; }
 @media (max-width: 768px) { .rad-det-why-grid { grid-template-columns: 1fr; } .rad-det-why-title { font-size: 1.5rem; } }
+@media (max-width: 640px) {
+  .rad-det-why-btns { flex-direction: row; flex-wrap: nowrap; gap: 0.5rem; }
+  .rad-det-why-btn, .rad-det-why-btn-wa { flex: 1; width: auto; justify-content: center; text-align: center; padding: 0.65rem 0.5rem; font-size: 0.78rem; white-space: nowrap; }
+}
 </style>
 
 <section class="rad-det-why">
