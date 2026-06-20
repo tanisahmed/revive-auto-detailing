@@ -1,0 +1,549 @@
+<style>
+.rad-booking { padding: 4rem 0 6rem; background: #fff; font-family: 'Nunito Sans', sans-serif; }
+.rad-booking-wrapper { max-width: 640px; margin: 0 auto; padding: 0 1.5rem; }
+
+.rad-bhead { text-align: center; margin-bottom: 2rem; }
+.rad-bhead h1 { font-size: 2rem; font-weight: 800; color: #1f2937; margin-bottom: 0.4rem; }
+.rad-bhead p { color: #6b7280; font-size: 0.95rem; }
+
+/* Progress */
+.rad-prog { margin-bottom: 2rem; }
+.rad-prog-bar-track { height: 6px; background: #e5e7eb; border-radius: 100px; overflow: hidden; margin-bottom: 0.5rem; }
+.rad-prog-bar-fill { height: 100%; background: #1e3a8a; border-radius: 100px; transition: width 0.4s ease; }
+.rad-steps { display: flex; justify-content: center; gap: 0; margin-bottom: 0; position: relative; }
+.rad-steps::before { content:''; position:absolute; top:1.1rem; left:8%; right:8%; height:2px; background:#e5e7eb; z-index:0; }
+.rad-step { display:flex; flex-direction:column; align-items:center; gap:0.4rem; flex:1; position:relative; z-index:1; }
+.rad-step-dot { width:2.25rem; height:2.25rem; border-radius:50%; border:2px solid #e5e7eb; background:#fff; display:flex; align-items:center; justify-content:center; font-size:0.875rem; font-weight:800; color:#9ca3af; transition:all 0.3s; }
+.rad-step.active .rad-step-dot { background:#1e3a8a; border-color:#1e3a8a; color:#fff; }
+.rad-step.done .rad-step-dot { background:#10b981; border-color:#10b981; color:#fff; }
+.rad-step-lbl { font-size:0.68rem; font-weight:700; color:#9ca3af; text-align:center; }
+.rad-step.active .rad-step-lbl { color:#1e3a8a; }
+.rad-step.done .rad-step-lbl { color:#10b981; }
+
+/* Form container */
+.rad-bform { background:#f3f4f6; border-radius:12px; padding:2rem; }
+.rad-bstep { display:none; }
+.rad-bstep.active { display:block; }
+.rad-bstep-title { font-size:1.4rem; font-weight:800; color:#1f2937; margin-bottom:0.25rem; }
+.rad-bstep-desc { font-size:0.875rem; color:#6b7280; margin-bottom:1.5rem; }
+
+/* Inputs */
+.rad-fg { margin-bottom:1rem; }
+.rad-fl { display:block; font-weight:600; font-size:0.9rem; color:#1f2937; margin-bottom:0.35rem; }
+.rad-fl em { color:#ef4444; font-style:normal; }
+.rad-fi { width:100%; padding:0.75rem 1rem; border:2px solid #e5e7eb; border-radius:8px; font-size:1rem; font-family:'Nunito Sans',sans-serif; color:#1f2937; background:#fff; outline:none; transition:border 0.2s; box-sizing:border-box; }
+.rad-fi:focus { border-color:#1e3a8a; box-shadow:0 0 0 3px rgba(30,58,138,0.1); }
+.rad-fi.rad-err { border-color:#ef4444; }
+.rad-ferr { color:#ef4444; font-size:0.78rem; margin-top:0.25rem; display:none; }
+.rad-ferr.show { display:block; }
+.rad-frow { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+
+/* Vehicle type selector */
+.rad-vtabs { display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.35rem; }
+.rad-vtab { flex:1; min-width:80px; padding:0.7rem 0.5rem; border:2px solid #e5e7eb; border-radius:8px; text-align:center; font-weight:700; font-size:0.85rem; cursor:pointer; background:#fff; transition:all 0.2s; }
+.rad-vtab:hover { border-color:#1e3a8a; color:#1e3a8a; }
+.rad-vtab.sel { background:#1e3a8a; border-color:#1e3a8a; color:#fff; }
+
+/* Service checkbox cards */
+.rad-svc-list { display:flex; flex-direction:column; gap:0.65rem; margin-top:1.25rem; }
+.rad-svc-card { display:flex; align-items:flex-start; gap:0.85rem; padding:1rem 1.1rem; background:#fff; border:2px solid #e5e7eb; border-radius:10px; cursor:pointer; transition:all 0.2s; }
+.rad-svc-card:hover { border-color:#1e3a8a; }
+.rad-svc-card.sel { border-color:#1e3a8a; background:rgba(30,58,138,0.04); }
+.rad-svc-check { width:1.35rem; height:1.35rem; border:2px solid #d1d5db; border-radius:6px; flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:all 0.2s; margin-top:1px; }
+.rad-svc-card.sel .rad-svc-check { border-color:#1e3a8a; background:#1e3a8a; }
+.rad-svc-check svg { width:13px; height:13px; opacity:0; transition:opacity 0.15s; }
+.rad-svc-card.sel .rad-svc-check svg { opacity:1; }
+.rad-svc-info { flex:1; }
+.rad-svc-name { font-weight:700; font-size:0.95rem; color:#1f2937; margin-bottom:0.1rem; }
+.rad-svc-desc { font-size:0.78rem; color:#6b7280; line-height:1.4; }
+.rad-svc-price { font-weight:800; font-size:0.95rem; color:#1e3a8a; white-space:nowrap; margin-left:0.5rem; }
+
+.rad-svc-hint { font-size:0.8rem; color:#9ca3af; text-align:center; padding:1rem; display:none; }
+.rad-svc-hint.show { display:block; }
+
+/* Total bar */
+.rad-total-bar { background:rgba(30,58,138,0.08); border:1px solid rgba(30,58,138,0.2); border-radius:8px; padding:0.85rem 1.25rem; margin-top:1.25rem; display:none; justify-content:space-between; align-items:center; }
+.rad-total-bar.show { display:flex; }
+.rad-total-lbl { font-size:0.875rem; color:#6b7280; font-weight:600; }
+.rad-total-val { font-size:1.35rem; font-weight:800; color:#1e3a8a; }
+
+/* Time slots */
+.rad-times { display:grid; grid-template-columns:repeat(4,1fr); gap:0.6rem; margin-top:0.35rem; }
+.rad-time { padding:0.6rem 0.5rem; border:2px solid #e5e7eb; border-radius:8px; text-align:center; font-weight:700; font-size:0.875rem; cursor:pointer; background:#fff; transition:all 0.2s; }
+.rad-time:hover { border-color:#1e3a8a; color:#1e3a8a; }
+.rad-time.sel { background:#1e3a8a; border-color:#1e3a8a; color:#fff; }
+
+/* Review */
+.rad-rev-block { background:#fff; border-radius:8px; padding:1.25rem; margin-bottom:0.75rem; }
+.rad-rev-hdr { display:flex; justify-content:space-between; align-items:center; padding-bottom:0.6rem; border-bottom:1px solid #e5e7eb; margin-bottom:0.75rem; }
+.rad-rev-title { font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:#6b7280; }
+.rad-rev-edit { font-size:0.8rem; font-weight:700; color:#1e3a8a; cursor:pointer; background:none; border:none; font-family:'Nunito Sans',sans-serif; }
+.rad-rev-edit:hover { text-decoration:underline; }
+.rad-rev-row { display:flex; justify-content:space-between; gap:1rem; font-size:0.875rem; padding:0.25rem 0; }
+.rad-rev-row .rl { color:#6b7280; }
+.rad-rev-row .rv { font-weight:600; color:#1f2937; text-align:right; }
+.rad-rev-total { background:#1e3a8a; color:#fff; border-radius:8px; padding:1rem 1.25rem; display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; }
+.rad-rev-total-lbl { font-weight:700; }
+.rad-rev-total-price { font-size:1.5rem; font-weight:800; }
+
+/* Terms */
+.rad-terms { display:flex; align-items:flex-start; gap:0.75rem; margin-bottom:1.25rem; cursor:pointer; }
+.rad-terms input { width:1.1rem; height:1.1rem; margin-top:2px; cursor:pointer; flex-shrink:0; accent-color:#1e3a8a; }
+.rad-terms span { font-size:0.85rem; color:#6b7280; line-height:1.5; }
+
+/* Nav buttons */
+.rad-bnav { display:flex; gap:0.75rem; margin-top:1.5rem; }
+.rad-bbtn-back { flex:0.4; padding:0.875rem; background:#fff; border:2px solid #d1d5db; border-radius:8px; font-family:'Nunito Sans',sans-serif; font-weight:700; font-size:1rem; color:#6b7280; cursor:pointer; transition:all 0.2s; }
+.rad-bbtn-back:hover:not(:disabled) { border-color:#1e3a8a; color:#1e3a8a; }
+.rad-bbtn-back:disabled { opacity:0.4; cursor:not-allowed; }
+.rad-bbtn-next { flex:1; padding:0.875rem; background:#1e3a8a; border:none; border-radius:8px; font-family:'Nunito Sans',sans-serif; font-weight:700; font-size:1rem; color:#fff; cursor:pointer; transition:all 0.2s; }
+.rad-bbtn-next:hover { background:#1e40af; }
+.rad-bbtn-next:disabled { opacity:0.5; cursor:not-allowed; }
+
+/* Success */
+.rad-bsuccess { display:none; background:#f3f4f6; border-radius:12px; padding:2.5rem; text-align:center; }
+.rad-bsuccess.show { display:block; }
+.rad-bsuccess-icon { font-size:4rem; margin-bottom:1rem; display:block; }
+.rad-bsuccess h2 { font-size:1.4rem; font-weight:800; color:#1f2937; margin-bottom:0.5rem; }
+.rad-bsuccess p { color:#6b7280; font-size:0.9rem; margin-bottom:1.5rem; }
+.rad-bsuccess-ref { background:#fff; border-radius:8px; padding:1.25rem; text-align:left; margin-bottom:1.5rem; }
+.rad-bsuccess-wa { display:inline-flex; align-items:center; gap:0.5rem; padding:0.875rem 2rem; background:#10b981; color:#fff; border-radius:8px; font-weight:700; text-decoration:none; transition:background 0.2s; }
+.rad-bsuccess-wa:hover { background:#059669; }
+
+@media (max-width:640px) {
+  .rad-booking { padding: 2rem 0 3rem; }
+  .rad-bhead h1 { font-size: 1.5rem; }
+  .rad-bhead p { font-size: 0.85rem; }
+  .rad-bform { padding: 1.25rem; }
+  .rad-bstep-title { font-size: 1.15rem; }
+  .rad-frow { grid-template-columns: 1fr; gap: 0; }
+  .rad-times { grid-template-columns: repeat(3,1fr); }
+  .rad-svc-price { font-size: 0.85rem; }
+  .rad-step-lbl { font-size: 0.6rem; }
+}
+</style>
+
+<section class="rad-booking">
+  <div class="rad-booking-wrapper">
+
+    <div class="rad-bhead">
+      <h1>{{ section.settings.title | default: "Book Your Appointment" }}</h1>
+      <p>{{ section.settings.subtitle | default: "Select one or more services and we'll take care of the rest" }}</p>
+    </div>
+
+    <div class="rad-prog">
+      <div class="rad-prog-bar-track"><div class="rad-prog-bar-fill" id="rab-progfill" style="width:25%;"></div></div>
+      <div class="rad-steps">
+        <div class="rad-step active" data-step="1"><div class="rad-step-dot">1</div><div class="rad-step-lbl">Details</div></div>
+        <div class="rad-step" data-step="2"><div class="rad-step-dot">2</div><div class="rad-step-lbl">Vehicle &amp; Services</div></div>
+        <div class="rad-step" data-step="3"><div class="rad-step-dot">3</div><div class="rad-step-lbl">Appointment</div></div>
+        <div class="rad-step" data-step="4"><div class="rad-step-dot">4</div><div class="rad-step-lbl">Confirm</div></div>
+      </div>
+    </div>
+
+    <div class="rad-bform" id="rab-form">
+
+      <!-- STEP 1: Personal Details -->
+      <div class="rad-bstep active" data-step="1">
+        <div class="rad-bstep-title">Your Details</div>
+        <div class="rad-bstep-desc">Tell us a little about yourself</div>
+        <div class="rad-frow">
+          <div class="rad-fg">
+            <label class="rad-fl">Full Name <em>*</em></label>
+            <input type="text" class="rad-fi" id="rab-name" placeholder="Ahmed Khan">
+            <div class="rad-ferr" id="rab-err-name">Please enter your name</div>
+          </div>
+          <div class="rad-fg">
+            <label class="rad-fl">WhatsApp Number <em>*</em></label>
+            <input type="tel" class="rad-fi" id="rab-phone" placeholder="+92 3XX XXXXXXX">
+            <div class="rad-ferr" id="rab-err-phone">Please enter a valid phone number</div>
+          </div>
+        </div>
+        <div class="rad-fg">
+          <label class="rad-fl">Email Address</label>
+          <input type="email" class="rad-fi" id="rab-email" placeholder="you@example.com">
+        </div>
+        <div class="rad-bnav">
+          <button class="rad-bbtn-back" disabled>Back</button>
+          <button class="rad-bbtn-next" onclick="rabNext(1)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Vehicle + Services -->
+      <div class="rad-bstep" data-step="2">
+        <div class="rad-bstep-title">Vehicle &amp; Services</div>
+        <div class="rad-bstep-desc">Select your vehicle type, then choose the services you need</div>
+
+        <div class="rad-fg">
+          <label class="rad-fl">Vehicle Type <em>*</em></label>
+          <div class="rad-vtabs" id="rab-vtabs">
+            <div class="rad-vtab" data-v="hatchback">Hatchback</div>
+            <div class="rad-vtab" data-v="sedan">Sedan</div>
+            <div class="rad-vtab" data-v="suv">SUV</div>
+            <div class="rad-vtab" data-v="xl-suv">XL SUV</div>
+          </div>
+          <div class="rad-ferr" id="rab-err-vehicle">Please select your vehicle type</div>
+        </div>
+
+        <div class="rad-fg">
+          <label class="rad-fl">Select Services <em>*</em></label>
+          <div class="rad-svc-hint show" id="rab-svc-hint">Select a vehicle type above to see services and pricing</div>
+          <div class="rad-svc-list" id="rab-svc-list"></div>
+          <div class="rad-ferr" id="rab-err-services">Please select at least one service</div>
+        </div>
+
+        <div class="rad-total-bar" id="rab-total-bar">
+          <span class="rad-total-lbl">Estimated Total</span>
+          <span class="rad-total-val" id="rab-total-val">PKR 0</span>
+        </div>
+
+        <div class="rad-bnav">
+          <button class="rad-bbtn-back" onclick="rabBack(2)">Back</button>
+          <button class="rad-bbtn-next" onclick="rabNext(2)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Appointment -->
+      <div class="rad-bstep" data-step="3">
+        <div class="rad-bstep-title">Pick a Date &amp; Time</div>
+        <div class="rad-bstep-desc">Choose when you'd like to bring your car in</div>
+        <div class="rad-fg">
+          <label class="rad-fl">Preferred Date <em>*</em></label>
+          <input type="date" class="rad-fi" id="rab-date">
+          <div class="rad-ferr" id="rab-err-date">Please select a date</div>
+        </div>
+        <div class="rad-fg">
+          <label class="rad-fl">Preferred Time <em>*</em></label>
+          <div class="rad-times" id="rab-times">
+            <div class="rad-time" data-t="9:00 AM">9:00 AM</div>
+            <div class="rad-time" data-t="11:00 AM">11:00 AM</div>
+            <div class="rad-time" data-t="1:00 PM">1:00 PM</div>
+            <div class="rad-time" data-t="3:00 PM">3:00 PM</div>
+          </div>
+        </div>
+        <div class="rad-fg">
+          <label class="rad-fl">Additional Notes</label>
+          <textarea class="rad-fi" id="rab-notes" rows="3" style="resize:vertical;" placeholder="Any specific requests or questions..."></textarea>
+        </div>
+        <div class="rad-bnav">
+          <button class="rad-bbtn-back" onclick="rabBack(3)">Back</button>
+          <button class="rad-bbtn-next" onclick="rabNext(3)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Review & Confirm -->
+      <div class="rad-bstep" data-step="4">
+        <div class="rad-bstep-title">Review &amp; Confirm</div>
+        <div class="rad-bstep-desc">Please check your details before submitting</div>
+
+        <div class="rad-rev-block">
+          <div class="rad-rev-hdr"><span class="rad-rev-title">Your Details</span><button class="rad-rev-edit" onclick="rabGoto(1)">Edit</button></div>
+          <div class="rad-rev-row"><span class="rl">Name</span><span class="rv" id="rab-rev-name"></span></div>
+          <div class="rad-rev-row"><span class="rl">Phone</span><span class="rv" id="rab-rev-phone"></span></div>
+          <div class="rad-rev-row"><span class="rl">Email</span><span class="rv" id="rab-rev-email"></span></div>
+        </div>
+
+        <div class="rad-rev-block">
+          <div class="rad-rev-hdr"><span class="rad-rev-title">Vehicle &amp; Services</span><button class="rad-rev-edit" onclick="rabGoto(2)">Edit</button></div>
+          <div class="rad-rev-row"><span class="rl">Vehicle</span><span class="rv" id="rab-rev-vehicle"></span></div>
+          <div id="rab-rev-services"></div>
+        </div>
+
+        <div class="rad-rev-block">
+          <div class="rad-rev-hdr"><span class="rad-rev-title">Appointment</span><button class="rad-rev-edit" onclick="rabGoto(3)">Edit</button></div>
+          <div class="rad-rev-row"><span class="rl">Date</span><span class="rv" id="rab-rev-date"></span></div>
+          <div class="rad-rev-row"><span class="rl">Time</span><span class="rv" id="rab-rev-time"></span></div>
+        </div>
+
+        <div class="rad-rev-total">
+          <span class="rad-rev-total-lbl">Estimated Total</span>
+          <span class="rad-rev-total-price" id="rab-rev-total"></span>
+        </div>
+
+        <label class="rad-terms">
+          <input type="checkbox" id="rab-terms">
+          <span>I agree that this is a booking request and final pricing will be confirmed by the team before service.</span>
+        </label>
+
+        <div class="rad-bnav">
+          <button class="rad-bbtn-back" onclick="rabBack(4)">Back</button>
+          <button class="rad-bbtn-next" id="rab-submit-btn" onclick="rabSubmit()">Confirm Booking</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Success -->
+    <div class="rad-bsuccess" id="rab-success">
+      <span class="rad-bsuccess-icon">✅</span>
+      <h2>Booking Request Sent!</h2>
+      <p>We've received your request and will confirm via WhatsApp shortly.</p>
+      <div class="rad-bsuccess-ref" id="rab-success-summary"></div>
+      <a href="https://wa.me/923037231111" target="_blank" class="rad-bsuccess-wa">💬 Message Us on WhatsApp</a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function() {
+  // Service catalog: prices per vehicle type, populated from Theme Editor settings
+  var services = [
+    { id: 'ppf', name: '{{ section.settings.svc1_name | default: "Paint Protection Film (PPF)" }}', desc: '{{ section.settings.svc1_desc | default: "Full bumper-to-bumper invisible protection film" }}',
+      prices: { hatchback: {{ section.settings.svc1_hatch | default: 260000 }}, sedan: {{ section.settings.svc1_sedan | default: 300000 }}, suv: {{ section.settings.svc1_suv | default: 330000 }}, 'xl-suv': {{ section.settings.svc1_xlsuv | default: 370000 }} } },
+    { id: 'ceramic', name: '{{ section.settings.svc2_name | default: "Ceramic Coating" }}', desc: '{{ section.settings.svc2_desc | default: "Glossy, hydrophobic ceramic shield for your paint" }}',
+      prices: { hatchback: {{ section.settings.svc2_hatch | default: 40000 }}, sedan: {{ section.settings.svc2_sedan | default: 50000 }}, suv: {{ section.settings.svc2_suv | default: 60000 }}, 'xl-suv': {{ section.settings.svc2_xlsuv | default: 70000 }} } },
+    { id: 'detailing', name: '{{ section.settings.svc3_name | default: "Exterior & Interior Detailing" }}', desc: '{{ section.settings.svc3_desc | default: "Deep clean and showroom-fresh finish" }}',
+      prices: { hatchback: {{ section.settings.svc3_hatch | default: 10000 }}, sedan: {{ section.settings.svc3_sedan | default: 12000 }}, suv: {{ section.settings.svc3_suv | default: 15000 }}, 'xl-suv': {{ section.settings.svc3_xlsuv | default: 18000 }} } },
+    { id: 'tint', name: '{{ section.settings.svc4_name | default: "Car Window Tinting" }}', desc: '{{ section.settings.svc4_desc | default: "NAR heat-control window film" }}',
+      prices: { hatchback: {{ section.settings.svc4_hatch | default: 18500 }}, sedan: {{ section.settings.svc4_sedan | default: 22000 }}, suv: {{ section.settings.svc4_suv | default: 26000 }}, 'xl-suv': {{ section.settings.svc4_xlsuv | default: 30000 }} } },
+    { id: 'antirust', name: '{{ section.settings.svc5_name | default: "Anti-Rust Undercoating" }}', desc: '{{ section.settings.svc5_desc | default: "MIPA rubberized undercarriage protection" }}',
+      prices: { hatchback: {{ section.settings.svc5_hatch | default: 22000 }}, sedan: {{ section.settings.svc5_sedan | default: 26000 }}, suv: {{ section.settings.svc5_suv | default: 30000 }}, 'xl-suv': {{ section.settings.svc5_xlsuv | default: 34000 }} } },
+    { id: 'colorppf', name: '{{ section.settings.svc6_name | default: "Color Paint Protection Film" }}', desc: '{{ section.settings.svc6_desc | default: "Change your car color while protecting the paint" }}',
+      prices: { hatchback: {{ section.settings.svc6_hatch | default: 290000 }}, sedan: {{ section.settings.svc6_sedan | default: 330000 }}, suv: {{ section.settings.svc6_suv | default: 380000 }}, 'xl-suv': {{ section.settings.svc6_xlsuv | default: 420000 }} } }
+  ];
+
+  var state = { vehicle: '', selectedServices: {}, date: '', time: '' };
+  var currentStep = 1;
+
+  function fmt(n) { return 'PKR ' + Number(n).toLocaleString(); }
+
+  function renderServices() {
+    var list = document.getElementById('rab-svc-list');
+    var hint = document.getElementById('rab-svc-hint');
+    if (!state.vehicle) {
+      list.innerHTML = '';
+      hint.classList.add('show');
+      return;
+    }
+    hint.classList.remove('show');
+    list.innerHTML = services.map(function(s) {
+      var price = s.prices[state.vehicle] || 0;
+      var sel = state.selectedServices[s.id] ? 'sel' : '';
+      return '<div class="rad-svc-card ' + sel + '" data-sid="' + s.id + '">' +
+        '<div class="rad-svc-check"><svg viewBox="0 0 16 16" fill="white"><path d="M13.5 4.5L6 12 2.5 8.5l1-1L6 10l6.5-6.5z"/></svg></div>' +
+        '<div class="rad-svc-info"><div class="rad-svc-name">' + s.name + '</div><div class="rad-svc-desc">' + s.desc + '</div></div>' +
+        '<div class="rad-svc-price">' + fmt(price) + '</div>' +
+      '</div>';
+    }).join('');
+
+    list.querySelectorAll('.rad-svc-card').forEach(function(card) {
+      card.addEventListener('click', function() {
+        var sid = card.dataset.sid;
+        state.selectedServices[sid] = !state.selectedServices[sid];
+        renderServices();
+        updateTotal();
+      });
+    });
+  }
+
+  function updateTotal() {
+    var total = 0;
+    Object.keys(state.selectedServices).forEach(function(sid) {
+      if (state.selectedServices[sid]) {
+        var svc = services.find(function(s) { return s.id === sid; });
+        if (svc) total += (svc.prices[state.vehicle] || 0);
+      }
+    });
+    var bar = document.getElementById('rab-total-bar');
+    var val = document.getElementById('rab-total-val');
+    if (total > 0) {
+      bar.classList.add('show');
+      val.textContent = fmt(total);
+    } else {
+      bar.classList.remove('show');
+    }
+    return total;
+  }
+
+  // Vehicle tabs
+  document.querySelectorAll('.rad-vtab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.rad-vtab').forEach(function(t) { t.classList.remove('sel'); });
+      tab.classList.add('sel');
+      state.vehicle = tab.dataset.v;
+      state.selectedServices = {};
+      document.getElementById('rab-err-vehicle').classList.remove('show');
+      renderServices();
+      updateTotal();
+    });
+  });
+
+  // Time slots
+  document.querySelectorAll('.rad-time').forEach(function(t) {
+    t.addEventListener('click', function() {
+      document.querySelectorAll('.rad-time').forEach(function(x) { x.classList.remove('sel'); });
+      t.classList.add('sel');
+      state.time = t.dataset.t;
+    });
+  });
+
+  // Default date = today
+  var dateInput = document.getElementById('rab-date');
+  var today = new Date().toISOString().split('T')[0];
+  dateInput.min = today;
+  dateInput.value = today;
+
+  // Default time = 9 AM
+  document.querySelector('.rad-time[data-t="9:00 AM"]').classList.add('sel');
+  state.time = '9:00 AM';
+
+  window.rabGoto = function(step) {
+    document.querySelectorAll('.rad-bstep').forEach(function(s) { s.classList.remove('active'); });
+    document.querySelector('.rad-bstep[data-step="' + step + '"]').classList.add('active');
+    document.querySelectorAll('.rad-step').forEach(function(s) {
+      var n = parseInt(s.dataset.step);
+      s.classList.remove('active', 'done');
+      if (n < step) s.classList.add('done');
+      if (n === step) s.classList.add('active');
+    });
+    document.getElementById('rab-progfill').style.width = (step * 25) + '%';
+    currentStep = step;
+    window.scrollTo({ top: document.querySelector('.rad-booking').offsetTop - 20, behavior: 'smooth' });
+  };
+
+  window.rabBack = function(step) { rabGoto(step - 1); };
+
+  window.rabNext = function(step) {
+    if (step === 1) {
+      var name = document.getElementById('rab-name').value.trim();
+      var phone = document.getElementById('rab-phone').value.trim();
+      var ok = true;
+      if (!name) { document.getElementById('rab-err-name').classList.add('show'); document.getElementById('rab-name').classList.add('rad-err'); ok = false; }
+      else { document.getElementById('rab-err-name').classList.remove('show'); document.getElementById('rab-name').classList.remove('rad-err'); }
+      if (!phone || phone.length < 7) { document.getElementById('rab-err-phone').classList.add('show'); document.getElementById('rab-phone').classList.add('rad-err'); ok = false; }
+      else { document.getElementById('rab-err-phone').classList.remove('show'); document.getElementById('rab-phone').classList.remove('rad-err'); }
+      if (!ok) return;
+      state.name = name; state.phone = phone; state.email = document.getElementById('rab-email').value.trim();
+    }
+    if (step === 2) {
+      var ok2 = true;
+      if (!state.vehicle) { document.getElementById('rab-err-vehicle').classList.add('show'); ok2 = false; }
+      else { document.getElementById('rab-err-vehicle').classList.remove('show'); }
+      var anySelected = Object.values(state.selectedServices).some(function(v) { return v; });
+      if (!anySelected) { document.getElementById('rab-err-services').classList.add('show'); ok2 = false; }
+      else { document.getElementById('rab-err-services').classList.remove('show'); }
+      if (!ok2) return;
+    }
+    if (step === 3) {
+      state.date = document.getElementById('rab-date').value;
+      if (!state.date) { document.getElementById('rab-err-date').classList.add('show'); return; }
+      document.getElementById('rab-err-date').classList.remove('show');
+      buildReview();
+    }
+    rabGoto(step + 1);
+  };
+
+  function buildReview() {
+    document.getElementById('rab-rev-name').textContent = state.name;
+    document.getElementById('rab-rev-phone').textContent = state.phone;
+    document.getElementById('rab-rev-email').textContent = state.email || '—';
+    document.getElementById('rab-rev-vehicle').textContent = state.vehicle.replace('-', ' ').replace(/\b\w/g, function(c){return c.toUpperCase();});
+    document.getElementById('rab-rev-date').textContent = state.date;
+    document.getElementById('rab-rev-time').textContent = state.time;
+
+    var svcHtml = '';
+    var total = 0;
+    services.forEach(function(s) {
+      if (state.selectedServices[s.id]) {
+        var p = s.prices[state.vehicle] || 0;
+        total += p;
+        svcHtml += '<div class="rad-rev-row"><span class="rl">' + s.name + '</span><span class="rv">' + fmt(p) + '</span></div>';
+      }
+    });
+    document.getElementById('rab-rev-services').innerHTML = svcHtml;
+    document.getElementById('rab-rev-total').textContent = fmt(total);
+  }
+
+  window.rabSubmit = function() {
+    if (!document.getElementById('rab-terms').checked) {
+      alert('Please confirm the booking terms checkbox to continue.');
+      return;
+    }
+    var btn = document.getElementById('rab-submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+
+    var selectedNames = services.filter(function(s) { return state.selectedServices[s.id]; }).map(function(s) { return s.name; }).join(', ');
+    var total = updateTotal();
+
+    fetch('https://formspree.io/f/xgoqpjvk', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({
+        _subject: 'New Multi-Service Booking: ' + state.name,
+        name: state.name, phone: state.phone, email: state.email,
+        vehicle: state.vehicle, services: selectedNames,
+        date: state.date, time: state.time,
+        notes: document.getElementById('rab-notes').value,
+        estimated_total: fmt(total)
+      })
+    }).catch(function(){});
+
+    setTimeout(function() {
+      document.getElementById('rab-form').style.display = 'none';
+      document.querySelector('.rad-prog').style.display = 'none';
+      var summary = '<div class="rad-rev-row"><span class="rl">Name</span><span class="rv">' + state.name + '</span></div>' +
+        '<div class="rad-rev-row"><span class="rl">Services</span><span class="rv">' + selectedNames + '</span></div>' +
+        '<div class="rad-rev-row"><span class="rl">Date &amp; Time</span><span class="rv">' + state.date + ', ' + state.time + '</span></div>' +
+        '<div class="rad-rev-row"><span class="rl">Estimated Total</span><span class="rv">' + fmt(total) + '</span></div>';
+      document.getElementById('rab-success-summary').innerHTML = summary;
+      document.getElementById('rab-success').classList.add('show');
+    }, 500);
+  };
+
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Book Appointment",
+  "settings": [
+    {"type":"text","id":"title","label":"Page Title","default":"Book Your Appointment"},
+    {"type":"text","id":"subtitle","label":"Subtitle","default":"Select one or more services and we'll take care of the rest"},
+    {"type":"header","content":"Service 1"},
+    {"type":"text","id":"svc1_name","label":"Name","default":"Paint Protection Film (PPF)"},
+    {"type":"text","id":"svc1_desc","label":"Description","default":"Full bumper-to-bumper invisible protection film"},
+    {"type":"number","id":"svc1_hatch","label":"Hatchback Price","default":260000},
+    {"type":"number","id":"svc1_sedan","label":"Sedan Price","default":300000},
+    {"type":"number","id":"svc1_suv","label":"SUV Price","default":330000},
+    {"type":"number","id":"svc1_xlsuv","label":"XL SUV Price","default":370000},
+    {"type":"header","content":"Service 2"},
+    {"type":"text","id":"svc2_name","label":"Name","default":"Ceramic Coating"},
+    {"type":"text","id":"svc2_desc","label":"Description","default":"Glossy, hydrophobic ceramic shield for your paint"},
+    {"type":"number","id":"svc2_hatch","label":"Hatchback Price","default":40000},
+    {"type":"number","id":"svc2_sedan","label":"Sedan Price","default":50000},
+    {"type":"number","id":"svc2_suv","label":"SUV Price","default":60000},
+    {"type":"number","id":"svc2_xlsuv","label":"XL SUV Price","default":70000},
+    {"type":"header","content":"Service 3"},
+    {"type":"text","id":"svc3_name","label":"Name","default":"Exterior & Interior Detailing"},
+    {"type":"text","id":"svc3_desc","label":"Description","default":"Deep clean and showroom-fresh finish"},
+    {"type":"number","id":"svc3_hatch","label":"Hatchback Price","default":10000},
+    {"type":"number","id":"svc3_sedan","label":"Sedan Price","default":12000},
+    {"type":"number","id":"svc3_suv","label":"SUV Price","default":15000},
+    {"type":"number","id":"svc3_xlsuv","label":"XL SUV Price","default":18000},
+    {"type":"header","content":"Service 4"},
+    {"type":"text","id":"svc4_name","label":"Name","default":"Car Window Tinting"},
+    {"type":"text","id":"svc4_desc","label":"Description","default":"NAR heat-control window film"},
+    {"type":"number","id":"svc4_hatch","label":"Hatchback Price","default":18500},
+    {"type":"number","id":"svc4_sedan","label":"Sedan Price","default":22000},
+    {"type":"number","id":"svc4_suv","label":"SUV Price","default":26000},
+    {"type":"number","id":"svc4_xlsuv","label":"XL SUV Price","default":30000},
+    {"type":"header","content":"Service 5"},
+    {"type":"text","id":"svc5_name","label":"Name","default":"Anti-Rust Undercoating"},
+    {"type":"text","id":"svc5_desc","label":"Description","default":"MIPA rubberized undercarriage protection"},
+    {"type":"number","id":"svc5_hatch","label":"Hatchback Price","default":22000},
+    {"type":"number","id":"svc5_sedan","label":"Sedan Price","default":26000},
+    {"type":"number","id":"svc5_suv","label":"SUV Price","default":30000},
+    {"type":"number","id":"svc5_xlsuv","label":"XL SUV Price","default":34000},
+    {"type":"header","content":"Service 6"},
+    {"type":"text","id":"svc6_name","label":"Name","default":"Color Paint Protection Film"},
+    {"type":"text","id":"svc6_desc","label":"Description","default":"Change your car color while protecting the paint"},
+    {"type":"number","id":"svc6_hatch","label":"Hatchback Price","default":290000},
+    {"type":"number","id":"svc6_sedan","label":"Sedan Price","default":330000},
+    {"type":"number","id":"svc6_suv","label":"SUV Price","default":380000},
+    {"type":"number","id":"svc6_xlsuv","label":"XL SUV Price","default":420000}
+  ],
+  "presets":[{"name":"Book Appointment"}]
+}
+{% endschema %}
