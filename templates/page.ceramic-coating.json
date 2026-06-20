@@ -18,7 +18,7 @@
       "type": "ceramic-hero",
       "name": "Ceramic Hero",
       "settings": {
-        "badge": "",
+        "badge": "GYEON",
         "tag": "",
         "title": "Ceramic Coating",
         "title_accent": "Karachi's Best",
@@ -71,7 +71,9 @@
       "name": "Ceramic Gallery",
       "settings": {
         "title": "Our Work",
-        "subtitle": "Real results from real cars we've detailed in Karachi"
+        "subtitle": "Real results from real cars we've detailed in Karachi",
+        "gallery_vid_1": "shopify://files/videos/Mecedes EQC Ceramic Coating.MP4",
+        "gallery_vid_2": "shopify://files/videos/Porsche.MP4"
       }
     }
   },
