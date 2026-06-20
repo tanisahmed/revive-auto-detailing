@@ -1,0 +1,42 @@
+<style>
+.rad-svc-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+  padding: 5rem 0 4rem; text-align: center; color: #fff; position: relative; overflow: hidden;
+  font-family: 'Nunito Sans', sans-serif;
+}
+.rad-svc-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 50%, rgba(96,165,250,0.15) 0%, transparent 60%); }
+.rad-svc-hero-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-svc-hero-tag { display: inline-block; background: rgba(96,165,250,0.2); border: 1px solid rgba(96,165,250,0.4); color: #93c5fd; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.4rem 1.1rem; border-radius: 100px; margin-bottom: 1.25rem; }
+.rad-svc-hero h1 { font-size: 3rem; font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
+.rad-svc-hero h1 span { color: #60a5fa; }
+.rad-svc-hero p { font-size: 1.05rem; color: #cbd5e1; line-height: 1.75; }
+@media (max-width: 768px) {
+  .rad-svc-hero { padding: 2.25rem 0; }
+  .rad-svc-hero-inner { padding: 0 1rem; }
+  .rad-svc-hero-tag { font-size: 0.65rem; padding: 0.3rem 0.85rem; }
+  .rad-svc-hero h1 { font-size: 1.7rem; line-height: 1.25; }
+  .rad-svc-hero p { font-size: 0.92rem; }
+}
+</style>
+
+<div class="rad-svc-hero">
+  <div class="rad-svc-hero-inner">
+    <div class="rad-svc-hero-tag">{{ section.settings.tag | default: "Professional Auto Care • Karachi" }}</div>
+    <h1>{{ section.settings.title | default: "Premium Car Care" }} <span>{{ section.settings.title_highlight | default: "Services" }}</span> {{ section.settings.title_end | default: "in Karachi" }}</h1>
+    <p>{{ section.settings.subtitle | default: "From Paint Protection Film to Ceramic Coating — we offer everything your car needs to look stunning and stay protected for years." }}</p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Services Hero",
+  "settings": [
+    {"type":"text","id":"tag","label":"Badge Text","default":"Professional Auto Care • Karachi"},
+    {"type":"text","id":"title","label":"Heading (part 1)","default":"Premium Car Care"},
+    {"type":"text","id":"title_highlight","label":"Heading (highlighted)","default":"Services"},
+    {"type":"text","id":"title_end","label":"Heading (part 2)","default":"in Karachi"},
+    {"type":"textarea","id":"subtitle","label":"Subtitle","default":"From Paint Protection Film to Ceramic Coating — we offer everything your car needs to look stunning and stay protected for years."}
+  ],
+  "presets":[{"name":"Services Hero"}]
+}
+{% endschema %}
