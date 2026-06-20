@@ -2,9 +2,18 @@
 .rad-cer-gallery { padding: 2rem 0; background: #f3f4f6; }
 .rad-cer-gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
 .rad-cer-gallery-item { border-radius: 10px; overflow: hidden; aspect-ratio: 9/16; background: linear-gradient(135deg, #1e3a8a, #0f172a); cursor: pointer; position: relative; }
-.rad-cer-gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
-.rad-cer-gallery-item:hover img { transform: scale(1.05); }
+.rad-cer-gallery-item img,
+.rad-cer-gallery-item video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+.rad-cer-gallery-item:hover img,
+.rad-cer-gallery-item:hover video { transform: scale(1.05); }
 .rad-cer-gallery-fallback { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+.rad-cer-gallery-play {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(0,0,0,0.45); display: flex; align-items: center; justify-content: center;
+  pointer-events: none; backdrop-filter: blur(2px);
+}
+.rad-cer-gallery-play svg { width: 18px; height: 18px; }
 @media (max-width: 768px) { .rad-cer-gallery-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 480px) { .rad-cer-gallery-grid { grid-template-columns: repeat(2, 1fr); } }
 </style>
@@ -16,8 +25,16 @@
     <div class="rad-cer-gallery-grid">
       {%- for i in (1..4) -%}
         {%- assign img_key = 'gallery_img_' | append: i -%}
+        {%- assign vid_key = 'gallery_vid_' | append: i -%}
+        {%- assign vid = section.settings[vid_key] -%}
         <div class="rad-cer-gallery-item">
-          {%- if section.settings[img_key] != blank -%}
+          {%- if vid != blank -%}
+            <video src="{{ vid.sources.last.url }}" muted loop playsinline preload="metadata"
+              onmouseover="this.play()" onmouseout="this.pause()"></video>
+            <div class="rad-cer-gallery-play">
+              <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          {%- elsif section.settings[img_key] != blank -%}
             <img src="{{ section.settings[img_key] | image_url: width: 400 }}" alt="Ceramic Coating Work {{ i }}" loading="lazy">
           {%- else -%}
             <div class="rad-cer-gallery-fallback">✨</div>
@@ -45,24 +62,60 @@
       "default": "Real results from real cars we've detailed in Karachi"
     },
     {
+      "type": "header",
+      "content": "Slot 1 — Image or Video"
+    },
+    {
       "type": "image_picker",
       "id": "gallery_img_1",
-      "label": "Gallery Image 1"
+      "label": "Image"
+    },
+    {
+      "type": "video",
+      "id": "gallery_vid_1",
+      "label": "Video (overrides image if set)"
+    },
+    {
+      "type": "header",
+      "content": "Slot 2 — Image or Video"
     },
     {
       "type": "image_picker",
       "id": "gallery_img_2",
-      "label": "Gallery Image 2"
+      "label": "Image"
+    },
+    {
+      "type": "video",
+      "id": "gallery_vid_2",
+      "label": "Video (overrides image if set)"
+    },
+    {
+      "type": "header",
+      "content": "Slot 3 — Image or Video"
     },
     {
       "type": "image_picker",
       "id": "gallery_img_3",
-      "label": "Gallery Image 3"
+      "label": "Image"
+    },
+    {
+      "type": "video",
+      "id": "gallery_vid_3",
+      "label": "Video (overrides image if set)"
+    },
+    {
+      "type": "header",
+      "content": "Slot 4 — Image or Video"
     },
     {
       "type": "image_picker",
       "id": "gallery_img_4",
-      "label": "Gallery Image 4"
+      "label": "Image"
+    },
+    {
+      "type": "video",
+      "id": "gallery_vid_4",
+      "label": "Video (overrides image if set)"
     }
   ],
   "presets": [
