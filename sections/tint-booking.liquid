@@ -516,29 +516,41 @@
     var ds=bd.dt?new Date(bd.dt+'T12:00:00').toLocaleDateString('en-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'}):'';
     var cleanPhone=(bd.ph||'').replace(/[^0-9]/g,'');
 
-    fetch('https://formspree.io/f/xgoqpjvk',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({
-        _subject:'Window Tint Booking: '+ref+' - '+(bd.fn||'')+' '+(bd.ln||''),
-        _replyto:bd.em||'',
-        service:'Window Tint',
-        booking_ref:ref,
-        submitted:new Date().toLocaleString('en-PK',{timeZone:'Asia/Karachi'}),
-        customer_name:(bd.fn||'')+' '+(bd.ln||''),
-        whatsapp:bd.ph||'',
-        customer_email:bd.em||'',
-        vehicle:(bd.mk||'')+' '+(bd.mo||'')+' '+(bd.yr||''),
-        color:bd.cl||'N/A',
-        vehicle_type:vtLabels[bd.vt]||'',
-        package:bd.pkLabel||'',
-        date:ds,
-        time:bd.tm||'',
-        duration:bd.dur||'',
-        total_price:bd.price>0?'PKR '+bd.price.toLocaleString():'Contact for price',
-        whatsapp_link:'https://wa.me/'+cleanPhone
-      })
-    }).catch(function(){});
+    var cf = document.createElement('form');
+    cf.action = '/contact#ContactFooter';
+    cf.method = 'post';
+    cf.acceptCharset = 'UTF-8';
+    cf.style.display = 'none';
+    cf.innerHTML =
+      '<input type="hidden" name="form_type" value="contact">' +
+      '<input type="hidden" name="utf8" value="✓">' +
+      '<input type="hidden" name="contact[name]" value="' + ((bd.fn||'') + ' ' + (bd.ln||'')).replace(/"/g,'&quot;') + '">' +
+      '<input type="hidden" name="contact[email]" value="' + (bd.em || (cleanPhone + '@booking.reviveautodetailing.pk')) + '">' +
+      '<input type="hidden" name="contact[phone]" value="' + (bd.ph||'') + '">' +
+      '<input type="hidden" name="contact[body]" value="">';
+    cf.querySelector('input[name="contact[body]"]').value =
+      'NEW WINDOW TINT BOOKING — ' + ref + '\n' +
+      'Submitted: ' + new Date().toLocaleString('en-PK',{timeZone:'Asia/Karachi'}) + '\n\n' +
+      'Customer: ' + (bd.fn||'') + ' ' + (bd.ln||'') + '\n' +
+      'WhatsApp: ' + (bd.ph||'') + '\n' +
+      'Email: ' + (bd.em||'') + '\n\n' +
+      'Service: Window Tint\n' +
+      'Vehicle: ' + (bd.mk||'') + ' ' + (bd.mo||'') + ' ' + (bd.yr||'') + '\n' +
+      'Color: ' + (bd.cl||'N/A') + '\n' +
+      'Vehicle Type: ' + (vtLabels[bd.vt]||'') + '\n' +
+      'Package: ' + (bd.pkLabel||'') + '\n\n' +
+      'Date: ' + ds + '\n' +
+      'Time: ' + (bd.tm||'') + '\n' +
+      'Total Price: ' + (bd.price ? 'PKR ' + bd.price.toLocaleString() : 'Contact for price') + '\n' +
+      'WhatsApp Link: https://wa.me/' + cleanPhone + '\n\n' +
+      '[booking_type:tint] [booking_ref:' + ref + ']';
+    document.body.appendChild(cf);
+    var cfFrame = document.createElement('iframe');
+    cfFrame.name = 'rad-cf-target-tint';
+    cfFrame.style.display = 'none';
+    document.body.appendChild(cfFrame);
+    cf.target = 'rad-cf-target-tint';
+    cf.submit();
 
     document.getElementById(sid+'-rad-bform').style.display='none';
     document.querySelector('.rad-prog').style.display='none';
