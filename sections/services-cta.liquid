@@ -1,0 +1,44 @@
+<style>
+.rad-svc-cta { padding: 4rem 0; background: linear-gradient(135deg, #1e3a8a, #0f172a); text-align: center; color: #fff; font-family: 'Nunito Sans', sans-serif; }
+.rad-svc-cta-inner { max-width: 600px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-svc-cta h2 { font-size: 2rem; font-weight: 800; margin-bottom: 0.75rem; }
+.rad-svc-cta p { color: #cbd5e1; margin-bottom: 2rem; font-size: 1rem; }
+.rad-svc-cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.rad-svc-cta-btn1 { padding: 0.9rem 2.25rem; background: #fff; color: #1e3a8a; border-radius: 8px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+.rad-svc-cta-btn1:hover { background: #f1f5f9; }
+.rad-svc-cta-btn2 { padding: 0.9rem 2.25rem; background: #10b981; color: #fff; border-radius: 8px; font-weight: 700; text-decoration: none; transition: all 0.2s; display: flex; align-items: center; gap: 0.4rem; }
+.rad-svc-cta-btn2:hover { background: #059669; }
+@media (max-width: 640px) {
+  .rad-svc-cta { padding: 2.25rem 0; }
+  .rad-svc-cta-inner { padding: 0 1rem; }
+  .rad-svc-cta h2 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+  .rad-svc-cta p { font-size: 0.88rem; margin-bottom: 1.25rem; }
+  .rad-svc-cta-btns { flex-direction: row; flex-wrap: nowrap; gap: 0.5rem; }
+  .rad-svc-cta-btn1, .rad-svc-cta-btn2 { flex: 1; justify-content: center; text-align: center; padding: 0.65rem 0.5rem; font-size: 0.78rem; white-space: nowrap; }
+}
+</style>
+
+<div class="rad-svc-cta">
+  <div class="rad-svc-cta-inner">
+    <h2>{{ section.settings.title | default: "Not Sure Which Service You Need?" }}</h2>
+    <p>{{ section.settings.subtitle | default: "Chat with us on WhatsApp and we'll recommend the best option for your car and budget — for free." }}</p>
+    <div class="rad-svc-cta-btns">
+      <a href="{{ section.settings.btn1_url | default: '/pages/ppf-booking' }}" class="rad-svc-cta-btn1">{{ section.settings.btn1_text | default: "Book an Appointment" }}</a>
+      <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20to%20know%20which%20service%20is%20best%20for%20my%20car" target="_blank" class="rad-svc-cta-btn2">{{ section.settings.btn2_text | default: "💬 Ask on WhatsApp" }}</a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Services CTA",
+  "settings": [
+    {"type":"text","id":"title","label":"Heading","default":"Not Sure Which Service You Need?"},
+    {"type":"textarea","id":"subtitle","label":"Subtext","default":"Chat with us on WhatsApp and we'll recommend the best option for your car and budget — for free."},
+    {"type":"text","id":"btn1_text","label":"Button 1 Text","default":"Book an Appointment"},
+    {"type":"url","id":"btn1_url","label":"Button 1 Link"},
+    {"type":"text","id":"btn2_text","label":"Button 2 Text","default":"💬 Ask on WhatsApp"}
+  ],
+  "presets":[{"name":"Services CTA"}]
+}
+{% endschema %}
