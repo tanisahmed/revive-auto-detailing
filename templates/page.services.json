@@ -1,17 +1,45 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "hero": {
+    "services_hero_XcBdV4": {
       "type": "services-hero",
-      "settings": {}
+      "name": "Services Hero",
+      "settings": {
+        "tag": "Professional Auto Care • Karachi",
+        "title": "Premium Car Care",
+        "title_highlight": "Services",
+        "title_end": "in Karachi",
+        "subtitle": "From Paint Protection Film to Ceramic Coating — we offer everything your car needs to look stunning and stay protected for years."
+      }
     },
-    "trust": {
+    "services_trust_U8VP8k": {
       "type": "services-trust",
-      "settings": {}
+      "name": "Services Trust Bar",
+      "settings": {
+        "icon1": "⭐",
+        "text1": "4.9 Google Rating",
+        "icon2": "🛡",
+        "text2": "NAR & GYEON Certified",
+        "icon3": "🚗",
+        "text3": "500+ Cars Serviced",
+        "icon4": "✅",
+        "text4": "Up to 7 Year Warranty",
+        "icon5": "📍",
+        "text5": "Karachi, Pakistan"
+      }
     },
-    "grid": {
+    "services_grid_4R77Vr": {
       "type": "services-grid",
       "blocks": {
-        "ppf": {
+        "service_card_RLNWnL": {
           "type": "service_card",
           "settings": {
             "icon": "🛡",
@@ -30,7 +58,7 @@
             "booking_url": "/pages/ppf-booking"
           }
         },
-        "ceramic": {
+        "service_card_RW8gJy": {
           "type": "service_card",
           "settings": {
             "icon": "✨",
@@ -49,7 +77,7 @@
             "booking_url": "/pages/ceramic-booking"
           }
         },
-        "detailing": {
+        "service_card_yDrM9E": {
           "type": "service_card",
           "settings": {
             "icon": "🚗",
@@ -68,7 +96,7 @@
             "booking_url": "/pages/detailing-booking"
           }
         },
-        "tint": {
+        "service_card_FLpBHB": {
           "type": "service_card",
           "settings": {
             "icon": "🌑",
@@ -87,7 +115,7 @@
             "booking_url": "/pages/tint-booking"
           }
         },
-        "antirust": {
+        "service_card_9pjeby": {
           "type": "service_card",
           "settings": {
             "icon": "🔒",
@@ -106,7 +134,7 @@
             "booking_url": "/pages/antirust-booking"
           }
         },
-        "colorppf": {
+        "service_card_8LNrHX": {
           "type": "service_card",
           "settings": {
             "icon": "🎨",
@@ -127,19 +155,23 @@
         }
       },
       "block_order": [
-        "ppf",
-        "ceramic",
-        "detailing",
-        "tint",
-        "antirust",
-        "colorppf"
+        "service_card_RLNWnL",
+        "service_card_RW8gJy",
+        "service_card_yDrM9E",
+        "service_card_FLpBHB",
+        "service_card_9pjeby",
+        "service_card_8LNrHX"
       ],
-      "settings": {}
+      "name": "Services Grid",
+      "settings": {
+        "title": "Our Services",
+        "subtitle": "Choose a service to learn more or book an appointment"
+      }
     },
-    "why": {
+    "services_why_4WEVVF": {
       "type": "services-why",
       "blocks": {
-        "r1": {
+        "reason_Nxa36C": {
           "type": "reason",
           "settings": {
             "icon": "🏆",
@@ -147,7 +179,7 @@
             "description": "NAR & GYEON certified — the same brands used by top studios worldwide."
           }
         },
-        "r2": {
+        "reason_dKNzak": {
           "type": "reason",
           "settings": {
             "icon": "👨‍🔧",
@@ -155,7 +187,7 @@
             "description": "Professionally trained team with hands-on experience on 500+ vehicles."
           }
         },
-        "r3": {
+        "reason_LgHdNq": {
           "type": "reason",
           "settings": {
             "icon": "📋",
@@ -163,7 +195,7 @@
             "description": "All services come with manufacturer-backed warranties up to 7 years."
           }
         },
-        "r4": {
+        "reason_8UANKL": {
           "type": "reason",
           "settings": {
             "icon": "⭐",
@@ -173,23 +205,34 @@
         }
       },
       "block_order": [
-        "r1",
-        "r2",
-        "r3",
-        "r4"
+        "reason_Nxa36C",
+        "reason_dKNzak",
+        "reason_LgHdNq",
+        "reason_8UANKL"
       ],
-      "settings": {}
+      "name": "Services Why RAD",
+      "settings": {
+        "title": "Why Choose Revive Auto Detailing?",
+        "subtitle": "We don't just do a job — we take pride in every car we touch"
+      }
     },
-    "cta": {
+    "services_cta_XBhkii": {
       "type": "services-cta",
-      "settings": {}
+      "name": "Services CTA",
+      "settings": {
+        "title": "Not Sure Which Service You Need?",
+        "subtitle": "Chat with us on WhatsApp and we'll recommend the best option for your car and budget — for free.",
+        "btn1_text": "Book an Appointment",
+        "btn1_url": "",
+        "btn2_text": "💬 Ask on WhatsApp"
+      }
     }
   },
   "order": [
-    "hero",
-    "trust",
-    "grid",
-    "why",
-    "cta"
+    "services_hero_XcBdV4",
+    "services_trust_U8VP8k",
+    "services_grid_4R77Vr",
+    "services_why_4WEVVF",
+    "services_cta_XBhkii"
   ]
 }
