@@ -106,9 +106,19 @@
   .rad-ar-info-bar { grid-template-columns: repeat(2, 1fr); }
   .rad-ar-main { grid-template-columns: 1fr; }
 }
+@media (max-width: 640px) {
+  .rad-ar-left-header { padding: 1rem; }
+  .rad-ar-left-header-title { font-size: 1.05rem; }
+  .rad-ar-left-header-sub { font-size: 0.78rem; }
+  .rad-ar-left-body { padding: 1rem; }
+  .rad-ar-section-label { font-size: 0.65rem; margin-bottom: 0.5rem; }
+  .rad-ar-applied-grid { grid-template-columns: 1fr 1fr; gap: 0.4rem; margin-bottom: 1rem; }
+  .rad-ar-applied-item { padding: 0.55rem; font-size: 0.78rem; gap: 0.35rem; }
+  .rad-ar-benefits-list { gap: 0.25rem; margin-bottom: 1rem; }
+  .rad-ar-benefit-item { font-size: 0.78rem; padding: 0.3rem 0; }
+}
 @media (max-width: 480px) {
   .rad-ar-info-bar { grid-template-columns: repeat(2, 1fr); }
-  .rad-ar-applied-grid { grid-template-columns: 1fr; }
   .rad-ar-book-btns { flex-direction: column; }
 }
 </style>
