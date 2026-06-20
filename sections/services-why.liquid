@@ -1,0 +1,69 @@
+<style>
+.rad-svc-why { padding: 3.5rem 0; background: #fff; font-family: 'Nunito Sans', sans-serif; }
+.rad-svc-why-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-sec-title { font-size: 2rem; font-weight: 800; color: #1f2937; margin-bottom: 0.4rem; text-align: center; }
+.rad-sec-sub { color: #6b7280; text-align: center; font-size: 1rem; }
+.rad-svc-why-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem; margin-top: 2rem; }
+.rad-svc-why-item { text-align: center; padding: 1.5rem 1rem; border-radius: 12px; background: #f8fafc; border: 1px solid #e5e7eb; }
+.rad-svc-why-item-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+.rad-svc-why-item h4 { font-size: 0.9rem; font-weight: 700; color: #1f2937; margin-bottom: 0.4rem; }
+.rad-svc-why-item p { font-size: 0.8rem; color: #6b7280; line-height: 1.55; }
+@media (max-width: 768px) {
+  .rad-svc-why { padding: 1.75rem 0; }
+  .rad-sec-title { font-size: 1.5rem; }
+  .rad-sec-sub { font-size: 0.85rem; }
+  .rad-svc-why-grid { grid-template-columns: repeat(2,1fr); gap: 0.75rem; margin-top: 1.25rem; }
+  .rad-svc-why-item { padding: 1rem 0.75rem; }
+  .rad-svc-why-item-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+  .rad-svc-why-item h4 { font-size: 0.8rem; }
+  .rad-svc-why-item p { font-size: 0.72rem; }
+}
+</style>
+
+<div class="rad-svc-why">
+  <div class="rad-svc-why-inner">
+    <h2 class="rad-sec-title">{{ section.settings.title | default: "Why Choose Revive Auto Detailing?" }}</h2>
+    <p class="rad-sec-sub">{{ section.settings.subtitle | default: "We don't just do a job — we take pride in every car we touch" }}</p>
+    <div class="rad-svc-why-grid">
+      {%- for block in section.blocks -%}
+        <div class="rad-svc-why-item">
+          <div class="rad-svc-why-item-icon">{{ block.settings.icon }}</div>
+          <h4>{{ block.settings.title }}</h4>
+          <p>{{ block.settings.description }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Services Why RAD",
+  "settings": [
+    {"type":"text","id":"title","label":"Title","default":"Why Choose Revive Auto Detailing?"},
+    {"type":"text","id":"subtitle","label":"Subtitle","default":"We don't just do a job — we take pride in every car we touch"}
+  ],
+  "blocks": [
+    {
+      "type": "reason",
+      "name": "Reason",
+      "settings": [
+        {"type":"text","id":"icon","label":"Icon (emoji)","default":"🏆"},
+        {"type":"text","id":"title","label":"Title","default":"Premium Products Only"},
+        {"type":"textarea","id":"description","label":"Description","default":"NAR & GYEON certified — the same brands used by top studios worldwide."}
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Services Why RAD",
+      "blocks": [
+        {"type":"reason","settings":{"icon":"🏆","title":"Premium Products Only","description":"NAR & GYEON certified — the same brands used by top studios worldwide."}},
+        {"type":"reason","settings":{"icon":"👨‍🔧","title":"Certified Technicians","description":"Professionally trained team with hands-on experience on 500+ vehicles."}},
+        {"type":"reason","settings":{"icon":"📋","title":"Warranty Backed","description":"All services come with manufacturer-backed warranties up to 7 years."}},
+        {"type":"reason","settings":{"icon":"⭐","title":"4.9 Google Rating","description":"Hundreds of satisfied customers who trust us with their prized vehicles."}}
+      ]
+    }
+  ]
+}
+{% endschema %}
