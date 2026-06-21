@@ -467,43 +467,18 @@
     var selectedNames = services.filter(function(s) { return state.selectedServices[s.id]; }).map(function(s) { return s.name; }).join(', ');
     var total = updateTotal();
 
-    var ref = 'RAD-MS-' + Date.now().toString(36).toUpperCase().slice(-6);
-    var cleanPhone = (state.phone||'').replace(/[^0-9]/g,'');
-    var notes = document.getElementById('rab-notes').value;
-
-    var cf = document.createElement('form');
-    cf.action = '/contact#ContactFooter';
-    cf.method = 'post';
-    cf.acceptCharset = 'UTF-8';
-    cf.style.display = 'none';
-    cf.innerHTML =
-      '<input type="hidden" name="form_type" value="contact">' +
-      '<input type="hidden" name="utf8" value="✓">' +
-      '<input type="hidden" name="contact[name]" value="' + (state.name||'').replace(/"/g,'&quot;') + '">' +
-      '<input type="hidden" name="contact[email]" value="' + (state.email || (cleanPhone + '@booking.reviveautodetailing.pk')) + '">' +
-      '<input type="hidden" name="contact[phone]" value="' + (state.phone||'') + '">' +
-      '<input type="hidden" name="contact[body]" value="">';
-    cf.querySelector('input[name="contact[body]"]').value =
-      'NEW MULTI-SERVICE BOOKING — ' + ref + '\n' +
-      'Submitted: ' + new Date().toLocaleString('en-PK',{timeZone:'Asia/Karachi'}) + '\n\n' +
-      'Customer: ' + (state.name||'') + '\n' +
-      'WhatsApp: ' + (state.phone||'') + '\n' +
-      'Email: ' + (state.email||'') + '\n\n' +
-      'Vehicle Type: ' + (state.vehicle||'') + '\n' +
-      'Services: ' + selectedNames + '\n\n' +
-      'Date: ' + (state.date||'') + '\n' +
-      'Time: ' + (state.time||'') + '\n' +
-      'Notes: ' + (notes||'—') + '\n' +
-      'Estimated Total: ' + fmt(total) + '\n' +
-      'WhatsApp Link: https://wa.me/' + cleanPhone + '\n\n' +
-      '[booking_type:multi-service] [booking_ref:' + ref + ']';
-    document.body.appendChild(cf);
-    var cfFrame = document.createElement('iframe');
-    cfFrame.name = 'rad-cf-target-multi';
-    cfFrame.style.display = 'none';
-    document.body.appendChild(cfFrame);
-    cf.target = 'rad-cf-target-multi';
-    cf.submit();
+    fetch('https://formspree.io/f/xgoqpjvk', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({
+        _subject: 'New Multi-Service Booking: ' + state.name,
+        name: state.name, phone: state.phone, email: state.email,
+        vehicle: state.vehicle, services: selectedNames,
+        date: state.date, time: state.time,
+        notes: document.getElementById('rab-notes').value,
+        estimated_total: fmt(total)
+      })
+    }).catch(function(){});
 
     setTimeout(function() {
       document.getElementById('rab-form').style.display = 'none';
