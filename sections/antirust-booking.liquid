@@ -333,41 +333,23 @@
     var ref='RAD-AR-'+Date.now().toString(36).toUpperCase().slice(-6);
     var ds=cbd.dt?new Date(cbd.dt+'T12:00:00').toLocaleDateString('en-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'}):'';
     var cleanPhone=(cbd.ph||'').replace(/[^0-9]/g,'');
-    var cf = document.createElement('form');
-    cf.action = '/contact#ContactFooter';
-    cf.method = 'post';
-    cf.acceptCharset = 'UTF-8';
-    cf.style.display = 'none';
-    cf.innerHTML =
-      '<input type="hidden" name="form_type" value="contact">' +
-      '<input type="hidden" name="utf8" value="✓">' +
-      '<input type="hidden" name="contact[name]" value="' + ((cbd.fn||'') + ' ' + (cbd.ln||'')).replace(/"/g,'&quot;') + '">' +
-      '<input type="hidden" name="contact[email]" value="' + (cbd.em || (cleanPhone + '@booking.reviveautodetailing.pk')) + '">' +
-      '<input type="hidden" name="contact[phone]" value="' + (cbd.ph||'') + '">' +
-      '<input type="hidden" name="contact[body]" value="">';
-    cf.querySelector('input[name="contact[body]"]').value =
-      'NEW ANTI-RUST UNDERCOATING BOOKING — ' + ref + '\n' +
-      'Submitted: ' + new Date().toLocaleString('en-PK',{timeZone:'Asia/Karachi'}) + '\n\n' +
-      'Customer: ' + (cbd.fn||'') + ' ' + (cbd.ln||'') + '\n' +
-      'WhatsApp: ' + (cbd.ph||'') + '\n' +
-      'Email: ' + (cbd.em||'') + '\n\n' +
-      'Service: Anti-Rust Undercoating\n' +
-      'Vehicle: ' + (cbd.mk||'') + ' ' + (cbd.mo||'') + ' ' + (cbd.yr||'') + '\n' +
-      'Color: ' + (cbd.cl||'N/A') + '\n' +
-      'Vehicle Type: ' + (vtLabels[cbd.vt]||'') + '\n' +
-      'Package: ' + (cbd.pkLabel||'') + '\n\n' +
-      'Date: ' + ds + '\n' +
-      'Time: ' + (cbd.tm||'') + '\n' +
-      'Total Price: ' + (cbd.price ? 'PKR ' + cbd.price.toLocaleString() : 'Contact for price') + '\n' +
-      'WhatsApp Link: https://wa.me/' + cleanPhone + '\n\n' +
-      '[booking_type:antirust] [booking_ref:' + ref + ']';
-    document.body.appendChild(cf);
-    var cfFrame = document.createElement('iframe');
-    cfFrame.name = 'rad-cf-target-antirust';
-    cfFrame.style.display = 'none';
-    document.body.appendChild(cfFrame);
-    cf.target = 'rad-cf-target-antirust';
-    cf.submit();
+    fetch('https://formspree.io/f/xgoqpjvk',{
+      method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        _subject:'New Anti-Rust Booking: '+ref+' - '+(cbd.fn||'')+' '+(cbd.ln||''),
+        _replyto:cbd.em||'',
+        service:'Anti-Rust Undercoating',
+        booking_ref:ref,
+        submitted:new Date().toLocaleString('en-PK',{timeZone:'Asia/Karachi'}),
+        customer_name:(cbd.fn||'')+' '+(cbd.ln||''),
+        whatsapp:cbd.ph||'',customer_email:cbd.em||'',
+        vehicle:(cbd.mk||'')+' '+(cbd.mo||'')+' '+(cbd.yr||''),
+        color:cbd.cl||'N/A',vehicle_type:vtLabels[cbd.vt]||'',
+        package:cbd.pkLabel||'',date:ds,time:cbd.tm||'',
+        total_price:'PKR '+(cbd.price?cbd.price.toLocaleString():''),
+        whatsapp_link:'https://wa.me/'+cleanPhone
+      })
+    }).catch(function(){});
     document.getElementById('cer-bform').style.display='none';
     document.querySelector('.rad-cer-prog').style.display='none';
     document.querySelector('.rad-cer-steps').style.display='none';
