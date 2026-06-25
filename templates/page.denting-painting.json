@@ -9,18 +9,34 @@
  */
 {
   "sections": {
+    "dp_hero_R4YaDV": {
+      "type": "dp-hero",
+      "name": "Denting Painting Hero",
+      "settings": {
+        "badge": "Denting & Painting Services • Karachi",
+        "hero_title": "Professional",
+        "hero_highlight": "Denting & Painting",
+        "hero_end": "in Karachi",
+        "hero_desc": "Revive Auto Detailing offers expert denting, painting, and scratch removal services in Karachi. From minor dents to full panel repaints — we restore your car to showroom condition using precision color matching.",
+        "trust1": "4.9 Google Rating",
+        "trust2": "500+ Cars Serviced",
+        "trust3": "Exact Color Matching",
+        "btn1_text": "Get Free Quote",
+        "btn1_url": "",
+        "btn2_text": "WhatsApp Us",
+        "stat1_num": "500+",
+        "stat1_lbl": "Cars Repaired",
+        "stat2_num": "4.9⭐",
+        "stat2_lbl": "Google Rating",
+        "stat3_num": "100%",
+        "stat3_lbl": "Color Match",
+        "stat4_num": "2+",
+        "stat4_lbl": "Years in Karachi"
+      }
+    },
     "dp_services_MxgrM6": {
       "type": "dp-services",
       "blocks": {
-        "service_xtfdey": {
-          "type": "service",
-          "settings": {
-            "icon": "🔧",
-            "name": "Dent Removal",
-            "description": "Minor to major dent repair using precision tools.",
-            "price": "PKR 2,500"
-          }
-        },
         "service_zV9RC9": {
           "type": "service",
           "settings": {
@@ -59,7 +75,6 @@
         }
       },
       "block_order": [
-        "service_xtfdey",
         "service_zV9RC9",
         "service_iHrh9G",
         "service_YJkiCq",
@@ -237,31 +252,6 @@
       "settings": {
         "faq_title": "Frequently Asked Questions — Denting & Painting Karachi",
         "faq_sub": "Common questions about car denting and painting services in Karachi"
-      }
-    },
-    "dp_hero_R4YaDV": {
-      "type": "dp-hero",
-      "name": "Denting Painting Hero",
-      "settings": {
-        "badge": "Denting & Painting Services • Karachi",
-        "hero_title": "Professional",
-        "hero_highlight": "Denting & Painting",
-        "hero_end": "in Karachi",
-        "hero_desc": "Revive Auto Detailing offers expert denting, painting, and scratch removal services in Karachi. From minor dents to full panel repaints — we restore your car to showroom condition using precision color matching.",
-        "trust1": "4.9 Google Rating",
-        "trust2": "500+ Cars Serviced",
-        "trust3": "Exact Color Matching",
-        "btn1_text": "Get Free Quote",
-        "btn1_url": "",
-        "btn2_text": "WhatsApp Us",
-        "stat1_num": "500+",
-        "stat1_lbl": "Cars Repaired",
-        "stat2_num": "4.9⭐",
-        "stat2_lbl": "Google Rating",
-        "stat3_num": "100%",
-        "stat3_lbl": "Color Match",
-        "stat4_num": "2+",
-        "stat4_lbl": "Years in Karachi"
       }
     }
   },
