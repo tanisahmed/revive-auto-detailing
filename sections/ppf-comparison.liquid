@@ -17,8 +17,15 @@
 .ppf-cmp-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
+  border-radius: 12px;
   overflow: visible;
+  border: 2px solid #1e293b;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  margin-top: 1.5rem;
 }
+/* Clip inner cells to card radius */
+.ppf-cmp-grid > *:first-child { border-radius: 12px 0 0 0; }
+.ppf-cmp-grid > *:nth-child(4) { border-radius: 0 12px 0 0; }
 
 /* All cells base */
 .ppf-h-empty, .ppf-h-brand,
