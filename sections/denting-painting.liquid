@@ -1,0 +1,377 @@
+<style>
+.rad-dp { font-family: 'Nunito Sans', sans-serif; }
+
+/* HERO */
+.rad-dp-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1c1917 100%);
+  padding: 5rem 0 4rem; color: #fff; position: relative; overflow: hidden;
+}
+.rad-dp-hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 60% 40%, rgba(234,88,12,0.2) 0%, transparent 60%); }
+.rad-dp-hero-inner { position:relative; z-index:1; max-width:1060px; margin:0 auto; padding:0 1.5rem; display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+.rad-dp-hero-badge { display:inline-flex; align-items:center; gap:0.5rem; background:rgba(234,88,12,0.2); border:1px solid rgba(234,88,12,0.5); color:#fb923c; font-size:0.75rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.4rem 1rem; border-radius:100px; margin-bottom:1.25rem; }
+.rad-dp-hero h1 { font-size:2.75rem; font-weight:800; line-height:1.15; margin-bottom:1rem; }
+.rad-dp-hero h1 span { color:#fb923c; }
+.rad-dp-hero-desc { font-size:1.05rem; color:#d1d5db; line-height:1.75; margin-bottom:2rem; }
+.rad-dp-hero-trust { display:flex; gap:1.5rem; flex-wrap:wrap; margin-bottom:2rem; }
+.rad-dp-hero-trust-item { display:flex; align-items:center; gap:0.4rem; font-size:0.85rem; color:#9ca3af; }
+.rad-dp-hero-trust-item span:first-child { color:#fb923c; }
+.rad-dp-hero-btns { display:flex; gap:0.75rem; flex-wrap:wrap; }
+.rad-dp-btn-primary { display:inline-flex; align-items:center; gap:0.4rem; padding:0.9rem 1.75rem; background:#ea580c; color:#fff; border-radius:8px; font-weight:700; font-size:1rem; text-decoration:none; transition:all 0.2s; }
+.rad-dp-btn-primary:hover { background:#c2410c; }
+.rad-dp-btn-wa { display:inline-flex; align-items:center; gap:0.4rem; padding:0.9rem 1.75rem; background:#10b981; color:#fff; border-radius:8px; font-weight:700; font-size:1rem; text-decoration:none; transition:all 0.2s; }
+.rad-dp-btn-wa:hover { background:#059669; }
+.rad-dp-hero-visual { background:linear-gradient(135deg,#1c1917,#292524); border-radius:16px; padding:2rem; }
+.rad-dp-hero-stats { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.rad-dp-hero-stat { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:1.25rem; text-align:center; }
+.rad-dp-hero-stat-num { font-size:2rem; font-weight:800; color:#fb923c; display:block; }
+.rad-dp-hero-stat-lbl { font-size:0.75rem; color:#9ca3af; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; }
+
+/* TRUST BAR */
+.rad-dp-trust { background:#fff; border-bottom:1px solid #e5e7eb; padding:1rem 0; }
+.rad-dp-trust-inner { max-width:1060px; margin:0 auto; padding:0 1.5rem; display:flex; justify-content:center; gap:2.5rem; flex-wrap:wrap; }
+.rad-dp-trust-item { display:flex; align-items:center; gap:0.5rem; font-size:0.875rem; font-weight:600; color:#374151; }
+
+/* SERVICES */
+.rad-dp-services { padding:4rem 0; background:#f8fafc; }
+.rad-dp-services-inner { max-width:1060px; margin:0 auto; padding:0 1.5rem; }
+.rad-dp-sec-hdr { text-align:center; margin-bottom:2.5rem; }
+.rad-dp-sec-hdr h2 { font-size:2rem; font-weight:800; color:#1f2937; margin-bottom:0.5rem; }
+.rad-dp-sec-hdr p { color:#6b7280; font-size:1rem; max-width:600px; margin:0 auto; }
+.rad-dp-services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+.rad-dp-svc-card { background:#fff; border-radius:14px; padding:1.75rem; border:1px solid #e5e7eb; transition:all 0.25s; }
+.rad-dp-svc-card:hover { box-shadow:0 12px 32px rgba(0,0,0,0.1); transform:translateY(-4px); border-color:transparent; }
+.rad-dp-svc-icon { width:52px; height:52px; border-radius:12px; background:#fff7ed; display:flex; align-items:center; justify-content:center; font-size:1.5rem; margin-bottom:1rem; }
+.rad-dp-svc-card h3 { font-size:1.05rem; font-weight:800; color:#1f2937; margin-bottom:0.5rem; }
+.rad-dp-svc-card p { font-size:0.875rem; color:#6b7280; line-height:1.65; margin-bottom:1rem; }
+.rad-dp-svc-price { font-size:0.8rem; color:#6b7280; }
+.rad-dp-svc-price strong { color:#ea580c; font-size:1rem; font-weight:700; }
+
+/* PROCESS */
+.rad-dp-process { padding:4rem 0; background:#fff; }
+.rad-dp-process-inner { max-width:960px; margin:0 auto; padding:0 1.5rem; }
+.rad-dp-process-steps { display:grid; grid-template-columns:repeat(5,1fr); gap:0; position:relative; margin-top:2rem; }
+.rad-dp-process-steps::before { content:''; position:absolute; top:2rem; left:10%; right:10%; height:2px; background:linear-gradient(to right,#ea580c,#fb923c); z-index:0; }
+.rad-dp-process-step { display:flex; flex-direction:column; align-items:center; text-align:center; position:relative; z-index:1; }
+.rad-dp-process-dot { width:4rem; height:4rem; border-radius:50%; background:#fff; border:3px solid #ea580c; display:flex; align-items:center; justify-content:center; font-size:1.25rem; margin-bottom:0.75rem; }
+.rad-dp-process-step h4 { font-size:0.875rem; font-weight:700; color:#1f2937; margin-bottom:0.25rem; }
+.rad-dp-process-step p { font-size:0.75rem; color:#6b7280; line-height:1.4; }
+
+/* WHY */
+.rad-dp-why { padding:4rem 0; background:#f8fafc; }
+.rad-dp-why-inner { max-width:1060px; margin:0 auto; padding:0 1.5rem; display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+.rad-dp-why-content h2 { font-size:2rem; font-weight:800; color:#1f2937; margin-bottom:0.75rem; line-height:1.2; }
+.rad-dp-why-content p { color:#6b7280; font-size:0.95rem; line-height:1.75; margin-bottom:1.5rem; }
+.rad-dp-why-list { display:flex; flex-direction:column; gap:0.85rem; }
+.rad-dp-why-item { display:flex; align-items:flex-start; gap:0.75rem; }
+.rad-dp-why-check { width:1.5rem; height:1.5rem; border-radius:50%; background:#fff7ed; border:2px solid #ea580c; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:0.7rem; color:#ea580c; margin-top:2px; }
+.rad-dp-why-item-text h4 { font-size:0.925rem; font-weight:700; color:#1f2937; margin-bottom:0.15rem; }
+.rad-dp-why-item-text p { font-size:0.825rem; color:#6b7280; line-height:1.55; }
+.rad-dp-why-cards { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.rad-dp-why-card { background:#fff; border-radius:12px; padding:1.25rem; border:1px solid #e5e7eb; text-align:center; }
+.rad-dp-why-card-num { font-size:2rem; font-weight:800; color:#ea580c; display:block; }
+.rad-dp-why-card-lbl { font-size:0.75rem; color:#6b7280; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; }
+
+/* PRICING */
+.rad-dp-pricing { padding:4rem 0; background:#fff; }
+.rad-dp-pricing-inner { max-width:960px; margin:0 auto; padding:0 1.5rem; }
+.rad-dp-pricing-table { border-radius:14px; overflow:hidden; border:1px solid #e5e7eb; margin-top:2rem; }
+.rad-dp-pt-header { display:grid; grid-template-columns:2fr 1fr 1fr 1fr 1fr; background:#1c1917; color:#fff; padding:1rem 1.5rem; font-weight:700; font-size:0.875rem; }
+.rad-dp-pt-row { display:grid; grid-template-columns:2fr 1fr 1fr 1fr 1fr; padding:1rem 1.5rem; border-bottom:1px solid #e5e7eb; align-items:center; font-size:0.875rem; }
+.rad-dp-pt-row:last-child { border-bottom:none; }
+.rad-dp-pt-row:nth-child(even) { background:#f8fafc; }
+.rad-dp-pt-row-name { font-weight:700; color:#1f2937; }
+.rad-dp-pt-row-price { color:#ea580c; font-weight:700; }
+.rad-dp-pt-note { font-size:0.8rem; color:#9ca3af; text-align:center; margin-top:1rem; }
+
+/* FAQ */
+.rad-dp-faq { padding:4rem 0; background:#f8fafc; }
+.rad-dp-faq-inner { max-width:720px; margin:0 auto; padding:0 1.5rem; }
+.rad-dp-faq-list { display:flex; flex-direction:column; gap:0.75rem; margin-top:2rem; }
+.rad-dp-faq-item { background:#fff; border-radius:10px; border:1px solid #e5e7eb; overflow:hidden; }
+.rad-dp-faq-q { display:flex; justify-content:space-between; align-items:center; padding:1rem 1.25rem; cursor:pointer; font-weight:700; font-size:0.925rem; color:#1f2937; user-select:none; }
+.rad-dp-faq-q:hover { color:#ea580c; }
+.rad-dp-faq-icon { font-size:1.25rem; transition:transform 0.25s; flex-shrink:0; }
+.rad-dp-faq-item.open .rad-dp-faq-icon { transform:rotate(45deg); }
+.rad-dp-faq-a { max-height:0; overflow:hidden; transition:max-height 0.35s ease; }
+.rad-dp-faq-item.open .rad-dp-faq-a { max-height:400px; }
+.rad-dp-faq-a p { padding:0 1.25rem 1.1rem; font-size:0.875rem; color:#6b7280; line-height:1.7; }
+
+/* CTA */
+.rad-dp-cta { padding:4rem 0; background:linear-gradient(135deg,#7c2d12,#1c1917); text-align:center; color:#fff; }
+.rad-dp-cta-inner { max-width:600px; margin:0 auto; padding:0 1.5rem; }
+.rad-dp-cta h2 { font-size:2rem; font-weight:800; margin-bottom:0.75rem; }
+.rad-dp-cta p { color:#d1d5db; margin-bottom:2rem; font-size:1rem; }
+.rad-dp-cta-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+
+/* MOBILE */
+@media (max-width:900px) {
+  .rad-dp-hero-inner { grid-template-columns:1fr; }
+  .rad-dp-hero-visual { display:none; }
+  .rad-dp-services-grid { grid-template-columns:1fr 1fr; }
+  .rad-dp-why-inner { grid-template-columns:1fr; }
+  .rad-dp-process-steps { grid-template-columns:1fr 1fr; gap:1rem; }
+  .rad-dp-process-steps::before { display:none; }
+  .rad-dp-pt-header, .rad-dp-pt-row { grid-template-columns:2fr 1fr 1fr; }
+  .rad-dp-pt-header span:nth-child(n+4), .rad-dp-pt-row span:nth-child(n+4) { display:none; }
+}
+@media (max-width:640px) {
+  .rad-dp-hero { padding:2.25rem 0; }
+  .rad-dp-hero-inner { padding:0 1rem; }
+  .rad-dp-hero h1 { font-size:1.65rem; line-height:1.25; }
+  .rad-dp-hero-desc { font-size:0.9rem; margin-bottom:1.25rem; }
+  .rad-dp-hero-btns { flex-direction:row; flex-wrap:nowrap; gap:0.5rem; }
+  .rad-dp-btn-primary, .rad-dp-btn-wa { flex:1; justify-content:center; text-align:center; padding:0.65rem 0.5rem; font-size:0.78rem; white-space:nowrap; }
+  .rad-dp-trust-inner { gap:1rem; }
+  .rad-dp-services { padding:2rem 0; }
+  .rad-dp-services-grid { grid-template-columns:1fr; }
+  .rad-dp-sec-hdr h2 { font-size:1.5rem; }
+  .rad-dp-process-steps { grid-template-columns:1fr; gap:1.25rem; }
+  .rad-dp-why { padding:2rem 0; }
+  .rad-dp-why-content h2 { font-size:1.5rem; }
+  .rad-dp-why-cards { grid-template-columns:1fr 1fr; }
+  .rad-dp-pricing { padding:2rem 0; }
+  .rad-dp-pt-header, .rad-dp-pt-row { grid-template-columns:1.5fr 1fr 1fr; font-size:0.78rem; padding:0.75rem 0.75rem; }
+  .rad-dp-faq { padding:2rem 0; }
+  .rad-dp-faq-q { font-size:0.85rem; padding:0.85rem 1rem; }
+  .rad-dp-cta { padding:2rem 0; }
+  .rad-dp-cta h2 { font-size:1.4rem; }
+  .rad-dp-cta-btns { flex-direction:row; flex-wrap:nowrap; gap:0.5rem; }
+  .rad-dp-cta-btns a { flex:1; justify-content:center; text-align:center; padding:0.65rem 0.5rem; font-size:0.78rem; white-space:nowrap; }
+}
+</style>
+
+<div class="rad-dp">
+
+  <!-- SEO: H1 + schema markup signals -->
+  <div class="rad-dp-hero">
+    <div class="rad-dp-hero-inner">
+      <div>
+        <div class="rad-dp-hero-badge">🔧 {{ section.settings.badge | default: "Denting & Painting Services • Karachi" }}</div>
+        <h1>{{ section.settings.hero_title | default: "Professional" }} <span>{{ section.settings.hero_highlight | default: "Denting & Painting" }}</span> {{ section.settings.hero_end | default: "in Karachi" }}</h1>
+        <p class="rad-dp-hero-desc">{{ section.settings.hero_desc | default: "Revive Auto Detailing offers expert denting, painting, and scratch removal services in Karachi. From minor dents to full panel repaints — we restore your car to showroom condition using waterborne paint systems and precision color matching." }}</p>
+        <div class="rad-dp-hero-trust">
+          <div class="rad-dp-hero-trust-item"><span>⭐</span><span>4.9 Google Rating</span></div>
+          <div class="rad-dp-hero-trust-item"><span>✅</span><span>500+ Cars Serviced</span></div>
+          <div class="rad-dp-hero-trust-item"><span>🎨</span><span>Exact Color Matching</span></div>
+        </div>
+        <div class="rad-dp-hero-btns">
+          <a href="{{ section.settings.btn1_url | default: '/pages/book-appointment' }}" class="rad-dp-btn-primary">🔧 {{ section.settings.btn1_text | default: "Get Free Quote" }}</a>
+          <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20denting%20and%20painting%20for%20my%20car" target="_blank" class="rad-dp-btn-wa">💬 {{ section.settings.btn2_text | default: "WhatsApp Us" }}</a>
+        </div>
+      </div>
+      <div class="rad-dp-hero-visual">
+        <div class="rad-dp-hero-stats">
+          <div class="rad-dp-hero-stat"><span class="rad-dp-hero-stat-num">500+</span><span class="rad-dp-hero-stat-lbl">Cars Repaired</span></div>
+          <div class="rad-dp-hero-stat"><span class="rad-dp-hero-stat-num">4.9⭐</span><span class="rad-dp-hero-stat-lbl">Google Rating</span></div>
+          <div class="rad-dp-hero-stat"><span class="rad-dp-hero-stat-num">100%</span><span class="rad-dp-hero-stat-lbl">Color Match</span></div>
+          <div class="rad-dp-hero-stat"><span class="rad-dp-hero-stat-num">2+</span><span class="rad-dp-hero-stat-lbl">Years in Karachi</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trust Bar -->
+  <div class="rad-dp-trust">
+    <div class="rad-dp-trust-inner">
+      <div class="rad-dp-trust-item"><span>🔧</span><span>Dent Removal</span></div>
+      <div class="rad-dp-trust-item"><span>🎨</span><span>Full Panel Repaint</span></div>
+      <div class="rad-dp-trust-item"><span>✨</span><span>Scratch Removal</span></div>
+      <div class="rad-dp-trust-item"><span>🚗</span><span>Bumper Repair</span></div>
+      <div class="rad-dp-trust-item"><span>📍</span><span>Karachi, Pakistan</span></div>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <div class="rad-dp-services">
+    <div class="rad-dp-services-inner">
+      <div class="rad-dp-sec-hdr">
+        <h2>Denting &amp; Painting Services We Offer</h2>
+        <p>Expert auto body repair for all vehicle types in Karachi — hatchbacks, sedans, SUVs, and luxury cars</p>
+      </div>
+      <div class="rad-dp-services-grid">
+        <div class="rad-dp-svc-card">
+          <div class="rad-dp-svc-icon">🔨</div>
+          <h3>Dent Removal</h3>
+          <p>Minor to major dent repair using precision tools. We reshape body panels without damaging the original paint wherever possible — from small door dings to large collision dents.</p>
+          <div class="rad-dp-svc-price">Starting from <strong>PKR 2,500</strong></div>
+        </div>
+        <div class="rad-dp-svc-card">
+          <div class="rad-dp-svc-icon">🎨</div>
+          <h3>Panel Repainting</h3>
+          <p>Full single-panel or multi-panel repaint using computerized color matching. We blend your car's exact OEM shade — door, bumper, hood, fender, or full-body repaint available.</p>
+          <div class="rad-dp-svc-price">Starting from <strong>PKR 8,000/panel</strong></div>
+        </div>
+        <div class="rad-dp-svc-card">
+          <div class="rad-dp-svc-icon">✨</div>
+          <h3>Scratch Removal</h3>
+          <p>Deep scratch repair and clear-coat restoration. We assess scratch depth and apply the right technique — from machine polishing for surface marks to spot-paint for cut-through scratches.</p>
+          <div class="rad-dp-svc-price">Starting from <strong>PKR 1,500</strong></div>
+        </div>
+        <div class="rad-dp-svc-card">
+          <div class="rad-dp-svc-icon">🚗</div>
+          <h3>Bumper Repair &amp; Repaint</h3>
+          <p>Cracked, scuffed, or misaligned bumper repair. We handle both plastic and chrome bumpers — reshape, bond, and repaint to match the rest of the vehicle perfectly.</p>
+          <div class="rad-dp-svc-price">Starting from <strong>PKR 6,000</strong></div>
+        </div>
+        <div class="rad-dp-svc-card">
+          <div class="rad-dp-svc-icon">🪄</div>
+          <h3>Paintless Dent Repair (PDR)</h3>
+          <p>For small, shallow dents with no paint damage — hail damage, door dings, shopping trolley marks. PDR is faster, cheaper, and preserves your original factory paint completely.</p>
+          <div class="rad-dp-svc-price">Starting from <strong>PKR 1,800</strong></div>
+        </div>
+        <div class="rad-dp-svc-card">
+          <div class="rad-dp-svc-icon">🖌</div>
+          <h3>Full Car Repaint</h3>
+          <p>Complete exterior repaint when your car needs a full color refresh. We strip, prep, primer, and paint in a dust-free environment — available in your existing color or any new color.</p>
+          <div class="rad-dp-svc-price">Starting from <strong>PKR 85,000</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Process -->
+  <div class="rad-dp-process">
+    <div class="rad-dp-process-inner">
+      <div class="rad-dp-sec-hdr">
+        <h2>How Our Denting &amp; Painting Process Works</h2>
+        <p>A transparent, quality-controlled process from the moment you bring your car in</p>
+      </div>
+      <div class="rad-dp-process-steps">
+        <div class="rad-dp-process-step"><div class="rad-dp-process-dot">🔍</div><h4>Inspection &amp; Quote</h4><p>We assess the damage and give you a transparent, no-obligation quote</p></div>
+        <div class="rad-dp-process-step"><div class="rad-dp-process-dot">🎨</div><h4>Color Matching</h4><p>Computerized OEM color matching to your vehicle's exact shade</p></div>
+        <div class="rad-dp-process-step"><div class="rad-dp-process-dot">🔧</div><h4>Dent &amp; Body Repair</h4><p>Panel reshaping, filling, and surface preparation</p></div>
+        <div class="rad-dp-process-step"><div class="rad-dp-process-dot">🖌</div><h4>Painting &amp; Finishing</h4><p>Professional spray, clear-coat, and curing in a controlled environment</p></div>
+        <div class="rad-dp-process-step"><div class="rad-dp-process-dot">✅</div><h4>QC &amp; Delivery</h4><p>Final quality check and polishing before we hand back your car</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why Us -->
+  <div class="rad-dp-why">
+    <div class="rad-dp-why-inner">
+      <div class="rad-dp-why-content">
+        <h2>Why Karachi Car Owners Choose Revive for Denting &amp; Painting</h2>
+        <p>There are hundreds of body shops in Karachi. Here's what makes our denting and painting service worth the visit.</p>
+        <div class="rad-dp-why-list">
+          <div class="rad-dp-why-item"><div class="rad-dp-why-check">✓</div><div class="rad-dp-why-item-text"><h4>Computerized Color Matching</h4><p>We use a spectrophotometer to read your car's exact OEM color code — zero guesswork, perfect blend every time.</p></div></div>
+          <div class="rad-dp-why-item"><div class="rad-dp-why-check">✓</div><div class="rad-dp-why-item-text"><h4>Waterborne Paint System</h4><p>We use premium waterborne automotive paints — safer for the environment, better color accuracy, and a smoother finish than solvent-based alternatives.</p></div></div>
+          <div class="rad-dp-why-item"><div class="rad-dp-why-check">✓</div><div class="rad-dp-why-item-text"><h4>Dust-Free Paint Booth</h4><p>Every repaint happens in our controlled spray environment — no dust, no orange peel, no fish-eyes. Factory-quality finish guaranteed.</p></div></div>
+          <div class="rad-dp-why-item"><div class="rad-dp-why-check">✓</div><div class="rad-dp-why-item-text"><h4>Experienced Technicians</h4><p>Our team has worked on 500+ vehicles across all makes — from Suzuki and Toyota to imported luxury cars.</p></div></div>
+          <div class="rad-dp-why-item"><div class="rad-dp-why-check">✓</div><div class="rad-dp-why-item-text"><h4>Transparent Pricing, No Surprises</h4><p>You get a written quote before we touch your car. Final bill matches — no hidden add-ons after the job.</p></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="rad-dp-why-cards">
+          <div class="rad-dp-why-card"><span class="rad-dp-why-card-num">500+</span><span class="rad-dp-why-card-lbl">Cars Repaired</span></div>
+          <div class="rad-dp-why-card"><span class="rad-dp-why-card-num">4.9⭐</span><span class="rad-dp-why-card-lbl">Google Rating</span></div>
+          <div class="rad-dp-why-card"><span class="rad-dp-why-card-num">100%</span><span class="rad-dp-why-card-lbl">Color Match</span></div>
+          <div class="rad-dp-why-card"><span class="rad-dp-why-card-num">2 Yrs</span><span class="rad-dp-why-card-lbl">In Karachi</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pricing Table -->
+  <div class="rad-dp-pricing">
+    <div class="rad-dp-pricing-inner">
+      <div class="rad-dp-sec-hdr">
+        <h2>Denting &amp; Painting Price List — Karachi</h2>
+        <p>Transparent starting prices. Final quote depends on damage extent and vehicle size.</p>
+      </div>
+      <div class="rad-dp-pricing-table">
+        <div class="rad-dp-pt-header"><span>Service</span><span>Hatchback</span><span>Sedan</span><span>SUV</span><span>XL SUV</span></div>
+        <div class="rad-dp-pt-row"><span class="rad-dp-pt-row-name">Dent Removal (minor)</span><span class="rad-dp-pt-row-price">PKR 2,500</span><span>PKR 3,000</span><span>PKR 3,500</span><span>PKR 4,000</span></div>
+        <div class="rad-dp-pt-row"><span class="rad-dp-pt-row-name">PDR (Paintless Dent Repair)</span><span class="rad-dp-pt-row-price">PKR 1,800</span><span>PKR 2,200</span><span>PKR 2,800</span><span>PKR 3,200</span></div>
+        <div class="rad-dp-pt-row"><span class="rad-dp-pt-row-name">Scratch Removal</span><span class="rad-dp-pt-row-price">PKR 1,500</span><span>PKR 2,000</span><span>PKR 2,500</span><span>PKR 3,000</span></div>
+        <div class="rad-dp-pt-row"><span class="rad-dp-pt-row-name">Single Panel Repaint</span><span class="rad-dp-pt-row-price">PKR 8,000</span><span>PKR 10,000</span><span>PKR 12,000</span><span>PKR 14,000</span></div>
+        <div class="rad-dp-pt-row"><span class="rad-dp-pt-row-name">Bumper Repair &amp; Repaint</span><span class="rad-dp-pt-row-price">PKR 6,000</span><span>PKR 8,000</span><span>PKR 10,000</span><span>PKR 12,000</span></div>
+        <div class="rad-dp-pt-row"><span class="rad-dp-pt-row-name">Full Car Repaint</span><span class="rad-dp-pt-row-price">PKR 85,000</span><span>PKR 1,10,000</span><span>PKR 1,40,000</span><span>PKR 1,70,000</span></div>
+      </div>
+      <p class="rad-dp-pt-note">* Prices are starting rates. Exact quote provided after inspection. WhatsApp us a photo for a quick estimate.</p>
+    </div>
+  </div>
+
+  <!-- FAQ — SEO rich -->
+  <div class="rad-dp-faq">
+    <div class="rad-dp-faq-inner">
+      <div class="rad-dp-sec-hdr">
+        <h2>Frequently Asked Questions — Denting &amp; Painting Karachi</h2>
+        <p>Common questions about car denting and painting services in Karachi</p>
+      </div>
+      <div class="rad-dp-faq-list">
+        <div class="rad-dp-faq-item">
+          <div class="rad-dp-faq-q">How long does car denting and painting take in Karachi?<span class="rad-dp-faq-icon">+</span></div>
+          <div class="rad-dp-faq-a"><p>Minor dent removal takes 1–2 hours. A single panel repaint typically takes 1 day including prep, painting, and curing. Full car repaints take 3–5 working days depending on vehicle size and scope.</p></div>
+        </div>
+        <div class="rad-dp-faq-item">
+          <div class="rad-dp-faq-q">Can you match my car's exact paint color?<span class="rad-dp-faq-icon">+</span></div>
+          <div class="rad-dp-faq-a"><p>Yes — we use a computerized spectrophotometer to read your car's exact OEM color code. We then mix the paint to match precisely, so the repainted panel blends seamlessly with the rest of the car. We carry color data for all major makes including Suzuki, Toyota, Honda, KIA, Hyundai, MG, and imported vehicles.</p></div>
+        </div>
+        <div class="rad-dp-faq-item">
+          <div class="rad-dp-faq-q">What's the difference between PDR and regular dent repair?<span class="rad-dp-faq-icon">+</span></div>
+          <div class="rad-dp-faq-a"><p>Paintless Dent Repair (PDR) is used for small, shallow dents where the paint is intact — it works by massaging the metal back into shape from behind the panel, without any filler or repainting. Regular dent repair involves filling, sanding, priming, and repainting — used when the paint is cracked, chipped, or the dent is too deep for PDR.</p></div>
+        </div>
+        <div class="rad-dp-faq-item">
+          <div class="rad-dp-faq-q">Do you offer denting and painting services at home/on-site in Karachi?<span class="rad-dp-faq-icon">+</span></div>
+          <div class="rad-dp-faq-a"><p>PDR and minor scratch polishing can sometimes be done on-site, but all painting work must be done in our dust-free spray booth to achieve a clean, professional finish. We recommend bringing the vehicle to our studio in Karachi for best results.</p></div>
+        </div>
+        <div class="rad-dp-faq-item">
+          <div class="rad-dp-faq-q">How much does denting and painting cost in Karachi?<span class="rad-dp-faq-icon">+</span></div>
+          <div class="rad-dp-faq-a"><p>Costs vary depending on the damage and vehicle size. Minor dent removal starts from PKR 2,500 and a single panel repaint starts from PKR 8,000. Send us a WhatsApp photo of the damage for a quick, free estimate.</p></div>
+        </div>
+        <div class="rad-dp-faq-item">
+          <div class="rad-dp-faq-q">Which areas of Karachi do you serve?<span class="rad-dp-faq-icon">+</span></div>
+          <div class="rad-dp-faq-a"><p>We serve customers from all areas of Karachi including DHA, Clifton, Gulshan-e-Iqbal, North Karachi, Federal B Area, Nazimabad, PECHS, Bahadurabad, Gulistan-e-Johar, Saddar, and surrounding areas.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="rad-dp-cta">
+    <div class="rad-dp-cta-inner">
+      <h2>{{ section.settings.cta_title | default: "Get a Free Quote for Your Car" }}</h2>
+      <p>{{ section.settings.cta_sub | default: "Send us a photo on WhatsApp or book an inspection — we'll give you a transparent quote with no obligation." }}</p>
+      <div class="rad-dp-cta-btns">
+        <a href="{{ section.settings.cta_btn1_url | default: '/pages/book-appointment' }}" class="rad-dp-btn-primary">🔧 {{ section.settings.cta_btn1 | default: "Book Inspection" }}</a>
+        <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20denting%20and%20painting%20for%20my%20car.%20Here%20is%20a%20photo." target="_blank" class="rad-dp-btn-wa">💬 {{ section.settings.cta_btn2 | default: "Send Photo on WhatsApp" }}</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+document.querySelectorAll('.rad-dp-faq-q').forEach(function(q) {
+  q.addEventListener('click', function() {
+    var item = q.closest('.rad-dp-faq-item');
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.rad-dp-faq-item').forEach(function(i) { i.classList.remove('open'); });
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Denting & Painting Page",
+  "settings": [
+    {"type":"header","content":"Hero"},
+    {"type":"text","id":"badge","label":"Badge Text","default":"Denting & Painting Services • Karachi"},
+    {"type":"text","id":"hero_title","label":"H1 Part 1","default":"Professional"},
+    {"type":"text","id":"hero_highlight","label":"H1 Highlighted","default":"Denting & Painting"},
+    {"type":"text","id":"hero_end","label":"H1 Part 3","default":"in Karachi"},
+    {"type":"textarea","id":"hero_desc","label":"Hero Description"},
+    {"type":"text","id":"btn1_text","label":"Button 1 Text","default":"Get Free Quote"},
+    {"type":"url","id":"btn1_url","label":"Button 1 Link"},
+    {"type":"text","id":"btn2_text","label":"Button 2 Text","default":"WhatsApp Us"},
+    {"type":"header","content":"CTA Section"},
+    {"type":"text","id":"cta_title","label":"CTA Heading","default":"Get a Free Quote for Your Car"},
+    {"type":"textarea","id":"cta_sub","label":"CTA Subtext"},
+    {"type":"text","id":"cta_btn1","label":"CTA Button 1","default":"Book Inspection"},
+    {"type":"url","id":"cta_btn1_url","label":"CTA Button 1 Link"},
+    {"type":"text","id":"cta_btn2","label":"CTA Button 2","default":"Send Photo on WhatsApp"}
+  ],
+  "presets":[{"name":"Denting & Painting Page"}]
+}
+{% endschema %}
