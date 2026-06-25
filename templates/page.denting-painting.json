@@ -1,11 +1,210 @@
 {
   "sections": {
-    "main": {
-      "type": "denting-painting",
+    "hero": {
+      "type": "dp-hero",
+      "settings": {}
+    },
+    "trust": {
+      "type": "dp-trust",
+      "settings": {}
+    },
+    "services": {
+      "type": "dp-services",
+      "blocks": {
+        "b0": {
+          "type": "service",
+          "settings": {
+            "icon": "🔨",
+            "name": "Dent Removal",
+            "description": "Minor to major dent repair using precision tools. We reshape body panels without damaging the original paint wherever possible — from small door dings to large collision dents.",
+            "price": "PKR 2,500"
+          }
+        },
+        "b1": {
+          "type": "service",
+          "settings": {
+            "icon": "✨",
+            "name": "Scratch Removal",
+            "description": "Deep scratch repair and clear-coat restoration. We assess scratch depth and apply the right technique — from machine polishing for surface marks to spot-paint for cut-through scratches.",
+            "price": "PKR 1,500"
+          }
+        },
+        "b2": {
+          "type": "service",
+          "settings": {
+            "icon": "🎨",
+            "name": "Panel Repainting",
+            "description": "Full single-panel or multi-panel repaint using computerized color matching. We blend your car's exact OEM shade — door, bumper, hood, fender, or full-body repaint available.",
+            "price": "PKR 8,000/panel"
+          }
+        },
+        "b3": {
+          "type": "service",
+          "settings": {
+            "icon": "🚗",
+            "name": "Bumper Repair & Repaint",
+            "description": "Cracked, scuffed, or misaligned bumper repair. We handle both plastic and chrome bumpers — reshape, bond, and repaint to match the rest of the vehicle perfectly.",
+            "price": "PKR 6,000"
+          }
+        }
+      },
+      "block_order": [
+        "b0",
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "settings": {}
+    },
+    "process": {
+      "type": "dp-process",
+      "settings": {}
+    },
+    "why": {
+      "type": "dp-why",
+      "blocks": {
+        "b8": {
+          "type": "why_item",
+          "settings": {
+            "title": "Computerized Color Matching",
+            "description": "We use a spectrophotometer to read your car's exact OEM color code — zero guesswork, perfect blend every time."
+          }
+        },
+        "b9": {
+          "type": "why_item",
+          "settings": {
+            "title": "Dust-Free Paint Booth",
+            "description": "Every repaint happens in our controlled spray environment — no dust, no orange peel. Factory-quality finish guaranteed."
+          }
+        },
+        "b10": {
+          "type": "why_item",
+          "settings": {
+            "title": "Experienced Technicians",
+            "description": "Our team has worked on 500+ vehicles across all makes — from Suzuki and Toyota to imported luxury cars."
+          }
+        },
+        "b11": {
+          "type": "why_item",
+          "settings": {
+            "title": "Transparent Pricing, No Surprises",
+            "description": "You get a written quote before we touch your car. Final bill matches — no hidden add-ons after the job."
+          }
+        }
+      },
+      "block_order": [
+        "b8",
+        "b9",
+        "b10",
+        "b11"
+      ],
+      "settings": {}
+    },
+    "pricing": {
+      "type": "dp-pricing",
+      "blocks": {
+        "b4": {
+          "type": "price_row",
+          "settings": {
+            "service": "Dent Removal (minor)",
+            "price1": "PKR 2,500",
+            "price2": "PKR 3,000",
+            "price3": "PKR 3,500",
+            "price4": "PKR 4,000"
+          }
+        },
+        "b5": {
+          "type": "price_row",
+          "settings": {
+            "service": "Scratch Removal",
+            "price1": "PKR 1,500",
+            "price2": "PKR 2,000",
+            "price3": "PKR 2,500",
+            "price4": "PKR 3,000"
+          }
+        },
+        "b6": {
+          "type": "price_row",
+          "settings": {
+            "service": "Single Panel Repaint",
+            "price1": "PKR 8,000",
+            "price2": "PKR 10,000",
+            "price3": "PKR 12,000",
+            "price4": "PKR 14,000"
+          }
+        },
+        "b7": {
+          "type": "price_row",
+          "settings": {
+            "service": "Bumper Repair & Repaint",
+            "price1": "PKR 6,000",
+            "price2": "PKR 8,000",
+            "price3": "PKR 10,000",
+            "price4": "PKR 12,000"
+          }
+        }
+      },
+      "block_order": [
+        "b4",
+        "b5",
+        "b6",
+        "b7"
+      ],
+      "settings": {}
+    },
+    "faq": {
+      "type": "dp-faq",
+      "blocks": {
+        "b12": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does car denting and painting take in Karachi?",
+            "answer": "Minor dent removal takes 1–2 hours. A single panel repaint typically takes 1 day including prep, painting, and curing."
+          }
+        },
+        "b13": {
+          "type": "faq",
+          "settings": {
+            "question": "Can you match my car's exact paint color?",
+            "answer": "Yes — we use a computerized spectrophotometer to read your car's exact OEM color code and mix the paint to match precisely, so the repainted panel blends seamlessly with the rest of the car."
+          }
+        },
+        "b14": {
+          "type": "faq",
+          "settings": {
+            "question": "How much does denting and painting cost in Karachi?",
+            "answer": "Minor dent removal starts from PKR 2,500 and a single panel repaint starts from PKR 8,000. Send us a WhatsApp photo of the damage for a quick, free estimate."
+          }
+        },
+        "b15": {
+          "type": "faq",
+          "settings": {
+            "question": "Which areas of Karachi do you serve?",
+            "answer": "We serve customers from all areas of Karachi including DHA, Clifton, Gulshan-e-Iqbal, North Karachi, Federal B Area, Nazimabad, PECHS, Bahadurabad, Gulistan-e-Johar, Saddar, and surrounding areas."
+          }
+        }
+      },
+      "block_order": [
+        "b12",
+        "b13",
+        "b14",
+        "b15"
+      ],
+      "settings": {}
+    },
+    "cta": {
+      "type": "dp-cta",
       "settings": {}
     }
   },
   "order": [
-    "main"
+    "hero",
+    "trust",
+    "services",
+    "process",
+    "why",
+    "pricing",
+    "faq",
+    "cta"
   ]
 }
