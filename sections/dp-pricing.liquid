@@ -111,6 +111,41 @@
   .rad-dp-pt-header, .rad-dp-pt-row { grid-template-columns:2fr 1fr 1fr; }
   .rad-dp-pt-header span:nth-child(n+4), .rad-dp-pt-row span:nth-child(n+4) { display:none; }
 }
+
+/* Mobile pricing cards (shown only on mobile, hidden on desktop) */
+.rad-dp-pricing-cards {
+  display: none;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+.rad-dp-pcard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.rad-dp-pcard-hdr {
+  background: #1c1917;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.rad-dp-pcard-rows {
+  padding: 0.5rem 0;
+}
+.rad-dp-pcard-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 0.82rem;
+}
+.rad-dp-pcard-row:last-child { border-bottom: none; }
+.rad-dp-pcard-row .pveh { color: #6b7280; }
+.rad-dp-pcard-row .pprice { font-weight: 700; color: #ea580c; }
 @media (max-width:640px) {
   .rad-dp-hero { padding:2.25rem 0; }
   .rad-dp-hero-inner { padding:0 1rem; }
@@ -126,7 +161,9 @@
   .rad-dp-why-content h2 { font-size:1.5rem; }
   .rad-dp-why-cards { grid-template-columns:1fr 1fr; }
   .rad-dp-pricing { padding:2rem 0; }
-  .rad-dp-pt-header, .rad-dp-pt-row { grid-template-columns:1.5fr 1fr 1fr; font-size:0.78rem; padding:0.75rem; }
+  /* Mobile: hide table, show cards instead */
+  .rad-dp-pricing-table { display:none; }
+  .rad-dp-pricing-cards { display:flex !important; }
   .rad-dp-faq { padding:2rem 0; }
   .rad-dp-faq-q { font-size:0.85rem; padding:0.85rem 1rem; }
   .rad-dp-cta { padding:2rem 0; }
@@ -165,7 +202,26 @@
       </div>
       <p class="rad-dp-pt-note">{{ section.settings.price_note | default: "* Prices are starting rates. Final quote after inspection. WhatsApp us a photo for a quick estimate." }}</p>
     </div>
+
+    <!-- Mobile card view -->
+    <div class="rad-dp-pricing-cards">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'price_row' -%}
+        <div class="rad-dp-pcard">
+          <div class="rad-dp-pcard-hdr">{{ block.settings.service }}</div>
+          <div class="rad-dp-pcard-rows">
+            <div class="rad-dp-pcard-row"><span class="pveh">{{ section.settings.col1 | default: "Hatchback" }}</span><span class="pprice">{{ block.settings.price1 }}</span></div>
+            <div class="rad-dp-pcard-row"><span class="pveh">{{ section.settings.col2 | default: "Sedan" }}</span><span class="pprice">{{ block.settings.price2 }}</span></div>
+            <div class="rad-dp-pcard-row"><span class="pveh">{{ section.settings.col3 | default: "SUV" }}</span><span class="pprice">{{ block.settings.price3 }}</span></div>
+            <div class="rad-dp-pcard-row"><span class="pveh">{{ section.settings.col4 | default: "XL SUV" }}</span><span class="pprice">{{ block.settings.price4 }}</span></div>
+          </div>
+        </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    <p class="rad-dp-pt-note" style="display:none;" id="rad-dp-mob-note">{{ section.settings.price_note | default: "* Prices are starting rates. Final quote after inspection." }}</p>
   </div>
+</div>
 
 {% schema %}
 {
