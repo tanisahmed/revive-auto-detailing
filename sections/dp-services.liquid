@@ -1,0 +1,106 @@
+<style>
+.rad-dp-svc-section { padding: 4rem 0; background: #f8fafc; font-family: 'Nunito Sans', sans-serif; }
+.rad-dp-svc-inner { max-width: 1060px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-dp-svc-hdr { text-align: center; margin-bottom: 2.5rem; }
+.rad-dp-svc-hdr h2 { font-size: 2rem; font-weight: 800; color: #1f2937; margin-bottom: 0.5rem; }
+.rad-dp-svc-hdr p { color: #6b7280; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+.rad-dp-svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+/* Card — exact same structure as home page .rad-svc-card */
+.rad-dp-card {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #e5e7eb;
+  background: #fff;
+  transition: all 0.25s;
+  display: flex;
+  flex-direction: column;
+}
+.rad-dp-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.12); transform: translateY(-4px); border-color: #ea580c; }
+
+/* Image — exact same structure as home page .rad-svc-img */
+.rad-dp-card-img {
+  height: 200px;
+  background: linear-gradient(135deg, #1c1917, #292524);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  overflow: hidden;
+  position: relative;
+}
+.rad-dp-card-img img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Body — exact same as home page .rad-svc-body */
+.rad-dp-card-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
+.rad-dp-card-name { font-size: 1.05rem; font-weight: 800; color: #1f2937; margin-bottom: 0.35rem; }
+.rad-dp-card-desc { font-size: 0.82rem; color: #6b7280; line-height: 1.55; margin-bottom: 0.85rem; flex: 1; }
+.rad-dp-card-price { font-size: 0.8rem; color: #6b7280; margin-top: auto; }
+.rad-dp-card-price strong { color: #ea580c; font-size: 0.95rem; font-weight: 700; }
+
+@media (max-width: 900px) { .rad-dp-svc-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) {
+  .rad-dp-svc-section { padding: 2rem 0; }
+  .rad-dp-svc-hdr h2 { font-size: 1.5rem; }
+  .rad-dp-svc-grid { grid-template-columns: 1fr; }
+  .rad-dp-card-img { height: 180px; }
+}
+</style>
+
+<div class="rad-dp-svc-section">
+  <div class="rad-dp-svc-inner">
+    <div class="rad-dp-svc-hdr">
+      <h2>{{ section.settings.title | default: "Denting & Painting Services We Offer" }}</h2>
+      <p>{{ section.settings.subtitle | default: "Expert auto body repair for all vehicle types in Karachi" }}</p>
+    </div>
+    <div class="rad-dp-svc-grid">
+      {%- for block in section.blocks -%}
+      <div class="rad-dp-card">
+        <div class="rad-dp-card-img">
+          {%- if block.settings.image != blank -%}
+            <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.name }}">
+          {%- else -%}🔧{%- endif -%}
+        </div>
+        <div class="rad-dp-card-body">
+          <div class="rad-dp-card-name">{{ block.settings.name }}</div>
+          <p class="rad-dp-card-desc">{{ block.settings.description }}</p>
+          <div class="rad-dp-card-price">Starting from <strong>{{ block.settings.price }}</strong></div>
+        </div>
+      </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Denting Painting Services",
+  "settings": [
+    {"type":"text","id":"title","label":"Section Title","default":"Denting & Painting Services We Offer"},
+    {"type":"text","id":"subtitle","label":"Section Subtitle","default":"Expert auto body repair for all vehicle types in Karachi"}
+  ],
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service Card",
+      "settings": [
+        {"type":"image_picker","id":"image","label":"Service Photo"},
+        {"type":"text","id":"name","label":"Service Name","default":"Dent Removal"},
+        {"type":"textarea","id":"description","label":"Description","default":"Minor to major dent repair using precision tools."},
+        {"type":"text","id":"price","label":"Starting Price","default":"PKR 2,500"}
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Denting Painting Services",
+      "blocks": [
+        {"type":"service","settings":{"name":"Dent Removal","description":"Minor to major dent repair — from door dings to large collision dents.","price":"PKR 2,500"}},
+        {"type":"service","settings":{"name":"Scratch Removal","description":"Surface polishing or spot-paint for cut-through scratches, assessed by depth.","price":"PKR 1,500"}},
+        {"type":"service","settings":{"name":"Panel Repainting","description":"Single or multi-panel repaint with computerized OEM color matching.","price":"PKR 8,000/panel"}},
+        {"type":"service","settings":{"name":"Bumper Repair & Repaint","description":"Cracked or scuffed bumper repair and repaint, matched to your vehicle.","price":"PKR 6,000"}}
+      ]
+    }
+  ]
+}
+{% endschema %}
