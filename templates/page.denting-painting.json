@@ -79,7 +79,7 @@
             "image": "shopify://shop_images/wheel_refinishing.jpg",
             "name": "Alloy Rims Paint",
             "description": "Refresh your alloy wheels with high-quality alloy rim paint for a durable, stylish, and factory-finish appearance.",
-            "price": "PKR 40,000/-"
+            "price": "PKR 35,000/-"
           }
         }
       },
@@ -138,13 +138,24 @@
             "price3": "PKR 11,000",
             "price4": "PKR 12,000"
           }
+        },
+        "price_row_gaknJ3": {
+          "type": "price_row",
+          "settings": {
+            "service": "Alloy Rims Paint",
+            "price1": "PKR 35,000",
+            "price2": "PKR 40,000",
+            "price3": "PKR 45,000",
+            "price4": "PKR 50,000"
+          }
         }
       },
       "block_order": [
         "price_row_a8awfe",
         "price_row_Hmn3ng",
         "price_row_yyrLxx",
-        "price_row_qHkQif"
+        "price_row_qHkQif",
+        "price_row_gaknJ3"
       ],
       "name": "Denting Painting Pricing",
       "settings": {
