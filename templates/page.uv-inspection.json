@@ -1,8 +1,32 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "uv-inspection",
-      "settings": {}
+      "settings": {
+        "badge": "UV Paint Inspection • Karachi",
+        "hero_sub": "See What the Naked Eye Can't",
+        "hero_desc": "We use professional UV light devices to inspect your car's paint to revealing hidden repaint, fading, rust damage, and paint defects before you buy or protect your vehicle.",
+        "feat1": "✓ Repaint Detection",
+        "feat2": "✓ Paint Fade Check",
+        "feat3": "✓ Rust & Filler Reveal",
+        "feat4": "✓ Pre-Buy Inspection",
+        "btn1_url": "",
+        "what_answer": "",
+        "what_detail": "",
+        "reveals_sub": "6 hidden paint problems that only show up under UV light",
+        "process_sub": "",
+        "faq_sub": "",
+        "cta_sub": ""
+      }
     }
   },
   "order": [
