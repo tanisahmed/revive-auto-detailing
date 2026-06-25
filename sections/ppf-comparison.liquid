@@ -1,149 +1,125 @@
 <style>
-.ppf-cmp { padding: 2rem 0 2.5rem; background: linear-gradient(to bottom, #778899 0%, #ffffff 100%); font-family: 'Nunito Sans', sans-serif; }
+.ppf-cmp { padding: 3rem 0 3.5rem; background: #f8fafc; font-family: 'Nunito Sans', sans-serif; }
 .ppf-cmp-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
-.ppf-cmp-hdr { margin-bottom: 1rem; }
-.ppf-cmp-hdr h2 { font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 0.2rem; font-family: 'Nunito Sans', sans-serif; }
-.ppf-cmp-hdr p { color: rgba(255,255,255,0.8); font-size: 0.9rem; }
+.ppf-cmp-hdr { margin-bottom: 2rem; text-align: center; }
+.ppf-cmp-hdr h2 { font-size: 2rem; font-weight: 800; color: #1f2937; margin-bottom: 0.4rem; }
+.ppf-cmp-hdr p { color: #6b7280; font-size: 0.95rem; }
 
-/* Grid wrapper — outer border only */
+/* Table wrapper */
 .ppf-cmp-grid {
   display: grid;
-  grid-template-columns: 32% repeat(3, 1fr);
-  border-radius: 14px;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  border-radius: 12px;
   overflow: hidden;
-  outline: 1.5px solid #0f172a;
+  border: 2px solid #1e293b;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
 }
 
-/* Every cell — right + bottom border black */
-.ppf-h-empty,
-.ppf-h-brand,
-.ppf-bn-lbl,
-.ppf-bn-cr,
-.ppf-bn-cl,
-.ppf-bn-pr,
-.ppf-lbl,
-.ppf-val { border-right: 1px solid #0f172a; border-bottom: 1px solid #0f172a; }
-
-/* Last column — no right border */
+/* All cells base */
+.ppf-h-empty, .ppf-h-brand,
+.ppf-bn-lbl, .ppf-bn-cr, .ppf-bn-cl, .ppf-bn-pr,
+.ppf-lbl, .ppf-val {
+  border-right: 1px solid #cbd5e1;
+  border-bottom: 1px solid #cbd5e1;
+}
 .ppf-h-brand:last-child,
 .ppf-bn-pr,
 .ppf-val:last-child { border-right: none; }
+.ppf-lbl-last, .ppf-val-last { border-bottom: none; }
 
-/* Last row — no bottom border */
-.ppf-lbl-last,
-.ppf-val-last { border-bottom: none; }
-
-/* Logo header row */
+/* Header row (logo row) */
 .ppf-h-empty {
-  background: #fff;
-  padding: 14px 14px 10px;
-  display: flex; align-items: flex-end;
+  background: #1e293b;
+  padding: 1.1rem 1rem;
+  display: flex; align-items: center;
 }
 .ppf-h-empty span {
-  font-size: 13px; font-weight: 800; letter-spacing: 0.04em;
-  text-transform: uppercase; color: #0f172a;
+  font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #94a3b8;
 }
 .ppf-h-brand {
-  background: #fff;
-  padding: 20px 10px 10px;
+  background: #1e293b;
+  padding: 1rem 0.75rem 0.75rem;
   display: flex; flex-direction: column; align-items: center; gap: 0;
-  position: relative;
+  position: relative; border-right: 1px solid #334155;
 }
-.ppf-h-feat { border-top: 3px solid #0C447C; }
+.ppf-h-feat { border-top: 3px solid #3b82f6; }
 .ppf-rec {
-  position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
-  background: #0C447C; color: #fff;
-  font-size: 10px; font-weight: 700; padding: 3px 12px;
-  border-radius: 0 0 8px 8px; white-space: nowrap; letter-spacing: 0.04em;
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  background: #3b82f6; color: #fff;
+  font-size: 0.6rem; font-weight: 700; padding: 3px 10px;
+  border-radius: 0 0 8px 8px; white-space: nowrap; letter-spacing: 0.05em;
 }
 .ppf-logo-box {
-  width: 100%; height: 48px;
+  width: 100%; height: 44px;
   display: flex; align-items: center; justify-content: center;
 }
-.ppf-logo-box img { max-width: 120px; height: 48px; object-fit: contain; display: block; }
-.ppf-logo-ph { font-size: 10px; color: #94a3b8; }
+.ppf-logo-box img { max-width: 100px; height: 40px; object-fit: contain; display: block; }
+.ppf-logo-ph { font-size: 0.65rem; color: #64748b; }
 
 /* Brand name row */
 .ppf-bn-lbl {
-  background: {{ section.settings.row_bg | default: "#fff" }};
-  padding: 9px 8px 9px 14px;
-  font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase;
-  color: #0f172a; border-bottom: 2px solid #0f172a;
+  background: #0f172a;
+  padding: 0.65rem 0.75rem 0.65rem 1rem;
+  font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+  color: #94a3b8; border-bottom: 1px solid #334155; border-right: 1px solid #334155;
 }
-.ppf-bn-cr {
-  background: #E24B4A;
-  padding: 9px 8px; text-align: center;
-  border-bottom: 2px solid #0f172a;
-}
-.ppf-bn-cl {
-  background: #0C447C;
-  padding: 9px 8px; text-align: center;
-  border-bottom: 2px solid #0f172a;
-}
-.ppf-bn-pr {
-  background: #2C2C2A;
-  padding: 9px 8px; text-align: center;
-  border-bottom: 2px solid #0f172a;
-}
-.ppf-bn-text {
-  font-size: 14px; font-weight: 800; color: #fff;
-  font-family: 'Nunito Sans', sans-serif;
-}
+.ppf-bn-cr { background: #E24B4A; padding: 0.65rem 0.5rem; text-align: center; border-bottom: 1px solid #c13333; border-right: 1px solid #c13333; }
+.ppf-bn-cl { background: #0C447C; padding: 0.65rem 0.5rem; text-align: center; border-bottom: 1px solid #093560; border-right: 1px solid #093560; }
+.ppf-bn-pr { background: #2C2C2A; padding: 0.65rem 0.5rem; text-align: center; border-bottom: 1px solid #1a1a18; border-right: none; }
+.ppf-bn-text { font-size: 0.8rem; font-weight: 800; color: #fff; font-family: 'Nunito Sans', sans-serif; }
 
 /* Data rows */
 .ppf-lbl {
-  background: {{ section.settings.row_bg | default: "#fff" }};
-  padding: 9px 8px 9px 14px;
-  font-size: 13px; font-weight: 600; color: #1f2937;
+  background: #fff;
+  padding: 0.7rem 0.75rem 0.7rem 1rem;
+  font-size: 0.82rem; font-weight: 600; color: #374151;
+  border-right: 1px solid #e2e8f0;
 }
 .ppf-val {
-  background: {{ section.settings.row_bg | default: "#fff" }};
-  padding: 9px 8px; text-align: center;
-  font-size: 13px; color: #374151;
+  background: #fff;
+  padding: 0.7rem 0.5rem; text-align: center;
+  font-size: 0.82rem; color: #374151;
+  border-right: 1px solid #e2e8f0;
+}
+/* Alternate rows */
+.ppf-lbl:nth-child(8n+5), .ppf-lbl:nth-child(8n+6), .ppf-lbl:nth-child(8n+7), .ppf-lbl:nth-child(8n+8),
+.ppf-val:nth-child(8n+5), .ppf-val:nth-child(8n+6), .ppf-val:nth-child(8n+7), .ppf-val:nth-child(8n+8) {
+  background: #f8fafc;
 }
 
-.vr { color: #0f172a; font-weight: 600; }
-.vb { color: #0C447C; font-weight: 600; }
-.vg { color: #1e293b; font-weight: 600; }
-.vm { color: #0f172a; }
-.cr { color: #0f172a; font-size: 14px; font-weight: 700; }
-.cb { color: #0C447C; font-size: 14px; font-weight: 700; }
-.cg { color: #64748b; font-size: 14px; font-weight: 700; }
+/* Colored values */
+.vr { color: #dc2626; font-weight: 700; }
+.vb { color: #0C447C; font-weight: 700; }
+.vg { color: #1e293b; font-weight: 700; }
+.cr { color: #dc2626; font-size: 1rem; font-weight: 700; }
+.cb { color: #0C447C; font-size: 1rem; font-weight: 700; }
+.cg { color: #475569; font-size: 1rem; font-weight: 700; }
 
+/* Rating bars */
 .ppf-bars { display: flex; gap: 3px; justify-content: center; align-items: center; }
-.ppf-bar { width: 14px; height: 6px; border-radius: 100px; }
+.ppf-bar { width: 16px; height: 7px; border-radius: 100px; }
 .ppf-br { background: #ef4444; }
-.ppf-bb { background: #1e3a8a; }
-.ppf-bg { background: #0f172a; }
+.ppf-bb { background: #0C447C; }
+.ppf-bg { background: #2C2C2A; }
 .ppf-bo { background: #e2e8f0; }
 
-/* ── Mobile ── */
+/* Mobile */
 @media (max-width: 640px) {
-  .ppf-cmp { padding: 1.5rem 0 2rem; }
+  .ppf-cmp { padding: 2rem 0; }
   .ppf-cmp-hdr h2 { font-size: 1.4rem; }
   .ppf-cmp-inner { padding: 0 0.75rem; }
-
-  .ppf-cmp-grid { grid-template-columns: 38% repeat(3, 1fr); overflow-x: auto; }
-
-  .ppf-h-empty,
-  .ppf-h-brand { padding: 14px 4px 8px; }
-  .ppf-h-empty span { font-size: 10px; }
-  .ppf-rec { font-size: 8px; padding: 2px 6px; }
-  .ppf-logo-box img { max-width: 70px; height: 32px; }
-  .ppf-logo-ph { font-size: 8px; }
-
-  .ppf-bn-lbl,
-  .ppf-bn-cr, .ppf-bn-cl, .ppf-bn-pr { padding: 7px 4px; }
-  .ppf-bn-lbl { font-size: 10px; }
-  .ppf-bn-text { font-size: 11px; }
-
-  .ppf-lbl { padding: 7px 4px 7px 8px; font-size: 11px; }
-  .ppf-val { padding: 7px 4px; font-size: 11px; }
-
+  .ppf-cmp-grid { grid-template-columns: 34% repeat(3, 1fr); font-size: 0.72rem; }
+  .ppf-h-empty { padding: 0.75rem 0.5rem; }
+  .ppf-h-brand { padding: 0.85rem 0.3rem 0.6rem; }
+  .ppf-logo-box { height: 32px; }
+  .ppf-logo-box img { max-width: 72px; height: 28px; }
+  .ppf-bn-lbl, .ppf-bn-cr, .ppf-bn-cl, .ppf-bn-pr { padding: 0.5rem 0.25rem; }
+  .ppf-bn-text { font-size: 0.62rem; }
+  .ppf-lbl { padding: 0.55rem 0.4rem 0.55rem 0.5rem; font-size: 0.72rem; }
+  .ppf-val { padding: 0.55rem 0.3rem; font-size: 0.72rem; }
   .ppf-bar { width: 10px; height: 5px; }
-  .ppf-bars { gap: 2px; }
-  .cr, .cb, .cg { font-size: 12px; }
-  .vr, .vb, .vg, .vm { font-size: 11px; }
+  .ppf-rec { font-size: 0.5rem; padding: 2px 6px; }
 }
 </style>
 
