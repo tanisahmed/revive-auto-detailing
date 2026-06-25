@@ -1,0 +1,208 @@
+<style>
+.rad-dp { font-family: 'Nunito Sans', sans-serif; }
+
+/* HERO */
+.rad-dp-hero { background: linear-gradient(135deg, #0f172a 0%, #1c1917 100%); padding: 5rem 0 4rem; color: #fff; position: relative; overflow: hidden; }
+.rad-dp-hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 60% 40%, rgba(234,88,12,0.2) 0%, transparent 60%); }
+.rad-dp-hero-inner { position:relative; z-index:1; max-width:1060px; margin:0 auto; padding:0 1.5rem; display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+.rad-dp-hero-badge { display:inline-flex; align-items:center; gap:0.5rem; background:rgba(234,88,12,0.2); border:1px solid rgba(234,88,12,0.5); color:#fb923c; font-size:0.75rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.4rem 1rem; border-radius:100px; margin-bottom:1.25rem; }
+.rad-dp-hero h1 { font-size:2.75rem; font-weight:800; line-height:1.15; margin-bottom:1rem; }
+.rad-dp-hero h1 span { color:#fb923c; }
+.rad-dp-hero-desc { font-size:1.05rem; color:#d1d5db; line-height:1.75; margin-bottom:2rem; }
+.rad-dp-hero-trust { display:flex; gap:1.5rem; flex-wrap:wrap; margin-bottom:2rem; }
+.rad-dp-hero-trust-item { display:flex; align-items:center; gap:0.4rem; font-size:0.85rem; color:#9ca3af; }
+.rad-dp-hero-trust-item span:first-child { color:#fb923c; }
+.rad-dp-hero-btns { display:flex; gap:0.75rem; flex-wrap:wrap; }
+.rad-dp-btn-primary { display:inline-flex; align-items:center; gap:0.4rem; padding:0.9rem 1.75rem; background:#ea580c; color:#fff; border-radius:8px; font-weight:700; font-size:1rem; text-decoration:none; transition:all 0.2s; }
+.rad-dp-btn-primary:hover { background:#c2410c; }
+.rad-dp-btn-wa { display:inline-flex; align-items:center; gap:0.4rem; padding:0.9rem 1.75rem; background:#10b981; color:#fff; border-radius:8px; font-weight:700; font-size:1rem; text-decoration:none; transition:all 0.2s; }
+.rad-dp-btn-wa:hover { background:#059669; }
+.rad-dp-hero-visual { background:linear-gradient(135deg,#1c1917,#292524); border-radius:16px; padding:2rem; }
+.rad-dp-hero-stats { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.rad-dp-hero-stat { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:1.25rem; text-align:center; }
+.rad-dp-hero-stat-num { font-size:2rem; font-weight:800; color:#fb923c; display:block; }
+.rad-dp-hero-stat-lbl { font-size:0.75rem; color:#9ca3af; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; }
+
+/* TRUST BAR */
+.rad-dp-trust { background:#fff; border-bottom:1px solid #e5e7eb; padding:1rem 0; }
+.rad-dp-trust-inner { max-width:1060px; margin:0 auto; padding:0 1.5rem; display:flex; justify-content:center; gap:2.5rem; flex-wrap:wrap; }
+.rad-dp-trust-item { display:flex; align-items:center; gap:0.5rem; font-size:0.875rem; font-weight:600; color:#374151; }
+
+/* SERVICES */
+.rad-dp-services { padding:4rem 0; background:#f8fafc; }
+.rad-dp-services-inner { max-width:1060px; margin:0 auto; padding:0 1.5rem; }
+.rad-dp-sec-hdr { text-align:center; margin-bottom:2.5rem; }
+.rad-dp-sec-hdr h2 { font-size:2rem; font-weight:800; color:#1f2937; margin-bottom:0.5rem; }
+.rad-dp-sec-hdr p { color:#6b7280; font-size:1rem; max-width:600px; margin:0 auto; }
+.rad-dp-services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+.rad-dp-svc-card { background:#fff; border-radius:14px; padding:1.75rem; border:1px solid #e5e7eb; transition:all 0.25s; }
+.rad-dp-svc-card:hover { box-shadow:0 12px 32px rgba(0,0,0,0.1); transform:translateY(-4px); border-color:transparent; }
+.rad-dp-svc-icon { width:52px; height:52px; border-radius:12px; background:#fff7ed; display:flex; align-items:center; justify-content:center; font-size:1.5rem; margin-bottom:1rem; }
+.rad-dp-svc-card h3 { font-size:1.05rem; font-weight:800; color:#1f2937; margin-bottom:0.5rem; }
+.rad-dp-svc-card p { font-size:0.875rem; color:#6b7280; line-height:1.65; margin-bottom:1rem; }
+.rad-dp-svc-price { font-size:0.8rem; color:#6b7280; }
+.rad-dp-svc-price strong { color:#ea580c; font-size:1rem; font-weight:700; }
+
+/* PROCESS */
+.rad-dp-process { padding:4rem 0; background:#fff; }
+.rad-dp-process-inner { max-width:960px; margin:0 auto; padding:0 1.5rem; }
+.rad-dp-process-steps { display:grid; grid-template-columns:repeat(5,1fr); gap:0; position:relative; margin-top:2rem; }
+.rad-dp-process-steps::before { content:''; position:absolute; top:2rem; left:10%; right:10%; height:2px; background:linear-gradient(to right,#ea580c,#fb923c); z-index:0; }
+.rad-dp-process-step { display:flex; flex-direction:column; align-items:center; text-align:center; position:relative; z-index:1; }
+.rad-dp-process-dot { width:4rem; height:4rem; border-radius:50%; background:#fff; border:3px solid #ea580c; display:flex; align-items:center; justify-content:center; font-size:1.25rem; margin-bottom:0.75rem; }
+.rad-dp-process-step h4 { font-size:0.875rem; font-weight:700; color:#1f2937; margin-bottom:0.25rem; }
+.rad-dp-process-step p { font-size:0.75rem; color:#6b7280; line-height:1.4; }
+
+/* WHY */
+.rad-dp-why { padding:4rem 0; background:#f8fafc; }
+.rad-dp-why-inner { max-width:1060px; margin:0 auto; padding:0 1.5rem; display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+.rad-dp-why-content h2 { font-size:2rem; font-weight:800; color:#1f2937; margin-bottom:0.75rem; line-height:1.2; }
+.rad-dp-why-content p { color:#6b7280; font-size:0.95rem; line-height:1.75; margin-bottom:1.5rem; }
+.rad-dp-why-list { display:flex; flex-direction:column; gap:0.85rem; }
+.rad-dp-why-item { display:flex; align-items:flex-start; gap:0.75rem; }
+.rad-dp-why-check { width:1.5rem; height:1.5rem; border-radius:50%; background:#fff7ed; border:2px solid #ea580c; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:0.7rem; color:#ea580c; margin-top:2px; }
+.rad-dp-why-item-text h4 { font-size:0.925rem; font-weight:700; color:#1f2937; margin-bottom:0.15rem; }
+.rad-dp-why-item-text p { font-size:0.825rem; color:#6b7280; line-height:1.55; }
+.rad-dp-why-cards { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.rad-dp-why-card { background:#fff; border-radius:12px; padding:1.25rem; border:1px solid #e5e7eb; text-align:center; }
+.rad-dp-why-card-num { font-size:2rem; font-weight:800; color:#ea580c; display:block; }
+.rad-dp-why-card-lbl { font-size:0.75rem; color:#6b7280; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; }
+
+/* PRICING */
+.rad-dp-pricing { padding:4rem 0; background:#fff; }
+.rad-dp-pricing-inner { max-width:960px; margin:0 auto; padding:0 1.5rem; }
+.rad-dp-pricing-table { border-radius:14px; overflow:hidden; border:1px solid #e5e7eb; margin-top:2rem; }
+.rad-dp-pt-header { display:grid; grid-template-columns:2fr 1fr 1fr 1fr 1fr; background:#1c1917; color:#fff; padding:1rem 1.5rem; font-weight:700; font-size:0.875rem; }
+.rad-dp-pt-row { display:grid; grid-template-columns:2fr 1fr 1fr 1fr 1fr; padding:1rem 1.5rem; border-bottom:1px solid #e5e7eb; align-items:center; font-size:0.875rem; }
+.rad-dp-pt-row:last-child { border-bottom:none; }
+.rad-dp-pt-row:nth-child(even) { background:#f8fafc; }
+.rad-dp-pt-row-name { font-weight:700; color:#1f2937; }
+.rad-dp-pt-row-price { color:#ea580c; font-weight:700; }
+.rad-dp-pt-note { font-size:0.8rem; color:#9ca3af; text-align:center; margin-top:1rem; }
+
+/* FAQ */
+.rad-dp-faq { padding:4rem 0; background:#f8fafc; }
+.rad-dp-faq-inner { max-width:720px; margin:0 auto; padding:0 1.5rem; }
+.rad-dp-faq-list { display:flex; flex-direction:column; gap:0.75rem; margin-top:2rem; }
+.rad-dp-faq-item { background:#fff; border-radius:10px; border:1px solid #e5e7eb; overflow:hidden; }
+.rad-dp-faq-q { display:flex; justify-content:space-between; align-items:center; padding:1rem 1.25rem; cursor:pointer; font-weight:700; font-size:0.925rem; color:#1f2937; user-select:none; }
+.rad-dp-faq-q:hover { color:#ea580c; }
+.rad-dp-faq-icon { font-size:1.25rem; transition:transform 0.25s; flex-shrink:0; }
+.rad-dp-faq-item.open .rad-dp-faq-icon { transform:rotate(45deg); }
+.rad-dp-faq-a { max-height:0; overflow:hidden; transition:max-height 0.35s ease; }
+.rad-dp-faq-item.open .rad-dp-faq-a { max-height:400px; }
+.rad-dp-faq-a p { padding:0 1.25rem 1.1rem; font-size:0.875rem; color:#6b7280; line-height:1.7; }
+
+/* CTA */
+.rad-dp-cta { padding:4rem 0; background:linear-gradient(135deg,#7c2d12,#1c1917); text-align:center; color:#fff; }
+.rad-dp-cta-inner { max-width:600px; margin:0 auto; padding:0 1.5rem; }
+.rad-dp-cta h2 { font-size:2rem; font-weight:800; margin-bottom:0.75rem; }
+.rad-dp-cta p { color:#d1d5db; margin-bottom:2rem; font-size:1rem; }
+.rad-dp-cta-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+
+/* MOBILE */
+@media (max-width:900px) {
+  .rad-dp-hero-inner { grid-template-columns:1fr; }
+  .rad-dp-hero-visual { display:none; }
+  .rad-dp-services-grid { grid-template-columns:1fr 1fr; }
+  .rad-dp-why-inner { grid-template-columns:1fr; }
+  .rad-dp-process-steps { grid-template-columns:1fr 1fr; gap:1rem; }
+  .rad-dp-process-steps::before { display:none; }
+  .rad-dp-pt-header, .rad-dp-pt-row { grid-template-columns:2fr 1fr 1fr; }
+  .rad-dp-pt-header span:nth-child(n+4), .rad-dp-pt-row span:nth-child(n+4) { display:none; }
+}
+@media (max-width:640px) {
+  .rad-dp-hero { padding:2.25rem 0; }
+  .rad-dp-hero-inner { padding:0 1rem; }
+  .rad-dp-hero h1 { font-size:1.65rem; line-height:1.25; }
+  .rad-dp-hero-desc { font-size:0.9rem; margin-bottom:1.25rem; }
+  .rad-dp-hero-btns { flex-direction:row; flex-wrap:nowrap; gap:0.5rem; }
+  .rad-dp-btn-primary, .rad-dp-btn-wa { flex:1; justify-content:center; text-align:center; padding:0.65rem 0.5rem; font-size:0.78rem; white-space:nowrap; }
+  .rad-dp-services { padding:2rem 0; }
+  .rad-dp-services-grid { grid-template-columns:1fr; }
+  .rad-dp-sec-hdr h2 { font-size:1.5rem; }
+  .rad-dp-process-steps { grid-template-columns:1fr; gap:1.25rem; }
+  .rad-dp-why { padding:2rem 0; }
+  .rad-dp-why-content h2 { font-size:1.5rem; }
+  .rad-dp-why-cards { grid-template-columns:1fr 1fr; }
+  .rad-dp-pricing { padding:2rem 0; }
+  .rad-dp-pt-header, .rad-dp-pt-row { grid-template-columns:1.5fr 1fr 1fr; font-size:0.78rem; padding:0.75rem; }
+  .rad-dp-faq { padding:2rem 0; }
+  .rad-dp-faq-q { font-size:0.85rem; padding:0.85rem 1rem; }
+  .rad-dp-cta { padding:2rem 0; }
+  .rad-dp-cta h2 { font-size:1.4rem; }
+  .rad-dp-cta-btns { flex-direction:row; flex-wrap:nowrap; gap:0.5rem; }
+  .rad-dp-cta-btns a { flex:1; justify-content:center; text-align:center; padding:0.65rem 0.5rem; font-size:0.78rem; white-space:nowrap; }
+}
+</style>
+
+<!-- CTA -->
+  <div class="rad-dp-cta">
+    <div class="rad-dp-cta-inner">
+      <h2>{{ section.settings.cta_title | default: "Get a Free Quote for Your Car" }}</h2>
+      <p>{{ section.settings.cta_sub | default: "Send us a photo on WhatsApp or book an inspection — we'll give you a transparent quote with no obligation." }}</p>
+      <div class="rad-dp-cta-btns">
+        <a href="{{ section.settings.cta_btn1_url | default: '/pages/book-appointment' }}" class="rad-dp-btn-primary">🔧 {{ section.settings.cta_btn1 | default: "Book Inspection" }}</a>
+        <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20denting%20and%20painting%20for%20my%20car.%20Here%20is%20a%20photo." target="_blank" class="rad-dp-btn-wa">💬 {{ section.settings.cta_btn2 | default: "Send Photo on WhatsApp" }}</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+document.querySelectorAll('.rad-dp-faq-q').forEach(function(q) {
+  q.addEventListener('click', function() {
+    var item = q.closest('.rad-dp-faq-item');
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.rad-dp-faq-item').forEach(function(i) { i.classList.remove('open'); });
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Denting Painting CTA",
+  "settings": [
+    {
+      "type": "header",
+      "content": "CTA Section"
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "CTA Heading",
+      "default": "Get a Free Quote for Your Car"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_sub",
+      "label": "CTA Subtext",
+      "default": "Send us a photo on WhatsApp or book an inspection — we'll give you a transparent quote with no obligation."
+    },
+    {
+      "type": "text",
+      "id": "cta_btn1",
+      "label": "CTA Button 1 Text",
+      "default": "Book Inspection"
+    },
+    {
+      "type": "url",
+      "id": "cta_btn1_url",
+      "label": "CTA Button 1 Link"
+    },
+    {
+      "type": "text",
+      "id": "cta_btn2",
+      "label": "CTA Button 2 Text",
+      "default": "Send Photo on WhatsApp"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Denting Painting CTA"
+    }
+  ]
+}
+{% endschema %}
