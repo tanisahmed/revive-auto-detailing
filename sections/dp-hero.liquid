@@ -5,6 +5,9 @@
     padding: 4.5rem 0;
     position: relative;
     overflow: hidden;
+    min-height: 480px;
+    display: flex;
+    align-items: center;
   }
   .rad-dp-hero::before {
     content: '';
@@ -16,13 +19,13 @@
   .rad-dp-hero-media img,
   .rad-dp-hero-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
   .rad-dp-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.4) 100%); z-index: 1; }
-  .rad-dp-hero-inner {
-    position: relative; z-index: 2;
-    max-width: 760px;
-    text-align: left;
+  .rad-dp-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
   }
   .rad-dp-hero-badge {
-    display: inline-flex; align-items: center; gap: 0.5rem;
+    display: inline-flex; align-items: center;
     background: rgba(30,58,138,0.4);
     border: 1px solid rgba(96,165,250,0.3);
     padding: 0.3rem 1rem; border-radius: 100px;
@@ -34,13 +37,14 @@
   .rad-dp-hero-desc { font-size: 1.05rem; color: #d1d5db; line-height: 1.7; margin-bottom: 2rem; max-width: 480px; }
   .rad-dp-hero-features { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
   .rad-dp-hero-feature { display: flex; align-items: center; gap: 0.35rem; background: rgba(255,255,255,0.08); padding: 0.35rem 0.85rem; border-radius: 100px; font-size: 0.875rem; font-weight: 600; }
+  .rad-dp-hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
   .rad-dp-btn-primary { display:inline-flex; align-items:center; padding: 0.875rem 1.75rem; background:#1e3a8a; color:#fff; border-radius:8px; font-weight:700; font-size:1rem; text-decoration:none; transition:all 0.2s; }
   .rad-dp-btn-primary:hover { background:#1e40af; }
   .rad-dp-btn-wa { display:inline-flex; align-items:center; gap:0.4rem; padding: 0.875rem 1.75rem; background:#10b981; color:#fff; border-radius:8px; font-weight:700; font-size:1rem; text-decoration:none; transition:all 0.2s; }
   .rad-dp-btn-wa:hover { background:#059669; }
   @media (max-width: 640px) {
-    .rad-dp-hero { padding: 2.25rem 0; }
-    .rad-dp-hero-inner { padding: 0 1rem; }
+    .rad-dp-hero { padding: 2.25rem 0; min-height: 380px; }
+    .rad-dp-hero-content { padding: 0 1rem; }
     .rad-dp-hero h1 { font-size: 1.6rem; line-height: 1.25; margin-bottom: 0.4rem; }
     .rad-dp-hero-sub { font-size: 0.95rem; margin-bottom: 0.5rem; }
     .rad-dp-hero-desc { font-size: 0.88rem; margin-bottom: 1.25rem; }
@@ -48,7 +52,7 @@
     .rad-dp-hero-features { gap: 0.4rem; margin-bottom: 1.25rem; }
     .rad-dp-hero-feature { font-size: 0.7rem; padding: 0.3rem 0.6rem; }
     .rad-dp-hero-btns { flex-direction: row; flex-wrap: nowrap; gap: 0.5rem; }
-    .rad-dp-btn-primary, .rad-dp-btn-wa { flex:1;  text-align:center; padding:0.65rem 0.5rem; font-size:0.78rem; white-space:nowrap; }
+    .rad-dp-btn-primary, .rad-dp-btn-wa { flex:1; justify-content:center; text-align:center; padding:0.65rem 0.5rem; font-size:0.78rem; white-space:nowrap; }
   }
 </style>
 
@@ -67,7 +71,7 @@
   {%- endif -%}
 
   <div class="container">
-    <div class="rad-dp-hero-inner">
+    <div class="rad-dp-hero-content">
       <div class="rad-dp-hero-badge">{{ section.settings.badge | default: "Denting & Painting Services • Karachi" }}</div>
       <h1>{{ section.settings.hero_title | default: "Professional" }} <span style="color:#60a5fa;">{{ section.settings.hero_highlight | default: "Denting & Painting" }}</span> {{ section.settings.hero_end | default: "in Karachi" }}</h1>
       <p class="rad-dp-hero-sub">{{ section.settings.hero_sub | default: "Expert Body Repair & Repainting" }}</p>
@@ -78,8 +82,8 @@
         {%- if section.settings.feat3 != blank -%}<span class="rad-dp-hero-feature">{{ section.settings.feat3 }}</span>{%- endif -%}
         {%- if section.settings.feat4 != blank -%}<span class="rad-dp-hero-feature">{{ section.settings.feat4 }}</span>{%- endif -%}
       </div>
-      <div class="rad-dp-hero-btns" style="display:flex;gap:1rem;flex-wrap:wrap;">
-        <a href="{{ section.settings.btn1_url | default: '/pages/book-appointment' }}" class="rad-dp-btn-primary">{{ section.settings.btn1_text | default: "View Pricing" }}</a>
+      <div class="rad-dp-hero-btns">
+        <a href="{{ section.settings.btn1_url | default: '#dp-pricing' }}" class="rad-dp-btn-primary">{{ section.settings.btn1_text | default: "View Pricing" }}</a>
         <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20denting%20and%20painting%20for%20my%20car" target="_blank" class="rad-dp-btn-wa">💬 {{ section.settings.btn2_text | default: "WhatsApp Us" }}</a>
       </div>
     </div>
