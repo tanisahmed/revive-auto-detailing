@@ -10,7 +10,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 65% 50%, rgba(180,60,20,0.25) 0%, transparent 70%);
+    background: radial-gradient(ellipse at 65% 50%, rgba(30,58,138,0.35) 0%, transparent 70%);
   }
   .rad-dp-hero-media { position: absolute; inset: 0; z-index: 0; }
   .rad-dp-hero-media img,
@@ -19,22 +19,23 @@
   .rad-dp-hero-inner {
     position: relative; z-index: 2;
     max-width: 760px;
+    text-align: left;
   }
   .rad-dp-hero-badge {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    background: rgba(234,88,12,0.25);
-    border: 1px solid rgba(251,146,60,0.4);
+    background: rgba(30,58,138,0.4);
+    border: 1px solid rgba(96,165,250,0.3);
     padding: 0.3rem 1rem; border-radius: 100px;
-    font-size: 0.8rem; font-weight: 700; color: #fb923c;
+    font-size: 0.8rem; font-weight: 700; color: #93c5fd;
     margin-bottom: 1rem; letter-spacing: 0.05em; text-transform: uppercase;
   }
   .rad-dp-hero h1 { font-size: 3rem; font-weight: 800; line-height: 1.1; margin-bottom: 0.5rem; letter-spacing: -1px; }
-  .rad-dp-hero-sub { font-size: 1.35rem; font-weight: 700; color: #fb923c; margin-bottom: 1rem; }
+  .rad-dp-hero-sub { font-size: 1.35rem; font-weight: 700; color: #60a5fa; margin-bottom: 1rem; }
   .rad-dp-hero-desc { font-size: 1.05rem; color: #d1d5db; line-height: 1.7; margin-bottom: 2rem; max-width: 480px; }
   .rad-dp-hero-features { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
   .rad-dp-hero-feature { display: flex; align-items: center; gap: 0.35rem; background: rgba(255,255,255,0.08); padding: 0.35rem 0.85rem; border-radius: 100px; font-size: 0.875rem; font-weight: 600; }
-  .rad-dp-btn-primary { display:inline-flex; align-items:center; padding: 0.875rem 1.75rem; background:#ea580c; color:#fff; border-radius:8px; font-weight:700; font-size:1rem; text-decoration:none; transition:all 0.2s; }
-  .rad-dp-btn-primary:hover { background:#c2410c; }
+  .rad-dp-btn-primary { display:inline-flex; align-items:center; padding: 0.875rem 1.75rem; background:#1e3a8a; color:#fff; border-radius:8px; font-weight:700; font-size:1rem; text-decoration:none; transition:all 0.2s; }
+  .rad-dp-btn-primary:hover { background:#1e40af; }
   .rad-dp-btn-wa { display:inline-flex; align-items:center; gap:0.4rem; padding: 0.875rem 1.75rem; background:#10b981; color:#fff; border-radius:8px; font-weight:700; font-size:1rem; text-decoration:none; transition:all 0.2s; }
   .rad-dp-btn-wa:hover { background:#059669; }
   @media (max-width: 640px) {
@@ -47,7 +48,7 @@
     .rad-dp-hero-features { gap: 0.4rem; margin-bottom: 1.25rem; }
     .rad-dp-hero-feature { font-size: 0.7rem; padding: 0.3rem 0.6rem; }
     .rad-dp-hero-btns { flex-direction: row; flex-wrap: nowrap; gap: 0.5rem; }
-    .rad-dp-btn-primary, .rad-dp-btn-wa { flex:1; justify-content:center; text-align:center; padding:0.65rem 0.5rem; font-size:0.78rem; white-space:nowrap; }
+    .rad-dp-btn-primary, .rad-dp-btn-wa { flex:1;  text-align:center; padding:0.65rem 0.5rem; font-size:0.78rem; white-space:nowrap; }
   }
 </style>
 
@@ -68,7 +69,7 @@
   <div class="container">
     <div class="rad-dp-hero-inner">
       <div class="rad-dp-hero-badge">{{ section.settings.badge | default: "Denting & Painting Services • Karachi" }}</div>
-      <h1>{{ section.settings.hero_title | default: "Professional" }} <span style="color:#fb923c;">{{ section.settings.hero_highlight | default: "Denting & Painting" }}</span> {{ section.settings.hero_end | default: "in Karachi" }}</h1>
+      <h1>{{ section.settings.hero_title | default: "Professional" }} <span style="color:#60a5fa;">{{ section.settings.hero_highlight | default: "Denting & Painting" }}</span> {{ section.settings.hero_end | default: "in Karachi" }}</h1>
       <p class="rad-dp-hero-sub">{{ section.settings.hero_sub | default: "Expert Body Repair & Repainting" }}</p>
       <p class="rad-dp-hero-desc">{{ section.settings.hero_desc | default: "Expert dent removal, scratch repair, and panel repainting in Karachi using computerized OEM color matching." }}</p>
       <div class="rad-dp-hero-features">
@@ -78,7 +79,7 @@
         {%- if section.settings.feat4 != blank -%}<span class="rad-dp-hero-feature">{{ section.settings.feat4 }}</span>{%- endif -%}
       </div>
       <div class="rad-dp-hero-btns" style="display:flex;gap:1rem;flex-wrap:wrap;">
-        <a href="{{ section.settings.btn1_url | default: '/pages/book-appointment' }}" class="rad-dp-btn-primary">{{ section.settings.btn1_text | default: "Get Free Quote" }}</a>
+        <a href="{{ section.settings.btn1_url | default: '/pages/book-appointment' }}" class="rad-dp-btn-primary">{{ section.settings.btn1_text | default: "View Pricing" }}</a>
         <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20denting%20and%20painting%20for%20my%20car" target="_blank" class="rad-dp-btn-wa">💬 {{ section.settings.btn2_text | default: "WhatsApp Us" }}</a>
       </div>
     </div>
@@ -188,7 +189,7 @@
       "type": "text",
       "id": "btn1_text",
       "label": "Button 1 Text",
-      "default": "Get Free Quote"
+      "default": "View Pricing"
     },
     {
       "type": "url",
