@@ -46,14 +46,6 @@
             "price": "PKR 2,500"
           }
         },
-        "service_iHrh9G": {
-          "type": "service",
-          "settings": {
-            "name": "Scratch Removal",
-            "description": "Deep scratch repair and clear-coat restoration. We assess scratch depth and apply the right technique — from machine polishing for surface marks to spot-paint for cut-through scratches.",
-            "price": "PKR 1,500"
-          }
-        },
         "service_YJkiCq": {
           "type": "service",
           "settings": {
@@ -73,14 +65,13 @@
       },
       "block_order": [
         "service_zV9RC9",
-        "service_iHrh9G",
         "service_YJkiCq",
         "service_qyUiW9"
       ],
       "name": "Denting Painting Services",
       "settings": {
-        "svc_title": "Denting & Painting Services We Offer",
-        "svc_sub": "Expert auto body repair for all vehicle types in Karachi"
+        "title": "Denting & Painting Services We Offer",
+        "subtitle": "Expert auto body repair for all vehicle types in Karachi"
       }
     },
     "dp_pricing_bherkD": {
@@ -94,16 +85,6 @@
             "price2": "PKR 3,000",
             "price3": "PKR 3,500",
             "price4": "PKR 4,000"
-          }
-        },
-        "price_row_dNLrVr": {
-          "type": "price_row",
-          "settings": {
-            "service": "Scratch Removal",
-            "price1": "PKR 1,500",
-            "price2": "PKR 2,000",
-            "price3": "PKR 2,500",
-            "price4": "PKR 3,000"
           }
         },
         "price_row_Hmn3ng": {
@@ -129,7 +110,6 @@
       },
       "block_order": [
         "price_row_a8awfe",
-        "price_row_dNLrVr",
         "price_row_Hmn3ng",
         "price_row_yyrLxx"
       ],
