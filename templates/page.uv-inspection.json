@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "uv-inspection",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
