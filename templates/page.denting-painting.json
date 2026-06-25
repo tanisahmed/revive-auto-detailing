@@ -42,7 +42,7 @@
           "settings": {
             "image": "shopify://shop_images/body-shop-dent-repair.jpg",
             "name": "Dent Removal",
-            "description": "Minor to major dent repair using precision tools. We reshape body panels without damaging the original paint wherever possible — from small door dings to large collision dents.",
+            "description": "Minor to major dent repair using precision tools. We reshape body panels without damaging the original paint wherever possible",
             "price": "PKR 3,500/-"
           }
         },
@@ -51,7 +51,7 @@
           "settings": {
             "image": "shopify://shop_images/5.webp",
             "name": "Panel Repainting",
-            "description": "Full single-panel or multi-panel repaint using computerized color matching. We blend your car's exact OEM shade — door, bumper, hood, fender, or full-body repaint available.",
+            "description": "Full single-panel or multi-panel repaint using computerized color matching. Door, bumper, hood, fender, or  any panel repaint available.",
             "price": "PKR 15,000/- Panel"
           }
         },
@@ -60,7 +60,7 @@
           "settings": {
             "image": "shopify://shop_images/Bumper_painting.webp",
             "name": "Bumper Repair & Repaint",
-            "description": "Cracked, scuffed, or misaligned bumper repair. We handle both plastic and chrome bumpers — reshape, bond, and repaint to match the rest of the vehicle perfectly.",
+            "description": "Cracked, scratched, or misaligned bumper repair. We repair, reshape and repaint to bumper with matching color perfectly.",
             "price": "PKR 12,500/-"
           }
         },
