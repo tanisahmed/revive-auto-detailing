@@ -1,109 +1,80 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "hero": {
-      "type": "dp-hero",
-      "settings": {}
-    },
-    "trust": {
-      "type": "dp-trust",
-      "settings": {}
-    },
-    "services": {
+    "dp_services_MxgrM6": {
       "type": "dp-services",
       "blocks": {
-        "b0": {
+        "service_xtfdey": {
+          "type": "service",
+          "settings": {
+            "icon": "🔧",
+            "name": "Dent Removal",
+            "description": "Minor to major dent repair using precision tools.",
+            "price": "PKR 2,500"
+          }
+        },
+        "service_zV9RC9": {
           "type": "service",
           "settings": {
             "icon": "🔨",
             "name": "Dent Removal",
-            "description": "Minor to major dent repair using precision tools — from small door dings to large collision dents.",
+            "description": "Minor to major dent repair using precision tools. We reshape body panels without damaging the original paint wherever possible — from small door dings to large collision dents.",
             "price": "PKR 2,500"
           }
         },
-        "b1": {
+        "service_iHrh9G": {
           "type": "service",
           "settings": {
             "icon": "✨",
             "name": "Scratch Removal",
-            "description": "Surface scratch polishing or spot-paint repair for cut-through scratches — assessed by depth.",
+            "description": "Deep scratch repair and clear-coat restoration. We assess scratch depth and apply the right technique — from machine polishing for surface marks to spot-paint for cut-through scratches.",
             "price": "PKR 1,500"
           }
         },
-        "b2": {
+        "service_YJkiCq": {
           "type": "service",
           "settings": {
             "icon": "🎨",
             "name": "Panel Repainting",
-            "description": "Single or multi-panel repaint using computerized OEM color matching — door, bumper, hood or fender.",
+            "description": "Full single-panel or multi-panel repaint using computerized color matching. We blend your car's exact OEM shade — door, bumper, hood, fender, or full-body repaint available.",
             "price": "PKR 8,000/panel"
           }
         },
-        "b3": {
+        "service_qyUiW9": {
           "type": "service",
           "settings": {
             "icon": "🚗",
             "name": "Bumper Repair & Repaint",
-            "description": "Cracked or scuffed bumper repair and repaint — matched perfectly to the rest of your vehicle.",
+            "description": "Cracked, scuffed, or misaligned bumper repair. We handle both plastic and chrome bumpers — reshape, bond, and repaint to match the rest of the vehicle perfectly.",
             "price": "PKR 6,000"
           }
         }
       },
       "block_order": [
-        "b0",
-        "b1",
-        "b2",
-        "b3"
+        "service_xtfdey",
+        "service_zV9RC9",
+        "service_iHrh9G",
+        "service_YJkiCq",
+        "service_qyUiW9"
       ],
-      "settings": {}
+      "name": "Denting Painting Services",
+      "settings": {
+        "svc_title": "Denting & Painting Services We Offer",
+        "svc_sub": "Expert auto body repair for all vehicle types in Karachi"
+      }
     },
-    "process": {
-      "type": "dp-process",
-      "settings": {}
-    },
-    "why": {
-      "type": "dp-why",
-      "blocks": {
-        "b8": {
-          "type": "why_item",
-          "settings": {
-            "title": "Computerized Color Matching",
-            "description": "We use a spectrophotometer to read your car's exact OEM color code — zero guesswork, perfect blend every time."
-          }
-        },
-        "b9": {
-          "type": "why_item",
-          "settings": {
-            "title": "Dust-Free Paint Booth",
-            "description": "Every repaint happens in our controlled spray environment — no dust, no orange peel. Factory-quality finish guaranteed."
-          }
-        },
-        "b10": {
-          "type": "why_item",
-          "settings": {
-            "title": "Experienced Technicians",
-            "description": "Our team has worked on 500+ vehicles across all makes — from Suzuki and Toyota to imported luxury cars."
-          }
-        },
-        "b11": {
-          "type": "why_item",
-          "settings": {
-            "title": "Transparent Pricing, No Surprises",
-            "description": "You get a written quote before we touch your car. Final bill matches — no hidden add-ons after the job."
-          }
-        }
-      },
-      "block_order": [
-        "b8",
-        "b9",
-        "b10",
-        "b11"
-      ],
-      "settings": {}
-    },
-    "pricing": {
+    "dp_pricing_bherkD": {
       "type": "dp-pricing",
       "blocks": {
-        "b4": {
+        "price_row_a8awfe": {
           "type": "price_row",
           "settings": {
             "service": "Dent Removal (minor)",
@@ -113,7 +84,7 @@
             "price4": "PKR 4,000"
           }
         },
-        "b5": {
+        "price_row_dNLrVr": {
           "type": "price_row",
           "settings": {
             "service": "Scratch Removal",
@@ -123,7 +94,7 @@
             "price4": "PKR 3,000"
           }
         },
-        "b6": {
+        "price_row_Hmn3ng": {
           "type": "price_row",
           "settings": {
             "service": "Single Panel Repaint",
@@ -133,7 +104,7 @@
             "price4": "PKR 14,000"
           }
         },
-        "b7": {
+        "price_row_yyrLxx": {
           "type": "price_row",
           "settings": {
             "service": "Bumper Repair & Repaint",
@@ -145,38 +116,110 @@
         }
       },
       "block_order": [
-        "b4",
-        "b5",
-        "b6",
-        "b7"
+        "price_row_a8awfe",
+        "price_row_dNLrVr",
+        "price_row_Hmn3ng",
+        "price_row_yyrLxx"
       ],
-      "settings": {}
+      "name": "Denting Painting Pricing",
+      "settings": {
+        "price_title": "Denting & Painting Price List — Karachi",
+        "price_sub": "Transparent starting prices. Final quote depends on damage extent and vehicle size.",
+        "col1": "Hatchback",
+        "col2": "Sedan",
+        "col3": "SUV",
+        "col4": "XL SUV",
+        "price_note": "* Prices are starting rates. Final quote after inspection. WhatsApp us a photo for a quick estimate."
+      }
     },
-    "faq": {
+    "dp_process_WK8jip": {
+      "type": "dp-process",
+      "name": "Denting Painting Process",
+      "settings": {
+        "process_title": "How Our Denting & Painting Process Works",
+        "process_sub": "A transparent, quality-controlled process from the moment you bring your car in"
+      }
+    },
+    "dp_why_E9nMpd": {
+      "type": "dp-why",
+      "blocks": {
+        "why_item_HfRqdb": {
+          "type": "why_item",
+          "settings": {
+            "title": "Computerized Color Matching",
+            "description": "We use a spectrophotometer to read your car's exact OEM color code — zero guesswork, perfect blend every time."
+          }
+        },
+        "why_item_XAPxrC": {
+          "type": "why_item",
+          "settings": {
+            "title": "Dust-Free Paint Booth",
+            "description": "Every repaint happens in our controlled spray environment — no dust, no orange peel. Factory-quality finish guaranteed."
+          }
+        },
+        "why_item_RxrcPq": {
+          "type": "why_item",
+          "settings": {
+            "title": "Experienced Technicians",
+            "description": "Our team has worked on 500+ vehicles across all makes — from Suzuki and Toyota to imported luxury cars."
+          }
+        },
+        "why_item_dcqYJT": {
+          "type": "why_item",
+          "settings": {
+            "title": "Transparent Pricing, No Surprises",
+            "description": "You get a written quote before we touch your car. Final bill matches — no hidden add-ons after the job."
+          }
+        }
+      },
+      "block_order": [
+        "why_item_HfRqdb",
+        "why_item_XAPxrC",
+        "why_item_RxrcPq",
+        "why_item_dcqYJT"
+      ],
+      "name": "Denting Painting Why Us",
+      "settings": {
+        "why_title": "Why Karachi Car Owners Choose Revive for Denting & Painting",
+        "why_sub": "There are hundreds of body shops in Karachi. Here's what makes our denting and painting service worth the visit."
+      }
+    },
+    "dp_cta_mGHaQf": {
+      "type": "dp-cta",
+      "name": "Denting Painting CTA",
+      "settings": {
+        "cta_title": "Get a Free Quote for Your Car",
+        "cta_sub": "Send us a photo on WhatsApp or book an inspection — we'll give you a transparent quote with no obligation.",
+        "cta_btn1": "Book Inspection",
+        "cta_btn1_url": "",
+        "cta_btn2": "Send Photo on WhatsApp"
+      }
+    },
+    "dp_faq_iMQtn7": {
       "type": "dp-faq",
       "blocks": {
-        "b12": {
+        "faq_KfKAQB": {
           "type": "faq",
           "settings": {
             "question": "How long does car denting and painting take in Karachi?",
             "answer": "Minor dent removal takes 1–2 hours. A single panel repaint typically takes 1 day including prep, painting, and curing."
           }
         },
-        "b13": {
+        "faq_kn9RqF": {
           "type": "faq",
           "settings": {
             "question": "Can you match my car's exact paint color?",
             "answer": "Yes — we use a computerized spectrophotometer to read your car's exact OEM color code and mix the paint to match precisely, so the repainted panel blends seamlessly with the rest of the car."
           }
         },
-        "b14": {
+        "faq_dq7rXA": {
           "type": "faq",
           "settings": {
             "question": "How much does denting and painting cost in Karachi?",
             "answer": "Minor dent removal starts from PKR 2,500 and a single panel repaint starts from PKR 8,000. Send us a WhatsApp photo of the damage for a quick, free estimate."
           }
         },
-        "b15": {
+        "faq_MRUY6k": {
           "type": "faq",
           "settings": {
             "question": "Which areas of Karachi do you serve?",
@@ -185,26 +228,50 @@
         }
       },
       "block_order": [
-        "b12",
-        "b13",
-        "b14",
-        "b15"
+        "faq_KfKAQB",
+        "faq_kn9RqF",
+        "faq_dq7rXA",
+        "faq_MRUY6k"
       ],
-      "settings": {}
+      "name": "Denting Painting FAQ",
+      "settings": {
+        "faq_title": "Frequently Asked Questions — Denting & Painting Karachi",
+        "faq_sub": "Common questions about car denting and painting services in Karachi"
+      }
     },
-    "cta": {
-      "type": "dp-cta",
-      "settings": {}
+    "dp_hero_R4YaDV": {
+      "type": "dp-hero",
+      "name": "Denting Painting Hero",
+      "settings": {
+        "badge": "Denting & Painting Services • Karachi",
+        "hero_title": "Professional",
+        "hero_highlight": "Denting & Painting",
+        "hero_end": "in Karachi",
+        "hero_desc": "Revive Auto Detailing offers expert denting, painting, and scratch removal services in Karachi. From minor dents to full panel repaints — we restore your car to showroom condition using precision color matching.",
+        "trust1": "4.9 Google Rating",
+        "trust2": "500+ Cars Serviced",
+        "trust3": "Exact Color Matching",
+        "btn1_text": "Get Free Quote",
+        "btn1_url": "",
+        "btn2_text": "WhatsApp Us",
+        "stat1_num": "500+",
+        "stat1_lbl": "Cars Repaired",
+        "stat2_num": "4.9⭐",
+        "stat2_lbl": "Google Rating",
+        "stat3_num": "100%",
+        "stat3_lbl": "Color Match",
+        "stat4_num": "2+",
+        "stat4_lbl": "Years in Karachi"
+      }
     }
   },
   "order": [
-    "hero",
-    "trust",
-    "services",
-    "process",
-    "why",
-    "pricing",
-    "faq",
-    "cta"
+    "dp_hero_R4YaDV",
+    "dp_services_MxgrM6",
+    "dp_pricing_bherkD",
+    "dp_process_WK8jip",
+    "dp_why_E9nMpd",
+    "dp_cta_mGHaQf",
+    "dp_faq_iMQtn7"
   ]
 }
