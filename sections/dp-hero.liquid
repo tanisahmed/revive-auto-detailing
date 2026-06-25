@@ -2,26 +2,25 @@
 .rad-dp { font-family: 'Nunito Sans', sans-serif; }
 
 /* HERO */
-.rad-dp-hero { background: linear-gradient(135deg, #0f172a 0%, #1c1917 100%); padding: 5rem 0 4rem; color: #fff; position: relative; overflow: hidden; }
+.rad-dp-hero { background: #0f172a; padding: 5rem 0 4rem; color: #fff; position: relative; overflow: hidden; min-height: 480px; display:flex; align-items:center; }
 .rad-dp-hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 60% 40%, rgba(234,88,12,0.2) 0%, transparent 60%); }
-.rad-dp-hero-inner { position:relative; z-index:1; max-width:1060px; margin:0 auto; padding:0 1.5rem; display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+.rad-dp-hero-inner { position:relative; z-index:2; max-width:760px; margin:0 auto; padding:0 1.5rem; text-align:center; }
 .rad-dp-hero-badge { display:inline-flex; align-items:center; gap:0.5rem; background:rgba(234,88,12,0.2); border:1px solid rgba(234,88,12,0.5); color:#fb923c; font-size:0.75rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.4rem 1rem; border-radius:100px; margin-bottom:1.25rem; }
 .rad-dp-hero h1 { font-size:2.75rem; font-weight:800; line-height:1.15; margin-bottom:1rem; }
 .rad-dp-hero h1 span { color:#fb923c; }
 .rad-dp-hero-desc { font-size:1.05rem; color:#d1d5db; line-height:1.75; margin-bottom:2rem; }
-.rad-dp-hero-trust { display:flex; gap:1.5rem; flex-wrap:wrap; margin-bottom:2rem; }
+.rad-dp-hero-trust { display:flex; gap:1.5rem; flex-wrap:wrap; margin-bottom:2rem; justify-content:center; }
 .rad-dp-hero-trust-item { display:flex; align-items:center; gap:0.4rem; font-size:0.85rem; color:#9ca3af; }
 .rad-dp-hero-trust-item span:first-child { color:#fb923c; }
-.rad-dp-hero-btns { display:flex; gap:0.75rem; flex-wrap:wrap; }
+.rad-dp-hero-btns { display:flex; gap:0.75rem; flex-wrap:wrap; justify-content:center; }
 .rad-dp-btn-primary { display:inline-flex; align-items:center; gap:0.4rem; padding:0.9rem 1.75rem; background:#ea580c; color:#fff; border-radius:8px; font-weight:700; font-size:1rem; text-decoration:none; transition:all 0.2s; }
 .rad-dp-btn-primary:hover { background:#c2410c; }
 .rad-dp-btn-wa { display:inline-flex; align-items:center; gap:0.4rem; padding:0.9rem 1.75rem; background:#10b981; color:#fff; border-radius:8px; font-weight:700; font-size:1rem; text-decoration:none; transition:all 0.2s; }
 .rad-dp-btn-wa:hover { background:#059669; }
-.rad-dp-hero-visual { background:linear-gradient(135deg,#1c1917,#292524); border-radius:16px; padding:2rem; }
-.rad-dp-hero-stats { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-.rad-dp-hero-stat { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:1.25rem; text-align:center; }
-.rad-dp-hero-stat-num { font-size:2rem; font-weight:800; color:#fb923c; display:block; }
-.rad-dp-hero-stat-lbl { font-size:0.75rem; color:#9ca3af; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; }
+.rad-dp-hero-media { position:absolute; inset:0; z-index:0; overflow:hidden; }
+.rad-dp-hero-media img,
+.rad-dp-hero-media video { width:100%; height:100%; object-fit:cover; display:block; }
+.rad-dp-hero-media::after { content:''; position:absolute; inset:0; background:rgba(10,10,10,0.55); }
 
 /* TRUST BAR */
 .rad-dp-trust { background:#fff; border-bottom:1px solid #e5e7eb; padding:1rem 0; }
@@ -114,6 +113,7 @@
 @media (max-width:640px) {
   .rad-dp-hero { padding:2.25rem 0; }
   .rad-dp-hero-inner { padding:0 1rem; }
+  .rad-dp-hero { min-height:380px; }
   .rad-dp-hero h1 { font-size:1.65rem; line-height:1.25; }
   .rad-dp-hero-desc { font-size:0.9rem; margin-bottom:1.25rem; }
   .rad-dp-hero-btns { flex-direction:row; flex-wrap:nowrap; gap:0.5rem; }
@@ -138,6 +138,17 @@
 
 <!-- HERO -->
   <div class="rad-dp-hero">
+
+    {%- if section.settings.bg_video != blank -%}
+  <div class="rad-dp-hero-media">
+    <video src="{{ section.settings.bg_video.sources.last.url }}" autoplay muted loop playsinline></video>
+  </div>
+{%- elsif section.settings.bg_image != blank -%}
+  <div class="rad-dp-hero-media">
+    <img src="{{ section.settings.bg_image | image_url: width: 1600 }}" alt="Denting & Painting Background">
+  </div>
+{%- endif -%}
+
     <div class="rad-dp-hero-inner">
       <div>
         <div class="rad-dp-hero-badge">🔧 {{ section.settings.badge | default: "Denting & Painting Services • Karachi" }}</div>
@@ -153,14 +164,15 @@
           <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20denting%20and%20painting%20for%20my%20car" target="_blank" class="rad-dp-btn-wa">💬 {{ section.settings.btn2_text | default: "WhatsApp Us" }}</a>
         </div>
       </div>
-      <div class="rad-dp-hero-visual">
-        <div class="rad-dp-hero-stats">
-          <div class="rad-dp-hero-stat"><span class="rad-dp-hero-stat-num">{{ section.settings.stat1_num | default: "500+" }}</span><span class="rad-dp-hero-stat-lbl">{{ section.settings.stat1_lbl | default: "Cars Repaired" }}</span></div>
-          <div class="rad-dp-hero-stat"><span class="rad-dp-hero-stat-num">{{ section.settings.stat2_num | default: "4.9⭐" }}</span><span class="rad-dp-hero-stat-lbl">{{ section.settings.stat2_lbl | default: "Google Rating" }}</span></div>
-          <div class="rad-dp-hero-stat"><span class="rad-dp-hero-stat-num">{{ section.settings.stat3_num | default: "100%" }}</span><span class="rad-dp-hero-stat-lbl">{{ section.settings.stat3_lbl | default: "Color Match" }}</span></div>
-          <div class="rad-dp-hero-stat"><span class="rad-dp-hero-stat-num">{{ section.settings.stat4_num | default: "2+" }}</span><span class="rad-dp-hero-stat-lbl">{{ section.settings.stat4_lbl | default: "Years in Karachi" }}</span></div>
-        </div>
-      </div>
+{%- if section.settings.bg_video != blank -%}
+  <div class="rad-dp-hero-media">
+    <video src="{{ section.settings.bg_video.sources.last.url }}" autoplay muted loop playsinline></video>
+  </div>
+{%- elsif section.settings.bg_image != blank -%}
+  <div class="rad-dp-hero-media">
+    <img src="{{ section.settings.bg_image | image_url: width: 1600 }}" alt="Denting & Painting Background">
+  </div>
+{%- endif -%}
     </div>
   </div>
 
@@ -171,6 +183,20 @@
     {
       "type": "header",
       "content": "Hero"
+    },
+    {
+      "type": "header",
+      "content": "Hero Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "video",
+      "id": "bg_video",
+      "label": "Background Video (overrides image)"
     },
     {
       "type": "text",
@@ -236,58 +262,6 @@
       "id": "btn2_text",
       "label": "Button 2 Text",
       "default": "WhatsApp Us"
-    },
-    {
-      "type": "header",
-      "content": "Hero Stats"
-    },
-    {
-      "type": "text",
-      "id": "stat1_num",
-      "label": "Stat 1 Number",
-      "default": "500+"
-    },
-    {
-      "type": "text",
-      "id": "stat1_lbl",
-      "label": "Stat 1 Label",
-      "default": "Cars Repaired"
-    },
-    {
-      "type": "text",
-      "id": "stat2_num",
-      "label": "Stat 2 Number",
-      "default": "4.9⭐"
-    },
-    {
-      "type": "text",
-      "id": "stat2_lbl",
-      "label": "Stat 2 Label",
-      "default": "Google Rating"
-    },
-    {
-      "type": "text",
-      "id": "stat3_num",
-      "label": "Stat 3 Number",
-      "default": "100%"
-    },
-    {
-      "type": "text",
-      "id": "stat3_lbl",
-      "label": "Stat 3 Label",
-      "default": "Color Match"
-    },
-    {
-      "type": "text",
-      "id": "stat4_num",
-      "label": "Stat 4 Number",
-      "default": "2+"
-    },
-    {
-      "type": "text",
-      "id": "stat4_lbl",
-      "label": "Stat 4 Label",
-      "default": "Years in Karachi"
     }
   ],
   "presets": [
