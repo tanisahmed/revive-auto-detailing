@@ -72,6 +72,8 @@
 .uvi-reveal-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(to right, #9333ea, #c084fc); }
 .uvi-reveal-card:hover { box-shadow: 0 8px 24px rgba(147,51,234,0.1); transform: translateY(-3px); }
 .uvi-reveal-icon { font-size: 2rem; display: block; margin-bottom: 0.75rem; }
+.uvi-reveal-img { width: 100%; height: 160px; border-radius: 8px; overflow: hidden; margin-bottom: 0.75rem; }
+.uvi-reveal-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .uvi-reveal-card h3 { font-size: 0.95rem; font-weight: 800; color: #1f2937; margin-bottom: 0.35rem; }
 .uvi-reveal-card p { font-size: 0.8rem; color: #6b7280; line-height: 1.55; }
 
@@ -206,7 +208,11 @@
         {%- for block in section.blocks -%}
           {%- if block.type == 'reveal' -%}
           <div class="uvi-reveal-card">
-            <span class="uvi-reveal-icon">{{ block.settings.icon }}</span>
+            {%- if block.settings.image != blank -%}
+              <div class="uvi-reveal-img"><img src="{{ block.settings.image | image_url: width: 400 }}" alt="{{ block.settings.title }}" loading="lazy"></div>
+            {%- else -%}
+              <span class="uvi-reveal-icon">{{ block.settings.icon | default: "🔍" }}</span>
+            {%- endif -%}
             <h3>{{ block.settings.title }}</h3>
             <p>{{ block.settings.description }}</p>
           </div>
@@ -609,6 +615,11 @@ document.querySelectorAll('.uvi-faq-q').forEach(function(q){
       "type": "reveal",
       "name": "What UV Reveals",
       "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo (replaces icon if set)"
+        },
         {
           "type": "text",
           "id": "icon",
