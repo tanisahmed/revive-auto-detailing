@@ -1,0 +1,217 @@
+<style>
+.rad-reviews { padding: 4rem 0; background: #0f172a; font-family: 'Nunito Sans', sans-serif; overflow: hidden; }
+.rad-reviews-inner { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-reviews-hdr { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; }
+.rad-reviews-hdr-left { }
+.rad-reviews-tag { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #60a5fa; margin-bottom: 0.4rem; }
+.rad-reviews-hdr h2 { font-size: 2rem; font-weight: 800; color: #fff; margin: 0; }
+.rad-reviews-hdr p { color: #94a3b8; font-size: 0.9rem; margin-top: 0.4rem; }
+.rad-reviews-nav { display: flex; gap: 0.6rem; }
+.rad-rev-nav-btn { width: 2.5rem; height: 2.5rem; border-radius: 50%; border: 2px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.07); color: #fff; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.rad-rev-nav-btn:hover { border-color: #1e3a8a; background: #1e3a8a; }
+
+/* Slider */
+.rad-rev-track-wrap { overflow: hidden; }
+.rad-rev-track { display: flex; gap: 1rem; transition: transform 0.45s cubic-bezier(0.4,0,0.2,1); will-change: transform; }
+
+/* Video card */
+.rad-rev-card { flex: 0 0 calc((100% - 3rem) / 4); border-radius: 14px; overflow: hidden; position: relative; cursor: pointer; background: #1e293b; aspect-ratio: 9/16; }
+.rad-rev-card img, .rad-rev-card video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.rad-rev-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.05) 50%, transparent 100%); }
+.rad-rev-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 54px; height: 54px; border-radius: 50%; background: rgba(255,255,255,0.2); backdrop-filter: blur(6px); border: 2px solid rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; transition: all 0.25s; }
+.rad-rev-card:hover .rad-rev-play { background: rgba(30,58,138,0.8); border-color: #60a5fa; transform: translate(-50%, -50%) scale(1.1); }
+.rad-rev-play svg { width: 22px; height: 22px; margin-left: 3px; }
+.rad-rev-card-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem; }
+.rad-rev-card-name { font-size: 0.85rem; font-weight: 700; color: #fff; margin-bottom: 0.15rem; }
+.rad-rev-card-service { font-size: 0.72rem; color: #93c5fd; font-weight: 600; }
+.rad-rev-stars { color: #fbbf24; font-size: 0.75rem; margin-bottom: 0.25rem; }
+
+/* Fullscreen lightbox */
+.rad-rev-lb { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 9999; display: none; align-items: center; justify-content: center; }
+.rad-rev-lb.open { display: flex; }
+.rad-rev-lb-inner { position: relative; width: min(420px, 90vw); max-height: 90vh; }
+.rad-rev-lb-inner video { width: 100%; max-height: 90vh; border-radius: 12px; display: block; object-fit: contain; }
+.rad-rev-lb-close { position: absolute; top: -2.5rem; right: 0; background: none; border: none; color: #fff; font-size: 1.75rem; cursor: pointer; line-height: 1; padding: 0.25rem; }
+.rad-rev-lb-close:hover { color: #60a5fa; }
+.rad-rev-lb-prev, .rad-rev-lb-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.12); border: none; color: #fff; font-size: 1.5rem; width: 2.5rem; height: 2.5rem; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.rad-rev-lb-prev { left: -3.5rem; }
+.rad-rev-lb-next { right: -3.5rem; }
+.rad-rev-lb-prev:hover, .rad-rev-lb-next:hover { background: #1e3a8a; }
+
+@media (max-width: 1024px) {
+  .rad-rev-card { flex: 0 0 calc((100% - 2rem) / 3); }
+}
+@media (max-width: 768px) {
+  .rad-reviews { padding: 2.5rem 0; }
+  .rad-reviews-hdr { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .rad-reviews-hdr h2 { font-size: 1.5rem; }
+  .rad-rev-card { flex: 0 0 calc((100% - 1rem) / 2); }
+  .rad-rev-lb-prev { left: -2.25rem; }
+  .rad-rev-lb-next { right: -2.25rem; }
+}
+@media (max-width: 480px) {
+  .rad-rev-card { flex: 0 0 calc(100% - 3rem); }
+}
+</style>
+
+<section class="rad-reviews" id="customer-reviews">
+  <div class="rad-reviews-inner">
+    <div class="rad-reviews-hdr">
+      <div class="rad-reviews-hdr-left">
+        <div class="rad-reviews-tag">{{ section.settings.tag | default: "Real Customers • Real Results" }}</div>
+        <h2>{{ section.settings.title | default: "What Our Customers Say" }}</h2>
+        <p>{{ section.settings.subtitle | default: "Watch real reviews from Karachi car owners" }}</p>
+      </div>
+      <div class="rad-reviews-nav">
+        <button class="rad-rev-nav-btn" id="rad-rev-prev" aria-label="Previous">&#8592;</button>
+        <button class="rad-rev-nav-btn" id="rad-rev-next" aria-label="Next">&#8594;</button>
+      </div>
+    </div>
+
+    <div class="rad-rev-track-wrap">
+      <div class="rad-rev-track" id="rad-rev-track">
+        {%- for block in section.blocks -%}
+          {%- if block.settings.video != blank -%}
+          <div class="rad-rev-card" data-index="{{ forloop.index0 }}">
+            <video src="{{ block.settings.video.sources.last.url }}" muted playsinline preload="metadata"
+              onmouseover="this.play()" onmouseout="this.pause()"></video>
+            <div class="rad-rev-card-overlay"></div>
+            <div class="rad-rev-play">
+              <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="rad-rev-card-info">
+              <div class="rad-rev-stars">★★★★★</div>
+              <div class="rad-rev-card-name">{{ block.settings.name | default: "Happy Customer" }}</div>
+              <div class="rad-rev-card-service">{{ block.settings.service | default: "Ceramic Coating" }}</div>
+            </div>
+          </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="rad-rev-lb" id="rad-rev-lb">
+  <div class="rad-rev-lb-inner">
+    <button class="rad-rev-lb-close" id="rad-rev-lb-close">&times;</button>
+    <button class="rad-rev-lb-prev" id="rad-rev-lb-prev">&#8592;</button>
+    <video id="rad-rev-lb-video" controls playsinline style="background:#000;"></video>
+    <button class="rad-rev-lb-next" id="rad-rev-lb-next">&#8594;</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var track    = document.getElementById('rad-rev-track');
+  var lb       = document.getElementById('rad-rev-lb');
+  var lbVideo  = document.getElementById('rad-rev-lb-video');
+  var lbClose  = document.getElementById('rad-rev-lb-close');
+  var lbPrev   = document.getElementById('rad-rev-lb-prev');
+  var lbNext   = document.getElementById('rad-rev-lb-next');
+
+  if (!track) return;
+
+  // ── SLIDER ──
+  var cards       = track.querySelectorAll('.rad-rev-card');
+  var totalCards  = cards.length;
+  var currentPos  = 0;
+  var visibleCount = window.innerWidth >= 1024 ? 4 : window.innerWidth >= 768 ? 3 : window.innerWidth >= 480 ? 2 : 1;
+  var maxPos       = Math.max(0, totalCards - visibleCount);
+
+  function slideToPos(pos) {
+    currentPos = Math.max(0, Math.min(pos, maxPos));
+    var cardWidth = cards[0] ? cards[0].offsetWidth + 16 : 0;
+    track.style.transform = 'translateX(-' + (currentPos * cardWidth) + 'px)';
+  }
+
+  document.getElementById('rad-rev-prev').addEventListener('click', function(){ slideToPos(currentPos - 1); });
+  document.getElementById('rad-rev-next').addEventListener('click', function(){ slideToPos(currentPos + 1); });
+
+  // Touch swipe
+  var touchStartX = 0;
+  track.addEventListener('touchstart', function(e){ touchStartX = e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchend', function(e){
+    var diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) slideToPos(currentPos + (diff > 0 ? 1 : -1));
+  });
+
+  // ── LIGHTBOX ──
+  var videos = [];
+  cards.forEach(function(card){
+    var v = card.querySelector('video');
+    if (v) videos.push(v.src);
+  });
+  var lbIdx = 0;
+
+  function openLb(idx){
+    lbIdx = idx;
+    lbVideo.src = videos[lbIdx];
+    lbVideo.play();
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb(){
+    lbVideo.pause();
+    lbVideo.src = '';
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function lbGoTo(idx){
+    lbVideo.pause();
+    lbIdx = (idx + videos.length) % videos.length;
+    lbVideo.src = videos[lbIdx];
+    lbVideo.play();
+  }
+
+  cards.forEach(function(card, i){
+    card.addEventListener('click', function(){ openLb(i); });
+  });
+  lbClose.addEventListener('click', closeLb);
+  lb.addEventListener('click', function(e){ if(e.target === lb) closeLb(); });
+  lbPrev.addEventListener('click', function(){ lbGoTo(lbIdx - 1); });
+  lbNext.addEventListener('click', function(){ lbGoTo(lbIdx + 1); });
+  document.addEventListener('keydown', function(e){
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowLeft') lbGoTo(lbIdx - 1);
+    if (e.key === 'ArrowRight') lbGoTo(lbIdx + 1);
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Customer Video Reviews",
+  "settings": [
+    {"type":"text","id":"tag","label":"Tag Line","default":"Real Customers • Real Results"},
+    {"type":"text","id":"title","label":"Section Title","default":"What Our Customers Say"},
+    {"type":"text","id":"subtitle","label":"Subtitle","default":"Watch real reviews from Karachi car owners"}
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Video Review",
+      "settings": [
+        {"type":"video","id":"video","label":"Customer Video"},
+        {"type":"text","id":"name","label":"Customer Name","default":"Ahmed Khan"},
+        {"type":"text","id":"service","label":"Service Taken","default":"Ceramic Coating"}
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Video Reviews",
+      "blocks": [
+        {"type":"review","settings":{"name":"Ahmed Khan","service":"Ceramic Coating"}},
+        {"type":"review","settings":{"name":"Sara Malik","service":"PPF Installation"}},
+        {"type":"review","settings":{"name":"Usman Ali","service":"Window Tinting"}},
+        {"type":"review","settings":{"name":"Farrukh Baig","service":"Anti-Rust Coating"}},
+        {"type":"review","settings":{"name":"Zoya Ahmed","service":"Car Detailing"}},
+        {"type":"review","settings":{"name":"Hassan Raza","service":"Color PPF"}}
+      ]
+    }
+  ]
+}
+{% endschema %}
