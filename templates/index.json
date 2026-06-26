@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "hero": {
@@ -150,6 +141,118 @@
         "title": "What Our Customers Say",
         "subtitle": "Watch real reviews from Karachi car owners"
       }
+    },
+    "ourwork": {
+      "type": "our-work",
+      "blocks": {
+        "w1": {
+          "type": "work_video",
+          "settings": {
+            "vehicle": "Toyota Corolla",
+            "service": "Ceramic Coating"
+          }
+        },
+        "w2": {
+          "type": "work_video",
+          "settings": {
+            "vehicle": "Honda Civic",
+            "service": "PPF Installation"
+          }
+        },
+        "w3": {
+          "type": "work_video",
+          "settings": {
+            "vehicle": "KIA Sportage",
+            "service": "Window Tinting"
+          }
+        },
+        "w4": {
+          "type": "work_video",
+          "settings": {
+            "vehicle": "Suzuki Swift",
+            "service": "Anti-Rust Coating"
+          }
+        },
+        "w5": {
+          "type": "work_video",
+          "settings": {
+            "vehicle": "Toyota Fortuner",
+            "service": "Car Detailing"
+          }
+        },
+        "w6": {
+          "type": "work_video",
+          "settings": {
+            "vehicle": "Honda Vezel",
+            "service": "Color PPF"
+          }
+        }
+      },
+      "block_order": [
+        "w1",
+        "w2",
+        "w3",
+        "w4",
+        "w5",
+        "w6"
+      ],
+      "settings": {}
+    },
+    "reviews": {
+      "type": "reviews-slider",
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "name": "Ahmed Khan",
+            "service": "Ceramic Coating"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "name": "Sara Malik",
+            "service": "PPF Installation"
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "name": "Usman Ali",
+            "service": "Window Tinting"
+          }
+        },
+        "r4": {
+          "type": "review",
+          "settings": {
+            "name": "Farrukh Baig",
+            "service": "Anti-Rust Coating"
+          }
+        },
+        "r5": {
+          "type": "review",
+          "settings": {
+            "name": "Zoya Ahmed",
+            "service": "Car Detailing"
+          }
+        },
+        "r6": {
+          "type": "review",
+          "settings": {
+            "name": "Hassan Raza",
+            "service": "Color PPF"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -157,7 +260,8 @@
     "services",
     "whyus",
     "process",
-    "leadform",
-    "reviews_slider_7dpfXw"
+    "ourwork",
+    "reviews",
+    "leadform"
   ]
 }
