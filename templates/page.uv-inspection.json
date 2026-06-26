@@ -1,48 +1,114 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
       "type": "uv-inspection",
-      "settings": {
-        "badge": "UV Paint Inspection • Karachi",
-        "h1_part1": "UV Light",
-        "h1_em": "Car Paint",
-        "h1_part2": "Inspection in Karachi",
-        "hero_sub": "See What the Naked Eye Can't",
-        "hero_desc": "We use professional UV light devices to inspect your car's paint to revealing hidden repaint, fading, rust damage, and paint defects before you buy or protect your vehicle.",
-        "feat1": "✓ Repaint Detection",
-        "feat2": "✓ Paint Fade Check",
-        "feat3": "✓ Rust & Filler Reveal",
-        "feat4": "✓ Pre-Buy Inspection",
-        "btn1": "Book Inspection",
-        "btn1_url": "",
-        "btn2": "WhatsApp Us",
-        "price_title": "UV Paint Inspection Pricing",
-        "price_sub": "Flat rate per vehicle type — no hidden charges",
-        "price_hatch": "5,500",
-        "price_sedan": "6,500",
-        "price_suv": "7,500",
-        "price_xlsuv": "10,000",
-        "reveals_title": "What UV Light Reveals on Your Car",
-        "reveals_sub": "6 hidden paint problems that only show up under UV light",
-        "slot_vid_1": "shopify://files/videos/UV Light Inspection.MP4",
-        "slot_vid_2": "shopify://files/videos/UV Light Inspection V2.MP4",
-        "media_title": "Watch UV Inspection in Action",
-        "media_sub": "See how hidden repaint and defects light up under our UV device",
-        "process_title": "UV Paint Inspection — Step by Step",
-        "process_sub": "",
-        "cta_title": "Don't Buy a Car Without",
-        "cta_title_em": "UV Inspection",
-        "cta_sub": ""
-      }
+      "blocks": {
+        "rev1": {
+          "type": "reveal",
+          "settings": {
+            "icon": "🎨",
+            "title": "Repaint Detection",
+            "description": "Resprayed panels glow differently from factory paint. Even perfect color matches can't fool UV — every repainted door, bonnet, or bumper shows up clearly."
+          }
+        },
+        "rev2": {
+          "type": "reveal",
+          "settings": {
+            "icon": "🌫",
+            "title": "Paint Fading",
+            "description": "UV-faded clear coat shows distinct patterns under UV light before fade becomes visible in daylight."
+          }
+        },
+        "rev3": {
+          "type": "reveal",
+          "settings": {
+            "icon": "🔴",
+            "title": "Hidden Rust",
+            "description": "Rust forming under paint shows as dark discoloration under UV — invisible until it breaks through the surface."
+          }
+        },
+        "rev4": {
+          "type": "reveal",
+          "settings": {
+            "icon": "🧱",
+            "title": "Body Filler (Putty)",
+            "description": "Filler used in dent and accident repairs glows brightly under UV — exposing exactly where putty was applied."
+          }
+        },
+        "rev5": {
+          "type": "reveal",
+          "settings": {
+            "icon": "💧",
+            "title": "Moisture / Flood Damage",
+            "description": "Water trapped between paint layers creates distinct UV patterns. Essential for used cars in Karachi after heavy rains."
+          }
+        },
+        "rev6": {
+          "type": "reveal",
+          "settings": {
+            "icon": "🪟",
+            "title": "Clear Coat Damage",
+            "description": "Deep scratches and swirl marks in the clear coat become highly visible under UV light."
+          }
+        },
+        "st1": {
+          "type": "step",
+          "settings": {
+            "title": "Book Your Appointment",
+            "description": "Book online or WhatsApp us. Let us know your vehicle type so we allocate the right time slot."
+          }
+        },
+        "st2": {
+          "type": "step",
+          "settings": {
+            "title": "Arrive at Our Studio",
+            "description": "Drive into our Karachi studio. No prep needed — just park and hand over the keys."
+          }
+        },
+        "st3": {
+          "type": "step",
+          "settings": {
+            "title": "Studio Lights Go Off",
+            "description": "We close the shutters and darken the inspection bay so the UV light works accurately."
+          }
+        },
+        "st4": {
+          "type": "step",
+          "settings": {
+            "title": "Panel-by-Panel UV Scan",
+            "description": "Our technician moves the UV device systematically across every exterior panel — bonnet, doors, roof, bumpers, and boot."
+          }
+        },
+        "st5": {
+          "type": "step",
+          "settings": {
+            "title": "Findings Shown to You Live",
+            "description": "Every anomaly found is shown to you in real time. You see exactly what the UV reveals."
+          }
+        },
+        "st6": {
+          "type": "step",
+          "settings": {
+            "title": "Full Report Delivered",
+            "description": "Panel-by-panel findings summary on the spot. Written report available on request."
+          }
+        }
+      },
+      "block_order": [
+        "rev1",
+        "rev2",
+        "rev3",
+        "rev4",
+        "rev5",
+        "rev6",
+        "st1",
+        "st2",
+        "st3",
+        "st4",
+        "st5",
+        "st6"
+      ],
+      "settings": {}
     }
   },
   "order": [
