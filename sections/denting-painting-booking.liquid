@@ -1,0 +1,585 @@
+<style>
+.rad-dp-booking { padding: 4rem 0 6rem; background: #fff; }
+.rad-dp-wrapper { max-width: 600px; margin: 0 auto; }
+.rad-prog { margin-bottom: 2rem; }
+.rad-prog-bar-track { height: 6px; background: #e5e7eb; border-radius: 100px; overflow: hidden; margin-bottom: 0.5rem; }
+.rad-prog-bar-fill { height: 100%; background: #1e3a8a; border-radius: 100px; transition: width 0.4s ease; }
+.rad-prog-labels { display: flex; justify-content: space-between; font-size: 0.8rem; color: #6b7280; font-weight: 600; }
+.rad-prog-labels span.active { color: #1e3a8a; font-weight: 800; }
+.rad-steps { display: flex; justify-content: center; gap: 0; margin-bottom: 2rem; position: relative; }
+.rad-steps::before { content:''; position:absolute; top:1.1rem; left:10%; right:10%; height:2px; background:#e5e7eb; z-index:0; }
+.rad-step { display:flex; flex-direction:column; align-items:center; gap:0.4rem; flex:1; position:relative; z-index:1; }
+.rad-step-dot { width:2.25rem; height:2.25rem; border-radius:50%; border:2px solid #e5e7eb; background:#fff; display:flex; align-items:center; justify-content:center; font-size:0.875rem; font-weight:800; color:#9ca3af; transition:all 0.3s; }
+.rad-step.active .rad-step-dot { background:#1e3a8a; border-color:#1e3a8a; color:#fff; }
+.rad-step.done .rad-step-dot { background:#10b981; border-color:#10b981; color:#fff; }
+.rad-step-lbl { font-size:0.7rem; font-weight:700; color:#9ca3af; text-align:center; }
+.rad-step.active .rad-step-lbl { color:#1e3a8a; }
+.rad-step.done .rad-step-lbl { color:#10b981; }
+.rad-bform { background:#f3f4f6; border-radius:12px; padding:2rem; }
+.rad-bstep { display:none; }
+.rad-bstep.active { display:block; }
+.rad-bstep-title { font-size:1.4rem; font-weight:800; color:#1f2937; margin-bottom:0.25rem; font-family:'Nunito Sans',sans-serif; }
+.rad-bstep-desc { font-size:0.875rem; color:#6b7280; margin-bottom:1.5rem; }
+.rad-fg { margin-bottom:1rem; }
+.rad-fl { display:block; font-weight:600; font-size:0.9rem; color:#1f2937; margin-bottom:0.35rem; }
+.rad-fl em { color:#ef4444; font-style:normal; }
+.rad-fi { width:100%; padding:0.75rem 1rem; border:2px solid #e5e7eb; border-radius:8px; font-size:1rem; font-family:'Nunito Sans',sans-serif; color:#1f2937; background:#fff; outline:none; transition:border 0.2s; box-sizing:border-box; }
+.rad-fi:focus { border-color:#1e3a8a; box-shadow:0 0 0 3px rgba(30,58,138,0.1); }
+.rad-fi.rad-err { border-color:#ef4444; }
+.rad-ferr { color:#ef4444; font-size:0.78rem; margin-top:0.25rem; display:none; }
+.rad-ferr.show { display:block; }
+.rad-frow { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.rad-times { display:grid; grid-template-columns:repeat(4,1fr); gap:0.6rem; margin-top:0.35rem; }
+.rad-time { padding:0.6rem 0.5rem; border:2px solid #e5e7eb; border-radius:8px; text-align:center; font-weight:700; font-size:0.875rem; cursor:pointer; background:#fff; transition:all 0.2s; color:#1f2937; font-family:'Nunito Sans',sans-serif; }
+.rad-time:hover { border-color:#1e3a8a; color:#1e3a8a; }
+.rad-time.sel { background:#1e3a8a; border-color:#1e3a8a; color:#fff; }
+.rad-pkgs { display:flex; flex-direction:column; gap:0.75rem; margin-top:0.35rem; }
+.rad-pkg { display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem; background:#fff; border:2px solid #e5e7eb; border-radius:8px; cursor:pointer; transition:all 0.2s; }
+.rad-pkg:hover { border-color:#1e3a8a; }
+.rad-pkg.sel { border-color:#1e3a8a; background:rgba(30,58,138,0.04); }
+.rad-pkg-radio { width:1.25rem; height:1.25rem; border:2px solid #e5e7eb; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:all 0.2s; }
+.rad-pkg.sel .rad-pkg-radio { border-color:#1e3a8a; background:#1e3a8a; }
+.rad-pkg.sel .rad-pkg-radio::after { content:''; width:6px; height:6px; background:#fff; border-radius:50%; display:block; }
+.rad-pkg-name { font-weight:700; font-size:0.95rem; color:#1f2937; }
+.rad-pkg-price { font-size:0.875rem; color:#1e3a8a; font-weight:700; }
+.rad-price-show { background:rgba(30,58,138,0.08); border:1px solid rgba(30,58,138,0.2); border-radius:8px; padding:0.85rem 1.25rem; margin-top:1rem; display:none; justify-content:space-between; align-items:center; }
+.rad-price-show.show { display:flex; }
+.rad-price-lbl { font-size:0.875rem; color:#6b7280; font-weight:600; }
+.rad-price-val { font-size:1.35rem; font-weight:800; color:#1e3a8a; }
+.rad-rev-block { background:#fff; border-radius:8px; padding:1.25rem; margin-bottom:0.75rem; }
+.rad-rev-hdr { display:flex; justify-content:space-between; align-items:center; padding-bottom:0.6rem; border-bottom:1px solid #e5e7eb; margin-bottom:0.75rem; }
+.rad-rev-title { font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:#6b7280; }
+.rad-rev-edit { font-size:0.8rem; font-weight:700; color:#1e3a8a; cursor:pointer; background:none; border:none; font-family:'Nunito Sans',sans-serif; }
+.rad-rev-row { display:flex; justify-content:space-between; gap:1rem; font-size:0.875rem; padding:0.25rem 0; }
+.rad-rev-row .rl { color:#6b7280; }
+.rad-rev-row .rv { font-weight:600; color:#1f2937; text-align:right; }
+.rad-rev-total { background:#1e3a8a; color:#fff; border-radius:8px; padding:1rem 1.25rem; display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; }
+.rad-rev-total-lbl { font-weight:700; }
+.rad-rev-total-price { font-size:1.5rem; font-weight:800; }
+.rad-terms { display:flex; align-items:flex-start; gap:0.75rem; margin-bottom:1.25rem; cursor:pointer; }
+.rad-terms input { width:1.1rem; height:1.1rem; margin-top:2px; cursor:pointer; flex-shrink:0; accent-color:#1e3a8a; }
+.rad-terms span { font-size:0.85rem; color:#6b7280; line-height:1.5; }
+.rad-bnav { display:flex; gap:0.75rem; margin-top:1.5rem; }
+.rad-bbtn-back { flex:0.4; padding:0.875rem; background:#fff; border:2px solid #d1d5db; border-radius:8px; font-family:'Nunito Sans',sans-serif; font-weight:700; font-size:1rem; color:#6b7280; cursor:pointer; transition:all 0.2s; }
+.rad-bbtn-back:hover:not(:disabled) { border-color:#1e3a8a; color:#1e3a8a; }
+.rad-bbtn-back:disabled { opacity:0.4; cursor:not-allowed; }
+.rad-bbtn-next { flex:1; padding:0.875rem; background:#1e3a8a; border:none; border-radius:8px; font-family:'Nunito Sans',sans-serif; font-weight:700; font-size:1rem; color:#fff; cursor:pointer; transition:all 0.2s; }
+.rad-bbtn-next:hover { background:#1e40af; }
+.rad-bsuccess { display:none; background:#f3f4f6; border-radius:12px; padding:2.5rem; text-align:center; }
+.rad-bsuccess.show { display:block; }
+.rad-bsuccess-ref { background:#fff; border-radius:8px; padding:1.25rem; text-align:left; margin:1.5rem 0; }
+.rad-bsuccess-ref-title { font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; color:#6b7280; font-weight:800; margin-bottom:0.75rem; }
+.rad-srow { display:flex; justify-content:space-between; padding:0.35rem 0; border-bottom:1px solid #f3f4f6; font-size:0.875rem; }
+.rad-srow:last-child { border-bottom:none; }
+.rad-srow .sl { color:#6b7280; }
+.rad-srow .sv { font-weight:700; color:#1f2937; }
+.rad-srow .sp { font-weight:800; color:#1e3a8a; font-size:1.05rem; }
+.rad-sactions { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.5rem; }
+.rad-sbtn { display:inline-flex; align-items:center; padding:0.875rem 1.75rem; background:#1e3a8a; color:#fff; border-radius:8px; font-weight:700; font-size:1rem; text-decoration:none; transition:all 0.2s; }
+.rad-sbtn:hover { background:#1e40af; }
+.rad-sbtn.outline { background:transparent; color:#1e3a8a; border:2px solid #1e3a8a; }
+.rad-sbtn.outline:hover { background:#1e3a8a; color:#fff; }
+@media (max-width:640px) {
+  .rad-dp-booking { padding:2.5rem 0 4rem; }
+  .rad-bform { padding:1.5rem 1rem; }
+  .rad-frow { grid-template-columns:1fr; }
+  .rad-times { grid-template-columns:repeat(2,1fr); }
+  .rad-bnav { flex-direction:column-reverse; }
+  .rad-bbtn-back,.rad-bbtn-next { flex:auto; }
+  .rad-step-lbl { display:none; }
+}
+</style>
+
+<section class="rad-dp-booking">
+  <div class="container">
+    <div class="rad-dp-wrapper">
+      <div style="text-align:center;margin-bottom:2rem;">
+        <h1 style="font-size:2rem;font-weight:800;margin-bottom:0.4rem;font-family:'Nunito Sans',sans-serif;">Book Your Car Detailing</h1>
+        <p style="color:#6b7280;">Complete the form below to reserve your slot</p>
+      </div>
+
+      <div class="rad-prog">
+        <div class="rad-prog-bar-track"><div class="rad-prog-bar-fill" id="detailing-rpb" style="width:25%"></div></div>
+        <div class="rad-prog-labels">
+          <span id="detailing-rps">Step 1 of 4</span>
+          <span id="detailing-rpn" style="color:#1e3a8a;font-weight:800;">Personal Info</span>
+        </div>
+      </div>
+
+      <div class="rad-steps">
+        <div class="rad-step active" id="detailing-rsi-1"><div class="rad-step-dot">1</div><span class="rad-step-lbl">Personal</span></div>
+        <div class="rad-step" id="detailing-rsi-2"><div class="rad-step-dot">2</div><span class="rad-step-lbl">Vehicle</span></div>
+        <div class="rad-step" id="detailing-rsi-3"><div class="rad-step-dot">3</div><span class="rad-step-lbl">Appointment</span></div>
+        <div class="rad-step" id="detailing-rsi-4"><div class="rad-step-dot">4</div><span class="rad-step-lbl">Confirm</span></div>
+      </div>
+
+      <div class="rad-bform" id="detailing-rad-bform">
+        <!-- STEP 1 -->
+        <div class="rad-bstep active" id="detailing-rs1">
+          <h2 class="rad-bstep-title">Your Details</h2>
+          <p class="rad-bstep-desc">We'll confirm your booking via WhatsApp and email.</p>
+          <div class="rad-frow">
+            <div class="rad-fg">
+              <label class="rad-fl" for="detailing-rf-fn">First Name <em>*</em></label>
+              <input type="text" id="detailing-rf-fn" class="rad-fi" placeholder="Ahmed" autocomplete="given-name">
+              <div class="rad-ferr" id="detailing-re-fn">Enter your first name</div>
+            </div>
+            <div class="rad-fg">
+              <label class="rad-fl" for="detailing-rf-ln">Last Name <em>*</em></label>
+              <input type="text" id="detailing-rf-ln" class="rad-fi" placeholder="Khan" autocomplete="family-name">
+              <div class="rad-ferr" id="detailing-re-ln">Enter your last name</div>
+            </div>
+          </div>
+          <div class="rad-fg">
+            <label class="rad-fl" for="detailing-rf-ph">WhatsApp Number <em>*</em></label>
+            <input type="tel" id="detailing-rf-ph" class="rad-fi" placeholder="+92 3XX XXXXXXX" autocomplete="tel">
+            <div class="rad-ferr" id="detailing-re-ph">Enter a valid phone number</div>
+          </div>
+          <div class="rad-fg">
+            <label class="rad-fl" for="detailing-rf-em">Email Address <em>*</em></label>
+            <input type="email" id="detailing-rf-em" class="rad-fi" placeholder="you@example.com" autocomplete="email">
+            <div class="rad-ferr" id="detailing-re-em">Enter a valid email</div>
+          </div>
+          <div class="rad-bnav">
+            <button class="rad-bbtn-back" disabled>← Back</button>
+            <button class="rad-bbtn-next" onclick="detailing_rbNext(1)">Next: Vehicle Details →</button>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="rad-bstep" id="detailing-rs2">
+          <h2 class="rad-bstep-title">Your Vehicle</h2>
+          <p class="rad-bstep-desc">Tell us about the car.</p>
+          <div class="rad-frow">
+            <div class="rad-fg">
+              <label class="rad-fl" for="detailing-rf-mk">Vehicle Make <em>*</em></label>
+              <input type="text" id="detailing-rf-mk" class="rad-fi" placeholder="e.g. Toyota">
+              <div class="rad-ferr" id="detailing-re-mk">Enter vehicle make</div>
+            </div>
+            <div class="rad-fg">
+              <label class="rad-fl" for="detailing-rf-mo">Vehicle Model <em>*</em></label>
+              <input type="text" id="detailing-rf-mo" class="rad-fi" placeholder="e.g. Corolla">
+              <div class="rad-ferr" id="detailing-re-mo">Enter vehicle model</div>
+            </div>
+          </div>
+          <div class="rad-frow">
+            <div class="rad-fg">
+              <label class="rad-fl" for="detailing-rf-yr">Year <em>*</em></label>
+              <select id="detailing-rf-yr" class="rad-fi"></select>
+              <div class="rad-ferr" id="detailing-re-yr">Select vehicle year</div>
+            </div>
+            <div class="rad-fg">
+              <label class="rad-fl" for="detailing-rf-cl">Color <span style="color:#9ca3af;font-weight:400;">(Optional)</span></label>
+              <input type="text" id="detailing-rf-cl" class="rad-fi" placeholder="e.g. Pearl White">
+            </div>
+          </div>
+          <div class="rad-bnav">
+            <button class="rad-bbtn-back" onclick="detailing_rbPrev(2)">← Back</button>
+            <button class="rad-bbtn-next" onclick="detailing_rbNext(2)">Next: Appointment →</button>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="rad-bstep" id="detailing-rs3">
+          <h2 class="rad-bstep-title">Choose Appointment</h2>
+          <p class="rad-bstep-desc">Pick a date, time, vehicle type and package.</p>
+          <div class="rad-frow">
+            <div class="rad-fg">
+              <label class="rad-fl" for="detailing-rf-dt">Preferred Date <em>*</em></label>
+              <input type="date" id="detailing-rf-dt" class="rad-fi">
+              <div class="rad-ferr" id="detailing-re-dt">Select a date</div>
+            </div>
+            <div class="rad-fg">
+              <label class="rad-fl" for="detailing-rf-vt">Vehicle Type <em>*</em></label>
+              <select id="detailing-rf-vt" class="rad-fi" onchange="detailing_rbUpdatePrice(); try{sessionStorage.setItem('rad_detailing_vtype', this.value);}catch(e){}">
+                <option value="" disabled selected>Select type</option>
+                <option value="hatchback">Hatchback</option>
+                <option value="sedan">Sedan</option>
+                <option value="suv">SUV</option>
+                <option value="xl-suv">XL SUV</option>
+              </select>
+              <div class="rad-ferr" id="detailing-re-vt">Select vehicle type</div>
+            </div>
+          </div>
+          <div class="rad-fg">
+            <label class="rad-fl">Preferred Time <em>*</em></label>
+            <div class="rad-times">
+              <button type="button" class="rad-time sel" onclick="detailing_rbSelTime(this,'9:00 AM')">9:00 AM</button>
+              <button type="button" class="rad-time" onclick="detailing_rbSelTime(this,'11:00 AM')">11:00 AM</button>
+              <button type="button" class="rad-time" onclick="detailing_rbSelTime(this,'2:00 PM')">2:00 PM</button>
+              <button type="button" class="rad-time" onclick="detailing_rbSelTime(this,'4:00 PM')">4:00 PM</button>
+            </div>
+            <div class="rad-ferr" id="detailing-re-tm">Select a time slot</div>
+          </div>
+          <div class="rad-fg">
+            <label class="rad-fl">Car Detailing Package <em>*</em></label>
+            <div class="rad-pkgs">
+              <div class="rad-pkg" onclick="detailing_rbSelPkg(this,'interior')">
+                <div class="rad-pkg-radio"></div>
+                <div>
+                  <div class="rad-pkg-name">Interior Detailing</div>
+                  <div class="rad-pkg-price" id="rpp-interior">Select vehicle type to see price</div>
+                </div>
+              </div>
+              <div class="rad-pkg" onclick="detailing_rbSelPkg(this,'exterior')">
+                <div class="rad-pkg-radio"></div>
+                <div>
+                  <div class="rad-pkg-name">Exterior Detailing</div>
+                  <div class="rad-pkg-price" id="rpp-exterior">Select vehicle type to see price</div>
+                </div>
+              </div>
+              <div class="rad-pkg" onclick="detailing_rbSelPkg(this,'complete')">
+                <div class="rad-pkg-radio"></div>
+                <div>
+                  <div class="rad-pkg-name">Complete Detailing (Interior + Exterior)</div>
+                  <div class="rad-pkg-price" id="rpp-complete">Select vehicle type to see price</div>
+                </div>
+              </div>
+            </div>
+            <div class="rad-ferr" id="detailing-re-pk">Select a package</div>
+          </div>
+          <div class="rad-price-show" id="detailing-rprice">
+            <span class="rad-price-lbl" id="detailing-rprice-lbl">Total</span>
+            <span class="rad-price-val" id="detailing-rprice-val">PKR 0</span>
+          </div>
+          <div class="rad-bnav">
+            <button class="rad-bbtn-back" onclick="detailing_rbPrev(3)">← Back</button>
+            <button class="rad-bbtn-next" onclick="detailing_rbNext(3)">Review Booking →</button>
+          </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="rad-bstep" id="detailing-rs4">
+          <h2 class="rad-bstep-title">Confirm Your Booking</h2>
+          <p class="rad-bstep-desc">Review your details before confirming.</p>
+          <div class="rad-rev-block">
+            <div class="rad-rev-hdr"><span class="rad-rev-title">Personal Info</span><button class="rad-rev-edit" onclick="detailing_rbGo(1)">Edit</button></div>
+            <div class="rad-rev-row"><span class="rl">Name</span><span class="rv" id="detailing-rv-name">—</span></div>
+            <div class="rad-rev-row"><span class="rl">Phone</span><span class="rv" id="detailing-rv-phone">—</span></div>
+            <div class="rad-rev-row"><span class="rl">Email</span><span class="rv" id="detailing-rv-email">—</span></div>
+          </div>
+          <div class="rad-rev-block">
+            <div class="rad-rev-hdr"><span class="rad-rev-title">Vehicle</span><button class="rad-rev-edit" onclick="detailing_rbGo(2)">Edit</button></div>
+            <div class="rad-rev-row"><span class="rl">Make & Model</span><span class="rv" id="detailing-rv-car">—</span></div>
+            <div class="rad-rev-row"><span class="rl">Year</span><span class="rv" id="detailing-rv-yr">—</span></div>
+            <div class="rad-rev-row"><span class="rl">Color</span><span class="rv" id="detailing-rv-cl">—</span></div>
+          </div>
+          <div class="rad-rev-block">
+            <div class="rad-rev-hdr"><span class="rad-rev-title">Appointment</span><button class="rad-rev-edit" onclick="detailing_rbGo(3)">Edit</button></div>
+            <div class="rad-rev-row"><span class="rl">Date</span><span class="rv" id="detailing-rv-dt">—</span></div>
+            <div class="rad-rev-row"><span class="rl">Time</span><span class="rv" id="detailing-rv-tm">—</span></div>
+            <div class="rad-rev-row"><span class="rl">Vehicle Type</span><span class="rv" id="detailing-rv-vt">—</span></div>
+            <div class="rad-rev-row"><span class="rl">Package</span><span class="rv" id="detailing-rv-pk">—</span></div>
+            <div class="rad-rev-row"><span class="rl">Duration</span><span class="rv" id="detailing-rv-dur">—</span></div>
+          </div>
+          <div class="rad-rev-total">
+            <span class="rad-rev-total-lbl">Total Amount</span>
+            <span class="rad-rev-total-price" id="detailing-rv-total">PKR —</span>
+          </div>
+          <label class="rad-terms">
+            <input type="checkbox" id="detailing-rf-terms">
+            <span>I agree to the <a href="/policies/terms-of-service" target="_blank">Terms & Conditions</a> and consent to RAD contacting me.</span>
+          </label>
+          <div class="rad-ferr" id="detailing-re-terms">Please agree to the terms</div>
+          <div class="rad-bnav">
+            <button class="rad-bbtn-back" onclick="detailing_rbPrev(4)">← Back</button>
+            <button class="rad-bbtn-next" onclick="detailing_rbConfirm()">Confirm Booking ✓</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="rad-bsuccess" id="detailing-rad-bsuccess">
+        <span style="font-size:4rem;display:block;margin-bottom:1rem;">✅</span>
+        <h2 style="font-size:2rem;font-weight:800;margin-bottom:0.5rem;font-family:'Nunito Sans',sans-serif;">Booking Confirmed!</h2>
+        <p style="color:#6b7280;margin-bottom:0.5rem;">We'll confirm via WhatsApp shortly.</p>
+        <div class="rad-bsuccess-ref">
+          <div class="rad-bsuccess-ref-title">Booking Summary</div>
+          <div class="rad-srow"><span class="sl">Ref</span><span class="sv" id="detailing-ss-ref">—</span></div>
+          <div class="rad-srow"><span class="sl">Date & Time</span><span class="sv" id="detailing-ss-dt">—</span></div>
+          <div class="rad-srow"><span class="sl">Package</span><span class="sv" id="detailing-ss-pkg">—</span></div>
+          <div class="rad-srow"><span class="sl">Total</span><span class="sp" id="detailing-ss-price">—</span></div>
+        </div>
+        <div class="rad-sactions">
+          <a href="/" class="rad-sbtn">Return to Home</a>
+          <a href="tel:+923037231111" class="rad-sbtn outline">📞 Call Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var sid = 'detailing';
+  var cur = 1;
+  var selTime = '9:00 AM';
+  var selPkg = '';
+  var bd = {};
+  var vtLabels = {hatchback:'Hatchback',sedan:'Sedan',suv:'SUV','xl-suv':'XL SUV'};
+  var stepNames = ['','Personal Info','Vehicle Details','Appointment','Confirm Booking'];
+      var pricing = {
+      'hatchback': {
+        'interior': {price: {{ section.settings.p_hatchback_interior | default: 0 }}, dur: '{{ section.settings.dur_hatchback | default: "1 Day" }}'},
+        'exterior': {price: {{ section.settings.p_hatchback_exterior | default: 0 }}, dur: '{{ section.settings.dur_hatchback | default: "1 Day" }}'},
+        'complete': {price: {{ section.settings.p_hatchback_complete | default: 0 }}, dur: '{{ section.settings.dur_hatchback | default: "1 Day" }}'},
+      },
+      'sedan': {
+        'interior': {price: {{ section.settings.p_sedan_interior | default: 0 }}, dur: '{{ section.settings.dur_sedan | default: "1 Day" }}'},
+        'exterior': {price: {{ section.settings.p_sedan_exterior | default: 0 }}, dur: '{{ section.settings.dur_sedan | default: "1 Day" }}'},
+        'complete': {price: {{ section.settings.p_sedan_complete | default: 0 }}, dur: '{{ section.settings.dur_sedan | default: "1 Day" }}'},
+      },
+      'suv': {
+        'interior': {price: {{ section.settings.p_suv_interior | default: 0 }}, dur: '{{ section.settings.dur_suv | default: "1 Day" }}'},
+        'exterior': {price: {{ section.settings.p_suv_exterior | default: 0 }}, dur: '{{ section.settings.dur_suv | default: "1 Day" }}'},
+        'complete': {price: {{ section.settings.p_suv_complete | default: 0 }}, dur: '{{ section.settings.dur_suv | default: "1 Day" }}'},
+      },
+      'xl-suv': {
+        'interior': {price: {{ section.settings.p_xl_suv_interior | default: 0 }}, dur: '{{ section.settings.dur_xl_suv | default: "1 Day" }}'},
+        'exterior': {price: {{ section.settings.p_xl_suv_exterior | default: 0 }}, dur: '{{ section.settings.dur_xl_suv | default: "1 Day" }}'},
+        'complete': {price: {{ section.settings.p_xl_suv_complete | default: 0 }}, dur: '{{ section.settings.dur_xl_suv | default: "1 Day" }}'},
+      },
+    };
+
+  // Year dropdown
+  var yrSel = document.getElementById(sid+'-rf-yr');
+  var cy = new Date().getFullYear();
+  for(var y=cy; y>=2000; y--){
+    var o=document.createElement('option'); o.value=y; o.textContent=y;
+    if(y===cy) o.selected=true;
+    yrSel.appendChild(o);
+  }
+
+  // Date - today
+  var dtInput = document.getElementById(sid+'-rf-dt');
+  var todayStr = new Date().toISOString().split('T')[0];
+  dtInput.min = todayStr;
+  dtInput.value = todayStr;
+
+  // Auto-select vehicle type from sessionStorage
+  (function(){
+    var saved = sessionStorage.getItem('rad_detailing_vtype');
+    if(saved){
+      var vtSel = document.getElementById(sid+'-rf-vt');
+      if(vtSel){ vtSel.value=saved; detailing_rbUpdatePrice(); }
+    }
+  })();
+
+  function chk(id, eid, fn){
+    var el=document.getElementById(id); var er=document.getElementById(eid);
+    if(!el||!er) return true;
+    var ok=fn(el.value.trim());
+    el.classList.toggle('rad-err',!ok); er.classList.toggle('show',!ok);
+    return ok;
+  }
+  var ne=function(v){return v.length>0;};
+  var isEmail=function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);};
+  var isPhone=function(v){return v.replace(/\D/g,'').length>=10;};
+
+  function validate(step){
+    var ok=true;
+    if(step===1){
+      if(!chk(sid+'-rf-fn',sid+'-re-fn',ne)) ok=false;
+      if(!chk(sid+'-rf-ln',sid+'-re-ln',ne)) ok=false;
+      if(!chk(sid+'-rf-ph',sid+'-re-ph',isPhone)) ok=false;
+      if(!chk(sid+'-rf-em',sid+'-re-em',isEmail)) ok=false;
+    }
+    if(step===2){
+      if(!chk(sid+'-rf-mk',sid+'-re-mk',ne)) ok=false;
+      if(!chk(sid+'-rf-mo',sid+'-re-mo',ne)) ok=false;
+      if(!chk(sid+'-rf-yr',sid+'-re-yr',ne)) ok=false;
+    }
+    if(step===3){
+      if(!chk(sid+'-rf-dt',sid+'-re-dt',ne)) ok=false;
+      if(!chk(sid+'-rf-vt',sid+'-re-vt',ne)) ok=false;
+      var ter=document.getElementById(sid+'-re-tm');
+      if(!selTime){ter.classList.add('show');ok=false;}else{ter.classList.remove('show');}
+      var per=document.getElementById(sid+'-re-pk');
+      if(!selPkg){per.classList.add('show');ok=false;}else{per.classList.remove('show');}
+    }
+    return ok;
+  }
+
+  function saveStep(step){
+    if(step===1){
+      bd.fn=document.getElementById(sid+'-rf-fn').value.trim();
+      bd.ln=document.getElementById(sid+'-rf-ln').value.trim();
+      bd.ph=document.getElementById(sid+'-rf-ph').value.trim();
+      bd.em=document.getElementById(sid+'-rf-em').value.trim();
+    }
+    if(step===2){
+      bd.mk=document.getElementById(sid+'-rf-mk').value.trim();
+      bd.mo=document.getElementById(sid+'-rf-mo').value.trim();
+      bd.yr=document.getElementById(sid+'-rf-yr').value;
+      bd.cl=document.getElementById(sid+'-rf-cl').value.trim()||'N/A';
+    }
+    if(step===3){
+      bd.dt=document.getElementById(sid+'-rf-dt').value;
+      bd.tm=selTime;
+      bd.vt=document.getElementById(sid+'-rf-vt').value;
+      bd.pk=selPkg;
+      if(bd.vt&&bd.pk&&pricing[bd.vt]){
+        bd.price=pricing[bd.vt][bd.pk].price;
+        bd.dur=pricing[bd.vt][bd.pk].dur;
+        bd.pkLabel=selPkg;
+        // Find package name
+        var pkgEls=document.querySelectorAll('#detailing-rad-bform .rad-pkg');
+        pkgEls.forEach(function(el){
+          if(el.classList.contains('sel')){
+            var nm=el.querySelector('.rad-pkg-name');
+            if(nm) bd.pkLabel=nm.textContent;
+          }
+        });
+      }
+    }
+  }
+
+  window.detailing_rbGo = function(to){
+    document.getElementById(sid+'-rs'+cur).classList.remove('active');
+    for(var i=1;i<=4;i++){
+      var ind=document.getElementById(sid+'-rsi-'+i);
+      ind.classList.remove('active','done');
+      var dot=ind.querySelector('.rad-step-dot');
+      if(i<to){ind.classList.add('done');dot.textContent='✓';}
+      else if(i===to){ind.classList.add('active');dot.textContent=i;}
+      else{dot.textContent=i;}
+    }
+    cur=to;
+    document.getElementById(sid+'-rs'+cur).classList.add('active');
+    document.getElementById(sid+'-rpb').style.width=(cur/4*100)+'%';
+    document.getElementById(sid+'-rps').textContent='Step '+cur+' of 4';
+    document.getElementById(sid+'-rpn').textContent=stepNames[cur];
+    if(to===4) fillReview();
+    window.scrollTo({top:0,behavior:'smooth'});
+  };
+
+  window.detailing_rbNext=function(from){ if(!validate(from)) return; saveStep(from); detailing_rbGo(from+1); };
+  window.detailing_rbPrev=function(from){ detailing_rbGo(from-1); };
+
+  window.detailing_rbSelTime=function(el,t){
+    document.querySelectorAll('#detailing-rad-bform .rad-time').forEach(function(b){b.classList.remove('sel');});
+    el.classList.add('sel'); selTime=t;
+    document.getElementById(sid+'-re-tm').classList.remove('show');
+  };
+
+  window.detailing_rbSelPkg=function(el,pkg){
+    document.querySelectorAll('#detailing-rad-bform .rad-pkg').forEach(function(p){p.classList.remove('sel');});
+    el.classList.add('sel'); selPkg=pkg;
+    document.getElementById(sid+'-re-pk').classList.remove('show');
+    detailing_rbUpdatePrice();
+  };
+
+  window.detailing_rbUpdatePrice=function(){
+    var vt=document.getElementById(sid+'-rf-vt').value;
+    if(!vt||!pricing[vt]){
+      document.querySelectorAll('#detailing-rad-bform .rad-pkg-price').forEach(function(el){el.textContent='Select vehicle type to see price';});
+      document.getElementById(sid+'-rprice').classList.remove('show');
+      return;
+    }
+    var vtPrices=pricing[vt];
+    Object.keys(vtPrices).forEach(function(pkgId){
+      var el=document.getElementById('rpp-'+pkgId);
+      if(el&&vtPrices[pkgId]){
+        el.textContent=vtPrices[pkgId].price>0?'PKR '+vtPrices[pkgId].price.toLocaleString()+' · '+vtPrices[pkgId].dur:'Contact for price';
+      }
+    });
+    if(selPkg&&vtPrices[selPkg]){
+      document.getElementById(sid+'-rprice').classList.add('show');
+      document.getElementById(sid+'-rprice-lbl').textContent=vtLabels[vt];
+      document.getElementById(sid+'-rprice-val').textContent=vtPrices[selPkg].price>0?'PKR '+vtPrices[selPkg].price.toLocaleString():'Contact for price';
+    }else{
+      document.getElementById(sid+'-rprice').classList.remove('show');
+    }
+  };
+
+  function fillReview(){
+    document.getElementById(sid+'-rv-name').textContent=(bd.fn||'')+' '+(bd.ln||'');
+    document.getElementById(sid+'-rv-phone').textContent=bd.ph||'—';
+    document.getElementById(sid+'-rv-email').textContent=bd.em||'—';
+    document.getElementById(sid+'-rv-car').textContent=(bd.mk||'')+' '+(bd.mo||'');
+    document.getElementById(sid+'-rv-yr').textContent=bd.yr||'—';
+    document.getElementById(sid+'-rv-cl').textContent=bd.cl||'—';
+    var ds=bd.dt?new Date(bd.dt+'T12:00:00').toLocaleDateString('en-PK',{weekday:'short',year:'numeric',month:'short',day:'numeric'}):'—';
+    document.getElementById(sid+'-rv-dt').textContent=ds;
+    document.getElementById(sid+'-rv-tm').textContent=bd.tm||'—';
+    document.getElementById(sid+'-rv-vt').textContent=vtLabels[bd.vt]||'—';
+    document.getElementById(sid+'-rv-pk').textContent=bd.pkLabel||'—';
+    document.getElementById(sid+'-rv-dur').textContent=bd.dur||'—';
+    document.getElementById(sid+'-rv-total').textContent=bd.price>0?'PKR '+bd.price.toLocaleString():'Contact for price';
+  }
+
+  window.detailing_rbConfirm=function(){
+    var tc=document.getElementById(sid+'-rf-terms');
+    var te=document.getElementById(sid+'-re-terms');
+    if(!tc.checked){te.classList.add('show');return;}
+    te.classList.remove('show');
+    var ref='RAD-'+Date.now().toString(36).toUpperCase().slice(-6);
+    var ds=bd.dt?new Date(bd.dt+'T12:00:00').toLocaleDateString('en-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'}):'';
+    var cleanPhone=(bd.ph||'').replace(/[^0-9]/g,'');
+
+    fetch('https://formspree.io/f/xgoqpjvk',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        _subject:'Denting & Painting Booking: '+ref+' - '+(bd.fn||'')+' '+(bd.ln||''),
+        _replyto:bd.em||'',
+        service:'Denting & Painting',
+        booking_ref:ref,
+        submitted:new Date().toLocaleString('en-PK',{timeZone:'Asia/Karachi'}),
+        customer_name:(bd.fn||'')+' '+(bd.ln||''),
+        whatsapp:bd.ph||'',
+        customer_email:bd.em||'',
+        vehicle:(bd.mk||'')+' '+(bd.mo||'')+' '+(bd.yr||''),
+        color:bd.cl||'N/A',
+        vehicle_type:vtLabels[bd.vt]||'',
+        package:bd.pkLabel||'',
+        date:ds,
+        time:bd.tm||'',
+        duration:bd.dur||'',
+        total_price:bd.price>0?'PKR '+bd.price.toLocaleString():'Contact for price',
+        whatsapp_link:'https://wa.me/'+cleanPhone
+      })
+    }).catch(function(){});
+
+    document.getElementById(sid+'-rad-bform').style.display='none';
+    document.querySelector('.rad-prog').style.display='none';
+    document.querySelector('.rad-steps').style.display='none';
+    var s=document.getElementById(sid+'-rad-bsuccess');
+    s.classList.add('show');
+    document.getElementById(sid+'-ss-ref').textContent=ref;
+    document.getElementById(sid+'-ss-dt').textContent=ds+' at '+(bd.tm||'');
+    document.getElementById(sid+'-ss-pkg').textContent=(bd.pkLabel||'')+(bd.vt?' - '+vtLabels[bd.vt]:'');
+    document.getElementById(sid+'-ss-price').textContent=bd.price>0?'PKR '+bd.price.toLocaleString():'Contact for price';
+    window.scrollTo({top:0,behavior:'smooth'});
+  };
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Denting & Painting Booking",
+  "settings": [
+    {"type": "header", "content": "Pricing Settings"},
+    {"type": "header", "content": "Hatchback Prices (PKR)"},
+    {"type": "number", "id": "p_hatchback_interior", "label": "Interior Detailing", "default": 10000},
+    {"type": "number", "id": "p_hatchback_exterior", "label": "Exterior Detailing", "default": 12000},
+    {"type": "number", "id": "p_hatchback_complete", "label": "Complete Detailing (Interior + Exterior)", "default": 18000},
+    {"type": "text", "id": "dur_hatchback", "label": "Duration", "default": "1 Day"},
+    {"type": "header", "content": "Sedan Prices (PKR)"},
+    {"type": "number", "id": "p_sedan_interior", "label": "Interior Detailing", "default": 12000},
+    {"type": "number", "id": "p_sedan_exterior", "label": "Exterior Detailing", "default": 14000},
+    {"type": "number", "id": "p_sedan_complete", "label": "Complete Detailing (Interior + Exterior)", "default": 22000},
+    {"type": "text", "id": "dur_sedan", "label": "Duration", "default": "1 Day"},
+    {"type": "header", "content": "SUV Prices (PKR)"},
+    {"type": "number", "id": "p_suv_interior", "label": "Interior Detailing", "default": 14000},
+    {"type": "number", "id": "p_suv_exterior", "label": "Exterior Detailing", "default": 16000},
+    {"type": "number", "id": "p_suv_complete", "label": "Complete Detailing (Interior + Exterior)", "default": 24000},
+    {"type": "text", "id": "dur_suv", "label": "Duration", "default": "1 Day"},
+    {"type": "header", "content": "XL SUV Prices (PKR)"},
+    {"type": "number", "id": "p_xl_suv_interior", "label": "Interior Detailing", "default": 16000},
+    {"type": "number", "id": "p_xl_suv_exterior", "label": "Exterior Detailing", "default": 18000},
+    {"type": "number", "id": "p_xl_suv_complete", "label": "Complete Detailing (Interior + Exterior)", "default": 27000},
+    {"type": "text", "id": "dur_xl_suv", "label": "Duration", "default": "1 Day"}
+  ],
+  "presets": [{"name": "Denting & Painting Booking"}]
+}
+{% endschema %}
