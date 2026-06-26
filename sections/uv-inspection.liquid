@@ -227,10 +227,12 @@
         <p>{{ section.settings.process_sub | default: "Simple, fast, and honest — done in 30 minutes" }}</p>
       </div>
       <div class="uvi-steps">
+        {%- assign step_count = 0 -%}
         {%- for block in section.blocks -%}
           {%- if block.type == 'step' -%}
+          {%- assign step_count = step_count | plus: 1 -%}
           <div class="uvi-step">
-            <div class="uvi-step-left"><div class="uvi-step-num">{{ forloop.index }}</div><div class="uvi-step-line"></div></div>
+            <div class="uvi-step-left"><div class="uvi-step-num">{{ step_count }}</div><div class="uvi-step-line"></div></div>
             <div><h3>{{ block.settings.title }}</h3><p>{{ block.settings.description }}</p></div>
           </div>
           {%- endif -%}
