@@ -160,6 +160,25 @@
             "booking_text": "Get Quote",
             "booking_url": "/pages/book-appointment"
           }
+        },
+        "uv": {
+          "type": "service_card",
+          "settings": {
+            "icon": "🔦",
+            "tag": "New Service",
+            "color": "purple",
+            "title": "UV Light Paint Inspection",
+            "description": "UV light reveals hidden repaint, rust, body filler, and paint defects invisible under normal light — essential before buying a used car.",
+            "feat1": "Repaint & accident history detection",
+            "feat2": "Body filler & rust reveal",
+            "feat3": "Pre-buy inspection",
+            "feat4": "30-min full panel report",
+            "price": "PKR 5,500",
+            "primary_text": "Learn More →",
+            "primary_url": "/pages/uv-paint-inspection-karachi",
+            "booking_text": "Book Slot",
+            "booking_url": "/pages/book-appointment"
+          }
         }
       },
       "block_order": [
@@ -169,7 +188,8 @@
         "tint",
         "antirust",
         "colorppf",
-        "denting"
+        "denting",
+        "uv"
       ],
       "settings": {
         "title": "Our Services",
