@@ -120,70 +120,6 @@
         "step4_desc": "Pick up your pristine vehicle looking better than ever"
       }
     },
-    "reviews_slider_46FpiX": {
-      "type": "reviews-slider",
-      "blocks": {
-        "review_nb8zTn": {
-          "type": "review",
-          "settings": {
-            "video": "shopify://files/videos/SaveVid.Net_AQMyXZDfohLL8W70r266enbgBA9KsOgoGO9aREuRudJw6ZtRRTHVmeMMVls87jKFBP4IRo3usytT05B3K-lYi17Sg9R45DnqXkTCphY.mp4",
-            "name": ".",
-            "service": "Ceramic Coating"
-          }
-        },
-        "review_GBcyWr": {
-          "type": "review",
-          "settings": {
-            "video": "shopify://files/videos/Ford PPF.MP4",
-            "name": "Sara Malik",
-            "service": "PPF Installation"
-          }
-        },
-        "review_gfwaCG": {
-          "type": "review",
-          "settings": {
-            "video": "shopify://files/videos/AQOBuL5CUPnfKvtcpA-FzeSh9m2PNiTza-qu-I02FNZoxI-u046l-0NUdSOvufPDAJYIgXivFiCkXTutzMAhn2cLTFawykGZB_m47og.mp4",
-            "name": "Usman Ali",
-            "service": "Window Tinting"
-          }
-        },
-        "review_9eHpMq": {
-          "type": "review",
-          "settings": {
-            "name": "Farrukh Baig",
-            "service": "Anti-Rust Coating"
-          }
-        },
-        "review_hFe3nC": {
-          "type": "review",
-          "settings": {
-            "name": "Zoya Ahmed",
-            "service": "Car Detailing"
-          }
-        },
-        "review_Df7dNy": {
-          "type": "review",
-          "settings": {
-            "name": "Hassan Raza",
-            "service": "Color PPF"
-          }
-        }
-      },
-      "block_order": [
-        "review_nb8zTn",
-        "review_GBcyWr",
-        "review_gfwaCG",
-        "review_9eHpMq",
-        "review_hFe3nC",
-        "review_Df7dNy"
-      ],
-      "name": "Customer Video Reviews",
-      "settings": {
-        "tag": "Original PPF • Real Results",
-        "title": "What Our Work Say",
-        "subtitle": "Watch real results of NAR PPF"
-      }
-    },
     "ppf_faq_rcfYWK": {
       "type": "ppf-faq",
       "name": "PPF FAQ",
@@ -200,7 +136,6 @@
     "ppf_packages_UJLGPt",
     "ppf_benefits_fjiLPD",
     "process_3VXAYN",
-    "reviews_slider_46FpiX",
     "ppf_faq_rcfYWK"
   ]
 }
