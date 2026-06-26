@@ -1,0 +1,169 @@
+<style>
+.rad-ow { padding: 4rem 0; background: #0f172a; font-family: 'Nunito Sans', sans-serif; overflow: hidden; }
+.rad-ow-inner { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-ow-hdr { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; }
+.rad-ow-tag { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #60a5fa; margin-bottom: 0.4rem; }
+.rad-ow-hdr h2 { font-size: 2rem; font-weight: 800; color: #fff; margin: 0; }
+.rad-ow-hdr p { color: #94a3b8; font-size: 0.9rem; margin-top: 0.4rem; }
+.rad-ow-nav { display: flex; gap: 0.6rem; }
+.rad-ow-nav-btn { width: 2.5rem; height: 2.5rem; border-radius: 50%; border: 2px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.07); color: #fff; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.rad-ow-nav-btn:hover { border-color: #1e3a8a; background: #1e3a8a; }
+.rad-ow-track-wrap { overflow: hidden; }
+.rad-ow-track { display: flex; gap: 1rem; transition: transform 0.45s cubic-bezier(0.4,0,0.2,1); will-change: transform; }
+.rad-ow-card { flex: 0 0 calc((100% - 3rem) / 4); border-radius: 14px; overflow: hidden; position: relative; cursor: pointer; background: #1e293b; aspect-ratio: 9/16; }
+.rad-ow-card video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.rad-ow-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%); }
+.rad-ow-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 54px; height: 54px; border-radius: 50%; background: rgba(255,255,255,0.2); backdrop-filter: blur(6px); border: 2px solid rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; transition: all 0.25s; }
+.rad-ow-card:hover .rad-ow-play { background: rgba(30,58,138,0.8); border-color: #60a5fa; transform: translate(-50%, -50%) scale(1.1); }
+.rad-ow-play svg { width: 22px; height: 22px; margin-left: 3px; }
+.rad-ow-card-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem; }
+.rad-ow-card-vehicle { font-size: 0.85rem; font-weight: 700; color: #fff; margin-bottom: 0.15rem; }
+.rad-ow-card-service { font-size: 0.72rem; color: #93c5fd; font-weight: 600; }
+.rad-ow-lb { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 9999; display: none; align-items: center; justify-content: center; }
+.rad-ow-lb.open { display: flex; }
+.rad-ow-lb-inner { position: relative; width: min(420px, 90vw); max-height: 90vh; }
+.rad-ow-lb-inner video { width: 100%; max-height: 90vh; border-radius: 12px; display: block; object-fit: contain; }
+.rad-ow-lb-close { position: absolute; top: -2.5rem; right: 0; background: none; border: none; color: #fff; font-size: 1.75rem; cursor: pointer; line-height: 1; padding: 0.25rem; }
+.rad-ow-lb-close:hover { color: #60a5fa; }
+.rad-ow-lb-prev, .rad-ow-lb-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.12); border: none; color: #fff; font-size: 1.5rem; width: 2.5rem; height: 2.5rem; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.rad-ow-lb-prev { left: -3.5rem; }
+.rad-ow-lb-next { right: -3.5rem; }
+.rad-ow-lb-prev:hover, .rad-ow-lb-next:hover { background: #1e3a8a; }
+@media (max-width: 1024px) { .rad-ow-card { flex: 0 0 calc((100% - 2rem) / 3); } }
+@media (max-width: 768px) {
+  .rad-ow { padding: 2.5rem 0; }
+  .rad-ow-hdr { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .rad-ow-hdr h2 { font-size: 1.5rem; }
+  .rad-ow-card { flex: 0 0 calc((100% - 1rem) / 2); }
+  .rad-ow-lb-prev { left: -2.25rem; }
+  .rad-ow-lb-next { right: -2.25rem; }
+}
+@media (max-width: 480px) { .rad-ow-card { flex: 0 0 calc(100% - 3rem); } }
+</style>
+
+<section class="rad-ow" id="rad-our-work">
+  <div class="rad-ow-inner">
+    <div class="rad-ow-hdr">
+      <div>
+        <div class="rad-ow-tag">{{ section.settings.tag | default: "Karachi • Revive Auto Detailing" }}</div>
+        <h2>{{ section.settings.title | default: "Our Work" }}</h2>
+        <p>{{ section.settings.subtitle | default: "Real results on real cars — from our studio in Karachi" }}</p>
+      </div>
+      <div class="rad-ow-nav">
+        <button class="rad-ow-nav-btn" id="rad-ow-prev">&#8592;</button>
+        <button class="rad-ow-nav-btn" id="rad-ow-next">&#8594;</button>
+      </div>
+    </div>
+    <div class="rad-ow-track-wrap">
+      <div class="rad-ow-track" id="rad-ow-track">
+        {%- for block in section.blocks -%}
+          {%- if block.settings.video != blank -%}
+          <div class="rad-ow-card" data-index="{{ forloop.index0 }}">
+            <video src="{{ block.settings.video.sources.last.url }}" muted playsinline preload="metadata"
+              onmouseover="this.play()" onmouseout="this.pause()"></video>
+            <div class="rad-ow-card-overlay"></div>
+            <div class="rad-ow-play">
+              <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="rad-ow-card-info">
+              <div class="rad-ow-card-vehicle">{{ block.settings.vehicle | default: "Toyota Corolla" }}</div>
+              <div class="rad-ow-card-service">{{ block.settings.service | default: "Ceramic Coating" }}</div>
+            </div>
+          </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rad-ow-lb" id="rad-ow-lb">
+  <div class="rad-ow-lb-inner">
+    <button class="rad-ow-lb-close" id="rad-ow-lb-close">&times;</button>
+    <button class="rad-ow-lb-prev" id="rad-ow-lb-prev">&#8592;</button>
+    <video id="rad-ow-lb-video" controls playsinline style="background:#000;"></video>
+    <button class="rad-ow-lb-next" id="rad-ow-lb-next">&#8594;</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var track   = document.getElementById('rad-ow-track');
+  var lb      = document.getElementById('rad-ow-lb');
+  var lbVid   = document.getElementById('rad-ow-lb-video');
+  var lbClose = document.getElementById('rad-ow-lb-close');
+  var lbPrev  = document.getElementById('rad-ow-lb-prev');
+  var lbNext  = document.getElementById('rad-ow-lb-next');
+  if(!track) return;
+  var cards = track.querySelectorAll('.rad-ow-card');
+  var total = cards.length;
+  var pos   = 0;
+  var vis   = window.innerWidth>=1024?4:window.innerWidth>=768?3:window.innerWidth>=480?2:1;
+  var max   = Math.max(0, total - vis);
+  function slide(p){
+    pos = Math.max(0, Math.min(p, max));
+    var w = cards[0] ? cards[0].offsetWidth + 16 : 0;
+    track.style.transform = 'translateX(-'+(pos*w)+'px)';
+  }
+  document.getElementById('rad-ow-prev').addEventListener('click', function(){ slide(pos-1); });
+  document.getElementById('rad-ow-next').addEventListener('click', function(){ slide(pos+1); });
+  var tx = 0;
+  track.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchend', function(e){
+    var d = tx - e.changedTouches[0].clientX;
+    if(Math.abs(d)>40) slide(pos+(d>0?1:-1));
+  });
+  var srcs = [];
+  cards.forEach(function(c){ var v=c.querySelector('video'); if(v) srcs.push(v.src); });
+  var idx = 0;
+  function openLb(i){ idx=i; lbVid.src=srcs[idx]; lbVid.play(); lb.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeLb(){ lbVid.pause(); lbVid.src=''; lb.classList.remove('open'); document.body.style.overflow=''; }
+  function goTo(i){ lbVid.pause(); idx=(i+srcs.length)%srcs.length; lbVid.src=srcs[idx]; lbVid.play(); }
+  cards.forEach(function(c,i){ c.addEventListener('click', function(){ openLb(i); }); });
+  lbClose.addEventListener('click', closeLb);
+  lb.addEventListener('click', function(e){ if(e.target===lb) closeLb(); });
+  lbPrev.addEventListener('click', function(){ goTo(idx-1); });
+  lbNext.addEventListener('click', function(){ goTo(idx+1); });
+  document.addEventListener('keydown', function(e){
+    if(!lb.classList.contains('open')) return;
+    if(e.key==='Escape') closeLb();
+    if(e.key==='ArrowLeft') goTo(idx-1);
+    if(e.key==='ArrowRight') goTo(idx+1);
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Our Work",
+  "settings": [
+    {"type":"text","id":"tag","label":"Tag Line","default":"Karachi • Revive Auto Detailing"},
+    {"type":"text","id":"title","label":"Section Title","default":"Our Work"},
+    {"type":"text","id":"subtitle","label":"Subtitle","default":"Real results on real cars — from our studio in Karachi"}
+  ],
+  "blocks": [
+    {
+      "type": "work_video",
+      "name": "Work Video",
+      "settings": [
+        {"type":"video","id":"video","label":"Video"},
+        {"type":"text","id":"vehicle","label":"Vehicle Name","default":"Toyota Corolla"},
+        {"type":"text","id":"service","label":"Service","default":"Ceramic Coating"}
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our Work",
+      "blocks": [
+        {"type":"work_video","settings":{"vehicle":"Toyota Corolla","service":"Ceramic Coating"}},
+        {"type":"work_video","settings":{"vehicle":"Honda Civic","service":"PPF Installation"}},
+        {"type":"work_video","settings":{"vehicle":"KIA Sportage","service":"Window Tinting"}},
+        {"type":"work_video","settings":{"vehicle":"Suzuki Swift","service":"Anti-Rust Coating"}},
+        {"type":"work_video","settings":{"vehicle":"Toyota Fortuner","service":"Car Detailing"}},
+        {"type":"work_video","settings":{"vehicle":"Honda Vezel","service":"Color PPF"}}
+      ]
+    }
+  ]
+}
+{% endschema %}
