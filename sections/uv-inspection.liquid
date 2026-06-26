@@ -192,6 +192,84 @@
     </div>
   </div>
 
+
+
+  <!-- WHAT UV REVEALS -->
+  <div class="uvi-reveals">
+    <div class="uvi-reveals-inner">
+      <div class="uvi-sec">
+        <div class="uvi-sec-tag">What We Find</div>
+        <h2>{{ section.settings.reveals_title | default: "What UV Light Reveals on Your Car" }}</h2>
+        <p>{{ section.settings.reveals_sub | default: "Things invisible under normal light — exposed under UV in seconds" }}</p>
+      </div>
+      <div class="uvi-reveals-grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'reveal' -%}
+          <div class="uvi-reveal-card">
+            <span class="uvi-reveal-icon">{{ block.settings.icon }}</span>
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.description }}</p>
+          </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- PROCESS -->
+  <div class="uvi-process">
+    <div class="uvi-process-inner">
+      <div class="uvi-sec">
+        <div class="uvi-sec-tag">How It Works</div>
+        <h2>{{ section.settings.process_title | default: "UV Paint Inspection — Step by Step" }}</h2>
+        <p>{{ section.settings.process_sub | default: "Simple, fast, and honest — done in 30 minutes" }}</p>
+      </div>
+      <div class="uvi-steps">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'step' -%}
+          <div class="uvi-step">
+            <div class="uvi-step-left"><div class="uvi-step-num">{{ forloop.index }}</div><div class="uvi-step-line"></div></div>
+            <div><h3>{{ block.settings.title }}</h3><p>{{ block.settings.description }}</p></div>
+          </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- VIDEO / MEDIA SECTION -->
+  <div class="uvi-media">
+    <div class="uvi-media-inner">
+      <h2>{{ section.settings.media_title | default: "Watch UV Inspection in Action" }}</h2>
+      <p>{{ section.settings.media_sub | default: "See how hidden repaint and defects light up under our UV device" }}</p>
+      <div class="uvi-media-grid">
+        {%- for i in (1..4) -%}
+          {%- assign vid_key = 'slot_vid_' | append: i -%}
+          {%- assign img_key = 'slot_img_' | append: i -%}
+          {%- assign vid = section.settings[vid_key] -%}
+          {%- assign img = section.settings[img_key] -%}
+          {%- if vid != blank or img != blank -%}
+          <div class="uvi-media-item">
+            {%- if vid != blank -%}
+              <video src="{{ vid.sources.last.url }}" muted loop playsinline preload="metadata"
+                onmouseover="this.play()" onmouseout="this.pause()"></video>
+              <div class="uvi-play-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+            {%- elsif img != blank -%}
+              <img src="{{ img | image_url: width: 400 }}" alt="UV Inspection {{ i }}" loading="lazy">
+            {%- endif -%}
+          </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+
+
+
   <!-- PRICING -->
   <div class="uvi-pricing">
     <div class="uvi-pricing-inner">
@@ -231,75 +309,7 @@
     </div>
   </div>
 
-  <!-- WHAT UV REVEALS -->
-  <div class="uvi-reveals">
-    <div class="uvi-reveals-inner">
-      <div class="uvi-sec">
-        <div class="uvi-sec-tag">What We Find</div>
-        <h2>{{ section.settings.reveals_title | default: "What UV Light Reveals on Your Car" }}</h2>
-        <p>{{ section.settings.reveals_sub | default: "Things invisible under normal light — exposed under UV in seconds" }}</p>
-      </div>
-      <div class="uvi-reveals-grid">
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'reveal' -%}
-          <div class="uvi-reveal-card">
-            <span class="uvi-reveal-icon">{{ block.settings.icon }}</span>
-            <h3>{{ block.settings.title }}</h3>
-            <p>{{ block.settings.description }}</p>
-          </div>
-          {%- endif -%}
-        {%- endfor -%}
-      </div>
-    </div>
-  </div>
 
-  <!-- VIDEO / MEDIA SECTION -->
-  <div class="uvi-media">
-    <div class="uvi-media-inner">
-      <h2>{{ section.settings.media_title | default: "Watch UV Inspection in Action" }}</h2>
-      <p>{{ section.settings.media_sub | default: "See how hidden repaint and defects light up under our UV device" }}</p>
-      <div class="uvi-media-grid">
-        {%- for i in (1..4) -%}
-          {%- assign vid_key = 'slot_vid_' | append: i -%}
-          {%- assign img_key = 'slot_img_' | append: i -%}
-          {%- assign vid = section.settings[vid_key] -%}
-          {%- assign img = section.settings[img_key] -%}
-          {%- if vid != blank or img != blank -%}
-          <div class="uvi-media-item">
-            {%- if vid != blank -%}
-              <video src="{{ vid.sources.last.url }}" muted loop playsinline preload="metadata"
-                onmouseover="this.play()" onmouseout="this.pause()"></video>
-              <div class="uvi-play-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
-            {%- elsif img != blank -%}
-              <img src="{{ img | image_url: width: 400 }}" alt="UV Inspection {{ i }}" loading="lazy">
-            {%- endif -%}
-          </div>
-          {%- endif -%}
-        {%- endfor -%}
-      </div>
-    </div>
-  </div>
-
-  <!-- PROCESS -->
-  <div class="uvi-process">
-    <div class="uvi-process-inner">
-      <div class="uvi-sec">
-        <div class="uvi-sec-tag">How It Works</div>
-        <h2>{{ section.settings.process_title | default: "UV Paint Inspection — Step by Step" }}</h2>
-        <p>{{ section.settings.process_sub | default: "Simple, fast, and honest — done in 30 minutes" }}</p>
-      </div>
-      <div class="uvi-steps">
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'step' -%}
-          <div class="uvi-step">
-            <div class="uvi-step-left"><div class="uvi-step-num">{{ forloop.index }}</div><div class="uvi-step-line"></div></div>
-            <div><h3>{{ block.settings.title }}</h3><p>{{ block.settings.description }}</p></div>
-          </div>
-          {%- endif -%}
-        {%- endfor -%}
-      </div>
-    </div>
-  </div>
 
   <!-- CTA -->
   <div class="uvi-cta">
@@ -315,6 +325,8 @@
 
 </div>
 
+
+</div>
 <script>
 document.querySelectorAll('.uvi-faq-q').forEach(function(q){
   q.addEventListener('click',function(){
