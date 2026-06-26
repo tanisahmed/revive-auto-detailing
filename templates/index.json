@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -21,6 +30,8 @@
     "services": {
       "type": "services",
       "settings": {
+        "cta_url": "/pages/all-services",
+        "cta_text": "View All Services →",
         "title": "Our Services",
         "subtitle": "Premium auto care services in Karachi",
         "img_1": "shopify://shop_images/SaveVid.Net_706483316_17966723517078672_7661059615161583245_n.jpg",
@@ -42,9 +53,7 @@
         "name_4": "Car Window Tinting",
         "desc_4": "NAR certified heat control window film — blocks UV rays and keeps your car cool.",
         "url_4": "shopify://pages/car-window-tints",
-        "btn_4": "View Pricing",
-        "cta_url": "/pages/all-services",
-        "cta_text": "View All Services →"
+        "btn_4": "View Pricing"
       }
     },
     "whyus": {
@@ -80,45 +89,45 @@
         "btn_text": "Get Free Estimate"
       }
     },
-    "reviews": {
+    "reviews_slider_7dpfXw": {
       "type": "reviews-slider",
       "blocks": {
-        "r1": {
+        "review_kwE3Rf": {
           "type": "review",
           "settings": {
             "name": "Ahmed Khan",
             "service": "Ceramic Coating"
           }
         },
-        "r2": {
+        "review_anxBjV": {
           "type": "review",
           "settings": {
             "name": "Sara Malik",
             "service": "PPF Installation"
           }
         },
-        "r3": {
+        "review_yhkbNL": {
           "type": "review",
           "settings": {
             "name": "Usman Ali",
             "service": "Window Tinting"
           }
         },
-        "r4": {
+        "review_BPjALq": {
           "type": "review",
           "settings": {
             "name": "Farrukh Baig",
             "service": "Anti-Rust Coating"
           }
         },
-        "r5": {
+        "review_di7Rga": {
           "type": "review",
           "settings": {
             "name": "Zoya Ahmed",
             "service": "Car Detailing"
           }
         },
-        "r6": {
+        "review_rkmQD9": {
           "type": "review",
           "settings": {
             "name": "Hassan Raza",
@@ -127,14 +136,19 @@
         }
       },
       "block_order": [
-        "r1",
-        "r2",
-        "r3",
-        "r4",
-        "r5",
-        "r6"
+        "review_kwE3Rf",
+        "review_anxBjV",
+        "review_yhkbNL",
+        "review_BPjALq",
+        "review_di7Rga",
+        "review_rkmQD9"
       ],
-      "settings": {}
+      "name": "Customer Video Reviews",
+      "settings": {
+        "tag": "Real Customers • Real Results",
+        "title": "What Our Customers Say",
+        "subtitle": "Watch real reviews from Karachi car owners"
+      }
     }
   },
   "order": [
@@ -142,7 +156,7 @@
     "services",
     "whyus",
     "process",
-    "reviews",
-    "leadform"
+    "leadform",
+    "reviews_slider_7dpfXw"
   ]
 }
