@@ -1,137 +1,142 @@
 <style>
-.uvi { font-family: 'Nunito Sans', sans-serif; }
+.uvi { font-family: 'Nunito Sans', sans-serif; color: #1f2937; }
 
-/* HERO */
-.uvi-hero { background: #0a0a0a; padding: 4.5rem 0; color: #fff; position: relative; overflow: hidden; min-height: 480px; display: flex; align-items: center; }
-.uvi-hero::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at 65% 50%, rgba(30,58,138,0.35) 0%, transparent 70%); }
-.uvi-hero-media { position:absolute; inset:0; z-index:0; }
-.uvi-hero-media img, .uvi-hero-media video { width:100%; height:100%; object-fit:cover; }
-.uvi-hero-overlay { position:absolute; inset:0; background: linear-gradient(to right, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.35) 100%); z-index:1; }
-.uvi-hero-content { position:relative; z-index:2; max-width:600px; }
-.uvi-hero-badge { display:inline-flex; align-items:center; background:rgba(30,58,138,0.4); border:1px solid rgba(96,165,250,0.3); padding:0.3rem 1rem; border-radius:100px; font-size:0.8rem; font-weight:700; color:#93c5fd; margin-bottom:1rem; letter-spacing:0.08em; text-transform:uppercase; }
-.uvi-hero h1 { font-size:3rem; font-weight:800; line-height:1.1; margin-bottom:0.5rem; letter-spacing:-0.5px; }
-.uvi-hero h1 span { color:#60a5fa; }
-.uvi-hero-sub { font-size:1.35rem; font-weight:700; color:#60a5fa; margin-bottom:1rem; }
-.uvi-hero-desc { font-size:1.05rem; color:#d1d5db; line-height:1.75; margin-bottom:1.75rem; max-width:520px; }
-.uvi-hero-feats { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:2rem; }
-.uvi-hero-feat { background:rgba(255,255,255,0.08); padding:0.35rem 0.85rem; border-radius:100px; font-size:0.875rem; font-weight:600; }
-.uvi-hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
-.uvi-btn-blue { display:inline-flex; align-items:center; padding:0.875rem 1.75rem; background:#1e3a8a; color:#fff; border-radius:8px; font-weight:700; font-size:1rem; text-decoration:none; transition:all 0.2s; }
-.uvi-btn-blue:hover { background:#1e40af; }
-.uvi-btn-wa { display:inline-flex; align-items:center; gap:0.4rem; padding:0.875rem 1.75rem; background:#10b981; color:#fff; border-radius:8px; font-weight:700; font-size:1rem; text-decoration:none; transition:all 0.2s; }
-.uvi-btn-wa:hover { background:#059669; }
+/* HERO — dark purple */
+.uvi-hero {
+  min-height: 90vh;
+  background: #0d0d1a;
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+}
+.uvi-hero-bg { position: absolute; inset: 0; z-index: 0; }
+.uvi-hero-bg img, .uvi-hero-bg video { width: 100%; height: 100%; object-fit: cover; }
+.uvi-hero-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(13,13,26,0.95) 0%, rgba(88,28,135,0.6) 60%, rgba(13,13,26,0.85) 100%);
+}
+.uvi-hero-glow {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(147,51,234,0.4) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 30%, rgba(124,58,237,0.2) 0%, transparent 45%);
+}
+.uvi-hero-inner { position: relative; z-index: 2; max-width: 1060px; margin: 0 auto; padding: 5rem 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+.uvi-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(147,51,234,0.25); border: 1px solid rgba(192,132,252,0.4); color: #e9d5ff; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.4rem 1.1rem; border-radius: 100px; margin-bottom: 1.25rem; }
+.uvi-hero h1 { font-size: 3.25rem; font-weight: 900; line-height: 1.08; color: #fff; margin-bottom: 0.75rem; letter-spacing: -1px; }
+.uvi-hero h1 em { font-style: normal; color: #c084fc; }
+.uvi-hero-sub { font-size: 1.1rem; color: #d8b4fe; font-weight: 600; margin-bottom: 1.1rem; }
+.uvi-hero-desc { font-size: 0.975rem; color: #e2e8f0; line-height: 1.8; margin-bottom: 1.75rem; max-width: 460px; }
+.uvi-feat-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+.uvi-feat { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); padding: 0.35rem 0.85rem; border-radius: 100px; font-size: 0.82rem; font-weight: 600; color: #f3e8ff; }
+.uvi-btn-row { display: flex; gap: 0.85rem; flex-wrap: wrap; }
+.uvi-btn-book { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.9rem 1.75rem; background: linear-gradient(135deg,#9333ea,#7c3aed); color: #fff; border-radius: 10px; font-weight: 700; font-size: 1rem; text-decoration: none; box-shadow: 0 4px 20px rgba(147,51,234,0.4); transition: all 0.2s; }
+.uvi-btn-book:hover { background: linear-gradient(135deg,#a855f7,#8b5cf6); transform: translateY(-2px); }
+.uvi-btn-wa { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.9rem 1.75rem; background: #10b981; color: #fff; border-radius: 10px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: all 0.2s; }
+.uvi-btn-wa:hover { background: #059669; }
 
-/* WHAT IS — AEO answer box */
-.uvi-what { padding:4rem 0; background:#fff; }
-.uvi-what-inner { max-width:960px; margin:0 auto; padding:0 1.5rem; display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
-.uvi-tag { font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#1e3a8a; margin-bottom:0.6rem; }
-.uvi-what h2 { font-size:1.9rem; font-weight:800; color:#1f2937; line-height:1.2; margin-bottom:1rem; }
-.uvi-answer-box { background:#eff6ff; border-left:4px solid #1e3a8a; border-radius:0 10px 10px 0; padding:1.25rem 1.5rem; margin-bottom:1.25rem; }
-.uvi-answer-box p { font-size:0.95rem; color:#1e40af; line-height:1.75; margin:0; font-weight:500; }
-.uvi-what-detail { font-size:0.9rem; color:#6b7280; line-height:1.7; }
-.uvi-what-video { border-radius:16px; overflow:hidden; background:#0f172a; aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; position:relative; }
-.uvi-what-video video { width:100%; height:100%; object-fit:cover; }
-.uvi-what-video-ph { font-size:4rem; opacity:0.4; }
+/* Hero right — UV glow visual */
+.uvi-hero-visual { display: flex; flex-direction: column; gap: 1rem; }
+.uvi-uv-lamp { background: radial-gradient(ellipse at center, rgba(168,85,247,0.3) 0%, rgba(13,13,26,0.8) 70%); border: 1px solid rgba(168,85,247,0.3); border-radius: 20px; padding: 2.5rem 1.5rem; text-align: center; }
+.uvi-lamp-icon { font-size: 5rem; display: block; filter: drop-shadow(0 0 30px rgba(192,132,252,0.8)); margin-bottom: 1rem; }
+.uvi-lamp-text { font-size: 0.82rem; color: #c4b5fd; line-height: 1.6; }
+.uvi-stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.uvi-stat { background: rgba(255,255,255,0.05); border: 1px solid rgba(168,85,247,0.25); border-radius: 12px; padding: 1rem; text-align: center; }
+.uvi-stat-num { font-size: 1.65rem; font-weight: 800; color: #e9d5ff; display: block; }
+.uvi-stat-lbl { font-size: 0.7rem; color: #a78bfa; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
 
-/* REVEALS */
-.uvi-reveals { padding:4rem 0; background:#f8fafc; }
-.uvi-reveals-inner { max-width:1060px; margin:0 auto; padding:0 1.5rem; }
-.uvi-sec-hdr { text-align:center; margin-bottom:2.5rem; }
-.uvi-sec-hdr h2 { font-size:2rem; font-weight:800; color:#1f2937; margin-bottom:0.5rem; }
-.uvi-sec-hdr p { color:#6b7280; font-size:0.95rem; max-width:600px; margin:0 auto; }
-.uvi-reveals-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; }
-.uvi-reveal-card { background:#fff; border-radius:12px; padding:1.5rem; border:1px solid #e5e7eb; border-top:3px solid #1e3a8a; }
-.uvi-reveal-icon { font-size:2rem; margin-bottom:0.75rem; display:block; }
-.uvi-reveal-card h3 { font-size:0.95rem; font-weight:800; color:#1f2937; margin-bottom:0.4rem; }
-.uvi-reveal-card p { font-size:0.82rem; color:#6b7280; line-height:1.55; }
+/* PRICING — right below hero */
+.uvi-pricing { background: #f5f3ff; padding: 3.5rem 0; }
+.uvi-pricing-inner { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
+.uvi-sec { text-align: center; margin-bottom: 2.25rem; }
+.uvi-sec-tag { display: inline-block; background: #ede9fe; color: #7c3aed; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.85rem; border-radius: 100px; margin-bottom: 0.6rem; }
+.uvi-sec h2 { font-size: 1.9rem; font-weight: 800; color: #1f2937; margin-bottom: 0.4rem; }
+.uvi-sec p { color: #6b7280; font-size: 0.9rem; }
+.uvi-price-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.uvi-price-card { background: #fff; border-radius: 14px; padding: 1.75rem 1rem 1.5rem; text-align: center; border: 2px solid #ede9fe; transition: all 0.25s; position: relative; }
+.uvi-price-card.popular { border-color: #9333ea; box-shadow: 0 8px 32px rgba(147,51,234,0.18); }
+.uvi-price-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(147,51,234,0.15); }
+.uvi-popular-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: #9333ea; color: #fff; font-size: 0.6rem; font-weight: 700; padding: 3px 12px; border-radius: 100px; white-space: nowrap; letter-spacing: 0.05em; }
+.uvi-price-icon { font-size: 2rem; display: block; margin-bottom: 0.6rem; }
+.uvi-price-vehicle { font-size: 0.8rem; font-weight: 800; color: #7c3aed; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.4rem; }
+.uvi-price-amount { font-size: 2rem; font-weight: 900; color: #1f2937; line-height: 1; }
+.uvi-price-amount span { font-size: 0.75rem; font-weight: 600; color: #6b7280; }
+.uvi-price-note { font-size: 0.72rem; color: #9ca3af; margin-top: 0.4rem; }
+.uvi-price-footer { text-align: center; margin-top: 1.5rem; font-size: 0.82rem; color: #6b7280; }
 
-/* PRICING */
-.uvi-pricing { padding:4rem 0; background:#fff; }
-.uvi-pricing-inner { max-width:680px; margin:0 auto; padding:0 1.5rem; }
-.uvi-price-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:2rem; }
-.uvi-price-card { background:#f8fafc; border:1px solid #e5e7eb; border-radius:12px; padding:1.5rem 1rem; text-align:center; transition:all 0.2s; }
-.uvi-price-card:hover { border-color:#1e3a8a; box-shadow:0 4px 16px rgba(30,58,138,0.1); transform:translateY(-2px); }
-.uvi-price-card.featured { background:#1e3a8a; border-color:#1e3a8a; color:#fff; }
-.uvi-price-veh { font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#6b7280; margin-bottom:0.5rem; }
-.uvi-price-card.featured .uvi-price-veh { color:#93c5fd; }
-.uvi-price-amount { font-size:1.75rem; font-weight:800; color:#1e3a8a; display:block; }
-.uvi-price-card.featured .uvi-price-amount { color:#fff; }
-.uvi-price-label { font-size:0.72rem; color:#9ca3af; }
-.uvi-price-card.featured .uvi-price-label { color:#bfdbfe; }
-.uvi-price-note { font-size:0.8rem; color:#9ca3af; text-align:center; margin-top:1.25rem; }
-.uvi-price-cta { text-align:center; margin-top:1.75rem; }
+/* WHAT IT REVEALS */
+.uvi-reveals { background: #fff; padding: 4rem 0; }
+.uvi-reveals-inner { max-width: 1060px; margin: 0 auto; padding: 0 1.5rem; }
+.uvi-reveals-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2rem; }
+.uvi-reveal-card { border-radius: 14px; padding: 1.5rem; border: 1px solid #e5e7eb; background: #fafafa; position: relative; overflow: hidden; transition: all 0.25s; }
+.uvi-reveal-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(to right, #9333ea, #c084fc); }
+.uvi-reveal-card:hover { box-shadow: 0 8px 24px rgba(147,51,234,0.1); transform: translateY(-3px); }
+.uvi-reveal-icon { font-size: 2rem; display: block; margin-bottom: 0.75rem; }
+.uvi-reveal-card h3 { font-size: 0.95rem; font-weight: 800; color: #1f2937; margin-bottom: 0.35rem; }
+.uvi-reveal-card p { font-size: 0.8rem; color: #6b7280; line-height: 1.55; }
+
+/* VIDEO / BEFORE-AFTER */
+.uvi-media { background: #0d0d1a; padding: 4rem 0; }
+.uvi-media-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+.uvi-media h2 { font-size: 1.9rem; font-weight: 800; color: #fff; text-align: center; margin-bottom: 0.5rem; }
+.uvi-media p { color: #c4b5fd; text-align: center; font-size: 0.9rem; margin-bottom: 2rem; }
+.uvi-media-box { background: rgba(147,51,234,0.1); border: 2px dashed rgba(147,51,234,0.4); border-radius: 16px; padding: 3rem; text-align: center; color: #c4b5fd; }
+.uvi-media-box-icon { font-size: 4rem; display: block; margin-bottom: 1rem; }
+.uvi-media-upload { margin-top: 1rem; font-size: 0.8rem; color: #a78bfa; }
+.uvi-media-video { width: 100%; border-radius: 16px; overflow: hidden; }
+.uvi-media-video video, .uvi-media-video img { width: 100%; display: block; border-radius: 16px; }
 
 /* PROCESS */
-.uvi-process { padding:4rem 0; background:#f8fafc; }
-.uvi-process-inner { max-width:760px; margin:0 auto; padding:0 1.5rem; }
-.uvi-steps { display:flex; flex-direction:column; gap:0; margin-top:2rem; }
-.uvi-step { display:flex; gap:1.5rem; padding-bottom:2rem; }
-.uvi-step:last-child { padding-bottom:0; }
-.uvi-step-left { display:flex; flex-direction:column; align-items:center; }
-.uvi-step-num { width:2.5rem; height:2.5rem; border-radius:50%; background:#1e3a8a; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.9rem; flex-shrink:0; }
-.uvi-step-line { width:2px; background:#e5e7eb; flex:1; margin-top:0.25rem; }
-.uvi-step:last-child .uvi-step-line { display:none; }
-.uvi-step-body h3 { font-size:1rem; font-weight:700; color:#1f2937; margin-bottom:0.3rem; }
-.uvi-step-body p { font-size:0.875rem; color:#6b7280; line-height:1.6; }
-
-/* WHY MATTERS */
-.uvi-why { padding:4rem 0; background:#fff; }
-.uvi-why-inner { max-width:960px; margin:0 auto; padding:0 1.5rem; display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
-.uvi-why h2 { font-size:1.9rem; font-weight:800; color:#1f2937; margin-bottom:1rem; line-height:1.2; }
-.uvi-why-list { display:flex; flex-direction:column; gap:0.85rem; }
-.uvi-why-item { display:flex; align-items:flex-start; gap:0.75rem; }
-.uvi-why-check { width:1.5rem; height:1.5rem; border-radius:50%; background:#1e3a8a; display:flex; align-items:center; justify-content:center; font-size:0.65rem; color:#fff; flex-shrink:0; margin-top:2px; }
-.uvi-why-text h4 { font-size:0.9rem; font-weight:700; color:#1f2937; margin-bottom:0.15rem; }
-.uvi-why-text p { font-size:0.8rem; color:#6b7280; line-height:1.55; }
-.uvi-why-box { background:linear-gradient(135deg,#1e3a8a,#1e1b4b); border-radius:14px; padding:2rem; color:#fff; }
-.uvi-why-box h3 { font-size:1.1rem; font-weight:800; margin-bottom:0.75rem; }
-.uvi-why-box p { font-size:0.875rem; color:#bfdbfe; line-height:1.7; margin-bottom:1.25rem; }
-.uvi-why-box a { display:inline-flex; padding:0.75rem 1.5rem; background:#fff; color:#1e3a8a; border-radius:8px; font-weight:700; font-size:0.875rem; text-decoration:none; }
-
-/* FAQ */
-.uvi-faq { padding:4rem 0; background:#f8fafc; }
-.uvi-faq-inner { max-width:760px; margin:0 auto; padding:0 1.5rem; }
-.uvi-faq-list { display:flex; flex-direction:column; gap:0.75rem; margin-top:2rem; }
-.uvi-faq-item { background:#fff; border-radius:10px; border:1px solid #e5e7eb; overflow:hidden; }
-.uvi-faq-q { display:flex; justify-content:space-between; align-items:center; padding:1rem 1.25rem; cursor:pointer; font-weight:700; font-size:0.925rem; color:#1f2937; user-select:none; }
-.uvi-faq-q:hover { color:#1e3a8a; }
-.uvi-faq-icon { font-size:1.25rem; transition:transform 0.25s; flex-shrink:0; }
-.uvi-faq-item.open .uvi-faq-icon { transform:rotate(45deg); }
-.uvi-faq-a { max-height:0; overflow:hidden; transition:max-height 0.35s ease; }
-.uvi-faq-item.open .uvi-faq-a { max-height:400px; }
-.uvi-faq-a p { padding:0 1.25rem 1.1rem; font-size:0.875rem; color:#4b5563; line-height:1.7; }
+.uvi-process { background: #fff; padding: 4rem 0; }
+.uvi-process-inner { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+.uvi-steps { margin-top: 2rem; display: flex; flex-direction: column; gap: 0; }
+.uvi-step { display: flex; gap: 1.25rem; padding-bottom: 2rem; position: relative; }
+.uvi-step:last-child { padding-bottom: 0; }
+.uvi-step-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+.uvi-step-num { width: 2.5rem; height: 2.5rem; background: linear-gradient(135deg,#9333ea,#7c3aed); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(147,51,234,0.3); }
+.uvi-step-line { width: 2px; flex: 1; background: #ede9fe; margin-top: 0.3rem; }
+.uvi-step:last-child .uvi-step-line { display: none; }
+.uvi-step h3 { font-size: 1rem; font-weight: 700; color: #1f2937; margin-bottom: 0.3rem; margin-top: 0.35rem; }
+.uvi-step p { font-size: 0.85rem; color: #6b7280; line-height: 1.6; }
 
 /* CTA */
-.uvi-cta { padding:4rem 0; background:linear-gradient(135deg,#1e3a8a,#0f172a); text-align:center; color:#fff; }
-.uvi-cta-inner { max-width:600px; margin:0 auto; padding:0 1.5rem; }
-.uvi-cta h2 { font-size:2rem; font-weight:800; margin-bottom:0.75rem; }
-.uvi-cta p { color:#bfdbfe; margin-bottom:2rem; font-size:1rem; }
-.uvi-cta-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+.uvi-cta { background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 50%, #1e1b4b 100%); padding: 5rem 0; text-align: center; color: #fff; position: relative; overflow: hidden; }
+.uvi-cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(192,132,252,0.25) 0%, transparent 65%); }
+.uvi-cta-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; padding: 0 1.5rem; }
+.uvi-cta h2 { font-size: 2.25rem; font-weight: 900; margin-bottom: 0.75rem; }
+.uvi-cta h2 em { font-style: normal; color: #e879f9; }
+.uvi-cta p { color: #e9d5ff; margin-bottom: 2rem; font-size: 1rem; line-height: 1.7; }
+.uvi-cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
 /* MOBILE */
-@media (max-width:900px) {
-  .uvi-what-inner, .uvi-why-inner { grid-template-columns:1fr; }
-  .uvi-reveals-grid { grid-template-columns:1fr 1fr; }
-  .uvi-price-cards { grid-template-columns:1fr 1fr; }
+@media (max-width: 900px) {
+  .uvi-hero-inner { grid-template-columns: 1fr; }
+  .uvi-hero-visual { display: none; }
+  .uvi-price-grid { grid-template-columns: 1fr 1fr; }
+  .uvi-reveals-grid { grid-template-columns: 1fr 1fr; }
 }
-@media (max-width:640px) {
-  .uvi-hero { padding:2.25rem 0; min-height:auto; }
-  .uvi-hero-content { padding:0 1rem; }
-  .uvi-hero h1 { font-size:1.65rem; line-height:1.25; }
-  .uvi-hero-sub { font-size:0.95rem; }
-  .uvi-hero-desc { font-size:0.88rem; margin-bottom:1.25rem; }
-  .uvi-hero-badge { font-size:0.65rem; }
-  .uvi-hero-feat { font-size:0.7rem; padding:0.3rem 0.6rem; }
-  .uvi-hero-btns { flex-direction:row; flex-wrap:nowrap; gap:0.5rem; }
-  .uvi-btn-blue, .uvi-btn-wa { flex:1; justify-content:center; text-align:center; padding:0.65rem 0.5rem; font-size:0.78rem; white-space:nowrap; }
-  .uvi-reveals-grid { grid-template-columns:1fr; }
-  .uvi-price-cards { grid-template-columns:1fr 1fr; gap:0.75rem; }
-  .uvi-price-amount { font-size:1.35rem; }
-  .uvi-sec-hdr h2 { font-size:1.4rem; }
-  .uvi-what, .uvi-reveals, .uvi-pricing, .uvi-process, .uvi-why, .uvi-faq, .uvi-cta { padding:2rem 0; }
-  .uvi-cta h2 { font-size:1.4rem; }
-  .uvi-cta-btns { flex-direction:row; flex-wrap:nowrap; gap:0.5rem; }
-  .uvi-cta-btns a { flex:1; justify-content:center; text-align:center; padding:0.65rem 0.5rem; font-size:0.78rem; white-space:nowrap; }
+@media (max-width: 640px) {
+  .uvi-hero { min-height: auto; }
+  .uvi-hero-inner { padding: 3rem 1rem; }
+  .uvi-hero h1 { font-size: 1.75rem; }
+  .uvi-hero-sub { font-size: 0.95rem; }
+  .uvi-hero-desc { font-size: 0.875rem; margin-bottom: 1.25rem; }
+  .uvi-badge { font-size: 0.6rem; }
+  .uvi-feat { font-size: 0.72rem; }
+  .uvi-btn-row { flex-direction: row; flex-wrap: nowrap; gap: 0.5rem; }
+  .uvi-btn-book, .uvi-btn-wa { flex: 1; justify-content: center; padding: 0.65rem 0.5rem; font-size: 0.78rem; white-space: nowrap; }
+  .uvi-price-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .uvi-price-card { padding: 1.25rem 0.75rem; }
+  .uvi-price-amount { font-size: 1.5rem; }
+  .uvi-reveals-grid { grid-template-columns: 1fr; }
+  .uvi-pricing { padding: 2.5rem 0; }
+  .uvi-reveals { padding: 2.5rem 0; }
+  .uvi-media { padding: 2.5rem 0; }
+  .uvi-process { padding: 2.5rem 0; }
+  .uvi-cta { padding: 3rem 0; }
+  .uvi-cta h2 { font-size: 1.6rem; }
+  .uvi-cta-btns { flex-direction: row; flex-wrap: nowrap; gap: 0.5rem; }
+  .uvi-cta-btns a { flex: 1; justify-content: center; padding: 0.65rem 0.5rem; font-size: 0.78rem; white-space: nowrap; }
 }
 </style>
 
@@ -140,67 +145,101 @@
   <!-- HERO -->
   <div class="uvi-hero">
     {%- if section.settings.bg_video != blank -%}
-      <div class="uvi-hero-media"><video src="{{ section.settings.bg_video.sources.last.url }}" autoplay muted loop playsinline></video></div>
-      <div class="uvi-hero-overlay"></div>
+      <div class="uvi-hero-bg">
+        <video src="{{ section.settings.bg_video.sources.last.url }}" autoplay muted loop playsinline></video>
+      </div>
     {%- elsif section.settings.bg_image != blank -%}
-      <div class="uvi-hero-media"><img src="{{ section.settings.bg_image | image_url: width: 1800 }}" alt="UV Paint Inspection Karachi" loading="eager"></div>
-      <div class="uvi-hero-overlay"></div>
+      <div class="uvi-hero-bg">
+        <img src="{{ section.settings.bg_image | image_url: width: 1800 }}" alt="UV Paint Inspection">
+      </div>
     {%- endif -%}
+    <div class="uvi-hero-glow"></div>
     <div class="container">
-      <div class="uvi-hero-content">
-        <div class="uvi-hero-badge">🔦 {{ section.settings.badge | default: "UV Paint Inspection • Karachi" }}</div>
-        <h1>{{ section.settings.h1_1 | default: "UV Light" }} <span>{{ section.settings.h1_2 | default: "Car Paint Inspection" }}</span> {{ section.settings.h1_3 | default: "in Karachi" }}</h1>
-        <p class="uvi-hero-sub">{{ section.settings.hero_sub | default: "See What the Naked Eye Can't" }}</p>
-        <p class="uvi-hero-desc">{{ section.settings.hero_desc | default: "We use professional UV light devices to inspect your car's paint in a darkened studio — revealing hidden repaint, fading, rust, and body filler before you buy or apply any protection." }}</p>
-        <div class="uvi-hero-feats">
-          {%- if section.settings.feat1 != blank -%}<span class="uvi-hero-feat">{{ section.settings.feat1 }}</span>{%- endif -%}
-          {%- if section.settings.feat2 != blank -%}<span class="uvi-hero-feat">{{ section.settings.feat2 }}</span>{%- endif -%}
-          {%- if section.settings.feat3 != blank -%}<span class="uvi-hero-feat">{{ section.settings.feat3 }}</span>{%- endif -%}
-          {%- if section.settings.feat4 != blank -%}<span class="uvi-hero-feat">{{ section.settings.feat4 }}</span>{%- endif -%}
+      <div class="uvi-hero-inner">
+        <div>
+          <div class="uvi-badge">🔦 {{ section.settings.badge | default: "UV Light Inspection • Karachi" }}</div>
+          <h1>{{ section.settings.h1_part1 | default: "UV Light" }} <em>{{ section.settings.h1_em | default: "Car Paint" }}</em><br>{{ section.settings.h1_part2 | default: "Inspection in Karachi" }}</h1>
+          <p class="uvi-hero-sub">{{ section.settings.hero_sub | default: "See What the Naked Eye Can't" }}</p>
+          <p class="uvi-hero-desc">{{ section.settings.hero_desc | default: "We use professional UV light devices in a darkened studio to reveal hidden repaint, rust, body filler, and paint defects — invisible under normal light. Know the true condition of your car before you buy, sell, or protect." }}</p>
+          <div class="uvi-feat-row">
+            {%- if section.settings.feat1 != blank -%}<span class="uvi-feat">{{ section.settings.feat1 }}</span>{%- endif -%}
+            {%- if section.settings.feat2 != blank -%}<span class="uvi-feat">{{ section.settings.feat2 }}</span>{%- endif -%}
+            {%- if section.settings.feat3 != blank -%}<span class="uvi-feat">{{ section.settings.feat3 }}</span>{%- endif -%}
+            {%- if section.settings.feat4 != blank -%}<span class="uvi-feat">{{ section.settings.feat4 }}</span>{%- endif -%}
+          </div>
+          <div class="uvi-btn-row">
+            <a href="{{ section.settings.btn1_url | default: '/pages/book-appointment' }}" class="uvi-btn-book">🔦 {{ section.settings.btn1 | default: "Book Inspection" }}</a>
+            <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20UV%20paint%20inspection%20for%20my%20car" target="_blank" class="uvi-btn-wa">💬 {{ section.settings.btn2 | default: "WhatsApp Us" }}</a>
+          </div>
         </div>
-        <div class="uvi-hero-btns">
-          <a href="{{ section.settings.btn1_url | default: '/pages/book-appointment' }}" class="uvi-btn-blue">{{ section.settings.btn1 | default: "Book Inspection" }}</a>
-          <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20UV%20paint%20inspection%20for%20my%20car" target="_blank" class="uvi-btn-wa">💬 {{ section.settings.btn2 | default: "WhatsApp Us" }}</a>
+        <div class="uvi-hero-visual">
+          <div class="uvi-uv-lamp">
+            <span class="uvi-lamp-icon">🔦</span>
+            <p class="uvi-lamp-text">Lights off. UV on. Hidden repaint, rust, filler — all revealed in seconds.</p>
+          </div>
+          <div class="uvi-stats-row">
+            <div class="uvi-stat"><span class="uvi-stat-num">100%</span><span class="uvi-stat-lbl">Accuracy</span></div>
+            <div class="uvi-stat"><span class="uvi-stat-num">30 Min</span><span class="uvi-stat-lbl">Full Inspection</span></div>
+            <div class="uvi-stat"><span class="uvi-stat-num">4.9⭐</span><span class="uvi-stat-lbl">Google Rating</span></div>
+            <div class="uvi-stat"><span class="uvi-stat-num">500+</span><span class="uvi-stat-lbl">Cars Inspected</span></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- WHAT IS UV INSPECTION — AEO Answer Box -->
-  <div class="uvi-what">
-    <div class="uvi-what-inner">
-      <div>
-        <div class="uvi-tag">What is it?</div>
-        <h2>{{ section.settings.what_h2 | default: "What is UV Light Car Paint Inspection?" }}</h2>
-        <div class="uvi-answer-box">
-          <p>{{ section.settings.what_answer | default: "UV Light Car Paint Inspection is a process where a professional UV (ultraviolet) light device is used in a darkened environment to examine a car's paint. Original factory paint appears uniform under UV light, while repainted panels, fading, rust, and body filler glow differently — revealing hidden defects invisible to the naked eye." }}</p>
+  <!-- PRICING -->
+  <div class="uvi-pricing">
+    <div class="uvi-pricing-inner">
+      <div class="uvi-sec">
+        <div class="uvi-sec-tag">Transparent Pricing</div>
+        <h2>{{ section.settings.price_title | default: "UV Paint Inspection Pricing" }}</h2>
+        <p>{{ section.settings.price_sub | default: "Flat rate per vehicle type — no hidden charges" }}</p>
+      </div>
+      <div class="uvi-price-grid">
+        <div class="uvi-price-card">
+          <span class="uvi-price-icon">🚗</span>
+          <div class="uvi-price-vehicle">Hatchback</div>
+          <div class="uvi-price-amount">{{ section.settings.price_hatch | default: "5,500" }}<span> PKR</span></div>
+          <div class="uvi-price-note">Swift, Mira, Cultus, Picanto</div>
         </div>
-        <p class="uvi-what-detail">{{ section.settings.what_detail | default: "At Revive Auto Detailing Karachi, we perform UV paint inspections to give you a clear, honest report of your car's paint condition — before you buy, before you protect, and before you sell." }}</p>
+        <div class="uvi-price-card popular">
+          <div class="uvi-popular-badge">Most Booked</div>
+          <span class="uvi-price-icon">🚙</span>
+          <div class="uvi-price-vehicle">Sedan</div>
+          <div class="uvi-price-amount">{{ section.settings.price_sedan | default: "6,500" }}<span> PKR</span></div>
+          <div class="uvi-price-note">Corolla, Civic, City, Sonata</div>
+        </div>
+        <div class="uvi-price-card">
+          <span class="uvi-price-icon">🚐</span>
+          <div class="uvi-price-vehicle">SUV</div>
+          <div class="uvi-price-amount">{{ section.settings.price_suv | default: "7,500" }}<span> PKR</span></div>
+          <div class="uvi-price-note">Sportage, Tucson, Fortuner, MG ZS</div>
+        </div>
+        <div class="uvi-price-card">
+          <span class="uvi-price-icon">🚌</span>
+          <div class="uvi-price-vehicle">XL SUV</div>
+          <div class="uvi-price-amount">{{ section.settings.price_xlsuv | default: "10,000" }}<span> PKR</span></div>
+          <div class="uvi-price-note">Prado, Land Cruiser, Patrol, Sequoia</div>
+        </div>
       </div>
-      <div class="uvi-what-video">
-        {%- if section.settings.demo_video != blank -%}
-          <video src="{{ section.settings.demo_video.sources.last.url }}" controls muted loop playsinline style="width:100%;height:100%;object-fit:cover;"></video>
-        {%- elsif section.settings.demo_image != blank -%}
-          <img src="{{ section.settings.demo_image | image_url: width: 800 }}" alt="UV Inspection Demo" style="width:100%;height:100%;object-fit:cover;">
-        {%- else -%}
-          <span class="uvi-what-video-ph">🔦</span>
-        {%- endif -%}
-      </div>
+      <p class="uvi-price-footer">✅ Includes full panel-by-panel UV scan + verbal findings report. Written report available on request.</p>
     </div>
   </div>
 
   <!-- WHAT UV REVEALS -->
   <div class="uvi-reveals">
     <div class="uvi-reveals-inner">
-      <div class="uvi-sec-hdr">
-        <h2>{{ section.settings.reveals_h2 | default: "What Does UV Light Reveal on Car Paint?" }}</h2>
-        <p>{{ section.settings.reveals_sub | default: "Hidden paint problems that only show up under UV light" }}</p>
+      <div class="uvi-sec">
+        <div class="uvi-sec-tag">What We Find</div>
+        <h2>{{ section.settings.reveals_title | default: "What UV Light Reveals on Your Car" }}</h2>
+        <p>{{ section.settings.reveals_sub | default: "Things invisible under normal light — exposed under UV in seconds" }}</p>
       </div>
       <div class="uvi-reveals-grid">
         {%- for block in section.blocks -%}
           {%- if block.type == 'reveal' -%}
           <div class="uvi-reveal-card">
-            <span class="uvi-reveal-icon">{{ block.settings.icon | default: "🔍" }}</span>
+            <span class="uvi-reveal-icon">{{ block.settings.icon }}</span>
             <h3>{{ block.settings.title }}</h3>
             <p>{{ block.settings.description }}</p>
           </div>
@@ -210,100 +249,43 @@
     </div>
   </div>
 
-  <!-- PRICING -->
-  <div class="uvi-pricing" id="uvi-pricing">
-    <div class="uvi-pricing-inner">
-      <div class="uvi-sec-hdr">
-        <h2>{{ section.settings.price_h2 | default: "UV Paint Inspection Pricing" }}</h2>
-        <p>{{ section.settings.price_sub | default: "Flat-rate pricing by vehicle type — no hidden charges" }}</p>
-      </div>
-      <div class="uvi-price-cards">
-        <div class="uvi-price-card">
-          <div class="uvi-price-veh">Hatchback</div>
-          <span class="uvi-price-amount">Rs {{ section.settings.p_hatch | default: "5,500" }}</span>
-          <div class="uvi-price-label">Full UV Inspection</div>
+  <!-- VIDEO / MEDIA SECTION -->
+  <div class="uvi-media">
+    <div class="uvi-media-inner">
+      <h2>{{ section.settings.media_title | default: "Watch UV Inspection in Action" }}</h2>
+      <p>{{ section.settings.media_sub | default: "See how hidden repaint and defects light up under our UV device" }}</p>
+      {%- if section.settings.demo_video != blank -%}
+        <div class="uvi-media-video">
+          <video src="{{ section.settings.demo_video.sources.last.url }}" controls playsinline poster="{{ section.settings.demo_thumb | image_url: width: 1200 }}"></video>
         </div>
-        <div class="uvi-price-card featured">
-          <div class="uvi-price-veh">Sedan</div>
-          <span class="uvi-price-amount">Rs {{ section.settings.p_sedan | default: "6,500" }}</span>
-          <div class="uvi-price-label">Full UV Inspection</div>
+      {%- elsif section.settings.demo_image != blank -%}
+        <div class="uvi-media-video">
+          <img src="{{ section.settings.demo_image | image_url: width: 1200 }}" alt="UV Paint Inspection">
         </div>
-        <div class="uvi-price-card">
-          <div class="uvi-price-veh">SUV</div>
-          <span class="uvi-price-amount">Rs {{ section.settings.p_suv | default: "7,500" }}</span>
-          <div class="uvi-price-label">Full UV Inspection</div>
+      {%- else -%}
+        <div class="uvi-media-box">
+          <span class="uvi-media-box-icon">🎬</span>
+          <p>Upload a demo video or before/after photo in Theme Editor</p>
+          <p class="uvi-media-upload">Theme Editor → UV Inspection → Demo Video / Demo Image</p>
         </div>
-        <div class="uvi-price-card">
-          <div class="uvi-price-veh">XL SUV</div>
-          <span class="uvi-price-amount">Rs {{ section.settings.p_xlsuv | default: "10,000" }}</span>
-          <div class="uvi-price-label">Full UV Inspection</div>
-        </div>
-      </div>
-      <p class="uvi-price-note">{{ section.settings.price_note | default: "* Includes full panel-by-panel UV inspection + written report. Book in advance to secure your slot." }}</p>
-      <div class="uvi-price-cta">
-        <a href="{{ section.settings.btn1_url | default: '/pages/book-appointment' }}" class="uvi-btn-blue">🔦 Book My Inspection</a>
-      </div>
+      {%- endif -%}
     </div>
   </div>
 
   <!-- PROCESS -->
   <div class="uvi-process">
     <div class="uvi-process-inner">
-      <div class="uvi-sec-hdr">
-        <h2>{{ section.settings.process_h2 | default: "How UV Paint Inspection Works at Revive" }}</h2>
-        <p>{{ section.settings.process_sub | default: "Simple, transparent, and takes less than an hour" }}</p>
+      <div class="uvi-sec">
+        <div class="uvi-sec-tag">How It Works</div>
+        <h2>{{ section.settings.process_title | default: "UV Paint Inspection — Step by Step" }}</h2>
+        <p>{{ section.settings.process_sub | default: "Simple, fast, and honest — done in 30 minutes" }}</p>
       </div>
       <div class="uvi-steps">
         {%- for block in section.blocks -%}
           {%- if block.type == 'step' -%}
           <div class="uvi-step">
             <div class="uvi-step-left"><div class="uvi-step-num">{{ forloop.index }}</div><div class="uvi-step-line"></div></div>
-            <div class="uvi-step-body"><h3>{{ block.settings.title }}</h3><p>{{ block.settings.description }}</p></div>
-          </div>
-          {%- endif -%}
-        {%- endfor -%}
-      </div>
-    </div>
-  </div>
-
-  <!-- WHY IT MATTERS -->
-  <div class="uvi-why">
-    <div class="uvi-why-inner">
-      <div>
-        <div class="uvi-tag">Why it matters</div>
-        <h2>{{ section.settings.why_h2 | default: "Why UV Paint Inspection Matters Before Buying a Used Car in Pakistan" }}</h2>
-        <div class="uvi-why-list">
-          {%- for block in section.blocks -%}
-            {%- if block.type == 'why_item' -%}
-            <div class="uvi-why-item">
-              <div class="uvi-why-check">✓</div>
-              <div class="uvi-why-text"><h4>{{ block.settings.title }}</h4><p>{{ block.settings.description }}</p></div>
-            </div>
-            {%- endif -%}
-          {%- endfor -%}
-        </div>
-      </div>
-      <div class="uvi-why-box">
-        <h3>🔦 Book a UV Paint Inspection</h3>
-        <p>Bring your car to our Karachi studio. Lights go off, UV light goes on — within 30–60 minutes you'll know the true paint condition of every panel.</p>
-        <a href="{{ section.settings.btn1_url | default: '/pages/book-appointment' }}">Book Now →</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- FAQ — AEO/GEO -->
-  <div class="uvi-faq">
-    <div class="uvi-faq-inner">
-      <div class="uvi-sec-hdr">
-        <h2>{{ section.settings.faq_h2 | default: "Frequently Asked Questions — UV Paint Inspection Karachi" }}</h2>
-        <p>{{ section.settings.faq_sub | default: "Common questions about UV light car paint inspection in Pakistan" }}</p>
-      </div>
-      <div class="uvi-faq-list">
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'faq' -%}
-          <div class="uvi-faq-item">
-            <div class="uvi-faq-q">{{ block.settings.question }}<span class="uvi-faq-icon">+</span></div>
-            <div class="uvi-faq-a"><p>{{ block.settings.answer }}</p></div>
+            <div><h3>{{ block.settings.title }}</h3><p>{{ block.settings.description }}</p></div>
           </div>
           {%- endif -%}
         {%- endfor -%}
@@ -314,10 +296,10 @@
   <!-- CTA -->
   <div class="uvi-cta">
     <div class="uvi-cta-inner">
-      <h2>{{ section.settings.cta_h2 | default: "Know Your Car's True Paint Condition" }}</h2>
-      <p>{{ section.settings.cta_sub | default: "Book a UV paint inspection at Revive Auto Detailing Karachi — before you buy, before you protect, before you sell." }}</p>
+      <h2>{{ section.settings.cta_title | default: "Don't Buy a Car Without" }} <em>{{ section.settings.cta_title_em | default: "UV Inspection" }}</em></h2>
+      <p>{{ section.settings.cta_sub | default: "Book your UV paint inspection at Revive Auto Detailing Karachi — 30 minutes, honest report, zero pressure. Know exactly what you're buying or protecting." }}</p>
       <div class="uvi-cta-btns">
-        <a href="{{ section.settings.btn1_url | default: '/pages/book-appointment' }}" class="uvi-btn-blue">🔦 {{ section.settings.btn1 | default: "Book Inspection" }}</a>
+        <a href="{{ section.settings.btn1_url | default: '/pages/book-appointment' }}" class="uvi-btn-book">🔦 {{ section.settings.btn1 | default: "Book Inspection" }}</a>
         <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20UV%20paint%20inspection%20for%20my%20car" target="_blank" class="uvi-btn-wa">💬 {{ section.settings.btn2 | default: "WhatsApp Us" }}</a>
       </div>
     </div>
@@ -338,54 +320,48 @@ document.querySelectorAll('.uvi-faq-q').forEach(function(q){
 
 {% schema %}
 {
-  "name": "UV Paint Inspection Page",
+  "name": "UV Paint Inspection",
   "settings": [
     {"type":"header","content":"Hero Background"},
     {"type":"image_picker","id":"bg_image","label":"Background Image"},
     {"type":"video","id":"bg_video","label":"Background Video (overrides image)"},
     {"type":"header","content":"Hero Text"},
-    {"type":"text","id":"badge","label":"Badge","default":"UV Paint Inspection • Karachi"},
-    {"type":"text","id":"h1_1","label":"H1 Part 1","default":"UV Light"},
-    {"type":"text","id":"h1_2","label":"H1 Highlighted","default":"Car Paint Inspection"},
-    {"type":"text","id":"h1_3","label":"H1 Part 3","default":"in Karachi"},
-    {"type":"text","id":"hero_sub","label":"Subheadline","default":"See What the Naked Eye Can't"},
+    {"type":"text","id":"badge","label":"Badge","default":"UV Light Inspection • Karachi"},
+    {"type":"text","id":"h1_part1","label":"H1 Line 1","default":"UV Light"},
+    {"type":"text","id":"h1_em","label":"H1 Highlighted Word","default":"Car Paint"},
+    {"type":"text","id":"h1_part2","label":"H1 Line 2","default":"Inspection in Karachi"},
+    {"type":"text","id":"hero_sub","label":"Sub-headline","default":"See What the Naked Eye Can't"},
     {"type":"textarea","id":"hero_desc","label":"Description"},
     {"type":"text","id":"feat1","label":"Feature 1","default":"✓ Repaint Detection"},
-    {"type":"text","id":"feat2","label":"Feature 2","default":"✓ Paint Fade Check"},
-    {"type":"text","id":"feat3","label":"Feature 3","default":"✓ Rust & Filler Reveal"},
-    {"type":"text","id":"feat4","label":"Feature 4","default":"✓ Pre-Buy Inspection"},
+    {"type":"text","id":"feat2","label":"Feature 2","default":"✓ Rust & Filler Reveal"},
+    {"type":"text","id":"feat3","label":"Feature 3","default":"✓ Pre-Buy Inspection"},
+    {"type":"text","id":"feat4","label":"Feature 4","default":"✓ 30-Min Report"},
     {"type":"text","id":"btn1","label":"Button 1 Text","default":"Book Inspection"},
     {"type":"url","id":"btn1_url","label":"Button 1 Link"},
     {"type":"text","id":"btn2","label":"Button 2 Text","default":"WhatsApp Us"},
-    {"type":"header","content":"Demo Video / Image (What Is section)"},
-    {"type":"video","id":"demo_video","label":"Demo Video (UV inspection clip)"},
-    {"type":"image_picker","id":"demo_image","label":"Demo Image (fallback if no video)"},
-    {"type":"header","content":"What Is Section"},
-    {"type":"text","id":"what_h2","label":"Heading","default":"What is UV Light Car Paint Inspection?"},
-    {"type":"textarea","id":"what_answer","label":"Answer Box Text"},
-    {"type":"textarea","id":"what_detail","label":"Detail Paragraph"},
-    {"type":"header","content":"Reveals Section"},
-    {"type":"text","id":"reveals_h2","label":"Heading","default":"What Does UV Light Reveal on Car Paint?"},
-    {"type":"text","id":"reveals_sub","label":"Subtitle","default":"Hidden paint problems that only show up under UV light"},
     {"type":"header","content":"Pricing"},
-    {"type":"text","id":"price_h2","label":"Heading","default":"UV Paint Inspection Pricing"},
-    {"type":"text","id":"price_sub","label":"Subtitle","default":"Flat-rate pricing by vehicle type — no hidden charges"},
-    {"type":"text","id":"p_hatch","label":"Hatchback Price","default":"5,500"},
-    {"type":"text","id":"p_sedan","label":"Sedan Price","default":"6,500"},
-    {"type":"text","id":"p_suv","label":"SUV Price","default":"7,500"},
-    {"type":"text","id":"p_xlsuv","label":"XL SUV Price","default":"10,000"},
-    {"type":"textarea","id":"price_note","label":"Pricing Footnote"},
+    {"type":"text","id":"price_title","label":"Section Title","default":"UV Paint Inspection Pricing"},
+    {"type":"text","id":"price_sub","label":"Subtitle","default":"Flat rate per vehicle type — no hidden charges"},
+    {"type":"text","id":"price_hatch","label":"Hatchback Price","default":"5,500"},
+    {"type":"text","id":"price_sedan","label":"Sedan Price","default":"6,500"},
+    {"type":"text","id":"price_suv","label":"SUV Price","default":"7,500"},
+    {"type":"text","id":"price_xlsuv","label":"XL SUV Price","default":"10,000"},
+    {"type":"header","content":"What UV Reveals Section"},
+    {"type":"text","id":"reveals_title","label":"Title","default":"What UV Light Reveals on Your Car"},
+    {"type":"text","id":"reveals_sub","label":"Subtitle","default":"Things invisible under normal light — exposed under UV in seconds"},
+    {"type":"header","content":"Demo Video / Image"},
+    {"type":"text","id":"media_title","label":"Section Title","default":"Watch UV Inspection in Action"},
+    {"type":"text","id":"media_sub","label":"Subtitle","default":"See how hidden repaint and defects light up under our UV device"},
+    {"type":"video","id":"demo_video","label":"Demo Video"},
+    {"type":"image_picker","id":"demo_image","label":"Demo Image (if no video)"},
+    {"type":"image_picker","id":"demo_thumb","label":"Video Thumbnail"},
     {"type":"header","content":"Process Section"},
-    {"type":"text","id":"process_h2","label":"Heading","default":"How UV Paint Inspection Works at Revive"},
-    {"type":"text","id":"process_sub","label":"Subtitle","default":"Simple, transparent, and takes less than an hour"},
-    {"type":"header","content":"Why It Matters Section"},
-    {"type":"text","id":"why_h2","label":"Heading","default":"Why UV Paint Inspection Matters Before Buying a Used Car in Pakistan"},
-    {"type":"header","content":"FAQ Section"},
-    {"type":"text","id":"faq_h2","label":"Heading","default":"Frequently Asked Questions — UV Paint Inspection Karachi"},
-    {"type":"text","id":"faq_sub","label":"Subtitle"},
-    {"type":"header","content":"CTA Section"},
-    {"type":"text","id":"cta_h2","label":"Heading","default":"Know Your Car's True Paint Condition"},
-    {"type":"textarea","id":"cta_sub","label":"Subtext"}
+    {"type":"text","id":"process_title","label":"Title","default":"UV Paint Inspection — Step by Step"},
+    {"type":"text","id":"process_sub","label":"Subtitle","default":"Simple, fast, and honest — done in 30 minutes"},
+    {"type":"header","content":"CTA"},
+    {"type":"text","id":"cta_title","label":"CTA Heading","default":"Don't Buy a Car Without"},
+    {"type":"text","id":"cta_title_em","label":"CTA Highlighted Text","default":"UV Inspection"},
+    {"type":"textarea","id":"cta_sub","label":"CTA Subtext"}
   ],
   "blocks": [
     {
@@ -394,59 +370,34 @@ document.querySelectorAll('.uvi-faq-q').forEach(function(q){
       "settings": [
         {"type":"text","id":"icon","label":"Icon","default":"🎨"},
         {"type":"text","id":"title","label":"Title","default":"Repaint Detection"},
-        {"type":"textarea","id":"description","label":"Description","default":"Repainted panels glow differently — sellers hide accident repairs with fresh paint."}
+        {"type":"textarea","id":"description","label":"Description","default":"Repainted panels glow distinctly under UV. Sellers commonly hide accident repairs with fresh paint — UV exposes every resprayed panel."}
       ]
     },
     {
       "type": "step",
       "name": "Process Step",
       "settings": [
-        {"type":"text","id":"title","label":"Step Title","default":"Car Arrives at Studio"},
-        {"type":"textarea","id":"description","label":"Description","default":"Drive in at your scheduled time — no special prep needed."}
-      ]
-    },
-    {
-      "type": "why_item",
-      "name": "Why It Matters Point",
-      "settings": [
-        {"type":"text","id":"title","label":"Title","default":"Catches Hidden Accident History"},
-        {"type":"textarea","id":"description","label":"Description","default":"UV light reveals every repainted panel — know the truth before you buy."}
-      ]
-    },
-    {
-      "type": "faq",
-      "name": "FAQ",
-      "settings": [
-        {"type":"text","id":"question","label":"Question","default":"What does UV light reveal on a car?"},
-        {"type":"textarea","id":"answer","label":"Answer","default":"UV light reveals repainted panels, paint fade, body filler, rust, and clear-coat damage invisible under normal light."}
+        {"type":"text","id":"title","label":"Step Title","default":"Bring Your Car In"},
+        {"type":"textarea","id":"description","label":"Step Description","default":"Drive in at your booked appointment time. No special prep needed."}
       ]
     }
   ],
   "presets": [
     {
-      "name": "UV Paint Inspection Page",
+      "name": "UV Paint Inspection",
       "blocks": [
-        {"type":"reveal","settings":{"icon":"🎨","title":"Repaint Detection","description":"Repainted panels glow differently under UV — even a perfect color match can't hide accident repairs from UV light."}},
-        {"type":"reveal","settings":{"icon":"🌅","title":"Paint Fading","description":"UV-faded paint loses its clear coat. Faded areas show distinctly under UV light, flagging panels that need correction."}},
-        {"type":"reveal","settings":{"icon":"🔴","title":"Rust Under Paint","description":"Rust forming under the surface shows as dark patches under UV — invisible in daylight until it breaks through."}},
-        {"type":"reveal","settings":{"icon":"🧱","title":"Body Filler (Putty)","description":"Filler used after dents and accidents absorbs UV differently — it glows brighter, exposing all repaired areas instantly."}},
-        {"type":"reveal","settings":{"icon":"💧","title":"Water & Flood Damage","description":"Moisture trapped between paint layers creates distinctive UV patterns — common in flood-affected vehicles in Karachi."}},
-        {"type":"reveal","settings":{"icon":"🪟","title":"Clear Coat Damage","description":"Scratches and swirl marks in the clear coat become highly visible under UV, helping diagnose paint correction needs."}},
-        {"type":"step","settings":{"title":"You Book & Drive In","description":"Book your slot online or via WhatsApp. Drive your vehicle to our Karachi studio at the scheduled time."}},
-        {"type":"step","settings":{"title":"Studio Lights Go Off","description":"We close the shutters and darken the inspection bay so the UV device works without ambient light interference."}},
-        {"type":"step","settings":{"title":"Panel-by-Panel UV Scan","description":"Our technician moves the professional UV light across every panel — hood, doors, bumpers, roof, and boot lid."}},
-        {"type":"step","settings":{"title":"Findings Shown Live","description":"Every repaint, filler patch, or anomaly is shown to you in real-time. You see it with your own eyes under the light."}},
-        {"type":"step","settings":{"title":"Written Report Delivered","description":"You receive a clear panel-by-panel paint condition report so you can negotiate, decide, or protect with confidence."}},
-        {"type":"why_item","settings":{"title":"Catches Hidden Accident History","description":"Repainted cars in Pakistan rarely come with disclosure. UV reveals every resprayed panel before you pay."}},
-        {"type":"why_item","settings":{"title":"Avoid Overpaying for Damaged Cars","description":"A car can look perfect but have 4 resprayed panels. Know the truth and negotiate the price accordingly."}},
-        {"type":"why_item","settings":{"title":"Essential Before PPF or Ceramic Coating","description":"Applying PPF or ceramic coating over repainted panels wastes money. UV inspection ensures you protect only sound paint."}},
-        {"type":"why_item","settings":{"title":"Detects Flood & Water Damage","description":"Karachi flooding is common. Water-damaged cars end up in the used market — UV light exposes moisture damage invisible to the eye."}},
-        {"type":"faq","settings":{"question":"What does UV light reveal on a car's paint?","answer":"UV light reveals repainted panels, paint fading, body filler, rust forming under the surface, clear-coat damage, and moisture damage. These defects glow differently from original factory paint under UV, making them clearly visible in a darkened environment."}},
-        {"type":"faq","settings":{"question":"How does UV light car paint inspection work?","answer":"A professional UV device is used in a darkened studio to illuminate the paint. Original factory paint has a uniform fluorescent response. Repainted areas, filler, and rust reflect UV differently — appearing as bright spots or dark patches invisible under normal daylight."}},
-        {"type":"faq","settings":{"question":"Is UV paint inspection worth it before buying a used car in Pakistan?","answer":"Yes — UV paint inspection is the most reliable way to detect hidden accident history and repaint on used cars in Pakistan. Sellers rarely disclose repairs, and UV reveals what the eye cannot. The cost is a fraction of what you might overpay for a damaged car."}},
-        {"type":"faq","settings":{"question":"How long does a UV paint inspection take?","answer":"A full UV paint inspection at Revive Auto Detailing Karachi takes 30 to 60 minutes depending on vehicle size. You receive a panel-by-panel paint condition report at the end."}},
-        {"type":"faq","settings":{"question":"Can UV inspection detect repaint on just one panel?","answer":"Yes. UV light is accurate enough to detect single-panel repaints, even if the color match is visually perfect. The difference in UV fluorescence between factory paint and aftermarket paint is detectable regardless of color accuracy."}},
-        {"type":"faq","settings":{"question":"Where can I get UV paint inspection in Karachi?","answer":"Revive Auto Detailing offers professional UV light car paint inspection in Karachi. Book online or WhatsApp us. We serve DHA, Clifton, Gulshan-e-Iqbal, North Karachi, PECHS, Gulistan-e-Johar, Nazimabad, and surrounding areas."}}
+        {"type":"reveal","settings":{"icon":"🎨","title":"Repaint Detection","description":"Resprayed panels glow differently from factory paint. Even perfect color matches can't fool UV — every repainted door, bonnet, or bumper shows up clearly."}},
+        {"type":"reveal","settings":{"icon":"🌫","title":"Paint Fading","description":"UV-faded clear coat loses its protective properties. Fade patterns are clearly visible under UV before they become visible in daylight."}},
+        {"type":"reveal","settings":{"icon":"🔴","title":"Hidden Rust","description":"Rust forming under the paint surface shows as dark discoloration under UV light — invisible until it breaks through the paint."}},
+        {"type":"reveal","settings":{"icon":"🧱","title":"Body Filler (Putty)","description":"Filler used in dent and accident repairs absorbs UV differently from metal — it glows brightly, revealing exactly where putty was applied."}},
+        {"type":"reveal","settings":{"icon":"💧","title":"Moisture / Flood Damage","description":"Water trapped between paint layers creates distinct UV patterns. Essential inspection for used cars in Karachi after heavy rains."}},
+        {"type":"reveal","settings":{"icon":"🪟","title":"Clear Coat Damage","description":"Deep scratches and swirl marks in the clear coat layer show up vividly under UV — helping diagnose whether paint correction is needed."}},
+        {"type":"step","settings":{"title":"Book Your Appointment","description":"Book online or WhatsApp us. Let us know your vehicle type so we allocate the right time slot."}},
+        {"type":"step","settings":{"title":"Arrive at Our Studio","description":"Drive into our Karachi studio. No prep needed — just park and hand over the keys."}},
+        {"type":"step","settings":{"title":"Studio Lights Go Off","description":"We close the shutters and darken the inspection bay. UV light only works accurately in a controlled dark environment."}},
+        {"type":"step","settings":{"title":"Panel-by-Panel UV Scan","description":"Our technician moves the UV device systematically across every exterior panel — bonnet, doors, roof, bumpers, and boot."}},
+        {"type":"step","settings":{"title":"Findings Shown to You Live","description":"Every anomaly found is shown to you in real time. No hidden report — you see exactly what the UV reveals."}},
+        {"type":"step","settings":{"title":"You Get a Full Report","description":"Panel-by-panel findings summary delivered verbally on the spot. Written report available on request."}}
       ]
     }
   ]
