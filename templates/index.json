@@ -2,145 +2,19 @@
   "sections": {
     "hero": {
       "type": "hero",
-      "settings": {
-        "bg_image": "shopify://shop_images/b0be0cc3-4fb4-4775-9c60-a7b1f64b7050.png",
-        "badge": "Karachi's Premium Auto Detailing",
-        "title": "Transform Your Car's Look with",
-        "title_accent": "Revive Auto Detailing",
-        "subtitle": "Professional PPF, Ceramic Coating, Detailing & Window Tinting in Karachi. Premium quality, guaranteed results.",
-        "btn1_text": "Explore Our Services",
-        "btn1_url": "",
-        "stat1_num": "500+",
-        "stat1_lbl": "Cars Serviced",
-        "stat2_num": "4.9 ⭐",
-        "stat2_lbl": "Google Rating",
-        "stat3_num": "2+",
-        "stat3_lbl": "Years Experience"
-      }
+      "settings": {}
     },
     "services": {
       "type": "services",
-      "settings": {
-        "cta_url": "/pages/all-services",
-        "cta_text": "View All Services →",
-        "title": "Our Services",
-        "subtitle": "Premium auto care services in Karachi",
-        "img_1": "shopify://shop_images/SaveVid.Net_706483316_17966723517078672_7661059615161583245_n.jpg",
-        "name_1": "Paint Protection Film (PPF)",
-        "desc_1": "Invisible shield that protects your car's paint from scratches, chips and UV damage.",
-        "url_1": "shopify://pages/paint-protection-film-ppf",
-        "btn_1": "View Pricing",
-        "img_2": "shopify://shop_images/400094796_206546052473770_6622437520898617435_n_edited.jpg",
-        "name_2": "Ceramic Coating",
-        "desc_2": "Long-lasting glossy finish that repels dirt, UV rays and minor scratches.",
-        "url_2": "",
-        "btn_2": "View Pricing",
-        "img_3": "shopify://shop_images/IMG20231101172719.jpg",
-        "name_3": "Exterior & Interior Detailing",
-        "desc_3": "Full interior and exterior detailing to restore your car's showroom finish.",
-        "url_3": "shopify://pages/car-detailing",
-        "btn_3": "View Pricing",
-        "img_4": "shopify://shop_images/RAD_undercoat_website_optimized.jpg",
-        "name_4": "Car Window Tinting",
-        "desc_4": "NAR certified heat control window film — blocks UV rays and keeps your car cool.",
-        "url_4": "shopify://pages/car-window-tints",
-        "btn_4": "View Pricing"
-      }
+      "settings": {}
     },
     "whyus": {
       "type": "why-us",
-      "settings": {
-        "title": "Why Choose RAD For Your Car?",
-        "offer_title": "Special Offer!",
-        "offer_text": "Get 5% Off PPF Service This Month!",
-        "offer_btn": "Book Now & Save",
-        "offer_url": ""
-      }
+      "settings": {}
     },
     "process": {
       "type": "process",
-      "settings": {
-        "title": "Our 4-Step Process",
-        "subtitle": "Simple, transparent, and stress-free from start to finish",
-        "step1_title": "Book Your Appointment",
-        "step1_desc": "Schedule at your convenience online, by phone, or via WhatsApp",
-        "step2_title": "Drop-off",
-        "step2_desc": "Bring your car to our facility in Karachi",
-        "step3_title": "We Work Our Magic",
-        "step3_desc": "Our expert technicians apply premium products with precision",
-        "step4_title": "Enjoy the Results",
-        "step4_desc": "Pick up your pristine vehicle looking better than ever"
-      }
-    },
-    "leadform": {
-      "type": "leadform",
-      "settings": {
-        "title": "Get Your Free Estimate",
-        "subtitle": "Tell us about your car and we'll get back to you with a personalized quote.",
-        "btn_text": "Get Free Estimate"
-      }
-    },
-    "reviews_slider_7dpfXw": {
-      "type": "reviews-slider",
-      "blocks": {
-        "review_kwE3Rf": {
-          "type": "review",
-          "settings": {
-            "video": "shopify://files/videos/BYD Shark 6 White.MP4",
-            "name": "Eshwar Lalwani",
-            "service": "NAR Classic PPF"
-          }
-        },
-        "review_anxBjV": {
-          "type": "review",
-          "settings": {
-            "name": "Sara Malik",
-            "service": "PPF Installation"
-          }
-        },
-        "review_yhkbNL": {
-          "type": "review",
-          "settings": {
-            "name": "Usman Ali",
-            "service": "Window Tinting"
-          }
-        },
-        "review_BPjALq": {
-          "type": "review",
-          "settings": {
-            "name": "Farrukh Baig",
-            "service": "Anti-Rust Coating"
-          }
-        },
-        "review_di7Rga": {
-          "type": "review",
-          "settings": {
-            "name": "Zoya Ahmed",
-            "service": "Car Detailing"
-          }
-        },
-        "review_rkmQD9": {
-          "type": "review",
-          "settings": {
-            "name": "Hassan Raza",
-            "service": "Color PPF"
-          }
-        }
-      },
-      "block_order": [
-        "review_kwE3Rf",
-        "review_anxBjV",
-        "review_yhkbNL",
-        "review_BPjALq",
-        "review_di7Rga",
-        "review_rkmQD9"
-      ],
-      "name": "Customer Video Reviews",
-      "settings": {
-        "tag": "Real Customers • Real Results",
-        "title": "What Our Customers Say",
-        "subtitle": "Watch real reviews from Karachi car owners"
-      }
+      "settings": {}
     },
     "ourwork": {
       "type": "our-work",
@@ -252,6 +126,10 @@
         "r5",
         "r6"
       ],
+      "settings": {}
+    },
+    "leadform": {
+      "type": "leadform",
       "settings": {}
     }
   },
