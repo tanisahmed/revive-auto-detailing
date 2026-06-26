@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "hero": {
@@ -21,7 +12,7 @@
         "btn1_url": "",
         "stat1_num": "500+",
         "stat1_lbl": "Cars Serviced",
-        "stat2_num": "4.9 \u2b50",
+        "stat2_num": "4.9 ⭐",
         "stat2_lbl": "Google Rating",
         "stat3_num": "2+",
         "stat3_lbl": "Years Experience"
@@ -49,11 +40,11 @@
         "btn_3": "View Pricing",
         "img_4": "shopify://shop_images/RAD_undercoat_website_optimized.jpg",
         "name_4": "Car Window Tinting",
-        "desc_4": "NAR certified heat control window film \u2014 blocks UV rays and keeps your car cool.",
+        "desc_4": "NAR certified heat control window film — blocks UV rays and keeps your car cool.",
         "url_4": "shopify://pages/car-window-tints",
         "btn_4": "View Pricing",
         "cta_url": "/pages/all-services",
-        "cta_text": "View All Services \u2192"
+        "cta_text": "View All Services →"
       }
     },
     "whyus": {
@@ -88,6 +79,62 @@
         "subtitle": "Tell us about your car and we'll get back to you with a personalized quote.",
         "btn_text": "Get Free Estimate"
       }
+    },
+    "reviews": {
+      "type": "reviews-slider",
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "name": "Ahmed Khan",
+            "service": "Ceramic Coating"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "name": "Sara Malik",
+            "service": "PPF Installation"
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "name": "Usman Ali",
+            "service": "Window Tinting"
+          }
+        },
+        "r4": {
+          "type": "review",
+          "settings": {
+            "name": "Farrukh Baig",
+            "service": "Anti-Rust Coating"
+          }
+        },
+        "r5": {
+          "type": "review",
+          "settings": {
+            "name": "Zoya Ahmed",
+            "service": "Car Detailing"
+          }
+        },
+        "r6": {
+          "type": "review",
+          "settings": {
+            "name": "Hassan Raza",
+            "service": "Color PPF"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -95,6 +142,7 @@
     "services",
     "whyus",
     "process",
+    "reviews",
     "leadform"
   ]
 }
