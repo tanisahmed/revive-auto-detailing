@@ -243,7 +243,7 @@
             <span class="rad-price-val" id="ceramic-rprice-val">PKR 0</span>
           </div>
           <div style="margin:1.25rem 0 1rem;padding:1rem 1.25rem;background:#f0fdf4;border:1.5px solid #86efac;border-radius:10px;display:flex;align-items:flex-start;gap:0.75rem;">
-            <input type="checkbox" id="ceramic-discount-check" style="width:18px;height:18px;margin-top:2px;accent-color:#16a34a;cursor:pointer;flex-shrink:0;" onchange="window.ceramicToggleDiscount()">
+            <input type="checkbox" id="ceramic-discount-check" style="width:18px;height:18px;margin-top:2px;accent-color:#16a34a;cursor:pointer;flex-shrink:0;" onchange="ceramicToggleDiscount()">
             <label for="ceramic-discount-check" style="font-size:0.9rem;font-weight:600;color:#15803d;cursor:pointer;line-height:1.5;">
               I would like to receive a 10% discount on Ceramic Coating for booking my slot online!
             </label>
@@ -284,13 +284,16 @@
           </div>
           <div id="ceramic-discount-summary" style="display:none;margin-top:0.75rem;background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:0.85rem 1.1rem;">
             <div style="display:flex;justify-content:space-between;font-size:0.875rem;color:#374151;margin-bottom:0.4rem;">
-              <span>Original Price</span><span id="ceramic-orig-price" style="font-weight:600;">PKR —</span>
+              <span>Original Price</span>
+              <span id="ceramic-original-price" style="font-weight:600;">PKR —</span>
             </div>
             <div style="display:flex;justify-content:space-between;font-size:0.875rem;color:#16a34a;margin-bottom:0.4rem;">
-              <span>10% Online Booking Discount</span><span id="ceramic-disc-amt" style="font-weight:700;">- PKR —</span>
+              <span>10% Online Booking Discount</span>
+              <span id="ceramic-discount-amount" style="font-weight:700;">- PKR —</span>
             </div>
             <div style="display:flex;justify-content:space-between;font-size:1rem;color:#1f2937;border-top:1px solid #86efac;padding-top:0.5rem;margin-top:0.35rem;">
-              <span style="font-weight:800;">Discounted Total</span><span id="ceramic-disc-total" style="font-weight:800;color:#15803d;">PKR —</span>
+              <span style="font-weight:800;">Discounted Total</span>
+              <span id="ceramic-discounted-total" style="font-weight:800;color:#15803d;">PKR —</span>
             </div>
           </div>
           <label class="rad-terms">
@@ -568,24 +571,40 @@
     document.getElementById(sid+'-ss-price').textContent=bd.price>0?'PKR '+bd.price.toLocaleString():'Contact for price';
     window.scrollTo({top:0,behavior:'smooth'});
   };
-  // 10% Ceramic Online Discount
+  // ── 10% Ceramic Online Discount ──
   window.ceramicToggleDiscount = function(){
-    var chk = document.getElementById('ceramic-discount-check');
+    var checked = document.getElementById('ceramic-discount-check');
+    if(!checked) return;
     var summary = document.getElementById('ceramic-discount-summary');
     var rv = document.getElementById('ceramic-rv-total');
-    if(!chk || !summary || !rv) return;
-    var raw = (typeof bd !== 'undefined' && bd.price) ? bd.price : parseInt((rv.textContent||'').replace(/[^0-9]/g,''))||0;
-    if(chk.checked && raw > 0){
-      var disc = Math.round(raw * 0.10);
-      var final = raw - disc;
-      document.getElementById('ceramic-orig-price').textContent  = 'PKR ' + raw.toLocaleString();
-      document.getElementById('ceramic-disc-amt').textContent    = '- PKR ' + disc.toLocaleString();
-      document.getElementById('ceramic-disc-total').textContent  = 'PKR ' + final.toLocaleString();
+    if(!summary || !rv) return;
+    var rawPrice = (typeof bd !== 'undefined' && bd.price) ? bd.price : 0;
+    if(!rawPrice){
+      var t = rv.textContent.replace(/[^0-9]/g,'');
+      rawPrice = parseInt(t) || 0;
+    }
+    if(checked.checked && rawPrice > 0){
+      var discount   = Math.round(rawPrice * 0.10);
+      var discounted = rawPrice - discount;
+      document.getElementById('ceramic-original-price').textContent   = 'PKR ' + rawPrice.toLocaleString();
+      document.getElementById('ceramic-discount-amount').textContent  = '- PKR ' + discount.toLocaleString();
+      document.getElementById('ceramic-discounted-total').textContent = 'PKR ' + discounted.toLocaleString();
       summary.style.display = 'block';
     } else {
       summary.style.display = 'none';
     }
   };
+
+  var _ceramicOrigNext = window.ceramic_rbNext;
+  if(typeof _ceramicOrigNext === 'function'){
+    window.ceramic_rbNext = function(step){
+      _ceramicOrigNext(step);
+      if(step === 3){
+        var chk = document.getElementById('ceramic-discount-check');
+        if(chk && chk.checked) window.ceramicToggleDiscount();
+      }
+    };
+  }
 
 })();
 </script>
