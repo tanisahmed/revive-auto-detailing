@@ -171,6 +171,16 @@
         "title": "Frequently Asked Questions",
         "subtitle": "Everything you need to know about PPF"
       }
+    },
+    "ppf_v2_cta_gXDBhm": {
+      "type": "ppf-v2-cta",
+      "name": "PPF V2 CTA",
+      "settings": {
+        "title": "Ready to Protect Your Car?",
+        "subtitle": "Book your free consultation today. Our team will walk you through the best package for your car and budget — with zero pressure.",
+        "btn1_text": "Book My Appointment",
+        "btn1_url": ""
+      }
     }
   },
   "order": [
@@ -180,6 +190,7 @@
     "ppf_packages_UJLGPt",
     "ppf_benefits_fjiLPD",
     "process_3VXAYN",
-    "ppf_faq_rcfYWK"
+    "ppf_faq_rcfYWK",
+    "ppf_v2_cta_gXDBhm"
   ]
 }
