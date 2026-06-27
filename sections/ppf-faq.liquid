@@ -79,76 +79,31 @@
   }
 </style>
 
-<section class="ppf-faq-section">
-  <div class="container">
-    <h2 class="section-title">{{ section.settings.title }}</h2>
-    <p class="section-subtitle">{{ section.settings.subtitle }}</p>
 
-    <div class="faq-list" id="faq-list">
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          How long does PPF installation take?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer" role="region">
-          <p>Installation time varies by vehicle size and package. For a hatchback or sedan, expect 8–10 hours. SUVs typically take 9–11 hours, and XL SUVs 10–12 hours. We recommend dropping off your car in the morning and picking it up in the evening.</p>
+<div class="ppf-faq-section">
+  <div class="ppf-faq-inner">
+    <div class="ppf-faq-hdr">
+      <h2>{{ section.settings.title | default: "Frequently Asked Questions" }}</h2>
+      <p>{{ section.settings.subtitle | default: "Everything you need to know about Paint Protection Film" }}</p>
+    </div>
+    <div class="ppf-faq-list">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'faq' -%}
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            {{ block.settings.question }}
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p>{{ block.settings.answer }}</p>
+          </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          How long does PPF last?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer" role="region">
-          <p>Our NAR Classic PPF carries an 8-year manufacturer warranty, while the NAR Premium PPF comes with a 10-year warranty. With proper care and maintenance, the film will maintain its protective properties and appearance throughout this period.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          Does PPF affect paint color?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer" role="region">
-          <p>No. Our PPF is optically clear and virtually invisible once applied. It does not change the color or appearance of your paint. In fact, the high-gloss finish can enhance the depth and richness of your car's color.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          Is PPF visible on the car?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer" role="region">
-          <p>When professionally installed, PPF is nearly invisible to the naked eye. You may notice very slight edge lines at panel boundaries if you look very closely, but from a normal viewing distance, the film is completely undetectable.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          Can PPF be removed?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer" role="region">
-          <p>Yes, PPF can be safely removed by a professional without damaging the underlying paint. This is especially useful if the film becomes worn after many years and needs replacing. We recommend professional removal only — do not attempt to remove it yourself.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          How do I maintain PPF?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer" role="region">
-          <p>PPF is very low-maintenance. Wash your car normally with pH-neutral soap and water. Avoid pressure washing directly at film edges. Do not use abrasive cleaners or clay bars. For the self-healing property to activate, park in direct sunlight or use a heat gun (professional recommended) on affected areas.</p>
-        </div>
-      </div>
-
+        {%- endif -%}
+      {%- endfor -%}
     </div>
   </div>
-</section>
+</div>
+
 
 <script>
   (function() {
@@ -187,12 +142,76 @@
       "type": "text",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "Everything you need to know about PPF"
+      "default": "Everything you need to know about Paint Protection Film"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "How long does PPF installation take?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "PPF installation takes 2–3 working days depending on vehicle size and package."
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "PPF FAQ"
+      "name": "PPF FAQ",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How long does PPF installation take?",
+            "answer": "Installation time varies by vehicle size and package. For a hatchback or sedan, expect 2–3 working days. SUVs typically take 2–3 working days, and XL SUVs 3 working days. We recommend dropping your car off for the full duration."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How long does PPF last?",
+            "answer": "Our NAR Classic PPF carries an 8-year manufacturer warranty, while the NAR Premium PPF comes with a 10-year warranty. With proper care and maintenance, the film will maintain its protective properties and appearance throughout this period."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Does PPF affect paint color?",
+            "answer": "No. Our PPF is optically clear and virtually invisible once applied. It does not change the color or appearance of your paint. In fact, the high-gloss finish can enhance the depth and richness of your car's color."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Is PPF visible on the car?",
+            "answer": "When professionally installed, PPF is nearly invisible to the naked eye. You may notice very slight edge lines at panel boundaries if you look very closely, but from a normal viewing distance, the film is completely undetectable."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Can PPF be removed?",
+            "answer": "Yes, PPF can be safely removed by a professional without damaging the underlying paint. This is especially useful if the film becomes worn after many years and needs replacing. We recommend professional removal only — do not attempt to remove it yourself."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How do I maintain PPF?",
+            "answer": "PPF is very low-maintenance. Wash your car normally with pH-neutral soap and water. Avoid pressure washing directly at film edges. Do not use abrasive cleaners or clay bars. For the self-healing property to activate, park in direct sunlight or use a heat gun (professional recommended) on affected areas."
+          }
+        }
+      ]
     }
   ]
 }
