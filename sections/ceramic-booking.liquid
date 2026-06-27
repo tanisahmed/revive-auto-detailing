@@ -525,7 +525,10 @@
     document.getElementById(sid+'-rv-pk').textContent=bd.pkLabel||'—';
     document.getElementById(sid+'-rv-dur').textContent=bd.dur||'—';
     document.getElementById(sid+'-rv-total').textContent=bd.price>0?'PKR '+bd.price.toLocaleString():'Contact for price';
-  }
+  
+    // Trigger discount recalc if checkbox checked
+    var _chk = document.getElementById('ceramic-discount-check');
+    if(_chk && _chk.checked) window.ceramicToggleDiscount();}
 
   window.ceramic_rbConfirm=function(){
     var tc=document.getElementById(sid+'-rf-terms');
@@ -594,17 +597,6 @@
       summary.style.display = 'none';
     }
   };
-
-  var _ceramicOrigNext = window.ceramic_rbNext;
-  if(typeof _ceramicOrigNext === 'function'){
-    window.ceramic_rbNext = function(step){
-      _ceramicOrigNext(step);
-      if(step === 3){
-        var chk = document.getElementById('ceramic-discount-check');
-        if(chk && chk.checked) window.ceramicToggleDiscount();
-      }
-    };
-  }
 
 })();
 </script>
