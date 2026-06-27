@@ -38,7 +38,7 @@
   .ppf-card-hdr-classic { background: #0C447C; }
   .ppf-card-hdr-premium { background: #2C2C2A; }
   .ppf-tag-light-crystalline { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 100px; background: rgba(255,255,255,0.9); color: #C0392B; }
-  .ppf-btn-cryst { background: #C0392B !important; border-color: #C0392B !important; }
+  .ppf-btn-cryst { background: #C0392B !important; }
   .ppf-card-name { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 10px; margin-top: 10px; font-family: 'Nunito Sans', sans-serif; }
   .ppf-card-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
   .ppf-tag-dim { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 100px; background: rgba(255,255,255,0.15); color: #fff; }
@@ -114,7 +114,7 @@
 
     <div class="ppf-cards">
 
-      <!-- CRYSTALLINE -->
+<!-- CRYSTALLINE -->
       <div class="ppf-card ppf-card-crystalline">
         <div class="ppf-card-hdr ppf-card-hdr-crystalline">
           <div class="ppf-card-name">{{ section.settings.cryst_name | default: "Crystalline PPF" }}</div>
@@ -150,7 +150,7 @@
         </div>
       </div>
 
-      <!-- CLASSIC -->
+            <!-- CLASSIC -->
       <div class="ppf-card ppf-card-classic">
         <div class="ppf-badge">MOST POPULAR</div>
         <div class="ppf-card-hdr ppf-card-hdr-classic">
@@ -232,7 +232,7 @@
   var pricing = {
     'hatchback': { label: 'Hatchback', crystalline: { price: {{ section.settings.cryst_price_hatch | default: 180000 }}, dur: '{{ section.settings.cryst_duration | default: "3 Working Days" }}' }, classic: { price: {{ section.settings.p_hatchback_classic | default: 260000 }}, dur: '{{ section.settings.dur_hatchback | default: "3 Working Days" }}' }, premium: { price: {{ section.settings.p_hatchback_premium | default: 290000 }}, dur: '{{ section.settings.dur_hatchback | default: "3 Working Days" }}' } },
     'sedan':     { label: 'Sedan',     crystalline: { price: {{ section.settings.cryst_price_sedan | default: 200000 }}, dur: '{{ section.settings.cryst_duration | default: "3 Working Days" }}' }, classic: { price: {{ section.settings.p_sedan_classic | default: 300000 }},    dur: '{{ section.settings.dur_sedan | default: "3 Working Days" }}'    }, premium: { price: {{ section.settings.p_sedan_premium | default: 330000 }},    dur: '{{ section.settings.dur_sedan | default: "3 Working Days" }}'    } },
-    'suv':       { label: 'SUV',       crystalline: { price: {{ section.settings.cryst_price_suv | default: 240000 }},   dur: '{{ section.settings.cryst_duration | default: "3 Working Days" }}' }, classic: { price: {{ section.settings.p_suv_classic | default: 330000 }},      dur: '{{ section.settings.dur_suv | default: "3 Working Days" }}'      }, premium: { price: {{ section.settings.p_suv_premium | default: 380000 }},      dur: '{{ section.settings.dur_suv | default: "3 Working Days" }}'      } },
+    'suv':       { label: 'SUV',       crystalline: { price: {{ section.settings.cryst_price_suv | default: 240000 }}, dur: '{{ section.settings.cryst_duration | default: "3 Working Days" }}' }, classic: { price: {{ section.settings.p_suv_classic | default: 330000 }},      dur: '{{ section.settings.dur_suv | default: "3 Working Days" }}'      }, premium: { price: {{ section.settings.p_suv_premium | default: 380000 }},      dur: '{{ section.settings.dur_suv | default: "3 Working Days" }}'      } },
     'xl-suv':    { label: 'XL SUV',    crystalline: { price: {{ section.settings.cryst_price_xlsuv | default: 280000 }}, dur: '{{ section.settings.cryst_duration | default: "3 Working Days" }}' }, classic: { price: {{ section.settings.p_xlsuv_classic | default: 370000 }},    dur: '{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'    }, premium: { price: {{ section.settings.p_xlsuv_premium | default: 420000 }},    dur: '{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'    } }
   };
 
@@ -250,12 +250,12 @@
     if (!d) return;
     document.getElementById('ppf-vlabel').textContent = d.label;
     document.getElementById('ppf-vex').textContent = carEx[vtype] ? '(' + carEx[vtype] + ')' : '';
-    document.getElementById('ppf-cr-price').textContent = fmt(d.crystalline.price);
-    document.getElementById('ppf-c-price').textContent  = fmt(d.classic.price);
-    document.getElementById('ppf-p-price').textContent  = fmt(d.premium.price);
-    document.getElementById('ppf-cr-dur').innerHTML = '&#9201; Process: ' + d.crystalline.dur;
-    document.getElementById('ppf-c-dur').innerHTML  = '&#9201; Process: ' + d.classic.dur;
-    document.getElementById('ppf-p-dur').innerHTML  = '&#9201; Process: ' + d.premium.dur;
+    if(d.crystalline){ document.getElementById('ppf-cr-price').textContent = fmt(d.crystalline.price); }
+    if(d.crystalline){ document.getElementById('ppf-cr-dur').innerHTML = '&#9201; Process: ' + d.crystalline.dur; }
+    document.getElementById('ppf-c-price').textContent = fmt(d.classic.price);
+    document.getElementById('ppf-p-price').textContent = fmt(d.premium.price);
+    document.getElementById('ppf-c-dur').innerHTML = '&#9201; Process: ' + d.classic.dur;
+    document.getElementById('ppf-p-dur').innerHTML = '&#9201; Process: ' + d.premium.dur;
   }
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -269,13 +269,11 @@
     });
 
     // Buttons → PPF booking
-    // Crystalline btn
     document.getElementById('ppf-cr-btn').addEventListener('click', function() {
-      this.style.background = '#10b981';
-      this.textContent = 'Selected ✓';
+      this.style.background = '#10b981'; this.textContent = 'Selected ✓';
       setTimeout(function() { window.location.href = '/pages/ppf-booking'; }, 400);
     });
-    document.getElementById('ppf-c-btn').addEventListener('click', function() {
+        document.getElementById('ppf-c-btn').addEventListener('click', function() {
       this.style.background = '#10b981';
       this.textContent = 'Selected ✓';
       var self = this;
