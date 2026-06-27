@@ -104,6 +104,67 @@
         "subtitle": "The most comprehensive paint protection available for your vehicle"
       }
     },
+    "our_work_UYCqcx": {
+      "type": "our-work",
+      "blocks": {
+        "work_video_Kygt9e": {
+          "type": "work_video",
+          "settings": {
+            "vehicle": "Toyota Corolla",
+            "service": "Ceramic Coating"
+          }
+        },
+        "work_video_LLciFe": {
+          "type": "work_video",
+          "settings": {
+            "vehicle": "Honda Civic",
+            "service": "PPF Installation"
+          }
+        },
+        "work_video_L7LzPc": {
+          "type": "work_video",
+          "settings": {
+            "vehicle": "KIA Sportage",
+            "service": "Window Tinting"
+          }
+        },
+        "work_video_4ieAYM": {
+          "type": "work_video",
+          "settings": {
+            "vehicle": "Suzuki Swift",
+            "service": "Anti-Rust Coating"
+          }
+        },
+        "work_video_HnhqGk": {
+          "type": "work_video",
+          "settings": {
+            "vehicle": "Toyota Fortuner",
+            "service": "Car Detailing"
+          }
+        },
+        "work_video_DMNwgr": {
+          "type": "work_video",
+          "settings": {
+            "vehicle": "Honda Vezel",
+            "service": "Color PPF"
+          }
+        }
+      },
+      "block_order": [
+        "work_video_Kygt9e",
+        "work_video_LLciFe",
+        "work_video_L7LzPc",
+        "work_video_4ieAYM",
+        "work_video_HnhqGk",
+        "work_video_DMNwgr"
+      ],
+      "name": "Our Work",
+      "settings": {
+        "tag": "Karachi • Revive Auto Detailing",
+        "title": "Our Work",
+        "subtitle": "Real results on real cars — from our studio in Karachi"
+      }
+    },
     "process_3VXAYN": {
       "type": "process",
       "name": "Process",
@@ -189,6 +250,7 @@
     "ppf_comparison_Hi8tbe",
     "ppf_packages_UJLGPt",
     "ppf_benefits_fjiLPD",
+    "our_work_UYCqcx",
     "process_3VXAYN",
     "ppf_faq_rcfYWK",
     "ppf_v2_cta_gXDBhm"
