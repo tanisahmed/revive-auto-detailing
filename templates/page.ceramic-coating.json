@@ -66,14 +66,67 @@
         "offer_url": ""
       }
     },
-    "ceramic_gallery_JwPDec": {
-      "type": "ceramic-gallery",
-      "name": "Ceramic Gallery",
+    "our_work_MiwWyY": {
+      "type": "our-work",
+      "blocks": {
+        "work_video_mjxFnz": {
+          "type": "work_video",
+          "settings": {
+            "video": "shopify://files/videos/Mecedes EQC Ceramic Coating.MP4",
+            "vehicle": "Mercedes EQC 400",
+            "service": "Ceramic Coating"
+          }
+        },
+        "work_video_yE7kpT": {
+          "type": "work_video",
+          "settings": {
+            "video": "shopify://files/videos/Porsche.MP4",
+            "vehicle": "Porsche Cayenne",
+            "service": "Ceramic Coating"
+          }
+        },
+        "work_video_bdipW8": {
+          "type": "work_video",
+          "settings": {
+            "vehicle": "KIA Sportage",
+            "service": "Window Tinting"
+          }
+        },
+        "work_video_mDBCAw": {
+          "type": "work_video",
+          "settings": {
+            "vehicle": "Suzuki Swift",
+            "service": "Anti-Rust Coating"
+          }
+        },
+        "work_video_M6riD6": {
+          "type": "work_video",
+          "settings": {
+            "vehicle": "Toyota Fortuner",
+            "service": "Car Detailing"
+          }
+        },
+        "work_video_YaETDT": {
+          "type": "work_video",
+          "settings": {
+            "vehicle": "Honda Vezel",
+            "service": "Color PPF"
+          }
+        }
+      },
+      "block_order": [
+        "work_video_mjxFnz",
+        "work_video_yE7kpT",
+        "work_video_bdipW8",
+        "work_video_mDBCAw",
+        "work_video_M6riD6",
+        "work_video_YaETDT"
+      ],
+      "name": "Our Work",
       "settings": {
+        "tag": "Karachi • Revive Auto Detailing",
         "title": "Our Work",
-        "subtitle": "Real results from real cars we've detailed in Karachi",
-        "gallery_vid_1": "shopify://files/videos/Mecedes EQC Ceramic Coating.MP4",
-        "gallery_vid_2": "shopify://files/videos/Porsche.MP4"
+        "subtitle": "Real results on real cars — from our studio in Karachi"
       }
     }
   },
@@ -82,6 +135,6 @@
     "ceramic_hero_4DtGYd",
     "ceramic_packages_4gRhxA",
     "ceramic_why_m4xRQ9",
-    "ceramic_gallery_JwPDec"
+    "our_work_MiwWyY"
   ]
 }
