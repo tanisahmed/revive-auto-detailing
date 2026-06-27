@@ -9,10 +9,10 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/WhatsApp_Image_2026-06-23_at_4.01.08_PM.jpg",
-    "logo_inverse": "shopify://shop_images/WhatsApp_Image_2026-06-23_at_4.01.08_PM.jpg",
+    "logo": "shopify://shop_images/white_logo-02.png",
+    "logo_inverse": "shopify://shop_images/white_logo-02.png",
     "logo_height": 36,
-    "logo_height_mobile": 28,
+    "logo_height_mobile": 26,
     "favicon": "shopify://shop_images/WhatsApp_Image_2026-06-23_at_4.01.08_PM.jpg",
     "type_body_font": "inter_n4",
     "type_subheading_font": "inter_n5",
@@ -45,7 +45,7 @@
     "type_size_h6": "12",
     "type_line_height_h6": "display-loose",
     "page_width": "narrow",
-    "page_transition_enabled": false,
+    "page_transition_enabled": true,
     "transition_to_main_product": false,
     "card_hover_effect": "none",
     "badge_position": "top-right",
