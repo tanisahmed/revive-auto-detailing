@@ -269,6 +269,12 @@
     });
 
     // Buttons → PPF booking
+    // Crystalline btn
+    document.getElementById('ppf-cr-btn').addEventListener('click', function() {
+      this.style.background = '#10b981';
+      this.textContent = 'Selected ✓';
+      setTimeout(function() { window.location.href = '/pages/ppf-booking'; }, 400);
+    });
     document.getElementById('ppf-c-btn').addEventListener('click', function() {
       this.style.background = '#10b981';
       this.textContent = 'Selected ✓';
