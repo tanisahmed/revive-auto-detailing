@@ -230,10 +230,10 @@
 <script>
 (function() {
   var pricing = {
-    'hatchback': { label: 'Hatchback', classic: { price: {{ section.settings.p_hatchback_classic | default: 260000 }}, dur: '{{ section.settings.dur_hatchback | default: "3 Working Days" }}' }, premium: { price: {{ section.settings.p_hatchback_premium | default: 290000 }}, dur: '{{ section.settings.dur_hatchback | default: "3 Working Days" }}' } },
-    'sedan':     { label: 'Sedan',     classic: { price: {{ section.settings.p_sedan_classic | default: 300000 }},    dur: '{{ section.settings.dur_sedan | default: "3 Working Days" }}'    }, premium: { price: {{ section.settings.p_sedan_premium | default: 330000 }},    dur: '{{ section.settings.dur_sedan | default: "3 Working Days" }}'    } },
-    'suv':       { label: 'SUV',       classic: { price: {{ section.settings.p_suv_classic | default: 330000 }},      dur: '{{ section.settings.dur_suv | default: "3 Working Days" }}'      }, premium: { price: {{ section.settings.p_suv_premium | default: 380000 }},      dur: '{{ section.settings.dur_suv | default: "3 Working Days" }}'      } },
-    'xl-suv':    { label: 'XL SUV',    classic: { price: {{ section.settings.p_xlsuv_classic | default: 370000 }},    dur: '{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'    }, premium: { price: {{ section.settings.p_xlsuv_premium | default: 420000 }},    dur: '{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'    } }
+    'hatchback': { label: 'Hatchback', crystalline: { price: {{ section.settings.cryst_price_hatch | default: 180000 }}, dur: '{{ section.settings.cryst_duration | default: "3 Working Days" }}' }, classic: { price: {{ section.settings.p_hatchback_classic | default: 260000 }}, dur: '{{ section.settings.dur_hatchback | default: "3 Working Days" }}' }, premium: { price: {{ section.settings.p_hatchback_premium | default: 290000 }}, dur: '{{ section.settings.dur_hatchback | default: "3 Working Days" }}' } },
+    'sedan':     { label: 'Sedan',     crystalline: { price: {{ section.settings.cryst_price_sedan | default: 200000 }}, dur: '{{ section.settings.cryst_duration | default: "3 Working Days" }}' }, classic: { price: {{ section.settings.p_sedan_classic | default: 300000 }},    dur: '{{ section.settings.dur_sedan | default: "3 Working Days" }}'    }, premium: { price: {{ section.settings.p_sedan_premium | default: 330000 }},    dur: '{{ section.settings.dur_sedan | default: "3 Working Days" }}'    } },
+    'suv':       { label: 'SUV',       crystalline: { price: {{ section.settings.cryst_price_suv | default: 240000 }},   dur: '{{ section.settings.cryst_duration | default: "3 Working Days" }}' }, classic: { price: {{ section.settings.p_suv_classic | default: 330000 }},      dur: '{{ section.settings.dur_suv | default: "3 Working Days" }}'      }, premium: { price: {{ section.settings.p_suv_premium | default: 380000 }},      dur: '{{ section.settings.dur_suv | default: "3 Working Days" }}'      } },
+    'xl-suv':    { label: 'XL SUV',    crystalline: { price: {{ section.settings.cryst_price_xlsuv | default: 280000 }}, dur: '{{ section.settings.cryst_duration | default: "3 Working Days" }}' }, classic: { price: {{ section.settings.p_xlsuv_classic | default: 370000 }},    dur: '{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'    }, premium: { price: {{ section.settings.p_xlsuv_premium | default: 420000 }},    dur: '{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'    } }
   };
 
   var carEx = {
@@ -250,10 +250,12 @@
     if (!d) return;
     document.getElementById('ppf-vlabel').textContent = d.label;
     document.getElementById('ppf-vex').textContent = carEx[vtype] ? '(' + carEx[vtype] + ')' : '';
-    document.getElementById('ppf-c-price').textContent = fmt(d.classic.price);
-    document.getElementById('ppf-p-price').textContent = fmt(d.premium.price);
-    document.getElementById('ppf-c-dur').innerHTML = '&#9201; Process: ' + d.classic.dur;
-    document.getElementById('ppf-p-dur').innerHTML = '&#9201; Process: ' + d.premium.dur;
+    document.getElementById('ppf-cr-price').textContent = fmt(d.crystalline.price);
+    document.getElementById('ppf-c-price').textContent  = fmt(d.classic.price);
+    document.getElementById('ppf-p-price').textContent  = fmt(d.premium.price);
+    document.getElementById('ppf-cr-dur').innerHTML = '&#9201; Process: ' + d.crystalline.dur;
+    document.getElementById('ppf-c-dur').innerHTML  = '&#9201; Process: ' + d.classic.dur;
+    document.getElementById('ppf-p-dur').innerHTML  = '&#9201; Process: ' + d.premium.dur;
   }
 
   document.addEventListener('DOMContentLoaded', function() {
