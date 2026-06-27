@@ -110,29 +110,33 @@
         "work_video_Kygt9e": {
           "type": "work_video",
           "settings": {
-            "vehicle": "Toyota Corolla",
-            "service": "Ceramic Coating"
+            "video": "shopify://files/videos/BYD Shark 6 White.MP4",
+            "vehicle": "BYD Shark 6",
+            "service": "NAR Classic PPF Installation"
           }
         },
         "work_video_LLciFe": {
           "type": "work_video",
           "settings": {
-            "vehicle": "Honda Civic",
-            "service": "PPF Installation"
+            "video": "shopify://files/videos/Jaecoo J7 V3.MP4",
+            "vehicle": "Jaecoo J7",
+            "service": "NAR Classic PPF Installation"
           }
         },
         "work_video_L7LzPc": {
           "type": "work_video",
           "settings": {
-            "vehicle": "KIA Sportage",
-            "service": "Window Tinting"
+            "video": "shopify://files/videos/Ford PPF.MP4",
+            "vehicle": "Ford Range Raptor",
+            "service": "NAR Premium PPF Installation"
           }
         },
         "work_video_4ieAYM": {
           "type": "work_video",
           "settings": {
-            "vehicle": "Suzuki Swift",
-            "service": "Anti-Rust Coating"
+            "video": "shopify://files/videos/MG V9 VIdeo.MP4",
+            "vehicle": "MG V9",
+            "service": "NAR Classic PPF Installation"
           }
         },
         "work_video_HnhqGk": {
@@ -163,6 +167,68 @@
         "tag": "Karachi • Revive Auto Detailing",
         "title": "Our Work",
         "subtitle": "Real results on real cars — from our studio in Karachi"
+      }
+    },
+    "reviews_slider_aJWVCC": {
+      "type": "reviews-slider",
+      "blocks": {
+        "review_eyDdW6": {
+          "type": "review",
+          "settings": {
+            "video": "shopify://files/videos/IMG_6210.MP4",
+            "name": "Amash",
+            "service": "Ceramic Coating"
+          }
+        },
+        "review_bnGV9c": {
+          "type": "review",
+          "settings": {
+            "name": "Sara Malik",
+            "service": "PPF Installation"
+          }
+        },
+        "review_i8HJYG": {
+          "type": "review",
+          "settings": {
+            "name": "Usman Ali",
+            "service": "Window Tinting"
+          }
+        },
+        "review_q36CGM": {
+          "type": "review",
+          "settings": {
+            "name": "Farrukh Baig",
+            "service": "Anti-Rust Coating"
+          }
+        },
+        "review_Yn8VG8": {
+          "type": "review",
+          "settings": {
+            "name": "Zoya Ahmed",
+            "service": "Car Detailing"
+          }
+        },
+        "review_PAwYwW": {
+          "type": "review",
+          "settings": {
+            "name": "Hassan Raza",
+            "service": "Color PPF"
+          }
+        }
+      },
+      "block_order": [
+        "review_eyDdW6",
+        "review_bnGV9c",
+        "review_i8HJYG",
+        "review_q36CGM",
+        "review_Yn8VG8",
+        "review_PAwYwW"
+      ],
+      "name": "Customer Video Reviews",
+      "settings": {
+        "tag": "Real Customers • Real Results",
+        "title": "What Our Customers Say",
+        "subtitle": "Watch real reviews from Karachi car owners"
       }
     },
     "process_3VXAYN": {
@@ -251,6 +317,7 @@
     "ppf_packages_UJLGPt",
     "ppf_benefits_fjiLPD",
     "our_work_UYCqcx",
+    "reviews_slider_aJWVCC",
     "process_3VXAYN",
     "ppf_faq_rcfYWK",
     "ppf_v2_cta_gXDBhm"
