@@ -38,7 +38,7 @@
   .ppf-card-hdr-classic { background: #0C447C; }
   .ppf-card-hdr-premium { background: #2C2C2A; }
   .ppf-tag-light-crystalline { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 100px; background: rgba(255,255,255,0.9); color: #C0392B; }
-  .ppf-btn-cryst { background: #C0392B !important; }
+  .ppf-btn-cryst { background: #C0392B !important; border-color: #C0392B !important; }
   .ppf-card-name { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 10px; margin-top: 10px; font-family: 'Nunito Sans', sans-serif; }
   .ppf-card-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
   .ppf-tag-dim { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 100px; background: rgba(255,255,255,0.15); color: #fff; }
@@ -126,22 +126,23 @@
         <div class="ppf-card-body">
           <div id="ppf-cr-price" class="ppf-price">PKR {{ section.settings.cryst_price_hatch | default: "180,000" }}</div>
           <div class="ppf-tagline">{{ section.settings.cryst_tagline | default: "Entry-level PPF protection" }}</div>
-          <button class="ppf-btn ppf-btn-cryst" onclick="document.getElementById('ppf-booking-section') && document.getElementById('ppf-booking-section').scrollIntoView({behavior:'smooth'})">Select Package</button>
-          <div class="ppf-process">Processing: {{ section.settings.cryst_duration | default: "3 Working Days" }}</div>
-          <div class="ppf-section-lbl">Film Properties</div>
-          <div class="ppf-grid2">
-            <div class="ppf-item"><span class="ppf-dot" style="background:#C0392B;"></span>{{ section.settings.cryst_f1 | default: "TPU Film" }}</div>
-            <div class="ppf-item"><span class="ppf-dot" style="background:#C0392B;"></span>{{ section.settings.cryst_f2 | default: "Self Healing" }}</div>
-            <div class="ppf-item"><span class="ppf-dot" style="background:#C0392B;"></span>{{ section.settings.cryst_f3 | default: "UV Protection" }}</div>
-            <div class="ppf-item"><span class="ppf-dot" style="background:#C0392B;"></span>{{ section.settings.cryst_f4 | default: "Gloss Finish" }}</div>
-          </div>
-          <div class="ppf-included-title">What's Included</div>
+          <button class="ppf-btn ppf-btn-cryst" id="ppf-cr-btn">Select Package</button>
+          <div id="ppf-cr-dur" class="ppf-process" style="margin-top:8px;margin-bottom:12px;">&#9201; Process: {{ section.settings.cryst_duration | default: "3 Working Days" }}</div>
+          <div class="ppf-included-title">What's included in PPF installation</div>
           <div class="ppf-included-list">
-            <div class="ppf-inc-row"><span class="ppf-inc-tick" style="color:#C0392B;">✓</span><div><div class="ppf-inc-name">{{ section.settings.cryst_i1 | default: "Full Body Coverage" }}</div><div class="ppf-inc-sub">{{ section.settings.cryst_i1s | default: "All exterior painted panels" }}</div></div></div>
-            <div class="ppf-inc-row"><span class="ppf-inc-tick" style="color:#C0392B;">✓</span><div><div class="ppf-inc-name">{{ section.settings.cryst_i2 | default: "Paint Protection" }}</div><div class="ppf-inc-sub">{{ section.settings.cryst_i2s | default: "Scratch & chip resistance" }}</div></div></div>
-            <div class="ppf-inc-row"><span class="ppf-inc-tick" style="color:#C0392B;">✓</span><div><div class="ppf-inc-name">{{ section.settings.cryst_i3 | default: "3-Year Warranty" }}</div><div class="ppf-inc-sub">{{ section.settings.cryst_i3s | default: "Manufacturer backed warranty" }}</div></div></div>
+            <div class="ppf-inc-row">
+              <span class="ppf-inc-tick">&#10003;</span>
+              <div><div class="ppf-inc-name">{{ section.settings.cryst_i1 | default: "Full Paint Coverage" }}</div><div class="ppf-inc-sub">{{ section.settings.cryst_i1s | default: "Bonnet, bumpers, fenders, doors, roof, pillars &amp; headlights" }}</div></div>
+            </div>
+            <div class="ppf-inc-row">
+              <span class="ppf-inc-tick">&#10003;</span>
+              <div><div class="ppf-inc-name">{{ section.settings.cryst_i2 | default: "Self-Healing Film" }}</div><div class="ppf-inc-sub">{{ section.settings.cryst_i2s | default: "Minor scratches disappear on their own with heat exposure" }}</div></div>
+            </div>
+            <div class="ppf-inc-row">
+              <span class="ppf-inc-tick">&#10003;</span>
+              <div><div class="ppf-inc-name">{{ section.settings.cryst_i3 | default: "UV &amp; Hydrophobic" }}</div><div class="ppf-inc-sub">{{ section.settings.cryst_i3s | default: "Blocks UV rays and repels water, dirt &amp; environmental fallout" }}</div></div>
+            </div>
           </div>
-          <div class="ppf-spacer"></div>
         </div>
       </div>
 
