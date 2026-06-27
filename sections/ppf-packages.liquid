@@ -114,7 +114,7 @@
 
     <div class="ppf-cards">
 
-<!-- CRYSTALLINE -->
+      <!-- CRYSTALLINE -->
       <div class="ppf-card ppf-card-crystalline">
         <div class="ppf-card-hdr ppf-card-hdr-crystalline">
           <div class="ppf-card-name">{{ section.settings.cryst_name | default: "Crystalline PPF" }}</div>
@@ -124,33 +124,21 @@
           </div>
         </div>
         <div class="ppf-card-body">
-          <div id="ppf-cr-price" class="ppf-price">PKR {{ section.settings.cryst_price_hatch | default: "180,000" }}</div>
+          <div id="ppf-cr-price" class="ppf-price">PKR 180,000</div>
           <div class="ppf-tagline">{{ section.settings.cryst_tagline | default: "Entry-level PPF protection" }}</div>
           <button class="ppf-btn ppf-btn-cryst" id="ppf-cr-btn">Select Package</button>
           <div id="ppf-cr-dur" class="ppf-process" style="margin-top:8px;margin-bottom:12px;">&#9201; Process: {{ section.settings.cryst_duration | default: "3 Working Days" }}</div>
           <div class="ppf-included-title">What's included in PPF installation</div>
           <div class="ppf-included-list">
-            <div class="ppf-inc-row">
-              <span class="ppf-inc-tick">&#10003;</span>
-              <div><div class="ppf-inc-name">Full Paint Coverage</div><div class="ppf-inc-sub">Bonnet, bumpers, fenders, doors, roof, pillars &amp; headlights</div></div>
-            </div>
-            <div class="ppf-inc-row">
-              <span class="ppf-inc-tick">&#10003;</span>
-              <div><div class="ppf-inc-name">Self-Healing Film</div><div class="ppf-inc-sub">Minor scratches disappear on their own with heat exposure</div></div>
-            </div>
-            <div class="ppf-inc-row">
-              <span class="ppf-inc-tick">&#10003;</span>
-              <div><div class="ppf-inc-name">UV &amp; Hydrophobic</div><div class="ppf-inc-sub">Blocks UV rays and repels water, dirt &amp; environmental fallout</div></div>
-            </div>
-            <div class="ppf-inc-row">
-              <span class="ppf-inc-tick">&#10003;</span>
-              <div><div class="ppf-inc-name">GYEON Coatings Included</div><div class="ppf-inc-sub">Ceramic top coat, rim, leather &amp; interior trim treatment</div></div>
-            </div>
+            <div class="ppf-inc-row"><span class="ppf-inc-tick">&#10003;</span><div><div class="ppf-inc-name">Full Paint Coverage</div><div class="ppf-inc-sub">Bonnet, bumpers, fenders, doors, roof, pillars &amp; headlights</div></div></div>
+            <div class="ppf-inc-row"><span class="ppf-inc-tick">&#10003;</span><div><div class="ppf-inc-name">Self-Healing Film</div><div class="ppf-inc-sub">Minor scratches disappear on their own with heat exposure</div></div></div>
+            <div class="ppf-inc-row"><span class="ppf-inc-tick">&#10003;</span><div><div class="ppf-inc-name">UV &amp; Hydrophobic</div><div class="ppf-inc-sub">Blocks UV rays and repels water, dirt &amp; environmental fallout</div></div></div>
+            <div class="ppf-inc-row"><span class="ppf-inc-tick">&#10003;</span><div><div class="ppf-inc-name">GYEON Coatings Included</div><div class="ppf-inc-sub">Ceramic top coat, rim, leather &amp; interior trim treatment</div></div></div>
           </div>
         </div>
       </div>
 
-            <!-- CLASSIC -->
+      <!-- CLASSIC -->
       <div class="ppf-card ppf-card-classic">
         <div class="ppf-badge">MOST POPULAR</div>
         <div class="ppf-card-hdr ppf-card-hdr-classic">
@@ -229,107 +217,69 @@
 
 <script>
 (function() {
-
-  // ── Pricing data ──────────────────────────────────────────────
-  var prices = {
-    'hatchback': {
-      label: 'Hatchback',
-      ex: '{{ section.settings.ex_hatchback | default: "Swift, Mira, Dayz" }}',
-      crystalline: { price: {{ section.settings.cryst_price_hatch  | default: 180000 }}, dur: '{{ section.settings.cryst_duration      | default: "3 Working Days" }}' },
-      classic:     { price: {{ section.settings.p_hatchback_classic | default: 260000 }}, dur: '{{ section.settings.dur_hatchback       | default: "3 Working Days" }}' },
-      premium:     { price: {{ section.settings.p_hatchback_premium | default: 290000 }}, dur: '{{ section.settings.dur_hatchback       | default: "3 Working Days" }}' }
-    },
-    'sedan': {
-      label: 'Sedan',
-      ex: '{{ section.settings.ex_sedan | default: "Corolla, Civic, Sonata" }}',
-      crystalline: { price: {{ section.settings.cryst_price_sedan  | default: 200000 }}, dur: '{{ section.settings.cryst_duration    | default: "3 Working Days" }}' },
-      classic:     { price: {{ section.settings.p_sedan_classic    | default: 300000 }}, dur: '{{ section.settings.dur_sedan         | default: "3 Working Days" }}' },
-      premium:     { price: {{ section.settings.p_sedan_premium    | default: 330000 }}, dur: '{{ section.settings.dur_sedan         | default: "3 Working Days" }}' }
-    },
-    'suv': {
-      label: 'SUV',
-      ex: '{{ section.settings.ex_suv | default: "Sportage L, Tucson, Haval H6" }}',
-      crystalline: { price: {{ section.settings.cryst_price_suv  | default: 240000 }}, dur: '{{ section.settings.cryst_duration  | default: "3 Working Days" }}' },
-      classic:     { price: {{ section.settings.p_suv_classic    | default: 330000 }}, dur: '{{ section.settings.dur_suv         | default: "3 Working Days" }}' },
-      premium:     { price: {{ section.settings.p_suv_premium    | default: 380000 }}, dur: '{{ section.settings.dur_suv         | default: "3 Working Days" }}' }
-    },
-    'xl-suv': {
-      label: 'XL SUV',
-      ex: '{{ section.settings.ex_xlsuv | default: "Fortuner, Land Cruiser, Prado" }}',
-      crystalline: { price: {{ section.settings.cryst_price_xlsuv | default: 280000 }}, dur: '{{ section.settings.cryst_duration    | default: "3 Working Days" }}' },
-      classic:     { price: {{ section.settings.p_xlsuv_classic   | default: 370000 }}, dur: '{{ section.settings.dur_xlsuv        | default: "3 Working Days" }}' },
-      premium:     { price: {{ section.settings.p_xlsuv_premium   | default: 420000 }}, dur: '{{ section.settings.dur_xlsuv        | default: "3 Working Days" }}' }
-    }
+  var pricing = {
+    'hatchback': { label: 'Hatchback', crystalline: { price: {{ section.settings.cryst_price_hatch | default: 180000 }}, dur: '{{ section.settings.cryst_duration | default: "3 Working Days" }}' }, classic: { price: {{ section.settings.p_hatchback_classic | default: 260000 }}, dur: '{{ section.settings.dur_hatchback | default: "3 Working Days" }}' }, premium: { price: {{ section.settings.p_hatchback_premium | default: 290000 }}, dur: '{{ section.settings.dur_hatchback | default: "3 Working Days" }}' } },
+    'sedan':     { label: 'Sedan',     crystalline: { price: {{ section.settings.cryst_price_sedan | default: 200000 }}, dur: '{{ section.settings.cryst_duration | default: "3 Working Days" }}' }, classic: { price: {{ section.settings.p_sedan_classic | default: 300000 }},    dur: '{{ section.settings.dur_sedan | default: "3 Working Days" }}'    }, premium: { price: {{ section.settings.p_sedan_premium | default: 330000 }},    dur: '{{ section.settings.dur_sedan | default: "3 Working Days" }}'    } },
+    'suv':       { label: 'SUV',       crystalline: { price: {{ section.settings.cryst_price_suv | default: 240000 }}, dur: '{{ section.settings.cryst_duration | default: "3 Working Days" }}' }, classic: { price: {{ section.settings.p_suv_classic | default: 330000 }},      dur: '{{ section.settings.dur_suv | default: "3 Working Days" }}'      }, premium: { price: {{ section.settings.p_suv_premium | default: 380000 }},      dur: '{{ section.settings.dur_suv | default: "3 Working Days" }}'      } },
+    'xl-suv':    { label: 'XL SUV',    crystalline: { price: {{ section.settings.cryst_price_xlsuv | default: 280000 }}, dur: '{{ section.settings.cryst_duration | default: "3 Working Days" }}' }, classic: { price: {{ section.settings.p_xlsuv_classic | default: 370000 }},    dur: '{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'    }, premium: { price: {{ section.settings.p_xlsuv_premium | default: 420000 }},    dur: '{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'    } }
   };
 
-  // ── Helpers ───────────────────────────────────────────────────
-  function fmt(n) {
-    return 'PKR ' + Number(n).toLocaleString();
-  }
-  function el(id) {
-    return document.getElementById(id);
-  }
+  var carEx = {
+    'hatchback': '{{ section.settings.ex_hatchback | default: "Swift, Mira, Dayz" }}',
+    'sedan':     '{{ section.settings.ex_sedan | default: "Corolla, Civic, Sonata" }}',
+    'suv':       '{{ section.settings.ex_suv | default: "Sportage L, Tucson, Haval H6" }}',
+    'xl-suv':    '{{ section.settings.ex_xlsuv | default: "Fortuner, Land Cruiser, Prado" }}'
+  };
 
-  // ── Update all 3 cards for the selected vehicle type ──────────
-  function selectVehicle(vtype) {
-    var d = prices[vtype];
+  function fmt(n) { return 'PKR ' + Number(n).toLocaleString(); }
+
+  function switchVehicle(vtype) {
+    var d = pricing[vtype];
     if (!d) return;
-
-    // Label + example
-    if (el('ppf-vlabel')) el('ppf-vlabel').textContent = d.label;
-    if (el('ppf-vex'))    el('ppf-vex').textContent    = d.ex ? '(' + d.ex + ')' : '';
-
-    // Crystalline card
-    if (el('ppf-cr-price')) el('ppf-cr-price').textContent = fmt(d.crystalline.price);
-    if (el('ppf-cr-dur'))   el('ppf-cr-dur').innerHTML     = '&#9201; Process: ' + d.crystalline.dur;
-
-    // Classic card
-    if (el('ppf-c-price')) el('ppf-c-price').textContent = fmt(d.classic.price);
-    if (el('ppf-c-dur'))   el('ppf-c-dur').innerHTML     = '&#9201; Process: ' + d.classic.dur;
-
-    // Premium card
-    if (el('ppf-p-price')) el('ppf-p-price').textContent = fmt(d.premium.price);
-    if (el('ppf-p-dur'))   el('ppf-p-dur').innerHTML     = '&#9201; Process: ' + d.premium.dur;
-
-    // Update active tab highlight
-    document.querySelectorAll('.ppf-tab').forEach(function(btn) {
-      btn.classList.toggle('active', btn.getAttribute('data-vtype') === vtype);
-    });
+    document.getElementById('ppf-vlabel').textContent = d.label;
+    document.getElementById('ppf-vex').textContent = carEx[vtype] ? '(' + carEx[vtype] + ')' : '';
+    var crPr = document.getElementById('ppf-cr-price');
+    var crDr = document.getElementById('ppf-cr-dur');
+    if (crPr && d.crystalline) crPr.textContent = fmt(d.crystalline.price);
+    if (crDr && d.crystalline) crDr.innerHTML = '&#9201; Process: ' + d.crystalline.dur;
+    document.getElementById('ppf-c-price').textContent = fmt(d.classic.price);
+    document.getElementById('ppf-p-price').textContent = fmt(d.premium.price);
+    document.getElementById('ppf-c-dur').innerHTML = '&#9201; Process: ' + d.classic.dur;
+    document.getElementById('ppf-p-dur').innerHTML = '&#9201; Process: ' + d.premium.dur;
   }
 
-  // ── Book button handler ───────────────────────────────────────
-  function addBookHandler(id) {
-    var b = el(id);
-    if (!b) return;
-    b.addEventListener('click', function() {
-      var btn = this;
-      btn.style.background = '#10b981';
-      btn.textContent = 'Selected ✓';
-      setTimeout(function() {
-        window.location.href = '/pages/ppf-booking';
-      }, 400);
-    });
-  }
-
-  // ── Init on DOM ready ─────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', function() {
-
-    // Tab click listeners
+    // Tab click
     document.querySelectorAll('.ppf-tab').forEach(function(btn) {
       btn.addEventListener('click', function() {
-        selectVehicle(this.getAttribute('data-vtype'));
+        document.querySelectorAll('.ppf-tab').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        switchVehicle(btn.dataset.vtype);
       });
     });
 
-    // Book buttons
-    addBookHandler('ppf-cr-btn');
-    addBookHandler('ppf-c-btn');
-    addBookHandler('ppf-p-btn');
+    // Buttons → PPF booking
+    var crBtn = document.getElementById('ppf-cr-btn');
+    if (crBtn) crBtn.addEventListener('click', function() {
+      this.style.background = '#10b981';
+      this.textContent = 'Selected ✓';
+      setTimeout(function() { window.location.href = '/pages/ppf-booking'; }, 400);
+    });
+    document.getElementById('ppf-c-btn').addEventListener('click', function() {
+      this.style.background = '#10b981';
+      this.textContent = 'Selected ✓';
+      var self = this;
+      setTimeout(function() { window.location.href = '/pages/ppf-booking'; }, 400);
+    });
+    document.getElementById('ppf-p-btn').addEventListener('click', function() {
+      this.style.background = '#10b981';
+      this.textContent = 'Selected ✓';
+      setTimeout(function() { window.location.href = '/pages/ppf-booking'; }, 400);
+    });
 
-    // Set default to hatchback
-    selectVehicle('hatchback');
+    // Init hatchback
+    switchVehicle('hatchback');
   });
-
 })();
 </script>
 
@@ -341,25 +291,15 @@
     {"type": "text", "id": "title",    "label": "Title",    "default": "Choose Your Vehicle Type"},
     {"type": "text", "id": "subtitle", "label": "Subtitle", "default": "Select your vehicle to see accurate pricing"},
     {"type": "header", "content": "Crystalline PPF Package"},
-    {"type": "text", "id": "cryst_name",        "label": "Brand Name",    "default": "Crystalline PPF"},
-    {"type": "text", "id": "cryst_mil",         "label": "Thickness",     "default": "7.9 mil thickness"},
-    {"type": "text", "id": "cryst_warranty",    "label": "Warranty",      "default": "3 Years Warranty"},
-    {"type": "text", "id": "cryst_tagline",     "label": "Tagline",       "default": "Entry-level PPF protection"},
-    {"type": "text", "id": "cryst_duration",    "label": "Duration",      "default": "3 Working Days"},
-    {"type": "text", "id": "cryst_price_hatch", "label": "Hatchback Price","default": "180,000"},
-    {"type": "text", "id": "cryst_price_sedan", "label": "Sedan Price",   "default": "200,000"},
-    {"type": "text", "id": "cryst_price_suv",   "label": "SUV Price",     "default": "240,000"},
-    {"type": "text", "id": "cryst_price_xlsuv", "label": "XL SUV Price",  "default": "280,000"},
-    {"type": "text", "id": "cryst_f1",          "label": "Feature 1",     "default": "TPU Film"},
-    {"type": "text", "id": "cryst_f2",          "label": "Feature 2",     "default": "Self Healing"},
-    {"type": "text", "id": "cryst_f3",          "label": "Feature 3",     "default": "UV Protection"},
-    {"type": "text", "id": "cryst_f4",          "label": "Feature 4",     "default": "Gloss Finish"},
-    {"type": "text", "id": "cryst_i1",          "label": "Included 1",    "default": "Full Body Coverage"},
-    {"type": "text", "id": "cryst_i1s",         "label": "Included 1 Sub","default": "All exterior painted panels"},
-    {"type": "text", "id": "cryst_i2",          "label": "Included 2",    "default": "Paint Protection"},
-    {"type": "text", "id": "cryst_i2s",         "label": "Included 2 Sub","default": "Scratch & chip resistance"},
-    {"type": "text", "id": "cryst_i3",          "label": "Included 3",    "default": "3-Year Warranty"},
-    {"type": "text", "id": "cryst_i3s",         "label": "Included 3 Sub","default": "Manufacturer backed warranty"},
+    {"type": "text", "id": "cryst_name",        "label": "Brand Name",     "default": "Crystalline PPF"},
+    {"type": "text", "id": "cryst_mil",         "label": "Thickness",      "default": "7.9 mil thickness"},
+    {"type": "text", "id": "cryst_warranty",    "label": "Warranty",       "default": "3 Years Warranty"},
+    {"type": "text", "id": "cryst_tagline",     "label": "Tagline",        "default": "Entry-level PPF protection"},
+    {"type": "text", "id": "cryst_duration",    "label": "Duration",       "default": "3 Working Days"},
+    {"type": "text", "id": "cryst_price_hatch", "label": "Hatchback Price", "default": "180,000"},
+    {"type": "text", "id": "cryst_price_sedan", "label": "Sedan Price",    "default": "200,000"},
+    {"type": "text", "id": "cryst_price_suv",   "label": "SUV Price",      "default": "240,000"},
+    {"type": "text", "id": "cryst_price_xlsuv", "label": "XL SUV Price",   "default": "280,000"},
     {"type": "header", "content": "Classic Package"},
     {"type": "text", "id": "classic_name",     "label": "Name",     "default": "NAR Classic PPF"},
     {"type": "text", "id": "classic_mil",      "label": "Thickness","default": "8.0 mil thickness"},
