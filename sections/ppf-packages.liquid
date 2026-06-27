@@ -22,7 +22,7 @@
   .ppf-pkg-label em { font-size: 0.85rem; color: #6b7280; font-weight: 400; font-style: italic; }
 
   /* Cards grid */
-  .ppf-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem; }
+  .ppf-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-top: 1rem; }
 
   /* Card */
   .ppf-card { background: #fff; border: 1.5px solid #e5e7eb; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 2px 10px rgba(0,0,0,0.06); transition: box-shadow 0.2s; }
@@ -34,7 +34,9 @@
 
   /* Header */
   .ppf-card-hdr { padding: 1.4rem 1.25rem 1rem; text-align: center; }
+  .ppf-card-hdr-crystalline { background: #C0392B; }
   .ppf-card-hdr-classic { background: #0C447C; }
+  .ppf-tag-light-crystalline { font-size:11px; font-weight:500; padding:3px 10px; border-radius:100px; background:rgba(255,255,255,0.9); color:#C0392B; }
   .ppf-card-hdr-premium { background: #2C2C2A; }
   .ppf-card-name { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 10px; margin-top: 10px; font-family: 'Nunito Sans', sans-serif; }
   .ppf-card-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
@@ -110,6 +112,30 @@
     </div>
 
     <div class="ppf-cards">
+
+      <!-- CRYSTALLINE PPF -->
+      <div class="ppf-card">
+        <div class="ppf-card-hdr ppf-card-hdr-crystalline">
+          <div class="ppf-card-name">Crystalline PPF</div>
+          <div class="ppf-card-tags">
+            <span class="ppf-tag-dim">7.9 mil thickness</span>
+            <span class="ppf-tag-light-crystalline">&#9733; 3 Years Warranty</span>
+          </div>
+        </div>
+        <div class="ppf-card-body">
+          <div id="ppf-cr-price" class="ppf-price">PKR 180,000</div>
+          <div class="ppf-tagline">Entry-level PPF protection</div>
+          <button class="ppf-btn" id="ppf-cr-btn" style="background:#C0392B;">Select Package</button>
+          <div id="ppf-cr-dur" class="ppf-process" style="margin-top:8px;margin-bottom:12px;">&#9201; Process: 3 Working Days</div>
+          <div class="ppf-included-title">What's included in PPF installation</div>
+          <div class="ppf-included-list">
+            <div class="ppf-inc-row"><span class="ppf-inc-tick">&#10003;</span><div><div class="ppf-inc-name">Full Paint Coverage</div><div class="ppf-inc-sub">Bonnet, bumpers, fenders, doors, roof, pillars &amp; headlights</div></div></div>
+            <div class="ppf-inc-row"><span class="ppf-inc-tick">&#10003;</span><div><div class="ppf-inc-name">Self-Healing Film</div><div class="ppf-inc-sub">Minor scratches disappear on their own with heat exposure</div></div></div>
+            <div class="ppf-inc-row"><span class="ppf-inc-tick">&#10003;</span><div><div class="ppf-inc-name">UV &amp; Hydrophobic</div><div class="ppf-inc-sub">Blocks UV rays and repels water, dirt &amp; environmental fallout</div></div></div>
+            <div class="ppf-inc-row"><span class="ppf-inc-tick">&#10003;</span><div><div class="ppf-inc-name">GYEON Coatings Included</div><div class="ppf-inc-sub">Ceramic top coat, rim, leather &amp; interior trim treatment</div></div></div>
+          </div>
+        </div>
+      </div>
 
       <!-- CLASSIC -->
       <div class="ppf-card ppf-card-classic">
@@ -191,10 +217,10 @@
 <script>
 (function() {
   var pricing = {
-    'hatchback': { label: 'Hatchback', classic: { price: {{ section.settings.p_hatchback_classic | default: 260000 }}, dur: '{{ section.settings.dur_hatchback | default: "3 Working Days" }}' }, premium: { price: {{ section.settings.p_hatchback_premium | default: 290000 }}, dur: '{{ section.settings.dur_hatchback | default: "3 Working Days" }}' } },
-    'sedan':     { label: 'Sedan',     classic: { price: {{ section.settings.p_sedan_classic | default: 300000 }},    dur: '{{ section.settings.dur_sedan | default: "3 Working Days" }}'    }, premium: { price: {{ section.settings.p_sedan_premium | default: 330000 }},    dur: '{{ section.settings.dur_sedan | default: "3 Working Days" }}'    } },
-    'suv':       { label: 'SUV',       classic: { price: {{ section.settings.p_suv_classic | default: 330000 }},      dur: '{{ section.settings.dur_suv | default: "3 Working Days" }}'      }, premium: { price: {{ section.settings.p_suv_premium | default: 380000 }},      dur: '{{ section.settings.dur_suv | default: "3 Working Days" }}'      } },
-    'xl-suv':    { label: 'XL SUV',    classic: { price: {{ section.settings.p_xlsuv_classic | default: 370000 }},    dur: '{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'    }, premium: { price: {{ section.settings.p_xlsuv_premium | default: 420000 }},    dur: '{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'    } }
+    'hatchback': { label: 'Hatchback', crprice: 180000, crdur: '3 Working Days', classic: { price: {{ section.settings.p_hatchback_classic | default: 260000 }}, dur: '{{ section.settings.dur_hatchback | default: "3 Working Days" }}' }, premium: { price: {{ section.settings.p_hatchback_premium | default: 290000 }}, dur: '{{ section.settings.dur_hatchback | default: "3 Working Days" }}' } },
+    'sedan':     { label: 'Sedan',     crprice: 200000, crdur: '3 Working Days', classic: { price: {{ section.settings.p_sedan_classic | default: 300000 }},    dur: '{{ section.settings.dur_sedan | default: "3 Working Days" }}'    }, premium: { price: {{ section.settings.p_sedan_premium | default: 330000 }},    dur: '{{ section.settings.dur_sedan | default: "3 Working Days" }}'    } },
+    'suv':       { label: 'SUV',       crprice: 240000, crdur: '3 Working Days', classic: { price: {{ section.settings.p_suv_classic | default: 330000 }},      dur: '{{ section.settings.dur_suv | default: "3 Working Days" }}'      }, premium: { price: {{ section.settings.p_suv_premium | default: 380000 }},      dur: '{{ section.settings.dur_suv | default: "3 Working Days" }}'      } },
+    'xl-suv':    { label: 'XL SUV',    crprice: 280000, crdur: '3 Working Days', classic: { price: {{ section.settings.p_xlsuv_classic | default: 370000 }},    dur: '{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'    }, premium: { price: {{ section.settings.p_xlsuv_premium | default: 420000 }},    dur: '{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'    } }
   };
 
   var carEx = {
@@ -211,6 +237,8 @@
     if (!d) return;
     document.getElementById('ppf-vlabel').textContent = d.label;
     document.getElementById('ppf-vex').textContent = carEx[vtype] ? '(' + carEx[vtype] + ')' : '';
+    var crp=document.getElementById('ppf-cr-price'); if(crp) crp.textContent=fmt(d.crprice);
+    var crd=document.getElementById('ppf-cr-dur'); if(crd) crd.innerHTML='&#9201; Process: '+d.crdur;
     document.getElementById('ppf-c-price').textContent = fmt(d.classic.price);
     document.getElementById('ppf-p-price').textContent = fmt(d.premium.price);
     document.getElementById('ppf-c-dur').innerHTML = '&#9201; Process: ' + d.classic.dur;
@@ -228,6 +256,7 @@
     });
 
     // Buttons → PPF booking
+    var crBtn=document.getElementById('ppf-cr-btn'); if(crBtn){ crBtn.addEventListener('click', function(){ this.style.background='#10b981'; this.textContent='Selected ✓'; setTimeout(function(){ window.location.href='/pages/ppf-booking'; },400); }); }
     document.getElementById('ppf-c-btn').addEventListener('click', function() {
       this.style.background = '#10b981';
       this.textContent = 'Selected ✓';
