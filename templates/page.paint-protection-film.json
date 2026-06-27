@@ -142,8 +142,9 @@
         "work_video_HnhqGk": {
           "type": "work_video",
           "settings": {
-            "vehicle": "Toyota Fortuner",
-            "service": "Car Detailing"
+            "video": "shopify://files/videos/IMG_5103.MP4",
+            "vehicle": "Salar",
+            "service": "JAC T9 hunter"
           }
         },
         "work_video_DMNwgr": {
@@ -176,36 +177,40 @@
           "type": "review",
           "settings": {
             "video": "shopify://files/videos/IMG_6210.MP4",
-            "name": "Amash",
-            "service": "Ceramic Coating"
-          }
-        },
-        "review_bnGV9c": {
-          "type": "review",
-          "settings": {
-            "name": "Sara Malik",
-            "service": "PPF Installation"
-          }
-        },
-        "review_i8HJYG": {
-          "type": "review",
-          "settings": {
-            "name": "Usman Ali",
-            "service": "Window Tinting"
-          }
-        },
-        "review_q36CGM": {
-          "type": "review",
-          "settings": {
-            "name": "Farrukh Baig",
-            "service": "Anti-Rust Coating"
+            "name": "Amash Asif",
+            "service": "Toyota Yaris PPF"
           }
         },
         "review_Yn8VG8": {
           "type": "review",
           "settings": {
-            "name": "Zoya Ahmed",
-            "service": "Car Detailing"
+            "video": "shopify://files/videos/IMG_5103.MP4",
+            "name": "Salar",
+            "service": "JAC T9 Hunter PPF"
+          }
+        },
+        "review_bnGV9c": {
+          "type": "review",
+          "settings": {
+            "video": "shopify://files/videos/IMG_5756.MP4",
+            "name": "Usman",
+            "service": "Toyota Yaris PPF"
+          }
+        },
+        "review_i8HJYG": {
+          "type": "review",
+          "settings": {
+            "video": "shopify://files/videos/IMG_8842.MP4",
+            "name": "Muneeb Khatri",
+            "service": "Jac T9 Hunter PPF"
+          }
+        },
+        "review_q36CGM": {
+          "type": "review",
+          "settings": {
+            "video": "shopify://files/videos/IMG_2311.MP4",
+            "name": "Shiraz",
+            "service": "Suzuki Swift PPF"
           }
         },
         "review_PAwYwW": {
@@ -218,10 +223,10 @@
       },
       "block_order": [
         "review_eyDdW6",
+        "review_Yn8VG8",
         "review_bnGV9c",
         "review_i8HJYG",
         "review_q36CGM",
-        "review_Yn8VG8",
         "review_PAwYwW"
       ],
       "name": "Customer Video Reviews",
