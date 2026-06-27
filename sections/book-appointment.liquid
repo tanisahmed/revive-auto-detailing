@@ -215,8 +215,8 @@
         <div class="rad-fg">
           <label class="rad-fl">Preferred Time <em>*</em></label>
           <div class="rad-times" id="rab-times">
-            <div class="rad-time" data-t="10:00 AM">10:00 AM</div>
-            <div class="rad-time" data-t="12:00 PM">12:00 PM</div>
+            <div class="rad-time" data-t="9:00 AM">9:00 AM</div>
+            <div class="rad-time" data-t="11:00 AM">11:00 AM</div>
             <div class="rad-time" data-t="1:00 PM">1:00 PM</div>
             <div class="rad-time" data-t="3:00 PM">3:00 PM</div>
           </div>
@@ -385,8 +385,8 @@
   dateInput.value = today;
 
   // Default time = 9 AM
-  document.querySelector('.rad-time[data-t="10:00 AM"]').classList.add('sel');
-  state.time = '10:00 AM';
+  document.querySelector('.rad-time[data-t="9:00 AM"]').classList.add('sel');
+  state.time = '9:00 AM';
 
   window.rabGoto = function(step) {
     document.querySelectorAll('.rad-bstep').forEach(function(s) { s.classList.remove('active'); });

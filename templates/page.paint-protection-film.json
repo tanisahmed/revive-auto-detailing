@@ -122,6 +122,50 @@
     },
     "ppf_faq_rcfYWK": {
       "type": "ppf-faq",
+      "blocks": {
+        "faq_ket838": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does PPF installation take?",
+            "answer": "PPF installation takes 2–3 working days depending on vehicle size and package."
+          }
+        },
+        "faq_wxR6zQ": {
+          "type": "faq",
+          "settings": {
+            "question": "Will removing the PPF damage my car's paint?",
+            "answer": "No. If the PPF is high quality and removed correctly, it will not damage the original paint."
+          }
+        },
+        "faq_hwCNL7": {
+          "type": "faq",
+          "settings": {
+            "question": "Why does paint sometimes come off when PPF is removed?",
+            "answer": "This usually happens when the car has been repainted. PPF itself doesn't damage the paint. Paint damage usually happens if the film is low quality, installed on weak/repainted paint, or removed improperly."
+          }
+        },
+        "faq_yYt676": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does PPF last?",
+            "answer": "Our NAR Classic PPF carries an 5-year manufacturer warranty, while the NAR Premium PPF comes with a 7-year warranty. With proper care and maintenance, the film will maintain its protective properties and appearance throughout this period."
+          }
+        },
+        "faq_7DHCmj": {
+          "type": "faq",
+          "settings": {
+            "question": "How do i maintain PPF?",
+            "answer": "Wash your car regularly with a pH-neutral car shampoo, avoid harsh chemicals and abrasive cleaners, and remove bird droppings or tree sap as soon as possible. Follow the installer's care instructions for the best results."
+          }
+        }
+      },
+      "block_order": [
+        "faq_ket838",
+        "faq_wxR6zQ",
+        "faq_hwCNL7",
+        "faq_yYt676",
+        "faq_7DHCmj"
+      ],
       "name": "PPF FAQ",
       "settings": {
         "title": "Frequently Asked Questions",
