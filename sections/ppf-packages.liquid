@@ -229,67 +229,107 @@
 
 <script>
 (function() {
-  var pricing = {
-    'hatchback': { label: 'Hatchback', crystalline: { price: {{ section.settings.cryst_price_hatch | default: 180000 }}, dur: '{{ section.settings.cryst_duration | default: "3 Working Days" }}' }, classic: { price: {{ section.settings.p_hatchback_classic | default: 260000 }}, dur: '{{ section.settings.dur_hatchback | default: "3 Working Days" }}' }, premium: { price: {{ section.settings.p_hatchback_premium | default: 290000 }}, dur: '{{ section.settings.dur_hatchback | default: "3 Working Days" }}' } },
-    'sedan':     { label: 'Sedan',     crystalline: { price: {{ section.settings.cryst_price_sedan | default: 200000 }}, dur: '{{ section.settings.cryst_duration | default: "3 Working Days" }}' }, classic: { price: {{ section.settings.p_sedan_classic | default: 300000 }},    dur: '{{ section.settings.dur_sedan | default: "3 Working Days" }}'    }, premium: { price: {{ section.settings.p_sedan_premium | default: 330000 }},    dur: '{{ section.settings.dur_sedan | default: "3 Working Days" }}'    } },
-    'suv':       { label: 'SUV',       crystalline: { price: {{ section.settings.cryst_price_suv | default: 240000 }}, dur: '{{ section.settings.cryst_duration | default: "3 Working Days" }}' }, classic: { price: {{ section.settings.p_suv_classic | default: 330000 }},      dur: '{{ section.settings.dur_suv | default: "3 Working Days" }}'      }, premium: { price: {{ section.settings.p_suv_premium | default: 380000 }},      dur: '{{ section.settings.dur_suv | default: "3 Working Days" }}'      } },
-    'xl-suv':    { label: 'XL SUV',    crystalline: { price: {{ section.settings.cryst_price_xlsuv | default: 280000 }}, dur: '{{ section.settings.cryst_duration | default: "3 Working Days" }}' }, classic: { price: {{ section.settings.p_xlsuv_classic | default: 370000 }},    dur: '{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'    }, premium: { price: {{ section.settings.p_xlsuv_premium | default: 420000 }},    dur: '{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'    } }
+
+  // ── Pricing data ──────────────────────────────────────────────
+  var prices = {
+    'hatchback': {
+      label: 'Hatchback',
+      ex: '{{ section.settings.ex_hatchback | default: "Swift, Mira, Dayz" }}',
+      crystalline: { price: {{ section.settings.cryst_price_hatch  | default: 180000 }}, dur: '{{ section.settings.cryst_duration      | default: "3 Working Days" }}' },
+      classic:     { price: {{ section.settings.p_hatchback_classic | default: 260000 }}, dur: '{{ section.settings.dur_hatchback       | default: "3 Working Days" }}' },
+      premium:     { price: {{ section.settings.p_hatchback_premium | default: 290000 }}, dur: '{{ section.settings.dur_hatchback       | default: "3 Working Days" }}' }
+    },
+    'sedan': {
+      label: 'Sedan',
+      ex: '{{ section.settings.ex_sedan | default: "Corolla, Civic, Sonata" }}',
+      crystalline: { price: {{ section.settings.cryst_price_sedan  | default: 200000 }}, dur: '{{ section.settings.cryst_duration    | default: "3 Working Days" }}' },
+      classic:     { price: {{ section.settings.p_sedan_classic    | default: 300000 }}, dur: '{{ section.settings.dur_sedan         | default: "3 Working Days" }}' },
+      premium:     { price: {{ section.settings.p_sedan_premium    | default: 330000 }}, dur: '{{ section.settings.dur_sedan         | default: "3 Working Days" }}' }
+    },
+    'suv': {
+      label: 'SUV',
+      ex: '{{ section.settings.ex_suv | default: "Sportage L, Tucson, Haval H6" }}',
+      crystalline: { price: {{ section.settings.cryst_price_suv  | default: 240000 }}, dur: '{{ section.settings.cryst_duration  | default: "3 Working Days" }}' },
+      classic:     { price: {{ section.settings.p_suv_classic    | default: 330000 }}, dur: '{{ section.settings.dur_suv         | default: "3 Working Days" }}' },
+      premium:     { price: {{ section.settings.p_suv_premium    | default: 380000 }}, dur: '{{ section.settings.dur_suv         | default: "3 Working Days" }}' }
+    },
+    'xl-suv': {
+      label: 'XL SUV',
+      ex: '{{ section.settings.ex_xlsuv | default: "Fortuner, Land Cruiser, Prado" }}',
+      crystalline: { price: {{ section.settings.cryst_price_xlsuv | default: 280000 }}, dur: '{{ section.settings.cryst_duration    | default: "3 Working Days" }}' },
+      classic:     { price: {{ section.settings.p_xlsuv_classic   | default: 370000 }}, dur: '{{ section.settings.dur_xlsuv        | default: "3 Working Days" }}' },
+      premium:     { price: {{ section.settings.p_xlsuv_premium   | default: 420000 }}, dur: '{{ section.settings.dur_xlsuv        | default: "3 Working Days" }}' }
+    }
   };
 
-  var carEx = {
-    'hatchback': '{{ section.settings.ex_hatchback | default: "Swift, Mira, Dayz" }}',
-    'sedan':     '{{ section.settings.ex_sedan | default: "Corolla, Civic, Sonata" }}',
-    'suv':       '{{ section.settings.ex_suv | default: "Sportage L, Tucson, Haval H6" }}',
-    'xl-suv':    '{{ section.settings.ex_xlsuv | default: "Fortuner, Land Cruiser, Prado" }}'
-  };
-
-  function fmt(n) { return 'PKR ' + Number(n).toLocaleString(); }
-
-  function el(id){ return document.getElementById(id); }
-  function setText(id, val){ var e=el(id); if(e) e.textContent=val; }
-  function setHTML(id, val){ var e=el(id); if(e) e.innerHTML=val; }
-
-  function switchVehicle(vtype) {
-    try {
-      var d = pricing[vtype];
-      if (!d) return;
-      setText('ppf-vlabel', d.label);
-      setText('ppf-vex', carEx[vtype] ? '(' + carEx[vtype] + ')' : '');
-      if (d.crystalline) {
-        setText('ppf-cr-price', fmt(d.crystalline.price));
-        setHTML('ppf-cr-dur', '&#9201; Process: ' + d.crystalline.dur);
-      }
-      setText('ppf-c-price', fmt(d.classic.price));
-      setText('ppf-p-price', fmt(d.premium.price));
-      setHTML('ppf-c-dur', '&#9201; Process: ' + d.classic.dur);
-      setHTML('ppf-p-dur', '&#9201; Process: ' + d.premium.dur);
-    } catch(e) { console.error('PPF switchVehicle error:', e); }
+  // ── Helpers ───────────────────────────────────────────────────
+  function fmt(n) {
+    return 'PKR ' + Number(n).toLocaleString();
+  }
+  function el(id) {
+    return document.getElementById(id);
   }
 
+  // ── Update all 3 cards for the selected vehicle type ──────────
+  function selectVehicle(vtype) {
+    var d = prices[vtype];
+    if (!d) return;
+
+    // Label + example
+    if (el('ppf-vlabel')) el('ppf-vlabel').textContent = d.label;
+    if (el('ppf-vex'))    el('ppf-vex').textContent    = d.ex ? '(' + d.ex + ')' : '';
+
+    // Crystalline card
+    if (el('ppf-cr-price')) el('ppf-cr-price').textContent = fmt(d.crystalline.price);
+    if (el('ppf-cr-dur'))   el('ppf-cr-dur').innerHTML     = '&#9201; Process: ' + d.crystalline.dur;
+
+    // Classic card
+    if (el('ppf-c-price')) el('ppf-c-price').textContent = fmt(d.classic.price);
+    if (el('ppf-c-dur'))   el('ppf-c-dur').innerHTML     = '&#9201; Process: ' + d.classic.dur;
+
+    // Premium card
+    if (el('ppf-p-price')) el('ppf-p-price').textContent = fmt(d.premium.price);
+    if (el('ppf-p-dur'))   el('ppf-p-dur').innerHTML     = '&#9201; Process: ' + d.premium.dur;
+
+    // Update active tab highlight
+    document.querySelectorAll('.ppf-tab').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-vtype') === vtype);
+    });
+  }
+
+  // ── Book button handler ───────────────────────────────────────
+  function addBookHandler(id) {
+    var b = el(id);
+    if (!b) return;
+    b.addEventListener('click', function() {
+      var btn = this;
+      btn.style.background = '#10b981';
+      btn.textContent = 'Selected ✓';
+      setTimeout(function() {
+        window.location.href = '/pages/ppf-booking';
+      }, 400);
+    });
+  }
+
+  // ── Init on DOM ready ─────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', function() {
-    // Tab click
+
+    // Tab click listeners
     document.querySelectorAll('.ppf-tab').forEach(function(btn) {
       btn.addEventListener('click', function() {
-        document.querySelectorAll('.ppf-tab').forEach(function(b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-        switchVehicle(btn.dataset.vtype);
+        selectVehicle(this.getAttribute('data-vtype'));
       });
     });
 
-    // Buttons → PPF booking
-    ['ppf-cr-btn','ppf-c-btn','ppf-p-btn'].forEach(function(id){
-      var b = document.getElementById(id);
-      if(!b) return;
-      b.addEventListener('click', function(){
-        this.style.background = '#10b981';
-        this.textContent = 'Selected ✓';
-        setTimeout(function(){ window.location.href = '/pages/ppf-booking'; }, 400);
-      });
-    });
+    // Book buttons
+    addBookHandler('ppf-cr-btn');
+    addBookHandler('ppf-c-btn');
+    addBookHandler('ppf-p-btn');
 
-    // Init hatchback
-    switchVehicle('hatchback');
+    // Set default to hatchback
+    selectVehicle('hatchback');
   });
+
 })();
 </script>
 
