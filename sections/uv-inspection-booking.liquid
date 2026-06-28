@@ -1,0 +1,415 @@
+<style>
+/* ── UV Inspection Booking — 4-Step Form ── */
+.rad-uv { font-family: 'Nunito Sans', sans-serif; background: #f5f3ff; min-height: 70vh; padding: 3rem 0 4rem; }
+.rad-uv-wrap { max-width: 680px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* Header */
+.rad-uv-hdr { text-align: center; margin-bottom: 2rem; }
+.rad-uv-hdr h1 { font-size: 1.9rem; font-weight: 800; color: #1f2937; margin-bottom: 0.35rem; }
+.rad-uv-hdr p { color: #6b7280; font-size: 0.9rem; }
+
+/* Progress bar */
+.rad-uv-prog { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 2rem; }
+.rad-uv-prog-step { display: flex; align-items: center; gap: 0; }
+.rad-uv-prog-dot { width: 2rem; height: 2rem; border-radius: 50%; border: 2px solid #c4b5fd; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: #7c3aed; transition: all 0.3s; }
+.rad-uv-prog-dot.active { background: #7c3aed; color: #fff; border-color: #7c3aed; }
+.rad-uv-prog-dot.done { background: #10b981; color: #fff; border-color: #10b981; }
+.rad-uv-prog-line { width: 3rem; height: 2px; background: #c4b5fd; }
+.rad-uv-prog-line.done { background: #10b981; }
+
+/* Card */
+.rad-uv-card { background: #fff; border-radius: 14px; padding: 1.75rem 2rem 2rem; box-shadow: 0 2px 16px rgba(124,58,237,0.08); }
+.rad-uv-step { display: none; }
+.rad-uv-step.active { display: block; }
+.rad-uv-step-title { font-size: 1.2rem; font-weight: 800; color: #1f2937; margin-bottom: 0.25rem; }
+.rad-uv-step-desc { font-size: 0.85rem; color: #6b7280; margin-bottom: 1.5rem; }
+
+/* Fields */
+.rad-uv-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 0; }
+.rad-uv-fg { margin-bottom: 1rem; }
+.rad-uv-lbl { display: block; font-size: 0.82rem; font-weight: 700; color: #374151; margin-bottom: 0.35rem; }
+.rad-uv-lbl em { color: #ef4444; font-style: normal; }
+.rad-uv-fi, .rad-uv-sel { width: 100%; padding: 0.7rem 0.9rem; border: 1.5px solid #e5e7eb; border-radius: 8px; font-family: 'Nunito Sans', sans-serif; font-size: 0.875rem; color: #1f2937; background: #fff; box-sizing: border-box; transition: border 0.2s; }
+.rad-uv-fi:focus, .rad-uv-sel:focus { outline: none; border-color: #7c3aed; box-shadow: 0 0 0 3px rgba(124,58,237,0.08); }
+.rad-uv-ferr { font-size: 0.75rem; color: #ef4444; margin-top: 0.25rem; display: none; }
+.rad-uv-ferr.show { display: block; }
+
+/* Section label */
+.rad-uv-sec-lbl { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #7c3aed; margin: 1.5rem 0 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid #ede9fe; }
+
+/* Package / vehicle type selector */
+.rad-uv-pkgs { display: flex; flex-direction: column; gap: 0.75rem; }
+.rad-uv-pkg { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; background: #fff; border: 2px solid #e5e7eb; border-radius: 10px; cursor: pointer; transition: all 0.2s; }
+.rad-uv-pkg:hover { border-color: #7c3aed; }
+.rad-uv-pkg.sel { border-color: #7c3aed; background: #f5f3ff; }
+.rad-uv-pkg-radio { width: 1.1rem; height: 1.1rem; border-radius: 50%; border: 2px solid #c4b5fd; flex-shrink: 0; transition: all 0.2s; }
+.rad-uv-pkg.sel .rad-uv-pkg-radio { border-color: #7c3aed; background: #7c3aed; }
+.rad-uv-pkg-name { font-size: 0.9rem; font-weight: 700; color: #1f2937; }
+.rad-uv-pkg-price { font-size: 0.82rem; color: #7c3aed; font-weight: 600; margin-top: 0.1rem; }
+
+/* Price display */
+.rad-uv-price-row { display: flex; justify-content: space-between; align-items: center; background: #f5f3ff; border-radius: 8px; padding: 0.85rem 1rem; margin-top: 1rem; }
+.rad-uv-price-lbl { font-size: 0.85rem; font-weight: 600; color: #4c1d95; }
+.rad-uv-price-val { font-size: 1.4rem; font-weight: 900; color: #7c3aed; }
+
+/* Nav buttons */
+.rad-uv-nav { display: flex; gap: 0.75rem; margin-top: 1.75rem; }
+.rad-uv-back { flex: 0 0 auto; padding: 0.8rem 1.4rem; border: 1.5px solid #e5e7eb; background: #fff; border-radius: 8px; font-family: 'Nunito Sans', sans-serif; font-weight: 600; font-size: 0.875rem; color: #6b7280; cursor: pointer; transition: all 0.2s; }
+.rad-uv-back:hover { border-color: #7c3aed; color: #7c3aed; }
+.rad-uv-back:disabled { opacity: 0.4; cursor: not-allowed; }
+.rad-uv-next { flex: 1; padding: 0.875rem; background: #7c3aed; border: none; border-radius: 8px; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 1rem; color: #fff; cursor: pointer; transition: background 0.2s; }
+.rad-uv-next:hover { background: #6d28d9; }
+.rad-uv-next:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* Review */
+.rad-uv-rev-block { background: #faf9ff; border: 1px solid #ede9fe; border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1rem; }
+.rad-uv-rev-hdr { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; }
+.rad-uv-rev-title { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em; color: #7c3aed; }
+.rad-uv-rev-edit { font-size: 0.75rem; font-weight: 600; color: #7c3aed; cursor: pointer; background: none; border: none; padding: 0; }
+.rad-uv-rev-row { display: flex; justify-content: space-between; padding: 0.3rem 0; border-bottom: 1px solid #f3f0ff; font-size: 0.82rem; }
+.rad-uv-rev-row:last-child { border-bottom: none; }
+.rad-uv-rl { color: #6b7280; }
+.rad-uv-rv { font-weight: 600; color: #1f2937; text-align: right; }
+.rad-uv-total { display: flex; justify-content: space-between; align-items: center; background: #7c3aed; color: #fff; border-radius: 8px; padding: 0.9rem 1.25rem; margin-bottom: 1rem; }
+.rad-uv-total-lbl { font-size: 0.85rem; font-weight: 700; }
+.rad-uv-total-price { font-size: 1.3rem; font-weight: 900; }
+
+/* Terms */
+.rad-uv-terms { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.8rem; color: #6b7280; margin-bottom: 1rem; }
+.rad-uv-terms input { margin-top: 2px; accent-color: #7c3aed; }
+.rad-uv-terms a { color: #7c3aed; }
+
+/* Success */
+.rad-uv-success { display: none; text-align: center; padding: 2.5rem 1rem; }
+.rad-uv-success-icon { font-size: 4rem; margin-bottom: 1rem; }
+.rad-uv-success h2 { font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-bottom: 0.5rem; }
+.rad-uv-success p { color: #6b7280; margin-bottom: 1.5rem; }
+.rad-uv-wa-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.5rem; background: #10b981; color: #fff; border-radius: 10px; font-weight: 700; text-decoration: none; }
+
+/* Mobile */
+@media (max-width: 640px) {
+  .rad-uv { padding: 1.5rem 0 3rem; }
+  .rad-uv-wrap { padding: 0 1rem; }
+  .rad-uv-hdr h1 { font-size: 1.5rem; }
+  .rad-uv-card { padding: 1.25rem 1rem 1.5rem; }
+  .rad-uv-row { grid-template-columns: 1fr; }
+  .rad-uv-prog-line { width: 2rem; }
+}
+</style>
+
+<div class="rad-uv">
+  <div class="rad-uv-wrap">
+
+    <div class="rad-uv-hdr">
+      <h1>{{ section.settings.title | default: "Book UV Paint Inspection" }}</h1>
+      <p>{{ section.settings.subtitle | default: "Professional UV light car paint inspection in Karachi — detect hidden repaint, rust & damage" }}</p>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="rad-uv-prog">
+      <div class="rad-uv-prog-step"><div class="rad-uv-prog-dot active" id="uv-pd1">1</div></div>
+      <div class="rad-uv-prog-line" id="uv-pl1"></div>
+      <div class="rad-uv-prog-step"><div class="rad-uv-prog-dot" id="uv-pd2">2</div></div>
+      <div class="rad-uv-prog-line" id="uv-pl2"></div>
+      <div class="rad-uv-prog-step"><div class="rad-uv-prog-dot" id="uv-pd3">3</div></div>
+      <div class="rad-uv-prog-line" id="uv-pl3"></div>
+      <div class="rad-uv-prog-step"><div class="rad-uv-prog-dot" id="uv-pd4">4</div></div>
+    </div>
+
+    <div class="rad-uv-card">
+
+      <!-- STEP 1: Personal Info -->
+      <div class="rad-uv-step active" id="uv-s1">
+        <div class="rad-uv-step-title">Personal Information</div>
+        <div class="rad-uv-step-desc">Tell us how to reach you.</div>
+        <div class="rad-uv-row">
+          <div class="rad-uv-fg">
+            <label class="rad-uv-lbl" for="uv-fn">First Name <em>*</em></label>
+            <input type="text" id="uv-fn" class="rad-uv-fi" placeholder="Ahmed">
+            <div class="rad-uv-ferr" id="uv-e-fn">Please enter your first name</div>
+          </div>
+          <div class="rad-uv-fg">
+            <label class="rad-uv-lbl" for="uv-ln">Last Name</label>
+            <input type="text" id="uv-ln" class="rad-uv-fi" placeholder="Khan">
+          </div>
+        </div>
+        <div class="rad-uv-fg">
+          <label class="rad-uv-lbl" for="uv-ph">WhatsApp Number <em>*</em></label>
+          <input type="tel" id="uv-ph" class="rad-uv-fi" placeholder="03XX-XXXXXXX">
+          <div class="rad-uv-ferr" id="uv-e-ph">Please enter your WhatsApp number</div>
+        </div>
+        <div class="rad-uv-fg">
+          <label class="rad-uv-lbl" for="uv-em">Email Address</label>
+          <input type="email" id="uv-em" class="rad-uv-fi" placeholder="email@example.com">
+        </div>
+        <div class="rad-uv-nav">
+          <button class="rad-uv-back" disabled>← Back</button>
+          <button class="rad-uv-next" onclick="uvNext(1)">Next: Vehicle Details →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Vehicle Details -->
+      <div class="rad-uv-step" id="uv-s2">
+        <div class="rad-uv-step-title">Vehicle Details</div>
+        <div class="rad-uv-step-desc">Tell us about the car to be inspected.</div>
+        <div class="rad-uv-row">
+          <div class="rad-uv-fg">
+            <label class="rad-uv-lbl" for="uv-mk">Car Make <em>*</em></label>
+            <input type="text" id="uv-mk" class="rad-uv-fi" placeholder="Toyota">
+            <div class="rad-uv-ferr" id="uv-e-mk">Please enter car make</div>
+          </div>
+          <div class="rad-uv-fg">
+            <label class="rad-uv-lbl" for="uv-mo">Car Model <em>*</em></label>
+            <input type="text" id="uv-mo" class="rad-uv-fi" placeholder="Corolla">
+            <div class="rad-uv-ferr" id="uv-e-mo">Please enter car model</div>
+          </div>
+        </div>
+        <div class="rad-uv-row">
+          <div class="rad-uv-fg">
+            <label class="rad-uv-lbl" for="uv-yr">Year</label>
+            <input type="text" id="uv-yr" class="rad-uv-fi" placeholder="2021">
+          </div>
+          <div class="rad-uv-fg">
+            <label class="rad-uv-lbl" for="uv-cl">Color</label>
+            <input type="text" id="uv-cl" class="rad-uv-fi" placeholder="White">
+          </div>
+        </div>
+        <div class="rad-uv-nav">
+          <button class="rad-uv-back" onclick="uvPrev(2)">← Back</button>
+          <button class="rad-uv-next" onclick="uvNext(2)">Next: Select Vehicle Type →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Vehicle Type & Pricing -->
+      <div class="rad-uv-step" id="uv-s3">
+        <div class="rad-uv-step-title">Select Vehicle Type</div>
+        <div class="rad-uv-step-desc">Choose your vehicle type to see the inspection fee.</div>
+        <div class="rad-uv-pkgs" id="uv-pkg-list">
+          <div class="rad-uv-pkg" onclick="uvSelVt(this,'hatchback',{{ section.settings.price_hatch | default: 5500 }})">
+            <div class="rad-uv-pkg-radio"></div>
+            <div>
+              <div class="rad-uv-pkg-name">🚗 Hatchback</div>
+              <div class="rad-uv-pkg-price">Swift, Mira, Cultus, Picanto — PKR {{ section.settings.price_hatch | default: "5,500" }}</div>
+            </div>
+          </div>
+          <div class="rad-uv-pkg" onclick="uvSelVt(this,'sedan',{{ section.settings.price_sedan | default: 6500 }})">
+            <div class="rad-uv-pkg-radio"></div>
+            <div>
+              <div class="rad-uv-pkg-name">🚙 Sedan</div>
+              <div class="rad-uv-pkg-price">Corolla, Civic, City, Sonata — PKR {{ section.settings.price_sedan | default: "6,500" }}</div>
+            </div>
+          </div>
+          <div class="rad-uv-pkg" onclick="uvSelVt(this,'suv',{{ section.settings.price_suv | default: 7500 }})">
+            <div class="rad-uv-pkg-radio"></div>
+            <div>
+              <div class="rad-uv-pkg-name">🚐 SUV</div>
+              <div class="rad-uv-pkg-price">Sportage, Tucson, Fortuner, MG ZS — PKR {{ section.settings.price_suv | default: "7,500" }}</div>
+            </div>
+          </div>
+          <div class="rad-uv-pkg" onclick="uvSelVt(this,'xl-suv',{{ section.settings.price_xlsuv | default: 10000 }})">
+            <div class="rad-uv-pkg-radio"></div>
+            <div>
+              <div class="rad-uv-pkg-name">🚌 XL SUV</div>
+              <div class="rad-uv-pkg-price">Prado, Land Cruiser, Patrol, Sequoia — PKR {{ section.settings.price_xlsuv | default: "10,000" }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="rad-uv-ferr" id="uv-e-vt">Please select a vehicle type</div>
+        <div class="rad-uv-price-row" id="uv-price-row" style="display:none;">
+          <span class="rad-uv-price-lbl">🔦 UV Inspection Fee</span>
+          <span class="rad-uv-price-val" id="uv-price-val">PKR —</span>
+        </div>
+        <div class="rad-uv-nav">
+          <button class="rad-uv-back" onclick="uvPrev(3)">← Back</button>
+          <button class="rad-uv-next" onclick="uvNext(3)">Review Booking →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Review & Confirm -->
+      <div class="rad-uv-step" id="uv-s4">
+        <div class="rad-uv-step-title">Confirm Your Booking</div>
+        <div class="rad-uv-step-desc">Please review your details before confirming.</div>
+
+        <div class="rad-uv-rev-block">
+          <div class="rad-uv-rev-hdr">
+            <span class="rad-uv-rev-title">Personal Info</span>
+            <button class="rad-uv-rev-edit" onclick="uvGo(1)">Edit</button>
+          </div>
+          <div class="rad-uv-rev-row"><span class="rad-uv-rl">Name</span><span class="rad-uv-rv" id="uv-rv-name">—</span></div>
+          <div class="rad-uv-rev-row"><span class="rad-uv-rl">WhatsApp</span><span class="rad-uv-rv" id="uv-rv-ph">—</span></div>
+          <div class="rad-uv-rev-row"><span class="rad-uv-rl">Email</span><span class="rad-uv-rv" id="uv-rv-em">—</span></div>
+        </div>
+
+        <div class="rad-uv-rev-block">
+          <div class="rad-uv-rev-hdr">
+            <span class="rad-uv-rev-title">Vehicle</span>
+            <button class="rad-uv-rev-edit" onclick="uvGo(2)">Edit</button>
+          </div>
+          <div class="rad-uv-rev-row"><span class="rad-uv-rl">Car</span><span class="rad-uv-rv" id="uv-rv-car">—</span></div>
+          <div class="rad-uv-rev-row"><span class="rad-uv-rl">Year</span><span class="rad-uv-rv" id="uv-rv-yr">—</span></div>
+          <div class="rad-uv-rev-row"><span class="rad-uv-rl">Color</span><span class="rad-uv-rv" id="uv-rv-cl">—</span></div>
+        </div>
+
+        <div class="rad-uv-rev-block">
+          <div class="rad-uv-rev-hdr">
+            <span class="rad-uv-rev-title">Inspection</span>
+            <button class="rad-uv-rev-edit" onclick="uvGo(3)">Edit</button>
+          </div>
+          <div class="rad-uv-rev-row"><span class="rad-uv-rl">Vehicle Type</span><span class="rad-uv-rv" id="uv-rv-vt">—</span></div>
+          <div class="rad-uv-rev-row"><span class="rad-uv-rl">Duration</span><span class="rad-uv-rv">30–60 Minutes</span></div>
+        </div>
+
+        <div class="rad-uv-total">
+          <span class="rad-uv-total-lbl">🔦 Inspection Fee</span>
+          <span class="rad-uv-total-price" id="uv-rv-total">PKR —</span>
+        </div>
+
+        <label class="rad-uv-terms">
+          <input type="checkbox" id="uv-terms">
+          <span>I agree to the <a href="/policies/terms-of-service" target="_blank">Terms & Conditions</a> and consent to RAD contacting me via WhatsApp and email.</span>
+        </label>
+
+        <div class="rad-uv-nav">
+          <button class="rad-uv-back" onclick="uvPrev(4)">← Back</button>
+          <button class="rad-uv-next" id="uv-confirm-btn" onclick="uvSubmit()">Confirm Booking ✓</button>
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="rad-uv-success" id="uv-success">
+        <div class="rad-uv-success-icon">✅</div>
+        <h2>Booking Confirmed!</h2>
+        <p>Thank you! We've received your UV paint inspection request. Our team will confirm your slot via WhatsApp within 1 hour.</p>
+        <a href="https://wa.me/923037231111" target="_blank" class="rad-uv-wa-btn">💬 WhatsApp Us</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var vtLabels = {hatchback:'Hatchback',sedan:'Sedan',suv:'SUV','xl-suv':'XL SUV'};
+  var bd = { fn:'',ln:'',ph:'',em:'',mk:'',mo:'',yr:'',cl:'',vt:'',vtLabel:'',price:0 };
+
+  function el(id){ return document.getElementById(id); }
+  function show(id){ var e=el(id); if(e) e.style.display=''; }
+  function hide(id){ var e=el(id); if(e) e.style.display='none'; }
+  function fmt(n){ return 'PKR '+Number(n).toLocaleString(); }
+
+  function uvGo(step){
+    for(var i=1;i<=4;i++){
+      var s=el('uv-s'+i);
+      if(s){ s.classList.toggle('active', i===step); }
+    }
+    // Progress dots
+    for(var i=1;i<=4;i++){
+      var d=el('uv-pd'+i);
+      if(!d) continue;
+      d.classList.remove('active','done');
+      if(i<step) d.classList.add('done');
+      else if(i===step) d.classList.add('active');
+    }
+    for(var i=1;i<=3;i++){
+      var l=el('uv-pl'+i);
+      if(l) l.classList.toggle('done', i<step);
+    }
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  window.uvGo = uvGo;
+
+  window.uvPrev = function(from){ uvGo(from-1); };
+
+  window.uvNext = function(step){
+    if(step===1){
+      var ok=true;
+      if(!el('uv-fn').value.trim()){ el('uv-e-fn').classList.add('show'); ok=false; } else { el('uv-e-fn').classList.remove('show'); }
+      if(!el('uv-ph').value.trim()){ el('uv-e-ph').classList.add('show'); ok=false; } else { el('uv-e-ph').classList.remove('show'); }
+      if(!ok) return;
+      bd.fn=el('uv-fn').value.trim(); bd.ln=el('uv-ln').value.trim();
+      bd.ph=el('uv-ph').value.trim(); bd.em=el('uv-em').value.trim();
+      uvGo(2);
+    } else if(step===2){
+      var ok=true;
+      if(!el('uv-mk').value.trim()){ el('uv-e-mk').classList.add('show'); ok=false; } else { el('uv-e-mk').classList.remove('show'); }
+      if(!el('uv-mo').value.trim()){ el('uv-e-mo').classList.add('show'); ok=false; } else { el('uv-e-mo').classList.remove('show'); }
+      if(!ok) return;
+      bd.mk=el('uv-mk').value.trim(); bd.mo=el('uv-mo').value.trim();
+      bd.yr=el('uv-yr').value.trim(); bd.cl=el('uv-cl').value.trim();
+      uvGo(3);
+    } else if(step===3){
+      if(!bd.vt){ el('uv-e-vt').classList.add('show'); return; }
+      el('uv-e-vt').classList.remove('show');
+      // Populate review
+      el('uv-rv-name').textContent = bd.fn+' '+bd.ln;
+      el('uv-rv-ph').textContent   = bd.ph;
+      el('uv-rv-em').textContent   = bd.em||'—';
+      el('uv-rv-car').textContent  = bd.mk+' '+bd.mo;
+      el('uv-rv-yr').textContent   = bd.yr||'—';
+      el('uv-rv-cl').textContent   = bd.cl||'—';
+      el('uv-rv-vt').textContent   = bd.vtLabel;
+      el('uv-rv-total').textContent= fmt(bd.price);
+      uvGo(4);
+    }
+  };
+
+  window.uvSelVt = function(el_ref, vt, price){
+    document.querySelectorAll('.rad-uv-pkg').forEach(function(p){ p.classList.remove('sel'); });
+    el_ref.classList.add('sel');
+    bd.vt=vt; bd.vtLabel=vtLabels[vt]||vt; bd.price=price;
+    el('uv-price-val').textContent = fmt(price);
+    el('uv-price-row').style.display = '';
+    el('uv-e-vt').classList.remove('show');
+  };
+
+  window.uvSubmit = function(){
+    if(!el('uv-terms').checked){ alert('Please agree to the Terms & Conditions to continue.'); return; }
+    var btn = el('uv-confirm-btn');
+    btn.disabled=true; btn.textContent='Sending...';
+    var ref='RAD-UV-'+Date.now().toString(36).toUpperCase().slice(-6);
+    var cleanPhone=bd.ph.replace(/[^0-9]/g,'');
+    var body=
+      'NEW UV PAINT INSPECTION BOOKING — '+ref+'\n'+
+      'Submitted: '+new Date().toLocaleString('en-PK',{timeZone:'Asia/Karachi'})+'\n\n'+
+      'Customer: '+bd.fn+' '+bd.ln+'\n'+
+      'WhatsApp: '+bd.ph+'\n'+
+      'Email: '+(bd.em||'—')+'\n\n'+
+      'Vehicle: '+bd.mk+' '+bd.mo+(bd.yr?' '+bd.yr:'')+'\n'+
+      'Color: '+(bd.cl||'N/A')+'\n'+
+      'Vehicle Type: '+bd.vtLabel+'\n'+
+      'Inspection Fee: '+fmt(bd.price)+'\n'+
+      'Duration: 30–60 Minutes\n\n'+
+      'WhatsApp: https://wa.me/'+cleanPhone+'\n\n'+
+      '[booking_type:uv-inspection] [booking_ref:'+ref+']';
+    fetch('https://formspree.io/f/xgoqpjvk',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({_subject:'UV Inspection Booking: '+ref+' — '+bd.fn,_replyto:bd.em||'',message:body})
+    }).then(function(){
+      el('uv-s4').style.display='none';
+      el('uv-success').style.display='block';
+      document.querySelector('.rad-uv-prog').style.display='none';
+    }).catch(function(){
+      el('uv-s4').style.display='none';
+      el('uv-success').style.display='block';
+      document.querySelector('.rad-uv-prog').style.display='none';
+    });
+  };
+})();
+</script>
+
+{% schema %}
+{
+  "name": "UV Inspection Booking",
+  "settings": [
+    {"type":"text","id":"title","label":"Page Title","default":"Book UV Paint Inspection"},
+    {"type":"text","id":"subtitle","label":"Subtitle","default":"Professional UV light car paint inspection in Karachi — detect hidden repaint, rust & damage"},
+    {"type":"header","content":"Inspection Pricing"},
+    {"type":"text","id":"price_hatch","label":"Hatchback Price","default":"5,500"},
+    {"type":"text","id":"price_sedan","label":"Sedan Price","default":"6,500"},
+    {"type":"text","id":"price_suv","label":"SUV Price","default":"7,500"},
+    {"type":"text","id":"price_xlsuv","label":"XL SUV Price","default":"10,000"}
+  ],
+  "presets":[{"name":"UV Inspection Booking"}]
+}
+{% endschema %}
