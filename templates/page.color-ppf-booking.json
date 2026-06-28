@@ -11,7 +11,9 @@
   "sections": {
     "main": {
       "type": "color-ppf-booking",
-      "settings": {}
+      "settings": {
+        "formspree_id": "info@reviveautodetailing.pk"
+      }
     }
   },
   "order": [
