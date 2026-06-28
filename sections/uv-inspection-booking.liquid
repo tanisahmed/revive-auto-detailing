@@ -214,11 +214,14 @@
           <div class="rad-fg">
             <label class="rad-fl">Ceramic Coating Package <em>*</em></label>
             <div class="rad-pkgs">
-              <div class="rad-pkg" onclick="uv_rbSelPkg(this,'gold')">
-                <div class="rad-pkg-radio"></div>
+              <div class="rad-pkg sel" onclick="uv_rbSelPkg(this,'inspection')">
+                <div class="rad-pkg-radio" style="border-color:#7c3aed;background:#7c3aed;"></div>
                 <div>
-                  <div class="rad-pkg-name">Gold Package — GYEON Can Coat EVO</div>
+                  <div class="rad-pkg-name">🔦 Full UV Paint Inspection</div>
                   <div class="rad-pkg-price" id="uv-rpp-inspection">Select vehicle type to see price</div>
+                </div>
+              </div>
+            </div>
                 </div>
               </div>
               <div class="rad-pkg" onclick="uv_rbSelPkg(this,'platinum')">
@@ -325,26 +328,10 @@
   var vtLabels = {hatchback:'Hatchback',sedan:'Sedan',suv:'SUV','xl-suv':'XL SUV'};
   var stepNames = ['','Personal Info','Vehicle Details','Appointment','Confirm Booking'];
       var pricing = {
-      'hatchback': {
-        'gold': {price: {{ section.settings.p_hatchback_gold | default: 0 }}, dur: '{{ section.settings.dur_hatchback | default: "1 Day" }}'},
-        'platinum': {price: {{ section.settings.p_hatchback_platinum | default: 0 }}, dur: '{{ section.settings.dur_hatchback | default: "1 Day" }}'},
-        'ultimate': {price: {{ section.settings.p_hatchback_ultimate | default: 0 }}, dur: '{{ section.settings.dur_hatchback | default: "1 Day" }}'},
-      },
-      'sedan': {
-        'gold': {price: {{ section.settings.p_sedan_gold | default: 0 }}, dur: '{{ section.settings.dur_sedan | default: "1 Day" }}'},
-        'platinum': {price: {{ section.settings.p_sedan_platinum | default: 0 }}, dur: '{{ section.settings.dur_sedan | default: "1 Day" }}'},
-        'ultimate': {price: {{ section.settings.p_sedan_ultimate | default: 0 }}, dur: '{{ section.settings.dur_sedan | default: "1 Day" }}'},
-      },
-      'suv': {
-        'gold': {price: {{ section.settings.p_suv_gold | default: 0 }}, dur: '{{ section.settings.dur_suv | default: "1 Day" }}'},
-        'platinum': {price: {{ section.settings.p_suv_platinum | default: 0 }}, dur: '{{ section.settings.dur_suv | default: "1 Day" }}'},
-        'ultimate': {price: {{ section.settings.p_suv_ultimate | default: 0 }}, dur: '{{ section.settings.dur_suv | default: "1 Day" }}'},
-      },
-      'xl-suv': {
-        'gold': {price: {{ section.settings.p_xl_suv_gold | default: 0 }}, dur: '{{ section.settings.dur_xl_suv | default: "1 Day" }}'},
-        'platinum': {price: {{ section.settings.p_xl_suv_platinum | default: 0 }}, dur: '{{ section.settings.dur_xl_suv | default: "1 Day" }}'},
-        'ultimate': {price: {{ section.settings.p_xl_suv_ultimate | default: 0 }}, dur: '{{ section.settings.dur_xl_suv | default: "1 Day" }}'},
-      },
+      'hatchback': { 'inspection': {price: {{ section.settings.price_hatch | default: 5500 }}, dur: '30-60 Minutes'} },
+      'sedan':     { 'inspection': {price: {{ section.settings.price_sedan | default: 6500 }}, dur: '30-60 Minutes'} },
+      'suv':       { 'inspection': {price: {{ section.settings.price_suv   | default: 7500 }}, dur: '30-60 Minutes'} },
+      'xl-suv':    { 'inspection': {price: {{ section.settings.price_xlsuv | default: 10000 }}, dur: '30-60 Minutes'} }
     };
 
   // Year dropdown
@@ -590,32 +577,81 @@
 })();
 </script>
 
-{% schema %}
+{%- schema -%}
 {
   "name": "UV Inspection Booking",
   "settings": [
-    {"type": "header", "content": "Pricing Settings"},
-    {"type": "header", "content": "Hatchback Prices (PKR)"},
-    {"type": "number", "id": "p_hatchback_gold", "label": "Gold Package \u2014 GYEON Can Coat EVO", "default": 40000},
-    {"type": "number", "id": "p_hatchback_platinum", "label": "Platinum Package \u2014 GYEON Q\u00b2 One EVO", "default": 45000},
-    {"type": "number", "id": "p_hatchback_ultimate", "label": "Ultimate Package \u2014 GYEON Q\u00b2 Pure", "default": 60000},
-    {"type": "text", "id": "dur_hatchback", "label": "Duration", "default": "1 Day"},
-    {"type": "header", "content": "Sedan Prices (PKR)"},
-    {"type": "number", "id": "p_sedan_gold", "label": "Gold Package \u2014 GYEON Can Coat EVO", "default": 45000},
-    {"type": "number", "id": "p_sedan_platinum", "label": "Platinum Package \u2014 GYEON Q\u00b2 One EVO", "default": 50000},
-    {"type": "number", "id": "p_sedan_ultimate", "label": "Ultimate Package \u2014 GYEON Q\u00b2 Pure", "default": 65000},
-    {"type": "text", "id": "dur_sedan", "label": "Duration", "default": "1 Day"},
-    {"type": "header", "content": "SUV Prices (PKR)"},
-    {"type": "number", "id": "p_suv_gold", "label": "Gold Package \u2014 GYEON Can Coat EVO", "default": 50000},
-    {"type": "number", "id": "p_suv_platinum", "label": "Platinum Package \u2014 GYEON Q\u00b2 One EVO", "default": 55000},
-    {"type": "number", "id": "p_suv_ultimate", "label": "Ultimate Package \u2014 GYEON Q\u00b2 Pure", "default": 70000},
-    {"type": "text", "id": "dur_suv", "label": "Duration", "default": "1 Day"},
-    {"type": "header", "content": "XL SUV Prices (PKR)"},
-    {"type": "number", "id": "p_xl_suv_gold", "label": "Gold Package \u2014 GYEON Can Coat EVO", "default": 55000},
-    {"type": "number", "id": "p_xl_suv_platinum", "label": "Platinum Package \u2014 GYEON Q\u00b2 One EVO", "default": 60000},
-    {"type": "number", "id": "p_xl_suv_ultimate", "label": "Ultimate Package \u2014 GYEON Q\u00b2 Pure", "default": 75000},
-    {"type": "text", "id": "dur_xl_suv", "label": "Duration", "default": "1 Day"}
+    {
+      "type": "header",
+      "content": "Pricing Settings"
+    },
+    {
+      "type": "header",
+      "content": "Hatchback Prices (PKR)"
+    },
+    {
+      "type": "header",
+      "content": "Sedan Prices (PKR)"
+    },
+    {
+      "type": "header",
+      "content": "SUV Prices (PKR)"
+    },
+    {
+      "type": "header",
+      "content": "XL SUV Prices (PKR)"
+    },
+    {
+      "type": "number",
+      "id": "p_xl_suv_gold",
+      "label": "Gold Package — GYEON Can Coat EVO",
+      "default": 55000
+    },
+    {
+      "type": "number",
+      "id": "p_xl_suv_platinum",
+      "label": "Platinum Package — GYEON Q² One EVO",
+      "default": 60000
+    },
+    {
+      "type": "number",
+      "id": "p_xl_suv_ultimate",
+      "label": "Ultimate Package — GYEON Q² Pure",
+      "default": 75000
+    },
+    {
+      "type": "header",
+      "content": "UV Inspection Pricing"
+    },
+    {
+      "type": "text",
+      "id": "price_hatch",
+      "label": "Hatchback Price",
+      "default": "5500"
+    },
+    {
+      "type": "text",
+      "id": "price_sedan",
+      "label": "Sedan Price",
+      "default": "6500"
+    },
+    {
+      "type": "text",
+      "id": "price_suv",
+      "label": "SUV Price",
+      "default": "7500"
+    },
+    {
+      "type": "text",
+      "id": "price_xlsuv",
+      "label": "XL SUV Price",
+      "default": "10000"
+    }
   ],
-  "presets": [{"name": "UV Inspection Booking"}]
+  "presets": [
+    {
+      "name": "UV Inspection Booking"
+    }
+  ]
 }
-{% endschema %}
+{%- endschema -%}
