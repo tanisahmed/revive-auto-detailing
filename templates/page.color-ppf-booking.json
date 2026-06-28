@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "color-ppf-booking",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
