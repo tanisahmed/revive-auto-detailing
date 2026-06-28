@@ -53,7 +53,8 @@
 .uvi-sec h2 { font-size: 1.9rem; font-weight: 800; color: #1f2937; margin-bottom: 0.4rem; }
 .uvi-sec p { color: #6b7280; font-size: 0.9rem; }
 .uvi-price-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-.uvi-price-card { background: #fff; border-radius: 14px; padding: 1.75rem 1rem 1.5rem; text-align: center; border: 2px solid #ede9fe; transition: all 0.25s; position: relative; }
+.uvi-price-card { background: #fff; border-radius: 14px; padding: 1.75rem 1rem 1.5rem; text-align: center; border: 2px solid #ede9fe; transition: all 0.25s; position: relative; cursor: pointer; text-decoration: none; display: block; color: inherit; }
+.uvi-price-card:hover { border-color: #9333ea; box-shadow: 0 8px 24px rgba(147,51,234,0.18); transform: translateY(-4px); }
 .uvi-price-card.popular { border-color: #9333ea; box-shadow: 0 8px 32px rgba(147,51,234,0.18); }
 .uvi-price-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(147,51,234,0.15); }
 .uvi-popular-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: #9333ea; color: #fff; font-size: 0.6rem; font-weight: 700; padding: 3px 12px; border-radius: 100px; white-space: nowrap; letter-spacing: 0.05em; }
@@ -174,7 +175,7 @@
             {%- if section.settings.feat4 != blank -%}<span class="uvi-feat">{{ section.settings.feat4 }}</span>{%- endif -%}
           </div>
           <div class="uvi-btn-row">
-            <a href="{{ section.settings.btn1_url | default: '/pages/book-appointment' }}" class="uvi-btn-book">🔦 {{ section.settings.btn1 | default: "Book Inspection" }}</a>
+            <a href="{{ section.settings.btn1_url | default: '/pages/uv-inspection-booking' }}" class="uvi-btn-book">🔦 {{ section.settings.btn1 | default: "Book Inspection" }}</a>
             <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20UV%20paint%20inspection%20for%20my%20car" target="_blank" class="uvi-btn-wa">💬 {{ section.settings.btn2 | default: "WhatsApp Us" }}</a>
           </div>
         </div>
@@ -287,26 +288,29 @@
         <p>{{ section.settings.price_sub | default: "Flat rate per vehicle type — no hidden charges" }}</p>
       </div>
       <div class="uvi-price-grid">
-        <div class="uvi-price-card">
+        <a class="uvi-price-card" href="/pages/uv-inspection-booking">
           <div class="uvi-price-vehicle">Hatchback</div>
           <div class="uvi-price-amount">{{ section.settings.price_hatch | default: "5,500" }}<span> PKR</span></div>
           <div class="uvi-price-note">Swift, Mira, Cultus, Picanto</div>
-        </div>
-        <div class="uvi-price-card">
+          <div style="margin-top:0.75rem;font-size:0.75rem;font-weight:700;color:#9333ea;">Book Now →</div>
+        </a>
+        <a class="uvi-price-card" href="/pages/uv-inspection-booking">
 <div class="uvi-price-vehicle">Sedan</div>
           <div class="uvi-price-amount">{{ section.settings.price_sedan | default: "6,500" }}<span> PKR</span></div>
           <div class="uvi-price-note">Corolla, Civic, City, Sonata</div>
         </div>
-        <div class="uvi-price-card">
+        <a class="uvi-price-card" href="/pages/uv-inspection-booking">
           <div class="uvi-price-vehicle">SUV</div>
           <div class="uvi-price-amount">{{ section.settings.price_suv | default: "7,500" }}<span> PKR</span></div>
           <div class="uvi-price-note">Sportage, Tucson, Fortuner, MG ZS</div>
-        </div>
-        <div class="uvi-price-card">
+          <div style="margin-top:0.75rem;font-size:0.75rem;font-weight:700;color:#9333ea;">Book Now →</div>
+        </a>
+        <a class="uvi-price-card" href="/pages/uv-inspection-booking">
           <div class="uvi-price-vehicle">XL SUV</div>
           <div class="uvi-price-amount">{{ section.settings.price_xlsuv | default: "10,000" }}<span> PKR</span></div>
           <div class="uvi-price-note">Prado, Land Cruiser, Patrol, Sequoia</div>
-        </div>
+          <div style="margin-top:0.75rem;font-size:0.75rem;font-weight:700;color:#9333ea;">Book Now →</div>
+        </a>
       </div>
       <p class="uvi-price-footer">✅ Includes full panel-by-panel UV scan + verbal findings report. Written report available on request.</p>
     </div>
@@ -320,7 +324,7 @@
       <h2>{{ section.settings.cta_title | default: "Don't Buy a Car Without" }} <em>{{ section.settings.cta_title_em | default: "UV Inspection" }}</em></h2>
       <p>{{ section.settings.cta_sub | default: "Book your UV paint inspection at Revive Auto Detailing Karachi — 30 minutes, honest report, zero pressure. Know exactly what you're buying or protecting." }}</p>
       <div class="uvi-cta-btns">
-        <a href="{{ section.settings.btn1_url | default: '/pages/book-appointment' }}" class="uvi-btn-book">🔦 {{ section.settings.btn1 | default: "Book Inspection" }}</a>
+        <a href="{{ section.settings.btn1_url | default: '/pages/uv-inspection-booking' }}" class="uvi-btn-book">🔦 {{ section.settings.btn1 | default: "Book Inspection" }}</a>
         <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20UV%20paint%20inspection%20for%20my%20car" target="_blank" class="uvi-btn-wa">💬 {{ section.settings.btn2 | default: "WhatsApp Us" }}</a>
       </div>
     </div>
