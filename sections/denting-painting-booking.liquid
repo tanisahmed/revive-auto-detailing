@@ -1,0 +1,217 @@
+<style>
+.rad-dp-book { font-family: 'Nunito Sans', sans-serif; background: #f8fafc; min-height: 60vh; padding: 3rem 0; }
+.rad-dp-book-inner { max-width: 700px; margin: 0 auto; padding: 0 1.5rem; }
+.rad-dp-book-hdr { text-align: center; margin-bottom: 2rem; }
+.rad-dp-book-hdr h1 { font-size: 1.9rem; font-weight: 800; color: #1f2937; margin-bottom: 0.4rem; }
+.rad-dp-book-hdr p { color: #6b7280; font-size: 0.95rem; }
+.rad-dp-book-card { background: #fff; border-radius: 14px; padding: 2rem; box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
+.rad-dp-field { margin-bottom: 1.25rem; }
+.rad-dp-field label { display: block; font-size: 0.85rem; font-weight: 700; color: #374151; margin-bottom: 0.4rem; }
+.rad-dp-field input, .rad-dp-field select, .rad-dp-field textarea {
+  width: 100%; padding: 0.75rem 1rem; border: 1.5px solid #e5e7eb; border-radius: 8px;
+  font-family: 'Nunito Sans', sans-serif; font-size: 0.9rem; color: #1f2937;
+  background: #fff; box-sizing: border-box; transition: border 0.2s;
+}
+.rad-dp-field input:focus, .rad-dp-field select:focus, .rad-dp-field textarea:focus {
+  outline: none; border-color: #1e3a8a;
+}
+.rad-dp-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.rad-dp-field textarea { resize: vertical; min-height: 90px; }
+.rad-dp-req { color: #ef4444; }
+.rad-dp-section-lbl { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #6b7280; margin: 1.75rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e5e7eb; }
+.rad-dp-services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1.25rem; }
+.rad-dp-svc-opt { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 0.85rem; border: 1.5px solid #e5e7eb; border-radius: 8px; cursor: pointer; transition: all 0.2s; font-size: 0.85rem; font-weight: 600; color: #374151; }
+.rad-dp-svc-opt input { width: 16px; height: 16px; accent-color: #1e3a8a; flex-shrink: 0; }
+.rad-dp-svc-opt:has(input:checked) { border-color: #1e3a8a; background: #eff6ff; color: #1e3a8a; }
+.rad-dp-submit-btn { width: 100%; padding: 1rem; background: #1e3a8a; color: #fff; border: none; border-radius: 10px; font-family: 'Nunito Sans', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.2s; margin-top: 1.5rem; }
+.rad-dp-submit-btn:hover { background: #1e40af; }
+.rad-dp-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.rad-dp-wa { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1rem; padding: 0.85rem; background: #10b981; color: #fff; border-radius: 10px; font-weight: 700; font-size: 0.95rem; text-decoration: none; }
+.rad-dp-success { display: none; text-align: center; padding: 2.5rem 1.5rem; }
+.rad-dp-success-icon { font-size: 3.5rem; margin-bottom: 1rem; }
+.rad-dp-success h2 { font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-bottom: 0.5rem; }
+.rad-dp-success p { color: #6b7280; margin-bottom: 1.5rem; }
+.rad-dp-notice { background: #fffbeb; border: 1px solid #fcd34d; border-radius: 8px; padding: 0.75rem 1rem; font-size: 0.82rem; color: #92400e; margin-bottom: 1.25rem; }
+@media (max-width: 640px) {
+  .rad-dp-book { padding: 2rem 0; }
+  .rad-dp-book-hdr h1 { font-size: 1.5rem; }
+  .rad-dp-field-row { grid-template-columns: 1fr; }
+  .rad-dp-services-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<div class="rad-dp-book">
+  <div class="rad-dp-book-inner">
+    <div class="rad-dp-book-hdr">
+      <h1>{{ section.settings.title | default: "Book Denting & Painting Appointment" }}</h1>
+      <p>{{ section.settings.subtitle | default: "Expert dent removal, scratch repair & panel repainting in Karachi" }}</p>
+    </div>
+
+    <div class="rad-dp-book-card">
+
+      <!-- FORM -->
+      <div id="dp-form-wrap">
+        <div class="rad-dp-notice">📋 Fill in your details and we'll confirm your appointment via WhatsApp within 1 hour.</div>
+
+        <div class="rad-dp-section-lbl">Personal Details</div>
+        <div class="rad-dp-field-row">
+          <div class="rad-dp-field">
+            <label>First Name <span class="rad-dp-req">*</span></label>
+            <input type="text" id="dp-fn" placeholder="Ahmed" required>
+          </div>
+          <div class="rad-dp-field">
+            <label>Last Name</label>
+            <input type="text" id="dp-ln" placeholder="Khan">
+          </div>
+        </div>
+        <div class="rad-dp-field-row">
+          <div class="rad-dp-field">
+            <label>WhatsApp Number <span class="rad-dp-req">*</span></label>
+            <input type="tel" id="dp-ph" placeholder="03XX-XXXXXXX" required>
+          </div>
+          <div class="rad-dp-field">
+            <label>Email Address</label>
+            <input type="email" id="dp-em" placeholder="email@example.com">
+          </div>
+        </div>
+
+        <div class="rad-dp-section-lbl">Vehicle Details</div>
+        <div class="rad-dp-field-row">
+          <div class="rad-dp-field">
+            <label>Car Make <span class="rad-dp-req">*</span></label>
+            <input type="text" id="dp-mk" placeholder="Toyota" required>
+          </div>
+          <div class="rad-dp-field">
+            <label>Car Model <span class="rad-dp-req">*</span></label>
+            <input type="text" id="dp-mo" placeholder="Corolla" required>
+          </div>
+        </div>
+        <div class="rad-dp-field-row">
+          <div class="rad-dp-field">
+            <label>Year</label>
+            <input type="text" id="dp-yr" placeholder="2021">
+          </div>
+          <div class="rad-dp-field">
+            <label>Color</label>
+            <input type="text" id="dp-cl" placeholder="White">
+          </div>
+        </div>
+
+        <div class="rad-dp-section-lbl">Service Required</div>
+        <div class="rad-dp-services-grid">
+          <label class="rad-dp-svc-opt"><input type="checkbox" value="Dent Removal"> 🔨 Dent Removal</label>
+          <label class="rad-dp-svc-opt"><input type="checkbox" value="Scratch Removal"> ✨ Scratch Removal</label>
+          <label class="rad-dp-svc-opt"><input type="checkbox" value="Panel Repainting"> 🎨 Panel Repainting</label>
+          <label class="rad-dp-svc-opt"><input type="checkbox" value="Bumper Repair"> 🚗 Bumper Repair</label>
+        </div>
+
+        <div class="rad-dp-field">
+          <label>Describe the Damage</label>
+          <textarea id="dp-desc" placeholder="Briefly describe the dents, scratches, or panels that need work..."></textarea>
+        </div>
+
+        <div class="rad-dp-section-lbl">Preferred Appointment</div>
+        <div class="rad-dp-field-row">
+          <div class="rad-dp-field">
+            <label>Preferred Date <span class="rad-dp-req">*</span></label>
+            <input type="date" id="dp-date" required>
+          </div>
+          <div class="rad-dp-field">
+            <label>Preferred Time <span class="rad-dp-req">*</span></label>
+            <select id="dp-time" required>
+              <option value="">Select a time slot</option>
+              <option>10:00 AM</option>
+              <option>12:00 PM</option>
+              <option>2:00 PM</option>
+              <option>4:00 PM</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="rad-dp-submit-btn" id="dp-submit-btn" onclick="dpSubmit()">Confirm Appointment Request</button>
+
+        <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20to%20book%20a%20denting%20and%20painting%20appointment" target="_blank" class="rad-dp-wa">💬 Or WhatsApp Us Directly</a>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="rad-dp-success" id="dp-success">
+        <div class="rad-dp-success-icon">✅</div>
+        <h2>Booking Request Sent!</h2>
+        <p>Thank you! We've received your denting & painting appointment request. Our team will confirm via WhatsApp within 1 hour.</p>
+        <a href="https://wa.me/923037231111" target="_blank" class="rad-dp-wa">💬 WhatsApp Us for Quick Confirmation</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+function dpSubmit() {
+  var fn   = document.getElementById('dp-fn').value.trim();
+  var ph   = document.getElementById('dp-ph').value.trim();
+  var mk   = document.getElementById('dp-mk').value.trim();
+  var mo   = document.getElementById('dp-mo').value.trim();
+  var date = document.getElementById('dp-date').value;
+  var time = document.getElementById('dp-time').value;
+
+  if (!fn || !ph || !mk || !mo || !date || !time) {
+    alert('Please fill in all required fields marked with *');
+    return;
+  }
+
+  var services = [];
+  document.querySelectorAll('.rad-dp-svc-opt input:checked').forEach(function(cb){ services.push(cb.value); });
+
+  var btn = document.getElementById('dp-submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  var ref = 'RAD-DP-' + Date.now().toString(36).toUpperCase().slice(-6);
+  var cleanPhone = ph.replace(/[^0-9]/g,'');
+
+  var body =
+    'NEW DENTING & PAINTING BOOKING — ' + ref + '\n' +
+    'Submitted: ' + new Date().toLocaleString('en-PK',{timeZone:'Asia/Karachi'}) + '\n\n' +
+    'Customer: ' + fn + ' ' + (document.getElementById('dp-ln').value||'') + '\n' +
+    'WhatsApp: ' + ph + '\n' +
+    'Email: ' + (document.getElementById('dp-em').value||'—') + '\n\n' +
+    'Vehicle: ' + mk + ' ' + mo + ' ' + (document.getElementById('dp-yr').value||'') + '\n' +
+    'Color: ' + (document.getElementById('dp-cl').value||'N/A') + '\n' +
+    'Services: ' + (services.length ? services.join(', ') : 'Not specified') + '\n' +
+    'Description: ' + (document.getElementById('dp-desc').value||'—') + '\n\n' +
+    'Date: ' + date + '\n' +
+    'Time: ' + time + '\n' +
+    'WhatsApp: https://wa.me/' + cleanPhone + '\n\n' +
+    '[booking_type:denting-painting] [booking_ref:' + ref + ']';
+
+  fetch('https://formspree.io/f/xgoqpjvk', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify({
+      _subject: 'Denting & Painting Booking: ' + ref + ' — ' + fn,
+      _replyto: document.getElementById('dp-em').value || '',
+      body: body
+    })
+  }).then(function(res){
+    document.getElementById('dp-form-wrap').style.display = 'none';
+    document.getElementById('dp-success').style.display = 'block';
+  }).catch(function(){
+    document.getElementById('dp-form-wrap').style.display = 'none';
+    document.getElementById('dp-success').style.display = 'block';
+  });
+}
+
+// Set min date to today
+document.getElementById('dp-date').min = new Date().toISOString().split('T')[0];
+</script>
+
+{% schema %}
+{
+  "name": "Denting Painting Booking",
+  "settings": [
+    {"type":"text","id":"title","label":"Page Title","default":"Book Denting & Painting Appointment"},
+    {"type":"text","id":"subtitle","label":"Subtitle","default":"Expert dent removal, scratch repair & panel repainting in Karachi"}
+  ],
+  "presets":[{"name":"Denting Painting Booking"}]
+}
+{% endschema %}
