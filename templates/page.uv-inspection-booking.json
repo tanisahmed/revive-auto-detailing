@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "uv-inspection-booking",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
