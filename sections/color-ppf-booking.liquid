@@ -1,0 +1,444 @@
+<style>
+/* ── Color PPF Booking — 4-Step Form ── */
+.rad-cpb { font-family: 'Nunito Sans', sans-serif; background: #f5f3ff; min-height: 70vh; padding: 3rem 0 4rem; }
+.rad-cpb-wrap { max-width: 680px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* Header */
+.rad-cpb-hdr { text-align: center; margin-bottom: 2rem; }
+.rad-cpb-hdr h1 { font-size: 1.9rem; font-weight: 800; color: #1f2937; margin-bottom: 0.35rem; }
+.rad-cpb-hdr p { color: #6b7280; font-size: 0.9rem; }
+
+/* Progress bar */
+.rad-cpb-prog { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 2rem; }
+.rad-cpb-prog-dot { width: 2rem; height: 2rem; border-radius: 50%; border: 2px solid #c4b5fd; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: #6366f1; transition: all 0.3s; }
+.rad-cpb-prog-dot.active { background: #6366f1; color: #fff; border-color: #6366f1; }
+.rad-cpb-prog-dot.done { background: #10b981; color: #fff; border-color: #10b981; }
+.rad-cpb-prog-line { width: 3rem; height: 2px; background: #c4b5fd; }
+.rad-cpb-prog-line.done { background: #10b981; }
+
+/* Card */
+.rad-cpb-card { background: #fff; border-radius: 14px; padding: 1.75rem 2rem 2rem; box-shadow: 0 2px 16px rgba(99,102,241,0.08); }
+.rad-cpb-step { display: none; }
+.rad-cpb-step.active { display: block; }
+.rad-cpb-step-title { font-size: 1.2rem; font-weight: 800; color: #1f2937; margin-bottom: 0.25rem; }
+.rad-cpb-step-desc { font-size: 0.85rem; color: #6b7280; margin-bottom: 1.5rem; }
+
+/* Fields */
+.rad-cpb-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.rad-cpb-fg { margin-bottom: 1rem; }
+.rad-cpb-lbl { display: block; font-size: 0.82rem; font-weight: 700; color: #374151; margin-bottom: 0.35rem; }
+.rad-cpb-lbl em { color: #ef4444; font-style: normal; }
+.rad-cpb-fi, .rad-cpb-sel { width: 100%; padding: 0.7rem 0.9rem; border: 1.5px solid #e5e7eb; border-radius: 8px; font-family: 'Nunito Sans', sans-serif; font-size: 0.875rem; color: #1f2937; background: #fff; box-sizing: border-box; transition: border 0.2s; }
+.rad-cpb-fi:focus, .rad-cpb-sel:focus { outline: none; border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,0.08); }
+.rad-cpb-ferr { font-size: 0.75rem; color: #ef4444; margin-top: 0.25rem; display: none; }
+.rad-cpb-ferr.show { display: block; }
+.rad-cpb-sec-lbl { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #6366f1; margin: 1.5rem 0 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid #ede9fe; }
+
+/* Vehicle type selector */
+.rad-cpb-pkgs { display: flex; flex-direction: column; gap: 0.75rem; }
+.rad-cpb-pkg { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; background: #fff; border: 2px solid #e5e7eb; border-radius: 10px; cursor: pointer; transition: all 0.2s; }
+.rad-cpb-pkg:hover { border-color: #6366f1; }
+.rad-cpb-pkg.sel { border-color: #6366f1; background: #f5f3ff; }
+.rad-cpb-pkg-radio { width: 1.1rem; height: 1.1rem; border-radius: 50%; border: 2px solid #c4b5fd; flex-shrink: 0; transition: all 0.2s; }
+.rad-cpb-pkg.sel .rad-cpb-pkg-radio { border-color: #6366f1; background: #6366f1; }
+.rad-cpb-pkg-name { font-size: 0.9rem; font-weight: 700; color: #1f2937; }
+.rad-cpb-pkg-price { font-size: 0.82rem; color: #6366f1; font-weight: 600; margin-top: 0.1rem; }
+
+/* Price display */
+.rad-cpb-price-row { display: flex; justify-content: space-between; align-items: center; background: #f5f3ff; border-radius: 8px; padding: 0.85rem 1rem; margin-top: 1rem; }
+.rad-cpb-price-lbl { font-size: 0.85rem; font-weight: 600; color: #4338ca; }
+.rad-cpb-price-val { font-size: 1.4rem; font-weight: 900; color: #6366f1; }
+
+/* Nav buttons */
+.rad-cpb-nav { display: flex; gap: 0.75rem; margin-top: 1.75rem; }
+.rad-cpb-back { flex: 0 0 auto; padding: 0.8rem 1.4rem; border: 1.5px solid #e5e7eb; background: #fff; border-radius: 8px; font-family: 'Nunito Sans', sans-serif; font-weight: 600; font-size: 0.875rem; color: #6b7280; cursor: pointer; transition: all 0.2s; }
+.rad-cpb-back:hover { border-color: #6366f1; color: #6366f1; }
+.rad-cpb-back:disabled { opacity: 0.4; cursor: not-allowed; }
+.rad-cpb-next { flex: 1; padding: 0.875rem; background: #6366f1; border: none; border-radius: 8px; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 1rem; color: #fff; cursor: pointer; transition: background 0.2s; }
+.rad-cpb-next:hover { background: #4f46e5; }
+.rad-cpb-next:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* Review */
+.rad-cpb-rev-block { background: #faf9ff; border: 1px solid #ede9fe; border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1rem; }
+.rad-cpb-rev-hdr { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; }
+.rad-cpb-rev-title { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em; color: #6366f1; }
+.rad-cpb-rev-edit { font-size: 0.75rem; font-weight: 600; color: #6366f1; cursor: pointer; background: none; border: none; padding: 0; }
+.rad-cpb-rev-row { display: flex; justify-content: space-between; padding: 0.3rem 0; border-bottom: 1px solid #f3f0ff; font-size: 0.82rem; }
+.rad-cpb-rev-row:last-child { border-bottom: none; }
+.rad-cpb-rl { color: #6b7280; }
+.rad-cpb-rv { font-weight: 600; color: #1f2937; text-align: right; }
+.rad-cpb-total { display: flex; justify-content: space-between; align-items: center; background: #6366f1; color: #fff; border-radius: 8px; padding: 0.9rem 1.25rem; margin-bottom: 1rem; }
+.rad-cpb-total-lbl { font-size: 0.85rem; font-weight: 700; }
+.rad-cpb-total-price { font-size: 1.3rem; font-weight: 900; }
+.rad-cpb-terms { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.8rem; color: #6b7280; margin-bottom: 1rem; }
+.rad-cpb-terms input { margin-top: 2px; accent-color: #6366f1; }
+.rad-cpb-terms a { color: #6366f1; }
+
+/* Success */
+.rad-cpb-success { display: none; text-align: center; padding: 2.5rem 1rem; }
+.rad-cpb-success-icon { font-size: 4rem; margin-bottom: 1rem; }
+.rad-cpb-success h2 { font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-bottom: 0.5rem; }
+.rad-cpb-success p { color: #6b7280; margin-bottom: 1.5rem; }
+.rad-cpb-wa-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.5rem; background: #10b981; color: #fff; border-radius: 10px; font-weight: 700; text-decoration: none; }
+
+/* Discount box */
+.rad-cpb-disc-box { margin: 1.25rem 0 1rem; padding: 1rem 1.25rem; background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 10px; display: flex; align-items: flex-start; gap: 0.75rem; }
+.rad-cpb-disc-box input { width: 18px; height: 18px; margin-top: 2px; accent-color: #16a34a; cursor: pointer; flex-shrink: 0; }
+.rad-cpb-disc-box label { font-size: 0.9rem; font-weight: 600; color: #15803d; cursor: pointer; line-height: 1.5; }
+.rad-cpb-disc-summary { display: none; margin-top: 0.75rem; background: #f0fdf4; border: 1px solid #86efac; border-radius: 10px; padding: 0.85rem 1.1rem; }
+.rad-cpb-disc-row { display: flex; justify-content: space-between; font-size: 0.875rem; color: #374151; margin-bottom: 0.4rem; }
+.rad-cpb-disc-row.green { color: #16a34a; font-weight: 700; }
+.rad-cpb-disc-final { display: flex; justify-content: space-between; font-size: 1rem; color: #1f2937; border-top: 1px solid #86efac; padding-top: 0.5rem; margin-top: 0.35rem; font-weight: 800; }
+.rad-cpb-disc-final span:last-child { color: #15803d; }
+
+@media (max-width: 640px) {
+  .rad-cpb { padding: 1.5rem 0 3rem; }
+  .rad-cpb-wrap { padding: 0 1rem; }
+  .rad-cpb-hdr h1 { font-size: 1.5rem; }
+  .rad-cpb-card { padding: 1.25rem 1rem 1.5rem; }
+  .rad-cpb-row { grid-template-columns: 1fr; }
+  .rad-cpb-prog-line { width: 2rem; }
+}
+</style>
+
+<div class="rad-cpb">
+  <div class="rad-cpb-wrap">
+
+    <div class="rad-cpb-hdr">
+      <h1>{{ section.settings.title | default: "Book Color PPF Appointment" }}</h1>
+      <p>{{ section.settings.subtitle | default: "Premium Color Paint Protection Film in Karachi — any color, any finish" }}</p>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="rad-cpb-prog">
+      <div class="rad-cpb-prog-dot active" id="cpb-pd1">1</div>
+      <div class="rad-cpb-prog-line" id="cpb-pl1"></div>
+      <div class="rad-cpb-prog-dot" id="cpb-pd2">2</div>
+      <div class="rad-cpb-prog-line" id="cpb-pl2"></div>
+      <div class="rad-cpb-prog-dot" id="cpb-pd3">3</div>
+      <div class="rad-cpb-prog-line" id="cpb-pl3"></div>
+      <div class="rad-cpb-prog-dot" id="cpb-pd4">4</div>
+    </div>
+
+    <div class="rad-cpb-card">
+
+      <!-- STEP 1: Personal Info -->
+      <div class="rad-cpb-step active" id="cpb-s1">
+        <div class="rad-cpb-step-title">Personal Information</div>
+        <div class="rad-cpb-step-desc">Tell us how to reach you.</div>
+        <div class="rad-cpb-row">
+          <div class="rad-cpb-fg">
+            <label class="rad-cpb-lbl" for="cpb-fn">First Name <em>*</em></label>
+            <input type="text" id="cpb-fn" class="rad-cpb-fi" placeholder="Ahmed">
+            <div class="rad-cpb-ferr" id="cpb-e-fn">Please enter your first name</div>
+          </div>
+          <div class="rad-cpb-fg">
+            <label class="rad-cpb-lbl" for="cpb-ln">Last Name</label>
+            <input type="text" id="cpb-ln" class="rad-cpb-fi" placeholder="Khan">
+          </div>
+        </div>
+        <div class="rad-cpb-fg">
+          <label class="rad-cpb-lbl" for="cpb-ph">WhatsApp Number <em>*</em></label>
+          <input type="tel" id="cpb-ph" class="rad-cpb-fi" placeholder="03XX-XXXXXXX">
+          <div class="rad-cpb-ferr" id="cpb-e-ph">Please enter your WhatsApp number</div>
+        </div>
+        <div class="rad-cpb-fg">
+          <label class="rad-cpb-lbl" for="cpb-em">Email Address</label>
+          <input type="email" id="cpb-em" class="rad-cpb-fi" placeholder="email@example.com">
+        </div>
+        <div class="rad-cpb-nav">
+          <button class="rad-cpb-back" disabled>← Back</button>
+          <button class="rad-cpb-next" onclick="cpbNext(1)">Next: Vehicle Details →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Vehicle Details -->
+      <div class="rad-cpb-step" id="cpb-s2">
+        <div class="rad-cpb-step-title">Vehicle Details</div>
+        <div class="rad-cpb-step-desc">Tell us about your car.</div>
+        <div class="rad-cpb-row">
+          <div class="rad-cpb-fg">
+            <label class="rad-cpb-lbl" for="cpb-mk">Car Make <em>*</em></label>
+            <input type="text" id="cpb-mk" class="rad-cpb-fi" placeholder="Toyota">
+            <div class="rad-cpb-ferr" id="cpb-e-mk">Please enter car make</div>
+          </div>
+          <div class="rad-cpb-fg">
+            <label class="rad-cpb-lbl" for="cpb-mo">Car Model <em>*</em></label>
+            <input type="text" id="cpb-mo" class="rad-cpb-fi" placeholder="Corolla">
+            <div class="rad-cpb-ferr" id="cpb-e-mo">Please enter car model</div>
+          </div>
+        </div>
+        <div class="rad-cpb-row">
+          <div class="rad-cpb-fg">
+            <label class="rad-cpb-lbl" for="cpb-yr">Year</label>
+            <input type="text" id="cpb-yr" class="rad-cpb-fi" placeholder="2021">
+          </div>
+          <div class="rad-cpb-fg">
+            <label class="rad-cpb-lbl" for="cpb-cl">Current Color</label>
+            <input type="text" id="cpb-cl" class="rad-cpb-fi" placeholder="White">
+          </div>
+        </div>
+        <div class="rad-cpb-fg">
+          <label class="rad-cpb-lbl" for="cpb-desired">Desired Color / Finish</label>
+          <input type="text" id="cpb-desired" class="rad-cpb-fi" placeholder="e.g. Matte Black, Satin Red, Chrome Gold">
+        </div>
+        <div class="rad-cpb-nav">
+          <button class="rad-cpb-back" onclick="cpbPrev(2)">← Back</button>
+          <button class="rad-cpb-next" onclick="cpbNext(2)">Next: Select Vehicle Type →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Vehicle Type & Pricing -->
+      <div class="rad-cpb-step" id="cpb-s3">
+        <div class="rad-cpb-step-title">Select Vehicle Type</div>
+        <div class="rad-cpb-step-desc">Choose your vehicle size to see the starting price.</div>
+        <div class="rad-cpb-pkgs">
+          <div class="rad-cpb-pkg" onclick="cpbSelVt(this,'hatchback','PKR 290K+',290000)">
+            <div class="rad-cpb-pkg-radio"></div>
+            <div>
+              <div class="rad-cpb-pkg-name">🚗 Hatchback</div>
+              <div class="rad-cpb-pkg-price">Swift, Mira, Cultus — Starting PKR 290K+</div>
+            </div>
+          </div>
+          <div class="rad-cpb-pkg" onclick="cpbSelVt(this,'sedan','PKR 330K+',330000)">
+            <div class="rad-cpb-pkg-radio"></div>
+            <div>
+              <div class="rad-cpb-pkg-name">🚙 Sedan</div>
+              <div class="rad-cpb-pkg-price">Corolla, Civic, City — Starting PKR 330K+</div>
+            </div>
+          </div>
+          <div class="rad-cpb-pkg" onclick="cpbSelVt(this,'suv','PKR 380K+',380000)">
+            <div class="rad-cpb-pkg-radio"></div>
+            <div>
+              <div class="rad-cpb-pkg-name">🚐 SUV</div>
+              <div class="rad-cpb-pkg-price">Sportage, Tucson, Haval — Starting PKR 380K+</div>
+            </div>
+          </div>
+          <div class="rad-cpb-pkg" onclick="cpbSelVt(this,'xl-suv','PKR 420K+',420000)">
+            <div class="rad-cpb-pkg-radio"></div>
+            <div>
+              <div class="rad-cpb-pkg-name">🚌 XL SUV</div>
+              <div class="rad-cpb-pkg-price">Prado, Fortuner, LC — Starting PKR 420K+</div>
+            </div>
+          </div>
+        </div>
+        <div class="rad-cpb-ferr" id="cpb-e-vt">Please select a vehicle type</div>
+        <div class="rad-cpb-price-row" id="cpb-price-row" style="display:none;">
+          <span class="rad-cpb-price-lbl">🎨 Color PPF Starting Price</span>
+          <span class="rad-cpb-price-val" id="cpb-price-val">—</span>
+        </div>
+
+        <!-- 10% Discount Checkbox -->
+        <div class="rad-cpb-disc-box">
+          <input type="checkbox" id="cpb-disc-chk" onchange="cpbDiscToggle()">
+          <label for="cpb-disc-chk">I would like to receive a 10% discount on Color PPF for booking my slot online!</label>
+        </div>
+
+        <div class="rad-cpb-nav">
+          <button class="rad-cpb-back" onclick="cpbPrev(3)">← Back</button>
+          <button class="rad-cpb-next" onclick="cpbNext(3)">Review Booking →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Review & Confirm -->
+      <div class="rad-cpb-step" id="cpb-s4">
+        <div class="rad-cpb-step-title">Confirm Your Booking</div>
+        <div class="rad-cpb-step-desc">Please review your details before confirming.</div>
+
+        <div class="rad-cpb-rev-block">
+          <div class="rad-cpb-rev-hdr"><span class="rad-cpb-rev-title">Personal Info</span><button class="rad-cpb-rev-edit" onclick="cpbGo(1)">Edit</button></div>
+          <div class="rad-cpb-rev-row"><span class="rad-cpb-rl">Name</span><span class="rad-cpb-rv" id="cpb-rv-name">—</span></div>
+          <div class="rad-cpb-rev-row"><span class="rad-cpb-rl">WhatsApp</span><span class="rad-cpb-rv" id="cpb-rv-ph">—</span></div>
+          <div class="rad-cpb-rev-row"><span class="rad-cpb-rl">Email</span><span class="rad-cpb-rv" id="cpb-rv-em">—</span></div>
+        </div>
+
+        <div class="rad-cpb-rev-block">
+          <div class="rad-cpb-rev-hdr"><span class="rad-cpb-rev-title">Vehicle</span><button class="rad-cpb-rev-edit" onclick="cpbGo(2)">Edit</button></div>
+          <div class="rad-cpb-rev-row"><span class="rad-cpb-rl">Car</span><span class="rad-cpb-rv" id="cpb-rv-car">—</span></div>
+          <div class="rad-cpb-rev-row"><span class="rad-cpb-rl">Year / Color</span><span class="rad-cpb-rv" id="cpb-rv-yr">—</span></div>
+          <div class="rad-cpb-rev-row"><span class="rad-cpb-rl">Desired Finish</span><span class="rad-cpb-rv" id="cpb-rv-desired">—</span></div>
+        </div>
+
+        <div class="rad-cpb-rev-block">
+          <div class="rad-cpb-rev-hdr"><span class="rad-cpb-rev-title">Package</span><button class="rad-cpb-rev-edit" onclick="cpbGo(3)">Edit</button></div>
+          <div class="rad-cpb-rev-row"><span class="rad-cpb-rl">Vehicle Type</span><span class="rad-cpb-rv" id="cpb-rv-vt">—</span></div>
+          <div class="rad-cpb-rev-row"><span class="rad-cpb-rl">Duration</span><span class="rad-cpb-rv">3 Working Days</span></div>
+        </div>
+
+        <div class="rad-cpb-total">
+          <span class="rad-cpb-total-lbl">🎨 Starting Price</span>
+          <span class="rad-cpb-total-price" id="cpb-rv-total">—</span>
+        </div>
+
+        <!-- Discount summary -->
+        <div class="rad-cpb-disc-summary" id="cpb-disc-summary">
+          <div class="rad-cpb-disc-row"><span>Original Price</span><span id="cpb-orig-price">—</span></div>
+          <div class="rad-cpb-disc-row green"><span>10% Online Discount</span><span id="cpb-disc-amt">—</span></div>
+          <div class="rad-cpb-disc-final"><span>Discounted Starting Price</span><span id="cpb-disc-total">—</span></div>
+        </div>
+
+        <label class="rad-cpb-terms">
+          <input type="checkbox" id="cpb-terms">
+          <span>I agree to the <a href="/policies/terms-of-service" target="_blank">Terms & Conditions</a> and consent to RAD contacting me via WhatsApp and email.</span>
+        </label>
+
+        <div class="rad-cpb-nav">
+          <button class="rad-cpb-back" onclick="cpbPrev(4)">← Back</button>
+          <button class="rad-cpb-next" id="cpb-confirm-btn" onclick="cpbSubmit()">Confirm Booking ✓</button>
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="rad-cpb-success" id="cpb-success">
+        <div class="rad-cpb-success-icon">✅</div>
+        <h2>Booking Request Sent!</h2>
+        <p>Thank you! Our Color PPF specialist will contact you via WhatsApp to confirm your appointment and discuss your desired finish.</p>
+        <a href="https://wa.me/923037231111" target="_blank" class="rad-cpb-wa-btn">💬 WhatsApp Us</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var vtLabels = {hatchback:'Hatchback',sedan:'Sedan',suv:'SUV','xl-suv':'XL SUV'};
+  var bd = {fn:'',ln:'',ph:'',em:'',mk:'',mo:'',yr:'',cl:'',desired:'',vt:'',vtLabel:'',priceStr:'',priceNum:0,disc:false};
+
+  function el(id){ return document.getElementById(id); }
+  function fmt(n){ return 'PKR ' + Number(n).toLocaleString(); }
+
+  function cpbGo(step){
+    for(var i=1;i<=4;i++){
+      var s=el('cpb-s'+i);
+      if(s) s.classList.toggle('active', i===step);
+    }
+    for(var i=1;i<=4;i++){
+      var d=el('cpb-pd'+i);
+      if(!d) continue;
+      d.classList.remove('active','done');
+      if(i<step) d.classList.add('done');
+      else if(i===step) d.classList.add('active');
+    }
+    for(var i=1;i<=3;i++){
+      var l=el('cpb-pl'+i);
+      if(l) l.classList.toggle('done', i<step);
+    }
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  window.cpbGo = cpbGo;
+  window.cpbPrev = function(from){ cpbGo(from-1); };
+
+  window.cpbNext = function(step){
+    if(step===1){
+      var ok=true;
+      if(!el('cpb-fn').value.trim()){ el('cpb-e-fn').classList.add('show'); ok=false; } else { el('cpb-e-fn').classList.remove('show'); }
+      if(!el('cpb-ph').value.trim()){ el('cpb-e-ph').classList.add('show'); ok=false; } else { el('cpb-e-ph').classList.remove('show'); }
+      if(!ok) return;
+      bd.fn=el('cpb-fn').value.trim(); bd.ln=el('cpb-ln').value.trim();
+      bd.ph=el('cpb-ph').value.trim(); bd.em=el('cpb-em').value.trim();
+      cpbGo(2);
+    } else if(step===2){
+      var ok=true;
+      if(!el('cpb-mk').value.trim()){ el('cpb-e-mk').classList.add('show'); ok=false; } else { el('cpb-e-mk').classList.remove('show'); }
+      if(!el('cpb-mo').value.trim()){ el('cpb-e-mo').classList.add('show'); ok=false; } else { el('cpb-e-mo').classList.remove('show'); }
+      if(!ok) return;
+      bd.mk=el('cpb-mk').value.trim(); bd.mo=el('cpb-mo').value.trim();
+      bd.yr=el('cpb-yr').value.trim(); bd.cl=el('cpb-cl').value.trim();
+      bd.desired=el('cpb-desired').value.trim();
+      cpbGo(3);
+    } else if(step===3){
+      if(!bd.vt){ el('cpb-e-vt').classList.add('show'); return; }
+      el('cpb-e-vt').classList.remove('show');
+      // Populate review
+      el('cpb-rv-name').textContent = bd.fn+' '+bd.ln;
+      el('cpb-rv-ph').textContent = bd.ph;
+      el('cpb-rv-em').textContent = bd.em||'—';
+      el('cpb-rv-car').textContent = bd.mk+' '+bd.mo;
+      el('cpb-rv-yr').textContent = (bd.yr||'—')+' / '+(bd.cl||'—');
+      el('cpb-rv-desired').textContent = bd.desired||'—';
+      el('cpb-rv-vt').textContent = bd.vtLabel;
+      el('cpb-rv-total').textContent = bd.priceStr;
+      cpbShowDiscount();
+      cpbGo(4);
+    }
+  };
+
+  window.cpbSelVt = function(el_ref, vt, priceStr, priceNum){
+    document.querySelectorAll('.rad-cpb-pkg').forEach(function(p){ p.classList.remove('sel'); });
+    el_ref.classList.add('sel');
+    bd.vt=vt; bd.vtLabel=vtLabels[vt]||vt; bd.priceStr=priceStr; bd.priceNum=priceNum;
+    el('cpb-price-val').textContent = priceStr;
+    el('cpb-price-row').style.display = '';
+    el('cpb-e-vt').classList.remove('show');
+    cpbShowDiscount();
+  };
+
+  window.cpbDiscToggle = function(){
+    bd.disc = el('cpb-disc-chk').checked;
+    cpbShowDiscount();
+  };
+
+  function cpbShowDiscount(){
+    var summ = el('cpb-disc-summary');
+    if(!summ || !bd.priceNum) return;
+    if(bd.disc && el('cpb-disc-chk') && el('cpb-disc-chk').checked){
+      var disc = Math.round(bd.priceNum * 0.10);
+      var final = bd.priceNum - disc;
+      el('cpb-orig-price').textContent = fmt(bd.priceNum)+'+';
+      el('cpb-disc-amt').textContent = '- '+fmt(disc);
+      el('cpb-disc-total').textContent = fmt(final)+'+';
+      summ.style.display = 'block';
+    } else {
+      summ.style.display = 'none';
+    }
+  }
+
+  window.cpbSubmit = function(){
+    if(!el('cpb-terms').checked){ alert('Please agree to the Terms & Conditions to continue.'); return; }
+    var btn = el('cpb-confirm-btn');
+    btn.disabled=true; btn.textContent='Sending...';
+    var ref='RAD-CPPF-'+Date.now().toString(36).toUpperCase().slice(-6);
+    var cleanPhone=bd.ph.replace(/[^0-9]/g,'');
+    var discNote = bd.disc ? '\n10% Online Discount Applied: YES' : '';
+    var body=
+      'NEW COLOR PPF BOOKING — '+ref+'\n'+
+      'Submitted: '+new Date().toLocaleString('en-PK',{timeZone:'Asia/Karachi'})+'\n\n'+
+      'Customer: '+bd.fn+' '+bd.ln+'\n'+
+      'WhatsApp: '+bd.ph+'\n'+
+      'Email: '+(bd.em||'—')+'\n\n'+
+      'Vehicle: '+bd.mk+' '+bd.mo+(bd.yr?' '+bd.yr:'')+'\n'+
+      'Current Color: '+(bd.cl||'N/A')+'\n'+
+      'Desired Finish: '+(bd.desired||'Not specified')+'\n'+
+      'Vehicle Type: '+bd.vtLabel+'\n'+
+      'Starting Price: '+bd.priceStr+'\n'+
+      'Duration: 3 Working Days'+discNote+'\n\n'+
+      'WhatsApp: https://wa.me/'+cleanPhone+'\n\n'+
+      '[booking_type:color-ppf] [booking_ref:'+ref+']';
+    fetch('https://formspree.io/f/xgoqpjvk',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({_subject:'Color PPF Booking: '+ref+' — '+bd.fn,_replyto:bd.em||'',message:body})
+    }).then(function(){
+      el('cpb-s4').style.display='none';
+      el('cpb-success').style.display='block';
+      document.querySelector('.rad-cpb-prog').style.display='none';
+    }).catch(function(){
+      el('cpb-s4').style.display='none';
+      el('cpb-success').style.display='block';
+      document.querySelector('.rad-cpb-prog').style.display='none';
+    });
+  };
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Color PPF Booking",
+  "settings": [
+    {"type":"text","id":"title","label":"Page Title","default":"Book Color PPF Appointment"},
+    {"type":"text","id":"subtitle","label":"Subtitle","default":"Premium Color Paint Protection Film in Karachi — any color, any finish"}
+  ],
+  "presets":[{"name":"Color PPF Booking"}]
+}
+{% endschema %}
