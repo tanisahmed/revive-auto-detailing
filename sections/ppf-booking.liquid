@@ -335,6 +335,17 @@
           <div class="rad-srow"><span class="sl">Date & Time</span><span class="sv" id="ss-dt">—</span></div>
           <div class="rad-srow"><span class="sl">Package</span><span class="sv" id="ss-pkg">—</span></div>
           <div class="rad-srow"><span class="sl">Total</span><span class="sp" id="ss-price">—</span></div>
+          <div id="ss-disc-block" style="display:none; margin-top:0.5rem; padding:0.75rem; background:#f0fdf4; border-radius:8px; border:1px solid #86efac;">
+            <div style="display:flex;justify-content:space-between;font-size:0.82rem;color:#374151;margin-bottom:0.3rem;">
+              <span>Original Price</span><span id="ss-orig-price" style="font-weight:600;">—</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:0.82rem;color:#16a34a;font-weight:700;margin-bottom:0.3rem;">
+              <span>5% Online Booking Discount</span><span id="ss-disc-amt">—</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:0.95rem;font-weight:800;border-top:1px solid #86efac;padding-top:0.4rem;margin-top:0.3rem;">
+              <span style="color:#1f2937;">Amount to Pay</span><span id="ss-disc-total" style="color:#15803d;">—</span>
+            </div>
+          </div>
         </div>
         <p style="font-size:0.875rem;color:#6b7280;">📱 We'll send confirmation to your WhatsApp & email.</p>
         <div class="rad-sactions">
@@ -592,6 +603,18 @@
     document.getElementById('ss-dt').textContent=ds+' at '+(bd.tm||'');
     document.getElementById('ss-pkg').textContent=(bd.pkLabel||'')+(bd.vt?' - '+vtLabels[bd.vt]:'');
     document.getElementById('ss-price').textContent=bd.price?'PKR '+bd.price.toLocaleString():'--';
+    // Show discount breakdown if checkbox was ticked
+    var discChk = document.getElementById('ppf-disc-chk');
+    var discBlock = document.getElementById('ss-disc-block');
+    if(discChk && discChk.checked && bd.price && discBlock){
+      var disc  = Math.round(bd.price * 0.05);
+      var final = bd.price - disc;
+      document.getElementById('ss-orig-price').textContent  = 'PKR ' + bd.price.toLocaleString();
+      document.getElementById('ss-disc-amt').textContent    = '- PKR ' + disc.toLocaleString();
+      document.getElementById('ss-disc-total').textContent  = 'PKR ' + final.toLocaleString();
+      document.getElementById('ss-price').textContent       = 'PKR ' + bd.price.toLocaleString();
+      discBlock.style.display = 'block';
+    }
     window.scrollTo({top:0,behavior:'smooth'});
   };
 })();
