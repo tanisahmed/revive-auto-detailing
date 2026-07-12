@@ -1,0 +1,629 @@
+<style>
+/* ── PPF Booking — 4-Step Form ── */
+.rad-ppf-bk { font-family: 'Nunito Sans', sans-serif; background: #f1f5f9; min-height: 70vh; padding: 3rem 0 4rem; }
+.rad-ppf-bk-wrap { max-width: 700px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* Header */
+.rad-ppf-bk-hdr { text-align: center; margin-bottom: 2rem; }
+.rad-ppf-bk-hdr h1 { font-size: 2rem; font-weight: 800; color: #1f2937; margin-bottom: 0.4rem; line-height: 1.25; }
+.rad-ppf-bk-hdr p  { color: #6b7280; font-size: 0.9rem; }
+
+/* Progress dots */
+.ppfb-prog { display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; }
+.ppfb-dot-wrap { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+.ppfb-dot { width: 2.2rem; height: 2.2rem; border-radius: 50%; border: 2px solid #cbd5e1; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 800; color: #94a3b8; transition: all 0.3s; }
+.ppfb-dot.active { background: #1e3a8a; border-color: #1e3a8a; color: #fff; }
+.ppfb-dot.done   { background: #10b981; border-color: #10b981; color: #fff; }
+.ppfb-dot-lbl { font-size: 0.7rem; font-weight: 700; color: #94a3b8; white-space: nowrap; }
+.ppfb-dot-wrap.active .ppfb-dot-lbl { color: #1e3a8a; }
+.ppfb-dot-wrap.done   .ppfb-dot-lbl { color: #10b981; }
+.ppfb-line { flex: 1; height: 2px; background: #cbd5e1; margin: 0 0.5rem; margin-bottom: 1.3rem; transition: background 0.3s; max-width: 4rem; }
+.ppfb-line.done { background: #10b981; }
+
+/* Card */
+.ppfb-card { background: #fff; border-radius: 14px; padding: 2rem; box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
+.ppfb-step { display: none; }
+.ppfb-step.active { display: block; }
+.ppfb-step-title { font-size: 1.25rem; font-weight: 800; color: #1f2937; margin-bottom: 0.2rem; }
+.ppfb-step-desc  { font-size: 0.85rem; color: #6b7280; margin-bottom: 1.5rem; }
+
+/* Fields */
+.ppfb-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.ppfb-fg  { margin-bottom: 1rem; }
+.ppfb-lbl { display: block; font-size: 0.82rem; font-weight: 700; color: #374151; margin-bottom: 0.35rem; }
+.ppfb-lbl em { color: #ef4444; font-style: normal; }
+.ppfb-fi, .ppfb-sel {
+  width: 100%; padding: 0.72rem 0.9rem; border: 1.5px solid #e5e7eb; border-radius: 8px;
+  font-family: 'Nunito Sans', sans-serif; font-size: 0.875rem; color: #1f2937;
+  background: #fff; box-sizing: border-box; transition: border 0.2s;
+}
+.ppfb-fi:focus, .ppfb-sel:focus { outline: none; border-color: #1e3a8a; box-shadow: 0 0 0 3px rgba(30,58,138,0.07); }
+.ppfb-err { font-size: 0.75rem; color: #ef4444; margin-top: 0.25rem; display: none; }
+.ppfb-err.show { display: block; }
+.ppfb-sec-lbl { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #1e3a8a; margin: 1.5rem 0 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid #e5e7eb; }
+
+/* Packages */
+.ppfb-pkgs { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 0.5rem; }
+.ppfb-pkg { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; border: 2px solid #e5e7eb; border-radius: 10px; cursor: pointer; transition: all 0.2s; background: #fff; }
+.ppfb-pkg:hover { border-color: #1e3a8a; }
+.ppfb-pkg.sel { border-color: #1e3a8a; background: #eff6ff; }
+.ppfb-pkg-radio { width: 1.1rem; height: 1.1rem; border-radius: 50%; border: 2px solid #cbd5e1; flex-shrink: 0; transition: all 0.2s; }
+.ppfb-pkg.sel .ppfb-pkg-radio { border-color: #1e3a8a; background: #1e3a8a; }
+.ppfb-pkg-name  { font-size: 0.9rem; font-weight: 700; color: #1f2937; }
+.ppfb-pkg-price { font-size: 0.82rem; color: #1e3a8a; font-weight: 600; margin-top: 0.1rem; }
+
+/* Price box */
+.ppfb-price-box { display: none; background: #eff6ff; border: 1.5px solid #bfdbfe; border-radius: 10px; padding: 0.85rem 1.25rem; margin: 0.75rem 0; justify-content: space-between; align-items: center; }
+.ppfb-price-box.show { display: flex; }
+.ppfb-price-lbl { font-size: 0.85rem; font-weight: 600; color: #1e40af; }
+.ppfb-price-val { font-size: 1.4rem; font-weight: 900; color: #1e3a8a; }
+
+/* Discount */
+.ppfb-disc-chk-wrap { display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem 1.25rem; background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 10px; margin: 1rem 0 0.5rem; cursor: pointer; }
+.ppfb-disc-chk-wrap input { width: 18px; height: 18px; margin-top: 2px; accent-color: #16a34a; cursor: pointer; flex-shrink: 0; }
+.ppfb-disc-chk-wrap label { font-size: 0.9rem; font-weight: 600; color: #15803d; cursor: pointer; line-height: 1.5; }
+.ppfb-disc-breakdown { display: none; background: #f0fdf4; border: 1px solid #86efac; border-radius: 10px; padding: 0.85rem 1.1rem; margin-bottom: 0.5rem; }
+.ppfb-disc-row { display: flex; justify-content: space-between; font-size: 0.875rem; color: #374151; margin-bottom: 0.35rem; }
+.ppfb-disc-row.green { color: #16a34a; font-weight: 700; }
+.ppfb-disc-total { display: flex; justify-content: space-between; font-size: 1rem; font-weight: 800; border-top: 1px solid #86efac; padding-top: 0.5rem; margin-top: 0.25rem; }
+.ppfb-disc-total span:first-child { color: #1f2937; }
+.ppfb-disc-total span:last-child  { color: #15803d; }
+
+/* Time slots */
+.ppfb-times { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.35rem; }
+.ppfb-time { padding: 0.55rem 1rem; border: 1.5px solid #e5e7eb; border-radius: 8px; font-family: 'Nunito Sans', sans-serif; font-size: 0.85rem; font-weight: 600; color: #374151; background: #fff; cursor: pointer; transition: all 0.2s; }
+.ppfb-time:hover { border-color: #1e3a8a; color: #1e3a8a; }
+.ppfb-time.sel { background: #1e3a8a; border-color: #1e3a8a; color: #fff; }
+
+/* Nav */
+.ppfb-nav { display: flex; gap: 0.75rem; margin-top: 1.75rem; }
+.ppfb-back { flex: 0 0 auto; padding: 0.8rem 1.4rem; border: 1.5px solid #e5e7eb; background: #fff; border-radius: 8px; font-family: 'Nunito Sans', sans-serif; font-weight: 600; font-size: 0.875rem; color: #6b7280; cursor: pointer; transition: all 0.2s; }
+.ppfb-back:hover { border-color: #1e3a8a; color: #1e3a8a; }
+.ppfb-back:disabled { opacity: 0.4; cursor: not-allowed; }
+.ppfb-next { flex: 1; padding: 0.875rem; background: #1e3a8a; border: none; border-radius: 8px; font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 1rem; color: #fff; cursor: pointer; transition: background 0.2s; }
+.ppfb-next:hover { background: #1e40af; }
+.ppfb-next:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* Review blocks */
+.ppfb-rev-block { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1rem; }
+.ppfb-rev-hdr { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; }
+.ppfb-rev-title { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em; color: #1e3a8a; }
+.ppfb-rev-edit  { font-size: 0.75rem; font-weight: 600; color: #1e3a8a; background: none; border: none; cursor: pointer; padding: 0; }
+.ppfb-rev-row   { display: flex; justify-content: space-between; padding: 0.3rem 0; border-bottom: 1px solid #f1f5f9; font-size: 0.82rem; }
+.ppfb-rev-row:last-child { border-bottom: none; }
+.ppfb-rl { color: #6b7280; }
+.ppfb-rv { font-weight: 600; color: #1f2937; text-align: right; }
+.ppfb-total-box { display: flex; justify-content: space-between; align-items: center; background: #1e3a8a; color: #fff; border-radius: 8px; padding: 0.9rem 1.25rem; margin-bottom: 0.75rem; }
+.ppfb-total-lbl   { font-size: 0.85rem; font-weight: 700; }
+.ppfb-total-price { font-size: 1.3rem; font-weight: 900; }
+.ppfb-s4-disc { display: none; background: #f0fdf4; border: 1px solid #86efac; border-radius: 10px; padding: 0.85rem 1.1rem; margin-bottom: 0.75rem; }
+.ppfb-terms { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.8rem; color: #6b7280; margin-bottom: 1rem; }
+.ppfb-terms input { margin-top: 2px; accent-color: #1e3a8a; }
+.ppfb-terms a { color: #1e3a8a; }
+
+/* Success */
+.ppfb-success { display: none; text-align: center; padding: 2rem 1rem; }
+.ppfb-success-icon { font-size: 4rem; margin-bottom: 1rem; }
+.ppfb-success h2 { font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-bottom: 0.4rem; }
+.ppfb-success p  { color: #6b7280; margin-bottom: 1.5rem; font-size: 0.9rem; }
+.ppfb-ss-box { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 12px; padding: 1.25rem; margin-bottom: 1.25rem; text-align: left; }
+.ppfb-ss-title { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em; color: #1e3a8a; margin-bottom: 0.75rem; }
+.ppfb-ss-row  { display: flex; justify-content: space-between; padding: 0.3rem 0; border-bottom: 1px solid #f1f5f9; font-size: 0.82rem; }
+.ppfb-ss-row:last-child { border-bottom: none; }
+.ppfb-ssl { color: #6b7280; }
+.ppfb-ssv { font-weight: 700; color: #1f2937; text-align: right; }
+.ppfb-ssv.blue { color: #1e3a8a; font-size: 1rem; }
+.ppfb-ss-disc { display: none; background: #f0fdf4; border: 1px solid #86efac; border-radius: 10px; padding: 0.85rem 1.1rem; margin-top: 0.75rem; }
+.ppfb-wa-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.5rem; background: #10b981; color: #fff; border-radius: 10px; font-weight: 700; text-decoration: none; margin-bottom: 0.75rem; }
+.ppfb-home-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.5rem; background: #1e3a8a; color: #fff; border-radius: 10px; font-weight: 700; text-decoration: none; }
+
+@media (max-width: 640px) {
+  .rad-ppf-bk { padding: 1.5rem 0 3rem; }
+  .rad-ppf-bk-wrap { padding: 0 1rem; }
+  .rad-ppf-bk-hdr h1 { font-size: 1.5rem; }
+  .ppfb-card { padding: 1.25rem 1rem; }
+  .ppfb-row { grid-template-columns: 1fr; }
+  .ppfb-line { max-width: 2rem; }
+}
+</style>
+
+<div class="rad-ppf-bk">
+  <div class="rad-ppf-bk-wrap">
+
+    <div class="rad-ppf-bk-hdr">
+      <h1>{{ section.settings.title | default: "Book PPF Appointment" }}</h1>
+      <p>{{ section.settings.subtitle | default: "Premium Paint Protection Film installation in Karachi" }}</p>
+    </div>
+
+    <!-- Progress -->
+    <div class="ppfb-prog">
+      <div class="ppfb-dot-wrap active" id="ppfb-dw1">
+        <div class="ppfb-dot active" id="ppfb-d1">1</div>
+        <span class="ppfb-dot-lbl">Vehicle</span>
+      </div>
+      <div class="ppfb-line" id="ppfb-l1"></div>
+      <div class="ppfb-dot-wrap" id="ppfb-dw2">
+        <div class="ppfb-dot" id="ppfb-d2">2</div>
+        <span class="ppfb-dot-lbl">Personal</span>
+      </div>
+      <div class="ppfb-line" id="ppfb-l2"></div>
+      <div class="ppfb-dot-wrap" id="ppfb-dw3">
+        <div class="ppfb-dot" id="ppfb-d3">3</div>
+        <span class="ppfb-dot-lbl">Appointment</span>
+      </div>
+      <div class="ppfb-line" id="ppfb-l3"></div>
+      <div class="ppfb-dot-wrap" id="ppfb-dw4">
+        <div class="ppfb-dot" id="ppfb-d4">4</div>
+        <span class="ppfb-dot-lbl">Confirm</span>
+      </div>
+    </div>
+
+    <div class="ppfb-card">
+
+      <!-- ── STEP 1: Vehicle & Package ── -->
+      <div class="ppfb-step active" id="ppfb-s1">
+        <div class="ppfb-step-title">Vehicle & Package</div>
+        <div class="ppfb-step-desc">Tell us about your car and choose a PPF package.</div>
+
+        <div class="ppfb-row">
+          <div class="ppfb-fg">
+            <label class="ppfb-lbl" for="ppfb-mk">Vehicle Make <em>*</em></label>
+            <input type="text" id="ppfb-mk" class="ppfb-fi" placeholder="e.g. Toyota">
+            <div class="ppfb-err" id="ppfb-e-mk">Enter vehicle make</div>
+          </div>
+          <div class="ppfb-fg">
+            <label class="ppfb-lbl" for="ppfb-mo">Vehicle Model <em>*</em></label>
+            <input type="text" id="ppfb-mo" class="ppfb-fi" placeholder="e.g. Corolla">
+            <div class="ppfb-err" id="ppfb-e-mo">Enter vehicle model</div>
+          </div>
+        </div>
+
+        <div class="ppfb-row">
+          <div class="ppfb-fg">
+            <label class="ppfb-lbl" for="ppfb-yr">Year <em>*</em></label>
+            <input type="text" id="ppfb-yr" class="ppfb-fi" placeholder="e.g. 2022">
+            <div class="ppfb-err" id="ppfb-e-yr">Enter year</div>
+          </div>
+          <div class="ppfb-fg">
+            <label class="ppfb-lbl" for="ppfb-vt">Vehicle Type <em>*</em></label>
+            <select id="ppfb-vt" class="ppfb-sel" onchange="ppfbVtChange()">
+              <option value="" disabled selected>Select type</option>
+              <option value="hatchback">Hatchback</option>
+              <option value="sedan">Sedan</option>
+              <option value="suv">SUV</option>
+              <option value="xl-suv">XL SUV</option>
+            </select>
+            <div class="ppfb-err" id="ppfb-e-vt">Select vehicle type</div>
+          </div>
+        </div>
+
+        <div class="ppfb-sec-lbl">PPF Package</div>
+        <div class="ppfb-pkgs">
+          <div class="ppfb-pkg" id="ppfb-pkg-classic" onclick="ppfbSelPkg('classic')">
+            <div class="ppfb-pkg-radio"></div>
+            <div>
+              <div class="ppfb-pkg-name">NAR Classic PPF 8.0mil</div>
+              <div class="ppfb-pkg-price" id="ppfb-pp-classic">Select vehicle type to see price</div>
+            </div>
+          </div>
+          <div class="ppfb-pkg" id="ppfb-pkg-premium" onclick="ppfbSelPkg('premium')">
+            <div class="ppfb-pkg-radio"></div>
+            <div>
+              <div class="ppfb-pkg-name">NAR Premium PPF 8.5mil</div>
+              <div class="ppfb-pkg-price" id="ppfb-pp-premium">Select vehicle type to see price</div>
+            </div>
+          </div>
+        </div>
+        <div class="ppfb-err" id="ppfb-e-pkg">Please select a package</div>
+
+        <div class="ppfb-price-box" id="ppfb-price-box">
+          <span class="ppfb-price-lbl">Package Price</span>
+          <span class="ppfb-price-val" id="ppfb-price-val">PKR —</span>
+        </div>
+
+        <div class="ppfb-disc-chk-wrap">
+          <input type="checkbox" id="ppfb-disc-chk" onchange="ppfbDiscCalc()">
+          <label for="ppfb-disc-chk">I would like to receive a 5% discount on PPF for booking my slot online!</label>
+        </div>
+
+        <div class="ppfb-disc-breakdown" id="ppfb-disc-breakdown">
+          <div class="ppfb-disc-row"><span>Original Price</span><span id="ppfb-di-orig">PKR —</span></div>
+          <div class="ppfb-disc-row green"><span>5% Online Booking Discount</span><span id="ppfb-di-disc">- PKR —</span></div>
+          <div class="ppfb-disc-total"><span>Amount to Pay</span><span id="ppfb-di-total">PKR —</span></div>
+        </div>
+
+        <div class="ppfb-nav">
+          <button class="ppfb-back" disabled>← Back</button>
+          <button class="ppfb-next" onclick="ppfbNext(1)">Next: Your Details →</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 2: Personal Info ── -->
+      <div class="ppfb-step" id="ppfb-s2">
+        <div class="ppfb-step-title">Your Details</div>
+        <div class="ppfb-step-desc">We'll use this to confirm your booking via WhatsApp.</div>
+
+        <div class="ppfb-row">
+          <div class="ppfb-fg">
+            <label class="ppfb-lbl" for="ppfb-fn">First Name <em>*</em></label>
+            <input type="text" id="ppfb-fn" class="ppfb-fi" placeholder="Ahmed">
+            <div class="ppfb-err" id="ppfb-e-fn">Enter your first name</div>
+          </div>
+          <div class="ppfb-fg">
+            <label class="ppfb-lbl" for="ppfb-ln">Last Name</label>
+            <input type="text" id="ppfb-ln" class="ppfb-fi" placeholder="Khan">
+          </div>
+        </div>
+
+        <div class="ppfb-fg">
+          <label class="ppfb-lbl" for="ppfb-ph">WhatsApp Number <em>*</em></label>
+          <input type="tel" id="ppfb-ph" class="ppfb-fi" placeholder="+92 3XX XXXXXXX">
+          <div class="ppfb-err" id="ppfb-e-ph">Enter a valid WhatsApp number</div>
+        </div>
+
+        <div class="ppfb-fg">
+          <label class="ppfb-lbl" for="ppfb-em">Email Address <em>*</em></label>
+          <input type="email" id="ppfb-em" class="ppfb-fi" placeholder="you@example.com">
+          <div class="ppfb-err" id="ppfb-e-em">Enter a valid email</div>
+        </div>
+
+        <div class="ppfb-nav">
+          <button class="ppfb-back" onclick="ppfbGo(1)">← Back</button>
+          <button class="ppfb-next" onclick="ppfbNext(2)">Next: Appointment →</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 3: Appointment ── -->
+      <div class="ppfb-step" id="ppfb-s3">
+        <div class="ppfb-step-title">Choose Appointment</div>
+        <div class="ppfb-step-desc">Pick a preferred date and time for your PPF installation.</div>
+
+        <div class="ppfb-fg">
+          <label class="ppfb-lbl" for="ppfb-dt">Preferred Date <em>*</em></label>
+          <input type="date" id="ppfb-dt" class="ppfb-fi">
+          <div class="ppfb-err" id="ppfb-e-dt">Select a date</div>
+        </div>
+
+        <div class="ppfb-fg">
+          <label class="ppfb-lbl">Preferred Time <em>*</em></label>
+          <div class="ppfb-times">
+            <button type="button" class="ppfb-time sel" onclick="ppfbSelTime(this,'10:00 AM')">10:00 AM</button>
+            <button type="button" class="ppfb-time" onclick="ppfbSelTime(this,'12:00 PM')">12:00 PM</button>
+            <button type="button" class="ppfb-time" onclick="ppfbSelTime(this,'2:00 PM')">2:00 PM</button>
+            <button type="button" class="ppfb-time" onclick="ppfbSelTime(this,'4:00 PM')">4:00 PM</button>
+          </div>
+          <div class="ppfb-err" id="ppfb-e-tm">Select a time slot</div>
+        </div>
+
+        <div class="ppfb-nav">
+          <button class="ppfb-back" onclick="ppfbGo(2)">← Back</button>
+          <button class="ppfb-next" onclick="ppfbNext(3)">Review Booking →</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 4: Review & Confirm ── -->
+      <div class="ppfb-step" id="ppfb-s4">
+        <div class="ppfb-step-title">Confirm Your Booking</div>
+        <div class="ppfb-step-desc">Please review before confirming.</div>
+
+        <div class="ppfb-rev-block">
+          <div class="ppfb-rev-hdr"><span class="ppfb-rev-title">Vehicle & Package</span><button class="ppfb-rev-edit" onclick="ppfbGo(1)">Edit</button></div>
+          <div class="ppfb-rev-row"><span class="ppfb-rl">Vehicle</span><span class="ppfb-rv" id="ppfb-rv-car">—</span></div>
+          <div class="ppfb-rev-row"><span class="ppfb-rl">Year</span><span class="ppfb-rv" id="ppfb-rv-yr">—</span></div>
+          <div class="ppfb-rev-row"><span class="ppfb-rl">Type</span><span class="ppfb-rv" id="ppfb-rv-vt">—</span></div>
+          <div class="ppfb-rev-row"><span class="ppfb-rl">Package</span><span class="ppfb-rv" id="ppfb-rv-pkg">—</span></div>
+          <div class="ppfb-rev-row"><span class="ppfb-rl">Duration</span><span class="ppfb-rv" id="ppfb-rv-dur">—</span></div>
+        </div>
+
+        <div class="ppfb-rev-block">
+          <div class="ppfb-rev-hdr"><span class="ppfb-rev-title">Personal Info</span><button class="ppfb-rev-edit" onclick="ppfbGo(2)">Edit</button></div>
+          <div class="ppfb-rev-row"><span class="ppfb-rl">Name</span><span class="ppfb-rv" id="ppfb-rv-name">—</span></div>
+          <div class="ppfb-rev-row"><span class="ppfb-rl">WhatsApp</span><span class="ppfb-rv" id="ppfb-rv-ph">—</span></div>
+          <div class="ppfb-rev-row"><span class="ppfb-rl">Email</span><span class="ppfb-rv" id="ppfb-rv-em">—</span></div>
+        </div>
+
+        <div class="ppfb-rev-block">
+          <div class="ppfb-rev-hdr"><span class="ppfb-rev-title">Appointment</span><button class="ppfb-rev-edit" onclick="ppfbGo(3)">Edit</button></div>
+          <div class="ppfb-rev-row"><span class="ppfb-rl">Date</span><span class="ppfb-rv" id="ppfb-rv-dt">—</span></div>
+          <div class="ppfb-rev-row"><span class="ppfb-rl">Time</span><span class="ppfb-rv" id="ppfb-rv-tm">—</span></div>
+        </div>
+
+        <div class="ppfb-total-box">
+          <span class="ppfb-total-lbl">Total Amount</span>
+          <span class="ppfb-total-price" id="ppfb-rv-total">PKR —</span>
+        </div>
+
+        <div class="ppfb-s4-disc" id="ppfb-s4-disc">
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;color:#374151;margin-bottom:0.35rem;"><span>Original Price</span><span id="ppfb-s4-orig" style="font-weight:600;">PKR —</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;color:#16a34a;font-weight:700;margin-bottom:0.35rem;"><span>5% Online Discount</span><span id="ppfb-s4-disc-amt">- PKR —</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:1rem;font-weight:800;border-top:1px solid #86efac;padding-top:0.5rem;margin-top:0.25rem;"><span style="color:#1f2937;">Amount to Pay</span><span id="ppfb-s4-final" style="color:#15803d;">PKR —</span></div>
+        </div>
+
+        <label class="ppfb-terms">
+          <input type="checkbox" id="ppfb-terms">
+          <span>I agree to the <a href="/policies/terms-of-service" target="_blank">Terms & Conditions</a> and consent to RAD contacting me via WhatsApp.</span>
+        </label>
+
+        <div class="ppfb-nav">
+          <button class="ppfb-back" onclick="ppfbGo(3)">← Back</button>
+          <button class="ppfb-next" id="ppfb-confirm-btn" onclick="ppfbSubmit()">Confirm Booking ✓</button>
+        </div>
+      </div>
+
+      <!-- ── SUCCESS ── -->
+      <div class="ppfb-success" id="ppfb-success">
+        <div class="ppfb-success-icon">✅</div>
+        <h2>Booking Confirmed!</h2>
+        <p>We've received your booking. Our team will confirm via WhatsApp shortly.</p>
+        <div class="ppfb-ss-box">
+          <div class="ppfb-ss-title">Booking Summary</div>
+          <div class="ppfb-ss-row"><span class="ppfb-ssl">Ref</span><span class="ppfb-ssv" id="ppfb-ss-ref">—</span></div>
+          <div class="ppfb-ss-row"><span class="ppfb-ssl">Date & Time</span><span class="ppfb-ssv" id="ppfb-ss-dt">—</span></div>
+          <div class="ppfb-ss-row"><span class="ppfb-ssl">Package</span><span class="ppfb-ssv" id="ppfb-ss-pkg">—</span></div>
+          <div class="ppfb-ss-row"><span class="ppfb-ssl">Total</span><span class="ppfb-ssv blue" id="ppfb-ss-price">—</span></div>
+          <div class="ppfb-ss-disc" id="ppfb-ss-disc">
+            <div style="display:flex;justify-content:space-between;font-size:0.82rem;color:#374151;margin-bottom:0.3rem;"><span>Original Price</span><span id="ppfb-ss-orig" style="font-weight:600;">—</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:0.82rem;color:#16a34a;font-weight:700;margin-bottom:0.3rem;"><span>5% Discount</span><span id="ppfb-ss-disc-amt">—</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:0.95rem;font-weight:800;border-top:1px solid #86efac;padding-top:0.4rem;margin-top:0.3rem;"><span style="color:#1f2937;">Amount to Pay</span><span id="ppfb-ss-final" style="color:#15803d;">—</span></div>
+          </div>
+        </div>
+        <p style="font-size:0.875rem;color:#6b7280;">📱 We'll send confirmation to your WhatsApp.</p>
+        <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;">
+          <a href="/" class="ppfb-home-btn">Return to Home</a>
+          <a href="https://wa.me/923037231111" target="_blank" class="ppfb-wa-btn">💬 WhatsApp Us</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+
+  var pricing = {
+    hatchback: { classic:{price:{{ section.settings.p_hatch_classic | default: 260000 }},dur:'{{ section.settings.dur_hatch | default: "3 Working Days" }}'}, premium:{price:{{ section.settings.p_hatch_premium | default: 290000 }},dur:'{{ section.settings.dur_hatch | default: "3 Working Days" }}'} },
+    sedan:     { classic:{price:{{ section.settings.p_sedan_classic | default: 300000 }},dur:'{{ section.settings.dur_sedan | default: "3 Working Days" }}'}, premium:{price:{{ section.settings.p_sedan_premium | default: 330000 }},dur:'{{ section.settings.dur_sedan | default: "3 Working Days" }}'} },
+    suv:       { classic:{price:{{ section.settings.p_suv_classic | default: 330000 }},dur:'{{ section.settings.dur_suv | default: "3 Working Days" }}'}, premium:{price:{{ section.settings.p_suv_premium | default: 380000 }},dur:'{{ section.settings.dur_suv | default: "3 Working Days" }}'} },
+    'xl-suv':  { classic:{price:{{ section.settings.p_xlsuv_classic | default: 370000 }},dur:'{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'}, premium:{price:{{ section.settings.p_xlsuv_premium | default: 420000 }},dur:'{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'} }
+  };
+
+  var vtLabels = {hatchback:'Hatchback',sedan:'Sedan',suv:'SUV','xl-suv':'XL SUV'};
+  var selVt='', selPkg='', selTime='10:00 AM';
+  var bd = {};
+
+  function el(id){ return document.getElementById(id); }
+  function fmt(n){ return 'PKR '+Number(n).toLocaleString(); }
+  function ne(v){ return v && v.trim().length > 0; }
+  function isPhone(v){ return v && v.replace(/[^0-9]/g,'').length >= 10; }
+  function isEmail(v){ return v && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+  function ppfbGo(step){
+    for(var i=1;i<=4;i++){
+      var s=el('ppfb-s'+i); if(s) s.classList.toggle('active', i===step);
+      var dw=el('ppfb-dw'+i); if(dw){ dw.classList.remove('active','done'); }
+      var d=el('ppfb-d'+i); if(d){ d.classList.remove('active','done'); }
+      if(i<step){ if(el('ppfb-dw'+i)) el('ppfb-dw'+i).classList.add('done'); if(el('ppfb-d'+i)) el('ppfb-d'+i).classList.add('done'); }
+      if(i===step){ if(el('ppfb-dw'+i)) el('ppfb-dw'+i).classList.add('active'); if(el('ppfb-d'+i)) el('ppfb-d'+i).classList.add('active'); }
+      if(i<4){ var l=el('ppfb-l'+i); if(l) l.classList.toggle('done', i<step); }
+    }
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  window.ppfbGo = ppfbGo;
+
+  function showErr(id, show){ var e=el(id); if(e) e.classList.toggle('show', show); }
+
+  window.ppfbNext = function(step){
+    var ok=true;
+    if(step===1){
+      if(!ne(el('ppfb-mk').value)){ showErr('ppfb-e-mk',true); ok=false; } else showErr('ppfb-e-mk',false);
+      if(!ne(el('ppfb-mo').value)){ showErr('ppfb-e-mo',true); ok=false; } else showErr('ppfb-e-mo',false);
+      if(!ne(el('ppfb-yr').value)){ showErr('ppfb-e-yr',true); ok=false; } else showErr('ppfb-e-yr',false);
+      if(!selVt){ showErr('ppfb-e-vt',true); ok=false; } else showErr('ppfb-e-vt',false);
+      if(!selPkg){ showErr('ppfb-e-pkg',true); ok=false; } else showErr('ppfb-e-pkg',false);
+      if(!ok) return;
+      bd.mk=el('ppfb-mk').value.trim(); bd.mo=el('ppfb-mo').value.trim();
+      bd.yr=el('ppfb-yr').value.trim();
+      ppfbGo(2);
+    }
+    else if(step===2){
+      if(!ne(el('ppfb-fn').value)){ showErr('ppfb-e-fn',true); ok=false; } else showErr('ppfb-e-fn',false);
+      if(!isPhone(el('ppfb-ph').value)){ showErr('ppfb-e-ph',true); ok=false; } else showErr('ppfb-e-ph',false);
+      if(!isEmail(el('ppfb-em').value)){ showErr('ppfb-e-em',true); ok=false; } else showErr('ppfb-e-em',false);
+      if(!ok) return;
+      bd.fn=el('ppfb-fn').value.trim(); bd.ln=el('ppfb-ln').value.trim();
+      bd.ph=el('ppfb-ph').value.trim(); bd.em=el('ppfb-em').value.trim();
+      ppfbGo(3);
+    }
+    else if(step===3){
+      if(!ne(el('ppfb-dt').value)){ showErr('ppfb-e-dt',true); ok=false; } else showErr('ppfb-e-dt',false);
+      if(!selTime){ showErr('ppfb-e-tm',true); ok=false; } else showErr('ppfb-e-tm',false);
+      if(!ok) return;
+      bd.dt=el('ppfb-dt').value; bd.tm=selTime;
+      ppfbBuildReview();
+      ppfbGo(4);
+    }
+  };
+
+  window.ppfbVtChange = function(){
+    selVt = el('ppfb-vt').value;
+    showErr('ppfb-e-vt', false);
+    ppfbUpdatePrices();
+    ppfbDiscCalc();
+  };
+
+  function ppfbUpdatePrices(){
+    if(!selVt || !pricing[selVt]) return;
+    var d = pricing[selVt];
+    el('ppfb-pp-classic').textContent = fmt(d.classic.price) + ' · ' + d.classic.dur;
+    el('ppfb-pp-premium').textContent = fmt(d.premium.price) + ' · ' + d.premium.dur;
+    if(selPkg){
+      el('ppfb-price-val').textContent = fmt(d[selPkg].price);
+      el('ppfb-price-box').classList.add('show');
+    }
+  }
+
+  window.ppfbSelPkg = function(pkg){
+    selPkg = pkg;
+    document.querySelectorAll('.ppfb-pkg').forEach(function(p){ p.classList.remove('sel'); });
+    el('ppfb-pkg-'+pkg).classList.add('sel');
+    showErr('ppfb-e-pkg', false);
+    if(selVt && pricing[selVt]){
+      el('ppfb-price-val').textContent = fmt(pricing[selVt][pkg].price);
+      el('ppfb-price-box').classList.add('show');
+    }
+    ppfbDiscCalc();
+  };
+
+  window.ppfbDiscCalc = function(){
+    var chk = el('ppfb-disc-chk');
+    var box = el('ppfb-disc-breakdown');
+    if(!chk || !box) return;
+    var price = (selPkg && selVt && pricing[selVt]) ? pricing[selVt][selPkg].price : 0;
+    if(chk.checked && price > 0){
+      var disc=Math.round(price*0.05), final=price-disc;
+      el('ppfb-di-orig').textContent  = fmt(price);
+      el('ppfb-di-disc').textContent  = '- '+fmt(disc);
+      el('ppfb-di-total').textContent = fmt(final);
+      box.style.display='block';
+    } else {
+      box.style.display='none';
+    }
+  };
+
+  window.ppfbSelTime = function(btn, t){
+    selTime=t;
+    document.querySelectorAll('.ppfb-time').forEach(function(b){ b.classList.remove('sel'); });
+    btn.classList.add('sel');
+    showErr('ppfb-e-tm', false);
+  };
+
+  function ppfbBuildReview(){
+    var pkgLabels={classic:'NAR Classic PPF 8.0mil',premium:'NAR Premium PPF 8.5mil'};
+    var price = pricing[selVt][selPkg].price;
+    var dur   = pricing[selVt][selPkg].dur;
+    var chk   = el('ppfb-disc-chk');
+    var discOn = chk && chk.checked;
+    var disc  = discOn ? Math.round(price*0.05) : 0;
+    var final = price - disc;
+
+    el('ppfb-rv-car').textContent  = bd.mk+' '+bd.mo;
+    el('ppfb-rv-yr').textContent   = bd.yr;
+    el('ppfb-rv-vt').textContent   = vtLabels[selVt];
+    el('ppfb-rv-pkg').textContent  = pkgLabels[selPkg];
+    el('ppfb-rv-dur').textContent  = dur;
+    el('ppfb-rv-name').textContent = bd.fn+' '+(bd.ln||'');
+    el('ppfb-rv-ph').textContent   = bd.ph;
+    el('ppfb-rv-em').textContent   = bd.em;
+
+    var ds = bd.dt ? new Date(bd.dt).toLocaleDateString('en-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric',timeZone:'UTC'}) : '—';
+    el('ppfb-rv-dt').textContent = ds;
+    el('ppfb-rv-tm').textContent = bd.tm;
+    el('ppfb-rv-total').textContent = fmt(price);
+
+    var s4disc = el('ppfb-s4-disc');
+    if(discOn && price > 0 && s4disc){
+      el('ppfb-s4-orig').textContent     = fmt(price);
+      el('ppfb-s4-disc-amt').textContent = '- '+fmt(disc);
+      el('ppfb-s4-final').textContent    = fmt(final);
+      s4disc.style.display='block';
+    } else if(s4disc){
+      s4disc.style.display='none';
+    }
+  }
+
+  window.ppfbSubmit = function(){
+    if(!el('ppfb-terms').checked){ alert('Please agree to the Terms & Conditions to continue.'); return; }
+    var btn=el('ppfb-confirm-btn'); btn.disabled=true; btn.textContent='Sending...';
+
+    var chk    = el('ppfb-disc-chk');
+    var discOn = chk && chk.checked;
+    var price  = pricing[selVt][selPkg].price;
+    var disc   = discOn ? Math.round(price*0.05) : 0;
+    var final  = price - disc;
+    var dur    = pricing[selVt][selPkg].dur;
+    var pkgLabels={classic:'NAR Classic PPF 8.0mil',premium:'NAR Premium PPF 8.5mil'};
+    var ref    = 'RAD-PPF-'+Date.now().toString(36).toUpperCase().slice(-6);
+    var ds     = bd.dt ? new Date(bd.dt).toLocaleDateString('en-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric',timeZone:'UTC'}) : '—';
+    var cleanPhone = bd.ph.replace(/[^0-9]/g,'');
+
+    var body =
+      'NEW PPF BOOKING — '+ref+'\n'+
+      'Submitted: '+new Date().toLocaleString('en-PK',{timeZone:'Asia/Karachi'})+'\n\n'+
+      'Customer: '+bd.fn+' '+(bd.ln||'')+'\n'+
+      'WhatsApp: '+bd.ph+'\n'+
+      'Email: '+bd.em+'\n\n'+
+      'Vehicle: '+bd.mk+' '+bd.mo+' '+bd.yr+'\n'+
+      'Vehicle Type: '+vtLabels[selVt]+'\n'+
+      'Package: '+pkgLabels[selPkg]+'\n'+
+      'Duration: '+dur+'\n'+
+      'Date: '+ds+'\n'+
+      'Time: '+bd.tm+'\n\n'+
+      'Price: '+fmt(price)+'\n'+
+      (discOn ? '5% Discount: - '+fmt(disc)+'\nAmount to Pay: '+fmt(final)+'\n' : '')+
+      '\nWhatsApp: https://wa.me/'+cleanPhone+'\n'+
+      '[booking_type:ppf] [booking_ref:'+ref+']';
+
+    fetch('https://formspree.io/f/xgoqpjvk',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({_subject:'PPF Booking: '+ref+' — '+bd.fn,_replyto:bd.em,message:body})
+    }).then(function(){
+      ppfbShowSuccess(ref, ds, pkgLabels[selPkg]+' - '+vtLabels[selVt], price, discOn, disc, final);
+    }).catch(function(){
+      ppfbShowSuccess(ref, ds, pkgLabels[selPkg]+' - '+vtLabels[selVt], price, discOn, disc, final);
+    });
+  };
+
+  function ppfbShowSuccess(ref, ds, pkg, price, discOn, disc, final){
+    el('ppfb-s4').style.display='none';
+    el('ppfb-prog') && (el('ppfb-prog').style.display='none');
+    document.querySelector('.ppfb-prog') && (document.querySelector('.ppfb-prog').style.display='none');
+    el('ppfb-success').style.display='block';
+    el('ppfb-ss-ref').textContent   = ref;
+    el('ppfb-ss-dt').textContent    = ds+' at '+bd.tm;
+    el('ppfb-ss-pkg').textContent   = pkg;
+    el('ppfb-ss-price').textContent = fmt(price);
+    var ssDisc = el('ppfb-ss-disc');
+    if(discOn && price>0 && ssDisc){
+      el('ppfb-ss-orig').textContent     = fmt(price);
+      el('ppfb-ss-disc-amt').textContent = '- '+fmt(disc);
+      el('ppfb-ss-final').textContent    = fmt(final);
+      ssDisc.style.display='block';
+    }
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  // Set min date
+  var dtEl = el('ppfb-dt');
+  if(dtEl) dtEl.min = new Date().toISOString().split('T')[0];
+
+})();
+</script>
+
+{% schema %}
+{
+  "name": "PPF Booking",
+  "settings": [
+    {"type":"header","content":"Page Text"},
+    {"type":"text","id":"title","label":"Page Title","default":"Book PPF Appointment"},
+    {"type":"text","id":"subtitle","label":"Subtitle","default":"Premium Paint Protection Film installation in Karachi"},
+    {"type":"header","content":"Duration"},
+    {"type":"text","id":"dur_hatch","label":"Hatchback Duration","default":"3 Working Days"},
+    {"type":"text","id":"dur_sedan","label":"Sedan Duration","default":"3 Working Days"},
+    {"type":"text","id":"dur_suv","label":"SUV Duration","default":"3 Working Days"},
+    {"type":"text","id":"dur_xlsuv","label":"XL SUV Duration","default":"3 Working Days"},
+    {"type":"header","content":"Classic PPF Pricing (PKR)"},
+    {"type":"number","id":"p_hatch_classic","label":"Hatchback","default":260000},
+    {"type":"number","id":"p_sedan_classic","label":"Sedan","default":300000},
+    {"type":"number","id":"p_suv_classic","label":"SUV","default":330000},
+    {"type":"number","id":"p_xlsuv_classic","label":"XL SUV","default":370000},
+    {"type":"header","content":"Premium PPF Pricing (PKR)"},
+    {"type":"number","id":"p_hatch_premium","label":"Hatchback","default":290000},
+    {"type":"number","id":"p_sedan_premium","label":"Sedan","default":330000},
+    {"type":"number","id":"p_suv_premium","label":"SUV","default":380000},
+    {"type":"number","id":"p_xlsuv_premium","label":"XL SUV","default":420000}
+  ],
+  "presets":[{"name":"PPF Booking"}]
+}
+{% endschema %}
