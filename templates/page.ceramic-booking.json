@@ -15,19 +15,19 @@
         "p_hatchback_gold": 40000,
         "p_hatchback_platinum": 45000,
         "p_hatchback_ultimate": 60000,
-        "dur_hatchback": "2 Working Days",
+        "dur_hatchback": "3 Working Days",
         "p_sedan_gold": 45000,
         "p_sedan_platinum": 50000,
         "p_sedan_ultimate": 65000,
-        "dur_sedan": "2 Working Days",
+        "dur_sedan": "3 Working Days",
         "p_suv_gold": 50000,
         "p_suv_platinum": 55000,
         "p_suv_ultimate": 70000,
-        "dur_suv": "2 Working Days",
+        "dur_suv": "3 Working Days",
         "p_xl_suv_gold": 55000,
         "p_xl_suv_platinum": 60000,
         "p_xl_suv_ultimate": 75000,
-        "dur_xl_suv": "2 Working Days"
+        "dur_xl_suv": "3 Working Days"
       }
     }
   },
