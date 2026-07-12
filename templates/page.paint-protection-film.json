@@ -14,16 +14,6 @@
       "disabled": true,
       "settings": {}
     },
-    "announcement_PwVfEW": {
-      "type": "announcement",
-      "name": "Announcement Bar",
-      "settings": {
-        "text": "🎉 Special Offer: Select Your Package & Get 5% OFF on PPF with Online Slot Booking!",
-        "link_text": "Book Now →",
-        "link_url": "shopify://pages/ppf-booking",
-        "bg_color": "#1e3a8a"
-      }
-    },
     "ppf_hero_EDQVn7": {
       "type": "ppf-hero",
       "name": "PPF Hero",
@@ -74,6 +64,17 @@
         "hy1": 3,
         "hy2": 4,
         "hy3": 4
+      }
+    },
+    "announcement_PwVfEW": {
+      "type": "announcement",
+      "name": "Announcement Bar",
+      "settings": {
+        "show_bar": true,
+        "text": "🎉 Special Offer: Select Your Package & Get 5% OFF on PPF with Online Slot Booking!",
+        "link_text": "Book Now →",
+        "link_url": "shopify://pages/ppf-booking",
+        "bg_color": "#1e3a8a"
       }
     },
     "ppf_packages_UJLGPt": {
@@ -327,9 +328,9 @@
   },
   "order": [
     "main",
-    "announcement_PwVfEW",
     "ppf_hero_EDQVn7",
     "ppf_comparison_Hi8tbe",
+    "announcement_PwVfEW",
     "ppf_packages_UJLGPt",
     "ppf_benefits_fjiLPD",
     "our_work_UYCqcx",
