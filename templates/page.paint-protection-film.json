@@ -14,6 +14,16 @@
       "disabled": true,
       "settings": {}
     },
+    "announcement_PwVfEW": {
+      "type": "announcement",
+      "name": "Announcement Bar",
+      "settings": {
+        "text": "🎉 Special Offer: Get 5% Discount on PPF Price with Online Slot Booking",
+        "link_text": "Book Now →",
+        "link_url": "shopify://pages/ppf-booking",
+        "bg_color": "#1e3a8a"
+      }
+    },
     "ppf_hero_EDQVn7": {
       "type": "ppf-hero",
       "name": "PPF Hero",
@@ -72,25 +82,6 @@
       "settings": {
         "title": "Choose Your Vehicle Type",
         "subtitle": "Select your vehicle to see accurate pricing",
-        "cryst_name": "Crystalline PPF",
-        "cryst_mil": "7.9 mil thickness",
-        "cryst_warranty": "3 Years Warranty",
-        "cryst_tagline": "Entry-level PPF protection",
-        "cryst_duration": "3 Working Days",
-        "cryst_price_hatch": "200,000",
-        "cryst_price_sedan": "220,000",
-        "cryst_price_suv": "250,000",
-        "cryst_price_xlsuv": "300,000",
-        "cryst_f1": "TPU Film",
-        "cryst_f2": "Self Healing",
-        "cryst_f3": "UV Protection",
-        "cryst_f4": "Gloss Finish",
-        "cryst_i1": "Full Body Coverage",
-        "cryst_i1s": "All exterior painted panels",
-        "cryst_i2": "Paint Protection",
-        "cryst_i2s": "Scratch & chip resistance",
-        "cryst_i3": "3-Year Warranty",
-        "cryst_i3s": "Manufacturer backed warranty",
         "classic_name": "NAR Classic PPF",
         "classic_mil": "8.0 mil thickness",
         "classic_warranty": "5 Years Warranty",
@@ -336,6 +327,7 @@
   },
   "order": [
     "main",
+    "announcement_PwVfEW",
     "ppf_hero_EDQVn7",
     "ppf_comparison_Hi8tbe",
     "ppf_packages_UJLGPt",
