@@ -147,7 +147,70 @@
       <div class="rad-bform" id="rad-bform" data-ejs-service="{{ section.settings.ejs_service }}" data-ejs-template="{{ section.settings.ejs_template }}" data-ejs-key="{{ section.settings.ejs_key }}">
 
         <!-- STEP 1 -->
-        <div class="rad-bstep active" id="rs1">
+        <div class="rad-bstep" id="rs1">
+          <h2 class="rad-bstep-title">Vehicle & Package</h2>
+          <p class="rad-bstep-desc">Tell us about your car and choose a PPF package.</p>
+          <div class="rad-frow">
+            <div class="rad-fg">
+              <label class="rad-fl" for="rf-mk">Vehicle Make <em>*</em></label>
+              <input type="text" id="rf-mk" class="rad-fi" placeholder="e.g. Toyota">
+              <div class="rad-ferr" id="re-mk">Enter vehicle make</div>
+            </div>
+          <div class="rad-fg">
+              <label class="rad-fl" for="rf-vt">Vehicle Type <em>*</em></label>
+              <select id="rf-vt" class="rad-fi" onchange="rbUpdatePrice(); ppfDiscCalc(); try{sessionStorage.setItem('rad_selected_vtype', this.value);}catch(e){}">
+                <option value="" disabled selected>Select type</option>
+                <option value="hatchback">Hatchback</option>
+                <option value="sedan">Sedan</option>
+                <option value="suv">SUV</option>
+                <option value="xl-suv">XL SUV</option>
+              </select>
+              <div class="rad-ferr" id="re-vt">Select vehicle type</div>
+            </div>
+          <div class="rad-fg">
+            <label class="rad-fl">PPF Package <em>*</em></label>
+            <div class="rad-pkgs">
+              <div class="rad-pkg" onclick="rbSelPkg(this,'classic'); ppfDiscCalc();">
+                <div class="rad-pkg-radio"></div>
+                <div>
+                  <div class="rad-pkg-name">NAR Classic PPF 8.0mil</div>
+                  <div class="rad-pkg-price" id="rpp-classic">Select vehicle type to see price</div>
+                </div>
+          <div class="rad-price-show" id="rprice">
+            <span class="rad-price-lbl" id="rprice-lbl">Total</span>
+            <span class="rad-price-val" id="rprice-val">PKR 0</span>
+          </div>
+          <div style="margin:1.25rem 0 1rem;padding:1rem 1.25rem;background:#f0fdf4;border:1.5px solid #86efac;border-radius:10px;display:flex;align-items:flex-start;gap:0.75rem;">
+            <input type="checkbox" id="ppf-disc-chk" onchange="ppfDiscCalc()" style="width:18px;height:18px;margin-top:2px;accent-color:#16a34a;cursor:pointer;flex-shrink:0;">
+            <label for="ppf-disc-chk" style="font-size:0.9rem;font-weight:600;color:#15803d;cursor:pointer;line-height:1.5;">
+              I would like to receive a 5% discount on PPF for booking my slot online!
+            </label>
+          </div>
+          <div class="rad-bnav">
+            <button class="rad-bbtn-back" onclick="rbPrev(3)">← Back</button>
+            <button class="rad-bbtn-next" onclick="rbNext(3)">Review Booking →</button>
+          </div>
+        </div>
+          
+          <div id="ppf-disc-inline" style="display:none;background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:0.85rem 1.1rem;margin-bottom:0.75rem;">
+            <div style="display:flex;justify-content:space-between;font-size:0.875rem;color:#374151;margin-bottom:0.35rem;">
+              <span>Original Price</span><span id="ppf-di-orig" style="font-weight:600;">PKR —</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:0.875rem;color:#16a34a;font-weight:700;margin-bottom:0.35rem;">
+              <span>5% Online Booking Discount</span><span id="ppf-di-disc">- PKR —</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:1rem;font-weight:800;border-top:1px solid #86efac;padding-top:0.5rem;margin-top:0.25rem;">
+              <span style="color:#1f2937;">Amount to Pay</span><span id="ppf-di-total" style="color:#15803d;">PKR —</span>
+            </div>
+          </div>
+          <div class="rad-bnav">
+            <button class="rad-bbtn-back" disabled>← Back</button>
+            <button class="rad-bbtn-next" onclick="rbNext(1)">Next: Your Details →</button>
+          </div>
+        </div>
+
+<!-- STEP 2 -->
+        <div class="rad-bstep active" id="rs2">
           <h2 class="rad-bstep-title">Your Details</h2>
           <p class="rad-bstep-desc">We'll use this to confirm your booking via WhatsApp and email.</p>
           <div class="rad-frow">
@@ -173,41 +236,6 @@
             <div class="rad-ferr" id="re-em">Enter a valid email</div>
           </div>
           <div class="rad-bnav">
-            <button class="rad-bbtn-back" disabled>← Back</button>
-            <button class="rad-bbtn-next" onclick="rbNext(1)">Next: Vehicle Details →</button>
-          </div>
-        </div>
-
-        <!-- STEP 2 -->
-        <div class="rad-bstep" id="rs2">
-          <h2 class="rad-bstep-title">Your Vehicle</h2>
-          <p class="rad-bstep-desc">Tell us about the car we'll be protecting.</p>
-          <div class="rad-frow">
-            <div class="rad-fg">
-              <label class="rad-fl" for="rf-mk">Vehicle Make <em>*</em></label>
-              <input type="text" id="rf-mk" class="rad-fi" placeholder="e.g. Toyota">
-              <div class="rad-ferr" id="re-mk">Enter vehicle make</div>
-            </div>
-            <div class="rad-fg">
-              <label class="rad-fl" for="rf-mo">Vehicle Model <em>*</em></label>
-              <input type="text" id="rf-mo" class="rad-fi" placeholder="e.g. Corolla">
-              <div class="rad-ferr" id="re-mo">Enter vehicle model</div>
-            </div>
-          </div>
-          <div class="rad-frow">
-            <div class="rad-fg">
-              <label class="rad-fl" for="rf-yr">Year <em>*</em></label>
-              <select id="rf-yr" class="rad-fi">
-                <option value="" disabled selected>Select year</option>
-              </select>
-              <div class="rad-ferr" id="re-yr">Select vehicle year</div>
-            </div>
-            <div class="rad-fg">
-              <label class="rad-fl" for="rf-cl">Color <span style="color:#9ca3af;font-weight:400;">(Optional)</span></label>
-              <input type="text" id="rf-cl" class="rad-fi" placeholder="e.g. Pearl White">
-            </div>
-          </div>
-          <div class="rad-bnav">
             <button class="rad-bbtn-back" onclick="rbPrev(2)">← Back</button>
             <button class="rad-bbtn-next" onclick="rbNext(2)">Next: Appointment →</button>
           </div>
@@ -216,9 +244,8 @@
         <!-- STEP 3 -->
         <div class="rad-bstep" id="rs3">
           <h2 class="rad-bstep-title">Choose Appointment</h2>
-          <p class="rad-bstep-desc">Pick a date, time, vehicle type and package.</p>
-          <div class="rad-frow">
-            <div class="rad-fg">
+          <p class="rad-bstep-desc">Pick a preferred date and time.</p>
+          <div class="rad-fg">
               <label class="rad-fl" for="rf-dt">Preferred Date <em>*</em></label>
               <input type="date" id="rf-dt" class="rad-fi">
               <div class="rad-ferr" id="re-dt">Select a date</div>
@@ -245,43 +272,13 @@
             </div>
             <div class="rad-ferr" id="re-tm">Select a time slot</div>
           </div>
-          <div class="rad-fg">
-            <label class="rad-fl">PPF Package <em>*</em></label>
-            <div class="rad-pkgs">
-              <div class="rad-pkg" onclick="rbSelPkg(this,'classic')">
-                <div class="rad-pkg-radio"></div>
-                <div>
-                  <div class="rad-pkg-name">NAR Classic PPF 8.0mil</div>
-                  <div class="rad-pkg-price" id="rpp-classic">Select vehicle type to see price</div>
-                </div>
-              </div>
-              <div class="rad-pkg" onclick="rbSelPkg(this,'premium')">
-                <div class="rad-pkg-radio"></div>
-                <div>
-                  <div class="rad-pkg-name">NAR Premium PPF 8.5mil</div>
-                  <div class="rad-pkg-price" id="rpp-premium">Select vehicle type to see price</div>
-                </div>
-              </div>
-            </div>
-            <div class="rad-ferr" id="re-pk">Select a package</div>
-          </div>
-          <div class="rad-price-show" id="rprice">
-            <span class="rad-price-lbl" id="rprice-lbl">Total</span>
-            <span class="rad-price-val" id="rprice-val">PKR 0</span>
-          </div>
-          <div style="margin:1.25rem 0 1rem;padding:1rem 1.25rem;background:#f0fdf4;border:1.5px solid #86efac;border-radius:10px;display:flex;align-items:flex-start;gap:0.75rem;">
-            <input type="checkbox" id="ppf-disc-chk" style="width:18px;height:18px;margin-top:2px;accent-color:#16a34a;cursor:pointer;flex-shrink:0;">
-            <label for="ppf-disc-chk" style="font-size:0.9rem;font-weight:600;color:#15803d;cursor:pointer;line-height:1.5;">
-              I would like to receive a 5% discount on PPF for booking my slot online!
-            </label>
-          </div>
           <div class="rad-bnav">
             <button class="rad-bbtn-back" onclick="rbPrev(3)">← Back</button>
             <button class="rad-bbtn-next" onclick="rbNext(3)">Review Booking →</button>
           </div>
         </div>
 
-        <!-- STEP 4 -->
+<!-- STEP 4 -->
         <div class="rad-bstep" id="rs4">
           <h2 class="rad-bstep-title">Confirm Your Booking</h2>
           <p class="rad-bstep-desc">Please review your details before confirming.</p>
@@ -435,19 +432,19 @@
   function validate(step) {
     var ok = true;
     if(step===1){
-      if(!chk('rf-fn','re-fn',ne)) ok=false;
-      if(!chk('rf-ln','re-ln',ne)) ok=false;
-      if(!chk('rf-ph','re-ph',isPhone)) ok=false;
-      if(!chk('rf-em','re-em',isEmail)) ok=false;
-    }
-    if(step===2){
       if(!chk('rf-mk','re-mk',ne)) ok=false;
       if(!chk('rf-mo','re-mo',ne)) ok=false;
       if(!chk('rf-yr','re-yr',ne)) ok=false;
+      var per=document.getElementById('re-pk');
+      if(!selPkg){per.classList.add('show');ok=false;}else{per.classList.remove('show');}
+    }
+    if(step===2){
+      if(!chk('rf-fn','re-fn',ne)) ok=false;
+      if(!chk('rf-ph','re-ph',isPhone)) ok=false;
+      if(!chk('rf-em','re-em',isEmail)) ok=false;
     }
     if(step===3){
       if(!chk('rf-dt','re-dt',ne)) ok=false;
-      if(!chk('rf-vt','re-vt',ne)) ok=false;
       var ter = document.getElementById('re-tm');
       if(!selTime){ ter.classList.add('show'); ok=false; } else { ter.classList.remove('show'); }
       var per = document.getElementById('re-pk');
@@ -658,6 +655,24 @@
     var k = document.getElementById('rad-bform') ? document.getElementById('rad-bform').dataset.ejsKey : '';
     if(k) { emailjs.init({ publicKey: k }); }
   })();
+
+  // ppfDiscCalc — inline discount in Step 1
+  window.ppfDiscCalc = function(){
+    var chk = document.getElementById('ppf-disc-chk');
+    var box = document.getElementById('ppf-disc-inline');
+    if(!chk || !box) return;
+    var price = (selPkg && selVt && pricing[selVt] && pricing[selVt][selPkg]) ? pricing[selVt][selPkg].price : 0;
+    if(chk.checked && price > 0){
+      var disc  = Math.round(price * 0.05);
+      var final = price - disc;
+      document.getElementById('ppf-di-orig').textContent  = 'PKR ' + price.toLocaleString();
+      document.getElementById('ppf-di-disc').textContent  = '- PKR ' + disc.toLocaleString();
+      document.getElementById('ppf-di-total').textContent = 'PKR ' + final.toLocaleString();
+      box.style.display = 'block';
+    } else {
+      box.style.display = 'none';
+    }
+  };
 </script>
 
 {% schema %}
