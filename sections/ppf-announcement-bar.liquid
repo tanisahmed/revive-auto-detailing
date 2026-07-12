@@ -1,0 +1,118 @@
+{%- if section.settings.show_bar -%}
+<style>
+  .rad-ann-bar {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: {{ section.settings.bg_color | default: "#1e3a8a" }};
+    color: {{ section.settings.text_color | default: "#ffffff" }};
+    padding: 0.6rem 1.5rem;
+    text-align: center;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    line-height: 1.4;
+  }
+  .rad-ann-bar a {
+    color: inherit;
+    text-decoration: underline;
+    white-space: nowrap;
+    font-weight: 700;
+  }
+  .rad-ann-bar a:hover { opacity: 0.85; }
+  .rad-ann-bar-icon { font-size: 1rem; flex-shrink: 0; }
+  .rad-ann-bar-divider {
+    display: inline-block;
+    width: 1px;
+    height: 14px;
+    background: rgba(255,255,255,0.35);
+    margin: 0 0.75rem;
+    vertical-align: middle;
+  }
+  @media (max-width: 640px) {
+    .rad-ann-bar { font-size: 0.78rem; padding: 0.55rem 1rem; }
+    .rad-ann-bar-divider { display: none; }
+  }
+</style>
+
+<div class="rad-ann-bar" id="rad-ann-bar">
+  {%- if section.settings.icon != blank -%}
+    <span class="rad-ann-bar-icon">{{ section.settings.icon }}</span>
+  {%- endif -%}
+
+  <span>{{ section.settings.text | default: "🛡️ Book PPF online & get 5% OFF — Limited slots available!" }}</span>
+
+  {%- if section.settings.link_text != blank and section.settings.link_url != blank -%}
+    <span class="rad-ann-bar-divider"></span>
+    <a href="{{ section.settings.link_url }}">{{ section.settings.link_text }}</a>
+  {%- endif -%}
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "PPF Announcement Bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_bar",
+      "label": "Show Announcement Bar",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "icon",
+      "label": "Icon / Emoji (optional)",
+      "default": "🛡️"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Announcement Text",
+      "default": "Book PPF online & get 5% OFF — Limited slots available this week!"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Button / Link Text (optional)",
+      "default": "Book Now"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Button / Link URL",
+      "default": "/pages/ppf-booking"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#1e3a8a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PPF Announcement Bar"
+    }
+  ]
+}
+{% endschema %}
