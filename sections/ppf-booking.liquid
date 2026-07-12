@@ -246,21 +246,9 @@
           <h2 class="rad-bstep-title">Choose Appointment</h2>
           <p class="rad-bstep-desc">Pick a preferred date and time.</p>
           <div class="rad-fg">
-              <label class="rad-fl" for="rf-dt">Preferred Date <em>*</em></label>
-              <input type="date" id="rf-dt" class="rad-fi">
-              <div class="rad-ferr" id="re-dt">Select a date</div>
-            </div>
-            <div class="rad-fg">
-              <label class="rad-fl" for="rf-vt">Vehicle Type <em>*</em></label>
-              <select id="rf-vt" class="rad-fi" onchange="rbUpdatePrice(); try{sessionStorage.setItem('rad_selected_vtype', this.value);}catch(e){}">
-                <option value="" disabled selected>Select type</option>
-                <option value="hatchback">Hatchback</option>
-                <option value="sedan">Sedan</option>
-                <option value="suv">SUV</option>
-                <option value="xl-suv">XL SUV</option>
-              </select>
-              <div class="rad-ferr" id="re-vt">Select vehicle type</div>
-            </div>
+            <label class="rad-fl" for="rf-dt">Preferred Date <em>*</em></label>
+            <input type="date" id="rf-dt" class="rad-fi">
+            <div class="rad-ferr" id="re-dt">Select a date</div>
           </div>
           <div class="rad-fg">
             <label class="rad-fl">Preferred Time <em>*</em></label>
