@@ -81,6 +81,7 @@
       "type": "ppf-packages",
       "name": "PPF Pricing",
       "settings": {
+        "btn_text": "Unlock 5% Discount",
         "title": "Choose Your Vehicle Type",
         "subtitle": "Select your vehicle to see accurate pricing",
         "classic_name": "NAR Classic PPF",
