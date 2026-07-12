@@ -397,9 +397,9 @@
   var stepNames = ['','Personal Info','Vehicle Details','Appointment','Confirm Booking'];
   var pricing = {
     hatchback:{classic:{price:260000,dur:'8-10 hours'},premium:{price:290000,dur:'8-10 hours'}},
-    sedan:    {classic:{price:300000,dur:'8-10 hours'},premium:{price:330000,dur:'8-10 hours'}},
-    suv:      {classic:{price:330000,dur:'9-11 hours'},premium:{price:380000,dur:'9-11 hours'}},
-    'xl-suv': {classic:{price:370000,dur:'10-12 hours'},premium:{price:420000,dur:'10-12 hours'}}
+    sedan:    {classic:{price:{{ section.settings.p_sedan_classic | default: 300000 }},dur:'{{ section.settings.dur_sedan | default: "3 Working Days" }}'},premium:{price:{{ section.settings.p_sedan_premium | default: 330000 }},dur:'{{ section.settings.dur_sedan | default: "3 Working Days" }}'}},
+    suv:      {classic:{price:{{ section.settings.p_suv_classic | default: 330000 }},dur:'{{ section.settings.dur_suv | default: "3 Working Days" }}'},premium:{price:{{ section.settings.p_suv_premium | default: 380000 }},dur:'{{ section.settings.dur_suv | default: "3 Working Days" }}'}},
+    'xl-suv': {classic:{price:{{ section.settings.p_xlsuv_classic | default: 370000 }},dur:'{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'},premium:{price:{{ section.settings.p_xlsuv_premium | default: 420000 }},dur:'{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'}}
   };
 
   // Populate year dropdown
@@ -666,19 +666,123 @@
   "settings": [
     {
       "type": "header",
+      "content": "Page Text"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Page Title",
+      "default": "Book PPF Appointment"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Premium Paint Protection Film installation in Karachi"
+    },
+    {
+      "type": "header",
+      "content": "Duration (shown after package selection)"
+    },
+    {
+      "type": "text",
+      "id": "dur_hatch",
+      "label": "Hatchback Duration",
+      "default": "3 Working Days"
+    },
+    {
+      "type": "text",
+      "id": "dur_sedan",
+      "label": "Sedan Duration",
+      "default": "3 Working Days"
+    },
+    {
+      "type": "text",
+      "id": "dur_suv",
+      "label": "SUV Duration",
+      "default": "3 Working Days"
+    },
+    {
+      "type": "text",
+      "id": "dur_xlsuv",
+      "label": "XL SUV Duration",
+      "default": "3 Working Days"
+    },
+    {
+      "type": "header",
+      "content": "Classic PPF Pricing (PKR)"
+    },
+    {
+      "type": "number",
+      "id": "p_hatch_classic",
+      "label": "Hatchback — Classic",
+      "default": 260000
+    },
+    {
+      "type": "number",
+      "id": "p_sedan_classic",
+      "label": "Sedan — Classic",
+      "default": 300000
+    },
+    {
+      "type": "number",
+      "id": "p_suv_classic",
+      "label": "SUV — Classic",
+      "default": 330000
+    },
+    {
+      "type": "number",
+      "id": "p_xlsuv_classic",
+      "label": "XL SUV — Classic",
+      "default": 370000
+    },
+    {
+      "type": "header",
+      "content": "Premium PPF Pricing (PKR)"
+    },
+    {
+      "type": "number",
+      "id": "p_hatch_premium",
+      "label": "Hatchback — Premium",
+      "default": 290000
+    },
+    {
+      "type": "number",
+      "id": "p_sedan_premium",
+      "label": "Sedan — Premium",
+      "default": 330000
+    },
+    {
+      "type": "number",
+      "id": "p_suv_premium",
+      "label": "SUV — Premium",
+      "default": 380000
+    },
+    {
+      "type": "number",
+      "id": "p_xlsuv_premium",
+      "label": "XL SUV — Premium",
+      "default": 420000
+    },
+    {
+      "type": "header",
       "content": "Email Settings"
     },
     {
       "type": "paragraph",
-      "content": "Formspree se booking email aayegi info@reviveautodetailing.pk pe. formspree.io pe free account banao aur Form ID yahan paste karein."
+      "content": "Formspree se booking email aayegi info@reviveautodetailing.pk pe."
     },
     {
       "type": "text",
       "id": "formspree_id",
       "label": "Formspree Form ID",
-      "placeholder": "abcdefgh"
+      "default": "xgoqpjvk"
     }
   ],
-  "presets": [{"name": "PPF Booking Form"}]
+  "presets": [
+    {
+      "name": "PPF Booking Form"
+    }
+  ]
 }
 {% endschema %}
