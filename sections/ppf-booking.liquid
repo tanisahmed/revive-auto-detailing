@@ -269,12 +269,6 @@
             <span class="rad-price-lbl" id="rprice-lbl">Total</span>
             <span class="rad-price-val" id="rprice-val">PKR 0</span>
           </div>
-          <div id="ppf-disc-box" style="margin:1.25rem 0 1rem;padding:1rem 1.25rem;background:#f0fdf4;border:1.5px solid #86efac;border-radius:10px;display:flex;align-items:flex-start;gap:0.75rem;">
-            <input type="checkbox" id="ppf-disc-chk" style="width:18px;height:18px;margin-top:2px;accent-color:#16a34a;cursor:pointer;flex-shrink:0;">
-            <label for="ppf-disc-chk" style="font-size:0.9rem;font-weight:600;color:#15803d;cursor:pointer;line-height:1.5;">
-              I would like to receive a 5% discount on PPF for booking my slot online!
-            </label>
-          </div>
           <div class="rad-bnav">
             <button class="rad-bbtn-back" onclick="rbPrev(3)">← Back</button>
             <button class="rad-bbtn-next" onclick="rbNext(3)">Review Booking →</button>
@@ -317,17 +311,6 @@
           <div class="rad-rev-total">
             <span class="rad-rev-total-lbl">Total Amount</span>
             <span class="rad-rev-total-price" id="rv-total">PKR —</span>
-          </div>
-          <div id="ppf-disc-summary" style="display:none;margin-top:0.75rem;background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:0.85rem 1.1rem;">
-            <div style="display:flex;justify-content:space-between;font-size:0.875rem;color:#374151;margin-bottom:0.4rem;">
-              <span>Original Price</span><span id="ppf-orig-price" style="font-weight:600;">PKR —</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;font-size:0.875rem;color:#16a34a;margin-bottom:0.4rem;">
-              <span>5% Online Booking Discount</span><span id="ppf-disc-amt" style="font-weight:700;">- PKR —</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;font-size:1rem;color:#1f2937;border-top:1px solid #86efac;padding-top:0.5rem;margin-top:0.35rem;">
-              <span style="font-weight:800;">Discounted Total</span><span id="ppf-disc-total" style="font-weight:800;color:#15803d;">PKR —</span>
-            </div>
           </div>
           <label class="rad-terms">
             <input type="checkbox" id="rf-terms">
@@ -385,8 +368,8 @@
   var vtLabels = {hatchback:'Hatchback',sedan:'Sedan',suv:'SUV','xl-suv':'XL SUV'};
   var stepNames = ['','Personal Info','Vehicle Details','Appointment','Confirm Booking'];
   var pricing = {
-    hatchback:{classic:{price:260000,dur:'3 Working Days'},premium:{price:290000,dur:'3 Working Days'}},
-    sedan:    {classic:{price:300000,dur:'3 Working Days'},premium:{price:330000,dur:'3 Working Days'}},
+    hatchback:{classic:{price:260000,dur:'8-10 hours'},premium:{price:290000,dur:'8-10 hours'}},
+    sedan:    {classic:{price:300000,dur:'8-10 hours'},premium:{price:330000,dur:'8-10 hours'}},
     suv:      {classic:{price:330000,dur:'9-11 hours'},premium:{price:380000,dur:'9-11 hours'}},
     'xl-suv': {classic:{price:370000,dur:'10-12 hours'},premium:{price:420000,dur:'10-12 hours'}}
   };
@@ -619,43 +602,6 @@
   (function(){
     var k = document.getElementById('rad-bform') ? document.getElementById('rad-bform').dataset.ejsKey : '';
     if(k) { emailjs.init({ publicKey: k }); }
-  // ── 5% PPF Online Discount ──
-  document.addEventListener('click', function(e){
-    var chk = document.getElementById('ppf-disc-chk');
-    if(!chk) return;
-    // Run whenever step 4 is reached
-  });
-
-  // Patch rbNext to trigger discount display when moving from step 3
-  var _ppfOrigNext = window.rbNext;
-  window.rbNext = function(step){
-    _ppfOrigNext(step);
-    if(step === 3){ ppfShowDiscount(); }
-  };
-
-  function ppfShowDiscount(){
-    var chk  = document.getElementById('ppf-disc-chk');
-    var summ = document.getElementById('ppf-disc-summary');
-    var rvEl = document.getElementById('rv-total');
-    if(!chk || !summ || !rvEl) return;
-    var raw  = parseInt((rvEl.textContent||'').replace(/[^0-9]/g,''))||0;
-    if(chk.checked && raw > 0){
-      var disc  = Math.round(raw * 0.05);
-      var final = raw - disc;
-      document.getElementById('ppf-orig-price').textContent  = 'PKR ' + raw.toLocaleString();
-      document.getElementById('ppf-disc-amt').textContent    = '- PKR ' + disc.toLocaleString();
-      document.getElementById('ppf-disc-total').textContent  = 'PKR ' + final.toLocaleString();
-      summ.style.display = 'block';
-    } else {
-      summ.style.display = 'none';
-    }
-  }
-
-  // Also run when checkbox is toggled while already on step 4
-  document.addEventListener('change', function(e){
-    if(e.target && e.target.id === 'ppf-disc-chk') ppfShowDiscount();
-  });
-
   })();
 </script>
 
