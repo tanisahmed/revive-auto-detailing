@@ -137,8 +137,8 @@
 
       <!-- Step Indicators -->
       <div class="rad-steps">
-        <div class="rad-step active" id="rsi-1"><div class="rad-step-dot">1</div><span class="rad-step-lbl">Personal</span></div>
-        <div class="rad-step" id="rsi-2"><div class="rad-step-dot">2</div><span class="rad-step-lbl">Vehicle</span></div>
+        <div class="rad-step active" id="rsi-1"><div class="rad-step-dot">1</div><span class="rad-step-lbl">Vehicle</span></div>
+        <div class="rad-step" id="rsi-2"><div class="rad-step-dot">2</div><span class="rad-step-lbl">Personal</span></div>
         <div class="rad-step" id="rsi-3"><div class="rad-step-dot">3</div><span class="rad-step-lbl">Appointment</span></div>
         <div class="rad-step" id="rsi-4"><div class="rad-step-dot">4</div><span class="rad-step-lbl">Confirm</span></div>
       </div>
@@ -379,7 +379,7 @@
   })();
   var bd = {};
   var vtLabels = {hatchback:'Hatchback',sedan:'Sedan',suv:'SUV','xl-suv':'XL SUV'};
-  var stepNames = ['','Personal Info','Vehicle Details','Appointment','Confirm Booking'];
+  var stepNames = ['','Vehicle & Package','Your Details','Appointment','Confirm Booking'];
   var pricing = {
     hatchback:{classic:{price:{{ section.settings.p_hatch_classic | default: 260000 }},dur:'{{ section.settings.dur_hatch | default: "3 Working Days" }}'},premium:{price:{{ section.settings.p_hatch_premium | default: 290000 }},dur:'{{ section.settings.dur_hatch | default: "3 Working Days" }}'}},
     sedan:    {classic:{price:{{ section.settings.p_sedan_classic | default: 300000 }},dur:'{{ section.settings.dur_sedan | default: "3 Working Days" }}'},premium:{price:{{ section.settings.p_sedan_premium | default: 330000 }},dur:'{{ section.settings.dur_sedan | default: "3 Working Days" }}'}},
