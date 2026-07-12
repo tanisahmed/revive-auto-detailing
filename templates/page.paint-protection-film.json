@@ -18,7 +18,7 @@
       "type": "announcement",
       "name": "Announcement Bar",
       "settings": {
-        "text": "🎉 Special Offer: Get 5% Discount on PPF Price with Online Slot Booking",
+        "text": "🎉 Special Offer: Select Your Package & Get 5% OFF on PPF with Online Slot Booking!",
         "link_text": "Book Now →",
         "link_url": "shopify://pages/ppf-booking",
         "bg_color": "#1e3a8a"
