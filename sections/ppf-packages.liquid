@@ -125,7 +125,7 @@
         <div class="ppf-card-body">
           <div id="ppf-cr-price" class="ppf-price">PKR 180,000</div>
           <div class="ppf-tagline">Entry-level PPF protection</div>
-          <button class="ppf-btn" id="ppf-cr-btn" style="background:#C0392B;">Select Package</button>
+          <button class="ppf-btn" id="ppf-cr-btn" style="background:#C0392B;">{{ section.settings.btn_text | default: "Select Package" }}</button>
           <div id="ppf-cr-dur" class="ppf-process" style="margin-top:8px;margin-bottom:12px;">&#9201; Process: 3 Working Days</div>
           <div class="ppf-included-title">What's included in PPF installation</div>
           <div class="ppf-included-list">
@@ -150,7 +150,7 @@
         <div class="ppf-card-body">
           <div id="ppf-c-price" class="ppf-price">PKR 260,000</div>
           <div class="ppf-tagline">Complete PPF from bumper to bumper</div>
-          <button class="ppf-btn" id="ppf-c-btn">Select Package</button>
+          <button class="ppf-btn" id="ppf-c-btn">{{ section.settings.btn_text | default: "Select Package" }}</button>
           <div id="ppf-c-dur" class="ppf-process" style="margin-top:8px;margin-bottom:12px;">&#9201; Process: 3 Working Days</div>
           <div class="ppf-included-title">What's included in PPF installation</div>
           <div class="ppf-included-list">
@@ -186,7 +186,7 @@
         <div class="ppf-card-body">
           <div id="ppf-p-price" class="ppf-price">PKR 290,000</div>
           <div class="ppf-tagline">Complete PPF from bumper to bumper</div>
-          <button class="ppf-btn" id="ppf-p-btn">Select Package</button>
+          <button class="ppf-btn" id="ppf-p-btn">{{ section.settings.btn_text | default: "Select Package" }}</button>
           <div id="ppf-p-dur" class="ppf-process" style="margin-top:8px;margin-bottom:12px;">&#9201; Process: 3 Working Days</div>
           <div class="ppf-included-title">What's included in PPF installation</div>
           <div class="ppf-included-list">
@@ -279,39 +279,197 @@
 {
   "name": "PPF Pricing",
   "settings": [
-    {"type": "header", "content": "Section Heading"},
-    {"type": "text", "id": "title",    "label": "Title",    "default": "Choose Your Vehicle Type"},
-    {"type": "text", "id": "subtitle", "label": "Subtitle", "default": "Select your vehicle to see accurate pricing"},
-    {"type": "header", "content": "Classic Package"},
-    {"type": "text", "id": "classic_name",     "label": "Name",     "default": "NAR Classic PPF"},
-    {"type": "text", "id": "classic_mil",      "label": "Thickness","default": "8.0 mil thickness"},
-    {"type": "text", "id": "classic_warranty", "label": "Warranty", "default": "5 Years Warranty"},
-    {"type": "header", "content": "Premium Package"},
-    {"type": "text", "id": "premium_name",     "label": "Name",     "default": "NAR Premium PPF"},
-    {"type": "text", "id": "premium_mil",      "label": "Thickness","default": "8.5 mil thickness"},
-    {"type": "text", "id": "premium_warranty", "label": "Warranty", "default": "7 Years Warranty"},
-    {"type": "header", "content": "Hatchback Prices (PKR)"},
-    {"type": "number", "id": "p_hatchback_classic", "label": "Classic", "default": 260000},
-    {"type": "number", "id": "p_hatchback_premium", "label": "Premium", "default": 290000},
-    {"type": "text",   "id": "dur_hatchback",       "label": "Duration","default": "3 Working Days"},
-    {"type": "header", "content": "Sedan Prices (PKR)"},
-    {"type": "number", "id": "p_sedan_classic", "label": "Classic", "default": 300000},
-    {"type": "number", "id": "p_sedan_premium", "label": "Premium", "default": 330000},
-    {"type": "text",   "id": "dur_sedan",       "label": "Duration","default": "3 Working Days"},
-    {"type": "header", "content": "SUV Prices (PKR)"},
-    {"type": "number", "id": "p_suv_classic", "label": "Classic", "default": 330000},
-    {"type": "number", "id": "p_suv_premium", "label": "Premium", "default": 380000},
-    {"type": "text",   "id": "dur_suv",       "label": "Duration","default": "3 Working Days"},
-    {"type": "header", "content": "XL SUV Prices (PKR)"},
-    {"type": "number", "id": "p_xlsuv_classic", "label": "Classic", "default": 370000},
-    {"type": "number", "id": "p_xlsuv_premium", "label": "Premium", "default": 420000},
-    {"type": "text",   "id": "dur_xlsuv",       "label": "Duration","default": "3 Working Days"},
-    {"type": "header", "content": "Car Name Examples"},
-    {"type": "text", "id": "ex_hatchback", "label": "Hatchback Cars", "default": "Swift, Mira, Dayz"},
-    {"type": "text", "id": "ex_sedan",     "label": "Sedan Cars",     "default": "Corolla, Civic, Sonata"},
-    {"type": "text", "id": "ex_suv",       "label": "SUV Cars",       "default": "Sportage L, Tucson, Haval H6"},
-    {"type": "text", "id": "ex_xlsuv",     "label": "XL SUV Cars",    "default": "Fortuner, Land Cruiser, Prado"}
+    {
+      "type": "header",
+      "content": "Button Text"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Package Button Text",
+      "default": "Select Package"
+    },
+    {
+      "type": "header",
+      "content": "Section Heading"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Choose Your Vehicle Type"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Select your vehicle to see accurate pricing"
+    },
+    {
+      "type": "header",
+      "content": "Classic Package"
+    },
+    {
+      "type": "text",
+      "id": "classic_name",
+      "label": "Name",
+      "default": "NAR Classic PPF"
+    },
+    {
+      "type": "text",
+      "id": "classic_mil",
+      "label": "Thickness",
+      "default": "8.0 mil thickness"
+    },
+    {
+      "type": "text",
+      "id": "classic_warranty",
+      "label": "Warranty",
+      "default": "5 Years Warranty"
+    },
+    {
+      "type": "header",
+      "content": "Premium Package"
+    },
+    {
+      "type": "text",
+      "id": "premium_name",
+      "label": "Name",
+      "default": "NAR Premium PPF"
+    },
+    {
+      "type": "text",
+      "id": "premium_mil",
+      "label": "Thickness",
+      "default": "8.5 mil thickness"
+    },
+    {
+      "type": "text",
+      "id": "premium_warranty",
+      "label": "Warranty",
+      "default": "7 Years Warranty"
+    },
+    {
+      "type": "header",
+      "content": "Hatchback Prices (PKR)"
+    },
+    {
+      "type": "number",
+      "id": "p_hatchback_classic",
+      "label": "Classic",
+      "default": 260000
+    },
+    {
+      "type": "number",
+      "id": "p_hatchback_premium",
+      "label": "Premium",
+      "default": 290000
+    },
+    {
+      "type": "text",
+      "id": "dur_hatchback",
+      "label": "Duration",
+      "default": "3 Working Days"
+    },
+    {
+      "type": "header",
+      "content": "Sedan Prices (PKR)"
+    },
+    {
+      "type": "number",
+      "id": "p_sedan_classic",
+      "label": "Classic",
+      "default": 300000
+    },
+    {
+      "type": "number",
+      "id": "p_sedan_premium",
+      "label": "Premium",
+      "default": 330000
+    },
+    {
+      "type": "text",
+      "id": "dur_sedan",
+      "label": "Duration",
+      "default": "3 Working Days"
+    },
+    {
+      "type": "header",
+      "content": "SUV Prices (PKR)"
+    },
+    {
+      "type": "number",
+      "id": "p_suv_classic",
+      "label": "Classic",
+      "default": 330000
+    },
+    {
+      "type": "number",
+      "id": "p_suv_premium",
+      "label": "Premium",
+      "default": 380000
+    },
+    {
+      "type": "text",
+      "id": "dur_suv",
+      "label": "Duration",
+      "default": "3 Working Days"
+    },
+    {
+      "type": "header",
+      "content": "XL SUV Prices (PKR)"
+    },
+    {
+      "type": "number",
+      "id": "p_xlsuv_classic",
+      "label": "Classic",
+      "default": 370000
+    },
+    {
+      "type": "number",
+      "id": "p_xlsuv_premium",
+      "label": "Premium",
+      "default": 420000
+    },
+    {
+      "type": "text",
+      "id": "dur_xlsuv",
+      "label": "Duration",
+      "default": "3 Working Days"
+    },
+    {
+      "type": "header",
+      "content": "Car Name Examples"
+    },
+    {
+      "type": "text",
+      "id": "ex_hatchback",
+      "label": "Hatchback Cars",
+      "default": "Swift, Mira, Dayz"
+    },
+    {
+      "type": "text",
+      "id": "ex_sedan",
+      "label": "Sedan Cars",
+      "default": "Corolla, Civic, Sonata"
+    },
+    {
+      "type": "text",
+      "id": "ex_suv",
+      "label": "SUV Cars",
+      "default": "Sportage L, Tucson, Haval H6"
+    },
+    {
+      "type": "text",
+      "id": "ex_xlsuv",
+      "label": "XL SUV Cars",
+      "default": "Fortuner, Land Cruiser, Prado"
+    }
   ],
-  "presets": [{"name": "PPF Pricing"}]
+  "presets": [
+    {
+      "name": "PPF Pricing"
+    }
+  ]
 }
 {% endschema %}
