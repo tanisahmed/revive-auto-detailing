@@ -630,15 +630,23 @@
   var _ppfOrigNext = window.rbNext;
   window.rbNext = function(step){
     _ppfOrigNext(step);
-    if(step === 3){ ppfShowDiscount(); }
+    if(step === 3){
+      // Small delay to ensure rv-total is populated first
+      setTimeout(function(){ ppfShowDiscount(); }, 50);
+    }
   };
 
   function ppfShowDiscount(){
     var chk  = document.getElementById('ppf-disc-chk');
     var summ = document.getElementById('ppf-disc-summary');
-    var rvEl = document.getElementById('rv-total');
-    if(!chk || !summ || !rvEl) return;
-    var raw  = parseInt((rvEl.textContent||'').replace(/[^0-9]/g,''))||0;
+    if(!chk || !summ) return;
+    // Use bd.price directly — rv-total may not be populated yet
+    var raw = (typeof bd !== 'undefined' && bd.price) ? bd.price : 0;
+    if(!raw){
+      // fallback: parse from rv-total
+      var rvEl = document.getElementById('rv-total');
+      raw = rvEl ? parseInt((rvEl.textContent||'').replace(/[^0-9]/g,''))||0 : 0;
+    }
     if(chk.checked && raw > 0){
       var disc  = Math.round(raw * 0.05);
       var final = raw - disc;
@@ -646,10 +654,21 @@
       document.getElementById('ppf-disc-amt').textContent    = '- PKR ' + disc.toLocaleString();
       document.getElementById('ppf-disc-total').textContent  = 'PKR ' + final.toLocaleString();
       summ.style.display = 'block';
+      // Also update rv-total to show discounted price
+      var rvEl2 = document.getElementById('rv-total');
+      if(rvEl2) rvEl2.textContent = 'PKR ' + final.toLocaleString() + ' (after 5% discount)';
     } else {
       summ.style.display = 'none';
+      // Restore original price in rv-total
+      var rvEl3 = document.getElementById('rv-total');
+      if(rvEl3 && raw > 0) rvEl3.textContent = 'PKR ' + raw.toLocaleString();
     }
   }
+
+  // Also run discount check when checkbox is toggled on step 3
+  document.addEventListener('change', function(e){
+    if(e.target && e.target.id === 'ppf-disc-chk') ppfShowDiscount();
+  });
 
   // Also run when checkbox is toggled while already on step 4
   document.addEventListener('change', function(e){
