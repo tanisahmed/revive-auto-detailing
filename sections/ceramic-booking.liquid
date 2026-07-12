@@ -315,6 +315,17 @@
           <div class="rad-srow"><span class="sl">Date & Time</span><span class="sv" id="ceramic-ss-dt">—</span></div>
           <div class="rad-srow"><span class="sl">Package</span><span class="sv" id="ceramic-ss-pkg">—</span></div>
           <div class="rad-srow"><span class="sl">Total</span><span class="sp" id="ceramic-ss-price">—</span></div>
+          <div id="ce-ss-disc-block" style="display:none;margin-top:0.5rem;padding:0.75rem;background:#f0fdf4;border-radius:8px;border:1px solid #86efac;">
+            <div style="display:flex;justify-content:space-between;font-size:0.82rem;color:#374151;margin-bottom:0.3rem;">
+              <span>Original Price</span><span id="ce-ss-orig" style="font-weight:600;">—</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:0.82rem;color:#16a34a;font-weight:700;margin-bottom:0.3rem;">
+              <span>10% Online Booking Discount</span><span id="ce-ss-disc-amt">—</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:0.95rem;font-weight:800;border-top:1px solid #86efac;padding-top:0.4rem;margin-top:0.3rem;">
+              <span style="color:#1f2937;">Amount to Pay</span><span id="ce-ss-final" style="color:#15803d;">—</span>
+            </div>
+          </div>
         </div>
         <div class="rad-sactions">
           <a href="/" class="rad-sbtn">Return to Home</a>
@@ -566,6 +577,17 @@
     document.getElementById(sid+'-ss-dt').textContent=ds+' at '+(bd.tm||'');
     document.getElementById(sid+'-ss-pkg').textContent=(bd.pkLabel||'')+(bd.vt?' - '+vtLabels[bd.vt]:'');
     document.getElementById(sid+'-ss-price').textContent=bd.price>0?'PKR '+bd.price.toLocaleString():'Contact for price';
+    // 10% discount breakdown on success screen
+    var ceDiscChk = document.getElementById('ce-disc-chk');
+    var ceDiscBlock = document.getElementById('ce-ss-disc-block');
+    if(ceDiscChk && ceDiscChk.checked && bd.price > 0 && ceDiscBlock){
+      var ceDisc  = Math.round(bd.price * 0.10);
+      var ceFinal = bd.price - ceDisc;
+      document.getElementById('ce-ss-orig').textContent     = 'PKR ' + bd.price.toLocaleString();
+      document.getElementById('ce-ss-disc-amt').textContent = '- PKR ' + ceDisc.toLocaleString();
+      document.getElementById('ce-ss-final').textContent    = 'PKR ' + ceFinal.toLocaleString();
+      ceDiscBlock.style.display = 'block';
+    }
     window.scrollTo({top:0,behavior:'smooth'});
   };
   // ── 10% Ceramic Online Discount ──
