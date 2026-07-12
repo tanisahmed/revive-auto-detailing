@@ -318,6 +318,17 @@
             <span class="rad-rev-total-lbl">Total Amount</span>
             <span class="rad-rev-total-price" id="rv-total">PKR —</span>
           </div>
+          <div id="ppf-s4-disc" style="display:none;margin-top:0.75rem;background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:0.85rem 1.1rem;margin-bottom:0.5rem;">
+            <div style="display:flex;justify-content:space-between;font-size:0.85rem;color:#374151;margin-bottom:0.35rem;">
+              <span>Original Price</span><span id="ppf-s4-orig" style="font-weight:600;">PKR —</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:0.85rem;color:#16a34a;font-weight:700;margin-bottom:0.35rem;">
+              <span>5% Online Booking Discount</span><span id="ppf-s4-disc-amt">— PKR —</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:1rem;font-weight:800;border-top:1px solid #86efac;padding-top:0.5rem;margin-top:0.25rem;">
+              <span style="color:#1f2937;">Amount to Pay</span><span id="ppf-s4-final" style="color:#15803d;">PKR —</span>
+            </div>
+          </div>
           <label class="rad-terms">
             <input type="checkbox" id="rf-terms">
             <span>I agree to the <a href="/policies/terms-of-service" target="_blank">Terms & Conditions</a> and consent to RAD contacting me via WhatsApp and email.</span>
@@ -550,6 +561,21 @@
     document.getElementById('rv-pk').textContent=bd.pkLabel||'—';
     document.getElementById('rv-dur').textContent=bd.dur||'—';
     document.getElementById('rv-total').textContent=bd.price?'PKR '+bd.price.toLocaleString():'—';
+    // Show discount in Step 4 if checkbox ticked
+    var _chk = document.getElementById('ppf-disc-chk');
+    var _s4disc = document.getElementById('ppf-s4-disc');
+    if(_chk && _s4disc && bd.price){
+      if(_chk.checked){
+        var _disc = Math.round(bd.price * 0.05);
+        var _final = bd.price - _disc;
+        document.getElementById('ppf-s4-orig').textContent    = 'PKR ' + bd.price.toLocaleString();
+        document.getElementById('ppf-s4-disc-amt').textContent = '- PKR ' + _disc.toLocaleString();
+        document.getElementById('ppf-s4-final').textContent   = 'PKR ' + _final.toLocaleString();
+        _s4disc.style.display = 'block';
+      } else {
+        _s4disc.style.display = 'none';
+      }
+    }
   }
 
   window.rbConfirm = function(){
