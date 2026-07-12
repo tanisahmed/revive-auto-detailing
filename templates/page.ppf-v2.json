@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -21,14 +12,14 @@
         "eyebrow": "Karachi's #1 PPF Studio",
         "title": "Protect Your Car's Paint",
         "title_blue": "For Years to Come",
-        "subtitle": "NAR certified Paint Protection Film \u2014 invisible, self-healing, and backed by a 5-7 year warranty. The smartest investment for your car.",
+        "subtitle": "NAR certified Paint Protection Film — invisible, self-healing, and backed by a 5-7 year warranty. The smartest investment for your car.",
         "btn1_text": "Book Free Consultation",
         "btn1_url": "",
         "stat1_num": "500+",
         "stat1_lbl": "Cars Protected",
         "stat2_num": "7 Yr",
         "stat2_lbl": "Max Warranty",
-        "stat3_num": "4.9\u2605",
+        "stat3_num": "4.9★",
         "stat3_lbl": "Google Rating"
       }
     },
@@ -88,7 +79,7 @@
       "name": "PPF V2 CTA",
       "settings": {
         "title": "Ready to Protect Your Car?",
-        "subtitle": "Book your free consultation today. Our team will walk you through the best package for your car and budget \u2014 with zero pressure.",
+        "subtitle": "Book your free consultation today. Our team will walk you through the best package for your car and budget — with zero pressure.",
         "btn1_text": "Book My Appointment",
         "btn1_url": ""
       }
@@ -128,9 +119,22 @@
     "ppf_comparison": {
       "type": "ppf-comparison",
       "settings": {}
+    },
+    "ppf_ann_bar": {
+      "type": "ppf-announcement-bar",
+      "settings": {
+        "show_bar": true,
+        "icon": "🛡️",
+        "text": "Book PPF online & get 5% OFF — Limited slots available this week!",
+        "link_text": "Book Now",
+        "link_url": "/pages/ppf-booking",
+        "bg_color": "#1e3a8a",
+        "text_color": "#ffffff"
+      }
     }
   },
   "order": [
+    "ppf_ann_bar",
     "main",
     "ppf_v2_hero_n7R34x",
     "ppf_v2_compare_eVKAEQ",
