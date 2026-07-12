@@ -150,15 +150,29 @@
         <div class="rad-bstep" id="rs1">
           <h2 class="rad-bstep-title">Vehicle & Package</h2>
           <p class="rad-bstep-desc">Tell us about your car and choose a PPF package.</p>
+
           <div class="rad-frow">
             <div class="rad-fg">
               <label class="rad-fl" for="rf-mk">Vehicle Make <em>*</em></label>
               <input type="text" id="rf-mk" class="rad-fi" placeholder="e.g. Toyota">
               <div class="rad-ferr" id="re-mk">Enter vehicle make</div>
             </div>
-          <div class="rad-fg">
+            <div class="rad-fg">
+              <label class="rad-fl" for="rf-mo">Vehicle Model <em>*</em></label>
+              <input type="text" id="rf-mo" class="rad-fi" placeholder="e.g. Corolla">
+              <div class="rad-ferr" id="re-mo">Enter vehicle model</div>
+            </div>
+          </div>
+
+          <div class="rad-frow">
+            <div class="rad-fg">
+              <label class="rad-fl" for="rf-yr">Year <em>*</em></label>
+              <input type="text" id="rf-yr" class="rad-fi" placeholder="e.g. 2022">
+              <div class="rad-ferr" id="re-yr">Enter year</div>
+            </div>
+            <div class="rad-fg">
               <label class="rad-fl" for="rf-vt">Vehicle Type <em>*</em></label>
-              <select id="rf-vt" class="rad-fi" onchange="rbUpdatePrice(); ppfDiscCalc(); try{sessionStorage.setItem('rad_selected_vtype', this.value);}catch(e){}">
+              <select id="rf-vt" class="rad-fi" onchange="rbUpdatePrice(); ppfDiscCalc(); try{sessionStorage.setItem('rad_selected_vtype',this.value);}catch(e){}">
                 <option value="" disabled selected>Select type</option>
                 <option value="hatchback">Hatchback</option>
                 <option value="sedan">Sedan</option>
@@ -167,6 +181,8 @@
               </select>
               <div class="rad-ferr" id="re-vt">Select vehicle type</div>
             </div>
+          </div>
+
           <div class="rad-fg">
             <label class="rad-fl">PPF Package <em>*</em></label>
             <div class="rad-pkgs">
@@ -176,22 +192,30 @@
                   <div class="rad-pkg-name">NAR Classic PPF 8.0mil</div>
                   <div class="rad-pkg-price" id="rpp-classic">Select vehicle type to see price</div>
                 </div>
+              </div>
+              <div class="rad-pkg" onclick="rbSelPkg(this,'premium'); ppfDiscCalc();">
+                <div class="rad-pkg-radio"></div>
+                <div>
+                  <div class="rad-pkg-name">NAR Premium PPF 8.5mil</div>
+                  <div class="rad-pkg-price" id="rpp-premium">Select vehicle type to see price</div>
+                </div>
+              </div>
+            </div>
+            <div class="rad-ferr" id="re-pk">Select a package</div>
+          </div>
+
           <div class="rad-price-show" id="rprice">
             <span class="rad-price-lbl" id="rprice-lbl">Total</span>
             <span class="rad-price-val" id="rprice-val">PKR 0</span>
           </div>
-          <div style="margin:1.25rem 0 1rem;padding:1rem 1.25rem;background:#f0fdf4;border:1.5px solid #86efac;border-radius:10px;display:flex;align-items:flex-start;gap:0.75rem;">
+
+          <div style="margin:1.25rem 0 0.5rem;padding:1rem 1.25rem;background:#f0fdf4;border:1.5px solid #86efac;border-radius:10px;display:flex;align-items:flex-start;gap:0.75rem;">
             <input type="checkbox" id="ppf-disc-chk" onchange="ppfDiscCalc()" style="width:18px;height:18px;margin-top:2px;accent-color:#16a34a;cursor:pointer;flex-shrink:0;">
             <label for="ppf-disc-chk" style="font-size:0.9rem;font-weight:600;color:#15803d;cursor:pointer;line-height:1.5;">
               I would like to receive a 5% discount on PPF for booking my slot online!
             </label>
           </div>
-          <div class="rad-bnav">
-            <button class="rad-bbtn-back" onclick="rbPrev(3)">← Back</button>
-            <button class="rad-bbtn-next" onclick="rbNext(3)">Review Booking →</button>
-          </div>
-        </div>
-          
+
           <div id="ppf-disc-inline" style="display:none;background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:0.85rem 1.1rem;margin-bottom:0.75rem;">
             <div style="display:flex;justify-content:space-between;font-size:0.875rem;color:#374151;margin-bottom:0.35rem;">
               <span>Original Price</span><span id="ppf-di-orig" style="font-weight:600;">PKR —</span>
@@ -203,6 +227,7 @@
               <span style="color:#1f2937;">Amount to Pay</span><span id="ppf-di-total" style="color:#15803d;">PKR —</span>
             </div>
           </div>
+
           <div class="rad-bnav">
             <button class="rad-bbtn-back" disabled>← Back</button>
             <button class="rad-bbtn-next" onclick="rbNext(1)">Next: Your Details →</button>
