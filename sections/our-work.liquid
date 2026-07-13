@@ -132,6 +132,32 @@
     if(e.key==='ArrowRight') goTo(idx+1);
   });
 })();
+
+  // ── Mobile video thumbnail fix ──
+  // Force load first frame as poster image
+  function initVideoThumbs(){
+    document.querySelectorAll('.rad-ow-card video, .rad-rev-card video').forEach(function(vid){
+      if(vid.getAttribute('poster')) return; // already has poster
+      // Create hidden canvas to capture first frame
+      vid.addEventListener('loadeddata', function(){
+        try {
+          var canvas = document.createElement('canvas');
+          canvas.width  = vid.videoWidth  || 300;
+          canvas.height = vid.videoHeight || 533;
+          canvas.getContext('2d').drawImage(vid, 0, 0, canvas.width, canvas.height);
+          vid.setAttribute('poster', canvas.toDataURL('image/jpeg', 0.8));
+          vid.pause();
+        } catch(e){}
+      }, {once: true});
+      // Trigger load
+      vid.load();
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initVideoThumbs);
+  } else {
+    initVideoThumbs();
+  }
 </script>
 
 {% schema %}
