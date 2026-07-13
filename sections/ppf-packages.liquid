@@ -46,6 +46,9 @@
 
   /* Body */
   .ppf-card-body { padding: 1.1rem 1.25rem 1rem; flex: 1; display: flex; flex-direction: column; }
+  .ppf-vtype-badge { display:none; text-align:center; margin-bottom:8px; }
+  .ppf-vtype-badge span { display:inline-block; background:#1e3a8a; color:#fff; font-size:11px; font-weight:700; padding:3px 12px; border-radius:100px; letter-spacing:0.05em; text-transform:uppercase; }
+  .ppf-card-crystalline .ppf-vtype-badge span { background:#C0392B; }
   .ppf-price { font-size: 28px; font-weight: 700; color: #111827; text-align: center; margin-bottom: 3px; }
   .ppf-tagline { font-size: 13px; color: #6b7280; text-align: center; margin-bottom: 12px; }
   .ppf-section-lbl { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #6b7280; padding-bottom: 5px; border-bottom: 1px solid #e5e7eb; margin-bottom: 8px; }
@@ -127,6 +130,7 @@
           </div>
         </div>
         <div class="ppf-card-body">
+          <div class="ppf-vtype-badge" id="ppfb-cr-badge"><span id="ppfb-cr-badge-txt">Hatchback</span></div>
           <div id="ppf-cr-price" class="ppf-price">PKR 180,000</div>
           <div class="ppf-tagline">Entry-level PPF protection</div>
           <button class="ppf-btn ppf-btn-cryst" id="ppf-cr-btn">{{ section.settings.btn_text | default: "Select Package" }}</button>
@@ -152,6 +156,7 @@
           </div>
         </div>
         <div class="ppf-card-body">
+          <div class="ppf-vtype-badge" id="ppfb-c-badge"><span id="ppfb-c-badge-txt">Hatchback</span></div>
           <div id="ppf-c-price" class="ppf-price">PKR 260,000</div>
           <div class="ppf-tagline">Complete PPF from bumper to bumper</div>
           <button class="ppf-btn" id="ppf-c-btn">{{ section.settings.btn_text | default: "Select Package" }}</button>
@@ -188,6 +193,7 @@
           </div>
         </div>
         <div class="ppf-card-body">
+          <div class="ppf-vtype-badge" id="ppfb-p-badge"><span id="ppfb-p-badge-txt">Hatchback</span></div>
           <div id="ppf-p-price" class="ppf-price">PKR 290,000</div>
           <div class="ppf-tagline">Complete PPF from bumper to bumper</div>
           <button class="ppf-btn" id="ppf-p-btn">{{ section.settings.btn_text | default: "Select Package" }}</button>
@@ -241,6 +247,15 @@
     if (!d) return;
     document.getElementById('ppf-vlabel').textContent = d.label;
     document.getElementById('ppf-vex').textContent = carEx[vtype] ? '(' + carEx[vtype] + ')' : '';
+    // Update vehicle type badges on all 3 cards
+    ['ppfb-cr-badge','ppfb-c-badge','ppfb-p-badge'].forEach(function(bid){
+      var badge = document.getElementById(bid);
+      if(badge){ badge.style.display='block'; }
+    });
+    ['ppfb-cr-badge-txt','ppfb-c-badge-txt','ppfb-p-badge-txt'].forEach(function(tid){
+      var txt = document.getElementById(tid);
+      if(txt){ txt.textContent = d.label; }
+    });
     var crp=document.getElementById('ppf-cr-price'); if(crp) crp.textContent=fmt(d.crprice);
     var crd=document.getElementById('ppf-cr-dur'); if(crd) crd.innerHTML='&#9201; Process: '+d.crdur;
     document.getElementById('ppf-c-price').textContent = fmt(d.classic.price);
