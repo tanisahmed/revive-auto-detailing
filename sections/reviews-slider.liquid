@@ -73,9 +73,15 @@
         {%- for block in section.blocks -%}
           {%- if block.settings.video != blank -%}
           <div class="rad-rev-card" data-index="{{ forloop.index0 }}">
-            <video src="{{ block.settings.video.sources.last.url }}"
-              {%- if block.settings.thumb != blank %} poster="{{ block.settings.thumb | image_url: width: 600 }}"{% endif %}
-              muted playsinline preload="auto" onmouseover="this.play()" onmouseout="this.pause()"></video>
+            <video
+                src="{{ block.settings.video.sources.last.url }}"
+                poster="{{ block.settings.video.preview_image | image_url: width: 600 }}"
+                muted
+                playsinline
+                preload="none"
+                onmouseover="this.play()"
+                onmouseout="this.pause(); this.load();"
+              ></video>
             <div class="rad-rev-card-overlay"></div>
             <div class="rad-rev-play">
               <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
