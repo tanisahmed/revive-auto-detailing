@@ -73,8 +73,9 @@
         {%- for block in section.blocks -%}
           {%- if block.settings.video != blank -%}
           <div class="rad-rev-card" data-index="{{ forloop.index0 }}">
-            <video src="{{ block.settings.video.sources.last.url }}" muted playsinline preload="metadata"
-              onmouseover="this.play()" onmouseout="this.pause()"></video>
+            <video src="{{ block.settings.video.sources.last.url }}"
+              {%- if block.settings.thumb != blank %} poster="{{ block.settings.thumb | image_url: width: 600 }}"{% endif %}
+              muted playsinline preload="auto" onmouseover="this.play()" onmouseout="this.pause()"></video>
             <div class="rad-rev-card-overlay"></div>
             <div class="rad-rev-play">
               <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
@@ -185,18 +186,52 @@
 {
   "name": "Customer Video Reviews",
   "settings": [
-    {"type":"text","id":"tag","label":"Tag Line","default":"Real Customers • Real Results"},
-    {"type":"text","id":"title","label":"Section Title","default":"What Our Customers Say"},
-    {"type":"text","id":"subtitle","label":"Subtitle","default":"Watch real reviews from Karachi car owners"}
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Tag Line",
+      "default": "Real Customers • Real Results"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "What Our Customers Say"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Watch real reviews from Karachi car owners"
+    }
   ],
   "blocks": [
     {
       "type": "review",
       "name": "Video Review",
       "settings": [
-        {"type":"video","id":"video","label":"Customer Video"},
-        {"type":"text","id":"name","label":"Customer Name","default":"Ahmed Khan"},
-        {"type":"text","id":"service","label":"Service Taken","default":"Ceramic Coating"}
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Customer Video"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Customer Name",
+          "default": "Ahmed Khan"
+        },
+        {
+          "type": "text",
+          "id": "service",
+          "label": "Service Taken",
+          "default": "Ceramic Coating"
+        },
+        {
+          "type": "image_picker",
+          "id": "thumb",
+          "label": "Thumbnail Image (for mobile)"
+        }
       ]
     }
   ],
@@ -204,12 +239,48 @@
     {
       "name": "Customer Video Reviews",
       "blocks": [
-        {"type":"review","settings":{"name":"Ahmed Khan","service":"Ceramic Coating"}},
-        {"type":"review","settings":{"name":"Sara Malik","service":"PPF Installation"}},
-        {"type":"review","settings":{"name":"Usman Ali","service":"Window Tinting"}},
-        {"type":"review","settings":{"name":"Farrukh Baig","service":"Anti-Rust Coating"}},
-        {"type":"review","settings":{"name":"Zoya Ahmed","service":"Car Detailing"}},
-        {"type":"review","settings":{"name":"Hassan Raza","service":"Color PPF"}}
+        {
+          "type": "review",
+          "settings": {
+            "name": "Ahmed Khan",
+            "service": "Ceramic Coating"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "name": "Sara Malik",
+            "service": "PPF Installation"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "name": "Usman Ali",
+            "service": "Window Tinting"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "name": "Farrukh Baig",
+            "service": "Anti-Rust Coating"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "name": "Zoya Ahmed",
+            "service": "Car Detailing"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "name": "Hassan Raza",
+            "service": "Color PPF"
+          }
+        }
       ]
     }
   ]
