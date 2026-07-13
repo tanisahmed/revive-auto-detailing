@@ -213,6 +213,13 @@
 
         <div class="ppfb-sec-lbl">PPF Package</div>
         <div class="ppfb-pkgs">
+          <div class="ppfb-pkg" id="ppfb-pkg-crystalline" onclick="ppfbSelPkg('crystalline')" style="border-left:4px solid #C0392B;">
+            <div class="ppfb-pkg-radio" style="border-color:#C0392B;"></div>
+            <div>
+              <div class="ppfb-pkg-name">Crystalline PPF 7.9mil</div>
+              <div class="ppfb-pkg-price" id="ppfb-pp-crystalline">Select vehicle type to see price</div>
+            </div>
+          </div>
           <div class="ppfb-pkg" id="ppfb-pkg-classic" onclick="ppfbSelPkg('classic')">
             <div class="ppfb-pkg-radio"></div>
             <div>
@@ -396,10 +403,10 @@
 (function(){
 
   var pricing = {
-    hatchback: { classic:{price:{{ section.settings.p_hatch_classic | default: 260000 }},dur:'{{ section.settings.dur_hatch | default: "3 Working Days" }}'}, premium:{price:{{ section.settings.p_hatch_premium | default: 290000 }},dur:'{{ section.settings.dur_hatch | default: "3 Working Days" }}'} },
-    sedan:     { classic:{price:{{ section.settings.p_sedan_classic | default: 300000 }},dur:'{{ section.settings.dur_sedan | default: "3 Working Days" }}'}, premium:{price:{{ section.settings.p_sedan_premium | default: 330000 }},dur:'{{ section.settings.dur_sedan | default: "3 Working Days" }}'} },
-    suv:       { classic:{price:{{ section.settings.p_suv_classic | default: 330000 }},dur:'{{ section.settings.dur_suv | default: "3 Working Days" }}'}, premium:{price:{{ section.settings.p_suv_premium | default: 380000 }},dur:'{{ section.settings.dur_suv | default: "3 Working Days" }}'} },
-    'xl-suv':  { classic:{price:{{ section.settings.p_xlsuv_classic | default: 370000 }},dur:'{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'}, premium:{price:{{ section.settings.p_xlsuv_premium | default: 420000 }},dur:'{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'} }
+    hatchback: { crystalline:{price:{{ section.settings.p_hatch_cryst | default: 180000 }},dur:'{{ section.settings.dur_hatch | default: "3 Working Days" }}'}, classic:{price:{{ section.settings.p_hatch_classic | default: 260000 }},dur:'{{ section.settings.dur_hatch | default: "3 Working Days" }}'}, premium:{price:{{ section.settings.p_hatch_premium | default: 290000 }},dur:'{{ section.settings.dur_hatch | default: "3 Working Days" }}'} },
+    sedan:     { crystalline:{price:{{ section.settings.p_sedan_cryst | default: 200000 }},dur:'{{ section.settings.dur_sedan | default: "3 Working Days" }}'}, classic:{price:{{ section.settings.p_sedan_classic | default: 300000 }},dur:'{{ section.settings.dur_sedan | default: "3 Working Days" }}'}, premium:{price:{{ section.settings.p_sedan_premium | default: 330000 }},dur:'{{ section.settings.dur_sedan | default: "3 Working Days" }}'} },
+    suv:       { crystalline:{price:{{ section.settings.p_suv_cryst | default: 240000 }},dur:'{{ section.settings.dur_suv | default: "3 Working Days" }}'}, classic:{price:{{ section.settings.p_suv_classic | default: 330000 }},dur:'{{ section.settings.dur_suv | default: "3 Working Days" }}'}, premium:{price:{{ section.settings.p_suv_premium | default: 380000 }},dur:'{{ section.settings.dur_suv | default: "3 Working Days" }}'} },
+    'xl-suv':  { crystalline:{price:{{ section.settings.p_xlsuv_cryst | default: 280000 }},dur:'{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'}, classic:{price:{{ section.settings.p_xlsuv_classic | default: 370000 }},dur:'{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'}, premium:{price:{{ section.settings.p_xlsuv_premium | default: 420000 }},dur:'{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'} }
   };
 
   var vtLabels = {hatchback:'Hatchback',sedan:'Sedan',suv:'SUV','xl-suv':'XL SUV'};
@@ -469,8 +476,9 @@
   function ppfbUpdatePrices(){
     if(!selVt || !pricing[selVt]) return;
     var d = pricing[selVt];
-    el('ppfb-pp-classic').textContent = fmt(d.classic.price) + ' · ' + d.classic.dur;
-    el('ppfb-pp-premium').textContent = fmt(d.premium.price) + ' · ' + d.premium.dur;
+    el('ppfb-pp-crystalline').textContent = fmt(d.crystalline.price) + ' · ' + d.crystalline.dur;
+    el('ppfb-pp-classic').textContent    = fmt(d.classic.price)    + ' · ' + d.classic.dur;
+    el('ppfb-pp-premium').textContent    = fmt(d.premium.price)    + ' · ' + d.premium.dur;
     if(selPkg){
       el('ppfb-price-val').textContent = fmt(d[selPkg].price);
       el('ppfb-price-box').classList.add('show');
@@ -481,6 +489,12 @@
     selPkg = pkg;
     document.querySelectorAll('.ppfb-pkg').forEach(function(p){ p.classList.remove('sel'); });
     el('ppfb-pkg-'+pkg).classList.add('sel');
+    // Red selected state for crystalline
+    document.querySelectorAll('.ppfb-pkg-radio').forEach(function(r){ r.style.borderColor=''; r.style.background=''; });
+    if(pkg==='crystalline'){
+      el('ppfb-pkg-crystalline').querySelector('.ppfb-pkg-radio').style.borderColor='#C0392B';
+      el('ppfb-pkg-crystalline').querySelector('.ppfb-pkg-radio').style.background='#C0392B';
+    }
     showErr('ppfb-e-pkg', false);
     if(selVt && pricing[selVt]){
       el('ppfb-price-val').textContent = fmt(pricing[selVt][pkg].price);
@@ -513,7 +527,7 @@
   };
 
   function ppfbBuildReview(){
-    var pkgLabels={classic:'NAR Classic PPF 8.0mil',premium:'NAR Premium PPF 8.5mil'};
+    var pkgLabels={crystalline:'Crystalline PPF 7.9mil',classic:'NAR Classic PPF 8.0mil',premium:'NAR Premium PPF 8.5mil'};
     var price = pricing[selVt][selPkg].price;
     var dur   = pricing[selVt][selPkg].dur;
     var chk   = el('ppfb-disc-chk');
@@ -556,7 +570,7 @@
     var disc   = discOn ? Math.round(price*0.05) : 0;
     var final  = price - disc;
     var dur    = pricing[selVt][selPkg].dur;
-    var pkgLabels={classic:'NAR Classic PPF 8.0mil',premium:'NAR Premium PPF 8.5mil'};
+    var pkgLabels={crystalline:'Crystalline PPF 7.9mil',classic:'NAR Classic PPF 8.0mil',premium:'NAR Premium PPF 8.5mil'};
     var ref    = 'RAD-PPF-'+Date.now().toString(36).toUpperCase().slice(-6);
     var ds     = bd.dt ? new Date(bd.dt).toLocaleDateString('en-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric',timeZone:'UTC'}) : '—';
     var cleanPhone = bd.ph.replace(/[^0-9]/g,'');
@@ -619,25 +633,139 @@
 {
   "name": "PPF Booking",
   "settings": [
-    {"type":"header","content":"Page Text"},
-    {"type":"text","id":"title","label":"Page Title","default":"Book PPF Appointment"},
-    {"type":"text","id":"subtitle","label":"Subtitle","default":"Premium Paint Protection Film installation in Karachi"},
-    {"type":"header","content":"Duration"},
-    {"type":"text","id":"dur_hatch","label":"Hatchback Duration","default":"3 Working Days"},
-    {"type":"text","id":"dur_sedan","label":"Sedan Duration","default":"3 Working Days"},
-    {"type":"text","id":"dur_suv","label":"SUV Duration","default":"3 Working Days"},
-    {"type":"text","id":"dur_xlsuv","label":"XL SUV Duration","default":"3 Working Days"},
-    {"type":"header","content":"Classic PPF Pricing (PKR)"},
-    {"type":"number","id":"p_hatch_classic","label":"Hatchback","default":260000},
-    {"type":"number","id":"p_sedan_classic","label":"Sedan","default":300000},
-    {"type":"number","id":"p_suv_classic","label":"SUV","default":330000},
-    {"type":"number","id":"p_xlsuv_classic","label":"XL SUV","default":370000},
-    {"type":"header","content":"Premium PPF Pricing (PKR)"},
-    {"type":"number","id":"p_hatch_premium","label":"Hatchback","default":290000},
-    {"type":"number","id":"p_sedan_premium","label":"Sedan","default":330000},
-    {"type":"number","id":"p_suv_premium","label":"SUV","default":380000},
-    {"type":"number","id":"p_xlsuv_premium","label":"XL SUV","default":420000}
+    {
+      "type": "header",
+      "content": "Page Text"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Page Title",
+      "default": "Book PPF Appointment"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Premium Paint Protection Film installation in Karachi"
+    },
+    {
+      "type": "header",
+      "content": "Duration"
+    },
+    {
+      "type": "text",
+      "id": "dur_hatch",
+      "label": "Hatchback Duration",
+      "default": "3 Working Days"
+    },
+    {
+      "type": "text",
+      "id": "dur_sedan",
+      "label": "Sedan Duration",
+      "default": "3 Working Days"
+    },
+    {
+      "type": "text",
+      "id": "dur_suv",
+      "label": "SUV Duration",
+      "default": "3 Working Days"
+    },
+    {
+      "type": "text",
+      "id": "dur_xlsuv",
+      "label": "XL SUV Duration",
+      "default": "3 Working Days"
+    },
+    {
+      "type": "header",
+      "content": "Crystalline PPF Pricing (PKR)"
+    },
+    {
+      "type": "number",
+      "id": "p_hatch_cryst",
+      "label": "Hatchback",
+      "default": 180000
+    },
+    {
+      "type": "number",
+      "id": "p_sedan_cryst",
+      "label": "Sedan",
+      "default": 200000
+    },
+    {
+      "type": "number",
+      "id": "p_suv_cryst",
+      "label": "SUV",
+      "default": 240000
+    },
+    {
+      "type": "number",
+      "id": "p_xlsuv_cryst",
+      "label": "XL SUV",
+      "default": 280000
+    },
+    {
+      "type": "header",
+      "content": "Classic PPF Pricing (PKR)"
+    },
+    {
+      "type": "number",
+      "id": "p_hatch_classic",
+      "label": "Hatchback",
+      "default": 260000
+    },
+    {
+      "type": "number",
+      "id": "p_sedan_classic",
+      "label": "Sedan",
+      "default": 300000
+    },
+    {
+      "type": "number",
+      "id": "p_suv_classic",
+      "label": "SUV",
+      "default": 330000
+    },
+    {
+      "type": "number",
+      "id": "p_xlsuv_classic",
+      "label": "XL SUV",
+      "default": 370000
+    },
+    {
+      "type": "header",
+      "content": "Premium PPF Pricing (PKR)"
+    },
+    {
+      "type": "number",
+      "id": "p_hatch_premium",
+      "label": "Hatchback",
+      "default": 290000
+    },
+    {
+      "type": "number",
+      "id": "p_sedan_premium",
+      "label": "Sedan",
+      "default": 330000
+    },
+    {
+      "type": "number",
+      "id": "p_suv_premium",
+      "label": "SUV",
+      "default": 380000
+    },
+    {
+      "type": "number",
+      "id": "p_xlsuv_premium",
+      "label": "XL SUV",
+      "default": 420000
+    }
   ],
-  "presets":[{"name":"PPF Booking"}]
+  "presets": [
+    {
+      "name": "PPF Booking"
+    }
+  ]
 }
 {% endschema %}
