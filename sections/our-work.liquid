@@ -59,8 +59,9 @@
         {%- for block in section.blocks -%}
           {%- if block.settings.video != blank -%}
           <div class="rad-ow-card" data-index="{{ forloop.index0 }}">
-            <video src="{{ block.settings.video.sources.last.url }}" muted playsinline preload="metadata"
-              onmouseover="this.play()" onmouseout="this.pause()"></video>
+            <video src="{{ block.settings.video.sources.last.url }}"
+              {%- if block.settings.thumb != blank %} poster="{{ block.settings.thumb | image_url: width: 600 }}"{% endif %}
+              muted playsinline preload="auto" onmouseover="this.play()" onmouseout="this.pause()"></video>
             <div class="rad-ow-card-overlay"></div>
             <div class="rad-ow-play">
               <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
@@ -137,18 +138,52 @@
 {
   "name": "Our Work",
   "settings": [
-    {"type":"text","id":"tag","label":"Tag Line","default":"Karachi • Revive Auto Detailing"},
-    {"type":"text","id":"title","label":"Section Title","default":"Our Work"},
-    {"type":"text","id":"subtitle","label":"Subtitle","default":"Real results on real cars — from our studio in Karachi"}
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Tag Line",
+      "default": "Karachi • Revive Auto Detailing"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Our Work"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Real results on real cars — from our studio in Karachi"
+    }
   ],
   "blocks": [
     {
       "type": "work_video",
       "name": "Work Video",
       "settings": [
-        {"type":"video","id":"video","label":"Video"},
-        {"type":"text","id":"vehicle","label":"Vehicle Name","default":"Toyota Corolla"},
-        {"type":"text","id":"service","label":"Service","default":"Ceramic Coating"}
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+        {
+          "type": "text",
+          "id": "vehicle",
+          "label": "Vehicle Name",
+          "default": "Toyota Corolla"
+        },
+        {
+          "type": "text",
+          "id": "service",
+          "label": "Service",
+          "default": "Ceramic Coating"
+        },
+        {
+          "type": "image_picker",
+          "id": "thumb",
+          "label": "Thumbnail Image (for mobile)"
+        }
       ]
     }
   ],
@@ -156,12 +191,48 @@
     {
       "name": "Our Work",
       "blocks": [
-        {"type":"work_video","settings":{"vehicle":"Toyota Corolla","service":"Ceramic Coating"}},
-        {"type":"work_video","settings":{"vehicle":"Honda Civic","service":"PPF Installation"}},
-        {"type":"work_video","settings":{"vehicle":"KIA Sportage","service":"Window Tinting"}},
-        {"type":"work_video","settings":{"vehicle":"Suzuki Swift","service":"Anti-Rust Coating"}},
-        {"type":"work_video","settings":{"vehicle":"Toyota Fortuner","service":"Car Detailing"}},
-        {"type":"work_video","settings":{"vehicle":"Honda Vezel","service":"Color PPF"}}
+        {
+          "type": "work_video",
+          "settings": {
+            "vehicle": "Toyota Corolla",
+            "service": "Ceramic Coating"
+          }
+        },
+        {
+          "type": "work_video",
+          "settings": {
+            "vehicle": "Honda Civic",
+            "service": "PPF Installation"
+          }
+        },
+        {
+          "type": "work_video",
+          "settings": {
+            "vehicle": "KIA Sportage",
+            "service": "Window Tinting"
+          }
+        },
+        {
+          "type": "work_video",
+          "settings": {
+            "vehicle": "Suzuki Swift",
+            "service": "Anti-Rust Coating"
+          }
+        },
+        {
+          "type": "work_video",
+          "settings": {
+            "vehicle": "Toyota Fortuner",
+            "service": "Car Detailing"
+          }
+        },
+        {
+          "type": "work_video",
+          "settings": {
+            "vehicle": "Honda Vezel",
+            "service": "Color PPF"
+          }
+        }
       ]
     }
   ]
