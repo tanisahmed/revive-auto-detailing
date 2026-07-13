@@ -119,15 +119,6 @@
     "our_work_UYCqcx": {
       "type": "our-work",
       "blocks": {
-        "work_video_Kygt9e": {
-          "type": "work_video",
-          "settings": {
-            "video": "shopify://files/videos/BYD Shark 6 White.MP4",
-            "vehicle": "BYD Shark 6",
-            "service": "NAR Classic PPF Installation",
-            "thumb": "shopify://shop_images/SaveVid.Net_706483316_17966723517078672_7661059615161583245_n.jpg"
-          }
-        },
         "work_video_LLciFe": {
           "type": "work_video",
           "settings": {
@@ -169,7 +160,6 @@
         }
       },
       "block_order": [
-        "work_video_Kygt9e",
         "work_video_LLciFe",
         "work_video_L7LzPc",
         "work_video_4ieAYM",
