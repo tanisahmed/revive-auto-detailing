@@ -597,8 +597,10 @@
       headers:{'Content-Type':'application/json','Accept':'application/json'},
       body:JSON.stringify({_subject:'PPF Booking: '+ref+' — '+bd.fn,_replyto:bd.em,message:body})
     }).then(function(){
+      firePixelLead({service:'PPF - '+pkgLabels[selPkg], value: discOn ? final : price});
       ppfbShowSuccess(ref, ds, pkgLabels[selPkg]+' - '+vtLabels[selVt], price, discOn, disc, final);
     }).catch(function(){
+      firePixelLead({service:'PPF - '+pkgLabels[selPkg], value: discOn ? final : price});
       ppfbShowSuccess(ref, ds, pkgLabels[selPkg]+' - '+vtLabels[selVt], price, discOn, disc, final);
     });
   };
@@ -627,6 +629,20 @@
   if(dtEl) dtEl.min = new Date().toISOString().split('T')[0];
 
 })();
+
+  // ── Meta Pixel — Lead Event ──
+  function firePixelLead(params) {
+    try {
+      if(typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+          content_name: params.service || 'PPF',
+          content_category: 'Automotive Service',
+          value: params.value || 0,
+          currency: 'PKR'
+        });
+      }
+    } catch(e) {}
+  }
 </script>
 
 {% schema %}
