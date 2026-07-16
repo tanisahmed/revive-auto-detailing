@@ -481,7 +481,9 @@
     }).catch(function(){});
 
     setTimeout(function() {
-      document.getElementById('rab-form').style.display = 'none';
+      document.
+    firePixelLead({service:'General Booking', value: 0});
+    getElementById('rab-form').style.display = 'none';
       document.querySelector('.rad-prog').style.display = 'none';
       var summary = '<div class="rad-rev-row"><span class="rl">Name</span><span class="rv">' + state.name + '</span></div>' +
         '<div class="rad-rev-row"><span class="rl">Services</span><span class="rv">' + selectedNames + '</span></div>' +
@@ -493,6 +495,20 @@
   };
 
 })();
+
+  // ── Meta Pixel — Lead Event ──
+  function firePixelLead(params) {
+    try {
+      if(typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+          content_name: params.service || 'General Booking',
+          content_category: 'Automotive Service',
+          value: params.value || 0,
+          currency: 'PKR'
+        });
+      }
+    } catch(e) {}
+  }
 </script>
 
 {% schema %}
