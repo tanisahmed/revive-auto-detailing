@@ -573,6 +573,7 @@
     document.querySelector('.rad-steps').style.display='none';
     var s=document.getElementById(sid+'-rad-bsuccess');
     s.classList.add('show');
+    firePixelLead({service:'Ceramic Coating', value: bd.price||0});
     document.getElementById(sid+'-ss-ref').textContent=ref;
     document.getElementById(sid+'-ss-dt').textContent=ds+' at '+(bd.tm||'');
     document.getElementById(sid+'-ss-pkg').textContent=(bd.pkLabel||'')+(bd.vt?' - '+vtLabels[bd.vt]:'');
@@ -620,6 +621,20 @@
   });
 
 })();
+
+  // ── Meta Pixel — Lead Event ──
+  function firePixelLead(params) {
+    try {
+      if(typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+          content_name: params.service || 'Ceramic Coating',
+          content_category: 'Automotive Service',
+          value: params.value || 0,
+          currency: 'PKR'
+        });
+      }
+    } catch(e) {}
+  }
 </script>
 
 {% schema %}
