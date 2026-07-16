@@ -203,6 +203,20 @@ function dpSubmit() {
 
 // Set min date to today
 document.getElementById('dp-date').min = new Date().toISOString().split('T')[0];
+
+  // ── Meta Pixel — Lead Event ──
+  function firePixelLead(params) {
+    try {
+      if(typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+          content_name: params.service || 'Denting & Painting',
+          content_category: 'Automotive Service',
+          value: params.value || 0,
+          currency: 'PKR'
+        });
+      }
+    } catch(e) {}
+  }
 </script>
 
 {% schema %}
