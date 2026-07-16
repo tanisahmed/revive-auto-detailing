@@ -121,6 +121,81 @@
     .whatsapp-float { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 3.25rem; height: 3.25rem; background: var(--color-success); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(16,185,129,0.4); z-index: 999; transition: var(--transition); }
     .whatsapp-float:hover { background: #059669; transform: scale(1.1); box-shadow: 0 6px 20px rgba(16,185,129,0.5); }
   </style>
+
+<script>
+/* ── Meta Pixel — Contact & WhatsApp Click Events ── */
+(function(){
+  function fireContact(method, label){
+    try {
+      if(typeof fbq !== 'function') return;
+      // Standard Contact event
+      fbq('track', 'Contact', {
+        content_name: label,
+        content_category: method
+      });
+      // Also fire Lead for WhatsApp (stronger signal)
+      if(method === 'WhatsApp'){
+        fbq('track', 'Lead', {
+          content_name: 'WhatsApp Contact - ' + label,
+          content_category: 'Automotive Service',
+          value: 0,
+          currency: 'PKR'
+        });
+      }
+    } catch(e){}
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+
+    // ── WhatsApp links ──
+    document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp"]').forEach(function(a){
+      a.addEventListener('click', function(){
+        var label = (this.textContent || '').trim() || 'WhatsApp Button';
+        fireContact('WhatsApp', label);
+      });
+    });
+
+    // ── Phone / tel links ──
+    document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
+      a.addEventListener('click', function(){
+        var num = this.getAttribute('href').replace('tel:','');
+        fireContact('Phone Call', num);
+      });
+    });
+
+    // ── Email links ──
+    document.querySelectorAll('a[href^="mailto:"]').forEach(function(a){
+      a.addEventListener('click', function(){
+        var email = this.getAttribute('href').replace('mailto:','');
+        fireContact('Email', email);
+      });
+    });
+
+    // ── Dynamic links (added after page load via JS) ──
+    // MutationObserver for dynamically added WhatsApp/tel links
+    var observer = new MutationObserver(function(mutations){
+      mutations.forEach(function(m){
+        m.addedNodes.forEach(function(node){
+          if(node.nodeType !== 1) return;
+          node.querySelectorAll && node.querySelectorAll('a[href*="wa.me"], a[href^="tel:"], a[href^="mailto:"]').forEach(function(a){
+            if(a.dataset.pixelBound) return;
+            a.dataset.pixelBound = '1';
+            a.addEventListener('click', function(){
+              var href = this.getAttribute('href') || '';
+              if(href.includes('wa.me') || href.includes('whatsapp')) fireContact('WhatsApp', 'WhatsApp Button');
+              else if(href.startsWith('tel:')) fireContact('Phone Call', href.replace('tel:',''));
+              else if(href.startsWith('mailto:')) fireContact('Email', href.replace('mailto:',''));
+            });
+          });
+        });
+      });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+  });
+})();
+</script>
+
 </body>
 </html>
 
