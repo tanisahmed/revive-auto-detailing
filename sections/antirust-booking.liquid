@@ -350,7 +350,9 @@
         whatsapp_link:'https://wa.me/'+cleanPhone
       })
     }).catch(function(){});
-    document.getElementById('cer-bform').style.display='none';
+    document.
+    firePixelLead({service:'Anti-Rust Undercoating', value: 0});
+    getElementById('cer-bform').style.display='none';
     document.querySelector('.rad-cer-prog').style.display='none';
     document.querySelector('.rad-cer-steps').style.display='none';
     var s=document.getElementById('cer-bsuccess');s.classList.add('show');
@@ -361,6 +363,20 @@
     window.scrollTo({top:0,behavior:'smooth'});
   };
 })();
+
+  // ── Meta Pixel — Lead Event ──
+  function firePixelLead(params) {
+    try {
+      if(typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+          content_name: params.service || 'Anti-Rust Undercoating',
+          content_category: 'Automotive Service',
+          value: params.value || 0,
+          currency: 'PKR'
+        });
+      }
+    } catch(e) {}
+  }
 </script>
 
 {% schema %}
