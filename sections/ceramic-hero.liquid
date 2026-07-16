@@ -111,6 +111,21 @@
   </div>
 </section>
 
+
+<script>
+(function(){
+  try {
+    if(typeof fbq === 'function') {
+      fbq('track', 'ViewContent', {
+        content_name: 'Ceramic Coating',
+        content_category: 'Automotive Service',
+        content_type: 'service'
+      });
+    }
+  } catch(e) {}
+})();
+</script>
+
 {% schema %}
 {
   "name": "Ceramic Hero",
