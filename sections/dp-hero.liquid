@@ -214,3 +214,16 @@
   ]
 }
 {%- endschema -%}
+<script>
+(function(){
+  try {
+    if(typeof fbq === 'function') {
+      fbq('track', 'ViewContent', {
+        content_name: 'Denting & Painting',
+        content_category: 'Automotive Service',
+        content_type: 'service'
+      });
+    }
+  } catch(e) {}
+})();
+</script>
