@@ -302,6 +302,21 @@ function toggleFaq(el) {
 }
 </script>
 
+
+<script>
+(function(){
+  try {
+    if(typeof fbq === 'function') {
+      fbq('track', 'ViewContent', {
+        content_name: 'Color PPF',
+        content_category: 'Automotive Service',
+        content_type: 'service'
+      });
+    }
+  } catch(e) {}
+})();
+</script>
+
 {% schema %}
 {
   "name": "Color PPF",
