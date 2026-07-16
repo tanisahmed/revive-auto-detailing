@@ -445,6 +445,7 @@
       if(!ok) return;
       bd.mk=el('ppfb-mk').value.trim(); bd.mo=el('ppfb-mo').value.trim();
       bd.yr=el('ppfb-yr').value.trim();
+      firePixelCustom('BookingStarted', {content_name: 'PPF - '+selPkg, vehicle_type: selVt});
       ppfbGo(2);
     }
     else if(step===2){
@@ -461,6 +462,7 @@
       if(!selTime){ showErr('ppfb-e-tm',true); ok=false; } else showErr('ppfb-e-tm',false);
       if(!ok) return;
       bd.dt=el('ppfb-dt').value; bd.tm=selTime;
+      firePixelSchedule({service: 'PPF - '+(selPkg||''), value: (selVt && selPkg && pricing[selVt]) ? pricing[selVt][selPkg].price : 0});
       ppfbBuildReview();
       ppfbGo(4);
     }
@@ -471,6 +473,7 @@
     showErr('ppfb-e-vt', false);
     ppfbUpdatePrices();
     ppfbDiscCalc();
+    firePixelCustom('PriceViewed', {content_name: 'PPF', vehicle_type: selVt});
   };
 
   function ppfbUpdatePrices(){
@@ -630,19 +633,58 @@
 
 })();
 
-  // ── Meta Pixel — Lead Event ──
+  // ── Meta Pixel Events ──
   function firePixelLead(params) {
     try {
-      if(typeof fbq === 'function') {
-        fbq('track', 'Lead', {
-          content_name: params.service || 'PPF',
-          content_category: 'Automotive Service',
-          value: params.value || 0,
-          currency: 'PKR'
-        });
-      }
+      if(typeof fbq !== 'function') return;
+      fbq('track', 'Lead', {
+        content_name: params.service || 'PPF',
+        content_category: 'Automotive Service',
+        value: params.value || 0,
+        currency: 'PKR'
+      });
     } catch(e) {}
   }
+
+  function firePixelSchedule(params) {
+    try {
+      if(typeof fbq !== 'function') return;
+      fbq('track', 'Schedule', {
+        content_name: params.service || 'PPF Appointment',
+        content_category: 'Automotive Service',
+        value: params.value || 0,
+        currency: 'PKR'
+      });
+    } catch(e) {}
+  }
+
+  function firePixelInitiate() {
+    try {
+      if(typeof fbq !== 'function') return;
+      fbq('track', 'InitiateCheckout', {
+        content_name: 'PPF Booking Form',
+        content_category: 'Automotive Service',
+        num_items: 1
+      });
+    } catch(e) {}
+  }
+
+  function firePixelCustom(eventName, params) {
+    try {
+      if(typeof fbq !== 'function') return;
+      fbq('trackCustom', eventName, params || {});
+    } catch(e) {}
+  }
+
+  // InitiateCheckout — form page load
+  try {
+    if(typeof fbq === 'function') {
+      fbq('track', 'InitiateCheckout', {
+        content_name: 'PPF Booking Form',
+        content_category: 'Automotive Service'
+      });
+    }
+  } catch(e) {}
 </script>
 
 {% schema %}
