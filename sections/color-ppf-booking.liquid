@@ -420,6 +420,7 @@
       headers:{'Content-Type':'application/json','Accept':'application/json'},
       body:JSON.stringify({_subject:'Color PPF Booking: '+ref+' — '+bd.fn,_replyto:bd.em||'',message:body})
     }).then(function(){
+      firePixelLead({service:'Color PPF', value: bd.priceNum||0});
       el('cpb-s4').style.display='none';
       el('cpb-success').style.display='block';
       document.querySelector('.rad-cpb-prog').style.display='none';
