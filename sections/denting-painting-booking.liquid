@@ -219,6 +219,21 @@ document.getElementById('dp-date').min = new Date().toISOString().split('T')[0];
   }
 </script>
 
+
+<script>
+(function(){
+  try {
+    if(typeof fbq === 'function') {
+      fbq('track', 'InitiateCheckout', {
+        content_name: 'Denting & Painting Booking Form',
+        content_category: 'Automotive Service',
+        num_items: 1
+      });
+    }
+  } catch(e) {}
+})();
+</script>
+
 {% schema %}
 {
   "name": "Denting Painting Booking",
