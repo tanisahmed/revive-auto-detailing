@@ -568,6 +568,21 @@
   }
 </script>
 
+
+<script>
+(function(){
+  try {
+    if(typeof fbq === 'function') {
+      fbq('track', 'InitiateCheckout', {
+        content_name: 'Window Tint Booking Form',
+        content_category: 'Automotive Service',
+        num_items: 1
+      });
+    }
+  } catch(e) {}
+})();
+</script>
+
 {% schema %}
 {
   "name": "Window Tint Booking",
