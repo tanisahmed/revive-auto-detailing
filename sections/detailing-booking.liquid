@@ -552,6 +552,20 @@
     window.scrollTo({top:0,behavior:'smooth'});
   };
 })();
+
+  // ── Meta Pixel — Lead Event ──
+  function firePixelLead(params) {
+    try {
+      if(typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+          content_name: params.service || 'Car Detailing',
+          content_category: 'Automotive Service',
+          value: params.value || 0,
+          currency: 'PKR'
+        });
+      }
+    } catch(e) {}
+  }
 </script>
 
 {% schema %}
