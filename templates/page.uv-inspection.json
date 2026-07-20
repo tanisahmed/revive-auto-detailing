@@ -1,11 +1,221 @@
 {
   "sections": {
-    "main": {
-      "type": "uv-inspection",
+    "uvi_hero": {
+      "type": "uvi-hero",
+      "settings": {}
+    },
+    "uvi_reveals": {
+      "type": "uvi-reveals",
+      "settings": {},
+      "blocks": {
+        "card1": {
+          "type": "card",
+          "settings": {
+            "icon": "\ud83c\udfa8",
+            "title": "Hidden Repaints",
+            "desc": "Factory paint vs repainted panels glow differently under UV. We instantly spot any panel that has been resprayed.",
+            "tag": "Most Common Find"
+          }
+        },
+        "card2": {
+          "type": "card",
+          "settings": {
+            "icon": "\ud83d\udca5",
+            "title": "Accident Damage",
+            "desc": "Collision repairs, putty fillers, and body filler leave clear UV signatures. Sellers can't hide past accidents.",
+            "tag": "High Risk"
+          }
+        },
+        "card3": {
+          "type": "card",
+          "settings": {
+            "icon": "\ud83e\udda0",
+            "title": "Rust & Corrosion",
+            "desc": "Rust under the paint and corrosion treated with chemicals all show up clearly.",
+            "tag": "Structural Issue"
+          }
+        },
+        "card4": {
+          "type": "card",
+          "settings": {
+            "icon": "\ud83d\udd29",
+            "title": "Panel Replacements",
+            "desc": "Replaced panels, welded sections, and structural repairs are detected.",
+            "tag": "Safety Critical"
+          }
+        },
+        "card5": {
+          "type": "card",
+          "settings": {
+            "icon": "\ud83e\uddea",
+            "title": "Filler & Putty",
+            "desc": "Body filler glows bright orange under UV. Even thin layers are instantly revealed.",
+            "tag": "Common Scam"
+          }
+        },
+        "card6": {
+          "type": "card",
+          "settings": {
+            "icon": "\ud83e\ude9f",
+            "title": "Seal & Trim Repairs",
+            "desc": "Window seal replacements and adhesive residue indicate past water damage.",
+            "tag": "Water Damage"
+          }
+        }
+      },
+      "blocks_order": [
+        "card1",
+        "card2",
+        "card3",
+        "card4",
+        "card5",
+        "card6"
+      ]
+    },
+    "uvi_why": {
+      "type": "uvi-why",
+      "settings": {},
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "title": "Negotiate with Evidence",
+            "desc": "Get documented proof to negotiate thousands off the asking price."
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "title": "Avoid Accident Cars",
+            "desc": "Accident history affects resale value and safety. Know before you commit."
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "title": "Pre-PPF Inspection",
+            "desc": "Before applying PPF or ceramic coating, know the true condition of your paint."
+          }
+        },
+        "p4": {
+          "type": "point",
+          "settings": {
+            "title": "Written Report Available",
+            "desc": "Get a detailed panel-by-panel report documenting all findings for your records."
+          }
+        }
+      },
+      "blocks_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ]
+    },
+    "uvi_process": {
+      "type": "uvi-process",
+      "settings": {},
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Book Your Slot",
+            "desc": "Choose your vehicle type and preferred date online. We confirm via WhatsApp within 1 hour.",
+            "time": "2 minutes"
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Drop Off Your Car",
+            "desc": "Bring your car to our studio in Karachi. No special preparation needed.",
+            "time": "5 minutes"
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Panel-by-Panel UV Scan",
+            "desc": "Our specialist scans every panel \u2014 bonnet, fenders, doors, pillars, roof, boot \u2014 under professional UV lamps.",
+            "time": "20\u201345 minutes"
+          }
+        },
+        "s4": {
+          "type": "step",
+          "settings": {
+            "title": "Verbal Findings Report",
+            "desc": "We walk you through every finding on the spot. Written report available on request.",
+            "time": "10\u201315 minutes"
+          }
+        },
+        "s5": {
+          "type": "step",
+          "settings": {
+            "title": "Take Action",
+            "desc": "Armed with full knowledge, negotiate confidently or proceed with PPF/ceramic.",
+            "time": "Your decision"
+          }
+        }
+      },
+      "blocks_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5"
+      ]
+    },
+    "uvi_pricing": {
+      "type": "uvi-pricing",
+      "settings": {}
+    },
+    "uvi_who": {
+      "type": "uvi-who",
+      "settings": {},
+      "blocks": {
+        "w1": {
+          "type": "card",
+          "settings": {
+            "icon": "\ud83d\ude97",
+            "title": "Buying a Used Car",
+            "desc": "Before finalizing any used car purchase, get a UV inspection. Know exactly what you're paying for."
+          }
+        },
+        "w2": {
+          "type": "card",
+          "settings": {
+            "icon": "\ud83d\udee1\ufe0f",
+            "title": "Before PPF or Ceramic",
+            "desc": "Applying PPF or ceramic on a repainted surface wastes your investment. Inspect first."
+          }
+        },
+        "w3": {
+          "type": "card",
+          "settings": {
+            "icon": "\ud83d\udcb0",
+            "title": "Selling Your Car",
+            "desc": "Get a certified UV inspection report to prove your car's original paint condition."
+          }
+        }
+      },
+      "blocks_order": [
+        "w1",
+        "w2",
+        "w3"
+      ]
+    },
+    "uvi_cta": {
+      "type": "uvi-cta",
       "settings": {}
     }
   },
   "order": [
-    "main"
+    "uvi_hero",
+    "uvi_reveals",
+    "uvi_why",
+    "uvi_process",
+    "uvi_pricing",
+    "uvi_who",
+    "uvi_cta"
   ]
 }
