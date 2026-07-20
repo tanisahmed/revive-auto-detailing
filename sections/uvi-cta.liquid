@@ -1,0 +1,296 @@
+<style>
+/* ══════════════════════════════════════════
+   RAD — UV Light Paint Inspection Page
+   ══════════════════════════════════════════ */
+:root {
+  --uv-purple: #6d28d9;
+  --uv-purple-dark: #4c1d95;
+  --uv-purple-light: #7c3aed;
+  --uv-glow: rgba(109,40,217,0.4);
+  --uv-bg: #0d0a1a;
+}
+
+/* ── HERO ── */
+.uvi-hero {
+  background: linear-gradient(135deg, #0d0a1a 0%, #1a0a2e 50%, #0d0a1a 100%);
+  min-height: 90vh;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden; padding: 5rem 1.5rem;
+}
+.uvi-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(109,40,217,0.3) 0%, transparent 70%);
+}
+.uvi-hero-inner { max-width: 860px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
+.uvi-hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(109,40,217,0.2); border: 1px solid rgba(109,40,217,0.5);
+  color: #c4b5fd; font-size: 0.75rem; font-weight: 700;
+  padding: 0.4rem 1rem; border-radius: 100px; letter-spacing: 0.08em;
+  text-transform: uppercase; margin-bottom: 1.75rem;
+}
+.uvi-hero-badge::before { content: '🔦'; font-size: 1rem; }
+.uvi-hero h1 {
+  font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 900;
+  color: #fff; line-height: 1.1; margin-bottom: 1.25rem;
+  font-family: 'Nunito Sans', sans-serif;
+}
+.uvi-hero h1 span { color: #a78bfa; }
+.uvi-hero-sub {
+  font-size: 1.15rem; color: #c4b5fd; max-width: 620px;
+  margin: 0 auto 2.5rem; line-height: 1.7;
+}
+.uvi-hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.uvi-btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: #6d28d9; color: #fff; padding: 1rem 2rem;
+  border-radius: 10px; font-weight: 700; font-size: 1rem;
+  text-decoration: none; transition: all 0.2s;
+  box-shadow: 0 0 24px rgba(109,40,217,0.5);
+}
+.uvi-btn-primary:hover { background: #7c3aed; transform: translateY(-2px); box-shadow: 0 0 32px rgba(109,40,217,0.7); }
+.uvi-btn-secondary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: transparent; color: #c4b5fd; padding: 1rem 2rem;
+  border-radius: 10px; font-weight: 700; font-size: 1rem;
+  text-decoration: none; border: 1.5px solid rgba(196,181,253,0.4);
+  transition: all 0.2s;
+}
+.uvi-btn-secondary:hover { border-color: #a78bfa; color: #fff; background: rgba(109,40,217,0.15); }
+.uvi-hero-trust {
+  display: flex; justify-content: center; gap: 2rem;
+  margin-top: 3rem; flex-wrap: wrap;
+}
+.uvi-trust-item {
+  display: flex; flex-direction: column; align-items: center; gap: 0.25rem;
+}
+.uvi-trust-num { font-size: 1.6rem; font-weight: 900; color: #a78bfa; }
+.uvi-trust-lbl { font-size: 0.75rem; color: #7c6ea8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ── WHAT UV REVEALS ── */
+.uvi-reveals {
+  background: #fff; padding: 5rem 1.5rem;
+}
+.uvi-reveals-inner { max-width: 1100px; margin: 0 auto; }
+.uvi-sec-eyebrow {
+  font-size: 0.75rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.1em; color: #6d28d9; margin-bottom: 0.75rem;
+}
+.uvi-sec-h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 900; color: #1f2937; margin-bottom: 0.75rem; font-family: 'Nunito Sans', sans-serif; }
+.uvi-sec-sub { font-size: 1rem; color: #6b7280; max-width: 560px; line-height: 1.7; }
+.uvi-reveals-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem; margin-top: 3rem;
+}
+.uvi-reveal-card {
+  background: #faf5ff; border: 1px solid #ede9fe;
+  border-radius: 16px; padding: 1.75rem 1.5rem;
+  transition: all 0.25s;
+}
+.uvi-reveal-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(109,40,217,0.12); border-color: #c4b5fd; }
+.uvi-reveal-icon { font-size: 2.25rem; margin-bottom: 1rem; }
+.uvi-reveal-title { font-size: 1rem; font-weight: 800; color: #1f2937; margin-bottom: 0.5rem; }
+.uvi-reveal-desc { font-size: 0.875rem; color: #6b7280; line-height: 1.6; }
+.uvi-reveal-tag { display: inline-block; margin-top: 0.75rem; background: #ede9fe; color: #6d28d9; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 100px; }
+
+/* ── WHY UV MATTERS ── */
+.uvi-why { background: linear-gradient(135deg, #0d0a1a 0%, #1a0a2e 100%); padding: 5rem 1.5rem; }
+.uvi-why-inner { max-width: 1100px; margin: 0 auto; }
+.uvi-why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.uvi-why-content .uvi-sec-eyebrow { color: #a78bfa; }
+.uvi-why-content .uvi-sec-h2 { color: #fff; }
+.uvi-why-content .uvi-sec-sub { color: #c4b5fd; }
+.uvi-why-points { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+.uvi-why-point { display: flex; gap: 1rem; align-items: flex-start; }
+.uvi-why-check {
+  width: 1.5rem; height: 1.5rem; background: rgba(109,40,217,0.3);
+  border: 1.5px solid #6d28d9; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 2px; font-size: 0.7rem; color: #a78bfa;
+}
+.uvi-why-pt-title { font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
+.uvi-why-pt-desc  { font-size: 0.82rem; color: #9ca3af; line-height: 1.5; }
+.uvi-why-visual {
+  background: rgba(109,40,217,0.1); border: 1px solid rgba(109,40,217,0.3);
+  border-radius: 20px; padding: 2.5rem; text-align: center;
+}
+.uvi-why-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.uvi-why-stat { background: rgba(109,40,217,0.15); border-radius: 12px; padding: 1.25rem; }
+.uvi-why-stat-num { font-size: 2rem; font-weight: 900; color: #a78bfa; }
+.uvi-why-stat-lbl { font-size: 0.75rem; color: #7c6ea8; margin-top: 0.25rem; font-weight: 600; }
+
+/* ── PROCESS ── */
+.uvi-process { background: #f9fafb; padding: 5rem 1.5rem; }
+.uvi-process-inner { max-width: 900px; margin: 0 auto; }
+.uvi-process-hdr { text-align: center; margin-bottom: 3rem; }
+.uvi-steps { display: flex; flex-direction: column; gap: 0; }
+.uvi-step {
+  display: flex; gap: 2rem; align-items: flex-start; position: relative;
+  padding-bottom: 2rem;
+}
+.uvi-step::before {
+  content: ''; position: absolute; left: 1.25rem; top: 3rem;
+  bottom: 0; width: 2px; background: #ede9fe;
+}
+.uvi-step:last-child::before { display: none; }
+.uvi-step:last-child { padding-bottom: 0; }
+.uvi-step-num {
+  width: 2.5rem; height: 2.5rem; flex-shrink: 0;
+  background: #6d28d9; color: #fff; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 0.9rem; position: relative; z-index: 1;
+}
+.uvi-step-content { padding-top: 0.25rem; }
+.uvi-step-title { font-size: 1rem; font-weight: 800; color: #1f2937; margin-bottom: 0.35rem; }
+.uvi-step-desc  { font-size: 0.875rem; color: #6b7280; line-height: 1.6; }
+.uvi-step-time  { display: inline-block; margin-top: 0.5rem; background: #ede9fe; color: #6d28d9; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 100px; }
+
+/* ── PRICING ── */
+.uvi-pricing { background: #fff; padding: 5rem 1.5rem; }
+.uvi-pricing-inner { max-width: 1000px; margin: 0 auto; }
+.uvi-pricing-hdr { text-align: center; margin-bottom: 1rem; }
+.uvi-pricing-sub { text-align: center; color: #6b7280; margin-bottom: 0.5rem; }
+.uvi-pricing-note { text-align: center; font-size: 1rem; font-weight: 700; color: #4c1d95; margin-bottom: 2.5rem; }
+.uvi-price-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+.uvi-price-card {
+  background: #faf5ff; border: 2px solid #ede9fe;
+  border-radius: 14px; padding: 1.75rem 1.25rem;
+  text-align: center; transition: all 0.25s;
+  text-decoration: none; display: block; color: inherit;
+  position: relative;
+}
+.uvi-price-card:hover { border-color: #6d28d9; box-shadow: 0 8px 28px rgba(109,40,217,0.15); transform: translateY(-4px); }
+.uvi-price-card.popular { border-color: #6d28d9; box-shadow: 0 8px 28px rgba(109,40,217,0.2); }
+.uvi-popular-badge {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: #6d28d9; color: #fff; font-size: 0.65rem; font-weight: 700;
+  padding: 3px 12px; border-radius: 100px; white-space: nowrap; letter-spacing: 0.05em;
+}
+.uvi-price-vehicle { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #6d28d9; margin-bottom: 0.75rem; }
+.uvi-price-amount { font-size: 2rem; font-weight: 900; color: #1f2937; margin-bottom: 0.25rem; }
+.uvi-price-amount span { font-size: 1rem; font-weight: 600; color: #6b7280; }
+.uvi-price-examples { font-size: 0.78rem; color: #9ca3af; margin-bottom: 1rem; line-height: 1.4; }
+.uvi-price-cta {
+  display: block; width: 100%; padding: 0.65rem;
+  background: #6d28d9; color: #fff; border-radius: 8px;
+  font-weight: 700; font-size: 0.85rem; text-decoration: none;
+  transition: all 0.2s; box-shadow: 0 4px 12px rgba(109,40,217,0.3);
+}
+.uvi-price-cta:hover { background: #7c3aed; box-shadow: 0 6px 18px rgba(109,40,217,0.4); transform: scale(1.03); }
+.uvi-price-footer { text-align: center; margin-top: 1.5rem; font-size: 0.875rem; color: #6b7280; }
+.uvi-price-footer strong { color: #4c1d95; }
+
+/* ── WHO NEEDS UV ── */
+.uvi-who { background: #f9fafb; padding: 5rem 1.5rem; }
+.uvi-who-inner { max-width: 1100px; margin: 0 auto; }
+.uvi-who-hdr { text-align: center; margin-bottom: 3rem; }
+.uvi-who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.uvi-who-card {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 16px;
+  padding: 1.75rem; transition: all 0.2s;
+}
+.uvi-who-card:hover { border-color: #c4b5fd; box-shadow: 0 8px 24px rgba(109,40,217,0.1); }
+.uvi-who-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+.uvi-who-title { font-size: 1rem; font-weight: 800; color: #1f2937; margin-bottom: 0.5rem; }
+.uvi-who-desc  { font-size: 0.875rem; color: #6b7280; line-height: 1.6; }
+
+/* ── CTA ── */
+.uvi-cta {
+  background: linear-gradient(135deg, #0d0a1a 0%, #4c1d95 50%, #0d0a1a 100%);
+  padding: 5rem 1.5rem; text-align: center; position: relative; overflow: hidden;
+}
+.uvi-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(109,40,217,0.4) 0%, transparent 70%);
+}
+.uvi-cta-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 2; }
+.uvi-cta h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; color: #fff; margin-bottom: 1rem; font-family: 'Nunito Sans', sans-serif; }
+.uvi-cta p  { font-size: 1rem; color: #c4b5fd; margin-bottom: 2.5rem; line-height: 1.7; }
+.uvi-cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.uvi-cta-wa {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: #10b981; color: #fff; padding: 1rem 1.75rem;
+  border-radius: 10px; font-weight: 700; text-decoration: none; transition: all 0.2s;
+}
+.uvi-cta-wa:hover { background: #059669; transform: translateY(-2px); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .uvi-reveals-grid { grid-template-columns: 1fr 1fr; }
+  .uvi-price-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .uvi-who-grid { grid-template-columns: 1fr; }
+  .uvi-why-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .uvi-hero { min-height: 70vh; }
+  .uvi-hero-trust { gap: 1.25rem; }
+}
+@media (max-width: 480px) {
+  .uvi-reveals-grid { grid-template-columns: 1fr; }
+  .uvi-price-grid { grid-template-columns: 1fr; }
+  .uvi-hero-btns { flex-direction: column; align-items: center; }
+}
+</style>
+
+<!-- ══ CTA ══ -->
+<section class="uvi-cta">
+  <div class="uvi-cta-inner">
+    <h2>{{ section.settings.title | default: "Ready to See the Truth About Your Car?" }}</h2>
+    <p>{{ section.settings.subtitle | default: "Book your UV paint inspection today. Results in 30–60 minutes. Starting from PKR 5,500 only." }}</p>
+    <div class="uvi-cta-btns">
+      <a href="{{ section.settings.btn1_url | default: '/pages/uv-inspection-booking' }}" class="uvi-btn-primary">{{ section.settings.btn1_text | default: "🔦 Book UV Inspection" }}</a>
+      <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20to%20book%20UV%20paint%20inspection" target="_blank" class="uvi-cta-wa">{{ section.settings.btn2_text | default: "💬 WhatsApp Us" }}</a>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  try { if(typeof fbq==='function') fbq('track','ViewContent',{content_name:'UV Light Inspection',content_category:'Automotive Service'}); } catch(e){}
+})();
+</script>
+
+{% schema %}
+{
+  "name": "UV — CTA Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Ready to See the Truth About Your Car?"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtext",
+      "default": "Book your UV paint inspection today. Results in 30–60 minutes. Full panel-by-panel report. Starting from PKR 5,500 only."
+    },
+    {
+      "type": "text",
+      "id": "btn1_text",
+      "label": "Primary Button",
+      "default": "🔦 Book UV Inspection"
+    },
+    {
+      "type": "url",
+      "id": "btn1_url",
+      "label": "Primary Button URL",
+      "default": "/pages/uv-inspection-booking"
+    },
+    {
+      "type": "text",
+      "id": "btn2_text",
+      "label": "WhatsApp Button",
+      "default": "💬 WhatsApp Us"
+    }
+  ],
+  "presets": [
+    {
+      "name": "UV CTA Banner"
+    }
+  ]
+}
+{% endschema %}
