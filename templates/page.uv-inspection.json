@@ -234,9 +234,14 @@
         "eyebrow": "Who Should Book",
         "title": "Is UV Inspection Right for You?"
       }
+    },
+    "rad_uv_hero": {
+      "type": "rad-uv-hero",
+      "settings": {}
     }
   },
   "order": [
+    "rad_uv_hero",
     "uvi_reveals_yrqeQ4",
     "uvi_why_MkxMKi",
     "uvi_process_XXe7bc",
