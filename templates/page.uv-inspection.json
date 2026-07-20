@@ -1,23 +1,5 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "main": {
-      "type": "uv-inspection",
-      "settings": {
-        "price_hatch": "5,500",
-        "price_sedan": "6,500",
-        "price_suv": "7,500",
-        "price_xlsuv": "10,000"
-      }
-    },
     "uvi_reveals_yrqeQ4": {
       "type": "uvi-reveals",
       "blocks": {
@@ -255,7 +237,6 @@
     }
   },
   "order": [
-    "main",
     "uvi_reveals_yrqeQ4",
     "uvi_why_MkxMKi",
     "uvi_process_XXe7bc",
