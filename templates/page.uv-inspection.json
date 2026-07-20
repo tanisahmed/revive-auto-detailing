@@ -1,103 +1,121 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "uvi_hero": {
-      "type": "uvi-hero",
-      "settings": {}
+    "main": {
+      "type": "uv-inspection",
+      "settings": {
+        "price_hatch": "5,500",
+        "price_sedan": "6,500",
+        "price_suv": "7,500",
+        "price_xlsuv": "10,000"
+      }
     },
-    "uvi_reveals": {
+    "uvi_reveals_yrqeQ4": {
       "type": "uvi-reveals",
-      "settings": {},
       "blocks": {
-        "card1": {
+        "card_kyKrhR": {
           "type": "card",
           "settings": {
-            "icon": "\ud83c\udfa8",
+            "icon": "🎨",
             "title": "Hidden Repaints",
             "desc": "Factory paint vs repainted panels glow differently under UV. We instantly spot any panel that has been resprayed.",
             "tag": "Most Common Find"
           }
         },
-        "card2": {
+        "card_3xnHfi": {
           "type": "card",
           "settings": {
-            "icon": "\ud83d\udca5",
+            "icon": "💥",
             "title": "Accident Damage",
             "desc": "Collision repairs, putty fillers, and body filler leave clear UV signatures. Sellers can't hide past accidents.",
             "tag": "High Risk"
           }
         },
-        "card3": {
+        "card_3eQXqy": {
           "type": "card",
           "settings": {
-            "icon": "\ud83e\udda0",
+            "icon": "🦠",
             "title": "Rust & Corrosion",
             "desc": "Rust under the paint and corrosion treated with chemicals all show up clearly.",
             "tag": "Structural Issue"
           }
         },
-        "card4": {
+        "card_fpJRRK": {
           "type": "card",
           "settings": {
-            "icon": "\ud83d\udd29",
+            "icon": "🔩",
             "title": "Panel Replacements",
             "desc": "Replaced panels, welded sections, and structural repairs are detected.",
             "tag": "Safety Critical"
           }
         },
-        "card5": {
+        "card_wA3cWT": {
           "type": "card",
           "settings": {
-            "icon": "\ud83e\uddea",
+            "icon": "🧪",
             "title": "Filler & Putty",
             "desc": "Body filler glows bright orange under UV. Even thin layers are instantly revealed.",
             "tag": "Common Scam"
           }
         },
-        "card6": {
+        "card_nwNKUJ": {
           "type": "card",
           "settings": {
-            "icon": "\ud83e\ude9f",
+            "icon": "🪟",
             "title": "Seal & Trim Repairs",
             "desc": "Window seal replacements and adhesive residue indicate past water damage.",
             "tag": "Water Damage"
           }
         }
       },
-      "blocks_order": [
-        "card1",
-        "card2",
-        "card3",
-        "card4",
-        "card5",
-        "card6"
-      ]
+      "block_order": [
+        "card_kyKrhR",
+        "card_3xnHfi",
+        "card_3eQXqy",
+        "card_fpJRRK",
+        "card_wA3cWT",
+        "card_nwNKUJ"
+      ],
+      "name": "UV Reveals",
+      "settings": {
+        "eyebrow": "What We Detect",
+        "title": "UV Light Reveals What Human Eyes Can't",
+        "subtitle": "Under UV light, original factory paint glows differently than repainted panels — making every repair, accident, and cover-up instantly visible."
+      }
     },
-    "uvi_why": {
+    "uvi_why_MkxMKi": {
       "type": "uvi-why",
-      "settings": {},
       "blocks": {
-        "p1": {
+        "point_Tmnj6P": {
           "type": "point",
           "settings": {
             "title": "Negotiate with Evidence",
             "desc": "Get documented proof to negotiate thousands off the asking price."
           }
         },
-        "p2": {
+        "point_gxhg6k": {
           "type": "point",
           "settings": {
             "title": "Avoid Accident Cars",
             "desc": "Accident history affects resale value and safety. Know before you commit."
           }
         },
-        "p3": {
+        "point_YgqqWT": {
           "type": "point",
           "settings": {
             "title": "Pre-PPF Inspection",
             "desc": "Before applying PPF or ceramic coating, know the true condition of your paint."
           }
         },
-        "p4": {
+        "point_9LQW9N": {
           "type": "point",
           "settings": {
             "title": "Written Report Available",
@@ -105,18 +123,31 @@
           }
         }
       },
-      "blocks_order": [
-        "p1",
-        "p2",
-        "p3",
-        "p4"
-      ]
+      "block_order": [
+        "point_Tmnj6P",
+        "point_gxhg6k",
+        "point_YgqqWT",
+        "point_9LQW9N"
+      ],
+      "name": "UV Why",
+      "settings": {
+        "eyebrow": "Why It Matters",
+        "title": "Don't Overpay for a Repainted Car",
+        "subtitle": "In Pakistan's used car market, repainted and accident cars are sold at original prices every day.",
+        "s1n": "7/10",
+        "s1l": "Used cars have hidden repaints",
+        "s2n": "PKR 2L+",
+        "s2l": "Average negotiation saving",
+        "s3n": "30 min",
+        "s3l": "Full inspection time",
+        "s4n": "100%",
+        "s4l": "Non-invasive process"
+      }
     },
-    "uvi_process": {
+    "uvi_process_XXe7bc": {
       "type": "uvi-process",
-      "settings": {},
       "blocks": {
-        "s1": {
+        "step_9zR8Tq": {
           "type": "step",
           "settings": {
             "title": "Book Your Slot",
@@ -124,7 +155,7 @@
             "time": "2 minutes"
           }
         },
-        "s2": {
+        "step_VVQUfp": {
           "type": "step",
           "settings": {
             "title": "Drop Off Your Car",
@@ -132,23 +163,23 @@
             "time": "5 minutes"
           }
         },
-        "s3": {
+        "step_9g3ht6": {
           "type": "step",
           "settings": {
             "title": "Panel-by-Panel UV Scan",
-            "desc": "Our specialist scans every panel \u2014 bonnet, fenders, doors, pillars, roof, boot \u2014 under professional UV lamps.",
-            "time": "20\u201345 minutes"
+            "desc": "Our specialist scans every panel — bonnet, fenders, doors, pillars, roof, boot — under professional UV lamps.",
+            "time": "20–45 minutes"
           }
         },
-        "s4": {
+        "step_aEHMwc": {
           "type": "step",
           "settings": {
             "title": "Verbal Findings Report",
             "desc": "We walk you through every finding on the spot. Written report available on request.",
-            "time": "10\u201315 minutes"
+            "time": "10–15 minutes"
           }
         },
-        "s5": {
+        "step_UEHmWd": {
           "type": "step",
           "settings": {
             "title": "Take Action",
@@ -157,65 +188,78 @@
           }
         }
       },
-      "blocks_order": [
-        "s1",
-        "s2",
-        "s3",
-        "s4",
-        "s5"
-      ]
+      "block_order": [
+        "step_9zR8Tq",
+        "step_VVQUfp",
+        "step_9g3ht6",
+        "step_aEHMwc",
+        "step_UEHmWd"
+      ],
+      "name": "UV Process",
+      "settings": {
+        "title": "UV Inspection — Step by Step"
+      }
     },
-    "uvi_pricing": {
+    "uvi_pricing_NdRxWH": {
       "type": "uvi-pricing",
-      "settings": {}
+      "name": "UV Pricing",
+      "settings": {
+        "title": "UV Paint Inspection Pricing",
+        "subtitle": "Flat rate — no hidden charges. Select your vehicle type below.",
+        "note": "Select your vehicle type to book your Car Paint Inspection",
+        "price_hatch": "5,500",
+        "price_sedan": "6,500",
+        "price_suv": "7,500",
+        "price_xlsuv": "10,000",
+        "footer_note": "✅ Includes full panel-by-panel UV scan + verbal findings report. Written report available on request."
+      }
     },
-    "uvi_who": {
+    "uvi_who_iqkw6Q": {
       "type": "uvi-who",
-      "settings": {},
       "blocks": {
-        "w1": {
+        "card_thFpxM": {
           "type": "card",
           "settings": {
-            "icon": "\ud83d\ude97",
+            "icon": "🚗",
             "title": "Buying a Used Car",
             "desc": "Before finalizing any used car purchase, get a UV inspection. Know exactly what you're paying for."
           }
         },
-        "w2": {
+        "card_Wgm7Kz": {
           "type": "card",
           "settings": {
-            "icon": "\ud83d\udee1\ufe0f",
+            "icon": "🛡️",
             "title": "Before PPF or Ceramic",
             "desc": "Applying PPF or ceramic on a repainted surface wastes your investment. Inspect first."
           }
         },
-        "w3": {
+        "card_FHTJzi": {
           "type": "card",
           "settings": {
-            "icon": "\ud83d\udcb0",
+            "icon": "💰",
             "title": "Selling Your Car",
             "desc": "Get a certified UV inspection report to prove your car's original paint condition."
           }
         }
       },
-      "blocks_order": [
-        "w1",
-        "w2",
-        "w3"
-      ]
-    },
-    "uvi_cta": {
-      "type": "uvi-cta",
-      "settings": {}
+      "block_order": [
+        "card_thFpxM",
+        "card_Wgm7Kz",
+        "card_FHTJzi"
+      ],
+      "name": "UV Who Needs It",
+      "settings": {
+        "eyebrow": "Who Should Book",
+        "title": "Is UV Inspection Right for You?"
+      }
     }
   },
   "order": [
-    "uvi_hero",
-    "uvi_reveals",
-    "uvi_why",
-    "uvi_process",
-    "uvi_pricing",
-    "uvi_who",
-    "uvi_cta"
+    "main",
+    "uvi_reveals_yrqeQ4",
+    "uvi_why_MkxMKi",
+    "uvi_process_XXe7bc",
+    "uvi_pricing_NdRxWH",
+    "uvi_who_iqkw6Q"
   ]
 }
