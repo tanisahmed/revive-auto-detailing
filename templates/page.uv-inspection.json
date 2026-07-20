@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -24,7 +15,7 @@
         "card_kyKrhR": {
           "type": "card",
           "settings": {
-            "icon": "🎨",
+            "icon": "\ud83c\udfa8",
             "title": "Hidden Repaints",
             "desc": "Factory paint vs repainted panels glow differently under UV. We instantly spot any panel that has been resprayed.",
             "tag": "Most Common Find"
@@ -33,7 +24,7 @@
         "card_3xnHfi": {
           "type": "card",
           "settings": {
-            "icon": "💥",
+            "icon": "\ud83d\udca5",
             "title": "Accident Damage",
             "desc": "Collision repairs, putty fillers, and body filler leave clear UV signatures. Sellers can't hide past accidents.",
             "tag": "High Risk"
@@ -42,7 +33,7 @@
         "card_3eQXqy": {
           "type": "card",
           "settings": {
-            "icon": "🦠",
+            "icon": "\ud83e\udda0",
             "title": "Rust & Corrosion",
             "desc": "Rust under the paint and corrosion treated with chemicals all show up clearly.",
             "tag": "Structural Issue"
@@ -51,7 +42,7 @@
         "card_fpJRRK": {
           "type": "card",
           "settings": {
-            "icon": "🔩",
+            "icon": "\ud83d\udd29",
             "title": "Panel Replacements",
             "desc": "Replaced panels, welded sections, and structural repairs are detected.",
             "tag": "Safety Critical"
@@ -60,7 +51,7 @@
         "card_wA3cWT": {
           "type": "card",
           "settings": {
-            "icon": "🧪",
+            "icon": "\ud83e\uddea",
             "title": "Filler & Putty",
             "desc": "Body filler glows bright orange under UV. Even thin layers are instantly revealed.",
             "tag": "Common Scam"
@@ -69,7 +60,7 @@
         "card_nwNKUJ": {
           "type": "card",
           "settings": {
-            "icon": "🪟",
+            "icon": "\ud83e\ude9f",
             "title": "Seal & Trim Repairs",
             "desc": "Window seal replacements and adhesive residue indicate past water damage.",
             "tag": "Water Damage"
@@ -88,7 +79,7 @@
       "settings": {
         "eyebrow": "What We Detect",
         "title": "UV Light Reveals What Human Eyes Can't",
-        "subtitle": "Under UV light, original factory paint glows differently than repainted panels — making every repair, accident, and cover-up instantly visible."
+        "subtitle": "Under UV light, original factory paint glows differently than repainted panels \u2014 making every repair, accident, and cover-up instantly visible."
       }
     },
     "uvi_why_MkxMKi": {
@@ -167,8 +158,8 @@
           "type": "step",
           "settings": {
             "title": "Panel-by-Panel UV Scan",
-            "desc": "Our specialist scans every panel — bonnet, fenders, doors, pillars, roof, boot — under professional UV lamps.",
-            "time": "20–45 minutes"
+            "desc": "Our specialist scans every panel \u2014 bonnet, fenders, doors, pillars, roof, boot \u2014 under professional UV lamps.",
+            "time": "20\u201345 minutes"
           }
         },
         "step_aEHMwc": {
@@ -176,7 +167,7 @@
           "settings": {
             "title": "Verbal Findings Report",
             "desc": "We walk you through every finding on the spot. Written report available on request.",
-            "time": "10–15 minutes"
+            "time": "10\u201315 minutes"
           }
         },
         "step_UEHmWd": {
@@ -197,7 +188,7 @@
       ],
       "name": "UV Process",
       "settings": {
-        "title": "UV Inspection — Step by Step"
+        "title": "UV Inspection \u2014 Step by Step"
       }
     },
     "uvi_pricing_NdRxWH": {
@@ -205,13 +196,13 @@
       "name": "UV Pricing",
       "settings": {
         "title": "UV Paint Inspection Pricing",
-        "subtitle": "Flat rate — no hidden charges. Select your vehicle type below.",
+        "subtitle": "Flat rate \u2014 no hidden charges. Select your vehicle type below.",
         "note": "Select your vehicle type to book your Car Paint Inspection",
         "price_hatch": "5,500",
         "price_sedan": "6,500",
         "price_suv": "7,500",
         "price_xlsuv": "10,000",
-        "footer_note": "✅ Includes full panel-by-panel UV scan + verbal findings report. Written report available on request."
+        "footer_note": "\u2705 Includes full panel-by-panel UV scan + verbal findings report. Written report available on request."
       }
     },
     "uvi_who_iqkw6Q": {
@@ -220,7 +211,7 @@
         "card_thFpxM": {
           "type": "card",
           "settings": {
-            "icon": "🚗",
+            "icon": "\ud83d\ude97",
             "title": "Buying a Used Car",
             "desc": "Before finalizing any used car purchase, get a UV inspection. Know exactly what you're paying for."
           }
@@ -228,7 +219,7 @@
         "card_Wgm7Kz": {
           "type": "card",
           "settings": {
-            "icon": "🛡️",
+            "icon": "\ud83d\udee1\ufe0f",
             "title": "Before PPF or Ceramic",
             "desc": "Applying PPF or ceramic on a repainted surface wastes your investment. Inspect first."
           }
@@ -236,7 +227,7 @@
         "card_FHTJzi": {
           "type": "card",
           "settings": {
-            "icon": "💰",
+            "icon": "\ud83d\udcb0",
             "title": "Selling Your Car",
             "desc": "Get a certified UV inspection report to prove your car's original paint condition."
           }
