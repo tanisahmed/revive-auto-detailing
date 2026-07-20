@@ -1,0 +1,62 @@
+<style>
+.ruvh{background:linear-gradient(135deg,#0d0a1a 0%,#1a0a2e 50%,#0d0a1a 100%);min-height:90vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:5rem 1.5rem;}
+.ruvh::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(109,40,217,0.3) 0%,transparent 70%);}
+.ruvh-in{max-width:860px;margin:0 auto;text-align:center;position:relative;z-index:2;}
+.ruvh-badge{display:inline-flex;align-items:center;background:rgba(109,40,217,0.2);border:1px solid rgba(109,40,217,0.5);color:#c4b5fd;font-size:.75rem;font-weight:700;padding:.4rem 1rem;border-radius:100px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.75rem;}
+.ruvh h1{font-size:clamp(2.4rem,6vw,4rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:1.25rem;font-family:'Nunito Sans',sans-serif;}
+.ruvh h1 span{color:#a78bfa;}
+.ruvh-sub{font-size:1.1rem;color:#c4b5fd;max-width:620px;margin:0 auto 2.5rem;line-height:1.7;}
+.ruvh-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.ruvh-bp{display:inline-flex;align-items:center;gap:.5rem;background:#6d28d9;color:#fff;padding:1rem 2rem;border-radius:10px;font-weight:700;font-size:1rem;text-decoration:none;transition:all .2s;box-shadow:0 0 24px rgba(109,40,217,0.5);}
+.ruvh-bp:hover{background:#7c3aed;transform:translateY(-2px);}
+.ruvh-bs{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:#c4b5fd;padding:1rem 2rem;border-radius:10px;font-weight:700;font-size:1rem;text-decoration:none;border:1.5px solid rgba(196,181,253,0.4);transition:all .2s;}
+.ruvh-bs:hover{border-color:#a78bfa;color:#fff;}
+.ruvh-trust{display:flex;justify-content:center;gap:2rem;margin-top:3rem;flex-wrap:wrap;}
+.ruvh-ti{display:flex;flex-direction:column;align-items:center;gap:.25rem;}
+.ruvh-tn{font-size:1.6rem;font-weight:900;color:#a78bfa;}
+.ruvh-tl{font-size:.75rem;color:#7c6ea8;font-weight:600;text-transform:uppercase;letter-spacing:.06em;}
+@media(max-width:640px){.ruvh{min-height:70vh;padding:3rem 1rem;}.ruvh-trust{gap:1.25rem;}.ruvh-btns{flex-direction:column;align-items:center;}}
+</style>
+
+<section class="ruvh">
+  <div class="ruvh-in">
+    <div class="ruvh-badge">{{ section.settings.badge | default: "Karachi's Only UV Paint Inspection Studio" }}</div>
+    <h1>{{ section.settings.h1a | default: "Know Exactly What You're" }}<br><span>{{ section.settings.h1b | default: "Buying Before You Buy" }}</span></h1>
+    <p class="ruvh-sub">{{ section.settings.sub | default: "Our UV light inspection reveals hidden repaints, accident damage, rust, and panel repairs — invisible to the naked eye. Don't pay full price for a compromised car." }}</p>
+    <div class="ruvh-btns">
+      <a href="{{ section.settings.btn1_url | default: '/pages/uv-inspection-booking' }}" class="ruvh-bp">🔦 {{ section.settings.btn1 | default: "Book UV Inspection" }}</a>
+      <a href="https://wa.me/923037231111" target="_blank" class="ruvh-bs">💬 WhatsApp Us</a>
+    </div>
+    <div class="ruvh-trust">
+      <div class="ruvh-ti"><span class="ruvh-tn">{{ section.settings.s1n | default: "500+" }}</span><span class="ruvh-tl">{{ section.settings.s1l | default: "Cars Inspected" }}</span></div>
+      <div class="ruvh-ti"><span class="ruvh-tn">{{ section.settings.s2n | default: "30-60" }}</span><span class="ruvh-tl">{{ section.settings.s2l | default: "Minutes Only" }}</span></div>
+      <div class="ruvh-ti"><span class="ruvh-tn">{{ section.settings.s3n | default: "100%" }}</span><span class="ruvh-tl">{{ section.settings.s3l | default: "Panel-by-Panel" }}</span></div>
+      <div class="ruvh-ti"><span class="ruvh-tn">{{ section.settings.s4n | default: "PKR 5.5K" }}</span><span class="ruvh-tl">{{ section.settings.s4l | default: "Starting Price" }}</span></div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "UV Hero",
+  "tag": "div",
+  "settings": [
+    {"type":"text","id":"badge","label":"Badge Text","default":"Karachi's Only UV Paint Inspection Studio"},
+    {"type":"text","id":"h1a","label":"Heading Line 1","default":"Know Exactly What You're"},
+    {"type":"text","id":"h1b","label":"Heading Line 2","default":"Buying Before You Buy"},
+    {"type":"textarea","id":"sub","label":"Subtext","default":"Our UV light inspection reveals hidden repaints, accident damage, rust, and panel repairs — invisible to the naked eye."},
+    {"type":"text","id":"btn1","label":"Button Text","default":"Book UV Inspection"},
+    {"type":"url","id":"btn1_url","label":"Button URL","default":"/pages/uv-inspection-booking"},
+    {"type":"header","content":"Trust Stats"},
+    {"type":"text","id":"s1n","label":"Stat 1 Number","default":"500+"},
+    {"type":"text","id":"s1l","label":"Stat 1 Label","default":"Cars Inspected"},
+    {"type":"text","id":"s2n","label":"Stat 2 Number","default":"30-60"},
+    {"type":"text","id":"s2l","label":"Stat 2 Label","default":"Minutes Only"},
+    {"type":"text","id":"s3n","label":"Stat 3 Number","default":"100%"},
+    {"type":"text","id":"s3l","label":"Stat 3 Label","default":"Panel-by-Panel"},
+    {"type":"text","id":"s4n","label":"Stat 4 Number","default":"PKR 5.5K"},
+    {"type":"text","id":"s4l","label":"Stat 4 Label","default":"Starting Price"}
+  ],
+  "presets": [{"name": "UV Hero"}]
+}
+{% endschema %}
