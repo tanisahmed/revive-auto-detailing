@@ -156,41 +156,28 @@
 .radf-hour-open { color: #34d399; font-weight: 700; }
 .radf-hour-closed { color: #f87171; font-weight: 700; }
 
-.radf-book-box {
+.radf-sole-box {
   margin-top: 1.5rem;
   background: #1f2937;
   border: 1px solid #374151;
   border-radius: 10px;
-  padding: 1.1rem;
+  padding: 1.1rem 1.25rem 1.25rem;
 }
-.radf-book-title {
-  font-size: 0.72rem;
+.radf-sole-title {
+  font-size: 0.68rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #3b82f6;
-  margin-bottom: 0.4rem;
-}
-.radf-book-sub {
-  font-size: 0.82rem;
-  color: #9ca3af;
+  letter-spacing: 0.14em;
+  color: #6b7280;
   margin-bottom: 0.85rem;
-  line-height: 1.5;
 }
-.radf-book-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: #1e3a8a;
-  color: #ffffff;
-  padding: 0.55rem 1rem;
-  border-radius: 7px;
-  font-size: 0.82rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: background 0.2s;
+.radf-nar-logo {
+  height: 44px;
+  width: auto;
+  display: block;
+  filter: invert(1);
+  opacity: 0.85;
 }
-.radf-book-cta:hover { background: #1e40af; }
 
 /* ── Divider ── */
 .radf-hr {
@@ -312,10 +299,9 @@
           <span class="radf-hour-closed">{{ section.settings.hours_sunday | default: "Closed" }}</span>
         </div>
       </div>
-      <div class="radf-book-box">
-        <div class="radf-book-title">Book Appointment</div>
-        <div class="radf-book-sub">Slot confirmed within 1 hour via WhatsApp.</div>
-        <a href="/pages/book-appointment" class="radf-book-cta">📅 Book Now</a>
+      <div class="radf-sole-box">
+        <div class="radf-sole-title">Sole Distributor</div>
+        <img src="{{ 'nar-ppf-logo.png' | asset_url }}" alt="NAR PPF" class="radf-nar-logo">
       </div>
     </div>
 
