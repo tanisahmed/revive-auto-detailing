@@ -242,16 +242,56 @@
       <h2 class="uvi-sec-h2" style="text-align:center;">{{ section.settings.title | default: "UV Inspection — Step by Step" }}</h2>
     </div>
     <div class="uvi-steps">
-      {%- for block in section.blocks -%}
+      {%- if section.settings.s1_title != blank -%}
       <div class="uvi-step">
-        <div class="uvi-step-num">{{ forloop.index }}</div>
+        <div class="uvi-step-num">1</div>
         <div class="uvi-step-content">
-          <div class="uvi-step-title">{{ block.settings.title }}</div>
-          <div class="uvi-step-desc">{{ block.settings.desc }}</div>
-          <span class="uvi-step-time">⏱ {{ block.settings.time }}</span>
+          <div class="uvi-step-title">{{ section.settings.s1_title }}</div>
+          <div class="uvi-step-desc">{{ section.settings.s1_desc }}</div>
+          <span class="uvi-step-time">⏱ {{ section.settings.s1_time }}</span>
         </div>
       </div>
-      {%- endfor -%}
+      {%- endif -%}
+      {%- if section.settings.s2_title != blank -%}
+      <div class="uvi-step">
+        <div class="uvi-step-num">2</div>
+        <div class="uvi-step-content">
+          <div class="uvi-step-title">{{ section.settings.s2_title }}</div>
+          <div class="uvi-step-desc">{{ section.settings.s2_desc }}</div>
+          <span class="uvi-step-time">⏱ {{ section.settings.s2_time }}</span>
+        </div>
+      </div>
+      {%- endif -%}
+      {%- if section.settings.s3_title != blank -%}
+      <div class="uvi-step">
+        <div class="uvi-step-num">3</div>
+        <div class="uvi-step-content">
+          <div class="uvi-step-title">{{ section.settings.s3_title }}</div>
+          <div class="uvi-step-desc">{{ section.settings.s3_desc }}</div>
+          <span class="uvi-step-time">⏱ {{ section.settings.s3_time }}</span>
+        </div>
+      </div>
+      {%- endif -%}
+      {%- if section.settings.s4_title != blank -%}
+      <div class="uvi-step">
+        <div class="uvi-step-num">4</div>
+        <div class="uvi-step-content">
+          <div class="uvi-step-title">{{ section.settings.s4_title }}</div>
+          <div class="uvi-step-desc">{{ section.settings.s4_desc }}</div>
+          <span class="uvi-step-time">⏱ {{ section.settings.s4_time }}</span>
+        </div>
+      </div>
+      {%- endif -%}
+      {%- if section.settings.s5_title != blank -%}
+      <div class="uvi-step">
+        <div class="uvi-step-num">5</div>
+        <div class="uvi-step-content">
+          <div class="uvi-step-title">{{ section.settings.s5_title }}</div>
+          <div class="uvi-step-desc">{{ section.settings.s5_desc }}</div>
+          <span class="uvi-step-time">⏱ {{ section.settings.s5_time }}</span>
+        </div>
+      </div>
+      {%- endif -%}
     </div>
   </div>
 </section>
@@ -260,85 +300,28 @@
 {
   "name": "UV — Process Steps",
   "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Section Title",
-      "default": "UV Inspection — Step by Step"
-    }
+    {"type":"text","id":"title","label":"Section Title","default":"UV Inspection — Step by Step"},
+    {"type":"header","content":"Step 1"},
+    {"type":"text","id":"s1_title","label":"Title","default":"Book Your Slot"},
+    {"type":"textarea","id":"s1_desc","label":"Description","default":"Choose your vehicle type and preferred date online. We confirm via WhatsApp within 1 hour."},
+    {"type":"text","id":"s1_time","label":"Time","default":"2 minutes"},
+    {"type":"header","content":"Step 2"},
+    {"type":"text","id":"s2_title","label":"Title","default":"Drop Off Your Car"},
+    {"type":"textarea","id":"s2_desc","label":"Description","default":"Bring your car to our studio in Karachi. No special preparation needed."},
+    {"type":"text","id":"s2_time","label":"Time","default":"5 minutes"},
+    {"type":"header","content":"Step 3"},
+    {"type":"text","id":"s3_title","label":"Title","default":"Panel-by-Panel UV Scan"},
+    {"type":"textarea","id":"s3_desc","label":"Description","default":"Our specialist scans every panel — bonnet, fenders, doors, pillars, roof, boot — under professional UV lamps."},
+    {"type":"text","id":"s3_time","label":"Time","default":"20–45 minutes"},
+    {"type":"header","content":"Step 4"},
+    {"type":"text","id":"s4_title","label":"Title","default":"Verbal Findings Report"},
+    {"type":"textarea","id":"s4_desc","label":"Description","default":"We walk you through every finding on the spot. Written report available on request."},
+    {"type":"text","id":"s4_time","label":"Time","default":"10–15 minutes"},
+    {"type":"header","content":"Step 5"},
+    {"type":"text","id":"s5_title","label":"Title","default":"Take Action"},
+    {"type":"textarea","id":"s5_desc","label":"Description","default":"Armed with full knowledge, negotiate confidently or proceed with PPF/ceramic."},
+    {"type":"text","id":"s5_time","label":"Time","default":"Your decision"}
   ],
-  "blocks": [
-    {
-      "type": "step",
-      "name": "Process Step",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Step Title",
-          "default": "Book Your Slot"
-        },
-        {
-          "type": "textarea",
-          "id": "desc",
-          "label": "Description",
-          "default": "Choose your vehicle type and preferred date online."
-        },
-        {
-          "type": "text",
-          "id": "time",
-          "label": "Time",
-          "default": "2 minutes"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "UV Process",
-      "blocks": [
-        {
-          "type": "step",
-          "settings": {
-            "title": "Book Your Slot",
-            "desc": "Choose your vehicle type and preferred date online. We confirm via WhatsApp within 1 hour.",
-            "time": "2 minutes"
-          }
-        },
-        {
-          "type": "step",
-          "settings": {
-            "title": "Drop Off Your Car",
-            "desc": "Bring your car to our studio in Karachi. No special preparation needed.",
-            "time": "5 minutes"
-          }
-        },
-        {
-          "type": "step",
-          "settings": {
-            "title": "Panel-by-Panel UV Scan",
-            "desc": "Our specialist scans every panel — bonnet, fenders, doors, pillars, roof, boot — under professional UV lamps.",
-            "time": "20–45 minutes"
-          }
-        },
-        {
-          "type": "step",
-          "settings": {
-            "title": "Verbal Findings Report",
-            "desc": "We walk you through every finding on the spot. Written report available on request.",
-            "time": "10–15 minutes"
-          }
-        },
-        {
-          "type": "step",
-          "settings": {
-            "title": "Take Action",
-            "desc": "Armed with full knowledge, negotiate confidently or proceed with PPF/ceramic.",
-            "time": "Your decision"
-          }
-        }
-      ]
-    }
-  ]
+  "presets": [{"name": "UV Process"}]
 }
 {% endschema %}
