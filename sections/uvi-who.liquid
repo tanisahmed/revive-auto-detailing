@@ -253,6 +253,34 @@
   </div>
 </section>
 
+
+
+<style>
+/* ── UV CTA Banner ── */
+.ruvc { background: linear-gradient(135deg, #0d0a1a 0%, #4c1d95 50%, #0d0a1a 100%); padding: 5rem 1.5rem; text-align: center; position: relative; overflow: hidden; font-family: 'Nunito Sans', sans-serif; }
+.ruvc::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(109,40,217,0.4) 0%, transparent 70%); }
+.ruvc-in { max-width: 700px; margin: 0 auto; position: relative; z-index: 2; }
+.ruvc h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; color: #fff; margin-bottom: 1rem; }
+.ruvc p { font-size: 1rem; color: #c4b5fd; margin-bottom: 2.5rem; line-height: 1.7; }
+.ruvc-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.ruvc-b1 { display: inline-flex; align-items: center; gap: .5rem; background: #6d28d9; color: #fff; padding: 1rem 1.75rem; border-radius: 10px; font-weight: 700; text-decoration: none; transition: all .2s; box-shadow: 0 0 24px rgba(109,40,217,0.5); }
+.ruvc-b1:hover { background: #7c3aed; transform: translateY(-2px); }
+.ruvc-b2 { display: inline-flex; align-items: center; gap: .5rem; background: #10b981; color: #fff; padding: 1rem 1.75rem; border-radius: 10px; font-weight: 700; text-decoration: none; transition: all .2s; }
+.ruvc-b2:hover { background: #059669; transform: translateY(-2px); }
+@media (max-width: 640px) { .ruvc { padding: 3rem 1rem; } .ruvc-btns { flex-direction: column; align-items: center; } }
+</style>
+
+<section class="ruvc">
+  <div class="ruvc-in">
+    <h2>Ready to See the Truth About Your Car?</h2>
+    <p>Book your UV paint inspection today. Results in 30–60 minutes. Full panel-by-panel report. Starting from PKR 5,500 only.</p>
+    <div class="ruvc-btns">
+      <a href="/pages/uv-inspection-booking" class="ruvc-b1">🔦 Book UV Inspection</a>
+      <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20to%20book%20UV%20paint%20inspection" target="_blank" class="ruvc-b2">💬 WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
 {% schema %}
 {
   "name": "UV — Who Needs It",
