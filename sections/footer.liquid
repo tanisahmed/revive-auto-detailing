@@ -22,22 +22,8 @@
 }
 
 /* ── Brand ── */
-.radf-brand-name {
-  font-size: 1.4rem;
-  font-weight: 900;
-  color: #ffffff;
-  margin-bottom: 0.2rem;
-}
-.radf-brand-name span { color: #3b82f6; }
-
-.radf-brand-tagline {
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: #6b7280;
-  margin-bottom: 1.25rem;
-}
+.radf-brand-logo { margin-bottom: 1.25rem; }
+.radf-logo-img { height: 52px; width: auto; display: block; }
 
 .radf-brand-desc {
   font-size: 0.9rem;
@@ -254,8 +240,9 @@
 
     <!-- Brand -->
     <div>
-      <div class="radf-brand-name">Revive <span>Auto</span> Detailing</div>
-      <div class="radf-brand-tagline">Premium Auto Protection · Karachi</div>
+      <div class="radf-brand-logo">
+        <img src="{{ 'white_logo-02.png' | asset_url }}" alt="Revive Auto Detailing" class="radf-logo-img">
+      </div>
       <p class="radf-brand-desc">Karachi's most trusted studio for Paint Protection Film, Ceramic Coating, UV Paint Inspection, and premium auto detailing services.</p>
       <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20to%20book%20an%20appointment" target="_blank" class="radf-wa-btn">💬 WhatsApp Us</a>
       <div class="radf-social">
