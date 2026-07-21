@@ -1,265 +1,248 @@
 <style>
-/* ══════════════════════════════
-   RAD — Premium Footer
-   ══════════════════════════════ */
-.rad-footer {
-  background: #080c14;
-  color: #94a3b8;
+/* ══ RAD Premium Footer v2 ══ */
+.radf {
+  background: #0f172a;
   font-family: 'Nunito Sans', sans-serif;
-  position: relative;
-  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Top glow accent */
-.rad-footer::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, #1e3a8a 30%, #3b82f6 50%, #1e3a8a 70%, transparent 100%);
+/* Blue top accent line */
+.radf-accent {
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, #1e3a8a 25%, #3b82f6 50%, #1e3a8a 75%, transparent 100%);
 }
 
-/* ── Top Strip ── */
-.rad-footer-top {
-  background: #0d1320;
-  padding: 1.25rem 0;
-  border-bottom: 1px solid rgba(30,58,138,0.3);
-}
-.rad-footer-top-inner {
-  max-width: 1200px; margin: 0 auto; padding: 0 2rem;
-  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
-}
-.rad-footer-tagline {
-  font-size: 0.82rem; font-weight: 600; color: #475569;
-  letter-spacing: 0.06em; text-transform: uppercase;
-}
-.rad-footer-tagline span { color: #3b82f6; }
-.rad-footer-social { display: flex; gap: 0.75rem; }
-.rad-footer-social a {
-  width: 2rem; height: 2rem; border-radius: 6px;
-  border: 1px solid rgba(30,58,138,0.4);
-  display: flex; align-items: center; justify-content: center;
-  color: #475569; font-size: 0.875rem; text-decoration: none;
-  transition: all 0.2s;
-}
-.rad-footer-social a:hover { border-color: #3b82f6; color: #3b82f6; background: rgba(59,130,246,0.08); }
-
-/* ── Main Grid ── */
-.rad-footer-main {
-  max-width: 1200px; margin: 0 auto; padding: 3.5rem 2rem;
-  display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
-  gap: 3rem;
+/* ── Main body ── */
+.radf-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 3rem;
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1.3fr;
+  gap: 3.5rem;
 }
 
-/* Brand column */
-.rad-footer-brand-name {
-  font-size: 1.3rem; font-weight: 900; color: #fff;
-  letter-spacing: 0.02em; margin-bottom: 0.35rem;
-}
-.rad-footer-brand-name span { color: #3b82f6; }
-.rad-footer-brand-sub {
-  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.12em; color: #334155; margin-bottom: 1.25rem;
-}
-.rad-footer-brand-desc {
-  font-size: 0.85rem; line-height: 1.7; color: #475569; margin-bottom: 1.5rem;
-  max-width: 260px;
-}
-.rad-footer-wa-btn {
+/* Brand col */
+.radf-logo { font-size: 1.5rem; font-weight: 900; color: #fff; margin-bottom: 0.25rem; letter-spacing: -0.01em; }
+.radf-logo span { color: #3b82f6; }
+.radf-logo-sub { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: #334155; margin-bottom: 1.25rem; }
+.radf-desc { font-size: 0.9rem; color: #64748b; line-height: 1.75; margin-bottom: 1.75rem; max-width: 270px; }
+.radf-wa {
   display: inline-flex; align-items: center; gap: 0.5rem;
-  background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3);
-  color: #10b981; padding: 0.6rem 1.1rem; border-radius: 8px;
-  font-size: 0.82rem; font-weight: 700; text-decoration: none; transition: all 0.2s;
+  background: #10b981; color: #fff;
+  padding: 0.7rem 1.25rem; border-radius: 8px;
+  font-size: 0.875rem; font-weight: 700; text-decoration: none;
+  transition: background 0.2s;
 }
-.rad-footer-wa-btn:hover { background: rgba(16,185,129,0.2); border-color: #10b981; }
+.radf-wa:hover { background: #059669; }
 
-/* Column headers */
-.rad-footer-col-title {
-  font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
-  letter-spacing: 0.12em; color: #fff; margin-bottom: 1.25rem;
-  padding-bottom: 0.6rem;
-  border-bottom: 1px solid rgba(30,58,138,0.4);
+/* Col headers */
+.radf-col-h {
+  font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.12em; color: #fff;
+  margin-bottom: 1.25rem; padding-bottom: 0.75rem;
+  border-bottom: 1px solid #1e293b;
 }
 
-/* Services links */
-.rad-footer-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem; }
-.rad-footer-links li a {
-  font-size: 0.85rem; color: #475569; text-decoration: none;
-  display: flex; align-items: center; gap: 0.4rem; transition: all 0.2s;
+/* Service links */
+.radf-links { display: flex; flex-direction: column; gap: 0.65rem; }
+.radf-links a {
+  font-size: 0.875rem; color: #64748b;
+  text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+  transition: color 0.2s;
 }
-.rad-footer-links li a::before { content: '›'; color: #1e3a8a; font-weight: 700; }
-.rad-footer-links li a:hover { color: #94a3b8; padding-left: 4px; }
+.radf-links a:hover { color: #cbd5e1; }
+.radf-links a::before { content: '→'; font-size: 0.75rem; color: #1e3a8a; }
 
-/* Contact info */
-.rad-footer-contact { display: flex; flex-direction: column; gap: 0.85rem; }
-.rad-footer-contact-item { display: flex; align-items: flex-start; gap: 0.7rem; }
-.rad-footer-contact-icon {
-  width: 1.75rem; height: 1.75rem; border-radius: 6px;
-  background: rgba(30,58,138,0.2); border: 1px solid rgba(30,58,138,0.3);
+/* Contact items */
+.radf-contacts { display: flex; flex-direction: column; gap: 1rem; }
+.radf-contact-row { display: flex; gap: 0.85rem; align-items: flex-start; }
+.radf-contact-ico {
+  width: 2rem; height: 2rem; border-radius: 6px;
+  background: #1e293b; border: 1px solid #334155;
   display: flex; align-items: center; justify-content: center;
-  font-size: 0.8rem; flex-shrink: 0; margin-top: 1px;
+  font-size: 0.85rem; flex-shrink: 0;
 }
-.rad-footer-contact-text { font-size: 0.82rem; line-height: 1.55; }
-.rad-footer-contact-text a { color: #475569; text-decoration: none; transition: color 0.2s; }
-.rad-footer-contact-text a:hover { color: #94a3b8; }
-.rad-footer-contact-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #334155; margin-bottom: 0.1rem; }
+.radf-contact-lbl { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #334155; margin-bottom: 0.15rem; }
+.radf-contact-val { font-size: 0.875rem; color: #64748b; line-height: 1.5; }
+.radf-contact-val a { color: #64748b; text-decoration: none; transition: color 0.2s; }
+.radf-contact-val a:hover { color: #cbd5e1; }
+.radf-directions {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-size: 0.8rem; color: #1e3a8a; font-weight: 700;
+  text-decoration: none; margin-top: 0.25rem; transition: color 0.2s;
+}
+.radf-directions:hover { color: #3b82f6; }
 
 /* Hours */
-.rad-footer-hours { display: flex; flex-direction: column; gap: 0; }
-.rad-footer-hour-row {
+.radf-hours { display: flex; flex-direction: column; }
+.radf-hour-row {
   display: flex; justify-content: space-between; align-items: center;
-  padding: 0.45rem 0; border-bottom: 1px solid rgba(30,58,138,0.15);
-  font-size: 0.8rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid #1e293b;
+  font-size: 0.875rem;
 }
-.rad-footer-hour-row:last-child { border-bottom: none; }
-.rad-footer-hour-day { color: #334155; font-weight: 600; }
-.rad-footer-hour-time { color: #64748b; font-weight: 500; }
-.rad-footer-hour-time.open { color: #22c55e; }
-.rad-footer-hour-time.closed { color: #ef4444; }
+.radf-hour-row:last-child { border-bottom: none; }
+.radf-hour-day { color: #94a3b8; font-weight: 600; }
+.radf-hour-time { font-weight: 700; color: #22c55e; }
+.radf-hour-time.closed { color: #ef4444; }
+
+/* Book box */
+.radf-book-box {
+  margin-top: 1.5rem;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 1.1rem;
+}
+.radf-book-box-title { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #3b82f6; margin-bottom: 0.4rem; }
+.radf-book-box-sub { font-size: 0.8rem; color: #475569; margin-bottom: 0.85rem; line-height: 1.5; }
+.radf-book-btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: #1e3a8a; color: #fff;
+  padding: 0.55rem 1rem; border-radius: 7px;
+  font-size: 0.8rem; font-weight: 700; text-decoration: none;
+  transition: background 0.2s;
+}
+.radf-book-btn:hover { background: #1e40af; }
 
 /* ── Divider ── */
-.rad-footer-divider {
-  max-width: 1200px; margin: 0 auto;
-  height: 1px; background: linear-gradient(90deg, transparent, rgba(30,58,138,0.4), transparent);
-}
+.radf-divider { border: none; border-top: 1px solid #1e293b; margin: 0; }
 
-/* ── Bottom Bar ── */
-.rad-footer-bottom {
-  max-width: 1200px; margin: 0 auto; padding: 1.25rem 2rem;
+/* ── Bottom ── */
+.radf-bottom {
+  max-width: 1200px; margin: 0 auto;
+  padding: 1.25rem 1.5rem;
   display: flex; align-items: center; justify-content: space-between;
   gap: 1rem; flex-wrap: wrap;
 }
-.rad-footer-copy { font-size: 0.78rem; color: #1e293b; }
-.rad-footer-copy span { color: #334155; }
-.rad-footer-bottom-links { display: flex; gap: 1.5rem; }
-.rad-footer-bottom-links a { font-size: 0.78rem; color: #1e293b; text-decoration: none; transition: color 0.2s; }
-.rad-footer-bottom-links a:hover { color: #475569; }
-.rad-footer-made { font-size: 0.72rem; color: #1e293b; }
+.radf-copy { font-size: 0.8rem; color: #334155; }
+.radf-bottom-links { display: flex; gap: 1.5rem; }
+.radf-bottom-links a { font-size: 0.8rem; color: #334155; text-decoration: none; transition: color 0.2s; }
+.radf-bottom-links a:hover { color: #64748b; }
+.radf-made { font-size: 0.78rem; color: #1e293b; }
 
-/* ── Responsive ── */
-@media (max-width: 1024px) {
-  .rad-footer-main { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+/* Social row */
+.radf-social { display: flex; gap: 0.6rem; margin-top: 1.5rem; }
+.radf-social a {
+  width: 2.1rem; height: 2.1rem; border-radius: 7px;
+  border: 1px solid #1e293b; background: #1e293b;
+  display: flex; align-items: center; justify-content: center;
+  color: #475569; text-decoration: none; transition: all 0.2s;
 }
-@media (max-width: 640px) {
-  .rad-footer-main { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.25rem; }
-  .rad-footer-top-inner { justify-content: center; text-align: center; }
-  .rad-footer-bottom { justify-content: center; text-align: center; flex-direction: column; padding: 1.25rem; }
-  .rad-footer-bottom-links { justify-content: center; }
-  .rad-footer-brand-desc { max-width: 100%; }
+.radf-social a:hover { border-color: #1e3a8a; color: #3b82f6; background: #0f172a; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .radf-body { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+}
+@media (max-width: 600px) {
+  .radf-body { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.25rem 2rem; }
+  .radf-bottom { flex-direction: column; text-align: center; padding: 1.25rem; }
+  .radf-bottom-links { justify-content: center; flex-wrap: wrap; gap: 1rem; }
+  .radf-desc { max-width: 100%; }
 }
 </style>
 
-<footer class="rad-footer" role="contentinfo">
+<footer class="radf" role="contentinfo">
+  <div class="radf-accent"></div>
 
-  <!-- Top strip -->
-  <div class="rad-footer-top">
-    <div class="rad-footer-top-inner">
-      <div class="rad-footer-tagline">Karachi's <span>Premium</span> Auto Protection Studio</div>
-      <div class="rad-footer-social">
-        <a href="https://www.instagram.com/reviveautodetailing.pk" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </a>
-        <a href="https://wa.me/923037231111" target="_blank" rel="noopener" aria-label="WhatsApp">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
+  <div class="radf-body">
 
-  <!-- Main grid -->
-  <div class="rad-footer-main">
-
-    <!-- Brand -->
-    <div class="rad-footer-brand">
-      <div class="rad-footer-brand-name">Revive <span>Auto</span> Detailing</div>
-      <div class="rad-footer-brand-sub">Premium Auto Protection · Karachi</div>
-      <p class="rad-footer-brand-desc">Karachi's most trusted studio for Paint Protection Film, Ceramic Coating, UV Paint Inspection, Color PPF, and premium detailing services.</p>
-      <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20to%20book%20an%20appointment" target="_blank" class="rad-footer-wa-btn">
+    <!-- ── Brand ── -->
+    <div>
+      <div class="radf-logo">Revive <span>Auto</span> Detailing</div>
+      <div class="radf-logo-sub">Premium Auto Protection · Karachi</div>
+      <p class="radf-desc">Karachi's most trusted studio for Paint Protection Film, Ceramic Coating, UV Paint Inspection, and premium auto detailing services.</p>
+      <a href="https://wa.me/923037231111?text=Hi!%20I%20want%20to%20book%20an%20appointment" target="_blank" class="radf-wa">
         💬 WhatsApp Us
       </a>
-    </div>
-
-    <!-- Services -->
-    <div>
-      <div class="rad-footer-col-title">Our Services</div>
-      <ul class="rad-footer-links">
-        <li><a href="/pages/paint-protection-film">Paint Protection Film</a></li>
-        <li><a href="/pages/ceramic-coating">Ceramic Coating</a></li>
-        <li><a href="/pages/color-ppf">Color PPF</a></li>
-        <li><a href="/pages/uv-light-car-paint-inspection">UV Paint Inspection</a></li>
-        <li><a href="/pages/car-detailing">Car Detailing</a></li>
-        <li><a href="/pages/car-window-tint">Window Tinting</a></li>
-        <li><a href="/pages/denting-painting">Denting & Painting</a></li>
-        <li><a href="/pages/car-anti-rust-undercoating">Anti-Rust Undercoating</a></li>
-      </ul>
-    </div>
-
-    <!-- Contact -->
-    <div>
-      <div class="rad-footer-col-title">Contact Us</div>
-      <div class="rad-footer-contact">
-        <div class="rad-footer-contact-item">
-          <div class="rad-footer-contact-icon">📞</div>
-          <div class="rad-footer-contact-text">
-            <div class="rad-footer-contact-label">Phone</div>
-            <a href="tel:{{ section.settings.phone }}">{{ section.settings.phone_display | default: "+92 303 7231111" }}</a>
-          </div>
-        </div>
-        <div class="rad-footer-contact-item">
-          <div class="rad-footer-contact-icon">📧</div>
-          <div class="rad-footer-contact-text">
-            <div class="rad-footer-contact-label">Email</div>
-            <a href="mailto:{{ section.settings.email | default: 'info@reviveautodetailing.pk' }}">{{ section.settings.email | default: "info@reviveautodetailing.pk" }}</a>
-          </div>
-        </div>
-        <div class="rad-footer-contact-item">
-          <div class="rad-footer-contact-icon">📍</div>
-          <div class="rad-footer-contact-text">
-            <div class="rad-footer-contact-label">Location</div>
-            {{ section.settings.address | default: "A-65, Main Shahrah-e-Qaideen, Karachi" }}
-          </div>
-        </div>
-        <a href="https://maps.google.com/?q=Revive+Auto+Detailing+Karachi" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;color:#1e3a8a;font-weight:600;text-decoration:none;margin-top:.25rem;">
-          🗺️ Get Directions →
+      <div class="radf-social">
+        <a href="https://www.instagram.com/reviveautodetailing.pk" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://wa.me/923037231111" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </a>
       </div>
     </div>
 
-    <!-- Hours -->
+    <!-- ── Services ── -->
     <div>
-      <div class="rad-footer-col-title">Business Hours</div>
-      <div class="rad-footer-hours">
-        <div class="rad-footer-hour-row">
-          <span class="rad-footer-hour-day">Mon – Sat</span>
-          <span class="rad-footer-hour-time open">{{ section.settings.hours_weekdays | default: "9:00 AM – 7:00 PM" }}</span>
+      <div class="radf-col-h">Our Services</div>
+      <div class="radf-links">
+        <a href="/pages/paint-protection-film">Paint Protection Film</a>
+        <a href="/pages/ceramic-coating">Ceramic Coating</a>
+        <a href="/pages/color-ppf">Color PPF</a>
+        <a href="/pages/uv-light-car-paint-inspection">UV Paint Inspection</a>
+        <a href="/pages/car-detailing">Car Detailing</a>
+        <a href="/pages/car-window-tint">Window Tinting</a>
+        <a href="/pages/denting-painting">Denting & Painting</a>
+        <a href="/pages/car-anti-rust-undercoating">Anti-Rust Undercoating</a>
+      </div>
+    </div>
+
+    <!-- ── Contact ── -->
+    <div>
+      <div class="radf-col-h">Contact Us</div>
+      <div class="radf-contacts">
+        <div class="radf-contact-row">
+          <div class="radf-contact-ico">📞</div>
+          <div>
+            <div class="radf-contact-lbl">Phone</div>
+            <div class="radf-contact-val"><a href="tel:{{ section.settings.phone | default: '+923037231111' }}">{{ section.settings.phone_display | default: "+92 303 7231111" }}</a></div>
+          </div>
         </div>
-        <div class="rad-footer-hour-row">
-          <span class="rad-footer-hour-day">Sunday</span>
-          <span class="rad-footer-hour-time closed">{{ section.settings.hours_sunday | default: "Closed" }}</span>
+        <div class="radf-contact-row">
+          <div class="radf-contact-ico">📧</div>
+          <div>
+            <div class="radf-contact-lbl">Email</div>
+            <div class="radf-contact-val"><a href="mailto:{{ section.settings.email | default: 'info@reviveautodetailing.pk' }}">{{ section.settings.email | default: "info@reviveautodetailing.pk" }}</a></div>
+          </div>
+        </div>
+        <div class="radf-contact-row">
+          <div class="radf-contact-ico">📍</div>
+          <div>
+            <div class="radf-contact-lbl">Location</div>
+            <div class="radf-contact-val">{{ section.settings.address | default: "A-65, Main Shahrah-e-Qaideen, Karachi" }}</div>
+          </div>
+        </div>
+        <a href="https://maps.google.com/?q=Revive+Auto+Detailing+Karachi" target="_blank" class="radf-directions">🗺️ Get Directions →</a>
+      </div>
+    </div>
+
+    <!-- ── Hours ── -->
+    <div>
+      <div class="radf-col-h">Business Hours</div>
+      <div class="radf-hours">
+        <div class="radf-hour-row">
+          <span class="radf-hour-day">Mon – Sat</span>
+          <span class="radf-hour-time">{{ section.settings.hours_weekdays | default: "9:00 AM – 7:00 PM" }}</span>
+        </div>
+        <div class="radf-hour-row">
+          <span class="radf-hour-day">Sunday</span>
+          <span class="radf-hour-time closed">{{ section.settings.hours_sunday | default: "Closed" }}</span>
         </div>
       </div>
-      <div style="margin-top:1.5rem;background:rgba(30,58,138,0.12);border:1px solid rgba(30,58,138,0.25);border-radius:10px;padding:1rem;">
-        <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#1e3a8a;margin-bottom:.5rem;">Book Appointment</div>
-        <div style="font-size:.8rem;color:#334155;margin-bottom:.75rem;line-height:1.5;">Get your slot confirmed within 1 hour via WhatsApp.</div>
-        <a href="/pages/book-appointment" style="display:inline-flex;align-items:center;gap:.4rem;background:#1e3a8a;color:#fff;padding:.55rem 1rem;border-radius:7px;font-size:.8rem;font-weight:700;text-decoration:none;transition:all .2s;">
-          📅 Book Now
-        </a>
+      <div class="radf-book-box">
+        <div class="radf-book-box-title">Book Appointment</div>
+        <div class="radf-book-box-sub">Slot confirmed within 1 hour via WhatsApp.</div>
+        <a href="/pages/book-appointment" class="radf-book-btn">📅 Book Now</a>
       </div>
     </div>
 
   </div>
 
-  <div class="rad-footer-divider"></div>
+  <hr class="radf-divider">
 
-  <!-- Bottom bar -->
-  <div class="rad-footer-bottom">
-    <div class="rad-footer-copy">{{ section.settings.copyright | default: "© 2025 Revive Auto Detailing. All rights reserved." }}</div>
-    <div class="rad-footer-bottom-links">
+  <div class="radf-bottom">
+    <div class="radf-copy">{{ section.settings.copyright | default: "© 2025 Revive Auto Detailing. All rights reserved." }}</div>
+    <div class="radf-bottom-links">
       <a href="/policies/privacy-policy">Privacy Policy</a>
       <a href="/policies/terms-of-service">Terms of Service</a>
       <a href="/pages/contact-us">Contact</a>
     </div>
-    <div class="rad-footer-made">Made with ♥ in Karachi</div>
+    <div class="radf-made">Made with ♥ in Karachi</div>
   </div>
 
 </footer>
