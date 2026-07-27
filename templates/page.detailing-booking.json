@@ -11,7 +11,24 @@
   "sections": {
     "det_booking": {
       "type": "detailing-booking",
-      "settings": {}
+      "settings": {
+        "p_hatchback_interior": 10000,
+        "p_hatchback_exterior": 12000,
+        "p_hatchback_complete": 18000,
+        "dur_hatchback": "2-3 Working Day",
+        "p_sedan_interior": 12000,
+        "p_sedan_exterior": 14000,
+        "p_sedan_complete": 22000,
+        "dur_sedan": "2-3 Working Day",
+        "p_suv_interior": 14000,
+        "p_suv_exterior": 16000,
+        "p_suv_complete": 24000,
+        "dur_suv": "2-3 Working Day",
+        "p_xl_suv_interior": 16000,
+        "p_xl_suv_exterior": 18000,
+        "p_xl_suv_complete": 27000,
+        "dur_xl_suv": "2-3 Working Day"
+      }
     }
   },
   "order": [
