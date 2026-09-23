@@ -227,10 +227,10 @@
 <script>
 (function() {
   var pricing = {
-    'hatchback': { label: 'Hatchback', crprice: 180000, crdur: '3 Working Days', classic: { price: {{ section.settings.p_hatchback_classic | default: 260000 }}, dur: '{{ section.settings.dur_hatchback | default: "3 Working Days" }}' }, premium: { price: {{ section.settings.p_hatchback_premium | default: 290000 }}, dur: '{{ section.settings.dur_hatchback | default: "3 Working Days" }}' } },
-    'sedan':     { label: 'Sedan',     crprice: 200000, crdur: '3 Working Days', classic: { price: {{ section.settings.p_sedan_classic | default: 300000 }},    dur: '{{ section.settings.dur_sedan | default: "3 Working Days" }}'    }, premium: { price: {{ section.settings.p_sedan_premium | default: 330000 }},    dur: '{{ section.settings.dur_sedan | default: "3 Working Days" }}'    } },
-    'suv':       { label: 'SUV',       crprice: 240000, crdur: '3 Working Days', classic: { price: {{ section.settings.p_suv_classic | default: 330000 }},      dur: '{{ section.settings.dur_suv | default: "3 Working Days" }}'      }, premium: { price: {{ section.settings.p_suv_premium | default: 380000 }},      dur: '{{ section.settings.dur_suv | default: "3 Working Days" }}'      } },
-    'xl-suv':    { label: 'XL SUV',    crprice: 280000, crdur: '3 Working Days', classic: { price: {{ section.settings.p_xlsuv_classic | default: 370000 }},    dur: '{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'    }, premium: { price: {{ section.settings.p_xlsuv_premium | default: 420000 }},    dur: '{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'    } }
+    'hatchback': { label: 'Hatchback', crprice: {{ section.settings.p_hatchback_cryst | default: 180000 }}, crdur: '{{ section.settings.dur_hatchback | default: "3 Working Days" }}', classic: { price: {{ section.settings.p_hatchback_classic | default: 260000 }}, dur: '{{ section.settings.dur_hatchback | default: "3 Working Days" }}' }, premium: { price: {{ section.settings.p_hatchback_premium | default: 290000 }}, dur: '{{ section.settings.dur_hatchback | default: "3 Working Days" }}' } },
+    'sedan':     { label: 'Sedan',     crprice: {{ section.settings.p_sedan_cryst | default: 200000 }}, crdur: '3 Working Days', classic: { price: {{ section.settings.p_sedan_classic | default: 300000 }},    dur: '{{ section.settings.dur_sedan | default: "3 Working Days" }}'    }, premium: { price: {{ section.settings.p_sedan_premium | default: 330000 }},    dur: '{{ section.settings.dur_sedan | default: "3 Working Days" }}'    } },
+    'suv':       { label: 'SUV',       crprice: {{ section.settings.p_suv_cryst | default: 240000 }}, crdur: '3 Working Days', classic: { price: {{ section.settings.p_suv_classic | default: 330000 }},      dur: '{{ section.settings.dur_suv | default: "3 Working Days" }}'      }, premium: { price: {{ section.settings.p_suv_premium | default: 380000 }},      dur: '{{ section.settings.dur_suv | default: "3 Working Days" }}'      } },
+    'xl-suv':    { label: 'XL SUV',    crprice: {{ section.settings.p_xlsuv_cryst | default: 280000 }}, crdur: '3 Working Days', classic: { price: {{ section.settings.p_xlsuv_classic | default: 370000 }},    dur: '{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'    }, premium: { price: {{ section.settings.p_xlsuv_premium | default: 420000 }},    dur: '{{ section.settings.dur_xlsuv | default: "3 Working Days" }}'    } }
   };
 
   var carEx = {
@@ -326,6 +326,28 @@
     },
     {
       "type": "header",
+      "content": "Crystalline Package"
+    },
+    {
+      "type": "text",
+      "id": "cryst_name",
+      "label": "Name",
+      "default": "Crystalline PPF"
+    },
+    {
+      "type": "text",
+      "id": "cryst_mil",
+      "label": "Thickness",
+      "default": "7.9 mil thickness"
+    },
+    {
+      "type": "text",
+      "id": "cryst_warranty",
+      "label": "Warranty",
+      "default": "10 Years Warranty"
+    },
+    {
+      "type": "header",
       "content": "Classic Package"
     },
     {
@@ -374,6 +396,12 @@
     },
     {
       "type": "number",
+      "id": "p_hatchback_cryst",
+      "label": "Crystalline",
+      "default": 180000
+    },
+    {
+      "type": "number",
       "id": "p_hatchback_classic",
       "label": "Classic",
       "default": 260000
@@ -393,6 +421,12 @@
     {
       "type": "header",
       "content": "Sedan Prices (PKR)"
+    },
+    {
+      "type": "number",
+      "id": "p_sedan_cryst",
+      "label": "Crystalline",
+      "default": 200000
     },
     {
       "type": "number",
@@ -418,6 +452,12 @@
     },
     {
       "type": "number",
+      "id": "p_suv_cryst",
+      "label": "Crystalline",
+      "default": 240000
+    },
+    {
+      "type": "number",
       "id": "p_suv_classic",
       "label": "Classic",
       "default": 330000
@@ -437,6 +477,12 @@
     {
       "type": "header",
       "content": "XL SUV Prices (PKR)"
+    },
+    {
+      "type": "number",
+      "id": "p_xlsuv_cryst",
+      "label": "Crystalline",
+      "default": 280000
     },
     {
       "type": "number",
