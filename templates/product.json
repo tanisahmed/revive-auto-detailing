@@ -2,7 +2,9 @@
   "sections": {
     "main": {
       "type": "rad-product",
-      "settings": {}
+      "settings": {
+        "accent": "#1e3a8a"
+      }
     }
   },
   "order": [
