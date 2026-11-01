@@ -18,12 +18,12 @@
         "title_accent": "Revive Auto Detailing",
         "subtitle": "Professional PPF, Ceramic Coating, Detailing & Window Tinting in Karachi. Premium quality, guaranteed results.",
         "btn1_text": "Explore Our Services",
-        "btn1_url": "",
-        "stat1_num": "500+",
+        "btn1_url": "shopify://pages/all-services",
+        "stat1_num": "2500+",
         "stat1_lbl": "Cars Serviced",
         "stat2_num": "4.9 ⭐",
         "stat2_lbl": "Google Rating",
-        "stat3_num": "2+",
+        "stat3_num": "3+",
         "stat3_lbl": "Years Experience"
       }
     },
